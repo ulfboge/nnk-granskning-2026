@@ -70,7 +70,10 @@ table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0 0;
 th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
-td.nu{font-weight:620;color:var(--ink-1)}
+td.nu{font-weight:620;color:var(--ink-1);white-space:nowrap;width:1%}
+td.nu .vk{display:block;font-size:14px;letter-spacing:-.01em}
+td.nu .mnd{display:block;font-size:11px;font-weight:500;color:var(--ink-3);
+ margin-top:2px;text-transform:uppercase;letter-spacing:.03em}
 
 .notis{background:var(--surface-1);border:1px solid var(--ring);border-left:3px solid var(--p-D);
  border-radius:10px;padding:14px 17px;font-size:13px;color:var(--ink-2);margin-top:16px;max-width:80ch}
@@ -143,9 +146,9 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);
 <table>
   <thead><tr><th>Period</th><th>Vad som görs</th><th>Varför</th></tr></thead>
   <tbody>
-    <tr><td class="nu">v34–v39<br>aug–sep</td><td>Orientering, systemåtkomst, skrivbordsgranskning av utbredning och gränser, fältkontroll i prioriterade hävdberoende objekt.</td><td>Fältsäsongen tar slut och tillståndsattributen finns inte än.</td></tr>
-    <tr><td class="nu">v40–v46<br>okt–nov</td><td>Nya NNK-attribut driftsatta — registrera tillstånd där kunskapen redan finns, systematiskt batch för batch.</td><td>Verktyget finns; sen höst passar skrivbordsarbete.</td></tr>
-    <tr><td class="nu">v47–v52<br>dec</td><td>Sammanställning av kunskapsläget och plan för 2027, underlag till årsredovisningen.</td><td>Det är detta som är 2026 års faktiska leverans.</td></tr>
+    <tr><td class="nu"><span class="vk">v34–v39</span><span class="mnd">aug–sep</span></td><td>Orientering, systemåtkomst, skrivbordsgranskning av utbredning och gränser, fältkontroll i prioriterade hävdberoende objekt.</td><td>Fältsäsongen tar slut och tillståndsattributen finns inte än.</td></tr>
+    <tr><td class="nu"><span class="vk">v40–v46</span><span class="mnd">okt–nov</span></td><td>Nya NNK-attribut driftsatta — registrera tillstånd där kunskapen redan finns, systematiskt batch för batch.</td><td>Verktyget finns; sen höst passar skrivbordsarbete.</td></tr>
+    <tr><td class="nu"><span class="vk">v47–v52</span><span class="mnd">december</span></td><td>Sammanställning av kunskapsläget och plan för 2027, underlag till årsredovisningen.</td><td>Det är detta som är 2026 års faktiska leverans.</td></tr>
   </tbody>
 </table>
 
