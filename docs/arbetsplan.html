@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbetsplan NNK 2026 — statusbedömning av livsmiljötyper inom Natura 2000 — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="arbetsplan-nnk-2026-statusbedomning-av-livsmiljotyper-inom-natura-2000">Arbetsplan NNK 2026 — statusbedömning av livsmiljötyper inom Natura 2000</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</a></li>
+<li><a href="#0-sammanfattning-vad-det-har-aret-faktiskt-handlar-om">0. Sammanfattning — vad det här året faktiskt handlar om</a></li>
+<li><a href="#1-kravnedbrytning-vad-som-ska-vara-klart-nar">1. Kravnedbrytning — vad som ska vara klart när</a><ul>
+<li><a href="#11-klart-2026-inom-natura-2000">1.1 Klart 2026, inom Natura 2000</a></li>
+<li><a href="#12-klart-2027">1.2 Klart 2027</a></li>
+<li><a href="#13-klart-2028">1.3 Klart 2028</a></li>
+</ul>
+</li>
+<li><a href="#2-kunskapslaget-i-d-lan-nollmatning-per-2026-01-20">2. Kunskapsläget i D-län — nollmätning per 2026-01-20</a><ul>
+<li><a href="#21-natura-2000-scisac-197-omraden">2.1 Natura 2000 (SCI/SAC), 197 områden</a></li>
+<li><a href="#22-terrestra-livsmiljotyper-det-som-faktiskt-ska-bedomas">2.2 Terrestra livsmiljötyper — det som faktiskt ska bedömas</a></li>
+<li><a href="#23-naturtypsstatus-polygoner-inom-n2000">2.3 Naturtypsstatus — polygoner inom N2000</a></li>
+<li><a href="#24-karteringsstatus-och-ursprung-kvalitetsrisken">2.4 Karteringsstatus och ursprung — kvalitetsrisken</a></li>
+<li><a href="#25-sallsynta-livsmiljotyper-i-lanet-50-ha-inom-n2000">2.5 Sällsynta livsmiljötyper i länet (&lt; 50 ha inom N2000)</a></li>
+</ul>
+</li>
+<li><a href="#3-hierarkisk-arbetsstruktur-wbs">3. Hierarkisk arbetsstruktur (WBS)</a></li>
+<li><a href="#4-arbetspaket-i-detalj">4. Arbetspaket i detalj</a><ul>
+<li><a href="#a-etablering-och-forutsattningar-v34v36">A. Etablering och förutsättningar · v34–v36</a></li>
+<li><a href="#b-faltsasong-2026-v34v41-tidskritiskt">B. Fältsäsong 2026 · v34–v41 — tidskritiskt</a></li>
+<li><a href="#c-skrivbordsgranskning-av-utbredning-v35v46">C. Skrivbordsgranskning av utbredning · v35–v46</a></li>
+<li><a href="#d-tillstandsbedomning-i-nnk-v40v50">D. Tillståndsbedömning i NNK · v40–v50</a></li>
+<li><a href="#e-sammanstallning-av-kunskapslaget-v45v50">E. Sammanställning av kunskapsläget · v45–v50</a></li>
+<li><a href="#f-plan-for-2027-v46v52-arets-huvudleverans">F. Plan för 2027 · v46–v52 — årets huvudleverans</a></li>
+<li><a href="#g-parallellspar-naturreservat-och-nationalpark-v42v52">G. Parallellspår naturreservat och nationalpark · v42–v52</a></li>
+<li><a href="#h-forvaltardialog-naturvardsenhetens-kunskap-v35v48">H. Förvaltardialog — Naturvårdsenhetens kunskap · v35–v48</a></li>
+</ul>
+</li>
+<li><a href="#5-prioritering">5. Prioritering</a><ul>
+<li><a href="#51-prioriteringsgrunder-faq-fraga-11">5.1 Prioriteringsgrunder (FAQ fråga 11)</a></li>
+<li><a href="#52-prioritetsklasser">5.2 Prioritetsklasser</a></li>
+<li><a href="#53-sarskild-hantering-av-storobjekten">5.3 Särskild hantering av storobjekten</a></li>
+</ul>
+</li>
+<li><a href="#6-roller-och-tidsbudget">6. Roller och tidsbudget</a><ul>
+<li><a href="#61-fordelning">6.1 Fördelning</a></li>
+<li><a href="#62-grov-tidsbudget-v34v52-ca-19-veckor">6.2 Grov tidsbudget v34–v52 (ca 19 veckor)</a></li>
+</ul>
+</li>
+<li><a href="#7-tidplan-v34v52-2026">7. Tidplan v34–v52 2026</a><ul>
+<li><a href="#milstolpar">Milstolpar</a></li>
+</ul>
+</li>
+<li><a href="#8-avgransningar-vad-som-medvetet-inte-gors-2026">8. Avgränsningar — vad som medvetet inte görs 2026</a></li>
+<li><a href="#9-risker">9. Risker</a></li>
+<li><a href="#10-fragor-att-ta-upp-med-naturvardsverket-kartlits">10. Frågor att ta upp med Naturvårdsverket / KartLitS</a></li>
+<li><a href="#11-uppfoljning">11. Uppföljning</a></li>
+<li><a href="#bilaga-1-p1-objekt-40-st-rangordnade">Bilaga 1 — P1-objekt (40 st), rangordnade</a></li>
+<li><a href="#bilaga-2-batchindelning">Bilaga 2 — Batchindelning</a></li>
+<li><a href="#bilaga-3-reproducerbarhet-och-precision">Bilaga 3 — Reproducerbarhet och precision</a></li>
+</ul>
+</div>
+</nav>
+<h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
+<p><strong>Version:</strong> 1.3
+<strong>Datum:</strong> 2026-08-17
+<strong>Omfattning:</strong> Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
+<strong>Bemanning:</strong> 1 handläggare heltid + 1 kollega ca 50 %
+<strong>Underlag:</strong> <code>natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf</code> (2026-07-03) · <code>natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf</code> · <code>natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf</code> · <code>natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx</code> · <code>natura-2000: docs/underlag/kartering.csv</code>
+<strong>Syskondokument:</strong> <code>docs/runbook.md</code> (steg för steg, 68 uppgifter) · <code>kontrollrum.html</code> (Gantt och avbockning) · <code>docs/metodik.md</code> (arbetspaket H) · <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> · <code>kunskapslage.html</code> · <code>natura-2000: scripts/analysis/koppla_omraden.py</code></p>
+<hr />
+<h2 id="0-sammanfattning-vad-det-har-aret-faktiskt-handlar-om">0. Sammanfattning — vad det här året faktiskt handlar om</h2>
+<p>Regeringsuppdraget sträcker sig över 2026 och 2027, men <strong>2026 är inte ett produktionsår — det är ett kartläggnings- och planeringsår.</strong> FAQ fråga 6 säger klart vad som ska vara klart vid årsskiftet: en redovisning av <em>vad vi vet</em>, <em>vad vi inte vet</em>, och <em>en plan för hur det okända ska bli känt</em>. Själva tillståndsbedömningen ska vara klar under 2027.</p>
+<p>Två förhållanden gör att arbetet i D-län ser annorlunda ut än man först skulle tro:</p>
+<p><strong>1. Utbredningsproblemet är mycket litet på land — men enormt i havet.</strong>
+Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden ligger <strong>16 912 ha (95 %) i marin miljö</strong>. Kvar på land och i limniska miljöer finns bara ca <strong>445 ha osäker</strong> och <strong>108 ha obestämd</strong> naturtyp. Och FAQ fråga 16 och 29 säger uttryckligen att marina livsmiljötyper <em>inte</em> ska läggas in i NNK och att arbetsgruppen för akvatiska miljöer startar först hösten 2026. <strong>Slutsats: lägg ingen tid på det marina i år. Den terrestra utbredningsfrågan är på ett par hundra hektar — den går att lösa.</strong></p>
+<p><strong>2. Tillståndsproblemet är nästan totalt — men får inte lösas ännu.</strong>
+<strong>8 587 av 9 980 polygoner (86 %) inom länets Natura 2000-områden har "Ej bedömd status".</strong> Bara 482 polygoner är klassade som fullgod och 336 som icke fullgod livsmiljötyp. Samtidigt säger FAQ fråga 30 att NNK under sommaren 2026 får <strong>nya attribut för tillståndsbedömning</strong>, driftsatta i slutet av september, och att Naturvårdsverket <strong>rekommenderar att man avvaktar</strong> med tillståndsbedömning i NNK tills dess. FAQ fråga 10 upprepar det för terrestra livsmiljötyper: vänta på fastställda vägledningar.</p>
+<p><strong>Det ger årets arbete en tydlig form:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Vad som görs</th>
+<th>Varför</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v34–v39 (aug–sep)</td>
+<td>Orientering, systemåtkomst, skrivbordsgranskning av <strong>utbredning och gränser</strong>, fältkontroll i prioriterade hävdberoende objekt medan säsongen håller</td>
+<td>Fältsäsongen tar slut; tillståndsattributen finns inte än</td>
+</tr>
+<tr>
+<td>v40–v46 (okt–nov)</td>
+<td>Nya NNK-attribut driftsatta → börja registrera tillstånd där kunskapen redan finns; systematisk genomgång batch för batch</td>
+<td>Verktyget finns; sen höst passar skrivbordsarbete</td>
+</tr>
+<tr>
+<td>v47–v52 (dec)</td>
+<td>Sammanställning av kunskapsläge + <strong>plan för 2027</strong>, underlag till årsredovisningen</td>
+<td>Det är detta som är 2026 års faktiska leverans</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-kravnedbrytning-vad-som-ska-vara-klart-nar">1. Kravnedbrytning — vad som ska vara klart när</h2>
+<p>Direkt ur FAQ fråga 6, översatt till D-läns förutsättningar.</p>
+<h3 id="11-klart-2026-inom-natura-2000">1.1 Klart 2026, inom Natura 2000</h3>
+<table>
+<thead>
+<tr>
+<th>Krav</th>
+<th>Läge i D-län idag</th>
+<th>Insats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Areal av livsmiljötyper i gott/inte gott tillstånd (där det är känt)</td>
+<td>482 pol. fullgod, 336 icke fullgod — ca 8 % av polygonerna</td>
+<td>Registrera i NNK efter driftsättning v40</td>
+</tr>
+<tr>
+<td>Areal där tillståndet är okänt, inkl. osäker/obestämd naturtyp och utvecklingsmark</td>
+<td>8 587 pol. ej bedömd status; 445 ha osäker terr.; 108 ha obestämd; 167 pol. utvecklingsmark</td>
+<td>Kvantifiera per objekt — arbetspaket C</td>
+</tr>
+<tr>
+<td>Redovisning av vilka livsmiljötyper per N2000-område som omfattas av osäkerhet</td>
+<td>Går att generera ur NNK-uttaget</td>
+<td>Arbetspaket E1</td>
+</tr>
+<tr>
+<td><strong>Plan</strong> för hur osäker utbredning och okänt tillstånd ska bli känt</td>
+<td>Saknas</td>
+<td><strong>Årets huvudleverans — arbetspaket F</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-klart-2027">1.2 Klart 2027</h3>
+<ul>
+<li>Livsmiljötypernas utbredning (yta/linje/punkt) och tillstånd (gott/inte gott) inom Natura 2000</li>
+<li>Slutredovisning till regeringen</li>
+<li>Inom naturreservat och nationalpark: areal i gott/inte gott där det är känt, areal osäker/okänd, samt plan för åtgärdande</li>
+</ul>
+<h3 id="13-klart-2028">1.3 Klart 2028</h3>
+<ul>
+<li>Utbredning och tillstånd i NNK för samtliga skyddade områden</li>
+<li>Åtgärdsområden i IT-stöd för skötsel (SkötselDOS)</li>
+<li>Uppgifterna i NNK förs över till SDF → EU-rapportering</li>
+</ul>
+<blockquote>
+<p><strong>Konsekvens för planeringen:</strong> naturreservaten har 2027 som deadline, inte 2028. Därför ska de inte ignoreras i år — men de behöver bara en screening (arbetspaket G), inte full genomgång.</p>
+</blockquote>
+<hr />
+<h2 id="2-kunskapslaget-i-d-lan-nollmatning-per-2026-01-20">2. Kunskapsläget i D-län — nollmätning per 2026-01-20</h2>
+<h3 id="21-natura-2000-scisac-197-omraden">2.1 Natura 2000 (SCI/SAC), 197 områden</h3>
+<table>
+<thead>
+<tr>
+<th>Mått</th>
+<th>Värde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Totalt skyddat</td>
+<td>50 009 ha</td>
+</tr>
+<tr>
+<td>Karterat i NNK</td>
+<td>44 852 ha (90 %)</td>
+</tr>
+<tr>
+<td>Okarterat</td>
+<td>5 158 ha — varav 4 845 ha i <strong>Båven</strong> (SE0220303) och 299 ha i Tullgarn södra</td>
+</tr>
+<tr>
+<td>Karterat som livsmiljötyp</td>
+<td>22 851 ha</td>
+</tr>
+<tr>
+<td>— varav <strong>terrestert</strong></td>
+<td><strong>7 821 ha</strong></td>
+</tr>
+<tr>
+<td>— varav limniskt</td>
+<td>9 377 ha</td>
+</tr>
+<tr>
+<td>— varav marint</td>
+<td>5 696 ha</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-terrestra-livsmiljotyper-det-som-faktiskt-ska-bedomas">2.2 Terrestra livsmiljötyper — det som faktiskt ska bedömas</h3>
+<table>
+<thead>
+<tr>
+<th>Kategori</th>
+<th>Areal</th>
+<th>Kommentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skog</td>
+<td>4 206 ha</td>
+<td>9010 taiga dominerar (2 987 ha)</td>
+</tr>
+<tr>
+<td>Gräsmark</td>
+<td>2 676 ha</td>
+<td>9070 trädklädd betesmark 928 ha, 8230 hällmarkstorräng 487 ha, 6270 silikatgräsmark 463 ha</td>
+</tr>
+<tr>
+<td>Våtmark</td>
+<td>638 ha</td>
+<td></td>
+</tr>
+<tr>
+<td>Stränder</td>
+<td>277 ha</td>
+<td>främst 1621</td>
+</tr>
+<tr>
+<td>Berg</td>
+<td>22 ha</td>
+<td></td>
+</tr>
+<tr>
+<td>Dyner</td>
+<td>2 ha</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>7 821 ha</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>varav <strong>hävdberoende</strong></td>
+<td><strong>2 661 ha</strong></td>
+<td>högsta prioritet enligt FAQ fråga 11</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-naturtypsstatus-polygoner-inom-n2000">2.3 Naturtypsstatus — polygoner inom N2000</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Antal</th>
+<th>Andel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fullgod Natura-naturtyp</td>
+<td>482</td>
+<td>4,8 %</td>
+</tr>
+<tr>
+<td>Icke fullgod Natura-naturtyp</td>
+<td>336</td>
+<td>3,4 %</td>
+</tr>
+<tr>
+<td>Utvecklingsmark</td>
+<td>167</td>
+<td>1,7 %</td>
+</tr>
+<tr>
+<td>Övrigt, icke Natura-naturtyp</td>
+<td>237</td>
+<td>2,4 %</td>
+</tr>
+<tr>
+<td><strong>Ej bedömd status</strong></td>
+<td><strong>8 587</strong></td>
+<td><strong>86,0 %</strong></td>
+</tr>
+<tr>
+<td>Status saknas</td>
+<td>171</td>
+<td>1,7 %</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-karteringsstatus-och-ursprung-kvalitetsrisken">2.4 Karteringsstatus och ursprung — kvalitetsrisken</h3>
+<table>
+<thead>
+<tr>
+<th>Mått</th>
+<th>Värde</th>
+<th>Innebörd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Granskad vid skrivbordet</td>
+<td>8 578</td>
+<td></td>
+</tr>
+<tr>
+<td>Ej granskad</td>
+<td>335</td>
+<td></td>
+</tr>
+<tr>
+<td>Besökt/inventerad i fält</td>
+<td>744 (7,5 %)</td>
+<td>Verklig fältkunskap finns i en liten minoritet</td>
+</tr>
+<tr>
+<td>Ursprung <strong>BIDOS</strong></td>
+<td>9 576 (96 %)</td>
+<td>Basinventeringen, vägledningar <strong>före 2011</strong> — FAQ fråga 28: "generellt gammalt, har sannolikt aldrig kontrollerats närmare"</td>
+</tr>
+<tr>
+<td>Ursprung NNK</td>
+<td>395</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>I hela länets NNK-uttag (<code>natura-2000: docs/underlag/kartering.csv</code> / <code>natura-2000: docs/underlag/naturtypskarta/NNK_YTA</code>, 14 830 polygoner för alla skyddsformer) är <strong>81 % skapade 2012</strong> — migreringen från BIDOS. Endast 31 polygoner är redigerade under 2025. <strong>Underlaget är i praktiken 14 år gammalt.</strong></p>
+<blockquote>
+<p>Uttaget är den <strong>publika</strong> Natura naturtypskartan. Den saknar områdesidentitet och strippar kommentarer och användaruppgifter (handledningen 1.3). Områdeskopplingen är löst geometriskt med <code>natura-2000: scripts/analysis/koppla_omraden.py</code>, som knyter 9 609 ytor till länets 197 Natura 2000-områden — validerat mot statistikuttaget till 0,1 %. För spårbarhetsfälten krävs ett uttag ur NNK Ajourhålla.</p>
+</blockquote>
+<h3 id="25-sallsynta-livsmiljotyper-i-lanet-50-ha-inom-n2000">2.5 Sällsynta livsmiljötyper i länet (&lt; 50 ha inom N2000)</h3>
+<p>Dessa har högt prioriteringsvärde enligt FAQ fråga 11 (liten utbredning) och samlas i ett fåtal objekt:</p>
+<p><code>9162</code> 0,6 · <code>8210</code> 1,1 · <code>1620</code> 1,3 · <code>6430</code> 1,3 · <code>1640</code> 1,8 · <code>2181</code> 1,9 · <code>8232</code> 2,4 · <code>9750</code> 2,7 · <code>1220</code> 3,7 · <code>7231</code> 4,4 · <code>6280</code> 5,8 · <code>9110</code> 6,3 · <code>5133</code> 7,2 · <code>5130</code> 7,6 · <code>9180</code> 10,3 · <code>6230</code> 15,8 · <code>4030</code> 15,8 · <code>8220</code> 20,8 · <code>6210</code> 25,2 · <code>6110</code> 26,6 · <code>8231</code> 28,8 · <code>9060</code> 29,0 · <code>9072</code> 29,0 · <code>7230</code> 34,4 · <code>9190</code> 41,4 · <code>3260</code> 43,8 · <code>7110</code> 47,0 ha</p>
+<hr />
+<h2 id="3-hierarkisk-arbetsstruktur-wbs">3. Hierarkisk arbetsstruktur (WBS)</h2>
+<pre><code>NNK/NRF 2026 — Södermanland
+│
+├── A. Etablering och förutsättningar                      [v34–v36]
+│   ├── A1  Systemåtkomst och behörigheter
+│   ├── A2  Metodik- och regelverksgenomgång
+│   ├── A3  Intern förankring och rollfördelning
+│   └── A4  Arbetsmiljö för data (repo, mallar, versionshantering)
+│
+├── B. Fältsäsong 2026 — det som inte kan vänta            [v34–v41]
+│   ├── B1  Fältplanering och urval
+│   ├── B2  Fältkontroll hävdberoende gräsmark (batch B)
+│   ├── B3  Fältkontroll sällsynta livsmiljötyper (batch C, D)
+│   └── B4  Fältdokumentation och inmatningsunderlag
+│
+├── C. Skrivbordsgranskning av utbredning                  [v35–v46]
+│   ├── C1  Granskningsrutin och checklista
+│   ├── C2  Batch S — storobjekt (Skärgårdsreservaten, Nynäs)
+│   ├── C3  Batch A — kust och skärgård
+│   ├── C4  Batch B — ängs- och hagmark inland
+│   ├── C5  Batch C — våtmark och vattendrag
+│   ├── C6  Batch D — skog och ädellöv
+│   └── C7  Okarterade ytor (Båven, Tullgarn södra)
+│
+├── D. Tillståndsbedömning i NNK                           [v40–v50]
+│   ├── D1  Driftsättning nya NNK-attribut, utbildning
+│   ├── D2  Registrering där kunskap redan finns
+│   ├── D3  Registrering av fältdata från B
+│   └── D4  Avvikelser mot bevarandeplan/reservatsbeslut
+│
+├── E. Sammanställning av kunskapsläget                    [v45–v50]
+│   ├── E1  Uttag och statistik per objekt och livsmiljötyp
+│   ├── E2  Kvantifiering av osäkerhet och kunskapsluckor
+│   └── E3  WebbGIS-dokumentation (KartLitS-mall)
+│
+├── F. Plan för 2027 — årets huvudleverans                 [v46–v52]
+│   ├── F1  Insatsbehov och volymuppskattning
+│   ├── F2  Prioritering och antaganden
+│   ├── F3  Vad vi gör själva / vad vi behöver hjälp med
+│   └── F4  Underlag till årsredovisningen
+│
+├── G. Parallellspår naturreservat och nationalpark        [v42–v52]
+│   ├── G1  Screening av NR/NP utanför N2000
+│   └── G2  Grovplan för 2027
+│
+└── H. Förvaltardialog — Naturvårdsenhetens kunskap        [v35–v48]
+    ├── H1  Kartläggning av vem som förvaltar vad
+    ├── H2  Åtgärdas-ytorna — länets egen olösta lista
+    ├── H3  Förvaltarsamtal och blankettinsamling
+    ├── H4  Eftersök av odokumenterade underlag
+    └── H5  Registrering i granskningslager och NNK
+</code></pre>
+<hr />
+<h2 id="4-arbetspaket-i-detalj">4. Arbetspaket i detalj</h2>
+<h3 id="a-etablering-och-forutsattningar-v34v36">A. Etablering och förutsättningar · v34–v36</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+<th>Ansvar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1.1</td>
+<td>Beställ och verifiera behörighet: ArcGIS Pro, NNK in-/utcheckning, ArcGIS Enterprise, SkötselDOS, Artportalen, KartLitS WebbGIS</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A1.2</td>
+<td>Verifiera att NNK-utcheckning fungerar mot ett testobjekt</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A1.3</td>
+<td>Åtkomst till samverkansytan för Livsmiljötyper (dokument, manualer, kodlista)</td>
+<td>v34</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.1</td>
+<td>Läs <code>Handledning NNK 20260703.pdf</code> och <code>Lathud_granskning_WebbGIS_KartLitS_20260714.pdf</code></td>
+<td>v34</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>A2.2</td>
+<td>Gå igenom <code>Kodlista_NNK_20260703.xlsx</code> — särskilt kategoriindelning 2026 och undergrupper</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.3</td>
+<td>Installera <code>KartLits_NNK_GIS_mall_v_2</code> och testa mot ett objekt</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.4</td>
+<td>Hämta fastställda vägledningar för livsmiljötyper — <strong>kontrollera vilka som är fastställda vs. remiss</strong> (FAQ f.10)</td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A3.1</td>
+<td>Avstämning med chef: mandat, tidsbudget, förväntad leverans till årsredovisningen</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A3.2</td>
+<td>Kartlägg vem på Naturvårdsenheten som förvaltar vilka objekt — de sitter på skötselhistoriken</td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A3.3</td>
+<td>Rollfördelning med 50 %-kollegan (se avsnitt 6)</td>
+<td>v35</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>A3.4</td>
+<td>Anmäl er till KartLitS arbetsgrupper (skog, gräsmark, våtmark) och funktionsbrevlådan <code>kartlitsN2000@naturvardsverket.se</code></td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A4.1</td>
+<td>Skapa arbetsstruktur: uttagsmapp, granskningslogg, fältprotokoll</td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A4.2</td>
+<td>Etablera rutin för NNK-uttag så att statistiken kan följas över tid</td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leverans A:</strong> Fungerande arbetsplats, dokumenterad rollfördelning, bekräftad tolkning av uppdraget.</p>
+<hr />
+<h3 id="b-faltsasong-2026-v34v41-tidskritiskt">B. Fältsäsong 2026 · v34–v41 — <strong>tidskritiskt</strong></h3>
+<p>Fältsäsongen för gräsmark tar slut i praktiken kring månadsskiftet september/oktober. Detta är den enda delen av årets arbete som har ett hårt fönster.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+<th>Ansvar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1.1</td>
+<td>Välj ut 15–25 objekt ur batch B + de sällsynta typerna i batch C och D</td>
+<td>v34</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>B1.2</td>
+<td>Stäm av urvalet med förvaltarna på Naturvårdsenheten — vilka objekt har de aktuell kunskap om? Besök inte det som redan är känt</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>B1.3</td>
+<td>Boka fältdagar, klarlägg markägarkontakter</td>
+<td>v35</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>B2.1</td>
+<td>Fältkontroll hävdberoende gräsmark, ca 8–10 fältdagar</td>
+<td>v36–v40</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>B3.1</td>
+<td>Riktade besök på sällsynta typer: 7110 Tovhulta stormosse, 7230 Bråtamossen/Pilgöljan, 9060 Fjellskäfte/Tore Grav, 9180 Lotsängsbacken, 6280 Persö, 4030 Lundäng/Åsa gravfält</td>
+<td>v36–v41</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>B4.1</td>
+<td>Dokumentera per besökt yta: livsmiljötyp, hävdstatus, strukturer/funktioner, typiska arter, påverkan, bedömd tillståndsklass, osäkerhet</td>
+<td>löpande</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>B4.2</td>
+<td>Artobservationer → Artportalen (FAQ f.8)</td>
+<td>löpande</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>B4.3</td>
+<td>Identifierat åtgärdsbehov → SkötselDOS (FAQ f.8)</td>
+<td>löpande</td>
+<td>Kollega</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Viktigt:</strong> dokumentera bedömningen och grunden för den redan i fält, men <strong>mata inte in tillståndet i NNK förrän de nya attributen är driftsatta (v40)</strong>. Använd fältprotokoll som mellanlager.</p>
+</blockquote>
+<p><strong>Leverans B:</strong> 15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund.</p>
+<hr />
+<h3 id="c-skrivbordsgranskning-av-utbredning-v35v46">C. Skrivbordsgranskning av utbredning · v35–v46</h3>
+<p>Detta är volymarbetet. Rutinen körs batch för batch och gäller <strong>utbredning och gränser</strong> — inte tillstånd.</p>
+<h4 id="c1-granskningsrutin-per-objekt">C1 Granskningsrutin per objekt</h4>
+<ol>
+<li>Öppna objektet i KartLitS WebbGIS-mallen och i ArcGIS Pro mot NNK</li>
+<li>Läs bevarandeplanen: vilka livsmiljötyper är utpekade, vilka är prioriterade bevarandevärden, vilka bevarandemål finns</li>
+<li>Jämför bevarandeplanens typer mot vad NNK faktiskt visar — notera differenser</li>
+<li>Kontrollera mot aktuella flygbilder och ortofoto: syns uppenbara förändringar sedan 2012?</li>
+<li>Kontrollera mot TUVA (ängs- och betesmarksinventeringen), VMI, VISS och Artportalen</li>
+<li>Bedöm per yta: <em>stämmer utbredningen?</em> → OK / justera / kontrolleras i fält / osäker</li>
+<li>Notera i WebbGIS-mallen: vad som granskats, vad som behöver kontrolleras vidare, vad som bör ändras i NNK</li>
+<li>Justera geometrier i NNK <strong>endast</strong> där redigeringen påverkar arealen meningsfullt (FAQ f.12: minsta karteringsenhet 0,25 ha generellt, 1 ha skog/våtmark, 0,5 ha ädellöv/lövsump/svämskog)</li>
+</ol>
+<h4 id="c2c6-batchar">C2–C6 Batchar</h4>
+<table>
+<thead>
+<tr>
+<th>Batch</th>
+<th>Objekt</th>
+<th>Terr. areal</th>
+<th>Hävdber.</th>
+<th>Sällsynt</th>
+<th>Polygoner</th>
+<th>Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S</strong> Storobjekt</td>
+<td>2</td>
+<td>1 863 ha</td>
+<td>670 ha</td>
+<td>93 ha</td>
+<td>4 348</td>
+<td>v41–v46</td>
+</tr>
+<tr>
+<td><strong>A</strong> Kust &amp; skärgård</td>
+<td>6</td>
+<td>1 692 ha</td>
+<td>691 ha</td>
+<td>66 ha</td>
+<td>1 858</td>
+<td>v38–v42</td>
+</tr>
+<tr>
+<td><strong>B</strong> Ängs- &amp; hagmark inland</td>
+<td>16</td>
+<td>851 ha</td>
+<td>684 ha</td>
+<td>6 ha</td>
+<td>447</td>
+<td>v35–v38</td>
+</tr>
+<tr>
+<td><strong>C</strong> Våtmark &amp; vattendrag</td>
+<td>6</td>
+<td>378 ha</td>
+<td>9 ha</td>
+<td>128 ha</td>
+<td>401</td>
+<td>v42–v44</td>
+</tr>
+<tr>
+<td><strong>D</strong> Skog &amp; ädellöv</td>
+<td>10</td>
+<td>393 ha</td>
+<td>57 ha</td>
+<td>92 ha</td>
+<td>264</td>
+<td>v43–v46</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Batch S</strong> (Skärgårdsreservaten SE0220129 med 2 915 polygoner och Nynäs SE0220126 med 1 433) rymmer <strong>44 % av länets samtliga N2000-polygoner</strong>. De ska inte köras som vanliga objekt — se avsnitt 5.3.</p>
+<p>Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävdberoende och snabba att gå igenom, vilket ger rutinen och tidsuppskattningen kalibrerad innan de tunga batcharna.</p>
+<h4 id="c7-okarterade-ytor">C7 Okarterade ytor</h4>
+<table>
+<thead>
+<tr>
+<th>Objekt</th>
+<th>Okarterat</th>
+<th>Åtgärd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Båven SE0220303</td>
+<td>4 845 ha av 6 200</td>
+<td>Sjöyta, limniskt. <strong>Lägg ingen tid på ytterkanterna</strong> (FAQ f.16). Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Notera i planen som medvetet nedprioriterat.</td>
+</tr>
+<tr>
+<td>Tullgarn södra SE0220034</td>
+<td>299 ha av 2 014</td>
+<td>Kontrollera vad ytan består av — om terrestert är det ett faktiskt karteringsgap som ska anmälas till Metria (FAQ f.26)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leverans C:</strong> Granskningslogg för 40 P1-objekt, dokumenterade differenser mot bevarandeplan, lista över ytor som kräver fältkontroll 2027.</p>
+<hr />
+<h3 id="d-tillstandsbedomning-i-nnk-v40v50">D. Tillståndsbedömning i NNK · v40–v50</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+<th>Ansvar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1.1</td>
+<td>Bevaka driftsättning av nya NNK-attribut (planerad slutet av september)</td>
+<td>v39–v40</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>D1.2</td>
+<td>Gå igenom nya attributlistan och den uppdaterade kodlistan; notera att tillstånd nu anges som <strong>procentuell andel av ytan</strong> — ytor behöver inte längre delas</td>
+<td>v40</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D1.3</td>
+<td>Genomför/delta i NV:s utbildning för de nya attributen</td>
+<td>v40–v41</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D2.1</td>
+<td>Registrera tillstånd för de ytor där kunskapen redan finns: 482 fullgoda + 336 icke fullgoda + de objekt som har aktuella skötselplaner och nyliga uppföljningar</td>
+<td>v41–v48</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D2.2</td>
+<td>Dokumentera <strong>grunden</strong> för varje bedömning och <strong>hur aktuell</strong> den är (FAQ f.4) — utan detta är bedömningen inte spårbar</td>
+<td>löpande</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D2.3</td>
+<td>Där tillståndet är oförändrat sedan tidigare bedömning: registrera det aktivt med grund och datum — "oförändrat" är också ett svar (FAQ f.9)</td>
+<td>löpande</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D3.1</td>
+<td>Mata in fältdata från arbetspaket B</td>
+<td>v41–v45</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>D4.1</td>
+<td>Notera avvikelser mot fastställd bevarandeplan/reservatsbeslut (FAQ f.24)</td>
+<td>löpande</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>D4.2</td>
+<td>Lista objekt där nuvarande beslut/skötselplan <strong>hindrar</strong> nödvändig skötsel → revideringsbehov</td>
+<td>v48</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>D4.3</td>
+<td>Utvecklingsmark: peka ut ytor där bevarandemål finns om utökad areal, ange upp till tre målnaturtyper (FAQ f.23). Idag har bara 87 polygoner i hela länet en angiven målnaturtyp</td>
+<td>v45–v50</td>
+<td>Handläggare</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Håll tillbaka där osäkerheten är verklig.</strong> FAQ fråga 22: är ni inte säkra och kan inte prioritera fältinsats — behåll tidigare bedömning eller ange okänt tillstånd, och dokumentera vad ni är osäkra på. Gissa inte.</p>
+</blockquote>
+<p><strong>Leverans D:</strong> Tillstånd registrerat för de ytor där kunskap finns; resten dokumenterat som okänt med angiven anledning.</p>
+<hr />
+<h3 id="e-sammanstallning-av-kunskapslaget-v45v50">E. Sammanställning av kunskapsläget · v45–v50</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1.1</td>
+<td>Nytt NNK-uttag för D-län, samma struktur som januariuttaget → möjliggör före/efter-jämförelse</td>
+<td>v45</td>
+</tr>
+<tr>
+<td>E1.2</td>
+<td>Statistik per Natura 2000-område: areal per livsmiljötyp × tillståndsklass</td>
+<td>v46</td>
+</tr>
+<tr>
+<td>E1.3</td>
+<td>Statistik per livsmiljötyp för hela länet</td>
+<td>v46</td>
+</tr>
+<tr>
+<td>E2.1</td>
+<td>Kvantifiera per objekt: areal i okänt tillstånd, areal osäker/obestämd naturtyp, areal utvecklingsmark</td>
+<td>v47</td>
+</tr>
+<tr>
+<td>E2.2</td>
+<td>Redovisning av <strong>vilka livsmiljötyper per objekt</strong> som omfattas av osäkerhet — explicit krav i FAQ f.6</td>
+<td>v47</td>
+</tr>
+<tr>
+<td>E2.3</td>
+<td>Kvalitetsbrister på systemnivå: BIDOS-ursprung, ålder på kartering, saknade attribut, gränskvalitet</td>
+<td>v47</td>
+</tr>
+<tr>
+<td>E3.1</td>
+<td>Fyll i KartLitS WebbGIS-mallen för granskade objekt (FAQ f.9.1)</td>
+<td>löpande</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leverans E:</strong> Kunskapslägesrapport för D-län per 2026-12-31.</p>
+<hr />
+<h3 id="f-plan-for-2027-v46v52-arets-huvudleverans">F. Plan för 2027 · v46–v52 — <strong>årets huvudleverans</strong></h3>
+<p>FAQ fråga 9 anger exakt vad NV vill ha in. Planen ska besvara fem frågor:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Fråga att besvara</th>
+<th>Innehåll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1.1</td>
+<td><strong>Vilka insatser krävs för att komma till rätta med bristerna, och vem gör det?</strong></td>
+<td>Uppdelning: eget fältarbete / eget skrivbordsarbete / Metria / NV:s arbetsgrupper / konsult</td>
+</tr>
+<tr>
+<td>F1.2</td>
+<td>Volymuppskattning</td>
+<td>Antal objekt, hektar och fältdagar per livsmiljötypsgrupp. Kalibrera mot faktisk tidsåtgång i batch B (därav ordningen i avsnitt C)</td>
+</tr>
+<tr>
+<td>F2.1</td>
+<td><strong>Er prioritering — var är det viktigast att samla in ny kunskap och vad behöver ni veta?</strong></td>
+<td>Ordningsföljd med motivering per livsmiljötypsgrupp</td>
+</tr>
+<tr>
+<td>F2.2</td>
+<td><strong>Vilka antaganden och generaliseringar skulle kunna göras?</strong></td>
+<td>Konkreta förslag, t.ex.: kan hävdstatus i TUVA användas som proxy för tillstånd i 6270/6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök? Kan 9010 taiga i objekt utan avverkning antas oförändrad? Detta är den fråga som ger störst avlastning om NV accepterar generaliseringarna</td>
+</tr>
+<tr>
+<td>F3.1</td>
+<td><strong>Vad gör ni själva och vad behöver ni hjälp med?</strong></td>
+<td>Tydlig gräns, med marina och limniska miljöer explicit lämnade till HaV och de nationella karteringarna</td>
+</tr>
+<tr>
+<td>F4.1</td>
+<td>Underlag till årsredovisningen 2026</td>
+<td>Antal områden bedömda, antal områden med plan — de två tal regeringsuppdraget faktiskt efterfrågar</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leverans F:</strong> Plan för 2027 till Naturvårdsverket + text till årsredovisningen.</p>
+<hr />
+<h3 id="g-parallellspar-naturreservat-och-nationalpark-v42v52">G. Parallellspår naturreservat och nationalpark · v42–v52</h3>
+<p>Naturreservat och nationalpark har deadline 2027, inte 2028. I D-län finns ca 24 914 ha NR/NP utanför N2000-överlapp, varav bara 4 103 ha (8 %) är karterat som Natura-naturtyp — betydligt sämre kunskapsläge än inom N2000.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1.1</td>
+<td>Gå igenom flik 3 i NNK-statistiken: vilka NR har stor areal utanför N2000 och prioriterade bevarandevärden i syftet?</td>
+<td>v44</td>
+</tr>
+<tr>
+<td>G1.2</td>
+<td>Screening: vilka reservat innehåller hävdberoende marker eller sällsynta livsmiljötyper?</td>
+<td>v46</td>
+</tr>
+<tr>
+<td>G1.3</td>
+<td>Grov volymuppskattning för 2027</td>
+<td>v48</td>
+</tr>
+<tr>
+<td>G2.1</td>
+<td>Ta med NR/NP i planen till NV (arbetspaket F) som ett eget avsnitt</td>
+<td>v50</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Gör inte mer än screening i år. Poängen är att 2027 inte ska börja med en överraskning.</p>
+</blockquote>
+<hr />
+<h3 id="h-forvaltardialog-naturvardsenhetens-kunskap-v35v48">H. Förvaltardialog — Naturvårdsenhetens kunskap · v35–v48</h3>
+<p>En stor del av det länsstyrelsen faktiskt vet om sina skyddade områden finns hos reservatsförvaltarna på Naturvårdsenheten och har aldrig nått NNK. Analysen av den publika Natura naturtypskartan för länet visar två konkreta luckor: <strong>277 ytor har fältdata men saknar tillståndsbedömning</strong>, och <strong>141 ytor har karteringsstatus 5 "Åtgärdas"</strong> — basinventeringens egen markering för att naturtypen inte gick att bestämma, oförändrad sedan 2008.</p>
+<blockquote>
+<p><strong>Notera om källan:</strong> <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code> och <code>REDIGERARE</code> är tomma i samtliga 14 830 polygoner i det publika uttaget, men det beror på att den publika versionen strippar kommentarer och användaruppgifter (handledningen 1.3) — inte nödvändigtvis på att fälten är oanvända. Kontrollera dem mot ett uttag ur NNK Ajourhålla innan slutsatser dras.</p>
+</blockquote>
+<p>Naturvårdsverket godkänner uttryckligen lokalkännedom som kunskapskälla (Handledning för NNK 4.1; lathunden, <em>Utgångspunkter</em>; FAQ fråga 9). Detta är alltså inte en genväg utan den metod uppdraget förutsätter.</p>
+<p>Fullständig metodik finns i <code>docs/metodik.md</code>. Insamlingsinstrument: <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code>.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Aktivitet</th>
+<th>Klart</th>
+<th>Ansvar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1.1</td>
+<td>Kartlägg vilken förvaltare som ansvarar för vilka objekt; fyll i kolumn <em>Förvaltare</em> i blanketten</td>
+<td>v36</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>H1.2</td>
+<td>Förankra upplägget med Naturvårdsenhetens chef — det är deras tid du ber om</td>
+<td>v36</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>H2.1</td>
+<td>Gå igenom de 141 Åtgärdas-ytorna. Kopplade till objekt: <strong>Skärgårdsreservaten 91, Strandstuviken 25, Marvikarna 7, Vilsta 6, Rågö 5, Storhultet 4, Tovhulta stormosse 3</strong> — samtliga inom Natura 2000, nästan uteslutande hävdberoende marker</td>
+<td>v37</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>H2.2</td>
+<td>Checka ut NNK <strong>Ajourhålla</strong> i ArcGIS Pro och kontrollera <code>KOMMENTAR</code> för Åtgärdas-ytorna och de 277 fältbesökta — grunden kan redan stå där</td>
+<td>v37</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>H2.3</td>
+<td>Kör <code>natura-2000: scripts/analysis/koppla_omraden.py</code> mot NVR-lagret för att få <code>NVRID</code> på de 5 221 ytor som ligger utanför Natura 2000 — behövs för arbetspaket G</td>
+<td>v43</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>H3.1</td>
+<td>Boka förvaltarsamtal, ca 60 min per förvaltare, flera objekt per möte</td>
+<td>v37</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>H3.2</td>
+<td>Genomför samtalen — börja med Åtgärdas-ytorna, gå därefter på hävdberoende marker</td>
+<td>v38–v44</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>H3.3</td>
+<td>Samordna med fältplaneringen (B1.2): besök inte det förvaltaren redan kan svara på</td>
+<td>löpande</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>H4.1</td>
+<td>Eftersök odokumenterade underlag: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter, skötselplansbilagor, foton</td>
+<td>v38–v46</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>H4.2</td>
+<td>Registrera funna underlag i datakälleregistret <code>data/sources_sodermanland.csv</code></td>
+<td>löpande</td>
+<td>Kollega</td>
+</tr>
+<tr>
+<td>H5.1</td>
+<td>För in i KartLitS granskningslager samma vecka som samtalet</td>
+<td>löpande</td>
+<td>Båda</td>
+</tr>
+<tr>
+<td>H5.2</td>
+<td>Registrera i NNK efter avstämning — tillståndsfälten först efter driftsättning v40</td>
+<td>v41–v48</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>H5.3</td>
+<td>Skicka avstämning tillbaka till förvaltaren på det du fört in</td>
+<td>löpande</td>
+<td>Handläggare</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prioritetsordning i samtalen:</strong> Åtgärdas-ytorna → hävdberoende marker i batch B och A → sällsynta livsmiljötyper i batch C och D → utvecklingsmark.</p>
+<p><strong>De tre reglerna som måste sitta innan första samtalet</strong> (fullständigt resonemang i metodiken):</p>
+<ul>
+<li><strong>En igenvuxen äng är fortfarande en äng.</strong> Beror förändringen på utebliven skötsel står livsmiljötypen kvar och tillståndet sätts till icke gott — den klassas inte om. Lathunden är uttrycklig: bristande bevarandeåtgärder <em>"är inte en giltig anledning att ändra"</em>.</li>
+<li><strong>Förändringsorsak 3, inte 2.</strong> Kunskap som funnits men aldrig registrerats är en komplettering. Sätter man kod 2 rapporterar länet in arealförändringar som aldrig inträffat.</li>
+<li><strong>Fråga alltid efter årtal.</strong> Utan datering går FAQ fråga 4:s krav på hur aktuell bedömningen är inte att besvara.</li>
+</ul>
+<p><strong>Leverans H:</strong> Ifyllda blanketter, registrerad kunskap i granskningslagret, och en dokumenterad lista över underlag som fanns men inte var kända.</p>
+<blockquote>
+<p><strong>Varför detta ligger tidigt:</strong> förvaltarnas svar avgör vilka objekt som behöver fältbesök. Kommer H3.2 igång först efter fältsäsongen har man besökt fel platser.</p>
+</blockquote>
+<hr />
+<h2 id="5-prioritering">5. Prioritering</h2>
+<h3 id="51-prioriteringsgrunder-faq-fraga-11">5.1 Prioriteringsgrunder (FAQ fråga 11)</h3>
+<ol>
+<li>Livsmiljötyper i behov av <strong>löpande åtgärder</strong> (hävdberoende) — 2 661 ha i länet</li>
+<li>Förekomster som <strong>inte har gott tillstånd</strong> eller där risk för försämring är hög</li>
+<li>Förekomster där <strong>åtgärder gjorts eller planeras</strong></li>
+<li>Livsmiljötyper med <strong>liten utbredning</strong> i länet eller i Sverige — 27 koder under 50 ha</li>
+</ol>
+<h3 id="52-prioritetsklasser">5.2 Prioritetsklasser</h3>
+<table>
+<thead>
+<tr>
+<th>Klass</th>
+<th>Objekt</th>
+<th>Kriterium</th>
+<th>Insats 2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1</strong></td>
+<td>40</td>
+<td>≥ 20 ha hävdberoende <strong>eller</strong> ≥ 5 ha sällsynt livsmiljötyp</td>
+<td>Full skrivbordsgranskning + fältkontroll där möjligt</td>
+</tr>
+<tr>
+<td><strong>P2</strong></td>
+<td>43</td>
+<td>≥ 20 ha terrester livsmiljötyp eller ≥ 5 ha osäker/obestämd</td>
+<td>Skrivbordsgranskning om tid finns, annars 2027</td>
+</tr>
+<tr>
+<td><strong>P3</strong></td>
+<td>108</td>
+<td>Övriga objekt med terrester livsmiljötyp</td>
+<td>2027</td>
+</tr>
+<tr>
+<td><strong>P4</strong></td>
+<td>6</td>
+<td>Ingen terrester livsmiljötyp (rent limniska/marina)</td>
+<td>Ingen insats — dokumentera som medvetet nedprioriterat</td>
+</tr>
+</tbody>
+</table>
+<p>De 40 P1-objekten rymmer <strong>5 178 ha av länets 7 821 ha terrestra livsmiljötyper (66 %)</strong> och <strong>2 111 ha av 2 661 ha hävdberoende mark (79 %)</strong>. Med andra ord: en femtedel av objekten täcker fyra femtedelar av det som betyder något.</p>
+<h3 id="53-sarskild-hantering-av-storobjekten">5.3 Särskild hantering av storobjekten</h3>
+<p>Skärgårdsreservaten (SE0220129) och Nynäs (SE0220126) innehåller tillsammans 4 348 polygoner. Att gå igenom dem yta för yta är inte realistiskt.</p>
+<p><strong>Föreslagen metod:</strong></p>
+<ol>
+<li>Stratifiera på livsmiljötyp och storlek — hantera de stora, betydande ytorna individuellt</li>
+<li>Behandla små hällmarks- och skogsytor gruppvis med gemensam bedömningsgrund, dokumenterad som just en generalisering</li>
+<li>Skärgårdsreservaten har redan 198 fältkontrollerade polygoner — den kunskapen ska återanvändas, inte göras om</li>
+<li>Ta upp objekten som ett explicit exempel i planen till NV: <strong>"så här tänker vi hantera storobjekt, är det acceptabelt?"</strong> FAQ fråga 10 uppmuntrar uttryckligen att skicka in knepiga fall till funktionsbrevlådan</li>
+</ol>
+<hr />
+<h2 id="6-roller-och-tidsbudget">6. Roller och tidsbudget</h2>
+<h3 id="61-fordelning">6.1 Fördelning</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Handläggare (100 %)</th>
+<th>Kollega (50 %)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Huvudansvar</td>
+<td>Metodik, NNK-redigering, bedömningar, planen till NV</td>
+<td>Fältstöd, dataunderlag, dokumentation</td>
+</tr>
+<tr>
+<td>Arbetspaket A</td>
+<td>A1, A2, A3, A4</td>
+<td>A2.1, A3.3</td>
+</tr>
+<tr>
+<td>Arbetspaket B</td>
+<td>B1, B3, B4</td>
+<td>B1.3, B2, B4.3</td>
+</tr>
+<tr>
+<td>Arbetspaket C</td>
+<td>C1, C2, C3, C7</td>
+<td>C4, C5, C6</td>
+</tr>
+<tr>
+<td>Arbetspaket D</td>
+<td>D1, D2, D4</td>
+<td>D1, D2.1, D3</td>
+</tr>
+<tr>
+<td>Arbetspaket E</td>
+<td>E2</td>
+<td>E1, E3</td>
+</tr>
+<tr>
+<td>Arbetspaket F</td>
+<td>Hela</td>
+<td>F1.2 underlag</td>
+</tr>
+<tr>
+<td>Arbetspaket G</td>
+<td>G2</td>
+<td>G1</td>
+</tr>
+<tr>
+<td>Arbetspaket H</td>
+<td>H1.2, H2, H5</td>
+<td>H1.1, H3.1, H4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-grov-tidsbudget-v34v52-ca-19-veckor">6.2 Grov tidsbudget v34–v52 (ca 19 veckor)</h3>
+<table>
+<thead>
+<tr>
+<th>Arbetspaket</th>
+<th>Handläggare</th>
+<th>Kollega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A Etablering</td>
+<td>10 dagar</td>
+<td>4 dagar</td>
+</tr>
+<tr>
+<td>B Fältsäsong</td>
+<td>15 dagar</td>
+<td>10 dagar</td>
+</tr>
+<tr>
+<td>C Skrivbordsgranskning</td>
+<td>26 dagar</td>
+<td>16 dagar</td>
+</tr>
+<tr>
+<td>D Tillståndsbedömning</td>
+<td>13 dagar</td>
+<td>8 dagar</td>
+</tr>
+<tr>
+<td>E Sammanställning</td>
+<td>8 dagar</td>
+<td>5 dagar</td>
+</tr>
+<tr>
+<td>F Plan för 2027</td>
+<td>12 dagar</td>
+<td>2 dagar</td>
+</tr>
+<tr>
+<td>G Naturreservat</td>
+<td>3 dagar</td>
+<td>4 dagar</td>
+</tr>
+<tr>
+<td>H Förvaltardialog</td>
+<td>8 dagar</td>
+<td>7 dagar</td>
+</tr>
+<tr>
+<td>Möten, samverkan, oförutsett</td>
+<td>12 dagar</td>
+<td>5 dagar</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>107 dagar</strong></td>
+<td><strong>61 dagar</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Tiden till arbetspaket H är tagen från C och D, inte lagd ovanpå. Det är en medveten växling: varje objekt där förvaltaren kan svara direkt är ett objekt du slipper granska från grunden, och de 277 ytorna med befintlig fältkunskap men utan tillståndsbedömning kostar mindre att lösa via ett samtal än via en skrivbordsgranskning.</p>
+</blockquote>
+<hr />
+<h2 id="7-tidplan-v34v52-2026">7. Tidplan v34–v52 2026</h2>
+<table>
+<thead>
+<tr>
+<th>Vecka</th>
+<th>Handläggare</th>
+<th>Kollega</th>
+<th>Milstolpe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v34</td>
+<td>A1.3, A2.1, B1.1</td>
+<td>A2.1</td>
+<td></td>
+</tr>
+<tr>
+<td>v35</td>
+<td>A1.1, A1.2, A2.2, A2.3, A3.1, A3.3, B1.2</td>
+<td>B1.3, <strong>H1.1 förvaltarkartläggning</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>v36</td>
+<td>A2.4, A3.2, A3.4, A4, <strong>H1.2</strong>, <strong>B2 fält</strong></td>
+<td><strong>B2 fält</strong>, H1.1 klar, C4 batch B</td>
+<td><strong>M1: arbetsplats klar</strong></td>
+</tr>
+<tr>
+<td>v37</td>
+<td><strong>B2 fält</strong>, <strong>H2.1 Åtgärdas-ytorna</strong>, H2.2</td>
+<td>C4 batch B, <strong>H3.1 boka samtal</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>v38</td>
+<td><strong>B2 fält</strong>, C3 batch A, <strong>H3.2 samtal</strong></td>
+<td>C4 batch B klar, <strong>H3.2</strong>, H4.1</td>
+<td><strong>M2: batch B granskad</strong></td>
+</tr>
+<tr>
+<td>v39</td>
+<td>B3 fält, C3 batch A, D1.1, H3.2</td>
+<td>C3 batch A, H3.2, H4.1</td>
+<td></td>
+</tr>
+<tr>
+<td>v40</td>
+<td><strong>B3 fält sista</strong>, D1.2, D1.3</td>
+<td>D1.2, D1.3</td>
+<td><strong>M3: nya NNK-attribut driftsatta</strong></td>
+</tr>
+<tr>
+<td>v41</td>
+<td>C2 batch S start, D2.1, H5.2</td>
+<td>C3 batch A klar, D3.1, H4.1</td>
+<td><strong>M4: fältsäsong avslutad</strong></td>
+</tr>
+<tr>
+<td>v42</td>
+<td>C2 batch S, D2.1, H3.2</td>
+<td>C5 batch C, G1.1, H3.2</td>
+<td></td>
+</tr>
+<tr>
+<td>v43</td>
+<td>C2 batch S, D2.1, H5.2</td>
+<td>C5 batch C, C6 batch D, H4.1</td>
+<td></td>
+</tr>
+<tr>
+<td>v44</td>
+<td>C2 batch S, C7, <strong>H3.2 sista samtalen</strong></td>
+<td>C6 batch D, G1.1 klar, H3.2</td>
+<td><strong>M8: förvaltardialog genomförd</strong></td>
+</tr>
+<tr>
+<td>v45</td>
+<td>C2 batch S, D3.1, H5.2</td>
+<td>E1.1, C6 batch D, H4.1 klar</td>
+<td></td>
+</tr>
+<tr>
+<td>v46</td>
+<td>C2 batch S klar, F1.1</td>
+<td>E1.2, E1.3, G1.2</td>
+<td><strong>M5: alla P1-objekt granskade</strong></td>
+</tr>
+<tr>
+<td>v47</td>
+<td>E2.1, E2.2, E2.3, F1.2</td>
+<td>E3.1</td>
+<td></td>
+</tr>
+<tr>
+<td>v48</td>
+<td>D4.2, F2.1, F2.2, H5.2 klar</td>
+<td>G1.3, D2.1</td>
+<td></td>
+</tr>
+<tr>
+<td>v49</td>
+<td>F2, F3.1</td>
+<td>E3.1 klar</td>
+<td></td>
+</tr>
+<tr>
+<td>v50</td>
+<td>F4.1, G2.1, D4.3</td>
+<td>D4.3</td>
+<td><strong>M6: kunskapslägesrapport klar</strong></td>
+</tr>
+<tr>
+<td>v51</td>
+<td>Förankring internt, remiss till NV</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>v52</td>
+<td>Slutjustering, inlämning</td>
+<td></td>
+<td><strong>M7: plan för 2027 levererad</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milstolpar">Milstolpar</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Milstolpe</th>
+<th>Vecka</th>
+<th>Datum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>Arbetsplats, behörigheter och metodik på plats</td>
+<td>v36</td>
+<td>~2026-09-04</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>Batch B granskad — rutinen kalibrerad</td>
+<td>v38</td>
+<td>~2026-09-18</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>Nya NNK-attribut driftsatta, utbildning genomförd</td>
+<td>v40</td>
+<td>~2026-10-02</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>Fältsäsong 2026 avslutad och dokumenterad</td>
+<td>v41</td>
+<td>~2026-10-09</td>
+</tr>
+<tr>
+<td>M8</td>
+<td>Förvaltardialogen genomförd, kunskapen registrerad i granskningslagret</td>
+<td>v44</td>
+<td>~2026-10-30</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>Samtliga 40 P1-objekt skrivbordsgranskade</td>
+<td>v46</td>
+<td>~2026-11-13</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>Kunskapslägesrapport D-län klar</td>
+<td>v50</td>
+<td>~2026-12-11</td>
+</tr>
+<tr>
+<td>M7</td>
+<td>Plan för 2027 levererad till NV + underlag till årsredovisningen</td>
+<td>v52</td>
+<td>~2026-12-23</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-avgransningar-vad-som-medvetet-inte-gors-2026">8. Avgränsningar — vad som medvetet inte görs 2026</h2>
+<p>Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter har stöd i FAQ:n.</p>
+<table>
+<thead>
+<tr>
+<th>Avgränsning</th>
+<th>Stöd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Marina livsmiljötyper läggs inte in i NNK.</strong> 16 912 ha osäker marin areal lämnas orörd; nationella marina karteringar är underlaget</td>
+<td>f.16</td>
+</tr>
+<tr>
+<td><strong>Limniska ytterkanter justeras inte.</strong> Livsmiljötyp anges i befintliga ytor/linjer där förekomsten är känd; strandlinjer och vattendragsgeometri lämnas</td>
+<td>f.16</td>
+</tr>
+<tr>
+<td><strong>Båvens okarterade 4 845 ha</strong> åtgärdas inte i år</td>
+<td>f.16, f.29</td>
+</tr>
+<tr>
+<td><strong>Grottor, branter, sandstäpp, inlandssandmarker</strong> — nationella karteringsunderlag räcker</td>
+<td>f.16</td>
+</tr>
+<tr>
+<td><strong>Obetydliga (icke signifikanta) livsmiljötyper inom N2000</strong> — endast areal redovisas, ingen tillståndsbedömning</td>
+<td>f.15</td>
+</tr>
+<tr>
+<td><strong>Standard Data Form / N2000-databasen uppdateras inte.</strong> Uppgifterna hämtas automatiskt från NNK</td>
+<td>f.17</td>
+</tr>
+<tr>
+<td><strong>Tillståndsbedömningar med osäkert underlag görs inte.</strong> Behåll tidigare bedömning eller ange okänt, dokumentera osäkerheten</td>
+<td>f.22</td>
+</tr>
+<tr>
+<td><strong>Uppdateringar under minsta karteringsenhet görs inte</strong> (0,25 ha generellt, 1 ha skog/våtmark, 0,5 ha ädellöv)</td>
+<td>f.12</td>
+</tr>
+<tr>
+<td><strong>Tidigare signifikansbedömningar görs inte om</strong> — endast nytillkomna livsmiljötyper bedöms</td>
+<td>f.15</td>
+</tr>
+<tr>
+<td><strong>Naturreservat utanför N2000</strong> får screening, inte genomgång</td>
+<td>f.6 (deadline 2027)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-risker">9. Risker</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Sannolikhet</th>
+<th>Konsekvens</th>
+<th>Åtgärd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nya NNK-attribut försenas förbi september</td>
+<td>Medel</td>
+<td>Hög — hela D-paketet skjuts</td>
+<td>Fyll v40–v43 med C-arbete i stället; dokumentera bedömningar i fältprotokoll och WebbGIS-mallen så inget arbete går förlorat</td>
+</tr>
+<tr>
+<td>Vägledningar för terrestra livsmiljötyper inte fastställda i tid</td>
+<td>Medel</td>
+<td>Medel</td>
+<td>FAQ f.10 säger uttryckligen att man får avvakta. Dokumentera vilka typer som blockeras och ta med i planen</td>
+</tr>
+<tr>
+<td>Fältsäsongen tar slut innan urvalet är klart</td>
+<td>Hög</td>
+<td>Medel</td>
+<td>B1.1 är klart redan v34. Prioritera hävdberoende gräsmark före allt annat</td>
+</tr>
+<tr>
+<td>Storobjekten sväljer hela hösten</td>
+<td>Hög</td>
+<td>Hög</td>
+<td>Stratifierad metod (5.3), tidsatt fönster v41–v46, hård avgränsning</td>
+</tr>
+<tr>
+<td>Försenad systemåtkomst</td>
+<td>Hög</td>
+<td>Medel</td>
+<td>Börja med det som går utan NNK-skrivrättighet: bevarandeplaner, WebbGIS-mallen, statistikuttaget</td>
+</tr>
+<tr>
+<td>BIDOS-underlaget visar sig sämre än väntat vid granskning</td>
+<td>Medel</td>
+<td>Medel</td>
+<td>Det är ett resultat i sig — kvantifiera och lyft i planen som insatsbehov, gör inte om karteringen själv (f.26: Metria har inte det uppdraget heller)</td>
+</tr>
+<tr>
+<td>Kollegans 50 % äts upp av andra uppgifter</td>
+<td>Medel</td>
+<td>Medel</td>
+<td>Lägg kollegans arbete på avgränsade batchar som går att pausa utan att blockera huvudspåret</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-fragor-att-ta-upp-med-naturvardsverket-kartlits">10. Frågor att ta upp med Naturvårdsverket / KartLitS</h2>
+<p>Skickas till <code>kartlitsN2000@naturvardsverket.se</code> (FAQ f.10). Ju tidigare desto bättre — svaren styr hösten.</p>
+<ol>
+<li><strong>Storobjekt:</strong> Är stratifierad, gruppvis bedömning av Skärgårdsreservatens 2 915 polygoner en acceptabel metod? Finns det andra län med samma problem?</li>
+<li><strong>Generaliseringar:</strong> Kan hävdstatus i TUVA användas som proxy för tillstånd i 6270/6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök?</li>
+<li><strong>BIDOS-ursprung:</strong> 96 % av länets polygoner kommer från basinventeringen med vägledningar före 2011. Vilken ambitionsnivå förväntas för systematisk korrigering — och vad ligger inom Metrias uppdrag?</li>
+<li><strong>Båven:</strong> 4 845 ha okarterat i ett limniskt objekt. Bekräfta att detta ska lämnas till den nationella limniska karteringen.</li>
+<li><strong>Tullgarn södra:</strong> 299 ha okarterat — är det ett karteringsgap som ska felanmälas till Metria?</li>
+<li><strong>Tidpunkt:</strong> Bekräfta driftsättningsdatum för de nya tillståndsattributen, och när utbildning ges.</li>
+<li><strong>Formatet för planen:</strong> FAQ f.7 säger att formatet återkommer "så snart vi kan". Efterfråga det tidigt så att E-arbetet kan struktureras rätt från början.</li>
+</ol>
+<hr />
+<h2 id="11-uppfoljning">11. Uppföljning</h2>
+<ul>
+<li>Veckoavstämning handläggare–kollega, 30 min måndagar</li>
+<li>Månadsavstämning med chef vid milstolparna M1, M3, M5, M6</li>
+<li>Granskningsloggen uppdateras löpande — den är underlaget till både E och F</li>
+<li>Nytt NNK-uttag v45 med samma struktur som januariuttaget ger mätbar progress: andel polygoner med bedömd status ska ha rört sig från 8 %</li>
+</ul>
+<hr />
+<h2 id="bilaga-1-p1-objekt-40-st-rangordnade">Bilaga 1 — P1-objekt (40 st), rangordnade</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sitecode</th>
+<th>Områdesnamn</th>
+<th>Hävdberoende (ha)</th>
+<th>Terrester livsmiljötyp (ha)</th>
+<th>Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th>Polygoner</th>
+<th>Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SE0220129</td>
+<td>Skärgårdsreservaten</td>
+<td>501.3</td>
+<td>1341.5</td>
+<td>69.3</td>
+<td>1220,1620,4030,5133,6210,6230</td>
+<td>2915</td>
+<td>198</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SE0220126</td>
+<td>Nynäs</td>
+<td>168.7</td>
+<td>521.8</td>
+<td>23.9</td>
+<td>1640,4030,6110,6210,6230,8231</td>
+<td>1433</td>
+<td>30</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SE0220439</td>
+<td>Askö</td>
+<td>218.3</td>
+<td>346.0</td>
+<td>6.9</td>
+<td>1220,1640,2181,8231,9006</td>
+<td>506</td>
+<td>48</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SE0220020</td>
+<td>Strandstuviken</td>
+<td>155.6</td>
+<td>268.4</td>
+<td>15.5</td>
+<td>1220,1640,8231,8232,9006,9190</td>
+<td>255</td>
+<td>40</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SE0220077</td>
+<td>Ridö-Sundbyholmsarkipelagen södra</td>
+<td>84.5</td>
+<td>408.9</td>
+<td>14.8</td>
+<td>9110,9190</td>
+<td>195</td>
+<td>12</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SE0220034</td>
+<td>Tullgarn södra</td>
+<td>90.6</td>
+<td>327.1</td>
+<td>24.4</td>
+<td>1620,6110,6210</td>
+<td>254</td>
+<td>38</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SE0220110</td>
+<td>Skåraviken</td>
+<td>94.9</td>
+<td>94.9</td>
+<td>0.0</td>
+<td>–</td>
+<td>43</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>SE0220017</td>
+<td>Svanviken-Lindbacke</td>
+<td>73.6</td>
+<td>73.6</td>
+<td>5.0</td>
+<td>5130</td>
+<td>30</td>
+<td>1</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SE0220231</td>
+<td>Rågö</td>
+<td>72.4</td>
+<td>174.3</td>
+<td>4.5</td>
+<td>8220,8231,9006,9072</td>
+<td>371</td>
+<td>15</td>
+</tr>
+<tr>
+<td>10</td>
+<td>SE0220063</td>
+<td>Sparreholms ekhagar</td>
+<td>83.3</td>
+<td>83.3</td>
+<td>0.0</td>
+<td>–</td>
+<td>25</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SE0220176</td>
+<td>Tovhulta stormosse</td>
+<td>0.0</td>
+<td>47.0</td>
+<td>47.0</td>
+<td>7110</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SE0220218</td>
+<td>Stendörren</td>
+<td>69.7</td>
+<td>167.8</td>
+<td>0.0</td>
+<td>–</td>
+<td>277</td>
+<td>11</td>
+</tr>
+<tr>
+<td>13</td>
+<td>SE0220304</td>
+<td>Kilaån-Vretaån</td>
+<td>6.2</td>
+<td>45.9</td>
+<td>44.9</td>
+<td>3260,9750</td>
+<td>214</td>
+<td>41</td>
+</tr>
+<tr>
+<td>14</td>
+<td>SE0220602</td>
+<td>Vilsta</td>
+<td>12.3</td>
+<td>248.2</td>
+<td>7.9</td>
+<td>9006,9072</td>
+<td>146</td>
+<td>8</td>
+</tr>
+<tr>
+<td>15</td>
+<td>SE0220182</td>
+<td>Segersön</td>
+<td>44.0</td>
+<td>96.7</td>
+<td>0.0</td>
+<td>–</td>
+<td>65</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>SE0220118</td>
+<td>Labro ängar</td>
+<td>52.4</td>
+<td>52.4</td>
+<td>0.0</td>
+<td>–</td>
+<td>22</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>SE0220343</td>
+<td>Askholmen</td>
+<td>20.2</td>
+<td>54.9</td>
+<td>18.0</td>
+<td>9072,9190</td>
+<td>41</td>
+<td>14</td>
+</tr>
+<tr>
+<td>18</td>
+<td>SE0220150</td>
+<td>Tåkenön</td>
+<td>38.1</td>
+<td>85.8</td>
+<td>0.0</td>
+<td>–</td>
+<td>50</td>
+<td>2</td>
+</tr>
+<tr>
+<td>19</td>
+<td>SE0220106</td>
+<td>Fjällmossen norra</td>
+<td>0.4</td>
+<td>230.5</td>
+<td>7.4</td>
+<td>9006</td>
+<td>144</td>
+<td>109</td>
+</tr>
+<tr>
+<td>20</td>
+<td>SE0220085</td>
+<td>Gripsholms Hjorthage</td>
+<td>36.6</td>
+<td>36.6</td>
+<td>0.0</td>
+<td>–</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>21</td>
+<td>SE0220363</td>
+<td>Lindön</td>
+<td>31.4</td>
+<td>57.4</td>
+<td>0.0</td>
+<td>–</td>
+<td>27</td>
+<td>0</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SE0220115</td>
+<td>Marsviken-Marsäng</td>
+<td>42.8</td>
+<td>42.8</td>
+<td>0.4</td>
+<td>6230</td>
+<td>26</td>
+<td>2</td>
+</tr>
+<tr>
+<td>23</td>
+<td>SE0220206</td>
+<td>Floden</td>
+<td>31.1</td>
+<td>31.1</td>
+<td>0.0</td>
+<td>–</td>
+<td>13</td>
+<td>0</td>
+</tr>
+<tr>
+<td>24</td>
+<td>SE0220228</td>
+<td>Ånhammarsnäset</td>
+<td>20.4</td>
+<td>28.8</td>
+<td>0.5</td>
+<td>6430</td>
+<td>30</td>
+<td>0</td>
+</tr>
+<tr>
+<td>25</td>
+<td>SE0220088</td>
+<td>Herröknanäs</td>
+<td>28.8</td>
+<td>33.4</td>
+<td>0.0</td>
+<td>–</td>
+<td>13</td>
+<td>0</td>
+</tr>
+<tr>
+<td>26</td>
+<td>SE0220603</td>
+<td>Jungfruvassen</td>
+<td>34.4</td>
+<td>52.0</td>
+<td>0.0</td>
+<td>–</td>
+<td>12</td>
+<td>4</td>
+</tr>
+<tr>
+<td>27</td>
+<td>SE0220344</td>
+<td>Lövön</td>
+<td>25.7</td>
+<td>35.4</td>
+<td>0.0</td>
+<td>–</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>28</td>
+<td>SE0220309</td>
+<td>Brebol</td>
+<td>24.4</td>
+<td>24.4</td>
+<td>0.0</td>
+<td>–</td>
+<td>42</td>
+<td>0</td>
+</tr>
+<tr>
+<td>29</td>
+<td>SE0220435</td>
+<td>Gesta</td>
+<td>21.8</td>
+<td>21.8</td>
+<td>0.0</td>
+<td>–</td>
+<td>22</td>
+<td>0</td>
+</tr>
+<tr>
+<td>30</td>
+<td>SE0220137</td>
+<td>Bråtamossen</td>
+<td>0.0</td>
+<td>25.8</td>
+<td>14.9</td>
+<td>7230</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>31</td>
+<td>SE0220503</td>
+<td>Fjellskäfte</td>
+<td>0.0</td>
+<td>15.0</td>
+<td>15.0</td>
+<td>9060</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>32</td>
+<td>SE0220211</td>
+<td>Ekorneberg</td>
+<td>8.5</td>
+<td>8.5</td>
+<td>6.6</td>
+<td>6230</td>
+<td>11</td>
+<td>0</td>
+</tr>
+<tr>
+<td>33</td>
+<td>SE0220217</td>
+<td>Tore Grav</td>
+<td>0.0</td>
+<td>10.2</td>
+<td>10.2</td>
+<td>9060</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>34</td>
+<td>SE0220234</td>
+<td>Persö</td>
+<td>5.8</td>
+<td>8.0</td>
+<td>5.8</td>
+<td>6280</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>35</td>
+<td>SE0220130</td>
+<td>Lotsängsbacken</td>
+<td>0.0</td>
+<td>13.8</td>
+<td>8.3</td>
+<td>9180</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>36</td>
+<td>SE0220103</td>
+<td>Pilgöljan</td>
+<td>0.1</td>
+<td>8.4</td>
+<td>7.6</td>
+<td>7230,7231</td>
+<td>9</td>
+<td>0</td>
+</tr>
+<tr>
+<td>37</td>
+<td>SE0220348</td>
+<td>Tynnelsö Djurgård</td>
+<td>8.2</td>
+<td>21.2</td>
+<td>8.2</td>
+<td>9072</td>
+<td>19</td>
+<td>1</td>
+</tr>
+<tr>
+<td>38</td>
+<td>SE0220507</td>
+<td>Lundäng</td>
+<td>1.1</td>
+<td>7.5</td>
+<td>6.4</td>
+<td>4030</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>39</td>
+<td>SE0220438</td>
+<td>Åsa gravfält</td>
+<td>1.0</td>
+<td>6.2</td>
+<td>5.2</td>
+<td>4030</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>40</td>
+<td>SE0220021</td>
+<td>Sjösakärren</td>
+<td>2.2</td>
+<td>20.9</td>
+<td>5.7</td>
+<td>7230</td>
+<td>16</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bilaga-2-batchindelning">Bilaga 2 — Batchindelning</h2>
+<table>
+<thead>
+<tr>
+<th>Batch</th>
+<th>Sitecodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S</strong> Storobjekt</td>
+<td>SE0220129, SE0220126</td>
+</tr>
+<tr>
+<td><strong>A</strong> Kust &amp; skärgård</td>
+<td>SE0220439, SE0220020, SE0220034, SE0220231, SE0220218, SE0220077</td>
+</tr>
+<tr>
+<td><strong>B</strong> Ängs- &amp; hagmark inland</td>
+<td>SE0220110, SE0220017, SE0220063, SE0220118, SE0220182, SE0220150, SE0220085, SE0220363, SE0220115, SE0220206, SE0220088, SE0220603, SE0220344, SE0220309, SE0220435, SE0220228</td>
+</tr>
+<tr>
+<td><strong>C</strong> Våtmark &amp; vattendrag</td>
+<td>SE0220176, SE0220137, SE0220103, SE0220021, SE0220106, SE0220304</td>
+</tr>
+<tr>
+<td><strong>D</strong> Skog &amp; ädellöv</td>
+<td>SE0220602, SE0220343, SE0220503, SE0220217, SE0220130, SE0220211, SE0220234, SE0220348, SE0220507, SE0220438</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bilaga-3-reproducerbarhet-och-precision">Bilaga 3 — Reproducerbarhet och precision</h2>
+<p>Samtliga siffror i denna plan är beräknade ur <code>natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx</code> flik <em>2. N2000_NNK</em> med skriptet <code>natura-2000: scripts/analysis/nnk_kunskapslage.py</code>. Kör om skriptet mot ett nytt NNK-uttag för att uppdatera nollmätningen.</p>
+<p><strong>Precision:</strong> summering per objekt avviker med ca 0,2 % från länstotalerna i flik <em>1. Översikt_län</em> (44 852 ha mot 44 955 ha karterat inom N2000). Skillnaden beror på Natura 2000-områden som korsar länsgräns samt arealer inom EEZ, vilket beskrivs i flikens <em>Beskrivning</em>. Avvikelsen saknar betydelse för prioriteringen men bör anges om siffrorna används i formell redovisning — <strong>använd då länstotalerna i flik 1 som auktoritativ källa</strong>, och objektsiffrorna för prioritering.</p>
+<p>Kategoriindelningen (Skog, Gräsmark, Våtmark m.fl.) följer kolumnrubrikerna <em>Kategori 2026</em> i statistikuttaget. Klassningen av <em>hävdberoende</em> och <em>sällsynt</em> är gjord i denna plan, inte i källdata, och kan justeras i skriptet:</p>
+<ul>
+<li><strong>Hävdberoende:</strong> 1630, 1631, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6412, 6430, 6510, 6520, 8230, 8231, 8232, 9070, 9071, 9072</li>
+<li><strong>Sällsynt:</strong> livsmiljötyp med &lt; 50 ha total karterad areal inom länets Natura 2000-områden, marina koder undantagna</li>
+</ul>
+<hr />
+<p><em>Underlag: NNK-statistik per Natura 2000-område, D-län, uttag 2026-01-20 (Naturvårdsverket) samt NNK-kartering D-län, 14 830 polygoner. Samtliga arealer avser karterad areal inom Natura 2000 (SCI/SAC).</em></p>
+<p><em>Arbetsplan v1.3 · 2026-08-17 — arbetspaket H tillagt; källkritisk rättelse om den publika NNK:s strippade attribut; områdeskoppling genomförd; nedbrytning till 68 uppgifter med 302 steg i runbooken och kontrollrummet</em></p>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>

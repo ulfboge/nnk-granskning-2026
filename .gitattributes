@@ -1,0 +1,17 @@
+# Normalisera radslut i repot till LF, men lat Windows checka ut CRLF.
+# Utan detta rapporterar Git hela filer som andrade nar de sparas i Windows.
+* text=auto
+
+*.md      text eol=lf
+*.py      text eol=lf
+*.html    text eol=lf
+*.css     text eol=lf
+*.js      text eol=lf
+*.csv     text eol=lf
+*.json    text eol=lf
+
+*.xlsx    binary
+*.pdf     binary
+*.zip     binary
+*.lyrx    binary
+*.gpkg    binary

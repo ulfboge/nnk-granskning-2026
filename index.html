@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontrollpanel NNK 2026 — Länsstyrelsen Södermanland</title>
+<meta name="description" content="Ingång till arbetsdokument, kontrollrum och kunskapslägesöversikt för NNK-granskningen 2026 i Södermanlands län.">
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+h1{font-size:25px;font-weight:650;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--ink-2);font-size:13.5px;margin:0}
+h2{font-size:18px;font-weight:620;margin:42px 0 4px;letter-spacing:-.005em}
+.lede{color:var(--ink-2);font-size:13.5px;margin:0 0 16px;max-width:80ch}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+.grid{display:grid;gap:12px}
+.tiles{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:18px}
+.tile{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;padding:15px 17px}
+.tile .v{font-size:26px;font-weight:640;letter-spacing:-.02em;line-height:1.15;
+ font-variant-numeric:tabular-nums}
+.tile .l{font-size:12px;color:var(--ink-2);margin-top:3px}
+.tile .n{font-size:11.5px;color:var(--ink-3);margin-top:5px}
+
+.kort{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+a.k{display:block;background:var(--surface-1);border:1px solid var(--ring);
+ border-radius:12px;padding:17px 19px;color:inherit;transition:border-color .12s,transform .12s}
+a.k:hover{text-decoration:none;border-color:var(--axis);transform:translateY(-1px)}
+a.k .kn{font-size:15px;font-weight:620;color:var(--ink-1);display:flex;
+ align-items:center;gap:8px}
+a.k .kb{font-size:12.5px;color:var(--ink-2);margin-top:6px;line-height:1.5}
+a.k .kt{font-size:10.5px;color:var(--ink-3);margin-top:10px;text-transform:uppercase;
+ letter-spacing:.06em}
+.dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+.dA{background:var(--p-A)}.dB{background:var(--p-B)}.dC{background:var(--p-C)}.dD{background:var(--p-D)}
+
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:14px 0 0;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;overflow:hidden}
+th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+td.nu{font-weight:620;color:var(--ink-1)}
+
+.notis{background:var(--surface-1);border:1px solid var(--ring);border-left:3px solid var(--p-D);
+ border-radius:10px;padding:14px 17px;font-size:13px;color:var(--ink-2);margin-top:16px;max-width:80ch}
+.notis b{color:var(--ink-1)}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);
+ font-size:12px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>Kontrollpanel NNK 2026</h1>
+    <p class="sub">Statusbedömning av livsmiljötyper inom Natura 2000 · Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</p>
+  </div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</header>
+
+<div class="grid tiles">
+  <div class="tile"><div class="v">86 %</div><div class="l">Polygoner utan bedömd status</div><div class="n">8 587 av 9 980</div></div>
+  <div class="tile"><div class="v">17 741</div><div class="l">Hektar osäker naturtyp</div><div class="n">varav 95 % marint</div></div>
+  <div class="tile"><div class="v">445</div><div class="l">Hektar osäker på land</div><div class="n">det som faktiskt går att lösa 2026</div></div>
+  <div class="tile"><div class="v">v34–v52</div><div class="l">Arbetsperiod 2026</div><div class="n">kartläggning, inte produktion</div></div>
+</div>
+
+<h2>Arbetsytor</h2>
+<p class="lede">Två interaktiva sidor. Båda är fristående HTML — de laddar ingenting utifrån och fungerar bakom brandvägg och proxy.</p>
+
+<div class="grid kort">
+  <a class="k" href="kontrollrum.html">
+    <div class="kn"><span class="dot dA"></span>Kontrollrum</div>
+    <div class="kb">Gantt v34–v52, 68 uppgifter med avbockning, leveranser, milstolpar och checklista före incheckning i NNK.</div>
+    <div class="kt">Interaktiv</div>
+  </a>
+  <a class="k" href="kunskapslage.html">
+    <div class="kn"><span class="dot dC"></span>Kunskapsläge</div>
+    <div class="kb">Översikt över vad som är känt och okänt per Natura 2000-område, med underlag för planen för 2027.</div>
+    <div class="kt">Interaktiv</div>
+  </a>
+</div>
+
+<h2>Dokument</h2>
+<p class="lede">Läsvänliga versioner. Källan i Markdown ligger i <code>docs/</code> för den som vill diffa ändringar.</p>
+
+<div class="grid kort">
+  <a class="k" href="docs/arbetsplan.html">
+    <div class="kn"><span class="dot dB"></span>Arbetsplan</div>
+    <div class="kb">Kravnedbrytning ur FAQ, arbetspaket A–H, vad som ska vara klart 2026, 2027 och 2028 — och vad som medvetet inte görs i år.</div>
+    <div class="kt">Version 1.3 · 2026-08-17</div>
+  </a>
+  <a class="k" href="docs/runbook.html">
+    <div class="kn"><span class="dot dB"></span>Runbook</div>
+    <div class="kb">Steg för steg genom alla 68 uppgifter — vad som ska göras, i vilken ordning och vad som räknas som klart.</div>
+    <div class="kt">Operativ</div>
+  </a>
+  <a class="k" href="docs/metodik.html">
+    <div class="kn"><span class="dot dB"></span>Metodik förvaltarkunskap</div>
+    <div class="kb">Arbetspaket H — hur befintlig förvaltarkunskap struktureras och förs över till NNK.</div>
+    <div class="kt">Metod</div>
+  </a>
+  <a class="k" href="blanketter/blankett_forvaltarkunskap_nnk.xlsx">
+    <div class="kn"><span class="dot dD"></span>Blankett förvaltarkunskap</div>
+    <div class="kb">Excelmall för insamling av förvaltarkunskap per objekt. Laddas ned.</div>
+    <div class="kt">XLSX · 70 kB</div>
+  </a>
+</div>
+
+<h2>Året i tre steg</h2>
+<table>
+  <thead><tr><th>Period</th><th>Vad som görs</th><th>Varför</th></tr></thead>
+  <tbody>
+    <tr><td class="nu">v34–v39<br>aug–sep</td><td>Orientering, systemåtkomst, skrivbordsgranskning av utbredning och gränser, fältkontroll i prioriterade hävdberoende objekt.</td><td>Fältsäsongen tar slut och tillståndsattributen finns inte än.</td></tr>
+    <tr><td class="nu">v40–v46<br>okt–nov</td><td>Nya NNK-attribut driftsatta — registrera tillstånd där kunskapen redan finns, systematiskt batch för batch.</td><td>Verktyget finns; sen höst passar skrivbordsarbete.</td></tr>
+    <tr><td class="nu">v47–v52<br>dec</td><td>Sammanställning av kunskapsläget och plan för 2027, underlag till årsredovisningen.</td><td>Det är detta som är 2026 års faktiska leverans.</td></tr>
+  </tbody>
+</table>
+
+<div class="notis">
+  <b>2026 är ett kartläggningsår, inte ett produktionsår.</b> FAQ fråga 30 anger att Naturvårdsverket rekommenderar att man avvaktar med tillståndsbedömning i NNK tills de nya attributen driftsätts i slutet av september. Marina livsmiljötyper ska enligt FAQ fråga 16 och 29 inte läggas in i NNK i år.
+</div>
+
+<h2>Var ligger vad</h2>
+<table>
+  <thead><tr><th>Repo</th><th>Synlighet</th><th>Innehåll</th></tr></thead>
+  <tbody>
+    <tr><td class="nu">nnk-granskning-2026</td><td>Publikt</td><td>Detta — kontrollpanel, kontrollrum, arbetsplan, runbook, metodik, blankett.</td></tr>
+    <tr><td class="nu"><a href="https://github.com/ulfboge/natura-2000">natura-2000</a></td><td>Privat</td><td>NV-underlag (handledning, kodlista, statistik, naturtypskarta), rådata, shapefiler, datapipeline, Origo-webbkarta, ArcGIS Pro-projekt.</td></tr>
+    <tr><td class="nu"><a href="https://github.com/ulfboge/lansstyrelsen-nrr">lansstyrelsen-nrr</a></td><td>Publikt</td><td>Projektöversikt för naturrestaureringsuppdraget i stort, NRF-guide, datakällor.</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  Länsstyrelsen i Södermanlands län · Natur- och landsbygdsavdelningen · Naturskyddsenheten<br>
+  Arbetsmaterial. Underlag från Naturvårdsverket ingår inte i detta repo — se NV:s egna publikationssidor.
+</footer>
+
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Från förvaltarkunskap till NNK — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</a></li>
+<li><a href="#1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</a></li>
+<li><a href="#2-vad-nnk-uttaget-sager-om-problemets-storlek">2. Vad NNK-uttaget säger om problemets storlek</a></li>
+<li><a href="#3-flodet-tva-steg-inte-ett">3. Flödet — två steg, inte ett</a></li>
+<li><a href="#4-faltmappning-vilken-uppgift-hamnar-var">4. Fältmappning — vilken uppgift hamnar var</a></li>
+<li><a href="#5-sex-beslutsregler-dar-det-gar-fel">5. Sex beslutsregler — där det går fel</a><ul>
+<li><a href="#r1-igenvaxning-pa-grund-av-utebliven-skotsel-andrar-inte-livsmiljotypen">R1. Igenväxning på grund av utebliven skötsel ändrar inte livsmiljötypen</a></li>
+<li><a href="#r2-forandringsorsak-nastan-aldrig-kod-2">R2. Förändringsorsak — nästan aldrig kod 2</a></li>
+<li><a href="#r3-karteringsstatus-speglar-underlaget-inte-din-anstrangning">R3. Karteringsstatus speglar underlaget, inte din ansträngning</a></li>
+<li><a href="#r4-osakerhet-dokumenteras-den-gissas-inte-bort">R4. Osäkerhet dokumenteras, den gissas inte bort</a></li>
+<li><a href="#r5-utvecklingsmark-har-tva-formella-krav">R5. Utvecklingsmark har två formella krav</a></li>
+<li><a href="#r6-utpekade-livsmiljotyper-har-ett-sarskilt-skydd">R6. Utpekade livsmiljötyper har ett särskilt skydd</a></li>
+</ul>
+</li>
+<li><a href="#6-datering-det-som-gloms-bort">6. Datering — det som glöms bort</a></li>
+<li><a href="#7-sa-lagger-du-upp-samtalet">7. Så lägger du upp samtalet</a></li>
+<li><a href="#8-omradesidentitet-lost-men-bara-for-den-publika-versionen">8. Områdesidentitet — löst, men bara för den publika versionen</a></li>
+<li><a href="#9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</a></li>
+<li><a href="#10-vad-detta-ger-till-arets-leverans">10. Vad detta ger till årets leverans</a></li>
+</ul>
+</div>
+</nav>
+<h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
+<p><strong>Datum:</strong> 2026-08-17
+<strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
+<strong>Version:</strong> 1.1 — reviderad efter genomgång av den publika NNK-produktbeskrivningen
+<strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning</p>
+<hr />
+<h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
+<p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
+<blockquote>
+<p>"För att säkerställa att rätt livsmiljötyp anges behövs ofta kompletterande information, <strong>såsom lokalkännedom och/eller nyare fältinventeringar</strong>."
+— Handledning för NNK, avsnitt 4.1</p>
+<p>"Utgå ifrån <strong>befintlig kunskap från löpande förvaltning</strong> och titta vid behov på kartunderlag, bevarandeplaner och skötselplaner."
+— Lathund granskning WebbGIS-KartLitS, <em>Utgångspunkter</em></p>
+<p>"I bevarandeplaner, beslut och skötselplaner tillsammans med annan information som samlats in vid skyddsarbete, <strong>förvaltning</strong> eller vid uppföljning."
+— FAQ fråga 9, om vilken befintlig kunskap som ska användas</p>
+</blockquote>
+<p>Och avgörande: karteringsstatus <strong>2 – Granskad vid skrivbordet</strong> definieras som <em>"Denna yta har granskats av länsstyrelsen baserat på kunskap från t ex andra inventeringar"</em>. Det finns alltså redan en färdig kod för precis den här sortens kunskap. Du behöver inte uppfinna någon konstruktion — du behöver bara använda den.</p>
+<hr />
+<h2 id="2-vad-nnk-uttaget-sager-om-problemets-storlek">2. Vad NNK-uttaget säger om problemets storlek</h2>
+<p>Analys av <code>natura-2000: docs/underlag/kartering.csv</code> respektive <code>natura-2000: docs/underlag/naturtypskarta/NNK_YTA</code> — <strong>samma lager</strong>, 14 830 polygoner, hela länet, alla skyddsformer.</p>
+<blockquote>
+<p><strong>Viktigt om källan.</strong> Detta är den <strong>publika</strong> Natura naturtypskartan, inte NNK Ajourhålla. Handledningen (avsnitt 1.3) säger att den publika versionen extraheras ur Ajourhålla och att <em>"några av attributen som finns i NNK Ajourhålla tas bort, såsom kommentarer och användaruppgifter"</em>. Tre fält är följaktligen tomma i samtliga 14 830 rader: <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code> och <code>REDIGERARE</code>. <strong>Det går alltså inte att dra slutsatsen att kommentarsfältet är oanvänt i länet</strong> — det är borttaget ur exporten. Beviset ligger i datat: <code>REDIGERATA</code> (datum för attributredigering) har värden i 12 612 rader medan <code>REDIGERARE</code> (vem som redigerade) är tomt i alla 14 830. Attributen <em>har</em> redigerats; användaruppgifterna är strippade.</p>
+<p><strong>Konsekvens:</strong> allt som rör grunder, kommentarer och vem som gjort vad måste kontrolleras mot ett uttag ur <strong>NNK Ajourhålla</strong> via ArcGIS Pro. Den publika versionen duger för utbredning, naturtyp, status och datum — inte för spårbarhet.</p>
+</blockquote>
+<p>Följande går däremot att läsa direkt ur den publika versionen, eftersom dessa fält inte strippas:</p>
+<table>
+<thead>
+<tr>
+<th>Observation</th>
+<th>Antal</th>
+<th>Innebörd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polygoner med <code>NATURTYPSS = 5</code> (ej bedömd status)</td>
+<td>13 266 (89 %)</td>
+<td></td>
+</tr>
+<tr>
+<td>— varav karteringsstatus <strong>2 Granskad vid skrivbordet</strong></td>
+<td><strong>9 824</strong></td>
+<td>Ytan har granskats, men tillståndet registrerades aldrig</td>
+</tr>
+<tr>
+<td>— varav karteringsstatus <strong>3 Besökt i fält</strong></td>
+<td>122</td>
+<td></td>
+</tr>
+<tr>
+<td>— varav karteringsstatus <strong>4 Inventerad i fält</strong></td>
+<td>155</td>
+<td></td>
+</tr>
+<tr>
+<td>— varav karteringsstatus <strong>5 Åtgärdas</strong></td>
+<td>141</td>
+<td></td>
+</tr>
+<tr>
+<td>— varav karteringsstatus 1 Ej granskad</td>
+<td>2 592</td>
+<td></td>
+</tr>
+<tr>
+<td>— varav karteringsstatus saknas</td>
+<td>432</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.</strong> Någon har varit på plats — och tillståndet finns inte i NNK. Det är den snabbaste vinsten i hela uppdraget och kräver inget nytt fältarbete, bara att någon letar rätt på protokollet. Kontrollera <code>KOMMENTAR</code> för just dessa ytor i Ajourhålla först — där kan grunden redan stå.</p>
+<p><strong>b) 141 ytor har karteringsstatus 5 "Åtgärdas".</strong> Här skiljer sig de två källorna åt, och båda betydelserna är relevanta:</p>
+<ul>
+<li>Den <strong>publika produktbeskrivningen</strong> kallar koden <em>"äldre kod som finns kvar från basinventeringen"</em> som betydde <em>"att det behövdes kompletterande uppgifter för att bestämma naturtypen"</em>.</li>
+<li><strong>Handledningen 2026</strong> (tabell 7) beskriver den som länsstyrelsens administrativa stöd för ytor man bör återkomma till, och som <em>ska</em> kompletteras med en kommentar.</li>
+</ul>
+<p>Datat pekar entydigt på den första: 139 av 141 har ursprung BIDOS, samtliga redigerades 2007–2008 (tre stycken 2019), och alla har naturtypsstatus 5. Det här är alltså <strong>basinventeringens egen markering "vi kunde inte bestämma naturtypen här" — en dokumenterad kunskapslucka som stått öppen i nitton år.</strong> Efter koppling till områdesidentitet (avsnitt 8) visar de sig ligga koncentrerat i sju objekt:</p>
+<table>
+<thead>
+<tr>
+<th>Objekt</th>
+<th>Antal ytor</th>
+<th>Areal</th>
+<th>Dominerande livsmiljötyper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220129 Skärgårdsreservaten</td>
+<td>91</td>
+<td>48,4 ha</td>
+<td>9070/9071/9072 trädklädd betesmark (33), 1630 strandäng (18), 8230/8231 hällmarkstorräng (14)</td>
+</tr>
+<tr>
+<td>SE0220020 Strandstuviken</td>
+<td>25</td>
+<td>35,9 ha</td>
+<td>1630 strandäng (15), 6910 öppen kultiverad gräsmark (5)</td>
+</tr>
+<tr>
+<td>SE0220174 Marvikarna</td>
+<td>7</td>
+<td>55,2 ha</td>
+<td>3110 näringsfattiga slättsjöar (2), 4810 obestämd hed/gräsmark (2)</td>
+</tr>
+<tr>
+<td>SE0220602 Vilsta</td>
+<td>6</td>
+<td>5,3 ha</td>
+<td>7142 kärr och gungflyn (4), 9070 trädklädd betesmark (2)</td>
+</tr>
+<tr>
+<td>SE0220231 Rågö</td>
+<td>5</td>
+<td>1,9 ha</td>
+<td>1630 strandäng (4)</td>
+</tr>
+<tr>
+<td>SE0220337 Storhultet</td>
+<td>4</td>
+<td>28,0 ha</td>
+<td>9080 lövsumpskog (3), 9010 taiga (1)</td>
+</tr>
+<tr>
+<td>SE0220176 Tovhulta stormosse</td>
+<td>3</td>
+<td>12,6 ha</td>
+<td>7110 högmossar (3)</td>
+</tr>
+</tbody>
+</table>
+<p>Fördelningen är talande: nästan uteslutande hävdberoende marker — precis den kategori FAQ fråga 11 sätter högst. Och den ligger i objekt som redan är prioritet 1 i arbetsplanen. <strong>Det gör listan till den bästa öppningsfrågan i ett förvaltarsamtal.</strong></p>
+<p><strong>c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.</strong> Ni ska ange <em>vad som ligger till grund för bedömningen av utbredning</em>, <em>vad som ligger till grund för bedömningen av tillstånd</em>, och <em>hur aktuella dessa två bedömningar är</em>. Kontrollera först vad som faktiskt står i <code>KOMMENTAR</code> i Ajourhålla — det avgör om detta är en lucka eller bara osynlig i exporten. Oavsett svar gäller regeln framåt: ingen ytredigering bör lämna kommentarsfältet tomt.</p>
+<hr />
+<h2 id="3-flodet-tva-steg-inte-ett">3. Flödet — två steg, inte ett</h2>
+<p>Förvaltarkunskap är i regel andrahandsinformation som du inte själv har verifierat. Den ska inte gå rakt in i den nationella databasen. Använd det tvåstegsflöde KartLitS är byggt för:</p>
+<pre><code>   FÖRVALTARE                DU                        NNK Ajourhålla
+   (Naturvårdsenheten)       (Naturskyddsenheten)      (nationell databas)
+
+   ┌─────────────┐    1     ┌──────────────────┐  3   ┌──────────────────┐
+   │ Blankett /  │ ───────► │ WebbGIS-KartLitS │ ───► │ ArcGIS Pro       │
+   │ samtal      │          │ granskningslager │      │ ut-/incheckning  │
+   │             │          │  = FÖRSLAG       │      │  = SKARPT        │
+   └─────────────┘          └──────────────────┘      └──────────────────┘
+                                     │  2                      ▲
+                                     ▼                         │
+                             Avstämning: räcker            Endast det du
+                             underlaget? Ska något         står bakom
+                             fältkontrolleras först?
+</code></pre>
+<p><strong>Varför två steg:</strong></p>
+<ul>
+<li>Granskningslagret är designat som ett <em>förslagslager</em> — dess rullistor heter "Livsmiljötyp, <strong>behov av justering</strong>" och "Tillstånd, <strong>behov av justering</strong>". Det är rätt hemvist för "förvaltaren tror att…".</li>
+<li>Lagret har fält som NNK saknar och som är byggda för just spårbarhet: <code>faltinventerare</code>, <code>egen_bet</code>, <code>kommentar_kontroll</code>, <code>Kommentar_metod</code>, <code>kommentar_livsmil_utbred</code>, samt <code>kontroll1–3</code> och <code>metod</code> för vad som återstår att kontrollera.</li>
+<li>Enligt FAQ fråga 9.1 är det granskningslagret som blir underlaget till planen för 2027. Kunskap som stannar där är alltså inte bortkastad — den är levererad.</li>
+<li>Om förvaltarens uppgift senare visar sig fel har du inte kontaminerat den nationella databasen.</li>
+</ul>
+<p><strong>När hoppa direkt till steg 3?</strong> När uppgiften är dokumenterad och du kan hänvisa till källan — ett uppföljningsprotokoll, en ängs- och betesmarksinventering, en skötselplan med daterad statusbeskrivning. Då är det inte hearsay utan ett kunskapsunderlag, och karteringsstatus 2 gäller direkt.</p>
+<hr />
+<h2 id="4-faltmappning-vilken-uppgift-hamnar-var">4. Fältmappning — vilken uppgift hamnar var</h2>
+<p>Kolumnnamnen i blanketten (<code>blankett_forvaltarkunskap_nnk.xlsx</code>) är valda så att de mappar rakt av.</p>
+<table>
+<thead>
+<tr>
+<th>Vad förvaltaren berättar</th>
+<th>Blankettkolumn</th>
+<th>Granskningslager (WebbGIS)</th>
+<th>NNK Ajourhålla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Det är rätt livsmiljötyp"</td>
+<td>Stämmer livsmiljötyp</td>
+<td><code>justering</code> = <em>Inget behov av justering</em></td>
+<td><code>NATURTYP</code> oförändrad</td>
+</tr>
+<tr>
+<td>"Det är egentligen 9070, inte 9010"</td>
+<td>Föreslagen livsmiljötyp 1–3</td>
+<td><code>justering</code> = <em>Ändring till annan livsmiljötyp</em>, <code>livsmiljötyp1–3</code></td>
+<td><code>NATURTYP</code></td>
+</tr>
+<tr>
+<td>"Det är inte livsmiljötyp än, men kan bli"</td>
+<td>Föreslagen livsmiljötyp 1–3 + Utvecklingsmark = Ja</td>
+<td><code>justering</code> = <em>Ändring till utvecklingsmark</em>, <code>livsmiljötyp1–3</code> blir målnaturtyper</td>
+<td><code>NATURTYPSS</code> = 3, <code>MALNATUR1–3</code></td>
+</tr>
+<tr>
+<td>"Den är i bra skick"</td>
+<td>Tillstånd = Gott</td>
+<td><code>tillstand</code>, <code>procent_gott</code></td>
+<td><code>NATURTYPSS</code> = 1</td>
+</tr>
+<tr>
+<td>"Den är igenvuxen / behöver restaureras"</td>
+<td>Tillstånd = Icke gott</td>
+<td><code>tillstand</code>, <code>procent_ej_gott</code></td>
+<td><code>NATURTYPSS</code> = 2</td>
+</tr>
+<tr>
+<td>"Halva ytan är fin, halva har vuxit igen"</td>
+<td>Andel gott / ej gott / osäker (%)</td>
+<td><code>procent_gott</code>, <code>procent_ej_gott</code>, <code>procent_osaker</code></td>
+<td>Nya tillståndsfält, <strong>driftsätts sept 2026</strong></td>
+</tr>
+<tr>
+<td>"Jag vet inte"</td>
+<td>Tillstånd = Okänt</td>
+<td><code>tillstand</code> = <em>Okänt (kan ej bedöma)</em></td>
+<td><code>NATURTYPSS</code> = 5</td>
+</tr>
+<tr>
+<td>"Gränsen stämmer inte"</td>
+<td>Utbredning, behov av justering</td>
+<td><code>utbredning</code></td>
+<td>Geometri — <strong>endast om ≥ minsta karteringsenhet</strong></td>
+</tr>
+<tr>
+<td><strong>På vilken grund</strong> hen vet det</td>
+<td>Grund för bedömning</td>
+<td><code>Kommentar_metod</code> + <code>metod</code></td>
+<td><code>KOMMENTAR</code></td>
+</tr>
+<tr>
+<td><strong>När</strong> hen senast var där</td>
+<td>År för senaste bedömning</td>
+<td><code>habitat_period_lastdata_end</code></td>
+<td>Slutdatum senaste inventering</td>
+</tr>
+<tr>
+<td><strong>Vem</strong> som bedömt</td>
+<td>Bedömare</td>
+<td><code>faltinventerare</code></td>
+<td><code>KOMMENTAR</code> (namn + roll)</td>
+</tr>
+<tr>
+<td>"Det borde någon titta närmare på"</td>
+<td>Vad ska kontrolleras</td>
+<td><code>kontroll1–3</code>, <code>kommentar_kontroll</code></td>
+<td><code>KARTERINGS</code> = 5 + <code>KOMMENTAR</code></td>
+</tr>
+<tr>
+<td>Fri kommentar</td>
+<td>Kommentar</td>
+<td><code>kommentar_tillstand</code> / <code>kommentar_livsmil_utbred</code></td>
+<td><code>KOMMENTAR</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kodvärden för <code>Vad ska kontrolleras</code></strong> (från lathunden, tre likadana rullistor så flera val går att göra): Typiska och karakteristiska arter · Strukturer · Hävd · Funktioner (hydrologi, störningar) · Morfologi (jordart, formationer) · Annan negativ påverkan</p>
+<p><strong>Kodvärden för <code>Metod för kontroll</code></strong>: Fältbesök · Fältinventering (standardiserad metodik) · Skrivbord / Granska mot andra underlag · Annan metod
+<em>Obs: detta fält är framåtsyftande — det anger vilken metod som </em><em>bör</em><em> användas, inte hur du hittills gjort.</em></p>
+<hr />
+<h2 id="5-sex-beslutsregler-dar-det-gar-fel">5. Sex beslutsregler — där det går fel</h2>
+<h3 id="r1-igenvaxning-pa-grund-av-utebliven-skotsel-andrar-inte-livsmiljotypen">R1. Igenväxning på grund av utebliven skötsel ändrar inte livsmiljötypen</h3>
+<p>Detta är den vanligaste och allvarligaste fällan i förvaltarsamtal, eftersom en förvaltare naturligt säger "den ängen är ingen äng längre".</p>
+<blockquote>
+<p>"Behåll dock livsmiljötypen om en faktisk förändring beror på brist på 'nödvändiga bevarandeåtgärder' – det är inte en giltig anledning att ändra, snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen i 'Icke gott tillstånd' (restaureringsmark enligt basinventeringsmanualer)."
+— Lathunden, <em>Vad kan vi ändra på?</em></p>
+</blockquote>
+<p><strong>Rätt hantering:</strong> livsmiljötypen står kvar, <code>NATURTYPSS</code> sätts till <strong>2 – Icke fullgod</strong>. FAQ fråga 22 säger samma sak: om prioriterade bevarandevärden håller på att förloras ska de återställas snarare än klassas om, särskilt när orsaken är brist på skötsel, praktiska överväganden eller omfattande störningar.</p>
+<p>Konsekvensen om man gör fel: länets areal av hävdberoende livsmiljötyper krymper på papperet, restaureringsbehovet försvinner ur statistiken, och NRF-uppföljningen visar en förbättring som inte finns.</p>
+<h3 id="r2-forandringsorsak-nastan-aldrig-kod-2">R2. Förändringsorsak — nästan aldrig kod 2</h3>
+<p>Handledningen 5.4: attributet finns <em>"för att kunna identifiera och sammanställa verkliga arealförändringar för livsmiljötyper från kvalitetsförbättrande åtgärder i databasen"</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th><code>FORANDRING</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kunskapen fanns hos förvaltaren men var aldrig registrerad</td>
+<td><strong>3 – Komplettering</strong></td>
+</tr>
+<tr>
+<td>Karteringen var fel från början (flygbildstolkningen missade)</td>
+<td><strong>1 – Rättning av felaktig kartering</strong></td>
+</tr>
+<tr>
+<td>Naturen har faktiskt förändrats sedan karteringen</td>
+<td><strong>2 – Faktisk förändring av bevarandestatus/naturtypsareal</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Nästan all förvaltarkunskap är <strong>kod 3</strong>. Slarvar du och sätter kod 2 rapporterar länet in arealförändringar som aldrig hänt.</p>
+<h3 id="r3-karteringsstatus-speglar-underlaget-inte-din-anstrangning">R3. Karteringsstatus speglar underlaget, inte din ansträngning</h3>
+<table>
+<thead>
+<tr>
+<th>Underlag</th>
+<th><code>KARTERINGS</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Förvaltarens minnesbild, skötselplan, bevarandeplan, äldre inventering</td>
+<td><strong>2 – Granskad vid skrivbordet</strong></td>
+</tr>
+<tr>
+<td>Förvaltaren har faktiskt varit på ytan nyligen och kan bedöma naturtypen</td>
+<td><strong>3 – Besökt i fält</strong></td>
+</tr>
+<tr>
+<td>Standardiserad inventering: uppföljning, ängs- och betesmarksinventering, basinventeringsmetodik</td>
+<td><strong>4 – Inventerad i fält</strong></td>
+</tr>
+<tr>
+<td>Du vet att något är fel men inte vad</td>
+<td><strong>5 – Åtgärdas</strong> + obligatorisk kommentar</td>
+</tr>
+</tbody>
+</table>
+<p>Handledningen är tydlig med att kod 2 förutsätter att <em>"underlaget som använts bedöms vara så aktuellt att uppgifterna fortfarande är giltiga"</em>. En förvaltares minnesbild från 2015 av en hävdberoende mark är sannolikt inte aktuell — då är svaret okänt tillstånd plus kod 5, inte en gissning.</p>
+<h3 id="r4-osakerhet-dokumenteras-den-gissas-inte-bort">R4. Osäkerhet dokumenteras, den gissas inte bort</h3>
+<blockquote>
+<p>"Är ni inte säkra, och det inte går att prioritera fältinsatser för att inhämta tillräcklig kunskap om förhållandena idag är det bättre att behålla tidigare bedömning eller till exempel ange att tillståndet är okänt eller inte gott. Dokumentera vad ni är osäkra på, så det kan kontrolleras eller följas upp när det kan prioriteras."
+— FAQ fråga 22</p>
+</blockquote>
+<p>Ett dokumenterat "okänt" med angiven anledning är en fullgod leverans 2026. En gissning är det inte.</p>
+<h3 id="r5-utvecklingsmark-har-tva-formella-krav">R5. Utvecklingsmark har två formella krav</h3>
+<p>Lathunden: <em>"Används målnaturtyper så förutsätts att Naturtypsstatus är satt till 'Utvecklingsmark' och att </em><em>Naturtyp utgörs av en icke-natura-naturtyp</em><em>."</em></p>
+<p>Alltså: en yta kan inte samtidigt vara livsmiljötyp 6270 och utvecklingsmark mot 6270. Är den redan livsmiljötyp är den livsmiljötyp — i gott eller icke gott tillstånd. Upp till tre målnaturtyper får anges (<code>MALNATUR1–3</code>).</p>
+<p>I hela länet har idag bara 87 polygoner en angiven målnaturtyp. Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — det är en av de mest värdefulla sakerna att fråga om, och FAQ fråga 23 påpekar att ytor med påtaglig utvecklingspotential normalt är högre prioriterade för skydds- och skötselresurser.</p>
+<h3 id="r6-utpekade-livsmiljotyper-har-ett-sarskilt-skydd">R6. Utpekade livsmiljötyper har ett särskilt skydd</h3>
+<blockquote>
+<p>"Vi har ett särskilt ansvar för livsmiljötyper som legat till grund för utpekandet av ett Natura 2000-område och som tidigare har rapporterats för området. Det samma gäller prioriterade bevarandevärden som är en del av syfte och skäl för ett beslut om naturreservat. Livsmiljötyper som utgör prioriterade bevarandevärden bör karteras mer noggrant och <strong>enbart ändras om tidigare bedömningar är uppenbart fel eller det faktisk skett en förändring</strong>."
+— FAQ fråga 19</p>
+</blockquote>
+<p>Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Länken finns i WebbGIS-lagret <em>NV Natura2000 områden</em>, raden <code>BEVPLAN</code> i attributtabellen.</p>
+<hr />
+<h2 id="6-datering-det-som-gloms-bort">6. Datering — det som glöms bort</h2>
+<p>Två nya fält i NNK, <em>Startdatum/Slutdatum senaste inventering av naturtypen</em>, motsvarar <code>habitat_period_lastdata_start</code> / <code>_end</code> i granskningslagret:</p>
+<blockquote>
+<p>"Slut representerar senast det gjordes en bedömning och start gången före det. Har det skett en faktisk förändring ska datumen representera den tidsperiod inom vilken förändringen skedde. Eftersom det är nya fält är dessa tomma idag, <strong>uppdatera framför allt slutdatum när ni granskar</strong>."
+— Handledningen, bilaga 1</p>
+</blockquote>
+<p>Det här är den enda mekanism som gör FAQ fråga 4:s krav på <em>"hur aktuella dessa två bedömningar är"</em> besvarbart. Fråga alltid förvaltaren om årtal, även när svaret blir "någon gång runt 2018". Ett osäkert årtal är oändligt mycket bättre än inget.</p>
+<hr />
+<h2 id="7-sa-lagger-du-upp-samtalet">7. Så lägger du upp samtalet</h2>
+<p><strong>Före (30 min per objekt):</strong></p>
+<ol>
+<li>Ta fram objektet i WebbGIS-KartLitS, tänd <code>LstAB NNK granskning</code> och <code>NV Naturtypskartan NNK</code></li>
+<li>Läs bevarandeplanen — vilka livsmiljötyper är utpekade och vilka bevarandemål finns</li>
+<li>Filtrera blanketten till objektets rader</li>
+<li>Markera raderna med karteringsstatus 3, 4 eller 5 — de har en historia</li>
+</ol>
+<p><strong>Under (45–60 min per förvaltare, flera objekt):</strong></p>
+<ol>
+<li>Börja med <strong>Åtgärdas-ytorna</strong> — "basinventeringen kunde inte bestämma naturtypen här, vet du vad det är?" Det är den bästa öppningsfrågan som finns: den är konkret, den erkänner att kunskapen finns hos dem, och den gäller en lucka som stått öppen sedan 2008.</li>
+<li>Gå igenom hävdberoende marker objekt för objekt: hävdas den, av vem, hur länge till, vad är trenden</li>
+<li>Fråga efter <strong>dokument du inte känner till</strong>: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter, gamla skötselplansbilagor, foton. Handledningen kallar det kompletterande information — det är guld och ligger ofta på en enhets-mapp ingen letat i.</li>
+<li>Fråga specifikt om <strong>utvecklingsmark</strong>: vilka ytor är på väg att bli livsmiljötyp, vilka har ni restaurerat</li>
+<li>Fråga om <strong>gränser</strong> bara där det rör större arealer — under minsta karteringsenhet är det inte värt tiden</li>
+<li>Avsluta med: vad borde vi kontrollera i fält, och vilka objekt kan vi lämna som de är</li>
+</ol>
+<p><strong>Efter (30 min per objekt):</strong></p>
+<ol>
+<li>För in i granskningslagret samma vecka — minnesbilder av andras minnesbilder blir snabbt oanvändbara</li>
+<li>Sätt <code>faltinventerare</code> = förvaltarens namn, inte ditt</li>
+<li>Sätt <code>habitat_period_lastdata_end</code> = året förvaltaren angav</li>
+<li>Skriv <code>Kommentar_metod</code> i klartext: <em>"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."</em></li>
+<li>Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift</li>
+</ol>
+<hr />
+<h2 id="8-omradesidentitet-lost-men-bara-for-den-publika-versionen">8. Områdesidentitet — löst, men bara för den publika versionen</h2>
+<p>Varken <code>natura-2000: docs/underlag/kartering.csv</code> eller <code>natura-2000: docs/underlag/naturtypskarta/NNK_YTA</code> innehåller något områdes-ID. Det är inget fel i din export — den publika NNK har helt enkelt inte fältet. Kopplingen görs i stället geometriskt.</p>
+<p><strong>Detta är gjort:</strong> <code>natura-2000: scripts/analysis/koppla_omraden.py</code> hämtar det rikstäckande SCI-lagret från Naturvårdsregistret, filtrerar till Södermanland (197 områden) och kopplar varje NNK-yta till det Natura 2000-område den har störst arealöverlapp med.</p>
+<table>
+<thead>
+<tr>
+<th>Resultat</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ytor kopplade till Natura 2000</td>
+<td>9 609</td>
+</tr>
+<tr>
+<td>Ytor utanför Natura 2000</td>
+<td>5 221 (21 724 ha) — ligger i naturreservat och nationalpark utan N2000-överlapp</td>
+</tr>
+<tr>
+<td>Områden med träff</td>
+<td>197 av 197</td>
+</tr>
+<tr>
+<td>Ytor som skär flera områden</td>
+<td>3 — tilldelade det med störst överlapp</td>
+</tr>
+<tr>
+<td>Ytor delvis utanför beslutsgränsen</td>
+<td>82 — <code>andel_inom &lt; 0,95</code>; karteringen går ibland utanför gränsen, vilket produktbeskrivningen avsnitt 2.2 varnar för</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Validering:</strong> summan av den klippta arealen inom Natura 2000 blir 44 798 ha, mot 44 852 ha i Naturvårdsverkets statistikuttag per 2026-01-20. Avvikelsen är 0,1 % och beror på att gränserna hämtats vid olika tillfällen. Kopplingen håller.</p>
+<p>Utdata: <code>data/nnk/nnk_yta_med_sitecode.gpkg</code> och <code>.csv</code> med fälten <code>SITECODE</code>, <code>OMRADE</code>, <code>BEVPLAN</code> (direktlänk till bevarandeplanen), <code>area_ha</code>, <code>overlapp_ha</code>, <code>andel_inom</code> och <code>antal_omraden</code>.</p>
+<p><strong>Det som återstår:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Behov</th>
+<th>Hur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NVRID</code> för de 5 221 ytorna utanför N2000</td>
+<td>Samma metod mot NVR-lagret från Naturvårdsregistret — behövs inför naturreservatsspåret 2027 (arbetspaket G)</td>
+</tr>
+<tr>
+<td><code>KOMMENTAR</code>, <code>NNK_KOMMEN</code>, <code>REDIGERARE</code></td>
+<td>Finns bara i <strong>NNK Ajourhålla</strong>. Checka ut i ArcGIS Pro och exportera — den publika versionen kan aldrig ge detta</td>
+</tr>
+<tr>
+<td><code>habitat_period_lastdata_start</code> / <code>_end</code></td>
+<td>Nya dateringsfälten, finns i Ajourhålla</td>
+</tr>
+<tr>
+<td><code>habitat_priority_all</code>, <code>habitat_priority_6210_7130</code></td>
+<td>Prioriterad livsmiljötyp enligt habitatdirektivet, finns i Ajourhålla</td>
+</tr>
+</tbody>
+</table>
+<p>Med ett Ajourhålla-uttag kan samma skript köras om och då ger det full spårbarhet på polygonnivå.</p>
+<hr />
+<h2 id="9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</h2>
+<p>Från handledningen avsnitt 3.3 och checklistan i 2.3:</p>
+<ul>
+<li>[ ] Kör toolboxen i ArcGIS Pro på det utcheckade området — reglerna kontrolleras där</li>
+<li>[ ] Alla obligatoriska attribut ifyllda med godkända värden (undantag: fritextfälten)</li>
+<li>[ ] Inga överlapp mellan ytor; inga glapp; linjer och ytor korsar inte sig själva</li>
+<li>[ ] Topologifel: prioritera överlapp, åtgärda hål &gt; 0,25 ha och remsor &gt; 10 m, strunta i mindre</li>
+<li>[ ] <code>FORANDRING</code> satt på allt du ändrat — se R2</li>
+<li>[ ] <code>KARTERINGS</code> uppdaterad — se R3</li>
+<li>[ ] Slutdatum för senaste bedömning ifyllt — se avsnitt 6</li>
+<li>[ ] <code>KOMMENTAR</code> ifylld med grund och källa — inte tom, aldrig mer tom</li>
+<li>[ ] Systematiska fel i grundkarteringen rapporterade till <code>NNK-kartering@metria.se</code></li>
+</ul>
+<blockquote>
+<p><strong>Tidsordning:</strong> avvakta med att registrera <em>tillstånd</em> i NNK tills de nya attributen driftsatts (slutet av september 2026, FAQ fråga 30). Fram till dess samlar du in via blankett och granskningslager. Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.</p>
+</blockquote>
+<hr />
+<h2 id="10-vad-detta-ger-till-arets-leverans">10. Vad detta ger till årets leverans</h2>
+<p>FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt till fyra av dem:</p>
+<table>
+<thead>
+<tr>
+<th>FAQ-fråga</th>
+<th>Vad dialogen ger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vilka insatser krävs och vem gör det</td>
+<td>Förvaltarna kan säga vad de själva kan bidra med inom ordinarie förvaltning</td>
+</tr>
+<tr>
+<td>Er prioritering — var är det viktigast att samla in ny kunskap</td>
+<td>De vet vilka marker som är på väg åt fel håll</td>
+</tr>
+<tr>
+<td>Vilka antaganden och generaliseringar kan göras</td>
+<td><em>"Alla betesmarker med aktivt jordbruksstöd och pågående hävd antas vara i gott tillstånd"</em> är den sortens generalisering som bara kan formuleras med förvaltarnas underlag — och som avlastar mest om NV accepterar den</td>
+</tr>
+<tr>
+<td>Vad gör ni själva, vad behöver ni hjälp med</td>
+<td>Skiljelinjen blir konkret när man vet vad som redan är känt</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Metodik v1.1 · 2026-08-17 · hör ihop med <code>docs/arbetsplan.md</code> (arbetspaket H) <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> och <code>natura-2000: scripts/analysis/koppla_omraden.py</code></em></p>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>
