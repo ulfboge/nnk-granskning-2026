@@ -122,6 +122,14 @@ input[type=checkbox]{width:17px;height:17px;accent-color:var(--good);cursor:poin
 .pbox b{color:var(--ink-1)}
 .doneRow{display:flex;align-items:center;gap:10px;margin:18px 0 0;font-size:14px}
 
+.ghpanel label{display:block;font-size:12.5px;color:var(--ink-2);margin:14px 0 6px}
+.ghpanel input[type=password]{width:100%;padding:8px 10px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--plane);color:var(--ink-1);
+ font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px}
+.ghpanel .rad{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.ghpanel a{color:var(--p-A)}
+.ghstat{font-size:11.5px;color:var(--ink-3)}
+
 table.t{border-collapse:collapse;width:100%;font-size:13px}
 .t th,.t td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
 .t th{color:var(--ink-2);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em}
@@ -179,15 +187,20 @@ footer{margin-top:50px;padding-top:16px;border-top:1px solid var(--grid);font-si
   <label>Arbetspaket:</label>
   <select id="fPak"><option value="">Alla</option></select>
   <span class="sep"></span>
-  <button class="util" onclick="expJson()">Spara läge till fil</button>
-  <button class="util" onclick="document.getElementById('imp').click()">Läs in läge</button>
+  <button class="util" onclick="sparaGithub()">Spara till GitHub</button>
+  <button class="util" onclick="lasInGithub(true)">Uppdatera från GitHub</button>
+  <button class="util" onclick="oppnaGh()" title="Token och synkstatus">Token …</button>
+  <span class="ghstat" id="ghStatus"></span>
+  <span class="sep"></span>
+  <button class="util" onclick="expJson()" title="Reservkopia som egen fil, t.ex. om GitHub inte gar att na">Exportera fil</button>
+  <button class="util" onclick="document.getElementById('imp').click()" title="Las in en tidigare exporterad fil">Läs in fil</button>
   <input type="file" id="imp" accept="application/json" style="display:none" onchange="impJson(event)">
 </div>
 <div class="gwrap"><table class="g" id="gantt"></table></div>
 <div class="legend" id="gleg"></div>
 
 <h2>Uppgifter</h2>
-<p class="lede">Bocka av när något är klart. Läget sparas inte automatiskt — använd <em>Spara läge till fil</em> så kan du läsa in det nästa gång.</p>
+<p class="lede">Bocka av när något är klart. Läget sparas inte automatiskt — klicka <em>Spara till GitHub</em> när du vill checka in ändringarna. Sidan läser automatiskt in senast sparade läge när den öppnas.</p>
 <div class="ulist" id="ulist"></div>
 
 <h2>Leveranser</h2>
@@ -224,6 +237,23 @@ Kontrollrum v1.0 · 2026-08-17 · genererat ur <code>scripts/analysis/uppgifter.
   <div style="font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-top:20px">Steg</div>
   <ol id="pSteg"></ol>
   <div class="doneRow"><input type="checkbox" id="pChk"><label for="pChk">Markera uppgiften som klar</label></div>
+</div>
+
+<div class="ovl" id="ovlGh" onclick="stangGh()"></div>
+<div class="panel ghpanel" id="panelGh" style="width:min(460px,100%)">
+  <button class="stang" onclick="stangGh()">Stäng</button>
+  <h3>Synka med GitHub</h3>
+  <p class="pmeta">Sparar till <code>nnk_status.json</code> i <code>ulfboge/nnk-granskning-2026</code>.</p>
+  <div class="pbox" id="ghInfo">—</div>
+  <label for="ghTok">Personal access token (fine-grained, endast detta repo, behörighet <b>Contents: Read and write</b>)</label>
+  <input type="password" id="ghTok" placeholder="github_pat_…" autocomplete="off" spellcheck="false">
+  <div class="rad">
+    <button class="util" onclick="sparaToken()">Spara token för fliken</button>
+    <button class="util" onclick="glomToken()">Glöm token</button>
+  </div>
+  <p class="note">Token sparas bara i den här fliken — försvinner när fliken stängs, ligger aldrig i repot eller på disk.
+  Skapa en på <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>:
+  välj <b>Only select repositories</b> → <code>nnk-granskning-2026</code>, och ge behörigheten <b>Contents: Read and write</b>. Inget annat behövs.</p>
 </div>
 
 <script>
@@ -397,6 +427,96 @@ function impJson(e){
   r.readAsText(f); e.target.value='';
 }
 
+/* ---------- GitHub-synk ---------- */
+const GH = {owner:'ulfboge', repo:'nnk-granskning-2026', path:'nnk_status.json', branch:'main'};
+const TOK_KEY = 'nnk_gh_token';
+
+function ghToken(){ return sessionStorage.getItem(TOK_KEY) || '' }
+function ghStatusRad(txt){ document.getElementById('ghStatus').textContent = txt }
+function ghInfo(txt, fel){
+  const el = document.getElementById('ghInfo');
+  el.textContent = txt; el.style.color = fel ? 'var(--idag)' : '';
+}
+function b64u(str){ return btoa(String.fromCharCode(...new TextEncoder().encode(str))) }
+
+function oppnaGh(){
+  document.getElementById('ghTok').value = '';
+  ghInfo(ghToken() ? 'Token sparad för den här fliken.' : 'Ingen token sparad — du kan läsa men inte spara.');
+  document.getElementById('panelGh').classList.add('on');
+  document.getElementById('ovlGh').classList.add('on');
+}
+function stangGh(){
+  document.getElementById('panelGh').classList.remove('on');
+  document.getElementById('ovlGh').classList.remove('on');
+}
+function sparaToken(){
+  const v = document.getElementById('ghTok').value.trim();
+  if(!v){ ghInfo('Klistra in en token först.', true); return }
+  sessionStorage.setItem(TOK_KEY, v);
+  document.getElementById('ghTok').value = '';
+  ghInfo('Token sparad för den här fliken.');
+}
+function glomToken(){
+  sessionStorage.removeItem(TOK_KEY);
+  ghInfo('Token borttagen.');
+}
+
+async function lasInGithub(manuell){
+  try{
+    const url = `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${GH.path}?_=${Date.now()}`;
+    const r = await fetch(url, {cache:'no-store'});
+    if(r.status===404){ if(manuell) ghStatusRad('Ingen sparad status i repot ännu.'); return }
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const o = await r.json();
+    klar.clear(); (o.klara||[]).forEach(x=>{if(byId[x]) klar.add(x)});
+    rita();
+    ghStatusRad((manuell?'Uppdaterat':'Inläst') + (o.sparat?' · sparat '+o.sparat:''));
+  }catch(err){
+    if(manuell) ghStatusRad('Kunde inte nå GitHub.');
+    console.warn('nnk: kunde inte läsa status från GitHub', err);
+  }
+}
+
+async function sparaGithub(){
+  const tok = ghToken();
+  if(!tok){ oppnaGh(); return }
+  ghStatusRad('Sparar …');
+  const api = `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`;
+  const headers = {
+    'Authorization':'Bearer '+tok,
+    'Accept':'application/vnd.github+json',
+    'Content-Type':'application/json',
+    'X-GitHub-Api-Version':'2022-11-28'
+  };
+  try{
+    let sha;
+    const g = await fetch(api+`?ref=${GH.branch}`, {headers});
+    if(g.status===200){ sha=(await g.json()).sha }
+    else if(g.status!==404){ throw new Error('Kunde inte läsa nuvarande fil (HTTP '+g.status+')') }
+
+    const data = {version:1, sparat:new Date().toISOString().slice(0,10), klara:[...klar].sort()};
+    const body = {
+      message:`Uppdatera NNK-status (${klar.size} / ${U.length} klara)`,
+      content:b64u(JSON.stringify(data,null,1)),
+      branch:GH.branch
+    };
+    if(sha) body.sha = sha;
+
+    const p = await fetch(api, {method:'PUT', headers, body:JSON.stringify(body)});
+    if(!p.ok){
+      if(p.status===409) throw new Error('Någon annan har sparat sedan du senast läste in — klicka "Uppdatera från GitHub" och försök igen.');
+      if(p.status===401||p.status===403) throw new Error('Token saknar behörighet eller är ogiltig (HTTP '+p.status+').');
+      const felinfo = await p.json().catch(()=>({}));
+      throw new Error(felinfo.message||('HTTP '+p.status));
+    }
+    ghStatusRad('Sparat till GitHub · '+data.sparat);
+  }catch(err){
+    ghStatusRad('Sparning misslyckades.');
+    ghInfo('Kunde inte spara: '+err.message+' Reservläge: använd "Exportera fil".', true);
+    oppnaGh();
+  }
+}
+
 /* ---------- init ---------- */
 document.getElementById('fPak').innerHTML='<option value="">Alla</option>'+
   Object.entries(D.paket).map(([p,v])=>`<option value="${p}">${p}. ${v.namn}</option>`).join('');
@@ -408,6 +528,7 @@ document.getElementById('fAns').addEventListener('change',e=>{fAns=e.target.valu
 document.getElementById('fPak').addEventListener('change',e=>{fPak=e.target.value;rita()});
 document.getElementById('chk').innerHTML=D.checklista.map(c=>`<li>${md(c)}</li>`).join('');
 rita();
+lasInGithub(false);
 </script>
 </body>
 </html>
