@@ -12,7 +12,7 @@
 
 Arbetsplanen säger *varför* och *när*. Det här dokumentet säger *hur*. Varje uppgift har ett id som matchar kontrollrummet och arbetsplanen, och stegen är skrivna för att gå att följa rakt av.
 
-Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer rollfördelningen i arbetsplanens avsnitt 6.1.
+Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer rollfördelningen i arbetsplanens avsnitt 6.1.
 
 ---
 
@@ -94,7 +94,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 1. Boka 60 min med Stefan Henriksson.
 2. Ta med: `kunskapslage.html` (öppna i webbläsare — nyckeltalen finns överst) och arbetsplanens avsnitt 0.
-3. Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar kollega; (4) att kollegans 50 % faktiskt är skyddad tid.
+3. Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar Karin; (4) att Karins 50 % faktiskt är skyddad tid.
 4. Fråga specifikt vad som förväntas i årsredovisningen för 2026 och när texten ska vara inne.
 5. Dokumentera besluten i granskningsloggen — särskilt bortvalen. De är det du kommer behöva försvara.
 
@@ -107,15 +107,15 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 3. Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten, SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.
 4. Detta är samma sak som H1.1 — gör dem i ett svep.
 
-### A3.3 · Rollfördelning med kollegan
+### A3.3 · Rollfördelning med Karin
 
 **v35** · **[Båda]**
 
 1. Gå igenom arbetsplanens avsnitt 6.1 tillsammans.
-2. Kollegan tar: batch B, C och D i skrivbordsgranskningen, dataunderlag och uttag, förvaltarbokningar, eftersök av dokument, screening av naturreservat.
+2. Karin tar: batch B, C och D i skrivbordsgranskningen, dataunderlag och uttag, förvaltarbokningar, eftersök av dokument, screening av naturreservat.
 3. Du tar: metodik, all NNK-redigering, bedömningarna, storobjekten, planen till NV.
-4. Sätt en fast veckoavstämning, 30 min måndagar. Bestäm var granskningsloggen ligger så båda skriver i samma.
-5. Viktigt: lägg kollegans arbete på avgränsade batchar som går att pausa — 50 % tid blir i praktiken ofta mindre.
+4. Sätt en fast veckoavstämning, 30 min måndagar. Granskningsloggen ligger (beslutat 2026-08-21) som `granskningslogg_mall.xlsx` på `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\` — se A4.1.
+5. Viktigt: lägg Karins arbete på avgränsade batchar som går att pausa — 50 % tid blir i praktiken ofta mindre.
 
 ### A3.4 · Anmäl er till KartLitS arbetsgrupper
 
@@ -130,7 +130,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 **v36** · **[Handläggare]**
 
-1. Mapparna `docs/faltprotokoll/` och `data/uttag/` finns redan. Skapa `docs/nnk/granskningslogg.md` — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter.
+1. Mapparna `docs/faltprotokoll/` och `data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från jobbdatorn.)
 2. Fältdokumentation: en fil per fältdag i `docs/faltprotokoll/`.
 3. NNK-uttag: spara i `data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra.
 4. Committa i Git efter varje arbetsdag. Loggen är underlaget till både arbetspaket E och F — den får inte gå förlorad.
@@ -173,7 +173,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### B1.3 · Boka fältdagar och klarlägg markägarkontakter
 
-**v35** · **[Kollega]** · förutsätter B1.2
+**v35** · **[Karin]** · förutsätter B1.2
 
 1. Boka 8–10 fältdagar mellan v36 och v40. Lägg buffertdagar — väder och tillgänglighet slår ut fältdagar.
 2. Kontrollera markägarförhållanden per objekt. På statligt förvaltade reservat behövs normalt ingen förhandskontakt; på privatägd mark inom Natura 2000 bör markägaren informeras.
@@ -221,7 +221,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### B4.3 · Åtgärdsbehov till SkötselDOS
 
-**v36–v41** · **[Kollega]**
+**v36–v41** · **[Karin]**
 
 1. Identifierat skötsel- eller restaureringsbehov förs in i SkötselDOS, inte i NNK. FAQ fråga 8.
 2. NNK beskriver vad som finns; SkötselDOS beskriver vad som ska göras. Blanda inte ihop dem.
@@ -238,7 +238,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 **v35** · **[Handläggare]** · förutsätter A2.1, A2.3
 
-1. Skriv ned rutinen i `docs/nnk/granskningslogg.md` som en mall du kopierar per objekt.
+1. Skriv ned rutinen som en mall du kopierar per objekt i granskningsloggen (`.../NRF/granskningslogg_mall.xlsx`, fliken *Objektgranskning*).
 2. Rutinen per objekt, åtta steg: (1) öppna objektet i KartLitS WebbGIS och i ArcGIS Pro mot NNK; (2) läs bevarandeplanen — vilka livsmiljötyper är utpekade, vilka är prioriterade bevarandevärden, vilka bevarandemål finns; (3) jämför bevarandeplanens typer mot vad NNK visar, notera differenser; (4) kontrollera mot aktuellt ortofoto och IR-ortofoto — syns uppenbara förändringar sedan 2012?; (5) kontrollera mot TUVA, VMI, VISS och Artportalen; (6) bedöm per yta: stämmer utbredningen — OK / justera / kontrolleras i fält / osäker; (7) notera i WebbGIS-mallen; (8) justera geometri i NNK endast där det påverkar arealen meningsfullt.
 3. Minsta karteringsenhet, från handledningen tabell 9: 0,25 ha generellt, 1 ha skog icke-natura och öppen myr, 0,5 ha skog natura, 2 ha ovan trädgränsen. Minsta karteringsbredd 10 m.
 4. Lägg större vikt vid gränsen mellan livsmiljötyp och icke-livsmiljötyp än vid gränser mellan olika livsmiljötyper — de senare är gradvisa och svåra att avgränsa exakt.
@@ -267,7 +267,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### C4.1 · Batch B — ängs- och hagmark inland
 
-**v35–v38** · **[Kollega]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v35–v38** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 1. 16 objekt: SE0220110 Skåraviken, SE0220017 Svanviken-Lindbacke, SE0220063 Sparreholms ekhagar, SE0220118 Labro ängar, SE0220182 Segersön, SE0220150 Tåkenön, SE0220085 Gripsholms Hjorthage, SE0220363 Lindön, SE0220115 Marsviken-Marsäng, SE0220206 Floden, SE0220088 Herröknanäs, SE0220603 Jungfruvassen, SE0220344 Lövön, SE0220309 Brebol, SE0220435 Gesta, SE0220228 Ånhammarsnäset. 851 ha terrester, 684 ha hävdberoende, bara 447 polygoner.
 2. Denna batch går FÖRST, medvetet: objekten är små och snabba, vilket kalibrerar rutinen och tidsuppskattningen innan de tunga batcharna.
@@ -277,7 +277,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### C5.1 · Batch C — våtmark och vattendrag
 
-**v42–v44** · **[Kollega]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v42–v44** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 1. Sex objekt: SE0220176 Tovhulta stormosse, SE0220137 Bråtamossen, SE0220103 Pilgöljan, SE0220021 Sjösakärren, SE0220106 Fjällmossen norra, SE0220304 Kilaån-Vretaån. 378 ha terrester, varav 128 ha sällsynta typer.
 2. Sällsynta typer här: 7110 högmossar (47 ha i länet), 7230 rikkärr (34 ha), 7231 rikkärr undertyp (4 ha), 3260 vattendrag (44 ha), 9750 svämskog (2,7 ha).
@@ -287,7 +287,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### C6.1 · Batch D — skog och ädellöv
 
-**v43–v46** · **[Kollega]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v43–v46** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 1. Tio objekt: SE0220602 Vilsta, SE0220343 Askholmen, SE0220503 Fjellskäfte, SE0220217 Tore Grav, SE0220130 Lotsängsbacken, SE0220211 Ekorneberg, SE0220234 Persö, SE0220348 Tynnelsö Djurgård, SE0220507 Lundäng, SE0220438 Åsa gravfält. 393 ha terrester, 92 ha sällsynta typer.
 2. Sällsynta typer: 9060 åsbarrskog (29 ha), 9072 ädellövdominerad betesmark (29 ha), 9180 ädellövskog i branter (10 ha), 4030 torra hedar (16 ha), 9110 bokskog (6 ha), 6280 alvar (6 ha).
@@ -343,7 +343,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 1. Börja med de 277 ytorna som har karteringsstatus 3 eller 4 (fältdata) men naturtypsstatus 5 (ej bedömd). Det är hela uppdragets snabbaste vinst — kunskapen finns, den registrerades aldrig.
 2. Hitta dem: i ArcGIS Pro, Select By Attributes på NNK-lagret: `KARTERINGS IN ('3 - Besökt i fält','4 - Inventerad i fält') AND NATURTYPSS LIKE '5%'`.
-3. Leta upp underlaget bakom varje: uppföljningsprotokoll, ÄoB-blankett, basinventeringsprotokoll. Kollegan söker parallellt i H4.1.
+3. Leta upp underlaget bakom varje: uppföljningsprotokoll, ÄoB-blankett, basinventeringsprotokoll. Karin söker parallellt i H4.1.
 4. Ta därefter de 482 fullgoda och 336 icke fullgoda — kontrollera att bedömningen fortfarande är rimlig och komplettera med procentandelar och datering.
 5. Checka ut objektet i ArcGIS Pro, sätt attributen, kör toolboxen, checka in. Arbeta objekt för objekt, inte spritt — utcheckning är områdesbaserad.
 
@@ -411,7 +411,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### E1.1 · Nytt NNK-uttag för före/efter-jämförelse
 
-**v45** · **[Kollega]** · förutsätter A4.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v45** · **[Karin]** · förutsätter A4.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Kör uttagsrutinen från A4.2 igen, exakt samma struktur som januariuttaget.
 2. Spara som `data/uttag/nnk_20261110.gpkg`.
@@ -421,7 +421,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### E1.2 · Statistik per Natura 2000-område
 
-**v46** · **[Kollega]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v46** · **[Karin]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Ta fram areal per livsmiljötyp × tillståndsklass per objekt ur det nya uttaget.
 2. Använd `data/nnk/nnk_yta_med_sitecode.csv` som grund — den har redan SITECODE på varje yta.
@@ -430,7 +430,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### E1.3 · Statistik per livsmiljötyp för hela länet
 
-**v46** · **[Kollega]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v46** · **[Karin]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Aggregera samma data till länsnivå: areal per livsmiljötyp × tillståndsklass.
 2. Jämför mot nollmätningen i `kunskapslage.html` avsnitt 2.
@@ -463,7 +463,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### E3.1 · Fyll i KartLitS WebbGIS-mallen för granskade objekt
 
-**v38–v48** · **[Kollega]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v38–v48** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 1. Öppna KartLitS WebbGIS, logga in med Automatisk inloggning.
 2. Zooma till objektet. Se till att lagret *LstAB NNK granskning* är aktivt. Tänd även *NV Naturtypskartan NNK* så färger och mönster syns.
@@ -539,7 +539,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### G1.1 · Gå igenom flik 3 i NNK-statistiken
 
-**v42–v44** · **[Kollega]** · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
+**v42–v44** · **[Karin]** · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
 
 1. Öppna `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx`, fliken *3. NP_NR_exkl_överlapp*.
 2. Filtrera på Län = D. Sortera på kolumnen *Area NVR utanför N2000* fallande.
@@ -549,7 +549,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### G1.2 · Screening av hävdberoende och sällsynta typer i reservaten
 
-**v46** · **[Kollega]** · förutsätter G1.1 · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
+**v46** · **[Karin]** · förutsätter G1.1 · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
 
 1. Använd samma prioriteringsgrunder som för N2000: hävdberoende marker och sällsynta livsmiljötyper först.
 2. Kolumnerna längst till höger i flik 3 ger areal per naturtypskod per reservat — samma struktur som flik 2.
@@ -558,7 +558,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### G1.3 · Grov volymuppskattning för naturreservaten
 
-**v48** · **[Kollega]** · förutsätter G1.2 · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
+**v48** · **[Karin]** · förutsätter G1.2 · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
 
 1. Räkna antal reservat, hektar och uppskattade fältdagar, med samma tidsantaganden som i F1.2.
 2. Notera vilka som redan har aktuella skötselplaner eller uppföljningar — de går snabbare.
@@ -580,7 +580,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### H1.1 · Kartlägg vem som förvaltar vilka objekt
 
-**v35–v36** · **[Kollega]** · bidrar till *Förvaltarkarta: vem förvaltar vilka objekt*
+**v35–v36** · **[Karin]** · bidrar till *Förvaltarkarta: vem förvaltar vilka objekt*
 
 1. Öppna `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett.
 2. Be Naturvårdsenheten fylla i kolumn I *Förvaltare* — eller fyll i själv utifrån deras förvaltningsindelning.
@@ -620,7 +620,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### H2.3 · Kör områdeskopplingen mot NVR-lagret
 
-**v43** · **[Kollega]**
+**v43** · **[Karin]**
 
 1. 5 221 NNK-ytor ligger utanför Natura 2000 — de finns i naturreservat och nationalpark och saknar områdesidentitet.
 2. Öppna `natura-2000: scripts/analysis/koppla_omraden.py`. Kopiera funktionen `hamta_sci` till en variant som hämtar NVR-lagret från Naturvårdsregistret i stället, och byt fältnamnet SITE_CODE mot NVRID.
@@ -630,7 +630,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### H3.1 · Boka förvaltarsamtalen
 
-**v37** · **[Kollega]** · förutsätter H1.1, H1.2
+**v37** · **[Karin]** · förutsätter H1.1, H1.2
 
 1. Ca 60 minuter per förvaltare, flera objekt per möte. Fysiskt möte med karta framme är bättre än Teams.
 2. Skicka med i kallelsen: den filtrerade blanketten för deras objekt, plus en rad om vad mötet handlar om.
@@ -661,7 +661,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### H4.1 · Eftersök odokumenterade underlag
 
-**v38–v46** · **[Kollega]** · förutsätter H3.2
+**v38–v46** · **[Karin]** · förutsätter H3.2
 
 1. Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar.
 2. Sök på enhetsmappar, i diariet, och i SkötselDOS. Fråga även dem som slutat, om det går.
@@ -670,7 +670,7 @@ Uppgifter markerade **[Handläggare]**, **[Kollega]** eller **[Båda]** följer 
 
 ### H4.2 · Registrera funna underlag i datakälleregistret
 
-**v38–v48** · **[Kollega]** · förutsätter H4.1
+**v38–v48** · **[Karin]** · förutsätter H4.1
 
 1. Lägg in varje funnet underlag i `data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
 2. Ange: vad det är, vilket objekt eller vilka objekt det gäller, årtal, var det ligger, och om det är digitalt eller papper.
