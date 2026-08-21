@@ -249,7 +249,7 @@ Detta är volymarbetet. Rutinen körs batch för batch och gäller **utbredning 
 | **C** Våtmark & vattendrag | 6 | 378 ha | 9 ha | 128 ha | 401 | v42–v44 |
 | **D** Skog & ädellöv | 10 | 393 ha | 57 ha | 92 ha | 264 | v43–v46 |
 
-**Batch S** (Skärgårdsreservaten SE0220129 med 2 915 polygoner och Nynäs SE0220126 med 1 433) rymmer **44 % av länets samtliga N2000-polygoner**. De ska inte köras som vanliga objekt — se avsnitt 5.3.
+**Batch S** (Skärgårdsreservaten SE0220129 och Nynäs SE0220126) rymmer 4 348 polygoner, **44 % av länets samtliga N2000-polygoner**. En stor del av *arealen* i Skärgårdsreservaten är marin och lämnas 2026 (FAQ f.16). Det som återstår — ca 2 500 + 1 350 terrestra polygoner — ska inte köras som vanliga objekt. Se avsnitt 5.3.
 
 Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävdberoende och snabba att gå igenom, vilket ger rutinen och tidsuppskattningen kalibrerad innan de tunga batcharna.
 
@@ -395,14 +395,17 @@ De 40 P1-objekten rymmer **5 178 ha av länets 7 821 ha terrestra livsmiljötype
 
 ### 5.3 Särskild hantering av storobjekten
 
-Skärgårdsreservaten (SE0220129) och Nynäs (SE0220126) innehåller tillsammans 4 348 polygoner. Att gå igenom dem yta för yta är inte realistiskt.
+Skärgårdsreservaten (SE0220129) och Nynäs (SE0220126) innehåller tillsammans 4 348 polygoner. Siffran inkluderar marina ytor som **inte** ska bedömas 2026 (FAQ f.16).
+
+I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 stora vatten- och revytor: `1000`, `11xx`). Kvar på land finns ca 2 500 polygoner (ca 1 800 ha), varav bara ett trettiotal är ≥ 5 ha — resten är små hällmarks-, skogs- och skärytor. Nynäs har nästan ingen marin areal men ca 1 350 terrestra polygoner. Yta för yta på det terrestra är inte realistiskt.
 
 **Föreslagen metod:**
 
-1. Stratifiera på livsmiljötyp och storlek — hantera de stora, betydande ytorna individuellt
-2. Behandla små hällmarks- och skogsytor gruppvis med gemensam bedömningsgrund, dokumenterad som just en generalisering
-3. Skärgårdsreservaten har redan 198 fältkontrollerade polygoner — den kunskapen ska återanvändas, inte göras om
-4. Ta upp objekten som ett explicit exempel i planen till NV: **"så här tänker vi hantera storobjekt, är det acceptabelt?"** FAQ fråga 10 uppmuntrar uttryckligen att skicka in knepiga fall till funktionsbrevlådan
+1. Lämna marina koder (`1000`, `11xx`) orörda
+2. Stratifiera det terrestra på livsmiljötyp och storlek — hantera individuellt: ytor ≥ 5 ha, hävdberoende, sällsynta typer och Åtgärdas-ytor
+3. Behandla små hällmarks-, skogs- och skärytor (`9010`, `8230`/`8231`, `1621`) gruppvis med gemensam bedömningsgrund, dokumenterad som just en generalisering
+4. Skärgårdsreservaten har redan 198 fältkontrollerade polygoner — den kunskapen ska återanvändas, inte göras om
+5. Ta upp metoden som ett explicit exempel till NV — se avsnitt 10, fråga 1. FAQ fråga 10 uppmuntrar att skicka in knepiga fall till funktionsbrevlådan
 
 ---
 
@@ -517,7 +520,7 @@ Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter
 
 Skickas till `kartlitsN2000@naturvardsverket.se` (FAQ f.10). Ju tidigare desto bättre — svaren styr hösten.
 
-1. **Storobjekt:** Är stratifierad, gruppvis bedömning av Skärgårdsreservatens 2 915 polygoner en acceptabel metod? Finns det andra län med samma problem?
+1. **Storobjekt:** Skärgårdsreservaten (SE0220129) har 2 915 polygoner totalt, men merparten av *arealen* är marin och lämnas enligt FAQ f.16 (~390 marina polygoner). Kvar på land finns ca 2 500 polygoner (ca 1 800 ha), varav bara ett trettiotal är ≥ 5 ha — resten är små hällmarks-, skogs- och skärytor (`9010`, `8230`, `1621`). Nynäs (SE0220126) är analogt: nästan ingen marin areal, men ca 1 350 terrestra polygoner. Vi avser att bedöma stora, hävdberoende, sällsynta och Åtgärdas-ytor individuellt, och sätta gemensam bedömning på grupper av små ytor med samma kod och samma bedömningsgrund (dokumenterad som generalisering). Är det en acceptabel metod för 2026? Har andra län samma typ av skärgårdsobjekt, och hur har de löst det?
 2. **Generaliseringar:** Kan hävdstatus i TUVA användas som proxy för tillstånd i 6270/6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök?
 3. **BIDOS-ursprung:** 96 % av länets polygoner kommer från basinventeringen med vägledningar före 2011. Vilken ambitionsnivå förväntas för systematisk korrigering — och vad ligger inom Metrias uppdrag?
 4. **Båven:** 4 845 ha okarterat i ett limniskt objekt. Bekräfta att detta ska lämnas till den nationella limniska karteringen.

@@ -248,10 +248,10 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v41–v46** · **[Handläggare]** · förutsätter C1.1, A3.4 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. SE0220129 Skärgårdsreservaten (2 915 polygoner) och SE0220126 Nynäs (1 433) rymmer tillsammans 44 % av länets samtliga N2000-polygoner. Yta för yta är inte realistiskt.
-2. Stratifiera i ArcGIS Pro: symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.
-3. Hantera individuellt: alla ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).
-4. Hantera gruppvis: små hällmarks- och skogsytor med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.
+1. SE0220129 Skärgårdsreservaten har 2 915 polygoner totalt, men merparten av arealen är marin och lämnas enligt FAQ f.16 (~390 marina polygoner / `1000` och `11xx`). Kvar på land: ca 2 500 polygoner (ca 1 800 ha), varav bara ~30 är ≥ 5 ha. SE0220126 Nynäs har 1 433 polygoner, nästan samtliga terrestra. Yta för yta på det terrestra är inte realistiskt.
+2. Stratifiera det terrestra i ArcGIS Pro: filtrera bort marina koder, symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.
+3. Hantera individuellt: alla terrestra ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).
+4. Hantera gruppvis: små hällmarks-, skogs- och skärytor (`9010`, `8230`/`8231`, `1621`) med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.
 5. Skärgårdsreservaten har redan 198 fältkontrollerade polygoner. Filtrera fram dem (KARTERINGS 3 eller 4) och återanvänd kunskapen — gör inte om den.
 6. Invänta svar från KartLitS (A3.4) på om metoden accepteras innan du kör hela vägen. Fråga 1 i arbetsplanens avsnitt 10.
 

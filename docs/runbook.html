@@ -392,10 +392,10 @@ tr:last-child td{border-bottom:0}
 <h3 id="c21-batch-s-storobjekten-skargardsreservaten-och-nynas">C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs</h3>
 <p><strong>v41–v46</strong> · <strong>[Handläggare]</strong> · förutsätter C1.1, A3.4 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
 <ol>
-<li>SE0220129 Skärgårdsreservaten (2 915 polygoner) och SE0220126 Nynäs (1 433) rymmer tillsammans 44 % av länets samtliga N2000-polygoner. Yta för yta är inte realistiskt.</li>
-<li>Stratifiera i ArcGIS Pro: symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.</li>
-<li>Hantera individuellt: alla ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).</li>
-<li>Hantera gruppvis: små hällmarks- och skogsytor med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.</li>
+<li>SE0220129 Skärgårdsreservaten har 2 915 polygoner totalt, men merparten av arealen är marin och lämnas enligt FAQ f.16 (~390 marina polygoner / <code>1000</code> och <code>11xx</code>). Kvar på land: ca 2 500 polygoner (ca 1 800 ha), varav bara ~30 är ≥ 5 ha. SE0220126 Nynäs har 1 433 polygoner, nästan samtliga terrestra. Yta för yta på det terrestra är inte realistiskt.</li>
+<li>Stratifiera det terrestra i ArcGIS Pro: filtrera bort marina koder, symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.</li>
+<li>Hantera individuellt: alla terrestra ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).</li>
+<li>Hantera gruppvis: små hällmarks-, skogs- och skärytor (<code>9010</code>, <code>8230</code>/<code>8231</code>, <code>1621</code>) med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.</li>
 <li>Skärgårdsreservaten har redan 198 fältkontrollerade polygoner. Filtrera fram dem (KARTERINGS 3 eller 4) och återanvänd kunskapen — gör inte om den.</li>
 <li>Invänta svar från KartLitS (A3.4) på om metoden accepteras innan du kör hela vägen. Fråga 1 i arbetsplanens avsnitt 10.</li>
 </ol>
