@@ -20,6 +20,7 @@ Det gör att sidorna fungerar bakom brandvägg och proxy, och att de går att sp
 | [`docs/arbetsplan.md`](docs/arbetsplan.md) | Arbetsplan v1.3 — kravnedbrytning, arbetspaket A–H |
 | [`docs/runbook.md`](docs/runbook.md) | Runbook — steg för steg genom alla 68 uppgifter |
 | [`docs/metodik.md`](docs/metodik.md) | Metodik förvaltarkunskap — arbetspaket H |
+| [`docs/typiska-arter.md`](docs/typiska-arter.md) | Typiska/karakteristiska arter per naturtyp — stöd för fältet "Vad ska kontrolleras" |
 | [`blanketter/`](blanketter/) | Excelmall för insamling av förvaltarkunskap |
 
 Markdownfilerna finns även som HTML under `docs/*.html` — det är de som kontrollpanelen länkar till.

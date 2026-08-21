@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typiska och karakteristiska arter för Natura 2000-naturtyper — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="typiska-och-karakteristiska-arter-for-natura-2000-naturtyper">Typiska och karakteristiska arter för Natura 2000-naturtyper</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#sa-anvands-listan">Så används listan</a></li>
+<li><a href="#naturtyper-i-denna-sammanstallning">Naturtyper i denna sammanställning</a></li>
+<li><a href="#9010-taiga">9010 Taiga</a></li>
+<li><a href="#8230-hallmarkstorrang">8230 Hällmarkstorräng</a></li>
+<li><a href="#9070-tradkladd-betesmark">9070 Trädklädd betesmark</a></li>
+<li><a href="#6270-silikatgrasmarker">6270 Silikatgräsmarker</a></li>
+<li><a href="#9740-91d0-skogbevuxen-myr">9740 / 91D0 Skogbevuxen myr</a></li>
+<li><a href="#9080-lovsumpskog">9080 Lövsumpskog</a></li>
+<li><a href="#7140-oppna-mossar-och-karr">7140 Öppna mossar och kärr</a></li>
+<li><a href="#6410-fuktangar">6410 Fuktängar</a></li>
+<li><a href="#3150-naturligt-naringsrika-sjoar">3150 Naturligt näringsrika sjöar</a></li>
+<li><a href="#9020-nordlig-adellovskog">9020 Nordlig ädellövskog</a></li>
+<li><a href="#9050-naringsrik-granskog">9050 Näringsrik granskog</a></li>
+<li><a href="#8220-silikatbranter">8220 Silikatbranter</a></li>
+<li><a href="#6510-slatterangar-i-laglandet">6510 Slåtterängar i låglandet</a></li>
+<li><a href="#3160-myrsjoar">3160 Myrsjöar</a></li>
+<li><a href="#9060-asbarrskog">9060 Åsbarrskog</a></li>
+<li><a href="#6210-kalkgrasmarker">6210 Kalkgräsmarker</a></li>
+<li><a href="#9750-91e0-svamlovskog">9750 / 91E0 Svämlövskog</a></li>
+<li><a href="#3110-naringsfattiga-slattsjoar">3110 Näringsfattiga slättsjöar</a></li>
+<li><a href="#9160-naringsrik-ekskog">9160 Näringsrik ekskog</a></li>
+<li><a href="#7230-rikkarr">7230 Rikkärr</a></li>
+<li><a href="#6230-stagg-grasmarker">6230 Stagg-gräsmarker</a></li>
+<li><a href="#7110-hogmossar-inkl-delyta-7111-oppna-mosseplan">7110 Högmossar (inkl. delyta 7111 Öppna mosseplan)</a></li>
+<li><a href="#nasta-steg-forslag">Nästa steg (förslag)</a></li>
+</ul>
+</div>
+</nav>
+<p>Sammanställning till stöd för NNK-statusbedömning (gynnsam bevarandestatus, GYBS) och för fältet <strong>"Vad ska kontrollera → Typiska och karakteristiska arter"</strong> i <a href="metodik.html">metodiken</a>.</p>
+<p><strong>Källa:</strong> Naturvårdsverkets naturtypsvisa vägledningar, se <a href="https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/">Natura 2000 i Sverige</a> samt PDF-länk per naturtyp nedan.
+<strong>Sammanställd:</strong> 2026-08-21
+<strong>Urval:</strong> de 21 vanligast förekommande icke-marina naturtyperna i länets Natura 2000-områden, enligt <code>natura-2000: docs/underlag/kartering.csv</code> (NNK-kartering, attributet NATURTYP, räknat i antal karterade delytor — <strong>preliminärt arbetsmaterial, inte areal</strong>). Marina naturtyper (1xxx) är medvetet uteslutna — NV rekommenderar att man avvaktar med marin statusbedömning 2026 (FAQ fråga 16 och 29, se <a href="arbetsplan.html">arbetsplan</a>).</p>
+<blockquote>
+<p><strong>Viktig läsanvisning:</strong> artlistorna nedan är extraherade ur NV:s PDF-vägledningar med hjälp av ett AI-verktyg (automatiserad textläsning), inte manuellt avskrivna. De ska betraktas som ett <strong>snabböversikts-underlag</strong>, inte facit. Innan de används i en formell statusbedömning: kontrollera artnamnen mot originalet (länk anges per naturtyp) eller mot <a href="https://artfakta.se/">Artfakta.se</a>, som NV pekar ut som den <strong>aktuella</strong> listan för nationell uppföljning — vägledningarnas egna listor är enligt NV <strong>delvis inaktuella</strong>. Där en vägledning bara gav vetenskapliga (latinska) namn har dessa behållits som de är, i stället för att gissningsöversättas till svenska — en felaktig översättning är värre än inget namn alls.</p>
+</blockquote>
+<hr />
+<h2 id="sa-anvands-listan">Så används listan</h2>
+<ul>
+<li><strong>K-art (karakteristisk art)</strong> — stödjer <em>tolkningen</em> av naturtypen, dvs. hjälper till att avgöra att en yta faktiskt tillhör naturtypen.</li>
+<li><strong>T-art (typisk art)</strong> — indikatorart för <strong>gynnsam bevarandestatus</strong>. Grundprincip enligt vägledningarna: <em>"Gynnsamt tillstånd/bevarandestatus förutsätter att de typiska arterna inte minskar påtagligt i området."</em> Det är i första hand T-arterna som är relevanta att leta efter vid fältbedömning inför NNK-statusklassning (gott / inte gott / okänt).</li>
+<li><strong>A / B / K</strong> efter en art = biogeografisk region (Alpin / Boreal / Kontinental). Södermanland ligger huvudsakligen i regionen <strong>K</strong> (Kontinental), delar i <strong>B</strong> — arter markerade enbart "A" är normalt inte relevanta här.</li>
+</ul>
+<p>Metodiken bakom artvalet beskrivs i NV:s metoddokument: <a href="https://www.naturvardsverket.se/4ac3fa/globalassets/vagledning/skyddad-natur/natura-2000/typiska-arterkriterier.pdf">Typiska arter och kriterier</a> och <a href="https://www.naturvardsverket.se/4ac3e6/globalassets/vagledning/skyddad-natur/natura-2000/karakteristiska-arter-och-kriterier.pdf">Karaktäristiska arter och kriterier</a>.</p>
+<hr />
+<h2 id="naturtyper-i-denna-sammanstallning">Naturtyper i denna sammanställning</h2>
+<p>Sorterade efter antal karterade delytor i länets N2000-områden (preliminär proxy för hur vanlig naturtypen är, inte för areal).</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Naturtyp</th>
+<th>Delytor (NNK, preliminärt)</th>
+<th>Vägledning (PDF)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#9010-taiga">9010</a></td>
+<td>Taiga</td>
+<td>1 956</td>
+<td><a href="https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9010-taiga-maj--2.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#8230-hällmarkstorräng">8230</a></td>
+<td>Hällmarkstorräng</td>
+<td>762</td>
+<td><a href="https://www.naturvardsverket.se/4ac1d4/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8230-hallmarkstorrang.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9070-trädklädd-betesmark">9070</a></td>
+<td>Trädklädd betesmark</td>
+<td>523</td>
+<td><a href="https://www.naturvardsverket.se/4ac5b7/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9070-tradkladd-betesmark-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#6270-silikatgräsmarker">6270</a></td>
+<td>Silikatgräsmarker</td>
+<td>353</td>
+<td><a href="https://www.naturvardsverket.se/4ac4dd/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6270-silikatgrasmarker.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9740-91d0-skogbevuxen-myr">9740 / 91D0</a></td>
+<td>Skogbevuxen myr</td>
+<td>248</td>
+<td><a href="https://www.naturvardsverket.se/4ac5a9/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91d0-skogsbevuxenmyr-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9080-lövsumpskog">9080</a></td>
+<td>Lövsumpskog</td>
+<td>246</td>
+<td><a href="https://www.naturvardsverket.se/4a6378/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9080-lovsumpskog-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#7140-öppna-mossar-och-kärr">7140</a></td>
+<td>Öppna mossar och kärr</td>
+<td>213</td>
+<td><a href="https://www.naturvardsverket.se/4ac581/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7140-oppnamossarochkarr.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#6410-fuktängar">6410</a></td>
+<td>Fuktängar</td>
+<td>150</td>
+<td><a href="https://www.naturvardsverket.se/4ac4df/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6410-fuktangar.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#3150-naturligt-näringsrika-sjöar">3150</a></td>
+<td>Naturligt näringsrika sjöar</td>
+<td>115</td>
+<td><a href="https://www.naturvardsverket.se/4ac5d4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3150-naturligtnaringsrikasjoar.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9020-nordlig-ädellövskog">9020</a></td>
+<td>Nordlig ädellövskog</td>
+<td>111</td>
+<td><a href="https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9020-nordligadellovskog-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9050-näringsrik-granskog">9050</a></td>
+<td>Näringsrik granskog</td>
+<td>84</td>
+<td><a href="#9050-näringsrik-granskog">se not — ingen fristående vägledning ännu</a></td>
+</tr>
+<tr>
+<td><a href="#8220-silikatbranter">8220</a></td>
+<td>Silikatbranter</td>
+<td>65</td>
+<td><a href="https://www.naturvardsverket.se/4ac1dd/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8220-silkikatbranter.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#6510-slåtterängar-i-låglandet">6510</a></td>
+<td>Slåtterängar i låglandet</td>
+<td>60</td>
+<td><a href="https://www.naturvardsverket.se/4ac4e7/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6510-laglandsslatterangar.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#3160-myrsjöar">3160</a></td>
+<td>Myrsjöar</td>
+<td>40</td>
+<td><a href="https://www.naturvardsverket.se/4ac5e4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3160-myrsjoar.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9060-åsbarrskog">9060</a></td>
+<td>Åsbarrskog</td>
+<td>26</td>
+<td><a href="https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9060-asbarrskog-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#6210-kalkgräsmarker">6210</a></td>
+<td>Kalkgräsmarker</td>
+<td>26</td>
+<td><a href="https://www.naturvardsverket.se/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6210-kalkgrasmarker.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9750-91e0-svämlövskog">9750 / 91E0</a></td>
+<td>Svämlövskog</td>
+<td>22</td>
+<td><a href="https://www.naturvardsverket.se/4ac5b3/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91e0-svamlovskog-apr-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#3110-näringsfattiga-slättsjöar">3110</a></td>
+<td>Näringsfattiga slättsjöar</td>
+<td>22</td>
+<td><a href="https://www.naturvardsverket.se/4ac5ca/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3110-naringsfattigaslattsjoar.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#9160-näringsrik-ekskog">9160</a></td>
+<td>Näringsrik ekskog</td>
+<td>23</td>
+<td><a href="https://www.naturvardsverket.se/4ac594/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9160-naringsrikekskog-maj-12.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#7230-rikkärr">7230</a></td>
+<td>Rikkärr</td>
+<td>26</td>
+<td><a href="https://www.naturvardsverket.se/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7230-rikkarr.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#6230-stagg-gräsmarker">6230</a></td>
+<td>Stagg-gräsmarker</td>
+<td>20</td>
+<td><a href="https://www.naturvardsverket.se/4a6674/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6230-staggrasmarker.pdf">länk</a></td>
+</tr>
+<tr>
+<td><a href="#7110-högmossar">7110</a></td>
+<td>Högmossar (inkl. delyta 7111)</td>
+<td>21</td>
+<td><a href="https://www.naturvardsverket.se/4ac55e/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7110-hogmossar.pdf">länk</a></td>
+</tr>
+</tbody>
+</table>
+<p>Övriga, mindre frekventa naturtyper i länets kartering (t.ex. 4030 Torra hedar, 3130 Ävjestrandsjöar, 6280 Alvar, 9180 Ädellövskog i branter, 6430 Högörtängar, 9110 Näringsfattig bokskog, 8210 Kalkbranter, 9030 Landhöjningsskog) finns inte med här men kan tas fram på samma sätt vid behov.</p>
+<hr />
+<h2 id="9010-taiga">9010 Taiga</h2>
+<p><strong>Kärlväxter K-art:</strong> Vårtbjörk, Glasbjörk, Ljung, Kruståtel, Kråkbär, Skogsfräken, Ekorrbär, Harsyra, Gran, Tall, Asp, Skogsstjärna, Blåbär, Lingon
+<strong>Kärlväxter T-art:</strong> Norna, Ryl, Plattlummer, Svedjenäva, Knärot, Linnea, Spindelblomster, Mattlummer, Ögonpyrola, Tallört, Grönpyrola, Lappranunkel</p>
+<p><strong>Mossor K-art:</strong> Stor kvastmossa, Vågig kvastmossa, Husmossa, Väggmossa
+<strong>Mossor T-art:</strong> Vedtrappmossa, Grön sköldmossa, Flagellkvastmossa, Skör kvastmossa, Terpentinmossa, Mörk husmossa, Blåmossa, Platt fjädermossa, Aspfjädermossa, Kornknutmossa, Asphättemossa, Skogshakmossa, Bollvitmossa</p>
+<p><strong>Lavar K-art:</strong> Garnlav, Gulvit renlav, Grå renlav, Fönsterlav, Lunglav, Skrovellav
+<strong>Lavar T-art:</strong> Kattfotslav, Talltagel, Nästlav, Violettgrå tagellav, Brunpudrad nållav, Vitskaftad svartspik, Dvärgbägarlav, Liten aspgelélav, Stiftgelélav, Läderlappslav, Aspgelélav, Sotlav, Liten sotlav, Ladlav, Kolflarnlav, Mörk blåslav, Knottrig blåslav, Skuggblåslav, Vedskivlav, Skinnlav, Norrlandslav, Stuplav, Västlig njurlav, Bårdlav, Luddlav, Grynig filtlav, Späd brosklav, Småflikig brosklav, Rödbrun blekspik</p>
+<p><strong>Svampar K-art:</strong> Lappticka, Veckticka, Kandelabersvamp, Rosenticka, Doftticka, Granticka, Phellinus populicola, Rynkskinn
+<strong>Svampar T-art:</strong> Fläckporing, Stjärntagging, Trådticka, Doftskinn, Brandskiktdyna, Harticka, Rävticka, Kötticka, Gropticka, Barkticka, Ullticka, Gränsticka, Tallticka, Stor aspticka, Vedticka, Gammelgranskål, Motaggsvamp, Gräddporing, Ostticka, Violmussling, Lakritsmusseron, Goliatmusseron</p>
+<p><strong>Däggdjur K-art:</strong> Skogslämmel</p>
+<p><strong>Fåglar K-art:</strong> Lavskrika, Tretåig hackspett, Mindre hackspett
+<strong>Fåglar T-art:</strong> Stjärtmes, Pärluggla, Järpe, Nattskärra, Spillkråka, Nötkråka, Lappmes, Tofsmes, Gråspett, Tallbit, Tjäder</p>
+<p><strong>Skalbaggar T-art:</strong> Åttafläckig praktbagge, Bronshjon, Barrpraktbagge, Sotsvart praktbagge, Granbarkgnagare, Stekelbock, Reliktbock, Raggbock</p>
+<hr />
+<h2 id="8230-hallmarkstorrang">8230 Hällmarkstorräng</h2>
+<p><strong>Kärlväxter K-/T-art (gemensamma):</strong> <em>Aira praecox</em> (vårtåtel), <em>Scleranthus perennis</em> (vitknavel), <em>Sedum acre</em> (gul fetknopp), <em>Sedum annuum</em> (liten fetknopp), <em>Sedum sexangulare</em> (kantig fetknopp), <em>Viola tricolor</em> (styvmorsviol), <em>Lychnis viscaria</em> (tjärblomster), <em>Silene rupestris</em> (bergglim), <em>Teesdalia nudicaulis</em> (sandkrassing), <em>Veronica verna</em> (vårveronika)
+<strong>Endast K-art:</strong> <em>Sedum album</em> (vit fetknopp), <em>Anthoxanthum odoratum</em> (vårbrodd), <em>Rumex acetosella</em> (bergsyra)
+<strong>Endast T-art:</strong> <em>Antennaria dioica</em> (kattfot), <em>Botrychium lunaria</em> (låsbräken), <em>Dactylorhiza sambucina</em> (Adam och Eva), <em>Montia verna</em> (vårkällört), <em>Saxifraga osloënsis</em> (hällebräcka), <em>Saxifraga tridactylites</em> (grusbräcka), <em>Spergula morisonii</em> (vårspärgel), <em>Viscaria vulgaris</em> (tjärblomster)</p>
+<p><strong>Mossor:</strong> <em>Blindia acuta</em> (sipperblindia), <em>Ceratodon purpureus</em> (brännmossa), <em>Grimmia ovalis</em> (hällgrimmia), <em>Polytrichum piliferum</em> (hårbjörnmossa)</p>
+<p><strong>Lavar:</strong> <em>Collema flaccidum</em> (slanklav), <em>Lasallia pustulata</em> (tuschlav), <em>Leptogium gelatinosum</em> (flikig skinnlav), <em>Peltigera didactyla</em> (styverlav), <em>Umbilicaria arctica</em> (rynkig navellav)</p>
+<hr />
+<h2 id="9070-tradkladd-betesmark">9070 Trädklädd betesmark</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Agrostis capillaris</em>, <em>Campanula rotundifolia</em>, <em>Carex pilulifera</em>, <em>Fragaria vesca</em>, <em>Luzula campestris</em>, <em>Prunella vulgaris</em>, <em>Veronica chamaedrys</em>, <em>Veronica officinalis</em>
+<strong>Kärlväxter T-art:</strong> <em>Ajuga pyramidalis</em>, <em>Antennaria dioica</em>, <em>Bistorta vivipara</em>, <em>Botrychium lunaria</em>, <em>Carex montana</em>, <em>Dactylorhiza viridis</em>, <em>Danthonia decumbens</em>, <em>Gentianella campestris</em>, <em>Hypochoeris maculata</em>, <em>Lathyrus linifolius</em>, <em>Melampyrum cristatum</em>, <em>Moneses uniflora</em>, <em>Nardus stricta</em>, <em>Plantago media</em>, <em>Primula veris</em>, <em>Pyrola media</em>, <em>Serratula tinctoria</em>, <em>Succisa pratensis</em></p>
+<p><strong>Mossor K-art:</strong> <em>Homalothecium sericeum</em>, <em>Orthotrichum stramineum</em></p>
+<p><strong>Lavar K-art:</strong> <em>Diplotomma alboatrum</em>, <em>Gyalecta ulmi</em>, <em>Lobaria pulmonaria</em> (lunglav), <em>Pleurosticta acetabulum</em>, <em>Ramalina farinacea</em>, <em>Ramalina fastigiata</em>, <em>Usnea filipendula</em>, <em>Usnea hirta</em>, <em>Usnea subfloridana</em>
+<strong>Lavar T-art:</strong> <em>Alectoria sarmentosa</em>, <em>Arthonia pruinata</em>, <em>Bacidia fraxinea</em>, <em>Bacidia rubella</em>, <em>Calicium adspersum</em>, <em>Calicium quercinum</em>, <em>Chaenotheca phaeocephala</em>, <em>Cliostomum corrugatum</em>, <em>Collema flaccidum</em>, <em>Collema nigrescens</em>, <em>Cyphelium inquinans</em>, <em>Fuscopannaria mediterranea</em>, <em>Hypogymnia farinacea</em>, <em>Lecanactis abietina</em>, <em>Lecanographa amylacea</em>, <em>Leptogium saturninum</em>, <em>Lobaria scrobiculata</em>, <em>Lobaria virens</em>, <em>Megalaria grossa</em>, <em>Nephroma laevigatum</em>, <em>Nephroma parile</em>, <em>Nephroma resupinatum</em>, <em>Parmeliella triptophylla</em>, <em>Peltigera collina</em>, <em>Pertusaria flavida</em>, <em>Sclerophora amabilis/coniophaea/farinacea/nivea/peronella</em>, <em>Schismatomma decolorans</em>, <em>Thelotrema lepadinum</em></p>
+<p><strong>Fjärilar T-art (region B/K):</strong> Väddnätfjäril (<em>Melitaea athalia</em>), Aglajafjäril, Ängspärlemorfjäril (<em>A. adippe</em>), samt <em>Zygaena osterodensis</em>, <em>Z. viciae</em>, <em>Z. filipendulae</em>, <em>Z. lonicerae</em>, <em>Z. minos</em>, <em>Adscita statices</em>, <em>Boloria euphrosyne</em>, <em>B. selene</em>, <em>Erynnis tages</em>, <em>Pyrgus malvae</em>, <em>Hamearis lucina</em>, <em>Lycaena hippothoe</em>, <em>L. virgaureae</em>, <em>Polyommatus semiargus</em>, <em>Maniola jurtina</em>, <em>Aricia artaxerxes</em>, <em>A. eumedon</em>, <em>A. nicias</em>, <em>Coenonympha hero</em>, <em>Leptidea sinapis</em>, <em>L. reali</em></p>
+<p><em>(Denna sektion innehöll blandade svenska/latinska namn i källdokumentet — kontrollera mot PDF vid behov.)</em></p>
+<hr />
+<h2 id="6270-silikatgrasmarker">6270 Silikatgräsmarker</h2>
+<p><strong>Kärlväxter K-art:</strong> Blåsuga, späd daggkåpa, sammetsdaggkåpa, källdaggkåpa, njurdaggkåpa, trubbdaggkåpa, vindaggkåpa, skårdaggkåpa, backlök, getväppling, lundtrav, vårstarr, rödklint, knägräs, backnejlika, grå ögontröst, ögontröst, fårsvingel, vitmåra, gulmåra, luddhavre, åkervädd, tjärblomster, fjälltimotej, revfibbla, bockrot, blodrot, gullviva, knölsmörblomma, ängsskallra, höskallra, mandelblom, ängsvädd, backtimjan
+<strong>Kärlväxter T-art:</strong> Kattfot, slåttergubbe, ormrot, låsbräken, darrgräs, stor blåklocka, liten blåklocka, hirsstarr, pillerstarr, klasefibbla, adam och eva, brudbröd, fältgentiana, solvända, slåtterfibbla, sommarfibbla, prästkrage, nattviol, jungfrulin, vårfingerört, gullviva, backsippa, knölsmörblomma, mandelblom, svinrot, spindelört, backtimjan</p>
+<p><strong>Svampar K-art:</strong> Stornopping, blårödling, scharlakansvaxskivling, olivjordtunga</p>
+<p><strong>Skalbaggar T-art (region B/K):</strong> Nordlig dyngbagge, slät dyngbagge, rödbukig dyngbagge, jorddyngbagge, glansdyngbagge, likdyngbagge, snyltdyngbagge, mörk vårdyngbagge, smådyngbagge, heddyngbagge, månhornsbagge, sandtordyvel, fälttordyvel, vårtordyvel, svart majbagge, krokhorndyvel, rakhorndyvel, mindre horndyvel</p>
+<p><strong>Fjärilar T-art (region B/K):</strong> Allmän metallvingesvärmare, skogspärlemorfjäril, ängspärlemorfjäril, hedpärlemorfjäril, midsommarblåvinge, brun blåvinge, prydlig pärlemorfjäril, brunfläckig pärlemorfjäril, skogsvisslare, silversmygare, violettkantad guldvinge, vitfläckig guldvinge, slåttergräsfjäril, ängsnätfjäril, ängsblåvinge, smultronvisslare, bredbrämad bastardsvärmare, klubbsprötad bastardsvärmare, smalsprötad bastardsvärmare, liten bastardsvärmare, allmän bastardsvärmare</p>
+<hr />
+<h2 id="9740-91d0-skogbevuxen-myr">9740 / 91D0 Skogbevuxen myr</h2>
+<p><strong>Kärlväxter K-art:</strong> Brunven (<em>Agrostis canina</em>), Glasbjörk (<em>Betula pubescens</em>), Gråstarr (<em>Carex canescens</em>), Hundstarr (<em>C. nigra</em>), Flaskstarr (<em>C. rostrata</em>), Kråkbär (<em>Empetrum nigrum</em>), Brakved (<em>Frangula alnus</em>), Blåtåtel (<em>Molinia caerulea</em>), Gran (<em>Picea abies</em>), Tall (<em>Pinus sylvestris</em>), Skvattram (<em>Rhododendron tomentosum</em>), Tranbär (<em>Vaccinium oxycoccos</em>), Odon (<em>V. uliginosum</em>), Kärrviol (<em>Viola palustris</em>)
+<strong>Kärlväxter T-art:</strong> Stjärnstarr (<em>Carex echinata</em>, reg. A/B/K), Klotstarr (<em>C. globularis</em>, reg. A/B), Mossviol (<em>Viola epipsila</em>, reg. A/B/K), Kärrviol (<em>V. palustris</em>, reg. A/B/K)</p>
+<p><strong>Mossor K-art:</strong> Krattvitmossa (<em>Sphagnum centrale</em>), Granvitmossa (<em>S. girgensonii</em>), Sumpvitmossa (<em>S. palustre</em>)
+<strong>Mossor T-art:</strong> Flagellkvastmossa (<em>Dicranum flagellare</em>, reg. B), Kornknutsmossa (<em>Odontoschisma denudatum</em>, reg. B), Bollvitmossa (<em>Sphagnum wulfianum</em>, reg. A/B)</p>
+<p><strong>Fåglar T-art:</strong> Järpe (<em>Bonasa bonasia</em>), Spillkråka (<em>Dryocopus martius</em>), Videsparv (<em>Emberiza rustica</em>, reg. A/B), Tretåig hackspett (<em>Picoides tridactylus</em>, reg. A/B), Tjäder (<em>Tetrao urogallus</em>)</p>
+<hr />
+<h2 id="9080-lovsumpskog">9080 Lövsumpskog</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Alnus glutinosa</em> (klibbal), <em>Alnus incana</em> (gråal), <em>Betula pubescens</em> (glasbjörk), <em>Calamagrostis canescens</em>, <em>C. stricta</em>, <em>Carex cespitosa</em>, <em>C. diandra</em>, <em>C. loliacea</em>, <em>C. tenuiflora</em>, <em>Fraxinus excelsior</em> (ask), <em>Iris pseudacorus</em> (svärdslilja), <em>Lycopus europaeus</em> (strandklo), <em>Lythrum salicaria</em> (fackelblomster), <em>Lysimachia thyrsiflora</em> (topplösa), <em>Salix cinerea</em>, <em>S. phylicifolia</em>, <em>Solanum dulcamara</em> (besksöta)
+<strong>Kärlväxter T-art (reg. B/K):</strong> <em>Calla palustris</em> (missne), <em>Cardamine amara</em> (bäckbräsma), <em>Carex disperma</em> (B), <em>C. elongata</em>, <em>C. globularis</em> (B), <em>C. loliacea</em>, <em>C. remota</em>, <em>Chrysosplenium alternifolium</em> (gullpudra), <em>Circaea alpina</em> (dvärgtrolldruva), <em>Corallorhiza trifida</em> (korallrot), <em>Crepis paludosa</em> (kärrfibbla), <em>Impatiens noli-tangere</em> (springkorn), <em>Lysimachia nemorum</em> (skogslysing), <em>Matteuccia struthiopteris</em> (strutbräken), <em>Poa remota</em> (kal gröe), <em>Thelypteris palustris</em> (kärrbräken), <em>Viola uliginosa</em> (kärrviol)</p>
+<p><strong>Mossor K-art:</strong> <em>Calliergon cordifolium</em>, <em>Helodium blandowii</em>, <em>Pseudobryum cinclidioides</em>, <em>Sphagnum fimbriatum</em>, <em>S. riparium</em>, <em>S. squarrosum</em>, <em>S. teres</em>
+<strong>Mossor T-art (reg. B/K):</strong> <em>Anomodon attenuatus</em>, <em>Brachythecium rivulare</em>, <em>Conocephalum conicum</em>, <em>Dichelyma capillaceum</em>, <em>Dicranodontium denudatum</em>, <em>Geocalyx graveolens</em>, <em>Herzogiella turfacea</em>, <em>Homalia trichomanoides</em>, <em>Hookeria lucens</em>, <em>Hylocomiastrum umbratum</em>, <em>Jungermannia leiantha</em>, <em>Lejeunea cavifolia</em>, <em>Leucobryum glaucum</em>, <em>Plagiomnium elatum</em>, <em>P. medium</em>, <em>Plagiothecium latebricola</em>, <em>Pseudobryum cinclidioides</em>, <em>Rhytidiadelphus subpinnatus</em>, <em>Trichocolea tomentella</em></p>
+<p><strong>Fåglar T-art (reg. B/K):</strong> Stjärtmes (<em>Aegithalos caudatus</em>), Järpe (<em>Bonasa bonasia</em>), Mindre hackspett (<em>Dendrocopos minor</em>), Mindre flugsnappare (<em>Ficedula parva</em>), Entita (<em>Poecile palustris</em>, angivet som <em>Parus palustris</em> i källan)</p>
+<hr />
+<h2 id="7140-oppna-mossar-och-karr">7140 Öppna mossar och kärr</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Carex chordorrhiza</em>, <em>C. diandra</em>, <em>C. lasiocarpa</em>, <em>C. limosa</em>, <em>C. magellanica</em>, <em>C. rostrata</em>, <em>Comarum palustre</em> (kråkklöver), <em>Eleocharis quinqueflora</em> (ävjebrodd), <em>Epilobium palustre</em> (kärrdunört), <em>Erica tetralix</em> (klockljung), <em>Eriophorum gracile</em> (ryltåg/gräsull), <em>Hammarbya paludosa</em> (myggblomster), <em>Menyanthes trifoliata</em> (vattenklöver), <em>Narthecium ossifragum</em> (benbrott), <em>Pedicularis palustris</em> (kärrspira), <em>Rhynchospora alba</em> (vitag), <em>R. fusca</em> (brunag), <em>Utricularia intermedia</em>, <em>U. minor</em>, <em>U. vulgaris</em> (bläddror)
+<strong>Kärlväxter T-art:</strong> <em>Carex dioica</em>, <em>C. livida</em>, <em>C. pauciflora</em>, <em>Dactylorhiza maculata ssp. maculata</em>, <em>D. sphagnicola</em>, <em>Drosera anglica</em>, <em>D. intermedia</em>, <em>D. rotundifolia</em> (sileshårsarter), <em>Eriophorum gracile</em>, <em>Juncus stygius</em>, <em>Menyanthes trifoliata</em>, <em>Narthecium ossifragum</em>, <em>Pedicularis palustris</em>, <em>Pinguicula vulgaris</em> (tätört), <em>Rhynchospora alba</em>, <em>R. fusca</em>, <em>Scheuchzeria palustris</em> (ryssgräs), <em>Trichophorum alpinum</em>, <em>T. cespitosum</em> (tuvull-arter)</p>
+<p><strong>Mossor K-art:</strong> <em>Aneura pinguis</em>, <em>Calliergon giganteum</em>, <em>Campylium stellatum</em>, <em>Scorpidium revolvens</em>, <em>S. scorpioides</em>, <em>Sphagnum angustifolium</em>, <em>S. cuspidatum</em>, <em>S. papillosum</em>, <em>S. riparium</em>, <em>S. subsecundum</em>
+<strong>Mossor T-art:</strong> <em>Calliergon richardsonii</em>, <em>Cinclidium stygium</em>, <em>C. subrotundum</em>, <em>Helodium blandowii</em>, <em>Loeskypnum badium</em>, <em>Scorpidium revolvens</em>, <em>Sphagnum affine</em>, <em>S. austinii</em>, <em>S. balticum</em>, <em>S. cuspidatum</em>, <em>S. fuscum</em>, <em>S. jensenii</em>, <em>S. lindbergii</em>, <em>S. magellanicum</em>, <em>S. majus</em>, <em>S. papillosum</em>, <em>S. pulchrum</em>, <em>S. rubellum</em>, <em>S. subfulvum</em>, <em>S. subnitens</em>, <em>S. subsecundum</em>, <em>S. tenellum</em>, <em>S. teres</em>, <em>Straminergon stramineum</em>, <em>Warnstorfia exannulata</em>, <em>W. procera</em>, <em>W. sarmentosa</em></p>
+<p><strong>Fåglar T-art:</strong> Sädgås (<em>Anser fabalis</em>), Smålom (<em>Gavia stellata</em>), Myrsnäppa (<em>Limicola falcinellus</em>), Storspov (<em>Numenius arquata</em>), Ljungpipare (<em>Pluvialis apricaria</em>), Orre (<em>Tetrao tetrix</em>), Svartsnäppa (<em>Tringa erythropus</em>), Grönbena (<em>Tringa glareola</em>)</p>
+<hr />
+<h2 id="6410-fuktangar">6410 Fuktängar</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Bartsia alpina</em>, <em>Carex flacca</em>, <em>C. hostiana</em>, <em>C. nigra</em>, <em>C. panicea</em>, <em>C. pulicaris</em>, <em>Galium uliginosum</em>, <em>Geum rivale</em>, <em>Inula salicina</em>, <em>Juncus conglomeratus</em>, <em>J. filiformis</em>, <em>Lotus pedunculatus</em>, <em>Molinia caerulea</em>, <em>Parnassia palustris</em>, <em>Polygala amarella</em>, <em>Potentilla erecta</em>, <em>Primula farinosa</em>, <em>Sanguisorba officinalis</em>, <em>Sesleria uliginosa</em>, <em>Tetragonolobus maritimus</em>, <em>Vaccinium uliginosum</em>, <em>Viola epipsila</em>, <em>V. persicifolia</em>
+<strong>Kärlväxter T-art:</strong> <em>Bidens cernua</em>, <em>Bistorta vivipara</em>, <em>Briza media</em>, <em>Cardamine pratensis</em>, <em>Carex capillaris</em>, <em>C. echinata</em>, <em>C. hartmanii</em>, <em>Dactylorhiza incarnata</em>, <em>D. maculata ssp. maculata</em>, <em>Danthonia decumbens</em>, <em>Eleocharis quinqueflora</em>, <em>Euphrasia rostkoviana ssp. rostkoviana</em>, <em>Gentiana pneumonanthe</em>, <em>Gentianella uliginosa</em>, <em>Gymnadenia conopsea</em>, <em>Linum catharticum</em>, <em>Lychnis flos-cuculi</em>, <em>Nardus stricta</em>, <em>Ophioglossum vulgatum</em>, <em>Pedicularis palustris</em>, <em>P. sylvatica</em>, <em>Pinguicula vulgaris</em>, <em>Primula farinosa</em>, <em>Rhinanthus minor</em>, <em>Scorzonera humilis</em>, <em>Selaginella selaginoides</em>, <em>Succisa pratensis</em>, <em>Taraxacum sect. Palustria</em>, <em>Thalictrum flavum</em>, <em>T. simplex ssp. boreale</em>, <em>Triglochin palustris</em>, <em>Trollius europaeus</em></p>
+<p><strong>Fåglar T-art:</strong> Skedand (<em>Anas clypeata</em>), Bläsand (<em>A. penelope</em>), Årta (<em>A. querquedula</em>), Kornknarr (<em>Crex crex</em>), Enkelbeckasin (<em>Gallinago gallinago</em>), Gulärla (<em>Motacilla flava</em>), Storspov (<em>Numenius arquata</em>), Småfläckig sumphöna (<em>Porzana porzana</em>), Rödbena (<em>Tringa totanus</em>), Tofsvipa (<em>Vanellus vanellus</em>)</p>
+<p><em>Källdokumentet behandlade endast kärlväxter och fåglar för denna naturtyp.</em></p>
+<hr />
+<h2 id="3150-naturligt-naringsrika-sjoar">3150 Naturligt näringsrika sjöar</h2>
+<p><strong>Kärlväxter K-art:</strong> Dyblad, Hornsärv, Andmat, Korsandmat, Gropnate, Bandnate, Krusnate, Trådnate, Grovnate, Ålnate, Långnate, Spädnate, Stor andmat, Vattenaloe, Sydbläddra, Vattenbläddra
+<strong>Kärlväxter T-art:</strong> Blomvass, Vårtsärv, Slamkrypa, Tretalig slamkrypa, Axslinga, Kransslinga, Vattenpilört, Uddnate, Trubbnate, Sjöranunkel</p>
+<p><strong>Mossor K-art:</strong> Bäcknäbbmossa, Vattenstjärna
+<strong>Mossor T-art:</strong> Vattengaffel</p>
+<p><strong>Fåglar T-art:</strong> Trastsångare, Skedand, Årta, Brunand, Svarttärna, Sothöna, Skrattmås, Skäggdopping, Gråhakedopping, Smådopping</p>
+<p><strong>Fiskar T-art:</strong> Gädda, Gös</p>
+<hr />
+<h2 id="9020-nordlig-adellovskog">9020 Nordlig ädellövskog</h2>
+<p><strong>Kärlväxter K-art:</strong> Lönn, Ramslök, Vitsippa, Gulsippa, Tandrot, Hassel, Ask, <em>Lathyrus vernus</em> (vårärt), <em>Mercurialis perennis</em> (bingel), <em>Milium effusum</em> (hässlebrodd), <em>Poa nemoralis</em> (lundgröe), Ek, <em>Polygonatum multiflorum</em> (storrams), Svalört, Lind, Alm
+<strong>Kärlväxter T-art (reg. B/K):</strong> Trolldruva, Strävlosta, Hässleklocka, Tandrot, Skogssvingel, Myskmadra, Blåsippa, Skogskorn, Vätteros, Vårärt, Skogsbingel, Storgröe, Kransrams, Lungört, Storrams, Underviol</p>
+<p><strong>Mossor K-art:</strong> Strimhättemossa, Trubbhättemossa, Skogshättemossa, Trädporella, <em>Homalia trichomanoides</em>
+<strong>Mossor T-art (reg. B/K):</strong> Piskbaronmossa, Liten baronmossa, Grov baronmossa, Fällmossa, Klippfrullania, Stubbspretmossa, Mörk husmossa, Platt fjädermossa, Grov fjädermossa, Aspfjädermossa, Trädporella</p>
+<p><strong>Lavar K-art:</strong> Rostfläck, Gul dropplav, Almlav, Lunglav, Rikfruktig blemlav
+<strong>Lavar T-art (reg. B/K):</strong> Rosa lundlav, Slanklav, Läderlappslav, Blylav, Olivbrun gytterlav, Almlav, Skinnlav, Lunglav, Skrovellav, Örtlav, Ädellav, Västlig njurlav, Bårdlav, Luddlav, Korallblylav, Grynig filtlav, Sydlig blekspik, Rödbrun blekspik, Brunskaftad blekspik, Gulvit blekspik, Liten blekspik, Havstulpanlav</p>
+<p><strong>Svampar K-art:</strong> Platticka, Rynkhätta, Svavelmusseron
+<strong>Svampar T-art (reg. B/K):</strong> Svartöra, Hasselticka, Kärnticka, Svavelticka, Stinkbrosking, Brödmärgsticka, Ekticka, Fläckticka, Prakttagging, Rutskinn</p>
+<hr />
+<h2 id="9050-naringsrik-granskog">9050 Näringsrik granskog</h2>
+<p><strong>OBS:</strong> Ingen fristående naturtypsvisa vägledning fanns publicerad vid sammanställningstillfället. Enligt NV:s skrivelse NV-09554-24 (2026-02-27, "Nya vägledningar och referensarealer för skogen") tar NV fram en <strong>ny vägledning för 9050</strong>, tillsammans med 9010 Taiga — se <a href="https://www.naturvardsverket.se/49318e/contentassets/4f247cff46314eb98e9c9bd5c2296db9/skrivelse-nya-vagledningar-och-referensarealer-for-skogen.pdf">skrivelsen</a>. Nedan är hämtat ur det äldre samlingsdokumentet "Svenska tolkningar Natura 2000 naturtyper — Skogar 9010–91F0" (2011): <a href="https://www.naturvardsverket.se/4ac567/contentassets/cd497005d9a74a5f829c11f54849bb0b/skogstolkningar_2011.pdf">PDF</a>. Räkna med att arturvalet ändras när den nya vägledningen publiceras.</p>
+<p><strong>Kärlväxter (EU-lista, latinska namn som i källan):</strong> <em>Actaea spicata</em>, <em>A. erythrocarpa</em>, <em>Botrychium virginianum</em>, <em>Calypso bulbosa</em>, <em>Carex remota</em>, <em>Cicerbita alpina</em>, <em>Crepis paludosa</em>, <em>Cypripedium calceolus</em> (guckusko), <em>Diplazium sibiricum</em>, <em>Epipogium aphyllum</em>, <em>Geranium sylvaticum</em>, <em>Impatiens noli-tangere</em>, <em>Matteuccia struthiopteris</em>, <em>Melica nutans</em>, <em>Milium effusum</em>, <em>Paris quadrifolia</em>, <em>Viola selkirkii</em></p>
+<p><strong>Mossor:</strong> <em>Brachythecium</em> spp., <em>Cirriphyllum piliferum</em>, <em>Eurhynchium</em> spp., <em>Plagiomnium</em> spp.</p>
+<p><strong>Karaktär enligt tolkningsdokumentet:</strong> näringsrik, mullrik brunjord eller basisk berggrund, gran ≥50 % av grundytan, hög- och lågörtvarianter, rik epifytflora möjlig.</p>
+<hr />
+<h2 id="8220-silikatbranter">8220 Silikatbranter</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Agrostis vinealis</em>, <em>Arabidopsis thaliana</em>, <em>Arabis glabra</em>, <em>Asplenium trichomanes ssp. trichomanes</em>, <em>Hylotelephium telephium ssp. maximum</em>, <em>Hypericum perforatum</em>, <em>Jasione montana</em>, <em>Lychnis viscaria</em>, <em>Polygonatum odoratum</em>, <em>Polypodium vulgare</em>, <em>Rumex acetosella</em>, <em>Silene rupestris</em>
+<strong>Kärlväxter T-art (reg. A/B/K):</strong> <em>Sedum annuum</em>, <em>Silene rupestris</em>, <em>Spergula morisonii</em>, <em>Woodsia ilvensis</em> (hällebräken); regionalt även <em>Asplenium septentrionale</em></p>
+<p><strong>Mossor K-art:</strong> <em>Abietinella abietina</em>, <em>Amphidium mougeotii</em>, <em>Bartramia pomiformis</em>, <em>Cynodontium strumiferum</em>, <em>Diplophyllum taxifolium</em>, <em>Fissidens adianthoides</em>, <em>Marsupella emarginata</em>, <em>Paraleucobryum longifolium</em>, <em>Pohlia cruda</em>, <em>Saelania glaucescens</em></p>
+<p><strong>Lavar K-art:</strong> <em>Bryoria fuscescens</em>, <em>Lasallia pustulata</em>, <em>Lichenomphalia hudsoniana</em>, <em>Parmelia saxatilis</em>, <em>Platismatia glauca</em>, <em>Protoparmeliopsis muralis</em>, <em>Sphaerophorus fragilis</em>, <em>Umbilicaria cylindrica</em>, <em>U. hyperborea</em>, <em>U. torrefacta</em>
+<strong>Lavar T-art:</strong> <em>Fuscidea cyathoides</em>, <em>Opegrapha abscondita</em>, <em>O. gyrocarpa</em>, <em>Ophioparma ventosa</em> (blodfläckslav), <em>Orphniospora moriopsis</em>, <em>Placopsis gelida</em>, <em>Rhizocarpon reductum</em></p>
+<hr />
+<h2 id="6510-slatterangar-i-laglandet">6510 Slåtterängar i låglandet</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Ajuga pyramidalis</em>, <em>Anthoxanthum odoratum</em>, <em>Carex caryophyllea</em>, <em>Centaurea jacea</em>, <em>Crepis praemorsa</em>, <em>Euphrasia stricta</em>, <em>Gentianella campestris</em>, <em>Gymnadenia conopsea</em>, <em>Hypochoeris maculata</em>, <em>Leontodon hispidus</em>, <em>Leucanthemum vulgare</em>, <em>Listera ovata</em>, <em>Melampyrum cristatum</em>, <em>Ophrys insectifera</em>, <em>Platanthera bifolia</em>, <em>Polygala amarella</em>, <em>P. vulgaris</em>, <em>Potentilla crantzii</em>, <em>Primula farinosa</em>, <em>P. veris</em>, <em>Rhinanthus minor</em>, <em>R. serotinus</em>, <em>Sanguisorba officinalis</em>, <em>Scorzonera humilis</em>, <em>Serratula tinctoria</em>, <em>Succisa pratensis</em>, <em>Trifolium montanum</em>
+<strong>Kärlväxter T-art:</strong> <em>Antennaria dioica</em>, <em>Arnica montana</em>, <em>Astragalus alpinus</em>, <em>Bistorta vivipara</em>, <em>Botrychium lunaria</em>, <em>Briza media</em>, <em>Campanula persicifolia</em>, <em>C. rotundifolia</em>, <em>Carex capillaris</em>, <em>C. flava</em>, <em>C. hartmanii</em>, <em>C. hostiana</em>, <em>C. montana</em>, <em>C. ornithopoda</em>, <em>C. panicea</em>, <em>C. pilulifera</em>, <em>C. pulicaris</em>, <em>Cirsium helenioides</em>, <em>Dactylorhiza incarnata</em>, <em>D. maculata ssp. fuchsii</em>, <em>D. maculata ssp. maculata</em>, <em>D. sambucina</em>, <em>Dianthus deltoides</em>, <em>Euphrasia stricta var. tenuis</em>, <em>Gentianella amarella</em>, <em>Linum catharticum</em>, <em>Parnassia palustris</em>, <em>Plantago media</em>, <em>Platanthera chlorantha</em>, <em>Potentilla tabernaemontani</em>, <em>Saussurea alpina</em>, <em>Selaginella selaginoides</em>, <em>Thalictrum alpinum</em>, <em>Trollius europaeus</em></p>
+<p><strong>Fjärilar T-art:</strong> <em>Adscita statices</em>, <em>Argynnis adippe</em>, <em>A. aglaja</em>, <em>Aricia artaxerxes</em>, <em>A. eumedon</em>, <em>A. nicias</em>, <em>Boloria euphrosyne</em>, <em>B. selene</em>, <em>Erynnis tages</em>, <em>Hamearis lucina</em>, <em>Lycaena hippothoe</em>, <em>L. virgaureae</em>, <em>Maniola jurtina</em>, <em>Melitaea athalia</em>, <em>Polyommatus semiargus</em>, <em>Pyrgus malvae</em>, <em>Zygaena lonicerae</em>, <em>Z. minos</em>, <em>Z. osterodensis</em>, <em>Z. viciae</em>, <em>Z. filipendulae</em></p>
+<hr />
+<h2 id="3160-myrsjoar">3160 Myrsjöar</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Carex lasiocarpa</em>, <em>C. magellanica</em>, <em>C. rostrata</em>, <em>Menyanthes trifoliata</em>, <em>Nuphar pumila</em> (dvärgnäckros), <em>Nymphaea alba</em> (vit näckros), <em>N. candida</em> (nordnäckros), <em>Rhynchospora alba</em>, <em>Sparganium natans</em>, <em>Utricularia minor</em></p>
+<p><strong>Mossor K-art:</strong> <em>Sphagnum auriculatum</em>, <em>S. cuspidatum</em>, <em>S. majus</em>, <em>Warnstorfia procera</em>, <em>W. trichophylla</em></p>
+<p><strong>Fåglar T-art:</strong> Knipa (<em>Bucephala clangula</em>), Sångsvan (<em>Cygnus cygnus</em>), Smålom (<em>Gavia stellata</em>), Myrsnäppa (<em>Limicola falcinellus</em>), Salskrake (<em>Mergus albellus</em>), Svarthakedopping (<em>Podiceps auritus</em>)</p>
+<p><strong>Trollsländor T-art:</strong> <em>Aeshna caerulea</em>, <em>A. subarctica</em>, <em>Coenagrion johanssoni</em>, <em>Leucorrhinia dubia</em></p>
+<hr />
+<h2 id="9060-asbarrskog">9060 Åsbarrskog</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Antennaria dioica</em>, <em>Arctostaphylos uva-ursi</em> (mjölon), <em>Astragalus alpinus</em> (fjällvedel), <em>Brachypodium pinnatum</em>, <em>Calamagrostis arundinacea</em> (piprör), <em>Carex digitata</em>, <em>C. ericetorum</em>, <em>Festuca ovina</em> (fårsvingel), <em>Fragaria vesca</em> (smultron), <em>Juniperus communis</em> (en), <em>Melica nutans</em> (bergslok), <em>Polygonatum odoratum</em> (getrams), <em>Pinus sylvestris</em> (tall), <em>Silene nutans</em>, <em>Thymus serpyllum</em> (backtimjan)
+<strong>Kärlväxter T-art:</strong> <em>Antennaria dioica</em>, <em>Hypochoeris maculata</em>, <em>Lathyrus niger</em>, <em>Pulsatilla vernalis</em> (fjällsippa), <em>Pyrola chlorantha</em> (grönpyrola)</p>
+<p><strong>Mossor K-art:</strong> Husmossa, Väggmossa</p>
+<p><strong>Svampar T-art:</strong> <em>Antrodia sinuosa</em>, <em>Phaeolus schweinitzii</em>, <em>Phellinus pini</em> (tallticka)</p>
+<p><strong>Skalbaggar T-art:</strong> <em>Calitys scabra</em>, <em>Cicindela sylvatica</em> (sandjägare), <em>Nothorhina punctata</em>, <em>Ostoma ferruginea</em>, <em>Phaenops cyanea</em>, <em>Tomicus minor</em>, <em>Tragosoma depsarium</em></p>
+<p><strong>Steklar T-art:</strong> <em>Andrena barbilabris</em>, <em>A. clarkella</em>, <em>A. vaga</em>, <em>Colletes cunicularius</em> (sandbin)</p>
+<hr />
+<h2 id="6210-kalkgrasmarker">6210 Kalkgräsmarker</h2>
+<p><strong>Kärlväxter K-art:</strong> Våradonis, Getväppling, Backskafting, Darrgräs, Fågelstarr, Väddklint, Brudbröd, Fjällgentiana, Ängsgentiana, Brudsporre, Solvända, Ängshavre, Slåtterfibbla, Sommarfibbla, Gullusern, Sankt Pers nycklar, Johannesnycklar, Göknycklar, Krutbrännare, Flentimotej, Rödkämpar, Rosettjungfrulin, Toppjungfrulin, Vårfingerört, Fältsippa, Backsmörblomma, Fältvädd, Axveronika
+<strong>Kärlväxter T-art:</strong> Göknycklar (<em>Anacamptis morio</em>), Grusviva, Lundtrav, Färgmåra, Fjällvedel, Svarthö, Ormrot, Topplåsbräken, Låsbräken, Rutlåsbräken, Spåtistel, Jordtistel, Klasefibbla, Grönkulla, Drakblomma, Trollsmultron, Backsmultron, Fältgentiana, Honungsblomster, Vildlin, Käringtand, Fältvedel, Fjällgröe, Jungfrulin, Luddfingerört, Backfingerört, Småfingerört, Smalbladig lungört, Ullranunkel, Harmynta, Stor fetknopp, Dvärglummer, Sandmaskrosor, Fjällruta, Backklöver</p>
+<p><strong>Fjärilar T-art:</strong> Allmän metallvingesvärmare, Hedpärlemorfjäril, Midsommarblåvinge, Brun blåvinge, Mindre blåvinge, Skogsvisslare, Silversmygare, Svartfläckig blåvinge (<em>Maculinea arion</em>), Slåttergräsfjäril, Ängsnätfjäril, Väpplingblåvinge, Smultronvisslare, Allmän bastardsvärmare, Liten bastardsvärmare</p>
+<hr />
+<h2 id="9750-91e0-svamlovskog">9750 / 91E0 Svämlövskog</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Alnus glutinosa</em> (klibbal), <em>A. incana</em> (gråal), <em>Anemone ranunculoides</em> (gulsippa), <em>Angelica sylvestris</em> (strätta), <em>Betula pubescens</em>, <em>Cardamine amara</em> (bäckbräsma), <em>Carex remota</em>, <em>Eupatorium cannabinum</em> (hampflockel), <em>Filipendula ulmaria</em> (älggräs), <em>Fraxinus excelsior</em> (ask), <em>Geum rivale</em> (humleblomster), <em>Lycopus europaeus</em> (strandklo), <em>Prunus padus</em> (hägg), <em>Stellaria nemorum</em> (nässelklocka), <em>Ulmus glabra</em> (alm), <em>Urtica dioica</em> (brännässla)
+<strong>Kärlväxter T-art:</strong> <em>Athyrium filix-femina</em> (majbräken), <em>Calla palustris</em> (missne), <em>Carex rhynchophysa</em>, <em>Epilobium hornemannii</em>, <em>Gagea spathacea</em>, <em>Impatiens noli-tangere</em> (springkorn), <em>Matteuccia struthiopteris</em> (strutbräken), <em>Osmunda regalis</em> (safsa), <em>Viola selkirkii</em>, <em>V. uliginosa</em> (kärrviol)</p>
+<p><strong>Mossor T-art:</strong> <em>Anomodon attenuatus</em>, <em>Brachythecium rivulare</em>, <em>Buxbaumia viridis</em>, <em>Callicladium haldanianum</em>, <em>Conocephalum conicum</em>, <em>Dichelyma capillaceum</em>, <em>D. falcatum</em>, <em>Geocalyx graveolens</em>, <em>Herzogiella turfacea</em>, <em>Homalia trichomanoides</em>, <em>Hookeria lucens</em>, <em>Hylocomiastrum umbratum</em>, <em>Jungermannia subulata var. leiantha</em>, <em>Leucobryum glaucum</em>, <em>Myrinia pulvinata</em>, <em>Plagiomnium elatum</em>, <em>P. medium</em>, <em>Plagiothecium latebricola</em>, <em>Porella cordaeana</em>, <em>Pseudobryum cinclidioides</em></p>
+<p><strong>Fåglar T-art:</strong> Stjärtmes (<em>Aegithalos caudatus</em>), Mindre hackspett (<em>Dendrocopos minor</em>)</p>
+<hr />
+<h2 id="3110-naringsfattiga-slattsjoar">3110 Näringsfattiga slättsjöar</h2>
+<p><strong>Kärlväxter:</strong> Skaftslamkrypa (T), Vekt braxengräs (K/T), Styvt braxengräs (K/T), Löktåg (K), Strandpryl (K/T), Notblomster (K/T), Hårslinga (K), Klotgräs (T), Bäcknate (K), Sylört (T)</p>
+<p><strong>Mossor K-art:</strong> Hårkrokmossa, Stor näckmossa, Vattenkrokmossa</p>
+<p><strong>Fåglar:</strong> Drillsnäppa (K/T), Storlom (K/T), Fiskgjuse (T), Fisktärna (T), Silvertärna (T)</p>
+<p><strong>Fiskar T-art:</strong> Siklöja, Öring, Storröding, Harr, Hornsimpa</p>
+<p><strong>Kräftdjur:</strong> Flodkräfta (T), Sjösyrsa (K)</p>
+<hr />
+<h2 id="9160-naringsrik-ekskog">9160 Näringsrik ekskog</h2>
+<p><strong>Kärlväxter T-art:</strong> Trolldruva, Gulsippa, Myskmadra, Murgröna, Gulplister, Vätteros, Lundslok, Skogsbingel, Storrams, Lungört, Sårläka, Buskstjärnblomma, Underviol
+<strong>Kärlväxter K-art:</strong> Tandrot, Avenbok, Lundäxing, Bergek, Ek, Vårärt, Skogstry, Lind</p>
+<p><strong>Mossor T-art:</strong> Piskbaronmossa, Liten baronmossa, Grov baronmossa, Fällmossa, Klippfrullania, Guldlockmossa, Mörk husmossa, Blek stjärnmossa, Platt fjädermossa, Grov fjädermossa, Aspfjädermossa, Trädporella, Krusig ulota</p>
+<p><strong>Lavar T-art:</strong> Kattfotslav, Gulpudrad spiklav, Gammelekslav, Lunglav, Skrovellav, Västlig njurlav, Bårdlav, Mussellav, Korallblylav, Grynig filtlav, Bokvårtlav, Rosa skärelav, Rödbrun blekspik, Havstulpanlav, Blomskägglav</p>
+<p><strong>Svampar T-art:</strong> Hasselticka, Saffransticka, Tårticka, Kärnticka, Blekticka, Brödmärgsticka, Rostticka, Rutskinn</p>
+<hr />
+<h2 id="7230-rikkarr">7230 Rikkärr</h2>
+<p><strong>Kärlväxter T-art:</strong> <em>Bartsia alpina</em>, <em>Carex bergrothii</em>, <em>C. buxbaumii ssp. buxbaumii</em>, <em>C. capillaris</em>, <em>C. flava</em>, <em>C. heleonastes</em>, <em>C. hostiana</em>, <em>C. jemtlandica</em>, <em>C. lepidocarpa</em>, <em>C. oederi</em>, <em>C. saxatilis</em>, <em>Dactylorhiza majalis</em>, <em>D. traunsteineri</em>, <em>Eleocharis quinqueflora</em>, <em>Epipactis palustris</em> (kärrknipprot), <em>Eriophorum latifolium</em>, <em>Gymnadenia conopsea</em>, <em>Herminium monorchis</em> (honungsblomster), <em>Liparis loeselii</em>, <em>Ophrys insectifera</em> (flugblomster), <em>Parnassia palustris</em>, <em>Pinguicula vulgaris</em> (tätört), <em>Primula farinosa</em>, <em>Selaginella selaginoides</em>, <em>Taraxacum crocinum</em>, <em>Tofieldia pusilla</em>, <em>Trichophorum alpinum</em>
+<strong>Kärlväxter K-art:</strong> <em>Carex appropinquata</em>, <em>C. buxbaumii ssp. buxbaumii</em>, <em>C. capitata</em>, <em>C. dioica</em>, <em>C. flacca</em>, <em>C. jemtlandica</em>, <em>C. lepidocarpa</em>, <em>Dactylorhiza incarnata</em>, <em>Eleocharis quinqueflora</em>, <em>Epipactis palustris</em>, <em>Eriophorum latifolium</em>, <em>Juncus subnodulosus</em>, <em>Ophrys insectifera</em>, <em>Parnassia palustris</em>, <em>Pinguicula vulgaris</em>, <em>Primula farinosa</em>, <em>Salix myrsinites</em>, <em>Schoenus ferrugineus</em>, <em>S. nigricans</em></p>
+<p><strong>Mossor T-art:</strong> <em>Amblyodon dealbatus</em>, <em>Aneura pinguis</em>, <em>Calliergon giganteum</em>, <em>Catoscopium nigritum</em>, <em>Cinclidium stygium</em>, <em>C. subrotundum</em>, <em>Cratoneuron filicinum</em>, <em>Hamatocaulis vernicosus</em>, <em>Lophozia rutheana</em>, <em>Meesia triquetra</em>, <em>M. uliginosa</em>, <em>Moerckia hibernica</em>, <em>Palustriella commutata</em>, <em>P. decipiens</em>, <em>P. falcata</em>, <em>Philonotis calcarea</em>, <em>P. fontana</em>, <em>P. seriata</em>, <em>P. tomentella</em>, <em>Plagiomnium elatum</em>, <em>Pseudocalliergon trifarium</em>, <em>P. turgescens</em>, <em>Scorpidium revolvens</em>, <em>Tayloria lingulata</em>
+<strong>Mossor K-art:</strong> <em>Campylium stellatum</em>, <em>Catoscopium nigritum</em>, <em>Cinclidium stygium</em>, <em>Paludella squarrosa</em>, <em>Scorpidium cossoni</em>, <em>S. scorpioides</em>, <em>Sphagnum warnstorfii</em>, <em>Tomentypnum nitens</em></p>
+<hr />
+<h2 id="6230-stagg-grasmarker">6230 Stagg-gräsmarker</h2>
+<p><strong>Kärlväxter T-art:</strong> <em>Ajuga pyramidalis</em>, <em>Antennaria dioica</em>, <em>Arnica montana</em>, <em>Bistorta vivipara</em>, <em>Botrychium lunaria</em>, <em>Campanula rotundifolia</em>, <em>Carex pilulifera</em>, <em>Dactylorhiza maculata ssp. maculata</em>, <em>Danthonia decumbens</em>, <em>Euphrasia nemorosa</em>, <em>E. stricta</em>, <em>Galium saxatile</em>, <em>G. suecicum</em>, <em>Gentianella campestris</em>, <em>Gymnadenia conopsea</em>, <em>G. nigra</em>, <em>Helianthemum nummularium</em>, <em>Hypochoeris maculata</em>, <em>Nardus stricta</em>, <em>Orchis mascula</em>, <em>Pedicularis sylvatica</em>, <em>Pilosella lactucella</em>, <em>Platanthera bifolia</em>, <em>P. chlorantha</em>, <em>Polygala vulgaris</em>, <em>Rhinanthus minor</em>, <em>Succisa pratensis</em>, <em>Viola canina ssp. canina</em>, <em>V. canina ssp. montana</em>
+<strong>Kärlväxter K-art:</strong> <em>Agrostis capillaris</em>, <em>Antennaria dioica</em>, <em>Arnica montana</em>, <em>Calluna vulgaris</em>, <em>Carex pilulifera</em>, <em>C. pallescens</em>, <em>C. panicea</em>, <em>Danthonia decumbens</em>, <em>Euphrasia stricta</em>, <em>Festuca ovina</em>, <em>Galium saxatile</em>, <em>Lathyrus linifolius</em>, <em>Nardus stricta</em>, <em>Pilosella officinarum</em>, <em>Polygala vulgaris</em>, <em>Potentilla erecta</em>, <em>Succisa pratensis</em>, <em>Veronica officinalis</em>, <em>Viola canina ssp. canina</em></p>
+<p><strong>Fjärilar T-art:</strong> <em>Adscita statices</em>, <em>Argynnis adippe</em>, <em>A. aglaja</em>, <em>A. niobe</em>, <em>Aricia artaxerxes</em>, <em>A. eumedon</em>, <em>A. nicias</em>, <em>Boloria euphrosyne</em>, <em>B. selene</em>, <em>Erynnis tages</em>, <em>Hesperia comma</em>, <em>Lycaena hippothoe</em>, <em>L. virgaureae</em>, <em>Maniola jurtina</em>, <em>Melitaea cinxia</em> (väddnätfjäril), <em>Polyommatus semiargus</em>, <em>Pyrgus malvae</em>, <em>Zygaena lonicerae</em>, <em>Z. minos</em>, <em>Z. osterodensis</em>, <em>Z. viciae</em>, <em>Z. filipendulae</em></p>
+<hr />
+<h2 id="7110-hogmossar-inkl-delyta-7111-oppna-mosseplan">7110 Högmossar (inkl. delyta 7111 Öppna mosseplan)</h2>
+<p><strong>Kärlväxter K-art:</strong> <em>Andromeda polifolia</em> (rosling), <em>Betula nana</em> (dvärgbjörk), <em>Carex pauciflora</em>, <em>Empetrum nigrum</em> (kråkbär), <em>Eriophorum vaginatum</em> (tuvull), <em>Rhododendron tomentosum</em> (skvattram), <em>Utricularia intermedia</em>, <em>U. minor</em>, <em>Vaccinium oxycoccos</em> (tranbär)
+<strong>Kärlväxter T-art:</strong> <em>Carex limosa</em>, <em>Drosera anglica</em>, <em>D. rotundifolia</em> (sileshår), <em>Rhynchospora alba</em>, <em>Scheuchzeria palustris</em> (ryssgräs), <em>Trichophorum cespitosum</em></p>
+<p><strong>Mossor K-art:</strong> <em>Odontoschisma sphagni</em>, <em>Sphagnum angustifolium</em>, <em>S. balticum</em>, <em>S. cuspidatum</em>, <em>S. fimbriatum</em>, <em>S. fuscum</em>, <em>S. magellanicum</em>, <em>S. majus</em>, <em>S. rubellum</em>
+<strong>Mossor T-art:</strong> <em>Sphagnum austinii</em>, <em>S. tenellum</em></p>
+<p><strong>Lavar K-art:</strong> <em>Cladonia stygia</em></p>
+<p><strong>Fåglar T-art:</strong> Blå kärrhök (<em>Circus cyaneus</em>), Gulärla (<em>Motacilla flava</em>), Storspov (<em>Numenius arquata</em>), Småspov (<em>N. phaeopus</em>), Ljungpipare (<em>Pluvialis apricaria</em>), Grönbena (<em>Tringa glareola</em>)</p>
+<hr />
+<h2 id="nasta-steg-forslag">Nästa steg (förslag)</h2>
+<ol>
+<li><strong>Prioritera efter faktisk areal</strong>, inte bara antal delytor — koppla denna lista mot <code>natura_habitats_joined</code>-lagret i <code>sodermanland_n2000_joined.gpkg</code> (privata natura-2000-repot) för att se vilka naturtyper som dominerar arealmässigt i respektive N2000-område.</li>
+<li><strong>Kontrollera artnamnen mot originalet</strong> (PDF-länkar ovan) eller Artfakta.se innan listorna används i en formell bedömning — se reservationen högst upp i dokumentet.</li>
+<li><strong>Komplettera med de återstående ~13 mindre vanliga naturtyperna</strong> om/när fältprogrammet 2026–2027 pekar ut objekt med dessa (4030, 3130, 6280, 9180, 6430, 9110, 8210, 9030 m.fl.).</li>
+<li><strong>Följ upp 9050</strong>-vägledningen — ny version är under framtagande hos NV (ref. NV-09554-24).</li>
+</ol>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>

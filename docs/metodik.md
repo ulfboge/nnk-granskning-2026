@@ -124,6 +124,8 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 
 **Kodvärden för `Vad ska kontrolleras`** (från lathunden, tre likadana rullistor så flera val går att göra): Typiska och karakteristiska arter · Strukturer · Hävd · Funktioner (hydrologi, störningar) · Morfologi (jordart, formationer) · Annan negativ påverkan
 
+*Se [Typiska och karakteristiska arter](typiska-arter.html) för artlistor per naturtyp, som stöd när detta väljs.*
+
 **Kodvärden för `Metod för kontroll`**: Fältbesök · Fältinventering (standardiserad metodik) · Skrivbord / Granska mot andra underlag · Annan metod
 *Obs: detta fält är framåtsyftande — det anger vilken metod som **bör** användas, inte hur du hittills gjort.*
 

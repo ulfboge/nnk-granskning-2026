@@ -156,7 +156,7 @@ def bygg_dok(md_sokvag, ut_sokvag):
     return titel, len(sida)
 
 
-DOKUMENT = ["arbetsplan", "runbook", "metodik"]
+DOKUMENT = ["arbetsplan", "runbook", "metodik", "typiska-arter"]
 
 if __name__ == "__main__":
     rot = pathlib.Path(__file__).parent
