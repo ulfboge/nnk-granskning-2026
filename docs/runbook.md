@@ -2,8 +2,8 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Datum:** 2026-08-17  
-**Omfattning:** 68 uppgifter i åtta arbetspaket, 302 konkreta steg  
+**Datum:** 2026-08-21  
+**Omfattning:** 68 uppgifter i åtta arbetspaket, 310 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -35,10 +35,11 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 1. Öppna ArcGIS Pro. Skapa ett nytt projekt: `NNK_D_2026`. Sätt kartans koordinatsystem till SWEREF 99 TM (EPSG:3006) — Map Properties → Coordinate Systems → sök 3006.
 2. Anslut till NNK Ajourhålla enligt manualen på VIC Natur (vicnatur.naturvardsverket.se/nnk). Insert → Connections → Database, eller den anslutningsfil IT tillhandahåller.
-3. Välj ett litet testobjekt — förslag: SE0220012 Nävsjöskogen, 5,0 ha, 1 polygon. Minimal risk om något går fel.
-4. Checka ut området. Kontrollera att du får ut geometri OCH attribut, och att fälten KOMMENTAR, NNK_KOMMEN och REDIGERARE finns (de saknas i den publika versionen).
-5. Gör INGEN ändring. Checka in igen direkt och verifiera att det går utan fel.
-6. Notera i granskningsloggen: fungerar utcheckning ja/nej, vilken version av tillägget, eventuella felmeddelanden.
+3. Titta på inspelningen av hur man praktiskt uppdaterar i NNK på VIC Natur (samma sida) innan du checkar ut testobjektet. (Möte 12 aug: båda behöver den.)
+4. Välj ett litet testobjekt — förslag: SE0220012 Nävsjöskogen, 5,0 ha, 1 polygon. Minimal risk om något går fel.
+5. Checka ut området. Kontrollera att du får ut geometri OCH attribut, och att fälten KOMMENTAR, NNK_KOMMEN och REDIGERARE finns (de saknas i den publika versionen).
+6. Gör INGEN ändring. Checka in igen direkt och verifiera att det går utan fel.
+7. Notera i granskningsloggen: fungerar utcheckning ja/nej, vilken version av tillägget, eventuella felmeddelanden.
 
 ### A1.3 · Åtkomst till samverkansytan för Livsmiljötyper
 
@@ -92,9 +93,9 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v35** · **[Handläggare]**
 
-1. Boka 60 min med Stefan Henriksson.
+1. Boka 60 min med Ing-Marie, ordinarie EC naturskydd. Stefan Henriksson har slutat.
 2. Ta med: `kunskapslage.html` (öppna i webbläsare — nyckeltalen finns överst) och arbetsplanens avsnitt 0.
-3. Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar Karin; (4) att Karins 50 % faktiskt är skyddad tid.
+3. Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar Karin; (4) att Karins 50 % faktiskt är skyddad tid; (5) vilka EC och AC som ska sitta i styrgruppen (beslut 12 aug).
 4. Fråga specifikt vad som förväntas i årsredovisningen för 2026 och när texten ska vara inne.
 5. Dokumentera besluten i granskningsloggen — särskilt bortvalen. De är det du kommer behöva försvara.
 
@@ -103,9 +104,10 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 **v36** · **[Handläggare]**
 
 1. Be Naturvårdsenheten om deras förvaltningsindelning — vem ansvarar för vilka objekt.
-2. Om ingen sammanställd lista finns: utgå från `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett, kolumn B–C, och be dem fylla i kolumn I *Förvaltare*.
-3. Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten, SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.
-4. Detta är samma sak som H1.1 — gör dem i ett svep.
+2. Per Flodin är första rådgivare för skötselhistorik och tidigare åtgärder — fråga honom innan du jagar dokument på egen hand.
+3. Om ingen sammanställd lista finns: utgå från `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett, kolumn B–C, och be dem fylla i kolumn I *Förvaltare*.
+4. Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten, SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.
+5. Detta är samma sak som H1.1 — gör dem i ett svep.
 
 ### A3.3 · Rollfördelning med Karin
 
@@ -135,6 +137,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 3. NNK-uttag: spara i `data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra.
 4. Committa i Git efter varje arbetsdag. Loggen är underlaget till både arbetspaket E och F — den får inte gå förlorad.
 5. Kontrollera att `data/uttag/*.gpkg` och `data/nnk/*.gpkg` ligger i `.gitignore` — stora geodatafiler hör inte hemma i Git.
+6. Diarieföring (beslut 5 aug): öppna ärenden allteftersom förfrågningar kommer in, och stäng dem när svaret är diariefört. Stäm av rutinen med diariet.
 
 ### A4.2 · Etablera rutin för NNK-uttag
 
@@ -295,7 +298,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 4. Kontrollera avverkningsanmälningar via Skogsstyrelsen för objekt med skogsmark — det är den vanligaste faktiska förändringen.
 5. Vilsta har 6 Åtgärdas-ytor.
 
-### C7.1 · Okarterade ytor — Båven och Tullgarn södra
+### C7.1 · Okarterade ytor och länssöverskridande objekt
 
 **v44** · **[Handläggare]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
@@ -304,6 +307,9 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 3. Är hålet terrestert är det ett faktiskt karteringsgap. Felanmäl till `NNK-kartering@metria.se` med sitecode, en skärmbild och en kort beskrivning.
 4. Är det vatten gäller samma sak som för Båven.
 5. Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).
+6. Länssöverskridande objekt: arealer utanför länsgräns tillfaller **rapporterande län** enligt NV:s NNK-statistik (fliken *Beskrivning*). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3. I D-län är Tullgarn södra (SE0220034, mot Stockholms län) det tydligaste fallet; Ridö-Sundbyholmsarkipelagen södra (SE0220077) gränsar mot Västmanland.
+7. Kontakta NNK/NRF-handläggaren på det andra länet och kom överens om vem som bedömer vilken del. Vet du inte vem: maila `kartlitsN2000@naturvardsverket.se`. Det är inte Metrias sak — `NNK-kartering@metria.se` är bara för karteringsgap.
+8. Dokumentera vilket län som är rapporterande och hur ni delar arbetet. (Åtgärd från möte 20 aug.)
 
 ---
 
@@ -595,6 +601,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 2. Ta med: `docs/metodik.md` avsnitt 1 (citaten som visar att NV godkänner lokalkännedom) och Åtgärdas-fliken i blanketten.
 3. Var konkret om vad du ber om: ca 60 minuter per förvaltare, plus tid att fylla i en blankett.
 4. Erbjud något tillbaka: den kunskap som förs in i NNK blir ett bättre underlag för deras egen skötselplanering, och åtgärdsbehov förs vidare till SkötselDOS.
+5. På sikt: be om en kort informationspunkt på Naturvårdsenhetens enhetsmöte så att förvaltarna vet att NNK-granskningen pågår (beslut 20 aug).
 
 ### H2.1 · Gå igenom de 141 Åtgärdas-ytorna
 
@@ -663,10 +670,11 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v38–v46** · **[Karin]** · förutsätter H3.2
 
-1. Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar.
-2. Sök på enhetsmappar, i diariet, och i SkötselDOS. Fråga även dem som slutat, om det går.
-3. Prioritera underlag som rör de 277 ytorna med fältdata men ej bedömd status — där finns det med största sannolikhet ett protokoll någonstans.
-4. Skanna in det som bara finns på papper.
+1. Börja med Per Flodin — han sitter på skötselhistorik, artkunskap och tidigare åtgärder.
+2. Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar, dokumenterade skötselåtgärder och LIFE-projekt.
+3. Sök på enhetsmappar, i diariet, och i SkötselDOS. Fråga även dem som slutat, om det går.
+4. Prioritera underlag som rör de 277 ytorna med fältdata men ej bedömd status — där finns det med största sannolikhet ett protokoll någonstans.
+5. Skanna in det som bara finns på papper.
 
 ### H4.2 · Registrera funna underlag i datakälleregistret
 
@@ -771,4 +779,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.0 · 2026-08-17 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py`*
+*Runbook v1.1 · 2026-08-21 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py`*

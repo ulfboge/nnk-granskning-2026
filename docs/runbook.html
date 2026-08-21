@@ -117,7 +117,7 @@ tr:last-child td{border-bottom:0}
 <li><a href="#c41-batch-b-angs-och-hagmark-inland">C4.1 · Batch B — ängs- och hagmark inland</a></li>
 <li><a href="#c51-batch-c-vatmark-och-vattendrag">C5.1 · Batch C — våtmark och vattendrag</a></li>
 <li><a href="#c61-batch-d-skog-och-adellov">C6.1 · Batch D — skog och ädellöv</a></li>
-<li><a href="#c71-okarterade-ytor-baven-och-tullgarn-sodra">C7.1 · Okarterade ytor — Båven och Tullgarn södra</a></li>
+<li><a href="#c71-okarterade-ytor-och-lanssoverskridande-objekt">C7.1 · Okarterade ytor och länssöverskridande objekt</a></li>
 </ul>
 </li>
 <li><a href="#d-tillstandsbedomning-i-nnk">D. Tillståndsbedömning i NNK</a><ul>
@@ -183,8 +183,8 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Datum:</strong> 2026-08-17<br />
-<strong>Omfattning:</strong> 68 uppgifter i åtta arbetspaket, 302 konkreta steg<br />
+<p><strong>Datum:</strong> 2026-08-21<br />
+<strong>Omfattning:</strong> 68 uppgifter i åtta arbetspaket, 310 konkreta steg<br />
 <strong>Hör ihop med:</strong> <code>docs/arbetsplan.md</code> (varför) · <code>kontrollrum.html</code> (överblick och avbockning) · <code>docs/metodik.md</code> (förvaltardialogen)</p>
 <hr />
 <h2 id="sa-anvands-dokumentet">Så används dokumentet</h2>
@@ -206,6 +206,7 @@ tr:last-child td{border-bottom:0}
 <ol>
 <li>Öppna ArcGIS Pro. Skapa ett nytt projekt: <code>NNK_D_2026</code>. Sätt kartans koordinatsystem till SWEREF 99 TM (EPSG:3006) — Map Properties → Coordinate Systems → sök 3006.</li>
 <li>Anslut till NNK Ajourhålla enligt manualen på VIC Natur (vicnatur.naturvardsverket.se/nnk). Insert → Connections → Database, eller den anslutningsfil IT tillhandahåller.</li>
+<li>Titta på inspelningen av hur man praktiskt uppdaterar i NNK på VIC Natur (samma sida) innan du checkar ut testobjektet. (Möte 12 aug: båda behöver den.)</li>
 <li>Välj ett litet testobjekt — förslag: SE0220012 Nävsjöskogen, 5,0 ha, 1 polygon. Minimal risk om något går fel.</li>
 <li>Checka ut området. Kontrollera att du får ut geometri OCH attribut, och att fälten KOMMENTAR, NNK_KOMMEN och REDIGERARE finns (de saknas i den publika versionen).</li>
 <li>Gör INGEN ändring. Checka in igen direkt och verifiera att det går utan fel.</li>
@@ -257,9 +258,9 @@ tr:last-child td{border-bottom:0}
 <h3 id="a31-avstamning-med-chef">A3.1 · Avstämning med chef</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong></p>
 <ol>
-<li>Boka 60 min med Stefan Henriksson.</li>
+<li>Boka 60 min med Ing-Marie, ordinarie EC naturskydd. Stefan Henriksson har slutat.</li>
 <li>Ta med: <code>kunskapslage.html</code> (öppna i webbläsare — nyckeltalen finns överst) och arbetsplanens avsnitt 0.</li>
-<li>Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar Karin; (4) att Karins 50 % faktiskt är skyddad tid.</li>
+<li>Punkter att få beslut om: (1) att 2026 är ett kartläggningsår, inte ett produktionsår; (2) att marina miljöer medvetet lämnas; (3) tidsbudget 107 dagar handläggare + 61 dagar Karin; (4) att Karins 50 % faktiskt är skyddad tid; (5) vilka EC och AC som ska sitta i styrgruppen (beslut 12 aug).</li>
 <li>Fråga specifikt vad som förväntas i årsredovisningen för 2026 och när texten ska vara inne.</li>
 <li>Dokumentera besluten i granskningsloggen — särskilt bortvalen. De är det du kommer behöva försvara.</li>
 </ol>
@@ -267,6 +268,7 @@ tr:last-child td{border-bottom:0}
 <p><strong>v36</strong> · <strong>[Handläggare]</strong></p>
 <ol>
 <li>Be Naturvårdsenheten om deras förvaltningsindelning — vem ansvarar för vilka objekt.</li>
+<li>Per Flodin är första rådgivare för skötselhistorik och tidigare åtgärder — fråga honom innan du jagar dokument på egen hand.</li>
 <li>Om ingen sammanställd lista finns: utgå från <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code>, fliken Blankett, kolumn B–C, och be dem fylla i kolumn I <em>Förvaltare</em>.</li>
 <li>Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten, SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.</li>
 <li>Detta är samma sak som H1.1 — gör dem i ett svep.</li>
@@ -296,6 +298,7 @@ tr:last-child td{border-bottom:0}
 <li>NNK-uttag: spara i <code>data/uttag/</code> med datum i filnamnet så före/efter-jämförelser går att göra.</li>
 <li>Committa i Git efter varje arbetsdag. Loggen är underlaget till både arbetspaket E och F — den får inte gå förlorad.</li>
 <li>Kontrollera att <code>data/uttag/*.gpkg</code> och <code>data/nnk/*.gpkg</code> ligger i <code>.gitignore</code> — stora geodatafiler hör inte hemma i Git.</li>
+<li>Diarieföring (beslut 5 aug): öppna ärenden allteftersom förfrågningar kommer in, och stäng dem när svaret är diariefört. Stäm av rutinen med diariet.</li>
 </ol>
 <h3 id="a42-etablera-rutin-for-nnk-uttag">A4.2 · Etablera rutin för NNK-uttag</h3>
 <p><strong>v36</strong> · <strong>[Handläggare]</strong> · förutsätter A1.2</p>
@@ -435,7 +438,7 @@ tr:last-child td{border-bottom:0}
 <li>Kontrollera avverkningsanmälningar via Skogsstyrelsen för objekt med skogsmark — det är den vanligaste faktiska förändringen.</li>
 <li>Vilsta har 6 Åtgärdas-ytor.</li>
 </ol>
-<h3 id="c71-okarterade-ytor-baven-och-tullgarn-sodra">C7.1 · Okarterade ytor — Båven och Tullgarn södra</h3>
+<h3 id="c71-okarterade-ytor-och-lanssoverskridande-objekt">C7.1 · Okarterade ytor och länssöverskridande objekt</h3>
 <p><strong>v44</strong> · <strong>[Handläggare]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
 <ol>
 <li>SE0220303 Båven: 4 845 ha okarterat av 6 200 ha. Det är sjöytan. Lägg INGEN tid på ytterkanterna — FAQ fråga 16 och 29. Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Dokumentera i loggen att det är medvetet nedprioriterat, med hänvisning till FAQ.</li>
@@ -443,6 +446,9 @@ tr:last-child td{border-bottom:0}
 <li>Är hålet terrestert är det ett faktiskt karteringsgap. Felanmäl till <code>NNK-kartering@metria.se</code> med sitecode, en skärmbild och en kort beskrivning.</li>
 <li>Är det vatten gäller samma sak som för Båven.</li>
 <li>Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).</li>
+<li>Länssöverskridande objekt: arealer utanför länsgräns tillfaller <strong>rapporterande län</strong> enligt NV:s NNK-statistik (fliken <em>Beskrivning</em>). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3. I D-län är Tullgarn södra (SE0220034, mot Stockholms län) det tydligaste fallet; Ridö-Sundbyholmsarkipelagen södra (SE0220077) gränsar mot Västmanland.</li>
+<li>Kontakta NNK/NRF-handläggaren på det andra länet och kom överens om vem som bedömer vilken del. Vet du inte vem: maila <code>kartlitsN2000@naturvardsverket.se</code>. Det är inte Metrias sak — <code>NNK-kartering@metria.se</code> är bara för karteringsgap.</li>
+<li>Dokumentera vilket län som är rapporterande och hur ni delar arbetet. (Åtgärd från möte 20 aug.)</li>
 </ol>
 <hr />
 <h2 id="d-tillstandsbedomning-i-nnk">D. Tillståndsbedömning i NNK</h2>
@@ -690,6 +696,7 @@ tr:last-child td{border-bottom:0}
 <li>Ta med: <code>docs/metodik.md</code> avsnitt 1 (citaten som visar att NV godkänner lokalkännedom) och Åtgärdas-fliken i blanketten.</li>
 <li>Var konkret om vad du ber om: ca 60 minuter per förvaltare, plus tid att fylla i en blankett.</li>
 <li>Erbjud något tillbaka: den kunskap som förs in i NNK blir ett bättre underlag för deras egen skötselplanering, och åtgärdsbehov förs vidare till SkötselDOS.</li>
+<li>På sikt: be om en kort informationspunkt på Naturvårdsenhetens enhetsmöte så att förvaltarna vet att NNK-granskningen pågår (beslut 20 aug).</li>
 </ol>
 <h3 id="h21-ga-igenom-de-141-atgardas-ytorna">H2.1 · Gå igenom de 141 Åtgärdas-ytorna</h3>
 <p><strong>v37</strong> · <strong>[Handläggare]</strong></p>
@@ -751,7 +758,8 @@ tr:last-child td{border-bottom:0}
 <h3 id="h41-eftersok-odokumenterade-underlag">H4.1 · Eftersök odokumenterade underlag</h3>
 <p><strong>v38–v46</strong> · <strong>[Karin]</strong> · förutsätter H3.2</p>
 <ol>
-<li>Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar.</li>
+<li>Börja med Per Flodin — han sitter på skötselhistorik, artkunskap och tidigare åtgärder.</li>
+<li>Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar, dokumenterade skötselåtgärder och LIFE-projekt.</li>
 <li>Sök på enhetsmappar, i diariet, och i SkötselDOS. Fråga även dem som slutat, om det går.</li>
 <li>Prioritera underlag som rör de 277 ytorna med fältdata men ej bedömd status — där finns det med största sannolikhet ett protokoll någonstans.</li>
 <li>Skanna in det som bara finns på papper.</li>
@@ -1013,7 +1021,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table>
 <hr />
-<p><em>Runbook v1.0 · 2026-08-17 · genererad ur <code>natura-2000: scripts/analysis/uppgifter.py</code> med <code>bygg_kontrollrum.py</code></em></p>
+<p><em>Runbook v1.1 · 2026-08-21 · genererad ur <code>natura-2000: scripts/analysis/uppgifter.py</code> med <code>bygg_kontrollrum.py</code></em></p>
 </div>
 <script>
 (function(){

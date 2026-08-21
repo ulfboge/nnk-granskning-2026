@@ -146,7 +146,7 @@ NNK/NRF 2026 — Södermanland
 │   ├── C4  Batch B — ängs- och hagmark inland
 │   ├── C5  Batch C — våtmark och vattendrag
 │   ├── C6  Batch D — skog och ädellöv
-│   └── C7  Okarterade ytor (Båven, Tullgarn södra)
+│   └── C7  Okarterade ytor och länssöverskridande objekt
 │
 ├── D. Tillståndsbedömning i NNK                           [v40–v50]
 │   ├── D1  Driftsättning nya NNK-attribut, utbildning
@@ -186,17 +186,17 @@ NNK/NRF 2026 — Södermanland
 | ID | Aktivitet | Klart | Ansvar |
 |---|---|---|---|
 | A1.1 | Beställ och verifiera behörighet: ArcGIS Pro, NNK in-/utcheckning, ArcGIS Enterprise, SkötselDOS, Artportalen, KartLitS WebbGIS | v35 | Handläggare |
-| A1.2 | Verifiera att NNK-utcheckning fungerar mot ett testobjekt | v35 | Handläggare |
+| A1.2 | Verifiera att NNK-utcheckning fungerar mot ett testobjekt; titta först på inspelningen på VIC Natur | v35 | Handläggare |
 | A1.3 | Åtkomst till samverkansytan för Livsmiljötyper (dokument, manualer, kodlista) | v34 | Handläggare |
 | A2.1 | Läs `Handledning NNK 20260703.pdf` och `Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` | v34 | Båda |
 | A2.2 | Gå igenom `Kodlista_NNK_20260703.xlsx` — särskilt kategoriindelning 2026 och undergrupper | v35 | Handläggare |
 | A2.3 | Installera `KartLits_NNK_GIS_mall_v_2` och testa mot ett objekt | v35 | Handläggare |
 | A2.4 | Hämta fastställda vägledningar för livsmiljötyper — **kontrollera vilka som är fastställda vs. remiss** (FAQ f.10) | v36 | Handläggare |
-| A3.1 | Avstämning med chef: mandat, tidsbudget, förväntad leverans till årsredovisningen | v35 | Handläggare |
-| A3.2 | Kartlägg vem på Naturvårdsenheten som förvaltar vilka objekt — de sitter på skötselhistoriken | v36 | Handläggare |
+| A3.1 | Avstämning med Ing-Marie (EC naturskydd): mandat, tidsbudget, styrgrupp, årsredovisning | v35 | Handläggare |
+| A3.2 | Kartlägg vem på Naturvårdsenheten som förvaltar vilka objekt — börja med Per Flodin | v36 | Handläggare |
 | A3.3 | Rollfördelning med 50 %-kollegan (se avsnitt 6) | v35 | Båda |
 | A3.4 | Anmäl er till KartLitS arbetsgrupper (skog, gräsmark, våtmark) och funktionsbrevlådan `kartlitsN2000@naturvardsverket.se` | v36 | Handläggare |
-| A4.1 | Skapa arbetsstruktur: uttagsmapp, granskningslogg, fältprotokoll | v36 | Handläggare |
+| A4.1 | Skapa arbetsstruktur: uttagsmapp, granskningslogg, fältprotokoll, diarierutin | v36 | Handläggare |
 | A4.2 | Etablera rutin för NNK-uttag så att statistiken kan följas över tid | v36 | Handläggare |
 
 **Leverans A:** Fungerande arbetsplats, dokumenterad rollfördelning, bekräftad tolkning av uppdraget.
@@ -253,12 +253,14 @@ Detta är volymarbetet. Rutinen körs batch för batch och gäller **utbredning 
 
 Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävdberoende och snabba att gå igenom, vilket ger rutinen och tidsuppskattningen kalibrerad innan de tunga batcharna.
 
-#### C7 Okarterade ytor
+#### C7 Okarterade ytor och länssöverskridande objekt
 
 | Objekt | Okarterat | Åtgärd |
 |---|---|---|
 | Båven SE0220303 | 4 845 ha av 6 200 | Sjöyta, limniskt. **Lägg ingen tid på ytterkanterna** (FAQ f.16). Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Notera i planen som medvetet nedprioriterat. |
-| Tullgarn södra SE0220034 | 299 ha av 2 014 | Kontrollera vad ytan består av — om terrestert är det ett faktiskt karteringsgap som ska anmälas till Metria (FAQ f.26) |
+| Tullgarn södra SE0220034 | 299 ha av 2 014 | Kontrollera vad ytan består av — om terrestert är det ett faktiskt karteringsgap som ska anmälas till Metria (FAQ f.26). Objektet gränsar mot Stockholms län — se nedan. |
+
+**Länssöverskridande SCI:** arealer utanför länsgräns tillfaller **rapporterande län** enligt NV:s NNK-statistik (fliken *Beskrivning* i `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx`). Det är samma sak som förklarar 0,2 %-avvikelsen i bilaga 3. Kontakta NNK/NRF-handläggaren på det andra länet; vet du inte vem, maila `kartlitsN2000@naturvardsverket.se`. I D-län: Tullgarn södra mot Stockholm, Ridö-Sundbyholmsarkipelagen södra mot Västmanland.
 
 **Leverans C:** Granskningslogg för 40 P1-objekt, dokumenterade differenser mot bevarandeplan, lista över ytor som kräver fältkontroll 2027.
 
@@ -353,7 +355,7 @@ Fullständig metodik finns i `docs/metodik.md`. Insamlingsinstrument: `blankette
 | H3.1 | Boka förvaltarsamtal, ca 60 min per förvaltare, flera objekt per möte | v37 | Kollega |
 | H3.2 | Genomför samtalen — börja med Åtgärdas-ytorna, gå därefter på hävdberoende marker | v38–v44 | Båda |
 | H3.3 | Samordna med fältplaneringen (B1.2): besök inte det förvaltaren redan kan svara på | löpande | Handläggare |
-| H4.1 | Eftersök odokumenterade underlag: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter, skötselplansbilagor, foton | v38–v46 | Kollega |
+| H4.1 | Eftersök odokumenterade underlag: börja med Per Flodin; protokoll, ÄoB, konsultrapporter, LIFE-projekt, skötselplansbilagor, foton | v38–v46 | Kollega |
 | H4.2 | Registrera funna underlag i datakälleregistret `data/sources_sodermanland.csv` | löpande | Kollega |
 | H5.1 | För in i KartLitS granskningslager samma vecka som samtalet | löpande | Båda |
 | H5.2 | Registrera i NNK efter avstämning — tillståndsfälten först efter driftsättning v40 | v41–v48 | Handläggare |
@@ -611,4 +613,4 @@ Kategoriindelningen (Skog, Gräsmark, Våtmark m.fl.) följer kolumnrubrikerna *
 
 *Underlag: NNK-statistik per Natura 2000-område, D-län, uttag 2026-01-20 (Naturvårdsverket) samt NNK-kartering D-län, 14 830 polygoner. Samtliga arealer avser karterad areal inom Natura 2000 (SCI/SAC).*
 
-*Arbetsplan v1.3 · 2026-08-17 — arbetspaket H tillagt; källkritisk rättelse om den publika NNK:s strippade attribut; områdeskoppling genomförd; nedbrytning till 68 uppgifter med 302 steg i runbooken och kontrollrummet*
+*Arbetsplan v1.4 · 2026-08-21 — Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 68 uppgifter med 310 steg i runbooken och kontrollrummet*
