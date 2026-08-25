@@ -15,10 +15,10 @@ Det gör att sidorna fungerar bakom brandvägg och proxy, och att de går att sp
 | Fil | Vad det är |
 |-----|------------|
 | [`index.html`](index.html) | Kontrollpanel — ingång till allt |
-| [`kontrollrum.html`](kontrollrum.html) | Gantt v34–v52, 68 uppgifter med avbockning, leveranser, milstolpar |
+| [`kontrollrum.html`](kontrollrum.html) | Gantt v34–v52, 58 uppgifter med avbockning, leveranser, milstolpar |
 | [`kunskapslage.html`](kunskapslage.html) | Kunskapsläge per Natura 2000-område |
 | [`docs/arbetsplan.md`](docs/arbetsplan.md) | Arbetsplan v1.3 — kravnedbrytning, arbetspaket A–H |
-| [`docs/runbook.md`](docs/runbook.md) | Runbook — steg för steg genom alla 68 uppgifter |
+| [`docs/runbook.md`](docs/runbook.md) | Runbook — steg för steg genom alla 58 uppgifter |
 | [`docs/metodik.md`](docs/metodik.md) | Metodik förvaltarkunskap — arbetspaket H |
 | [`docs/typiska-arter.md`](docs/typiska-arter.md) | Typiska/karakteristiska arter per naturtyp — stöd för fältet "Vad ska kontrolleras" |
 | [`blanketter/`](blanketter/) | Excelmall för insamling av förvaltarkunskap |

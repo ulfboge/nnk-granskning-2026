@@ -100,7 +100,6 @@ tr:last-child td{border-bottom:0}
 <li><a href="#3-hierarkisk-arbetsstruktur-wbs">3. Hierarkisk arbetsstruktur (WBS)</a></li>
 <li><a href="#4-arbetspaket-i-detalj">4. Arbetspaket i detalj</a><ul>
 <li><a href="#a-etablering-och-forutsattningar-v34v36">A. Etablering och förutsättningar · v34–v36</a></li>
-<li><a href="#b-faltsasong-2026-v34v41-tidskritiskt">B. Fältsäsong 2026 · v34–v41 — tidskritiskt</a></li>
 <li><a href="#c-skrivbordsgranskning-av-utbredning-v35v46">C. Skrivbordsgranskning av utbredning · v35–v46</a></li>
 <li><a href="#d-tillstandsbedomning-i-nnk-v40v50">D. Tillståndsbedömning i NNK · v40–v50</a></li>
 <li><a href="#e-sammanstallning-av-kunskapslaget-v45v50">E. Sammanställning av kunskapsläget · v45–v50</a></li>
@@ -135,12 +134,12 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Version:</strong> 1.3
-<strong>Datum:</strong> 2026-08-17
+<p><strong>Version:</strong> 1.5
+<strong>Datum:</strong> 2026-08-25
 <strong>Omfattning:</strong> Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 <strong>Bemanning:</strong> 1 handläggare heltid + 1 kollega ca 50 %
 <strong>Underlag:</strong> <code>natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf</code> (2026-07-03) · <code>natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf</code> · <code>natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf</code> · <code>natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx</code> · <code>natura-2000: docs/underlag/kartering.csv</code>
-<strong>Syskondokument:</strong> <code>docs/runbook.md</code> (steg för steg, 68 uppgifter) · <code>kontrollrum.html</code> (Gantt och avbockning) · <code>docs/metodik.md</code> (arbetspaket H) · <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> · <code>kunskapslage.html</code> · <code>natura-2000: scripts/analysis/koppla_omraden.py</code></p>
+<strong>Syskondokument:</strong> <code>docs/runbook.md</code> (steg för steg, 58 uppgifter) · <code>kontrollrum.html</code> (Gantt och avbockning) · <code>docs/metodik.md</code> (arbetspaket H) · <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> · <code>kunskapslage.html</code> · <code>natura-2000: scripts/analysis/koppla_omraden.py</code></p>
 <hr />
 <h2 id="0-sammanfattning-vad-det-har-aret-faktiskt-handlar-om">0. Sammanfattning — vad det här året faktiskt handlar om</h2>
 <p>Regeringsuppdraget sträcker sig över 2026 och 2027, men <strong>2026 är inte ett produktionsår — det är ett kartläggnings- och planeringsår.</strong> FAQ fråga 6 säger klart vad som ska vara klart vid årsskiftet: en redovisning av <em>vad vi vet</em>, <em>vad vi inte vet</em>, och <em>en plan för hur det okända ska bli känt</em>. Själva tillståndsbedömningen ska vara klar under 2027.</p>
@@ -161,8 +160,8 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <tbody>
 <tr>
 <td>v34–v39 (aug–sep)</td>
-<td>Orientering, systemåtkomst, skrivbordsgranskning av <strong>utbredning och gränser</strong>, fältkontroll i prioriterade hävdberoende objekt medan säsongen håller</td>
-<td>Fältsäsongen tar slut; tillståndsattributen finns inte än</td>
+<td>Orientering, systemåtkomst, skrivbordsgranskning av <strong>utbredning och gränser</strong> utifrån befintlig kunskap (bevarandeplan, ortofoto, TUVA/VMI/VISS/Artportalen, förvaltarsamtal)</td>
+<td>Fältkontroll är flyttad till 2027 — 2026 fokuserar på det som redan är känt</td>
 </tr>
 <tr>
 <td>v40–v46 (okt–nov)</td>
@@ -415,12 +414,6 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 │   ├── A3  Intern förankring och rollfördelning
 │   └── A4  Arbetsmiljö för data (repo, mallar, versionshantering)
 │
-├── B. Fältsäsong 2026 — det som inte kan vänta            [v34–v41]
-│   ├── B1  Fältplanering och urval
-│   ├── B2  Fältkontroll hävdberoende gräsmark (batch B)
-│   ├── B3  Fältkontroll sällsynta livsmiljötyper (batch C, D)
-│   └── B4  Fältdokumentation och inmatningsunderlag
-│
 ├── C. Skrivbordsgranskning av utbredning                  [v35–v46]
 │   ├── C1  Granskningsrutin och checklista
 │   ├── C2  Batch S — storobjekt (Skärgårdsreservaten, Nynäs)
@@ -433,7 +426,6 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 ├── D. Tillståndsbedömning i NNK                           [v40–v50]
 │   ├── D1  Driftsättning nya NNK-attribut, utbildning
 │   ├── D2  Registrering där kunskap redan finns
-│   ├── D3  Registrering av fältdata från B
 │   └── D4  Avvikelser mot bevarandeplan/reservatsbeslut
 │
 ├── E. Sammanställning av kunskapsläget                    [v45–v50]
@@ -514,6 +506,30 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td>Handläggare</td>
 </tr>
 <tr>
+<td>A2.5</td>
+<td><strong>Begär datauttag för D-län</strong> ur NNK-Ajourhålla (punkter/linjer/ytor) — mejla <code>Sandra.Wennberg@naturvardsverket.se</code>. Skicka snarast, svarstid okänd (manualens steg 1)</td>
+<td>v35</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.6</td>
+<td>Kopiera in uttaget i mallens lager med verktyget Append (<code>Use the field map to reconcile field differences</code>), döp om domäner med prefix <code>LstD</code> (manualens steg 3)</td>
+<td>v37</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.7</td>
+<td>Publicera lagren som hostat webblager i Länsstyrelsens ArcGIS Enterprise-portal, döpt <code>LstD NNK granskning</code> (manualens steg 4)</td>
+<td>v37</td>
+<td>Handläggare</td>
+</tr>
+<tr>
+<td>A2.8</td>
+<td>Skapa webbGIS från de publicerade lagren enligt Länsstyrelsernas Generellt kartstöd; kontakt vid problem: <code>giampaolo.cocca@lansstyrelsen.se</code> (manualens steg 5)</td>
+<td>v37</td>
+<td>Handläggare</td>
+</tr>
+<tr>
 <td>A3.1</td>
 <td>Avstämning med Ing-Marie (EC naturskydd): mandat, tidsbudget, styrgrupp, årsredovisning</td>
 <td>v35</td>
@@ -551,74 +567,18 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Upptäckt 2026-08-25:</strong> <code>LstAB NNK granskning</code> (nämnd i den nationella Lathund granskning WebbGIS-KartLitS)
+är Stockholms läns eget publicerade granskningslager, använt som illustrationsexempel — inte en delad resurs.
+Varje län ska enligt <code>Manual NNK mall för granskning.pdf</code> begära eget uttag och publicera ett eget lager med
+länskoden som prefix. D-läns lager (<code>LstD NNK granskning</code>) finns inte än — se A2.5–A2.8 ovan. Detta blockerar
+allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills det är publicerat.</p>
+</blockquote>
 <p><strong>Leverans A:</strong> Fungerande arbetsplats, dokumenterad rollfördelning, bekräftad tolkning av uppdraget.</p>
 <hr />
-<h3 id="b-faltsasong-2026-v34v41-tidskritiskt">B. Fältsäsong 2026 · v34–v41 — <strong>tidskritiskt</strong></h3>
-<p>Fältsäsongen för gräsmark tar slut i praktiken kring månadsskiftet september/oktober. Detta är den enda delen av årets arbete som har ett hårt fönster.</p>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Aktivitet</th>
-<th>Klart</th>
-<th>Ansvar</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B1.1</td>
-<td>Välj ut 15–25 objekt ur batch B + de sällsynta typerna i batch C och D</td>
-<td>v34</td>
-<td>Handläggare</td>
-</tr>
-<tr>
-<td>B1.2</td>
-<td>Stäm av urvalet med förvaltarna på Naturvårdsenheten — vilka objekt har de aktuell kunskap om? Besök inte det som redan är känt</td>
-<td>v35</td>
-<td>Handläggare</td>
-</tr>
-<tr>
-<td>B1.3</td>
-<td>Boka fältdagar, klarlägg markägarkontakter</td>
-<td>v35</td>
-<td>Kollega</td>
-</tr>
-<tr>
-<td>B2.1</td>
-<td>Fältkontroll hävdberoende gräsmark, ca 8–10 fältdagar</td>
-<td>v36–v40</td>
-<td>Båda</td>
-</tr>
-<tr>
-<td>B3.1</td>
-<td>Riktade besök på sällsynta typer: 7110 Tovhulta stormosse, 7230 Bråtamossen/Pilgöljan, 9060 Fjellskäfte/Tore Grav, 9180 Lotsängsbacken, 6280 Persö, 4030 Lundäng/Åsa gravfält</td>
-<td>v36–v41</td>
-<td>Handläggare</td>
-</tr>
-<tr>
-<td>B4.1</td>
-<td>Dokumentera per besökt yta: livsmiljötyp, hävdstatus, strukturer/funktioner, typiska arter, påverkan, bedömd tillståndsklass, osäkerhet</td>
-<td>löpande</td>
-<td>Båda</td>
-</tr>
-<tr>
-<td>B4.2</td>
-<td>Artobservationer → Artportalen (FAQ f.8)</td>
-<td>löpande</td>
-<td>Båda</td>
-</tr>
-<tr>
-<td>B4.3</td>
-<td>Identifierat åtgärdsbehov → SkötselDOS (FAQ f.8)</td>
-<td>löpande</td>
-<td>Kollega</td>
-</tr>
-</tbody>
-</table>
 <blockquote>
-<p><strong>Viktigt:</strong> dokumentera bedömningen och grunden för den redan i fält, men <strong>mata inte in tillståndet i NNK förrän de nya attributen är driftsatta (v40)</strong>. Använd fältprotokoll som mellanlager.</p>
+<p><strong>Fältkontroll flyttad till 2027.</strong> Arbetspaket B (fältsäsong) genomfördes tidigare i planen v34–v41. Beslut 2026-08-25: inget fältarbete görs under 2026 — se avsnitt 8. Frigjord tid är omfördelad till arbetspaket C, D och H (avsnitt 6.2).</p>
 </blockquote>
-<p><strong>Leverans B:</strong> 15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund.</p>
 <hr />
 <h3 id="c-skrivbordsgranskning-av-utbredning-v35v46">C. Skrivbordsgranskning av utbredning · v35–v46</h3>
 <p>Detta är volymarbetet. Rutinen körs batch för batch och gäller <strong>utbredning och gränser</strong> — inte tillstånd.</p>
@@ -766,12 +726,6 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td>D2.3</td>
 <td>Där tillståndet är oförändrat sedan tidigare bedömning: registrera det aktivt med grund och datum — "oförändrat" är också ett svar (FAQ f.9)</td>
 <td>löpande</td>
-<td>Båda</td>
-</tr>
-<tr>
-<td>D3.1</td>
-<td>Mata in fältdata från arbetspaket B</td>
-<td>v41–v45</td>
 <td>Båda</td>
 </tr>
 <tr>
@@ -1062,7 +1016,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td><strong>P1</strong></td>
 <td>40</td>
 <td>≥ 20 ha hävdberoende <strong>eller</strong> ≥ 5 ha sällsynt livsmiljötyp</td>
-<td>Full skrivbordsgranskning + fältkontroll där möjligt</td>
+<td>Full skrivbordsgranskning utifrån befintlig kunskap (fältkontroll flyttad till 2027)</td>
 </tr>
 <tr>
 <td><strong>P2</strong></td>
@@ -1171,19 +1125,14 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td>4 dagar</td>
 </tr>
 <tr>
-<td>B Fältsäsong</td>
-<td>15 dagar</td>
-<td>10 dagar</td>
-</tr>
-<tr>
 <td>C Skrivbordsgranskning</td>
-<td>26 dagar</td>
-<td>16 dagar</td>
+<td>34 dagar</td>
+<td>21 dagar</td>
 </tr>
 <tr>
 <td>D Tillståndsbedömning</td>
-<td>13 dagar</td>
-<td>8 dagar</td>
+<td>18 dagar</td>
+<td>11 dagar</td>
 </tr>
 <tr>
 <td>E Sammanställning</td>
@@ -1202,8 +1151,8 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </tr>
 <tr>
 <td>H Förvaltardialog</td>
-<td>8 dagar</td>
-<td>7 dagar</td>
+<td>10 dagar</td>
+<td>9 dagar</td>
 </tr>
 <tr>
 <td>Möten, samverkan, oförutsett</td>
@@ -1218,7 +1167,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </tbody>
 </table>
 <blockquote>
-<p>Tiden till arbetspaket H är tagen från C och D, inte lagd ovanpå. Det är en medveten växling: varje objekt där förvaltaren kan svara direkt är ett objekt du slipper granska från grunden, och de 277 ytorna med befintlig fältkunskap men utan tillståndsbedömning kostar mindre att lösa via ett samtal än via en skrivbordsgranskning.</p>
+<p><strong>Uppdaterad 2026-08-25:</strong> arbetspaket B (fältsäsong, tidigare 15/10 dagar) är borttaget — fältkontroll flyttas till 2027. De frigjorda dagarna är omfördelade till C (+8/+5), D (+5/+3) och H (+2/+2), så att totalsumman är oförändrad. Tiden till arbetspaket H är därutöver delvis tagen från C och D, inte lagd ovanpå: varje objekt där förvaltaren kan svara direkt är ett objekt du slipper granska från grunden, och de 277 ytorna med befintlig fältkunskap men utan tillståndsbedömning kostar mindre att lösa via ett samtal än via en skrivbordsgranskning.</p>
 </blockquote>
 <hr />
 <h2 id="7-tidplan-v34v52-2026">7. Tidplan v34–v52 2026</h2>
@@ -1234,51 +1183,51 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <tbody>
 <tr>
 <td>v34</td>
-<td>A1.3, A2.1, B1.1</td>
+<td>A1.3, A2.1</td>
 <td>A2.1</td>
 <td></td>
 </tr>
 <tr>
 <td>v35</td>
-<td>A1.1, A1.2, A2.2, A2.3, A3.1, A3.3, B1.2</td>
-<td>B1.3, <strong>H1.1 förvaltarkartläggning</strong></td>
+<td>A1.1, A1.2, A2.2, A2.3, A3.1, A3.3</td>
+<td><strong>H1.1 förvaltarkartläggning</strong></td>
 <td></td>
 </tr>
 <tr>
 <td>v36</td>
-<td>A2.4, A3.2, A3.4, A4, <strong>H1.2</strong>, <strong>B2 fält</strong></td>
-<td><strong>B2 fält</strong>, H1.1 klar, C4 batch B</td>
+<td>A2.4, A3.2, A3.4, A4, <strong>H1.2</strong>, C4 batch B</td>
+<td>H1.1 klar, C4 batch B</td>
 <td><strong>M1: arbetsplats klar</strong></td>
 </tr>
 <tr>
 <td>v37</td>
-<td><strong>B2 fält</strong>, <strong>H2.1 Åtgärdas-ytorna</strong>, H2.2</td>
+<td>C4 batch B, <strong>H2.1 Åtgärdas-ytorna</strong>, H2.2</td>
 <td>C4 batch B, <strong>H3.1 boka samtal</strong></td>
 <td></td>
 </tr>
 <tr>
 <td>v38</td>
-<td><strong>B2 fält</strong>, C3 batch A, <strong>H3.2 samtal</strong></td>
+<td>C4 batch B klar, C3 batch A, <strong>H3.2 samtal</strong></td>
 <td>C4 batch B klar, <strong>H3.2</strong>, H4.1</td>
 <td><strong>M2: batch B granskad</strong></td>
 </tr>
 <tr>
 <td>v39</td>
-<td>B3 fält, C3 batch A, D1.1, H3.2</td>
+<td>C3 batch A, C2 batch S start, D1.1, H3.2</td>
 <td>C3 batch A, H3.2, H4.1</td>
 <td></td>
 </tr>
 <tr>
 <td>v40</td>
-<td><strong>B3 fält sista</strong>, D1.2, D1.3</td>
+<td>C2 batch S, D1.2, D1.3</td>
 <td>D1.2, D1.3</td>
 <td><strong>M3: nya NNK-attribut driftsatta</strong></td>
 </tr>
 <tr>
 <td>v41</td>
-<td>C2 batch S start, D2.1, H5.2</td>
-<td>C3 batch A klar, D3.1, H4.1</td>
-<td><strong>M4: fältsäsong avslutad</strong></td>
+<td>C2 batch S, D2.1, H5.2</td>
+<td>C3 batch A klar, H4.1</td>
+<td></td>
 </tr>
 <tr>
 <td>v42</td>
@@ -1300,7 +1249,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </tr>
 <tr>
 <td>v45</td>
-<td>C2 batch S, D3.1, H5.2</td>
+<td>C2 batch S, D2.1, H5.2</td>
 <td>E1.1, C6 batch D, H4.1 klar</td>
 <td></td>
 </tr>
@@ -1376,12 +1325,6 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td>Nya NNK-attribut driftsatta, utbildning genomförd</td>
 <td>v40</td>
 <td>~2026-10-02</td>
-</tr>
-<tr>
-<td>M4</td>
-<td>Fältsäsong 2026 avslutad och dokumenterad</td>
-<td>v41</td>
-<td>~2026-10-09</td>
 </tr>
 <tr>
 <td>M8</td>
@@ -1460,6 +1403,10 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td><strong>Naturreservat utanför N2000</strong> får screening, inte genomgång</td>
 <td>f.6 (deadline 2027)</td>
 </tr>
+<tr>
+<td><strong>Fältkontroll flyttas till 2027.</strong> Arbetspaket B (fältsäsong) genomförs inte under 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Ytor som ändå kräver fältbesök flaggas i granskningsloggen till 2027</td>
+<td>Beslut Johan 2026-08-25</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1487,22 +1434,28 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <td>FAQ f.10 säger uttryckligen att man får avvakta. Dokumentera vilka typer som blockeras och ta med i planen</td>
 </tr>
 <tr>
-<td>Fältsäsongen tar slut innan urvalet är klart</td>
-<td>Hög</td>
-<td>Medel</td>
-<td>B1.1 är klart redan v34. Prioritera hävdberoende gräsmark före allt annat</td>
-</tr>
-<tr>
 <td>Storobjekten sväljer hela hösten</td>
 <td>Hög</td>
 <td>Hög</td>
 <td>Stratifierad metod (5.3), tidsatt fönster v41–v46, hård avgränsning</td>
 </tr>
 <tr>
+<td>Fler ytor än väntat går inte att avgöra utan fältbesök, eftersom ingen fältkontroll görs 2026</td>
+<td>Medel</td>
+<td>Medel</td>
+<td>Dokumentera tydligt i granskningsloggen och lista dem som prioriterat underlag till fältplaneringen 2027 (leverans C)</td>
+</tr>
+<tr>
 <td>Försenad systemåtkomst</td>
 <td>Hög</td>
 <td>Medel</td>
 <td>Börja med det som går utan NNK-skrivrättighet: bevarandeplaner, WebbGIS-mallen, statistikuttaget</td>
+</tr>
+<tr>
+<td>Granskningslagret <code>LstD NNK granskning</code> inte publicerat i tid</td>
+<td>Hög</td>
+<td>Hög — allt WebbGIS-baserat granskningsarbete (E3, H5, förvaltarsamtal) blockeras</td>
+<td>Skicka uttagsbeställningen till NV omgående (A2.5); eskalera via <code>kartlitsN2000@naturvardsverket.se</code> om Sandra Wennberg inte svarat inom en vecka</td>
 </tr>
 <tr>
 <td>BIDOS-underlaget visar sig sämre än väntat vid granskning</td>
@@ -1529,6 +1482,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <li><strong>Tullgarn södra:</strong> 299 ha okarterat — är det ett karteringsgap som ska felanmälas till Metria?</li>
 <li><strong>Tidpunkt:</strong> Bekräfta driftsättningsdatum för de nya tillståndsattributen, och när utbildning ges.</li>
 <li><strong>Formatet för planen:</strong> FAQ f.7 säger att formatet återkommer "så snart vi kan". Efterfråga det tidigt så att E-arbetet kan struktureras rätt från början.</li>
+<li><strong>Klimatvägledningens tolkning av försämringsbegreppet:</strong> EU-kommissionens vägledning om Natura 2000 och klimatförändringarna (C/2026/3567, 13.7.2026) anger att klimatdrivna, oundvikliga naturtypsövergångar (t.ex. en skogsnaturtyp som ersätts av en annan) bör hanteras genom översyn av det områdesspecifika bevarandemålet snarare än att automatiskt bokföras som en försämring enligt artikel 6.2 habitatdirektivet. Ska detta tillämpas i NNK-statusbedömningen 2027, och finns nationell vägledning på gång som adresserar frågan?</li>
 </ol>
 <hr />
 <h2 id="11-uppfoljning">11. Uppföljning</h2>
@@ -2039,7 +1993,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </ul>
 <hr />
 <p><em>Underlag: NNK-statistik per Natura 2000-område, D-län, uttag 2026-01-20 (Naturvårdsverket) samt NNK-kartering D-län, 14 830 polygoner. Samtliga arealer avser karterad areal inom Natura 2000 (SCI/SAC).</em></p>
-<p><em>Arbetsplan v1.4 · 2026-08-21 — Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 68 uppgifter med 310 steg i runbooken och kontrollrummet</em></p>
+<p><em>Arbetsplan v1.5 · 2026-08-25 — fältarbete (arbetspaket B) flyttat till 2027, frigjord tid omfördelad till C/D/H (avsnitt 0, 6.2, 7, 8); Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 58 uppgifter med 266 steg i runbooken och kontrollrummet</em></p>
 </div>
 <script>
 (function(){

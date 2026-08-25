@@ -3,7 +3,7 @@
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
 **Datum:** 2026-08-21  
-**Omfattning:** 68 uppgifter i åtta arbetspaket, 310 konkreta steg  
+**Omfattning:** 58 uppgifter i sju arbetspaket, 266 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -89,6 +89,44 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 4. Notera i granskningsloggen vilka typer som saknar fastställd vägledning. De blockeras och ska med i planen för 2027 (uppgift F1.1) som ett eget stycke.
 5. Kom ihåg: nu gällande vägledningar är från 2026 för akvatiska livsmiljötyper samt taiga (9010) och örtrik skog med gran (9050), men från 2011–2012 för övriga terrestra typer.
 
+### A2.5 · Begär datauttag för D-län
+
+**v35** · **[Handläggare]** · brådskande — svarstid från NV okänd
+
+1. Mejla `Sandra.Wennberg@naturvardsverket.se` och begär ett uttag ur NNK-Ajourhålla för Södermanlands län (punkter, linjer, ytor), enligt `Manual NNK mall för granskning.pdf` steg 1.
+2. Du får instruktioner via mejl för att ladda ner en zipfil med geodatabasen för uttaget.
+3. Spara ner zipfilen, extrahera geodatabasen och öppna filerna i ArcGIS Pro. Kontrollera att allt ser rimligt ut (jämför gärna mot exemplet för Stockholm i manualen).
+4. Detta är en extern beroende som blockerar A2.6–A2.8 och i förlängningen allt WebbGIS-baserat granskningsarbete — skicka mejlet så tidigt som möjligt, gärna samtidigt som A2.3.
+
+### A2.6 · Kopiera in uttaget i mallen
+
+**v37** · **[Handläggare]** · förutsätter A2.3, A2.5
+
+1. Öppna ArcGIS Pro-projektet med både mallen (A2.3) och datauttaget (A2.5) tillagda.
+2. Öppna verktyget **Append** (under Tools/Geoprocessing).
+3. Under *Target Dataset*, ange mallens lager för punkter, linjer eller ytor (ett i taget). Under *Input Dataset*, ange motsvarande lager ur uttaget.
+4. Under *Field Matching Type*, välj **Use the field map to reconcile field differences**. Klicka Run.
+5. Spara editeringarna när alla tre lager (punkt/linje/yta) är klara.
+6. Döp om domänerna i geodatabasen med prefixet `LstD` inför publiceringen, enligt manualens rekommendation.
+
+### A2.7 · Publicera granskningslagret i portalen
+
+**v37** · **[Handläggare]** · förutsätter A2.6
+
+1. Ta bort de rena uttagsfilerna från projektet (de som bara användes som källa till Append) så att bara de ifyllda mallagren återstår.
+2. Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. `LstD NNK granskning`.
+3. Ta ställning till om vissa koder ska sållas bort, eller om bara objekt som överlappar ett Natura 2000-område ska behållas, innan publicering.
+4. Klicka **Share → Web Layer** i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — jobbdatorns nätverksrestriktioner kan påverka vilken som går att nå från fältet).
+
+### A2.8 · Skapa webbGIS från de publicerade lagren
+
+**v37** · **[Handläggare]** · förutsätter A2.7
+
+1. Följ Länsstyrelsernas interna vägledning *Generellt kartstöd* för hur man bygger ett webbGIS från publicerade lager (länken finns i manualen, på Länsstyrelsernas intranät).
+2. Lägg till `LstD NNK granskning` och relevanta referenslager (t.ex. *NV Naturtypskartan NNK*, *NV Natura2000 områden*) i webbGIS-appen.
+3. Testa redigering mot ett enskilt objekt innan du meddelar kollegan att lagret är klart att använda (jämför med rutinen i A2.3, punkt 5).
+4. Vid frågor eller problem: `giampaolo.cocca@lansstyrelsen.se`.
+
 ### A3.1 · Avstämning med chef
 
 **v35** · **[Handläggare]**
@@ -148,88 +186,6 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 3. Exportera som shapefile eller GPKG till `data/uttag/nnk_YYYYMMDD.gpkg`.
 4. Kör `python natura-2000: scripts/analysis/koppla_omraden.py` mot uttaget för att få SITECODE på varje yta. Sätt miljövariabeln NNK_SHP till uttagets sökväg först.
 5. Kör `python natura-2000: scripts/analysis/nnk_kunskapslage.py` för att uppdatera nollmätningen.
-
----
-
-## B. Fältsäsong 2026
-
-*v34–v41 · 8 uppgifter*
-
-### B1.1 · Välj ut objekt för fältsäsongen
-
-**v34** · **[Handläggare]**
-
-1. Öppna `kunskapslage.html`, avsnitt 4. Filtrera på Prioritet 1.
-2. Välj 15–25 objekt. Utgå från batch B (ängs- och hagmark inland, 16 objekt, små och snabba) plus de sällsynta typerna i batch C och D.
-3. Kriterium: hög hävdberoende areal ELLER sällsynt livsmiljötyp, OCH kolumnen *Fältkontr.* = 0. Har objektet redan fältdata är det slöseri att åka dit.
-4. Kolla restiden — gruppera objekt geografiskt så en fältdag täcker flera.
-5. Skriv listan i granskningsloggen med motivering per objekt. Den blir bilaga till planen för 2027.
-
-### B1.2 · Stäm av urvalet med förvaltarna
-
-**v35** · **[Handläggare]** · förutsätter B1.1, A3.2
-
-1. Skicka listan till berörda förvaltare med en enda fråga: vilka av de här kan ni redan svara på, och vilka behöver vi faktiskt åka till?
-2. Detta är den viktigaste tidsbesparingen i hela hösten. Varje objekt förvaltaren kan svara på är en sparad fältdag.
-3. Stryk objekt de har aktuell kunskap om och lyft in dem i blanketten (H3.2) i stället.
-4. Uppdatera fältlistan och notera i loggen vilka som ströks och varför.
-
-### B1.3 · Boka fältdagar och klarlägg markägarkontakter
-
-**v35** · **[Karin]** · förutsätter B1.2
-
-1. Boka 8–10 fältdagar mellan v36 och v40. Lägg buffertdagar — väder och tillgänglighet slår ut fältdagar.
-2. Kontrollera markägarförhållanden per objekt. På statligt förvaltade reservat behövs normalt ingen förhandskontakt; på privatägd mark inom Natura 2000 bör markägaren informeras.
-3. Boka in förvaltaren på minst ett par av dagarna — deras lokalkännedom i fält är värd mer än en blankett.
-4. Sammanställ körschema och kontaktlista i `docs/faltprotokoll/faltplan_2026.md`.
-
-### B2.1 · Fältkontroll hävdberoende gräsmark
-
-**v36–v40** · **[Båda]** · förutsätter B1.3 · bidrar till *15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund*
-
-1. Ta med: utskrift av objektets NNK-ytor, bevarandeplanen, vägledningen för aktuell livsmiljötyp, fältprotokollmall, GPS eller mobil med Artportalen.
-2. Per yta, bedöm i denna ordning: (1) stämmer livsmiljötypen? (2) stämmer utbredningen grovt? (3) pågår hävd? (4) finns de typiska arterna och strukturerna vägledningen kräver? (5) vilket tillstånd — gott, icke gott, eller varierar det inom ytan?
-3. Varierar tillståndet inom ytan: uppskatta andelen i procent. De nya NNK-fälten tar procent, så ytan behöver inte delas.
-4. Fotografera varje bedömd yta. Ett foto med koordinat är det bästa framtida underlaget som finns.
-5. OBS regel R1: en igenvuxen äng där orsaken är utebliven skötsel är fortfarande samma livsmiljötyp — i icke gott tillstånd. Klassa inte om den.
-6. Mata inte in i NNK ännu — tillståndsattributen driftsätts först v40. Använd fältprotokollet som mellanlager.
-
-### B3.1 · Riktade besök på sällsynta livsmiljötyper
-
-**v36–v41** · **[Handläggare]** · förutsätter B1.3 · bidrar till *15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund*
-
-1. Objekt och typer: 7110 högmossar i Tovhulta stormosse (SE0220176), 7230 rikkärr i Bråtamossen (SE0220137) och Pilgöljan (SE0220103), 9060 åsbarrskog i Fjellskäfte (SE0220503) och Tore Grav (SE0220217), 9180 ädellövskog i Lotsängsbacken (SE0220130), 6280 alvar i Persö (SE0220234), 4030 torra hedar i Lundäng (SE0220507) och Åsa gravfält (SE0220438).
-2. Sällsynta typer motiverar noggrannare dokumentation än vanliga — de väger tungt i länets totala areal av just den typen.
-3. Läs vägledningen för typen i bilen innan besöket. Definitionerna för de här typerna är snäva.
-4. Tovhulta stormosse har dessutom 3 Åtgärdas-ytor — ta med den frågan dit.
-5. Notera särskilt om typen faktiskt uppfyller kriterierna. Sällsynta typer är ofta felkarterade åt båda håll.
-
-### B4.1 · Fältdokumentation per besökt yta
-
-**v36–v41** · **[Båda]** · bidrar till *15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund*
-
-1. Dokumentera per yta: NOID eller objektid, livsmiljötyp, hävdstatus, strukturer och funktioner, typiska arter, påverkan, bedömd tillståndsklass med procentandelar, samt vad du är osäker på.
-2. Skriv ALLTID datum och bedömare. Utan det går FAQ fråga 4:s krav på aktualitet inte att besvara.
-3. Skriv osäkerheten i klartext: *"kunde inte avgöra om fältskiktet uppfyller 6270 — behöver besök i juni"* är en fullgod leverans. En gissning är det inte.
-4. Spara i `docs/faltprotokoll/YYYY-MM-DD_objekt.md` samma dag som besöket.
-
-### B4.2 · Artobservationer till Artportalen
-
-**v36–v41** · **[Båda]**
-
-1. Rapportera typiska och karakteristiska arter i Artportalen, med koordinat.
-2. FAQ fråga 8 pekar ut Artportalen som rätt plats — inte NNK. NNK ska inte innehålla artuppgifter.
-3. Rapportera samma dag eller senast dagen efter, medan bestämningarna är färska.
-4. Notera i fältprotokollet att observationerna är rapporterade, så kopplingen finns kvar.
-
-### B4.3 · Åtgärdsbehov till SkötselDOS
-
-**v36–v41** · **[Karin]**
-
-1. Identifierat skötsel- eller restaureringsbehov förs in i SkötselDOS, inte i NNK. FAQ fråga 8.
-2. NNK beskriver vad som finns; SkötselDOS beskriver vad som ska göras. Blanda inte ihop dem.
-3. Koppla noteringen till objektet och beskriv åtgärden konkret.
-4. Stäm av med förvaltaren innan du för in — det är de som ska utföra åtgärden.
 
 ---
 
@@ -315,7 +271,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## D. Tillståndsbedömning i NNK
 
-*v40–v50 · 10 uppgifter*
+*v40–v50 · 9 uppgifter*
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
@@ -369,16 +325,6 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 1. Är tillståndet oförändrat sedan tidigare bedömning — registrera det ändå, med grund och datum. FAQ fråga 9: "oförändrat" är också ett svar.
 2. Skillnaden mellan *ej bedömd* och *bedömd som oförändrad* är hela poängen med årets uppdrag.
 3. Sätt karteringsstatus 2 om grunden är befintlig kunskap, och uppdatera slutdatum till dagens datum.
-
-### D3.1 · Mata in fältdata från arbetspaket B
-
-**v41–v45** · **[Båda]** · förutsätter B4.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
-
-1. Gå igenom fältprotokollen i `docs/faltprotokoll/` objekt för objekt.
-2. Checka ut objektet i ArcGIS Pro, sätt naturtypsstatus, procentandelar, karteringsstatus 3 eller 4, förändringsorsak, kommentar och slutdatum.
-3. Karteringsstatus: 3 Besökt i fält om ni bedömt utifrån ett besök; 4 Inventerad i fält endast om ni följt en standardiserad metodik.
-4. Förändringsorsak: 3 Komplettering om kunskapen bara var oregistrerad; 1 Rättning om karteringen var fel; 2 Faktisk förändring endast om naturen faktiskt ändrats.
-5. Kör toolboxen och checka in per objekt.
 
 ### D4.1 · Notera avvikelser mot bevarandeplan och beslut
 
@@ -472,8 +418,8 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 **v38–v48** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 1. Öppna KartLitS WebbGIS, logga in med Automatisk inloggning.
-2. Zooma till objektet. Se till att lagret *LstAB NNK granskning* är aktivt. Tänd även *NV Naturtypskartan NNK* så färger och mönster syns.
-3. Klicka Redigera → välj lager *LstAB NNK granskning* → pilen under Redigera geoobjekt → infoklicka på polygonen.
+2. Zooma till objektet. Se till att lagret *LstD NNK granskning* är aktivt. Tänd även *NV Naturtypskartan NNK* så färger och mönster syns.
+3. Klicka Redigera → välj lager *LstD NNK granskning* → pilen under Redigera geoobjekt → infoklicka på polygonen.
 4. Fyll i: Livsmiljötyp behov av justering, Utbredning behov av justering, Livsmiljötyp 1–3, Kommentar livsmiljötyp och utbredning, Tillstånd behov av justering, procentandelarna, Kommentar tillstånd, Vad ska kontrolleras 1–3, Metod för kontroll, och sist Granskat = Ja eller Påbörjat.
 5. Spara med *Uppdatera* längst ner. Klicka ALDRIG *Ta bort* — det raderar hela geoobjektet. Vill du avbryta: bakåtpilen vid Redigera geoobjekt → Ignorera redigeringar.
 6. Enligt FAQ fråga 9.1 är det detta lager som blir underlaget till planen för 2027.
@@ -582,7 +528,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## H. Förvaltardialog
 
-*v35–v48 · 13 uppgifter*
+*v35–v48 · 12 uppgifter*
 
 ### H1.1 · Kartlägg vem som förvaltar vilka objekt
 
@@ -648,7 +594,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v38–v44** · **[Båda]** · förutsätter H3.1, H2.1 · bidrar till *Ifyllda blanketter från förvaltarsamtalen*
 
-1. FÖRE, ca 30 min per objekt: ta fram objektet i WebbGIS med lagren *LstAB NNK granskning* och *NV Naturtypskartan NNK* tända. Läs bevarandeplanen. Filtrera blanketten. Markera rader med karteringsstatus 3, 4 eller 5 — de har en historia.
+1. FÖRE, ca 30 min per objekt: ta fram objektet i WebbGIS med lagren *LstD NNK granskning* och *NV Naturtypskartan NNK* tända. Läs bevarandeplanen. Filtrera blanketten. Markera rader med karteringsstatus 3, 4 eller 5 — de har en historia.
 2. UNDER, punkt 1: börja med Åtgärdas-ytorna. Konkret, och den erkänner att kunskapen finns hos dem.
 3. UNDER, punkt 2: gå igenom hävdberoende marker objekt för objekt — hävdas den, av vem, hur länge till, vad är trenden.
 4. UNDER, punkt 3: fråga efter dokument du inte känner till — uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter, gamla skötselplansbilagor, foton. Det ligger ofta på en enhetsmapp ingen letat i.
@@ -657,14 +603,6 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 7. UNDER, punkt 6: avsluta med vad som borde kontrolleras i fält, och vilka objekt som kan lämnas som de är.
 8. REGEL R1 att bevaka hela tiden: när förvaltaren säger "det är ingen äng längre" — beror det på utebliven skötsel står livsmiljötypen kvar, i icke gott tillstånd.
 9. EFTER: för in i granskningslagret samma vecka. Minnesbilder av andras minnesbilder blir snabbt oanvändbara.
-
-### H3.3 · Samordna med fältplaneringen
-
-**v35–v44** · **[Handläggare]** · förutsätter B1.2
-
-1. Löpande: varje gång en förvaltare kan svara på något, stryk motsvarande objekt ur fältlistan.
-2. Uppdatera fältplanen i `docs/faltprotokoll/faltplan_2026.md` och notera varför objektet ströks.
-3. Detta är den största enskilda tidsbesparingen i hela hösten.
 
 ### H4.1 · Eftersök odokumenterade underlag
 
@@ -744,6 +682,7 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 | Uppdateringar under minsta karteringsenhet görs inte | 0,25 ha generellt, 1 ha skog och våtmark, 0,5 ha ädellöv | FAQ f.12 |
 | Tidigare signifikansbedömningar görs inte om | Endast nytillkomna livsmiljötyper bedöms | FAQ f.15 |
 | Naturreservat utanför N2000 får screening, inte genomgång | Deadline är 2027 | FAQ f.6 |
+| Fältkontroll flyttas till 2027 | Arbetspaket B genomförs inte 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap | Beslut Johan 2026-08-25 |
 
 ---
 
@@ -754,7 +693,6 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 | M1 | v36 | 2026-09-04 | Arbetsplats, behörigheter och metodik på plats |
 | M2 | v38 | 2026-09-18 | Batch B granskad — rutinen kalibrerad |
 | M3 | v40 | 2026-10-02 | Nya NNK-attribut driftsatta, utbildning genomförd |
-| M4 | v41 | 2026-10-09 | Fältsäsong 2026 avslutad och dokumenterad |
 | M8 | v44 | 2026-10-30 | Förvaltardialogen genomförd, kunskapen registrerad |
 | M5 | v46 | 2026-11-13 | Samtliga 40 P1-objekt skrivbordsgranskade |
 | M6 | v50 | 2026-12-11 | Kunskapslägesrapport D-län klar |
@@ -768,7 +706,6 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 |---|---|---|---|---|
 | L-A | Fungerande arbetsplats och dokumenterad rollfördelning | A | v36 | Internt |
 | L-H1 | Förvaltarkarta: vem förvaltar vilka objekt | H | v36 | Internt |
-| L-B | 15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund | B | v41 | Underlag till D och F |
 | L-H2 | Ifyllda blanketter från förvaltarsamtalen | H | v44 | Underlag till C, D och F |
 | L-C | Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027 | C | v46 | KartLitS WebbGIS |
 | L-D | Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt | D | v48 | NNK Ajourhålla |
@@ -779,4 +716,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.1 · 2026-08-21 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py`*
+*Runbook v1.2 · 2026-08-25 · fältarbete (arbetspaket B) flyttat till 2027 — se `docs/arbetsplan.md` avsnitt 8 · ursprungligen genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py`, denna ändring gjord direkt i `nnk-granskning-2026`*

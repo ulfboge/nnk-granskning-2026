@@ -2,12 +2,12 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Version:** 1.3
-**Datum:** 2026-08-17
+**Version:** 1.5
+**Datum:** 2026-08-25
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
 **Underlag:** `natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf` (2026-07-03) · `natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf` · `natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` · `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` · `natura-2000: docs/underlag/kartering.csv`
-**Syskondokument:** `docs/runbook.md` (steg för steg, 68 uppgifter) · `kontrollrum.html` (Gantt och avbockning) · `docs/metodik.md` (arbetspaket H) · `blanketter/blankett_forvaltarkunskap_nnk.xlsx` · `kunskapslage.html` · `natura-2000: scripts/analysis/koppla_omraden.py`
+**Syskondokument:** `docs/runbook.md` (steg för steg, 58 uppgifter) · `kontrollrum.html` (Gantt och avbockning) · `docs/metodik.md` (arbetspaket H) · `blanketter/blankett_forvaltarkunskap_nnk.xlsx` · `kunskapslage.html` · `natura-2000: scripts/analysis/koppla_omraden.py`
 
 ---
 
@@ -27,7 +27,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 
 | Period | Vad som görs | Varför |
 |---|---|---|
-| v34–v39 (aug–sep) | Orientering, systemåtkomst, skrivbordsgranskning av **utbredning och gränser**, fältkontroll i prioriterade hävdberoende objekt medan säsongen håller | Fältsäsongen tar slut; tillståndsattributen finns inte än |
+| v34–v39 (aug–sep) | Orientering, systemåtkomst, skrivbordsgranskning av **utbredning och gränser** utifrån befintlig kunskap (bevarandeplan, ortofoto, TUVA/VMI/VISS/Artportalen, förvaltarsamtal) | Fältkontroll är flyttad till 2027 — 2026 fokuserar på det som redan är känt |
 | v40–v46 (okt–nov) | Nya NNK-attribut driftsatta → börja registrera tillstånd där kunskapen redan finns; systematisk genomgång batch för batch | Verktyget finns; sen höst passar skrivbordsarbete |
 | v47–v52 (dec) | Sammanställning av kunskapsläge + **plan för 2027**, underlag till årsredovisningen | Det är detta som är 2026 års faktiska leverans |
 
@@ -133,12 +133,6 @@ NNK/NRF 2026 — Södermanland
 │   ├── A3  Intern förankring och rollfördelning
 │   └── A4  Arbetsmiljö för data (repo, mallar, versionshantering)
 │
-├── B. Fältsäsong 2026 — det som inte kan vänta            [v34–v41]
-│   ├── B1  Fältplanering och urval
-│   ├── B2  Fältkontroll hävdberoende gräsmark (batch B)
-│   ├── B3  Fältkontroll sällsynta livsmiljötyper (batch C, D)
-│   └── B4  Fältdokumentation och inmatningsunderlag
-│
 ├── C. Skrivbordsgranskning av utbredning                  [v35–v46]
 │   ├── C1  Granskningsrutin och checklista
 │   ├── C2  Batch S — storobjekt (Skärgårdsreservaten, Nynäs)
@@ -151,7 +145,6 @@ NNK/NRF 2026 — Södermanland
 ├── D. Tillståndsbedömning i NNK                           [v40–v50]
 │   ├── D1  Driftsättning nya NNK-attribut, utbildning
 │   ├── D2  Registrering där kunskap redan finns
-│   ├── D3  Registrering av fältdata från B
 │   └── D4  Avvikelser mot bevarandeplan/reservatsbeslut
 │
 ├── E. Sammanställning av kunskapsläget                    [v45–v50]
@@ -192,6 +185,10 @@ NNK/NRF 2026 — Södermanland
 | A2.2 | Gå igenom `Kodlista_NNK_20260703.xlsx` — särskilt kategoriindelning 2026 och undergrupper | v35 | Handläggare |
 | A2.3 | Installera `KartLits_NNK_GIS_mall_v_2` och testa mot ett objekt | v35 | Handläggare |
 | A2.4 | Hämta fastställda vägledningar för livsmiljötyper — **kontrollera vilka som är fastställda vs. remiss** (FAQ f.10) | v36 | Handläggare |
+| A2.5 | **Begär datauttag för D-län** ur NNK-Ajourhålla (punkter/linjer/ytor) — mejla `Sandra.Wennberg@naturvardsverket.se`. Skicka snarast, svarstid okänd (manualens steg 1) | v35 | Handläggare |
+| A2.6 | Kopiera in uttaget i mallens lager med verktyget Append (`Use the field map to reconcile field differences`), döp om domäner med prefix `LstD` (manualens steg 3) | v37 | Handläggare |
+| A2.7 | Publicera lagren som hostat webblager i Länsstyrelsens ArcGIS Enterprise-portal, döpt `LstD NNK granskning` (manualens steg 4) | v37 | Handläggare |
+| A2.8 | Skapa webbGIS från de publicerade lagren enligt Länsstyrelsernas Generellt kartstöd; kontakt vid problem: `giampaolo.cocca@lansstyrelsen.se` (manualens steg 5) | v37 | Handläggare |
 | A3.1 | Avstämning med Ing-Marie (EC naturskydd): mandat, tidsbudget, styrgrupp, årsredovisning | v35 | Handläggare |
 | A3.2 | Kartlägg vem på Naturvårdsenheten som förvaltar vilka objekt — börja med Per Flodin | v36 | Handläggare |
 | A3.3 | Rollfördelning med 50 %-kollegan (se avsnitt 6) | v35 | Båda |
@@ -199,28 +196,17 @@ NNK/NRF 2026 — Södermanland
 | A4.1 | Skapa arbetsstruktur: uttagsmapp, granskningslogg, fältprotokoll, diarierutin | v36 | Handläggare |
 | A4.2 | Etablera rutin för NNK-uttag så att statistiken kan följas över tid | v36 | Handläggare |
 
+> **Upptäckt 2026-08-25:** `LstAB NNK granskning` (nämnd i den nationella Lathund granskning WebbGIS-KartLitS)
+> är Stockholms läns eget publicerade granskningslager, använt som illustrationsexempel — inte en delad resurs.
+> Varje län ska enligt `Manual NNK mall för granskning.pdf` begära eget uttag och publicera ett eget lager med
+> länskoden som prefix. D-läns lager (`LstD NNK granskning`) finns inte än — se A2.5–A2.8 ovan. Detta blockerar
+> allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills det är publicerat.
+
 **Leverans A:** Fungerande arbetsplats, dokumenterad rollfördelning, bekräftad tolkning av uppdraget.
 
 ---
 
-### B. Fältsäsong 2026 · v34–v41 — **tidskritiskt**
-
-Fältsäsongen för gräsmark tar slut i praktiken kring månadsskiftet september/oktober. Detta är den enda delen av årets arbete som har ett hårt fönster.
-
-| ID | Aktivitet | Klart | Ansvar |
-|---|---|---|---|
-| B1.1 | Välj ut 15–25 objekt ur batch B + de sällsynta typerna i batch C och D | v34 | Handläggare |
-| B1.2 | Stäm av urvalet med förvaltarna på Naturvårdsenheten — vilka objekt har de aktuell kunskap om? Besök inte det som redan är känt | v35 | Handläggare |
-| B1.3 | Boka fältdagar, klarlägg markägarkontakter | v35 | Kollega |
-| B2.1 | Fältkontroll hävdberoende gräsmark, ca 8–10 fältdagar | v36–v40 | Båda |
-| B3.1 | Riktade besök på sällsynta typer: 7110 Tovhulta stormosse, 7230 Bråtamossen/Pilgöljan, 9060 Fjellskäfte/Tore Grav, 9180 Lotsängsbacken, 6280 Persö, 4030 Lundäng/Åsa gravfält | v36–v41 | Handläggare |
-| B4.1 | Dokumentera per besökt yta: livsmiljötyp, hävdstatus, strukturer/funktioner, typiska arter, påverkan, bedömd tillståndsklass, osäkerhet | löpande | Båda |
-| B4.2 | Artobservationer → Artportalen (FAQ f.8) | löpande | Båda |
-| B4.3 | Identifierat åtgärdsbehov → SkötselDOS (FAQ f.8) | löpande | Kollega |
-
-> **Viktigt:** dokumentera bedömningen och grunden för den redan i fält, men **mata inte in tillståndet i NNK förrän de nya attributen är driftsatta (v40)**. Använd fältprotokoll som mellanlager.
-
-**Leverans B:** 15–25 fältkontrollerade objekt med dokumenterad bedömningsgrund.
+> **Fältkontroll flyttad till 2027.** Arbetspaket B (fältsäsong) genomfördes tidigare i planen v34–v41. Beslut 2026-08-25: inget fältarbete görs under 2026 — se avsnitt 8. Frigjord tid är omfördelad till arbetspaket C, D och H (avsnitt 6.2).
 
 ---
 
@@ -276,7 +262,6 @@ Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävd
 | D2.1 | Registrera tillstånd för de ytor där kunskapen redan finns: 482 fullgoda + 336 icke fullgoda + de objekt som har aktuella skötselplaner och nyliga uppföljningar | v41–v48 | Båda |
 | D2.2 | Dokumentera **grunden** för varje bedömning och **hur aktuell** den är (FAQ f.4) — utan detta är bedömningen inte spårbar | löpande | Båda |
 | D2.3 | Där tillståndet är oförändrat sedan tidigare bedömning: registrera det aktivt med grund och datum — "oförändrat" är också ett svar (FAQ f.9) | löpande | Båda |
-| D3.1 | Mata in fältdata från arbetspaket B | v41–v45 | Båda |
 | D4.1 | Notera avvikelser mot fastställd bevarandeplan/reservatsbeslut (FAQ f.24) | löpande | Handläggare |
 | D4.2 | Lista objekt där nuvarande beslut/skötselplan **hindrar** nödvändig skötsel → revideringsbehov | v48 | Handläggare |
 | D4.3 | Utvecklingsmark: peka ut ytor där bevarandemål finns om utökad areal, ange upp till tre målnaturtyper (FAQ f.23). Idag har bara 87 polygoner i hela länet en angiven målnaturtyp | v45–v50 | Handläggare |
@@ -388,7 +373,7 @@ Fullständig metodik finns i `docs/metodik.md`. Insamlingsinstrument: `blankette
 
 | Klass | Objekt | Kriterium | Insats 2026 |
 |---|---|---|---|
-| **P1** | 40 | ≥ 20 ha hävdberoende **eller** ≥ 5 ha sällsynt livsmiljötyp | Full skrivbordsgranskning + fältkontroll där möjligt |
+| **P1** | 40 | ≥ 20 ha hävdberoende **eller** ≥ 5 ha sällsynt livsmiljötyp | Full skrivbordsgranskning utifrån befintlig kunskap (fältkontroll flyttad till 2027) |
 | **P2** | 43 | ≥ 20 ha terrester livsmiljötyp eller ≥ 5 ha osäker/obestämd | Skrivbordsgranskning om tid finns, annars 2027 |
 | **P3** | 108 | Övriga objekt med terrester livsmiljötyp | 2027 |
 | **P4** | 6 | Ingen terrester livsmiljötyp (rent limniska/marina) | Ingen insats — dokumentera som medvetet nedprioriterat |
@@ -432,17 +417,16 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 | Arbetspaket | Handläggare | Kollega |
 |---|---|---|
 | A Etablering | 10 dagar | 4 dagar |
-| B Fältsäsong | 15 dagar | 10 dagar |
-| C Skrivbordsgranskning | 26 dagar | 16 dagar |
-| D Tillståndsbedömning | 13 dagar | 8 dagar |
+| C Skrivbordsgranskning | 34 dagar | 21 dagar |
+| D Tillståndsbedömning | 18 dagar | 11 dagar |
 | E Sammanställning | 8 dagar | 5 dagar |
 | F Plan för 2027 | 12 dagar | 2 dagar |
 | G Naturreservat | 3 dagar | 4 dagar |
-| H Förvaltardialog | 8 dagar | 7 dagar |
+| H Förvaltardialog | 10 dagar | 9 dagar |
 | Möten, samverkan, oförutsett | 12 dagar | 5 dagar |
 | **Summa** | **107 dagar** | **61 dagar** |
 
-> Tiden till arbetspaket H är tagen från C och D, inte lagd ovanpå. Det är en medveten växling: varje objekt där förvaltaren kan svara direkt är ett objekt du slipper granska från grunden, och de 277 ytorna med befintlig fältkunskap men utan tillståndsbedömning kostar mindre att lösa via ett samtal än via en skrivbordsgranskning.
+> **Uppdaterad 2026-08-25:** arbetspaket B (fältsäsong, tidigare 15/10 dagar) är borttaget — fältkontroll flyttas till 2027. De frigjorda dagarna är omfördelade till C (+8/+5), D (+5/+3) och H (+2/+2), så att totalsumman är oförändrad. Tiden till arbetspaket H är därutöver delvis tagen från C och D, inte lagd ovanpå: varje objekt där förvaltaren kan svara direkt är ett objekt du slipper granska från grunden, och de 277 ytorna med befintlig fältkunskap men utan tillståndsbedömning kostar mindre att lösa via ett samtal än via en skrivbordsgranskning.
 
 ---
 
@@ -450,18 +434,18 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 
 | Vecka | Handläggare | Kollega | Milstolpe |
 |---|---|---|---|
-| v34 | A1.3, A2.1, B1.1 | A2.1 | |
-| v35 | A1.1, A1.2, A2.2, A2.3, A3.1, A3.3, B1.2 | B1.3, **H1.1 förvaltarkartläggning** | |
-| v36 | A2.4, A3.2, A3.4, A4, **H1.2**, **B2 fält** | **B2 fält**, H1.1 klar, C4 batch B | **M1: arbetsplats klar** |
-| v37 | **B2 fält**, **H2.1 Åtgärdas-ytorna**, H2.2 | C4 batch B, **H3.1 boka samtal** | |
-| v38 | **B2 fält**, C3 batch A, **H3.2 samtal** | C4 batch B klar, **H3.2**, H4.1 | **M2: batch B granskad** |
-| v39 | B3 fält, C3 batch A, D1.1, H3.2 | C3 batch A, H3.2, H4.1 | |
-| v40 | **B3 fält sista**, D1.2, D1.3 | D1.2, D1.3 | **M3: nya NNK-attribut driftsatta** |
-| v41 | C2 batch S start, D2.1, H5.2 | C3 batch A klar, D3.1, H4.1 | **M4: fältsäsong avslutad** |
+| v34 | A1.3, A2.1 | A2.1 | |
+| v35 | A1.1, A1.2, A2.2, A2.3, A3.1, A3.3 | **H1.1 förvaltarkartläggning** | |
+| v36 | A2.4, A3.2, A3.4, A4, **H1.2**, C4 batch B | H1.1 klar, C4 batch B | **M1: arbetsplats klar** |
+| v37 | C4 batch B, **H2.1 Åtgärdas-ytorna**, H2.2 | C4 batch B, **H3.1 boka samtal** | |
+| v38 | C4 batch B klar, C3 batch A, **H3.2 samtal** | C4 batch B klar, **H3.2**, H4.1 | **M2: batch B granskad** |
+| v39 | C3 batch A, C2 batch S start, D1.1, H3.2 | C3 batch A, H3.2, H4.1 | |
+| v40 | C2 batch S, D1.2, D1.3 | D1.2, D1.3 | **M3: nya NNK-attribut driftsatta** |
+| v41 | C2 batch S, D2.1, H5.2 | C3 batch A klar, H4.1 | |
 | v42 | C2 batch S, D2.1, H3.2 | C5 batch C, G1.1, H3.2 | |
 | v43 | C2 batch S, D2.1, H5.2 | C5 batch C, C6 batch D, H4.1 | |
 | v44 | C2 batch S, C7, **H3.2 sista samtalen** | C6 batch D, G1.1 klar, H3.2 | **M8: förvaltardialog genomförd** |
-| v45 | C2 batch S, D3.1, H5.2 | E1.1, C6 batch D, H4.1 klar | |
+| v45 | C2 batch S, D2.1, H5.2 | E1.1, C6 batch D, H4.1 klar | |
 | v46 | C2 batch S klar, F1.1 | E1.2, E1.3, G1.2 | **M5: alla P1-objekt granskade** |
 | v47 | E2.1, E2.2, E2.3, F1.2 | E3.1 | |
 | v48 | D4.2, F2.1, F2.2, H5.2 klar | G1.3, D2.1 | |
@@ -477,7 +461,6 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 | M1 | Arbetsplats, behörigheter och metodik på plats | v36 | ~2026-09-04 |
 | M2 | Batch B granskad — rutinen kalibrerad | v38 | ~2026-09-18 |
 | M3 | Nya NNK-attribut driftsatta, utbildning genomförd | v40 | ~2026-10-02 |
-| M4 | Fältsäsong 2026 avslutad och dokumenterad | v41 | ~2026-10-09 |
 | M8 | Förvaltardialogen genomförd, kunskapen registrerad i granskningslagret | v44 | ~2026-10-30 |
 | M5 | Samtliga 40 P1-objekt skrivbordsgranskade | v46 | ~2026-11-13 |
 | M6 | Kunskapslägesrapport D-län klar | v50 | ~2026-12-11 |
@@ -501,6 +484,7 @@ Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter
 | **Uppdateringar under minsta karteringsenhet görs inte** (0,25 ha generellt, 1 ha skog/våtmark, 0,5 ha ädellöv) | f.12 |
 | **Tidigare signifikansbedömningar görs inte om** — endast nytillkomna livsmiljötyper bedöms | f.15 |
 | **Naturreservat utanför N2000** får screening, inte genomgång | f.6 (deadline 2027) |
+| **Fältkontroll flyttas till 2027.** Arbetspaket B (fältsäsong) genomförs inte under 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Ytor som ändå kräver fältbesök flaggas i granskningsloggen till 2027 | Beslut Johan 2026-08-25 |
 
 ---
 
@@ -510,9 +494,10 @@ Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter
 |---|---|---|---|
 | Nya NNK-attribut försenas förbi september | Medel | Hög — hela D-paketet skjuts | Fyll v40–v43 med C-arbete i stället; dokumentera bedömningar i fältprotokoll och WebbGIS-mallen så inget arbete går förlorat |
 | Vägledningar för terrestra livsmiljötyper inte fastställda i tid | Medel | Medel | FAQ f.10 säger uttryckligen att man får avvakta. Dokumentera vilka typer som blockeras och ta med i planen |
-| Fältsäsongen tar slut innan urvalet är klart | Hög | Medel | B1.1 är klart redan v34. Prioritera hävdberoende gräsmark före allt annat |
 | Storobjekten sväljer hela hösten | Hög | Hög | Stratifierad metod (5.3), tidsatt fönster v41–v46, hård avgränsning |
+| Fler ytor än väntat går inte att avgöra utan fältbesök, eftersom ingen fältkontroll görs 2026 | Medel | Medel | Dokumentera tydligt i granskningsloggen och lista dem som prioriterat underlag till fältplaneringen 2027 (leverans C) |
 | Försenad systemåtkomst | Hög | Medel | Börja med det som går utan NNK-skrivrättighet: bevarandeplaner, WebbGIS-mallen, statistikuttaget |
+| Granskningslagret `LstD NNK granskning` inte publicerat i tid | Hög | Hög — allt WebbGIS-baserat granskningsarbete (E3, H5, förvaltarsamtal) blockeras | Skicka uttagsbeställningen till NV omgående (A2.5); eskalera via `kartlitsN2000@naturvardsverket.se` om Sandra Wennberg inte svarat inom en vecka |
 | BIDOS-underlaget visar sig sämre än väntat vid granskning | Medel | Medel | Det är ett resultat i sig — kvantifiera och lyft i planen som insatsbehov, gör inte om karteringen själv (f.26: Metria har inte det uppdraget heller) |
 | Kollegans 50 % äts upp av andra uppgifter | Medel | Medel | Lägg kollegans arbete på avgränsade batchar som går att pausa utan att blockera huvudspåret |
 
@@ -529,6 +514,7 @@ Skickas till `kartlitsN2000@naturvardsverket.se` (FAQ f.10). Ju tidigare desto b
 5. **Tullgarn södra:** 299 ha okarterat — är det ett karteringsgap som ska felanmälas till Metria?
 6. **Tidpunkt:** Bekräfta driftsättningsdatum för de nya tillståndsattributen, och när utbildning ges.
 7. **Formatet för planen:** FAQ f.7 säger att formatet återkommer "så snart vi kan". Efterfråga det tidigt så att E-arbetet kan struktureras rätt från början.
+8. **Klimatvägledningens tolkning av försämringsbegreppet:** EU-kommissionens vägledning om Natura 2000 och klimatförändringarna (C/2026/3567, 13.7.2026) anger att klimatdrivna, oundvikliga naturtypsövergångar (t.ex. en skogsnaturtyp som ersätts av en annan) bör hanteras genom översyn av det områdesspecifika bevarandemålet snarare än att automatiskt bokföras som en försämring enligt artikel 6.2 habitatdirektivet. Ska detta tillämpas i NNK-statusbedömningen 2027, och finns nationell vägledning på gång som adresserar frågan?
 
 ---
 
@@ -613,4 +599,4 @@ Kategoriindelningen (Skog, Gräsmark, Våtmark m.fl.) följer kolumnrubrikerna *
 
 *Underlag: NNK-statistik per Natura 2000-område, D-län, uttag 2026-01-20 (Naturvårdsverket) samt NNK-kartering D-län, 14 830 polygoner. Samtliga arealer avser karterad areal inom Natura 2000 (SCI/SAC).*
 
-*Arbetsplan v1.4 · 2026-08-21 — Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 68 uppgifter med 310 steg i runbooken och kontrollrummet*
+*Arbetsplan v1.5 · 2026-08-25 — fältarbete (arbetspaket B) flyttat till 2027, frigjord tid omfördelad till C/D/H (avsnitt 0, 6.2, 7, 8); Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 58 uppgifter med 266 steg i runbooken och kontrollrummet*
