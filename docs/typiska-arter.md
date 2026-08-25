@@ -14,7 +14,7 @@ Sammanställning till stöd för NNK-statusbedömning (gynnsam bevarandestatus, 
 
 - **K-art (karakteristisk art)** — stödjer *tolkningen* av naturtypen, dvs. hjälper till att avgöra att en yta faktiskt tillhör naturtypen.
 - **T-art (typisk art)** — indikatorart för **gynnsam bevarandestatus**. Grundprincip enligt vägledningarna: *"Gynnsamt tillstånd/bevarandestatus förutsätter att de typiska arterna inte minskar påtagligt i området."* Det är i första hand T-arterna som är relevanta att leta efter vid fältbedömning inför NNK-statusklassning (gott / inte gott / okänt).
-- **A / B / K** efter en art = biogeografisk region (Alpin / Boreal / Kontinental). Södermanland ligger huvudsakligen i regionen **K** (Kontinental), delar i **B** — arter markerade enbart "A" är normalt inte relevanta här.
+- **A / B / K** efter en art = biogeografisk region (Alpin / Boreal / Kontinental). Södermanland ligger i regionen **B** (Boreal) — regionen Kontinental omfattar i Sverige i stort sett bara Skåne, södra västkusten, delar av Blekinge och södra Öland. Arter markerade enbart "A" eller enbart "K" är normalt inte relevanta här.
 
 Metodiken bakom artvalet beskrivs i NV:s metoddokument: [Typiska arter och kriterier](https://www.naturvardsverket.se/4ac3fa/globalassets/vagledning/skyddad-natur/natura-2000/typiska-arterkriterier.pdf) och [Karaktäristiska arter och kriterier](https://www.naturvardsverket.se/4ac3e6/globalassets/vagledning/skyddad-natur/natura-2000/karakteristiska-arter-och-kriterier.pdf).
 

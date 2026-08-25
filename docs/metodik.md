@@ -5,7 +5,7 @@
 **Datum:** 2026-08-17
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
 **Version:** 1.1 — reviderad efter genomgång av den publika NNK-produktbeskrivningen
-**Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning
+**Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen)
 
 ---
 
@@ -90,6 +90,8 @@ Förvaltarkunskap är i regel andrahandsinformation som du inte själv har verif
                              underlaget? Ska något         står bakom
                              fältkontrolleras först?
 ```
+
+> **Obs — granskningslagret finns inte än för D-län.** `LstAB NNK granskning`, som nämns i den nationella Lathund granskning WebbGIS-KartLitS och som förekommer nedan i denna sida, är **Stockholms läns (AB) eget publicerade lager** — det används som illustrativt exempel i den nationella lathunden ("Se exemplet nedan för Stockholm"), inte ett gemensamt resurslager alla län delar. Enligt `Manual NNK mall för granskning.pdf` (i KartLitS-mallzippen) ska varje län själv begära ett eget uttag ur NNK Ajourhålla, kopiera in det i mallen och publicera ett eget hostat lager, namngivet med länets kod som prefix. D-läns motsvarighet — nedan kallad **`LstD NNK granskning`** — finns ännu inte och behöver skapas och publiceras, se arbetsplanens A2.5–A2.8.
 
 **Varför två steg:**
 
@@ -206,7 +208,7 @@ Det här är den enda mekanism som gör FAQ fråga 4:s krav på *"hur aktuella d
 
 **Före (30 min per objekt):**
 
-1. Ta fram objektet i WebbGIS-KartLitS, tänd `LstAB NNK granskning` och `NV Naturtypskartan NNK`
+1. Ta fram objektet i WebbGIS-KartLitS, tänd `LstD NNK granskning` och `NV Naturtypskartan NNK`
 2. Läs bevarandeplanen — vilka livsmiljötyper är utpekade och vilka bevarandemål finns
 3. Filtrera blanketten till objektets rader
 4. Markera raderna med karteringsstatus 3, 4 eller 5 — de har en historia
