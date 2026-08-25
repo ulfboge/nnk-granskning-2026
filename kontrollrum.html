@@ -261,7 +261,19 @@ const D = /*DATA*/{"paket":{"A":{"namn":"Etablering och förutsättningar","veck
 const ANSVAR={H:"Handläggare",K:"Karin",HK:"Båda"};
 const klar = new Set();
 let filt="alla", fAns="", fPak="";
-const VNU = 34;                       // aktuell vecka vid generering
+// aktuell vecka raknas ut live fran dagens datum mot veckotabellens mandagsdatum,
+// i stallet for ett hardkodat varde fran nar sidan senast byggdes
+function berakna_aktuell_vecka(veckor){
+  const idag = new Date();
+  idag.setHours(0,0,0,0);
+  let val = veckor[0].v;
+  for (const w of veckor){
+    const start = new Date(w.datum + 'T00:00:00');
+    if (start <= idag) { val = w.v; } else { break; }
+  }
+  return val;
+}
+const VNU = berakna_aktuell_vecka(D.veckor);
 const V = D.veckor.map(x=>x.v);
 const pc = p => `var(--p-${p})`;
 const U = D.uppgifter;
