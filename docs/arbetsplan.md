@@ -332,7 +332,7 @@ Fullständig metodik finns i `docs/metodik.md`. Insamlingsinstrument: `blankette
 
 | ID | Aktivitet | Klart | Ansvar |
 |---|---|---|---|
-| H1.1 | Kartlägg vilken förvaltare som ansvarar för vilka objekt; fyll i kolumn *Förvaltare* i blanketten | v36 | Kollega |
+| H1.1 | ~~Kartlägg vilken förvaltare som ansvarar för vilka objekt~~ — till stor del automatiserat 2026-08-26 (186/197 sitecodes kopplade automatiskt via förvaltarlistan, se `natura-2000: data/forvaltare/README.md`). Kvar: kontrollera 5 lågsäkra namn-matchningar samt lös Skärgårdsreservaten (flera förvaltare) och 10 objekt utan träff manuellt | v36 | Kollega |
 | H1.2 | Förankra upplägget med Naturvårdsenhetens chef — det är deras tid du ber om | v36 | Handläggare |
 | H2.1 | Gå igenom de 141 Åtgärdas-ytorna. Kopplade till objekt: **Skärgårdsreservaten 91, Strandstuviken 25, Marvikarna 7, Vilsta 6, Rågö 5, Storhultet 4, Tovhulta stormosse 3** — samtliga inom Natura 2000, nästan uteslutande hävdberoende marker | v37 | Handläggare |
 | H2.2 | Checka ut NNK **Ajourhålla** i ArcGIS Pro och kontrollera `KOMMENTAR` för Åtgärdas-ytorna och de 277 fältbesökta — grunden kan redan stå där | v37 | Handläggare |
@@ -340,8 +340,8 @@ Fullständig metodik finns i `docs/metodik.md`. Insamlingsinstrument: `blankette
 | H3.1 | Boka förvaltarsamtal, ca 60 min per förvaltare, flera objekt per möte | v37 | Kollega |
 | H3.2 | Genomför samtalen — börja med Åtgärdas-ytorna, gå därefter på hävdberoende marker | v38–v44 | Båda |
 | H3.3 | Samordna med fältplaneringen (B1.2): besök inte det förvaltaren redan kan svara på | löpande | Handläggare |
-| H4.1 | Eftersök odokumenterade underlag: börja med Per Flodin; protokoll, ÄoB, konsultrapporter, LIFE-projekt, skötselplansbilagor, foton | v38–v46 | Kollega |
-| H4.2 | Registrera funna underlag i datakälleregistret `data/sources_sodermanland.csv` | löpande | Kollega |
+| H4.1 | ~~Eftersök odokumenterade underlag~~ — hittat och djupgranskat 2026-08-26: `natura-2000: docs/underlag/NRF_2026_underlag.zip`. Uppföljningsplaner (38 objekt) inkopplade i Blanketten + ny geo-fil; LIFE-projekten och limnisk kartläggning 2022 genomgångna (LIFE GW/Tynnelsö behöver egen NNK-statusklassning, flaggat för samordning). Ny lärdom: sök inte bara på sitecode/N2000-namn — naturreservat kan täcka ett N2000-område under ett annat namn, se `natura-2000: data/analysis/naturreservat_n2000_overlapp.csv` (121/195 reservat i länet). Kvar: Per Flodin-samtalet och att skanna papper som inte finns digitalt | v38–v46 | Kollega |
+| H4.2 | Registrera funna underlag — 39 % av filerna (3 697, 199 sitecodes) katalogiserade automatiskt i `natura-2000: data/analysis/nrf_2026_underlag_per_sitecode.csv`; en sammanfattningsrad i `data/sources_sodermanland.csv` pekar dit | löpande | Kollega |
 | H5.1 | För in i KartLitS granskningslager samma vecka som samtalet | löpande | Båda |
 | H5.2 | Registrera i NNK efter avstämning — tillståndsfälten först efter driftsättning v40 | v41–v48 | Handläggare |
 | H5.3 | Skicka avstämning tillbaka till förvaltaren på det du fört in | löpande | Handläggare |

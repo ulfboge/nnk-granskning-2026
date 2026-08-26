@@ -2,10 +2,10 @@
 
 ## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
 
-**Datum:** 2026-08-17
+**Datum:** 2026-08-26
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.1 — reviderad efter genomgång av den publika NNK-produktbeskrivningen
-**Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen)
+**Version:** 1.2 — lagt till teknisk uppkopplingsbeskrivning för NNK i ArcGIS Pro (avsnitt 9)
+**Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
 
@@ -267,6 +267,21 @@ Med ett Ajourhålla-uttag kan samma skript köras om och då ger det full spårb
 
 Från handledningen avsnitt 3.3 och checklistan i 2.3:
 
+### Teknisk uppkoppling — NNK i ArcGIS Pro
+
+Handledningens "checka ut" och "kör toolboxen" (3.3) är i praktiken detta (källa: `NNK_i_ArcGIS_Pro_arbetsbeskrivning_v1_5.pdf`, flyttad 2026-08-26 till `natura-2000/docs/underlag/handledning/`):
+
+1. Öppna LST:s interna geoportal-mall **"LST NNK i ArcGIS Pro – Projektmall"** (lst-geoportal.lansstyrelsen.se), hämta `.aptx`-mallen och skapa ett nytt projekt från den.
+2. Koppla upp mot servern under Catalog → Servers → "services on nnk.naturvardsverket.se.ags", inloggning med Vic Natur-kontot.
+   Produktionsmiljö: `https://nnk.naturvardsverket.se/arcgis/services` · Acceptanstest-/utbildningsmiljö: `https://testnnk.naturvardsverket.se/arcgis/services` (användarnamn med suffix `_utb`).
+3. Sök upp området i kartvyn, spara ett bokmärke, och ta ut en **lokalkopia** ("Download Map") — då kopplas Ajourhalla-lagren bort från den centrala servern till en lokal databas på din dator.
+4. Kör Toolbox-verktyg 1, **"Skapa arbetsdatabas utifrån lokalkopian"** — det är `NNK_Arbetsdatabas` (med topologiregler) du faktiskt editerar i, inte lokalkopian direkt.
+5. Editera, kör topologikontroll (se checklistan nedan), kör sedan verktyg 2 **"Validera attribut"** och verktyg 3 **"Ladda in kartering inför synkronisering"**, och synkronisera tillbaka. En central administratör godkänner uppladdningen innan den syns för andra i Ajourhalla.
+
+Kräver minst en **Standard-licens** i ArcGIS Pro (Basic räcker för att skapa feature-tjänst och ladda ner data, men Toolboxen — inklusive topologiregler — kräver Standard) samt ArcGIS Pro 3.5.
+
+**Om ett område helt saknas i NNK** (inte bara behöver rättas) är det nykartering, inte redigering av befintlig yta: mejla underlag till `nnk-kartering@metria.se` så lägger de in området, varefter det går att justera som vanligt.
+
 - [ ] Kör toolboxen i ArcGIS Pro på det utcheckade området — reglerna kontrolleras där
 - [ ] Alla obligatoriska attribut ifyllda med godkända värden (undantag: fritextfälten)
 - [ ] Inga överlapp mellan ytor; inga glapp; linjer och ytor korsar inte sig själva
@@ -294,4 +309,4 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ---
 
-*Metodik v1.1 · 2026-08-17 · hör ihop med `docs/arbetsplan.md` (arbetspaket H) `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`*
+*Metodik v1.2 · 2026-08-26 · hör ihop med `docs/arbetsplan.md` (arbetspaket H) `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`*

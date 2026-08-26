@@ -141,11 +141,14 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v36** · **[Handläggare]**
 
-1. Be Naturvårdsenheten om deras förvaltningsindelning — vem ansvarar för vilka objekt.
+**Uppdaterat 2026-08-26:** en sammanställd lista fanns redan (länsstyrelsens förvaltarlista, uttag
+2026-05-27) — kolumn I *Förvaltare* i blanketten är nu automatiskt ifylld för 186 av 197 sitecodes,
+se H1.1 och `natura-2000: data/forvaltare/README.md`.
+
+1. Be Naturvårdsenheten bekräfta eller komplettera den automatiska kopplingen, snarare än att börja om från grunden.
 2. Per Flodin är första rådgivare för skötselhistorik och tidigare åtgärder — fråga honom innan du jagar dokument på egen hand.
-3. Om ingen sammanställd lista finns: utgå från `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett, kolumn B–C, och be dem fylla i kolumn I *Förvaltare*.
-4. Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten, SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.
-5. Detta är samma sak som H1.1 — gör dem i ett svep.
+3. Prioritera att få de sju objekten med Åtgärdas-ytor täckta: SE0220129 Skärgårdsreservaten (obs: flera förvaltare, se H1.1), SE0220020 Strandstuviken, SE0220174 Marvikarna, SE0220602 Vilsta, SE0220231 Rågö, SE0220337 Storhultet, SE0220176 Tovhulta stormosse.
+4. Detta är samma sak som H1.1 — gör dem i ett svep.
 
 ### A3.3 · Rollfördelning med Karin
 
@@ -534,10 +537,16 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v35–v36** · **[Karin]** · bidrar till *Förvaltarkarta: vem förvaltar vilka objekt*
 
-1. Öppna `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett.
-2. Be Naturvårdsenheten fylla i kolumn I *Förvaltare* — eller fyll i själv utifrån deras förvaltningsindelning.
-3. Prioritera de sju objekten med Åtgärdas-ytor och de 40 P1-objekten. Resten kan vänta.
-4. När kolumnen är ifylld går blanketten att filtrera per förvaltare och skicka ut i delar.
+**Uppdaterat 2026-08-26:** kolumn I *Förvaltare* i `blanketter/blankett_forvaltarkunskap_nnk.xlsx`
+fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopplat via
+`natura-2000: scripts/analysis/koppla_forvaltare.py` mot länsstyrelsens förvaltarlista
+(uttag 2026-05-27). 186 av 197 sitecodes fick en träff vid körningen 2026-08-26.
+
+1. Öppna `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett, kolumn I — redan ifylld för de flesta objekt. Ett "(?)" efter namnet betyder osäker namn-matchning.
+2. Kontrollera de 5 lågsäkra matchningarna listade i `natura-2000: data/forvaltare/README.md` — särskilt SE0220330 Tolamossen/Torsmossen.
+3. Lös de 11 sitecodes utan automatisk träff manuellt (samma README). **SE0220129 Skärgårdsreservaten kräver särskild uppmärksamhet** — objektet består av många enskilt namngivna öar med minst tre olika förvaltare (Paul, Sari, Kristoffer i källistan), inte en enda kontaktperson.
+4. Prioritera de sju objekten med Åtgärdas-ytor och de 40 P1-objekten om något ändå saknas. Resten kan vänta.
+5. Blanketten går redan att filtrera per förvaltare (kolumn I) och skicka ut i delar.
 
 ### H1.2 · Förankra upplägget med Naturvårdsenhetens chef
 
@@ -608,9 +617,31 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v38–v46** · **[Karin]** · förutsätter H3.2
 
-1. Börja med Per Flodin — han sitter på skötselhistorik, artkunskap och tidigare åtgärder.
-2. Leta systematiskt efter det förvaltarna nämner: uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter och PM, skötselplansbilagor, fotodokumentation, gamla inventeringar, dokumenterade skötselåtgärder och LIFE-projekt.
-3. Sök på enhetsmappar, i diariet, och i SkötselDOS. Fråga även dem som slutat, om det går.
+**Uppdaterat 2026-08-26:** `natura-2000: docs/underlag/NRF_2026_underlag.zip` — en export av
+`G:\5_Naturvard_miljoskydd\` (~9 400 filer, 20 GB: skötselplaner, LIFE-projekt (CoastBenefit,
+Life Taiga, RestoRED, MIA, RIWUS, GrazedWoods), uppföljningsrapporter, en marin inventering
+2016–17 för skärgårdsöarna, bevarandeplan-utkast) täcker det mesta av punkt 2–4 nedan redan.
+
+**Djupgranskning klar 2026-08-26** (samma dag, "ett steg i taget"): de 38 site-specifika
+uppföljningsplanerna (målindikatorer per naturtyp) är inkopplade i Blanketten (ny kolumn K)
+och en ny geo-fil `natura-2000: data/analysis/nnk_med_uppfoljningsplan_2026.gpkg`. LIFE-projekten
+och den limniska vattendragskartläggningen 2022 är genomgångna — se
+`natura-2000: data/analysis/README.md` för detaljer per delprojekt. Viktigast: **LIFE
+GrazedWoods (Tynnelsö) har själva flaggat att de behöver NNK-statusklassning som en del av sitt
+projekt** — värt att lyfta med projektledningen för samordning innan NNK-arbetet och LIFE GW körs
+parallellt utan kontakt.
+
+**Metodlärdom, viktig för punkt 3 nedan:** en ren sitecode-/N2000-namnsökning i arkivet missar
+underlag som ligger under ett naturreservats EGNA namn när reservatet bara delvis täcker ett
+N2000-område. Bekräftat geografiskt (inte bara namnmatchning) via en ny hämtning från
+Naturvårdsverkets Naturvårdsregistret-WFS: 121 av 195 naturreservat i länet överlappar Natura
+2000, se `natura-2000: data/analysis/naturreservat_n2000_overlapp.csv`. Använd den listan som
+ett extra sökregister när du letar i enhetsmappar (punkt 3) — sök på reservatets namn, inte bara
+sitecoden eller N2000-områdets namn.
+
+1. Börja med Per Flodin — han sitter på skötselhistorik, artkunskap och tidigare åtgärder. Gör detta ändå, arkivet ersätter inte samtalet.
+2. ~~Leta systematiskt efter...~~ — se `natura-2000: data/analysis/nrf_2026_underlag_per_sitecode.csv` för vad som redan finns per objekt innan du letar på egen hand.
+3. Sök på enhetsmappar, i diariet, och i SkötselDOS för det som inte redan låg i G:\5_Naturvard_miljoskydd. Fråga även dem som slutat, om det går.
 4. Prioritera underlag som rör de 277 ytorna med fältdata men ej bedömd status — där finns det med största sannolikhet ett protokoll någonstans.
 5. Skanna in det som bara finns på papper.
 
@@ -618,7 +649,14 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v38–v48** · **[Karin]** · förutsätter H4.1
 
-1. Lägg in varje funnet underlag i `data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
+**Uppdaterat 2026-08-26:** för `NRF_2026_underlag.zip` är detta redan gjort automatiskt —
+`natura-2000: scripts/analysis/katalogisera_nrf_underlag.py` indexerade 3 697 av 9 422 filer
+(39 %) mot 199 sitecodes utan att öppna innehållet, se `data/analysis/nrf_2026_underlag_katalog.csv`
+(fil-nivå) och `..._per_sitecode.csv` (sitecode-nivå). `data/sources_sodermanland.csv` har en
+sammanfattningsrad som pekar dit — det är en bulkarkiv-post, inte en per-dokument-rad, eftersom
+den filens kolumner är gjorda för nedladdningsbara GIS-lager.
+
+1. Lägg in varje YTTERLIGARE funnet underlag (Per Flodin-samtalet, papper som skannas in) i `data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
 2. Ange: vad det är, vilket objekt eller vilka objekt det gäller, årtal, var det ligger, och om det är digitalt eller papper.
 3. Registret är i sig en leverans — det svarar på FAQ fråga 4 om vad bedömningarna vilar på.
 
