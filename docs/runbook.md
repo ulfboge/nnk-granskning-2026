@@ -731,7 +731,7 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 | M1 | v36 | 2026-09-04 | Arbetsplats, behörigheter och metodik på plats |
 | M2 | v38 | 2026-09-18 | Batch B granskad — rutinen kalibrerad |
 | M3 | v40 | 2026-10-02 | Nya NNK-attribut driftsatta, utbildning genomförd |
-| M8 | v44 | 2026-10-30 | Förvaltardialogen genomförd, kunskapen registrerad |
+| M4 | v44 | 2026-10-30 | Förvaltardialogen genomförd, kunskapen registrerad |
 | M5 | v46 | 2026-11-13 | Samtliga 40 P1-objekt skrivbordsgranskade |
 | M6 | v50 | 2026-12-11 | Kunskapslägesrapport D-län klar |
 | M7 | v52 | 2026-12-23 | Plan för 2027 levererad till NV |

@@ -338,5 +338,5 @@ Sorterade efter antal karterade delytor i länets N2000-områden (preliminär pr
 
 1. **Prioritera efter faktisk areal**, inte bara antal delytor — koppla denna lista mot `natura_habitats_joined`-lagret i `sodermanland_n2000_joined.gpkg` (privata natura-2000-repot) för att se vilka naturtyper som dominerar arealmässigt i respektive N2000-område.
 2. **Kontrollera artnamnen mot originalet** (PDF-länkar ovan) eller Artfakta.se innan listorna används i en formell bedömning — se reservationen högst upp i dokumentet.
-3. **Komplettera med de återstående ~13 mindre vanliga naturtyperna** om/när fältprogrammet 2026–2027 pekar ut objekt med dessa (4030, 3130, 6280, 9180, 6430, 9110, 8210, 9030 m.fl.).
+3. **Komplettera med de återstående ~13 mindre vanliga naturtyperna** om/när fältprogrammet 2027 pekar ut objekt med dessa (4030, 3130, 6280, 9180, 6430, 9110, 8210, 9030 m.fl.).
 4. **Följ upp 9050**-vägledningen — ny version är under framtagande hos NV (ref. NV-09554-24).

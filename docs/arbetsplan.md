@@ -444,7 +444,7 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 | v41 | C2 batch S, D2.1, H5.2 | C3 batch A klar, H4.1 | |
 | v42 | C2 batch S, D2.1, H3.2 | C5 batch C, G1.1, H3.2 | |
 | v43 | C2 batch S, D2.1, H5.2 | C5 batch C, C6 batch D, H4.1 | |
-| v44 | C2 batch S, C7, **H3.2 sista samtalen** | C6 batch D, G1.1 klar, H3.2 | **M8: förvaltardialog genomförd** |
+| v44 | C2 batch S, C7, **H3.2 sista samtalen** | C6 batch D, G1.1 klar, H3.2 | **M4: förvaltardialog genomförd** |
 | v45 | C2 batch S, D2.1, H5.2 | E1.1, C6 batch D, H4.1 klar | |
 | v46 | C2 batch S klar, F1.1 | E1.2, E1.3, G1.2 | **M5: alla P1-objekt granskade** |
 | v47 | E2.1, E2.2, E2.3, F1.2 | E3.1 | |
@@ -461,7 +461,7 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 | M1 | Arbetsplats, behörigheter och metodik på plats | v36 | ~2026-09-04 |
 | M2 | Batch B granskad — rutinen kalibrerad | v38 | ~2026-09-18 |
 | M3 | Nya NNK-attribut driftsatta, utbildning genomförd | v40 | ~2026-10-02 |
-| M8 | Förvaltardialogen genomförd, kunskapen registrerad i granskningslagret | v44 | ~2026-10-30 |
+| M4 | Förvaltardialogen genomförd, kunskapen registrerad i granskningslagret | v44 | ~2026-10-30 |
 | M5 | Samtliga 40 P1-objekt skrivbordsgranskade | v46 | ~2026-11-13 |
 | M6 | Kunskapslägesrapport D-län klar | v50 | ~2026-12-11 |
 | M7 | Plan för 2027 levererad till NV + underlag till årsredovisningen | v52 | ~2026-12-23 |
