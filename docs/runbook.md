@@ -547,6 +547,7 @@ fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopp
 3. Lös de 11 sitecodes utan automatisk träff manuellt (samma README). **SE0220129 Skärgårdsreservaten kräver särskild uppmärksamhet** — objektet består av många enskilt namngivna öar med minst tre olika förvaltare (Paul, Sari, Kristoffer i källistan), inte en enda kontaktperson.
 4. Prioritera de sju objekten med Åtgärdas-ytor och de 40 P1-objekten om något ändå saknas. Resten kan vänta.
 5. Blanketten går redan att filtrera per förvaltare (kolumn I) och skicka ut i delar.
+6. Publicerad 2026-08-27 på GitHub (`blanketter/blankett_forvaltarkunskap_nnk.xlsx`) — den är bara senaste genererade referensversionen, inte en delad levande fil. Arbetskopian som förvaltarna faktiskt fyller i ska ligga på `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\blankett_forvaltarkunskap_nnk.xlsx` (samma mapp som granskningslogg_mall.xlsx, se A3.3) — läggs dit av Johan.
 
 ### H1.2 · Förankra upplägget med Naturvårdsenhetens chef
 
