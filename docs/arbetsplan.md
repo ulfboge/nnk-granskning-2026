@@ -182,7 +182,7 @@ NNK/NRF 2026 — Södermanland
 | A1.2 | Verifiera att NNK-utcheckning fungerar mot ett testobjekt; titta först på inspelningen på VIC Natur | v35 | Handläggare |
 | A1.3 | Åtkomst till samverkansytan för Livsmiljötyper (dokument, manualer, kodlista) | v34 | Handläggare |
 | A2.1 | Läs `Handledning NNK 20260703.pdf` och `Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` | v34 | Båda |
-| A2.2 | Gå igenom `Kodlista_NNK_20260703.xlsx` — särskilt kategoriindelning 2026 och undergrupper | v35 | Handläggare |
+| A2.2 | Gå igenom kodstrukturen i `Kodlista_NNK_20260703.xlsx`, filtrera sedan `D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` (flik KODLISTA_NNK, kolumn *Kategori 2026*) på Gräsmark, Skog, Våtmark | v35 | Handläggare |
 | A2.3 | Installera `KartLits_NNK_GIS_mall_v_2` och testa mot ett objekt | v35 | Handläggare |
 | A2.4 | Hämta fastställda vägledningar för livsmiljötyper — **kontrollera vilka som är fastställda vs. remiss** (FAQ f.10) | v36 | Handläggare |
 | A2.5 | **Begär datauttag för D-län** ur NNK-Ajourhålla (punkter/linjer/ytor) — mejla `Sandra.Wennberg@naturvardsverket.se`. Skicka snarast, svarstid okänd (manualens steg 1) | v35 | Handläggare |

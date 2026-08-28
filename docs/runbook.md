@@ -63,8 +63,8 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v35** · **[Handläggare]** · förutsätter A1.3
 
-1. Öppna `natura-2000: docs/underlag/handledning/Kodlista_NNK_20260703.xlsx`.
-2. Filtrera kolumnen *Kategori 2026* på Gräsmark, Skog och Våtmark — det är de kategorier D-läns arbete gäller. Marina och limniska koder kan du hoppa över i år.
+1. Öppna `natura-2000: docs/underlag/handledning/Kodlista_NNK_20260703.xlsx` — den ger kodstruktur och undergrupper, men saknar en egen kategorikolumn.
+2. Öppna i stället `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx`, fliken *KODLISTA_NNK*. Filtrera kolumn H *Kategori 2026* på Gräsmark, Skog och Våtmark — det är de kategorier D-läns arbete gäller. Marina och limniska koder kan du hoppa över i år.
 3. Notera undertyperna för de koder som dominerar i länet: 9010 taiga, 9070/9071/9072 trädklädd betesmark, 8230/8231/8232 hällmarkstorräng, 6270 silikatgräsmark, 1630/1631 strandäng.
 4. Lär dig skillnaden mellan de tre flaggkategorierna: *Naturanaturtyp* (livsmiljötyp), *Obestämd naturanaturtyp* (vet att det är livsmiljötyp, inte vilken) och *Osäker natura/icke-natura* (vet inte om det är livsmiljötyp alls). De kräver helt olika åtgärder.
 5. Skapa ett eget urval i `docs/nnk/` med de ca 40 koder som faktiskt förekommer i D-län — det räcker gott.
