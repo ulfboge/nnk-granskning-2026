@@ -173,11 +173,11 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 **v36** · **[Handläggare]**
 
-1. Mapparna `docs/faltprotokoll/` och `data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från jobbdatorn.)
-2. Fältdokumentation: en fil per fältdag i `docs/faltprotokoll/`.
-3. NNK-uttag: spara i `data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra.
-4. Committa i Git efter varje arbetsdag. Loggen är underlaget till både arbetspaket E och F — den får inte gå förlorad.
-5. Kontrollera att `data/uttag/*.gpkg` och `data/nnk/*.gpkg` ligger i `.gitignore` — stora geodatafiler hör inte hemma i Git.
+1. Mapparna `natura-2000: docs/faltprotokoll/` och `natura-2000: data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från jobbdatorn. Ligger på G:-enheten, alltså utanför Git — committas aldrig.)
+2. Fältdokumentation: en fil per fältdag i `natura-2000: docs/faltprotokoll/`. Fältarbetet är flyttat till 2027 (beslut 2026-08-25) — mappen står färdig men väntas inte fyllas på under 2026.
+3. NNK-uttag: spara i `natura-2000: data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra. Hela mappen är gitignorad utom README.md — filerna committas inte, de är bara lokala arbetskopior.
+4. Under 2026 finns ingen daglig commit-rutin kopplad till granskningsarbetet — resultatet av skrivbordsgranskningen (C1.1) hamnar i KartLitS WebbGIS-mallen och i granskningsloggen på G:-enheten, inte i något repo. Committa som vanligt när du faktiskt ändrar filer i natura-2000 eller här (dokument, analysskript, kodurval m.m.).
+5. Kontrollera att `natura-2000: data/uttag/` (hela mappen, inte bara *.gpkg) och `natura-2000: data/nnk/*.gpkg` ligger i `.gitignore` — stora geodatafiler hör inte hemma i Git.
 6. Diarieföring (beslut 5 aug): öppna ärenden allteftersom förfrågningar kommer in, och stäng dem när svaret är diariefört. Stäm av rutinen med diariet.
 
 ### A4.2 · Etablera rutin för NNK-uttag
