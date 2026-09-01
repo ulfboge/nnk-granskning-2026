@@ -108,6 +108,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 4. Under *Field Matching Type*, välj **Use the field map to reconcile field differences**. Klicka Run.
 5. Spara editeringarna när alla tre lager (punkt/linje/yta) är klara.
 6. Döp om domänerna i geodatabasen med prefixet `LstD` inför publiceringen, enligt manualens rekommendation.
+7. **Läge 2026-09-01:** Append-steget kringgicks — granskningslagret byggdes i stället med skript (`natura-2000: deliveries/nnk_granskning_sodermanland_20260901/`, se README där). Domänerna läggs på med `forbered_gdb_for_publicering.py` — steg 1–6 ovan gäller alltså bara om Append-vägen används. Se [Publicera WebbGIS](webbgis-publicering.html), del 1.
 
 ### A2.7 · Publicera granskningslagret i portalen
 
@@ -117,6 +118,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 2. Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. `LstD NNK granskning`.
 3. Ta ställning till om vissa koder ska sållas bort, eller om bara objekt som överlappar ett Natura 2000-område ska behållas, innan publicering.
 4. Klicka **Share → Web Layer** i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — jobbdatorns nätverksrestriktioner kan påverka vilken som går att nå från fältet).
+5. **Detaljerad instruktion:** [Publicera WebbGIS](webbgis-publicering.html), del 2–4 (förberedelser i Pro, Share As Web Layer, efterarbete på item i portalen). Tjänstenamn: `LstD_NNK_Granskning` och `LstD_Skyddade_Omraden`.
 
 ### A2.8 · Skapa webbGIS från de publicerade lagren
 
@@ -126,6 +128,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 2. Lägg till `LstD NNK granskning` och relevanta referenslager (t.ex. *NV Naturtypskartan NNK*, *NV Natura2000 områden*) i webbGIS-appen.
 3. Testa redigering mot ett enskilt objekt innan du meddelar kollegan att lagret är klart att använda (jämför med rutinen i A2.3, punkt 5).
 4. Vid frågor eller problem: `giampaolo.cocca@lansstyrelsen.se`.
+5. **Detaljerad instruktion:** [Publicera WebbGIS](webbgis-publicering.html), del 5–7 (WebMap i Map Viewer, GK Konfigurator, test och överlämning).
 
 ### A3.1 · Avstämning med chef
 

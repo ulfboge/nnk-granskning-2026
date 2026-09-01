@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="publicera-nnk-granskningslagret-som-webbgis-lstd-nnk-granskning">Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#0-oversikt-och-tidsatgang">0. Översikt och tidsåtgång</a><ul>
+<li><a href="#01-forutsattningar-kolla-forst-allt-annat-stannar-annars">0.1 Förutsättningar (kolla FÖRST, allt annat stannar annars)</a></li>
+<li><a href="#02-namn-som-ska-anvandas-bestamda-enligt-namnprincipen-v20">0.2 Namn som ska användas (bestämda enligt namnprincipen v2.0)</a></li>
+</ul>
+</li>
+<li><a href="#del-1-forbered-geodatabasen-i-arcgis-pro">Del 1 · Förbered geodatabasen i ArcGIS Pro</a></li>
+<li><a href="#del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</a></li>
+<li><a href="#del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</a></li>
+<li><a href="#del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</a></li>
+<li><a href="#del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</a></li>
+<li><a href="#del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</a></li>
+<li><a href="#del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</a></li>
+<li><a href="#del-8-felsokning-och-drift">Del 8 · Felsökning och drift</a></li>
+<li><a href="#bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet forbered_gdb_for_publicering.py</a></li>
+<li><a href="#bilaga-b-domanerna-som-kopieras-ur-kartlits-mallen">Bilaga B · Domänerna som kopieras (ur KartLits-mallen)</a></li>
+<li><a href="#bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</a></li>
+</ul>
+</div>
+</nav>
+<p><strong>Version 1.0 · 2026-09-01 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
+<blockquote>
+<p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
+</blockquote>
+<p>Källor som manualen bygger på (alla i <code>natura-2000: docs/</code>): NV:s <em>Manual NNK mall för granskning</em> (steg 4–5), <em>Lathund granskning WebbGIS-KartLitS 2026-07-10</em> (hur slutprodukten ser ut och används), <em>GK Konfigurator och standardmall — Manual för producenter v.13 (2026-08-20)</em>, <em>Namnsättnings- och taggningsprincip … v2.0 (2026-04-22)</em>, <em>FO GK Riktlinjer för en stabil GIS-miljö</em>, Södermanlands egen <em>LstD GIS LOGG Publicering DriftadeGeodata</em> (checklista) samt GIS-funktionens användarstöd för ArcGIS Pro/portalerna.</p>
+<hr />
+<h2 id="0-oversikt-och-tidsatgang">0. Översikt och tidsåtgång</h2>
+<table>
+<thead>
+<tr>
+<th>Del</th>
+<th>Vad</th>
+<th>Var</th>
+<th>Ungefärlig tid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Förbered geodatabasen: domäner (rullistor), fälttyper, alias, GlobalID, editor tracking</td>
+<td>ArcGIS Pro, Python-fönstret</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Förbered kartan: lagerordning, fältsynlighet, symbol, popup, lagernamn</td>
+<td>ArcGIS Pro</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Publicera som driftat lager: <em>Share → Web Layer</em></td>
+<td>ArcGIS Pro → intern geodataportal</td>
+<td>20 min + uppladdning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Efterarbete på item: namn, taggar, redigeringsinställningar, delning, GDK, logg</td>
+<td>Geodataportalen (webb)</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bygg WebMap: granskningslagret + referenslager, popup, formulär</td>
+<td>Geodataportalen → Map Viewer</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bygg appen i GK Konfigurator: objekt, lagerlista, widgetar, filter</td>
+<td>Konfiguratorn (webb)</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Testa, döp om, dela länken, informera granskarna</td>
+<td>Portalen + Teams/mejl</td>
+<td>30 min</td>
+</tr>
+</tbody>
+</table>
+<p>Räkna med en halv arbetsdag om behörigheterna är på plats, annars mer (se 0.1). Delarna kan göras i separata pass — spara efter varje del.</p>
+<h3 id="01-forutsattningar-kolla-forst-allt-annat-stannar-annars">0.1 Förutsättningar (kolla FÖRST, allt annat stannar annars)</h3>
+<ol>
+<li><strong>Inloggad i den interna geodataportalen från ArcGIS Pro</strong>: <code>https://lst-geoportal.lansstyrelsen.se/arcgis/</code> ska vara <em>Active Portal</em> och du ska vara <em>Signed in</em> (uppe till höger i Pro; välj <em>Automatisk inloggning</em> i rutan som dyker upp). Saknas portalen: <em>Project → Settings → Portals → Add Portal</em>. Från Pro 3.5.1 licensieras Pro dessutom mot portalen — är du inloggad så är det redan löst.</li>
+<li><strong>Publiceringsrätt i portalen</strong> (rollen <em>Publisher</em> eller motsvarande). Testa: i Catalog → Portal → <em>My Content</em> ska du kunna skapa en mapp (<em>New folder</em>). Kan du inte det → beställ via GIS-funktionen (<code>gis.sodermanland@lansstyrelsen.se</code>) och/eller LIAM.</li>
+<li><strong>Medlem i gruppen <code>GK Standardmall – Producenter</code></strong> (intern portal) — krävs för att logga in i Konfiguratorn. Kontrollera under Portal → <em>Groups</em>. Saknas → mejla <code>fo.gk.team.applikation@lansstyrelsen.se</code> (enligt GK-manualen) med kopia till GIS-funktionen.</li>
+<li><strong>Filerna på jobbdatorn</strong> (från zip:en i <code>natura-2000/deliveries/nnk_granskning_sodermanland_20260901.zip</code>, hämtad från github.com): <code>NNK_Sodermanland_granskning.gdb</code>, mappen <code>lyrx/</code> och skriptet <code>forbered_gdb_for_publicering.py</code>. Dessutom KartLits-mallens gdb <code>KartLits_NNK_granskning.gdb</code> (A2.3 — behövs för domänerna i del 1). Lägg allt på en <strong>lokal</strong> disk, t.ex. <code>C:\GIS\NNK\</code> (inte på G:, som är långsam och ibland låser gdb-filer).</li>
+<li><strong>Vilken portal?</strong> Manualen utgår från den <strong>interna</strong> portalen och den interna Konfiguratorn — granskarna är kollegor på Länsstyrelsen, precis som i Stockholms exempel. Extern portal blir aktuell först om förvaltare utanför Länsstyrelsen ska redigera direkt (då gäller dessutom striktare regler för export och personuppgifter, se GK-manualen s.16 och 61). Bestäm inte själv om det blir aktuellt — stäm av med GIS-funktionen.</li>
+</ol>
+<h3 id="02-namn-som-ska-anvandas-bestamda-enligt-namnprincipen-v20">0.2 Namn som ska användas (bestämda enligt namnprincipen v2.0)</h3>
+<table>
+<thead>
+<tr>
+<th>Vad</th>
+<th>Namn</th>
+<th>Kommentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tjänstenamn vid publicering (<em>Name</em> i Share As Web Layer), NNK-lagren</td>
+<td><code>LstD_NNK_Granskning</code></td>
+<td>19 tecken; max 40 för driftat lager. Inga åäö/mellanslag/bindestreck. Går INTE att ändra efteråt.</td>
+</tr>
+<tr>
+<td>Tjänstenamn vid publicering, referenslagret</td>
+<td><code>LstD_Skyddade_Omraden</code></td>
+<td>separat tjänst, ej redigerbar</td>
+</tr>
+<tr>
+<td>Item-titel (alias) i portalen, driftat lager</td>
+<td><code>LstD NNK Granskning – Driftat</code></td>
+<td>sätts på itemsidan efter publicering</td>
+</tr>
+<tr>
+<td>Item-titel, referenslager</td>
+<td><code>LstD Skyddade områden (N2000 och naturreservat) – Driftat</code></td>
+<td></td>
+</tr>
+<tr>
+<td>WebMap</td>
+<td><code>LstD NNK Granskning – WebMap</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Appen (WebbGIS, huvudprodukt)</td>
+<td><code>LstD NNK Granskning – WebbGIS</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Tagg (identisk på ALLA items ovan)</td>
+<td><code>LstD NNK Granskning WebbGIS</code></td>
+<td>huvudproduktens namn utan tankstreck</td>
+</tr>
+<tr>
+<td>Appens URL-sökväg i Konfiguratorn</td>
+<td><code>lstd_nnk_granskning</code></td>
+<td>gemener, länsprefix, unik i hela miljön</td>
+</tr>
+<tr>
+<td>Visningsrubrik i appen</td>
+<td><em>NNK-granskning Södermanland</em> (underrubrik: <em>Natura 2000 — livsmiljötyper, utbredning och tillstånd</em>)</td>
+<td>fritext, ändrar inte item-titeln</td>
+</tr>
+<tr>
+<td>Domäner i gdb:n</td>
+<td><code>LstD_NNK_yta</code>, <code>LstD_NNK_tillstand</code> …</td>
+<td>prefix enligt NV-manualens steg 3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="del-1-forbered-geodatabasen-i-arcgis-pro">Del 1 · Förbered geodatabasen i ArcGIS Pro</h2>
+<p><strong>Varför:</strong> Vår gdb byggdes utanför ArcGIS (Python/GDAL) för att kringgå Append-buggen. Den har rätt fält och data, men <strong>saknar de 13 kodlistedomänerna</strong> från KartLits-mallen. Det är domänerna som ger rullistorna i WebbGIS-formuläret (<em>Inget behov av justering / Ändring till annan livsmiljötyp / …</em>). Dessutom är några kodfält av typen Double (ska vara Long), NV:s textfält <code>globalid</code> krockar med Esris GlobalID, och vi vill ha spårning av vem som granskat vad.</p>
+<p>Allt detta gör skriptet <code>forbered_gdb_for_publicering.py</code> (bilaga A) i ett svep. Gör så här:</p>
+<ol>
+<li><strong>Ta en kopia av gdb:n först</strong> (Utforskaren: kopiera mappen <code>NNK_Sodermanland_granskning.gdb</code> → <code>NNK_Sodermanland_granskning_ORIGINAL.gdb</code>). Skriptet ändrar schemat på plats.</li>
+<li>Öppna ArcGIS Pro med ett tomt projekt (eller ditt NNK-projekt). <strong>Ta bort NNK-lagren ur kartan</strong> om de ligger där — Pro låser annars gdb:n och stegen misslyckas med "lock"-fel.</li>
+<li>Öppna skriptet i Anteckningar. Ändra de två sökvägarna under <code>KONFIGURATION</code> (<code>MALL_GDB</code> = KartLits-mallens gdb, <code>VAR_GDB</code> = vår gdb). Spara.</li>
+<li><em>View → Python Window</em>. Klistra in HELA skriptet (Ctrl+A, Ctrl+C i Anteckningar → Ctrl+V i Python-fönstret) och tryck Enter. Alternativt: <em>Analysis → Python → Python Window</em>, högerklicka → <em>Load Code</em> → välj filen → Enter.</li>
+<li>Läs utskriften. Förväntat: <code>1.</code> (några rader "Double → Long" på ytlagret), <code>2.</code> 13 domäner skapade (<code>NV_NNK_yta → LstD_NNK_yta (230 koder)</code> osv.), <code>3.</code>/<code>4.</code> "klart" × 3, <code>5.</code> GlobalID tillagt × 4, <code>6.</code> aktiverat × 3, <code>KLART</code>.</li>
+<li><strong>Kontroll i Catalog:</strong> högerklicka gdb:n → <em>Domains</em> — 13 domäner med prefix <code>LstD_</code>. Högerklicka <code>NNK_naturaobjekt_yta</code> → <em>Design → Fields</em>: kolumnen <em>Domain</em> ska vara ifylld för <code>naturtyp</code>, <code>granskat</code>, <code>tillstand</code>, <code>justering</code>, <code>utbredning</code>, <code>kontroll1–3</code>, <code>metod</code>, <code>livsmiljötyp1–3</code>, <code>malnaturtyp1–3</code> m.fl.; kolumnen <em>Alias</em> ska visa svenska namn; det ska finnas ett <code>GlobalID</code>-fält och fälten <code>lst_skapad_av/lst_skapad/lst_andrad_av/lst_andrad</code>.</li>
+</ol>
+<p><strong>Om skriptet stannar</strong> — vanligaste orsaker:</p>
+<table>
+<thead>
+<tr>
+<th>Fel</th>
+<th>Orsak</th>
+<th>Lösning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERROR 000464: Cannot get exclusive schema lock</code></td>
+<td>gdb:n används av kartan/Catalog</td>
+<td>ta bort lagren ur kartan, stäng Catalog-förhandsgranskning, kör igen (skriptet fortsätter där det slutade)</td>
+</tr>
+<tr>
+<td><code>ERROR 000800</code>/domännamn ogiltigt</td>
+<td>ogiltiga tecken</td>
+<td>kontrollera att <code>PREFIX = "LstD_"</code> inte ändrats till något med mellanslag</td>
+</tr>
+<tr>
+<td><code>Domain type does not match field type</code></td>
+<td>ett kodfält är fortfarande Double/Text</td>
+<td>kör om skriptet (steg 1 konverterar); om fältet är Text: säg till, då krävs manuell fix</td>
+</tr>
+<tr>
+<td><code>AlterField</code> misslyckas på <code>livsmiljötyp1</code></td>
+<td>fältnamn med ö</td>
+<td>ignorera — aliaset sätts istället i lagrets Fields-vy i del 2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Utan skript (manuell reservväg, ~1 h):</strong> <em>Data Management → Domains → Domain To Table</em> på mallens gdb (en tabell per domän) → <em>Table To Domain</em> mot vår gdb med namn <code>LstD_…</code> → <em>Assign Domain To Field</em> per fält enligt tabellen <code>FALT_DOMAN</code> i skriptet → <em>Add Global IDs</em> → <em>Enable Editor Tracking</em> (ange nya fältnamn, <em>Add fields</em> ikryssat, UTC). Byt först namn på <code>globalid</code> → <code>nv_globalid</code> via <em>Alter Field</em>.</p>
+<hr />
+<h2 id="del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</h2>
+<ol>
+<li>Ny karta (<em>Insert → New Map</em>), koordinatsystem SWEREF 99 TM (EPSG:3006) — sätts automatiskt av första lagret.</li>
+<li>Lägg till de fyra lyrx-filerna från <code>lyrx/</code> (dra in från Catalog). Om de pekar fel: högerklicka lagret → <em>Properties → Source → Set Data Source</em> → peka på <code>NNK_Sodermanland_granskning.gdb</code> (en gång per lager). Lagren ska rita ut: alla NNK-objekt röda (<em>granskat = Nej</em>).</li>
+<li><strong>Fältsynlighet — viktigast i denna del.</strong> Högerklicka <code>NNK_naturaobjekt_yta</code> → <em>Data → Fields</em>. Slå PÅ <em>Visible</em> för <strong>alla granskningsfält</strong>: <code>granskat</code>, <code>justering</code>, <code>utbredning</code>, <code>livsmiljötyp1–3</code>, <code>kommentar_livsmil_utbred</code>, <code>tillstand</code>, <code>procent_gott</code>, <code>procent_ej_gott</code>, <code>procent_osaker</code>, <code>kommentar_tillstand</code>, <code>kontroll1–3</code>, <code>kommentar_kontroll</code>, <code>metod</code>, <code>Kommentar_metod</code> samt <code>lst_andrad_av</code>, <code>lst_andrad</code>. (Leveransens lyrx döljer flera av dem som standard för att hålla popupen kort — men <strong>fält som är avstängda i lagret följer inte med i den publicerade tjänsten</strong>, och då saknas de i WebbGIS-formuläret.) Behåll gärna avstängt: <code>nv_globalid</code>, <code>created_user/date</code>, <code>last_edited_user/date</code>, <code>habitat_priority_*</code>, <code>habitat_period_*</code>, <code>shape_Length/Area</code>. Spara (Ctrl+S i Fields-vyn). Upprepa för linje- och punktlagret.</li>
+<li><strong>Alias:</strong> i samma Fields-vy syns nu domänernas och aliasens effekt. Vill du ändra ordalydelse gör du det här (lagrets alias vinner över gdb:ns vid publicering).</li>
+<li><strong>Symbol:</strong> behåll mallens <em>Unique Values</em> på <code>granskat</code> (grön Ja / röd Nej / gul Påbörjat). Den följer med till webblagret. Kontrollera att "Övriga värden" (<em>Show all other values</em>) är på, annars försvinner objekt med okänd kod.</li>
+<li><strong>Popup:</strong> högerklicka → <em>Configure Pop-ups</em>. Rubrik <code>{omrade_namn}</code>, fältlista i prioriterad ordning (områdesnamn, skyddskategori, län, N2000-kod, naturtyp + klartext, status + klartext, granskningsfälten). Popupen följer med till webblagret som <em>standard-popup</em> och kan finjusteras i Map Viewer i del 5.</li>
+<li><strong>Display field:</strong> <em>Properties → Display → Display field</em> = <code>omrade_namn</code> (ger begripliga träfflistor i webbGIS).</li>
+<li><strong>Lagernamn i Contents</strong> (det som blir undernamn i tjänsten): döp om till <code>NNK ytor (granskning)</code>, <code>NNK linjer (granskning)</code>, <code>NNK punkter (granskning)</code> och <code>Skyddade områden (N2000 och naturreservat)</code>. Undernamn får ha åäö och mellanslag — det är bara tjänstens <em>Name</em> som är begränsat.</li>
+<li><strong>Ordning i Contents:</strong> punkter överst, linjer, ytor, referenslagret underst (eller överst med genomskinlig fyllning som i leveransen — båda fungerar, WebbGIS-användaren kan ändå styra ritordning).</li>
+<li><strong>Visningsintervall:</strong> sätt gärna <em>Out beyond 1:250 000</em> på ytlagret (15 800 polygoner, varav stora vattenobjekt — utan gräns blir länsöversikten seg i webben). Referenslagret utan gräns.</li>
+<li><strong>Överväg urval före publicering</strong> (NV-manualens OBS i steg 4): "vill du sålla bort vissa koder eller bara behålla objekt som överlappar N2000?". Rekommendation för 2026: publicera <strong>allt</strong> (även <em>Ingen matchning</em> och naturreservatsobjekt) — granskningen 2026 avgränsas ändå till N2000 via filter i appen (del 6, steg 5), och vi slipper publicera om när avgränsningen ändras. Marina objekt (naturtyp 1000-serien) ska enligt FAQ 16/29 inte granskas i NNK 2026 — även dessa hanteras med filter, inte genom att ta bort dem.</li>
+<li>Spara projektet (t.ex. <code>C:\GIS\NNK\LstD_NNK_Granskning_publicering.aprx</code>) — det behövs igen vid nästa Ajourhålla-uttag.</li>
+</ol>
+<hr />
+<h2 id="del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</h2>
+<p>Publicera <strong>två</strong> gånger: först NNK-lagren (tre lager i en tjänst), sedan referenslagret (egen tjänst, så att det kan vara oredigerbart och delas bredare).</p>
+<p><strong>Tjänst 1 — NNK-lagren</strong></p>
+<ol>
+<li>Markera de tre NNK-lagren i Contents (Ctrl-klick). Fliken <em>Share → Web Layer → Publish Web Layer</em> (välj <em>Selected layers</em> om Pro frågar).</li>
+<li>Fliken <strong>General</strong>:
+   - <em>Name</em>: <code>LstD_NNK_Granskning</code> (exakt så; namnet är låst efter publicering).
+   - <em>Summary</em>: "Granskningskopia av NNK Ajourhålla för Södermanlands län (uttag 2026-08-26), attribuerad med områdesnamn, skyddskategori och län. Granskningsfält enligt KartLitS-mallen. Ansvarig: Naturskyddsenheten/NRR."
+   - <em>Tags</em>: <code>LstD NNK Granskning WebbGIS</code> (huvudtaggen) + <code>NNK</code>, <code>Natura 2000</code>, <code>naturrestaurering</code>.
+   - <em>Layer Type</em>: <strong>Feature</strong> (inte Map Image — riktlinje 1: map image layers får inte publiceras till hosted).
+   - <em>Location → Folder</em>: skapa/välj mappen <code>LstD NNK</code> i My Content.
+   - <em>Share with</em>: <strong>bara</strong> gruppen <code>GK Standardmall – Producenter</code> och/eller en egen grupp för granskarna (riktlinje 3: dela restriktivt; INTE <em>Organization</em>). Se del 4 för slutlig delning.</li>
+<li>Fliken <strong>Configuration</strong> → klicka på pennan vid <em>Feature</em>:
+   - <em>Operations</em>: kryssa <strong>Enable editing</strong> och <em>Add, update and delete features</em> → begränsa i del 4 till <em>Update attributes only</em>. (Du kan sätta det direkt här om ditt Pro visar valet "Update attributes only".)
+   - <em>Enable Sync</em> — <strong>av</strong> (behövs inte, och sync utlöser fler analyskrav).
+   - <em>Export data</em> — <strong>av</strong>.
+   - <em>Properties</em>: <strong>Attachments AV</strong> (riktlinje 2: driftade lager utan bilagor).
+   - <em>Time zone</em> (om dialogen visar "Date fields time zone"): välj <em>W. Europe Standard Time (Stockholm)</em> — NV:s datumfält är i svensk tid.</li>
+<li>Klicka <strong>Analyze</strong>. Vanliga meddelanden:
+   - <em>24011 Unique numeric IDs are not assigned</em> — högerklicka meddelandet → <em>Assign unique IDs automatically</em> (eller <em>Map Properties → General → Allow assignment of unique numeric IDs</em>). Motsvarar loggens "Unique Ids aktiverat på kartan".
+   - <em>00230/00231 Layer's data source should have GlobalID / editor tracking</em> — löst av del 1.
+   - <em>00068 Layer draws at all scale ranges</em> — varning, hanterad av steg 2.10.
+   - Röda fel (❌) måste åtgärdas; gula varningar går att publicera trots.</li>
+<li><strong>Publish</strong>. 15 800 polygoner tar några minuter. Klicka <em>Manage the web layer</em> i klarmeddelandet → itemsidan öppnas i portalen (lämna fliken öppen inför del 4).</li>
+</ol>
+<p><strong>Tjänst 2 — referenslagret</strong></p>
+<p>Samma sak för <code>Skyddade_omraden</code>: <em>Name</em> <code>LstD_Skyddade_Omraden</code>, samma taggar, <strong>Enable editing AV</strong>, <em>Export data</em> kan vara på (data är öppna NV-data). Summary: "Natura 2000-siter (SCI/SPA) och naturreservat/nationalparker i och runt Södermanland, från Naturvårdsverkets Naturvårdsregistret 2026-09. Referenslager för NNK-granskningen."</p>
+<p><strong>Kontroll:</strong> i Catalog → Portal → My Content → mappen <code>LstD NNK</code> ska det finnas två <em>Feature Layer (hosted)</em>-items. Högerklicka → <em>Add To Current Map</em>, kolla i <em>Properties → Source</em> att källan är <code>https://lst-hostedgeodata.lansstyrelsen.se/arcgis/rest/services/Hosted/LstD_NNK_Granskning/FeatureServer</code> (så vet du att kartan nu läser från portalen, inte lokala filen).</p>
+<hr />
+<h2 id="del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</h2>
+<p>Öppna <code>https://lst-geoportal.lansstyrelsen.se/arcgis/</code> → <em>Content</em> → mappen <code>LstD NNK</code>. För <strong>varje</strong> av de två items:</p>
+<ol>
+<li><strong>Titel</strong> (Overview → penna vid titeln): <code>LstD NNK Granskning – Driftat</code> resp. <code>LstD Skyddade områden (N2000 och naturreservat) – Driftat</code>. (Titeln är ett alias; tjänstnamnet i URL:en förblir <code>LstD_NNK_Granskning</code>.)</li>
+<li><strong>Taggar</strong>: kontrollera att <code>LstD NNK Granskning WebbGIS</code> finns; lägg till om Pro tappade den.</li>
+<li><strong>Beskrivning</strong>: kort text om innehållet, ansvarig (NRR-handläggare, Naturskyddsenheten), datum för uttaget, samt — när metadataposten finns (steg 7) — länken till den. Ange också: "Redigering: endast attribut. Ta INTE bort objekt."</li>
+<li><strong>Settings-fliken, NNK-tjänsten</strong> (avsnittet <em>Feature layer (hosted)</em>):
+   - <em>Editing</em>: <strong>Enable editing</strong> ✔.
+   - <em>What kind of editing is allowed?</em>: <strong>Update</strong> ✔ (Add ✘, Delete ✘). Under Update: <strong>Attributes only</strong> (om alternativet finns i er portalversion 11.5 — annars <em>Attributes and geometry</em> och instruera granskarna att inte flytta gränser).
+   - <em>Track edits</em>: <strong>Keep track of who created and last updated features</strong> ✔ (använder fälten från del 1 steg 6). <em>Editors can only see/edit their own features</em> ✘.
+   - <em>Export data</em>: ✘. <em>Sync</em>: ✘.
+   - <em>Layer optimization / Indexes</em>: ingen ändring.
+   Spara.</li>
+<li><strong>Settings-fliken, referenstjänsten</strong>: <em>Enable editing</em> ✘, <em>Export data</em> ✔ (frivilligt).</li>
+<li><strong>Delning</strong> (<em>Share</em>): dela med den grupp granskarna ingår i. Finns ingen lämplig grupp: skapa gruppen <code>LstD NNK Granskning</code> (Groups → Create group; <em>Who can view</em>: endast medlemmar; <em>Who can contribute</em>: gruppägare/medlemmar) och bjud in granskarna med länsstyrelsekontot. Dela <strong>båda</strong> items + (senare) WebMap + app med samma grupp. Producenter-gruppen behövs bara för Konfiguratorn. <em>Everyone/Organization</em>: nej.</li>
+<li><strong>Metadatapost i Geodatakatalogen (GDK)</strong> — principen kräver en post för huvudprodukten (appen), skapa den när appen finns (del 7). Titel = <code>LstD NNK Granskning – WebbGIS</code>; lägg in taggens portal-URL (klicka på taggen i portalen och kopiera adressen) som <em>Onlinekälla</em> med protokoll <em>ESRI Portal</em>; lägg sedan metadatapostens URL i appens/lagrets <em>Beskrivning</em>. Frågor om GDK → GIS-funktionen.</li>
+<li><strong>Logga i <code>LstD_GIS_LOGG_Publicering_DriftadeGeodata</code></strong> (GIS-funktionens SharePoint; kopia i <code>natura-2000: docs/D_GIS_manualer/Portalerna/</code>): ny rad per driftat lager med ansvarig GIS-are, informationsförvaltare, chef informerad, syfte, publiceringsdatum, REST-länk, delning. Kolumnerna i loggen är exakt de kontroller som gjorts i del 1–4 — bocka av.</li>
+</ol>
+<hr />
+<h2 id="del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</h2>
+<p>Konfiguratorn läser lager <strong>bara via WebMaps</strong> (GK-manualen s.14). WebMap:en är också där popup, formulär och referenslager konfigureras.</p>
+<ol>
+<li>Portalen → <em>Map</em> (Map Viewer, inte Classic). <em>Add → Browse layers → My Content</em> → lägg till <code>LstD NNK Granskning – Driftat</code> (alla tre undernivåer följer med som grupp) och <code>LstD Skyddade områden … – Driftat</code>.</li>
+<li><strong>Referenslager</strong> — sök i <em>Browse layers → My Organization</em> (eller <em>Groups → Södermanland – Karttjänster</em> och de nationella grupperna) på följande och lägg till dem som finns. Skriv ned exakta item-namn i loggen — de behövs igen i Konfiguratorn:
+   - "Naturtypskartan" / "NNK" — NV:s naturtypskarta med naturtypsfärger (<em>NV Naturtypskartan NNK</em> i Stockholms app).
+   - "Natura 2000" — områdesgränser med bevarandeplanlänk (<em>NV Natura2000 områden</em>; fältet <code>BEVPLAN</code>).
+   - "Ängs- och betesmark" / "TUVA" — inventeringen med TUVA-länk.
+   - "Ortofoto" — Lantmäteriets ortofoto färg (årsvis) och IR (<em>LM Ortofoto</em> / <em>LM Historiska ortofoton – WMS</em>).
+   - "Ekonomiska kartan" (50-talet), "Jordbruksblock" (senaste år), "Naturreservat"/"Skyddad natur", "Fastighetskarta".
+   Nationella karttjänster som redan finns i portalen behöver <strong>inte</strong> kopieras in i vår WebMap — de kan istället läggas till direkt i Konfiguratorns lagerlista från sina egna WebMaps (del 6, steg 4). Lägg in i vår WebMap endast det som saknas i portalen. Saknas NV:s Natura 2000-lager helt: <em>Add → Layer from URL</em> → <code>https://geodata.naturvardsverket.se/naturvardsregistret/wfs</code> (WFS, öppna data) — undantagsfall, kräver att URL:en är nåbar från jobbnätet.</li>
+<li><strong>Ordning</strong> (uppifrån): NNK punkter, NNK linjer, Skyddade områden (kontur), NNK ytor, NV naturtypskarta (släckt vid start), Natura 2000-gränser, ängs- och betesmark (släckt), ortofoton (släckta), bakgrund. Slå på <em>Visible</em> bara för NNK-lagren, skyddade områden och N2000-gränser vid start.</li>
+<li><strong>Symbol</strong>: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): <em>Styles → Types (unique symbols)</em> på <code>granskat</code>, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.</li>
+<li><strong>Popup</strong> per NNK-lager (<em>Pop-ups</em>): rubrik <code>{omrade_namn}</code> — lägg till en <em>Fields list</em> med de fält granskaren behöver läsa: Skyddskategori, Län, N2000-kod, Naturtyp + klartext, Naturtypsstatus + klartext, Karteringsstatus + klartext, Målnaturtyp 1–3 (klartext), NNK-kommentar, Granskat, Granskad av/datum. Håll granskningsfälten ur popupen — de fylls i formuläret. Lägg sist ett <em>Text</em>-element: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på <em>Pop-ups</em> även på referenslagren (N2000: så att bevarandeplanlänken syns).</li>
+<li><strong>Formulär (smart form)</strong> — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):
+   - <strong>Grupp "1. Livsmiljötyp och utbredning"</strong>: Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 · Kommentar – livsmiljötyp och utbredning.
+   - <strong>Grupp "2. Tillstånd"</strong>: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
+   - <strong>Grupp "3. Vad ska kontrolleras och hur"</strong>: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
+   - <strong>Grupp "4. Klart?"</strong>: Granskat.
+   - Sätt <em>beskrivning</em> per fält med lathundens text, t.ex. Tillstånd: "Okänt = kan ej bedöma. Annat tillstånd = du vill justera registrerad naturtypsstatus; ange då procent i de tre fälten (summa 100)." Metod: "Framåtsyftande — vilken metod BÖR användas 2027, inte hur du gjort hittills."
+   - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 3</code>) men inte nödvändig i första versionen.
+   Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).</li>
+<li><strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.</li>
+<li><strong>Spara</strong>: <em>Save as</em> → titel <code>LstD NNK Granskning – WebMap</code>, tagg <code>LstD NNK Granskning WebbGIS</code>, mapp <code>LstD NNK</code>, sammanfattning. <strong>Dela</strong> WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).</li>
+</ol>
+<hr />
+<h2 id="del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</h2>
+<p>Intern Konfigurator: <code>https://lst-webbgis-konfigurator.lansstyrelsen.se/</code> (logga in med portalkontot; kräver Producenter-gruppen). Arbetsflödet är GK-manualens 10 steg (s.6). Alla ändringar kräver <strong>Spara</strong> (knappen längst till vänster i varje flik).</p>
+<ol>
+<li><strong>Appar → Skapa</strong>. Mall: <em>GK Standardmall</em> (intern), <strong>senaste version</strong>. Titel: <code>LstD NNK Granskning – WebbGIS</code>. Spara → ett item skapas i portalen.</li>
+<li><strong>Fliken Objekt</strong>: <em>Uppdatera mall automatiskt</em> PÅ (rekommenderat). <em>Sökväg</em>: <code>lstd_nnk_granskning</code> (validering visar om upptagen). Fyll i Sammanfattning/Beskrivning/Taggar (<code>LstD NNK Granskning WebbGIS</code>) — de skrivs till portal-itemet. <em>Katalog</em>: Natur/Naturvård om valet finns.</li>
+<li><strong>Fliken Allmänt</strong>: hoppa över (ingen konfiguration).</li>
+<li><strong>Fliken Lagerlista</strong>:
+   - <em>Datakällor → Lägg till</em>: sök <code>LstD NNK Granskning</code> → markera vår WebMap → Lägg till. Sök därefter fram de nationella WebMaps som motsvarar referensunderlagen från del 5 steg 2 (sök på "Naturtypskarta", "Natura 2000", "Ängs- och betesmark", "Ortofoto", "Historiska ortofoton", "Ekonomiska kartan", "Jordbruksblock", "Naturvårdsverket"). Markera en–två WebMaps i taget (prestanda).
+   - <em>Urval av datakällor</em>: bocka i vår WebMap → den dyker upp under <em>Tillgängliga lager</em>.
+   - <em>Använda lager</em>: skapa grupper (knappen <em>Ny grupp</em>) med denna struktur och dra in lagren:<ol>
+<li><strong>Granskning</strong> — <code>LstD NNK Granskning</code> (hela tjänsten som grupp: punkter, linjer, ytor) + <code>Skyddade områden</code>. Tända vid start. Gruppinställning: <em>Tillåt tänd alla</em> ✔, fet titel.</li>
+<li><strong>Naturvårdsverket</strong> — Naturtypskartan NNK (släckt), Natura 2000-områden (tänt), naturreservat/skyddad natur (släckt).</li>
+<li><strong>Jordbruk och hävd</strong> — ängs- och betesmarksinventeringen (TUVA-länk), jordbruksblock.</li>
+<li><strong>Ortofoto och historiska kartor</strong> — ortofoto färg (årsvis), ortofoto IR, ekonomiska kartan 50-tal. För <em>LM Historiska ortofoton – WMS</em>: avaktivera lagren "Ortofoto YYYY" och behåll "YYYY ortofoton, 1 m, sv_v" (känd utskriftsbugg, GK-manualen s.50).</li>
+<li><strong>Fastighet och administrativt</strong> — fastighetskarta, kommun/länsgräns.
+   - Lagerinställningar (fäll ut gruppen, ikonerna per lager):
+ - <strong>Sökbart</strong> (förstoringsglaset) på NNK ytor: sökfält <code>omrade_namn</code> och <code>n2000_sitecode</code>; på Skyddade områden: <code>omrade_namn</code>, <code>sitecode</code>. Då hittar granskaren sitt område i <em>Sök i kartan</em>.
+ - <strong>Redigeringsinställningar</strong> (pennan) på NNK ytor/linjer/punkter: <em>Gör tjänsten redigerbar</em> ✔ → tillåt <em>Uppdatera attribut</em> ✔, <em>Lägg till</em> ✘, <em>Ta bort</em> ✘, <em>Geometri</em> ✘ (om valen finns), <em>Fältkalkylator i attributtabellen</em> ✘ (skydd mot massändring av misstag). <strong>OBS:</strong> den här vägen (inte bara widgeten) krävs för att formulären från del 5 steg 6 ska slå igenom (GK-manualen s.27 och 47).
+ - Popup på: alla utom rena bakgrundslager.
+   - <em>Bakgrunder</em>: välj en ljus bakgrund (t.ex. LM Topografisk webbkarta nedtonad) som start.
+   - <em>Kartans utgångsläge</em>: aktivera, zooma till Södermanland, Spara.
+   - <strong>Exportera lagerlistan</strong> (knappen <em>Export</em> överst) → spara JSON-filen i <code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code> — backup om en WebMap försvinner ("Etikett kan inte hittas i WebMap", s.28).</li>
+</ol>
+</li>
+<li><strong>Fliken Filter</strong> (ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11). <em>Nytt filter</em> → <em>Gruppfilter</em>, datakälla NNK ytor + linjer + punkter:
+   - "Bara Natura 2000" — <code>skyddskategori</code> <em>innehåller</em> <code>Natura 2000</code> — <strong>aktivt vid start</strong> (lathunden: granskningen avgränsas till N2000-områden).
+   - "Ej granskade" — <code>granskat</code> = 2.
+   - "Påbörjade" — <code>granskat</code> = 3.
+   - "Dölj marint (naturtyp 1000-serien)" — enkelt filter på ytlagret: <code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code> (FAQ 16/29: marint ska inte in i NNK 2026).
+   - "Mitt område" — enkelt filter, <code>omrade_namn</code>, <em>Fråga efter värde</em> ✔ (granskaren skriver in namnet).
+   Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</li>
+<li><strong>Fliken Widgetar</strong> — aktivera (✔) följande, resten av (≈ Stockholms app + attributtabell):
+   - <em>Meny och inloggning</em>: <strong>Inloggning krävs</strong> ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på <code>\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…</code> (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp <strong>"Lathund granskning"</strong> → länk till NV:s lathund (Samverkansytan) eller till <code>https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html</code>; knapp <strong>"Kodlista/attributbeskrivning"</strong>; knapp <strong>"Granskningslogg (G:)"</strong> kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. <em>Sidofält utfällt vid start</em> ✔ med <em>Lagerlista</em> öppen.
+   - <em>Information</em>: statisk välkomstruta ✔: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; <em>Ta bort</em> raderar objektet — klicka <em>Behåll geoobjektet</em> om du råkar trycka), var loggen ligger (<code>G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx</code>), kontakt (din mejl).
+   - <em>Lagerlista</em> ✔ (sidofält; <em>Automatisk popup</em> ✔; dölj inget), <em>Attributtabell</em> ✔ (paginering 50 rader, filtrera på kartutbredning ✔ — bra att kunna sortera på <code>granskat</code>), <em>Redigera</em> ✔ (sidofält; <em>Inkludera alltid alla redigerbara lager</em> ✘ — vi styr per lager i Lagerlistan), <em>Sök i kartan</em> ✔ (geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager), <em>Välj i kartan</em> ✔, <em>Rita och mät</em> ✔, <em>Bokmärken</em> ✔, <em>Dela karta</em> ✔, <em>Skala</em> ✔, <em>Visa koordinater</em> ✔, <em>Visa teckenförklaring</em> ✔, <em>Utskrift</em> ✔ (standardlayouter, A3 liggande), <em>Filter</em> ✔ (sidofält), <em>Export</em> ✔ men bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen), <em>Popupfunktioner</em> ✔, <em>Högerklick-meny</em> ✔, <em>Artsök</em> ✔ (FO Natur — artfynd från Artportalen, nyttigt för typiska arter), <em>Ärendekontroll</em> ✘, <em>Lägg till data</em> ✔ (fil + portal; granskaren kan dra in egna shapefiler), <em>Höjdprofil</em> ✘, MarkGIS/Små avlopp ✘.</li>
+<li><strong>Fliken Förhandsgranska</strong> → kolla lagerlista, filter, formulär. Tillbaka till <em>Objekt → Starta</em> för att öppna appen i egen flik.</li>
+</ol>
+<hr />
+<h2 id="del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</h2>
+<ol>
+<li><strong>Redigeringstest</strong> (gör det själv innan någon annan får länken): öppna appen → <em>Logga in → Automatisk inloggning</em> → zooma till ett välkänt område → <em>Redigera</em> → <em>Välj lager att redigera: NNK ytor (granskning)</em> → <em>Redigera geoobjekt</em> → klicka på en polygon → formuläret ska visa grupperna 1–4 med <strong>rullistor</strong> (om du ser tomma textrutor i stället saknas domänerna — tillbaka till del 1) → sätt <em>Granskat = Påbörjat</em>, skriv testkommentar → <strong>Uppdatera</strong>. Polygonen ska bli gul direkt. Öppna attributtabellen → <code>Granskad av</code> ska visa ditt konto och <code>Granskad datum</code> nu. Återställ till <em>Nej</em> och tom kommentar.</li>
+<li><strong>Negativt test</strong>: kontrollera att <em>Ta bort</em> antingen saknas eller stoppas (vi stängde av Delete i del 4/6). Kontrollera att NV:s ursprungsfält inte går att ändra i formuläret.</li>
+<li><strong>Kollega-test</strong>: be en kollega i granskargruppen (utan Producenter-roll) öppna länken, logga in och göra samma sak. Kan hen inte redigera → hen har bara <em>visningsroll</em> i portalen (GK-manualen s.34); GIS-funktionen höjer rollen till <em>Editor/User</em>.</li>
+<li><strong>Itemnamn i portalen</strong>: leta upp appens item (<em>Content → LstD NNK</em>) → titel <code>LstD NNK Granskning – WebbGIS</code>, tagg, beskrivning med GDK-länk. Dela med granskargruppen (samma som lagren + WebMap). Kontrollera att alla fyra items (2 driftade, WebMap, WebbGIS) har taggen — klicka på taggen: alla fyra ska listas.</li>
+<li><strong>GDK-metadatapost</strong> (del 4 steg 7) och <strong>LstD-loggen</strong>: fyll i kolumnerna "Fältkarta/WebbGIS" (Lagt till i webbGIS, Kontrollerat funktion, länk till webbGISet).</li>
+<li><strong>Överlämning</strong>: mejla/Teams:a granskarna appens länk (<code>https://lst-webbgis.lansstyrelsen.se/lstd_nnk_granskning/</code> — kopiera den exakta adressen från <em>Starta</em>), NV:s lathund, och instruktionen om granskningsloggen på G:. Boka en 30-minuters genomgång. Bocka av A2.7/A2.8 i kontrollrummet.</li>
+<li><strong>Kommunicera</strong> till Naturskyddsenheten/GIS-funktionen att <code>LstD NNK Granskning</code> finns, så att ingen publicerar en parallell kopia.</li>
+</ol>
+<hr />
+<h2 id="del-8-felsokning-och-drift">Del 8 · Felsökning och drift</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Trolig orsak</th>
+<th>Åtgärd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Formuläret i WebbGIS visar fritextfält, inga rullistor</td>
+<td>domäner saknas i tjänsten</td>
+<td>del 1; publicera om (Share → <em>Overwrite Web Layer</em> från samma projekt)</td>
+</tr>
+<tr>
+<td>Granskningsfält saknas i formuläret/popupen</td>
+<td>fältet var dolt i Pro-lagret vid publicering</td>
+<td>slå på <em>Visible</em> (del 2 steg 3), <em>Overwrite Web Layer</em></td>
+</tr>
+<tr>
+<td>"Du har inte behörighet att redigera"</td>
+<td>visningsroll i portalen, eller redigering av på itemet/lagret</td>
+<td>del 4 steg 4, del 6 steg 4; roll via GIS-funktionen</td>
+</tr>
+<tr>
+<td>Lagerlistan tom / "Etikett kan inte hittas i WebMap"</td>
+<td>WebMap inte delad med användaren, eller borttagen</td>
+<td>dela WebMap med gruppen; GK-manualen s.28 (importera exporterad lagerlista)</td>
+</tr>
+<tr>
+<td>Appen kräver inloggning men lagren syns inte</td>
+<td>driftat lager ej delat med gruppen</td>
+<td>dela itemet (del 4 steg 6)</td>
+</tr>
+<tr>
+<td>Segt vid länsöversikt</td>
+<td>ytlagret ritas i alla skalor</td>
+<td>visningsintervall (del 2 steg 10) eller i Map Viewer <em>Visibility range</em></td>
+</tr>
+<tr>
+<td>Fel färg/inga objekt</td>
+<td>renderer utan "övriga värden"; <code>granskat</code> null</td>
+<td>i Map Viewer: <em>Styles → other values</em> ✔; i data: <code>granskat=2</code> som default (redan satt i leveransen)</td>
+</tr>
+<tr>
+<td>Tjänstnamnet blev fel</td>
+<td><em>Name</em> kan inte ändras</td>
+<td>ta bort itemet, publicera om med rätt namn (gör det innan WebMap/app byggs)</td>
+</tr>
+<tr>
+<td>Nytt Ajourhålla-uttag (t.ex. efter NV:s nya attribut i slutet av sept. 2026)</td>
+<td>ny data, samma schema</td>
+<td>kör om pipeline + del 1, sedan <em>Overwrite Web Layer</em> — <strong>OBS: skriver över granskarnas ifyllda fält</strong>. Exportera först attributtabellen (Excel) och slå ihop, eller vänta med överskrivning tills granskningen är klar. Om schemat ändras: ny tjänst + ny version av WebMap.</td>
+</tr>
+<tr>
+<td>Konfiguratorn nere</td>
+<td>driftsättning (fredagar 10.30–12, se driftinfo)</td>
+<td>vänta; appen fungerar under tiden</td>
+</tr>
+<tr>
+<td>Frågor</td>
+<td></td>
+<td>GK Konfigurator/portal: <code>giampaolo.cocca@lansstyrelsen.se</code> (NV-manualen), <code>fo.gk.team.applikation@lansstyrelsen.se</code> (GK), GIS-funktionen <code>gis.sodermanland@lansstyrelsen.se</code>; NNK-data: <code>Sandra.Wennberg@naturvardsverket.se</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet <code>forbered_gdb_for_publicering.py</code></h2>
+<p>Ligger i <code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/forbered_gdb_for_publicering.py</code> (och i zip:en). Kopia här så att det går att kopiera från webbsidan:</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;Förbereder NNK_Sodermanland_granskning.gdb för publicering (domäner, typer,
+alias, GlobalID, editor tracking). Körs i ArcGIS Pro:s Python-fönster.&quot;&quot;&quot;
+import arcpy
+
+MALL_GDB = r&quot;C:\GIS\NNK\KartLits_NNK_GIS_mall\KartLits_NNK_granskning.gdb&quot;
+VAR_GDB = r&quot;C:\GIS\NNK\nnk_granskning_sodermanland_20260901\NNK_Sodermanland_granskning.gdb&quot;
+PREFIX = &quot;LstD_&quot;
+GOR_GLOBALID = True
+GOR_EDITOR_TRACKING = True
+
+NNK_LAGER = {&quot;NNK_naturaobjekt_yta&quot;: &quot;NV_NNK_yta&quot;,
+             &quot;NNK_naturaobjekt_lin&quot;: &quot;NV_NNK_linje&quot;,
+             &quot;NNK_naturaobjekt_pkt&quot;: &quot;NV_NNK_punkt&quot;}
+
+FALT_DOMAN = {
+    &quot;naturtyp&quot;: &quot;NATURTYP&quot;, &quot;livsmiljötyp1&quot;: &quot;NATURTYP&quot;, &quot;livsmiljötyp2&quot;: &quot;NATURTYP&quot;,
+    &quot;livsmiljötyp3&quot;: &quot;NATURTYP&quot;, &quot;malnaturtyp1&quot;: &quot;NATURTYP&quot;, &quot;malnaturtyp2&quot;: &quot;NATURTYP&quot;,
+    &quot;malnaturtyp3&quot;: &quot;NATURTYP&quot;, &quot;komplex&quot;: &quot;NV_NNK_Komplex&quot;,
+    &quot;naturtypsstatus&quot;: &quot;NV_NNK_Naturtypsstatus&quot;, &quot;karteringsstatus&quot;: &quot;NV_NNK_Karteringsstatus&quot;,
+    &quot;forandringsorsak&quot;: &quot;NV_NNK_Förändringsorsak&quot;, &quot;ursprung&quot;: &quot;NV_NNK_Ursprung&quot;,
+    &quot;tillstand&quot;: &quot;LST_NNK_tillstand&quot;, &quot;justering&quot;: &quot;LST_NNK_justering&quot;,
+    &quot;utbredning&quot;: &quot;LST_NNK_utbredning&quot;, &quot;kontroll1&quot;: &quot;LST_NNK_kontroll&quot;,
+    &quot;kontroll2&quot;: &quot;LST_NNK_kontroll&quot;, &quot;kontroll3&quot;: &quot;LST_NNK_kontroll&quot;,
+    &quot;metod&quot;: &quot;LST_NNK_metod&quot;, &quot;granskat&quot;: &quot;LST_NNK_granskad&quot;,
+}
+
+ALIAS = {
+    &quot;omrade_namn&quot;: &quot;Områdesnamn&quot;, &quot;skyddskategori&quot;: &quot;Skyddskategori&quot;,
+    &quot;lan&quot;: &quot;Län (skyddat område)&quot;, &quot;n2000_sitecode&quot;: &quot;Natura 2000-kod (SE-nummer)&quot;,
+    &quot;n2000_namn&quot;: &quot;Natura 2000-namn&quot;, &quot;n2000_typ&quot;: &quot;Natura 2000-typ (SCI/SPA)&quot;,
+    &quot;n2000_lan&quot;: &quot;Län (N2000-siten)&quot;, &quot;naturreservat_namn&quot;: &quot;Naturreservat-namn&quot;,
+    &quot;naturreservat_nvrid&quot;: &quot;Naturreservat-ID (NVRID)&quot;, &quot;naturreservat_lan&quot;: &quot;Län (naturreservatet)&quot;,
+    &quot;naturtyp&quot;: &quot;Naturtyp (livsmiljötyp)&quot;, &quot;naturtyp_text&quot;: &quot;Naturtyp (klartext)&quot;,
+    &quot;naturtypsstatus&quot;: &quot;Naturtypsstatus (tillstånd)&quot;, &quot;naturtypsstatus_text&quot;: &quot;Naturtypsstatus (klartext)&quot;,
+    &quot;karteringsstatus&quot;: &quot;Karteringsstatus&quot;, &quot;karteringsstatus_text&quot;: &quot;Karteringsstatus (klartext)&quot;,
+    &quot;malnaturtyp1&quot;: &quot;Målnaturtyp 1&quot;, &quot;malnaturtyp2&quot;: &quot;Målnaturtyp 2&quot;, &quot;malnaturtyp3&quot;: &quot;Målnaturtyp 3&quot;,
+    &quot;malnaturtyp1_text&quot;: &quot;Målnaturtyp 1 (klartext)&quot;, &quot;malnaturtyp2_text&quot;: &quot;Målnaturtyp 2 (klartext)&quot;,
+    &quot;malnaturtyp3_text&quot;: &quot;Målnaturtyp 3 (klartext)&quot;, &quot;kommentar&quot;: &quot;Kommentar (NNK)&quot;,
+    &quot;nnk_kommentar&quot;: &quot;NNK-kommentar&quot;, &quot;granskat&quot;: &quot;Granskat&quot;,
+    &quot;justering&quot;: &quot;Livsmiljötyp, behov av justering&quot;, &quot;utbredning&quot;: &quot;Utbredning, behov av justering&quot;,
+    &quot;livsmiljötyp1&quot;: &quot;Livsmiljötyp 1&quot;, &quot;livsmiljötyp2&quot;: &quot;Livsmiljötyp 2&quot;, &quot;livsmiljötyp3&quot;: &quot;Livsmiljötyp 3&quot;,
+    &quot;kommentar_livsmil_utbred&quot;: &quot;Kommentar - livsmiljötyp och utbredning&quot;,
+    &quot;tillstand&quot;: &quot;Tillstånd, behov av justering&quot;, &quot;procent_gott&quot;: &quot;Gott tillstånd (%)&quot;,
+    &quot;procent_ej_gott&quot;: &quot;Ej gott tillstånd (%)&quot;, &quot;procent_osaker&quot;: &quot;Osäker (%)&quot;,
+    &quot;kommentar_tillstand&quot;: &quot;Kommentar - Tillstånd&quot;, &quot;kontroll1&quot;: &quot;Vad ska kontrolleras 1&quot;,
+    &quot;kontroll2&quot;: &quot;Vad ska kontrolleras 2&quot;, &quot;kontroll3&quot;: &quot;Vad ska kontrolleras 3&quot;,
+    &quot;kommentar_kontroll&quot;: &quot;Kommentar - Vad ska kontrolleras&quot;, &quot;metod&quot;: &quot;Metod för kontroll&quot;,
+    &quot;Kommentar_metod&quot;: &quot;Kommentar - Metod&quot;, &quot;forandringsorsak&quot;: &quot;Förändringsorsak&quot;,
+    &quot;ursprung&quot;: &quot;Ursprung&quot;, &quot;komplex&quot;: &quot;Komplex&quot;, &quot;faltinventerare&quot;: &quot;Fältinventerare&quot;,
+    &quot;egen_bet&quot;: &quot;Egen beteckning&quot;,
+}
+
+
+def nytt_domannamn(gammalt):
+    n = gammalt
+    for p in (&quot;NV_&quot;, &quot;LST_&quot;):
+        if n.startswith(p):
+            n = n[len(p):]
+    n = (n.replace(&quot;å&quot;, &quot;a&quot;).replace(&quot;ä&quot;, &quot;a&quot;).replace(&quot;ö&quot;, &quot;o&quot;)
+          .replace(&quot;Å&quot;, &quot;A&quot;).replace(&quot;Ä&quot;, &quot;A&quot;).replace(&quot;Ö&quot;, &quot;O&quot;))
+    return PREFIX + n
+
+
+def falt(tabell):
+    return {f.name: f for f in arcpy.ListFields(tabell)}
+
+
+def double_till_long(tabell, faltnamn):
+    tmp = faltnamn + &quot;_tmp&quot;
+    arcpy.management.AddField(tabell, tmp, &quot;LONG&quot;)
+    arcpy.management.CalculateField(
+        tabell, tmp, &quot;None if !{0}! is None else int(round(!{0}!))&quot;.format(faltnamn), &quot;PYTHON3&quot;)
+    arcpy.management.DeleteField(tabell, faltnamn)
+    arcpy.management.AlterField(tabell, tmp, faltnamn, faltnamn)
+    print(&quot;    {}: Double -&gt; Long&quot;.format(faltnamn))
+
+
+print(&quot;1. Fälttyper...&quot;)
+for lager in NNK_LAGER:
+    tab = VAR_GDB + &quot;\\&quot; + lager
+    f = falt(tab)
+    for namn in FALT_DOMAN:
+        if namn in f and f[namn].type == &quot;Double&quot;:
+            double_till_long(tab, namn)
+
+print(&quot;2. Domäner...&quot;)
+befintliga = {d.name for d in arcpy.da.ListDomains(VAR_GDB)}
+karta = {}
+for d in arcpy.da.ListDomains(MALL_GDB):
+    nytt = nytt_domannamn(d.name)
+    karta[d.name] = nytt
+    if nytt in befintliga:
+        print(&quot;    {} finns redan&quot;.format(nytt)); continue
+    if d.domainType != &quot;CodedValue&quot;:
+        continue
+    arcpy.management.CreateDomain(VAR_GDB, nytt, d.description or nytt, d.type.upper(), &quot;CODED&quot;)
+    for kod, text in d.codedValues.items():
+        arcpy.management.AddCodedValueToDomain(VAR_GDB, nytt, kod, text)
+    print(&quot;    {} -&gt; {} ({} koder)&quot;.format(d.name, nytt, len(d.codedValues)))
+
+print(&quot;3. Kopplar domäner...&quot;)
+for lager, naturtypsdoman in NNK_LAGER.items():
+    tab = VAR_GDB + &quot;\\&quot; + lager
+    f = falt(tab)
+    for namn, doman in FALT_DOMAN.items():
+        if namn not in f:
+            continue
+        if doman == &quot;NATURTYP&quot;:
+            doman = naturtypsdoman
+        if f[namn].domain != karta[doman]:
+            arcpy.management.AssignDomainToField(tab, namn, karta[doman])
+    print(&quot;    {} klart&quot;.format(lager))
+
+print(&quot;4. Alias...&quot;)
+for lager in NNK_LAGER:
+    tab = VAR_GDB + &quot;\\&quot; + lager
+    f = falt(tab)
+    for namn, alias in ALIAS.items():
+        if namn in f and f[namn].aliasName != alias:
+            arcpy.management.AlterField(tab, namn, new_field_alias=alias)
+
+if GOR_GLOBALID:
+    print(&quot;5. GlobalID...&quot;)
+    for lager in list(NNK_LAGER) + [&quot;Skyddade_omraden&quot;]:
+        tab = VAR_GDB + &quot;\\&quot; + lager
+        f = falt(tab)
+        if &quot;globalid&quot; in f and f[&quot;globalid&quot;].type != &quot;GlobalID&quot;:
+            arcpy.management.AlterField(tab, &quot;globalid&quot;, &quot;nv_globalid&quot;, &quot;NV GlobalID (ursprunglig)&quot;)
+        if not any(x.type == &quot;GlobalID&quot; for x in arcpy.ListFields(tab)):
+            arcpy.management.AddGlobalIDs(tab)
+            print(&quot;    {}: GlobalID tillagt&quot;.format(lager))
+
+if GOR_EDITOR_TRACKING:
+    print(&quot;6. Editor tracking...&quot;)
+    for lager in NNK_LAGER:
+        tab = VAR_GDB + &quot;\\&quot; + lager
+        if &quot;lst_andrad&quot; in falt(tab):
+            continue
+        arcpy.management.EnableEditorTracking(
+            tab, &quot;lst_skapad_av&quot;, &quot;lst_skapad&quot;, &quot;lst_andrad_av&quot;, &quot;lst_andrad&quot;, &quot;ADD_FIELDS&quot;, &quot;UTC&quot;)
+        arcpy.management.AlterField(tab, &quot;lst_andrad_av&quot;, new_field_alias=&quot;Granskad av (senast ändrad av)&quot;)
+        arcpy.management.AlterField(tab, &quot;lst_andrad&quot;, new_field_alias=&quot;Granskad datum (senast ändrad)&quot;)
+        print(&quot;    {}: aktiverat&quot;.format(lager))
+
+print(&quot;KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.&quot;)
+</code></pre>
+<h2 id="bilaga-b-domanerna-som-kopieras-ur-kartlits-mallen">Bilaga B · Domänerna som kopieras (ur KartLits-mallen)</h2>
+<table>
+<thead>
+<tr>
+<th>Domän (nytt namn)</th>
+<th>Fält</th>
+<th>Koder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LstD_NNK_granskad</code></td>
+<td>granskat</td>
+<td>1 Ja · 2 Nej · 3 Påbörjat</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_justering</code></td>
+<td>justering</td>
+<td>1 Inget behov av justering · 2 Ändring till annan livsmiljötyp · 3 Ändring till utvecklingsmark · 4 Osäker – kan ej bedöma om livsmiljö eller inte · 5 Obestämd – kan ej bedöma vilken livsmiljö</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_utbredning</code></td>
+<td>utbredning</td>
+<td>1 Inget behov av justering · 2 Yttergränser, kvalitetsförbättring · 3 Yttergränser, ändrad utbredning · 4 Behov av att dela upp ytan, flera LMT</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_tillstand</code></td>
+<td>tillstand</td>
+<td>1 Inget behov av justering · 2 Okänt (kan ej bedöma) · 3 Annat tillstånd</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_kontroll</code></td>
+<td>kontroll1–3</td>
+<td>1 Typiska och karakteristiska arter · 2 Strukturer · 3 Hävd · 4 Funktioner (hydrologi, störningar) · 5 Morfologi (jordart, formationer) · 6 Annan negativ påverkan</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_metod</code></td>
+<td>metod</td>
+<td>1 Fältbesök · 2 Fältinventering (standardiserad metodik) · 3 Skrivbord / granska mot andra underlag · 4 Annan metod</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_yta</code> / <code>_linje</code> / <code>_punkt</code></td>
+<td>naturtyp, livsmiljötyp1–3, malnaturtyp1–3</td>
+<td>NV:s naturtypskoder (230 / 24 / 15 koder)</td>
+</tr>
+<tr>
+<td><code>LstD_NNK_Naturtypsstatus</code>, <code>_Karteringsstatus</code>, <code>_Komplex</code>, <code>_Forandringsorsak</code>, <code>_Ursprung</code></td>
+<td>resp. NV-fält</td>
+<td>NV:s kodlistor (visas som klartext i popup)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</h2>
+<ul>
+<li>[ ] Kopia av gdb tagen · skript kört utan fel · 13 domäner · alias · GlobalID · editor tracking</li>
+<li>[ ] Alla granskningsfält synliga i lagret · symbol på <code>granskat</code> · popup · display field · visningsintervall</li>
+<li>[ ] <code>LstD_NNK_Granskning</code> publicerad: Feature, kopiera all data, editing på, sync av, export av, bilagor av, tidszon</li>
+<li>[ ] <code>LstD_Skyddade_Omraden</code> publicerad: editing av</li>
+<li>[ ] Items: titel <code>– Driftat</code>, tagg, beskrivning, Update attributes only, track edits, delat med granskargrupp (ej organisation)</li>
+<li>[ ] WebMap: lager + referenslager, popup, formulär (grupp 1–4), utgångsläge, sparad <code>– WebMap</code>, delad</li>
+<li>[ ] Konfigurator: app <code>– WebbGIS</code>, sökväg, lagerlista (5 grupper), sök- och redigeringsinställningar per lager, filter (N2000 aktivt), widgetar, välkomstruta, lagerlista exporterad (JSON)</li>
+<li>[ ] Test: rullistor i formuläret · Uppdatera fungerar · Granskad av/datum fylls · Ta bort går inte · kollega kan redigera</li>
+<li>[ ] GDK-metadatapost · LstD-logg ifylld · länk utskickad · A2.7/A2.8 avbockade i kontrollrummet</li>
+</ul>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>

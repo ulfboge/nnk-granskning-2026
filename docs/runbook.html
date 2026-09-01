@@ -263,6 +263,7 @@ tr:last-child td{border-bottom:0}
 <li>Under <em>Field Matching Type</em>, välj <strong>Use the field map to reconcile field differences</strong>. Klicka Run.</li>
 <li>Spara editeringarna när alla tre lager (punkt/linje/yta) är klara.</li>
 <li>Döp om domänerna i geodatabasen med prefixet <code>LstD</code> inför publiceringen, enligt manualens rekommendation.</li>
+<li><strong>Läge 2026-09-01:</strong> Append-steget kringgicks — granskningslagret byggdes i stället med skript (<code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code>, se README där). Domänerna läggs på med <code>forbered_gdb_for_publicering.py</code> — steg 1–6 ovan gäller alltså bara om Append-vägen används. Se <a href="webbgis-publicering.html">Publicera WebbGIS</a>, del 1.</li>
 </ol>
 <h3 id="a27-publicera-granskningslagret-i-portalen">A2.7 · Publicera granskningslagret i portalen</h3>
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A2.6</p>
@@ -271,6 +272,7 @@ tr:last-child td{border-bottom:0}
 <li>Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. <code>LstD NNK granskning</code>.</li>
 <li>Ta ställning till om vissa koder ska sållas bort, eller om bara objekt som överlappar ett Natura 2000-område ska behållas, innan publicering.</li>
 <li>Klicka <strong>Share → Web Layer</strong> i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — jobbdatorns nätverksrestriktioner kan påverka vilken som går att nå från fältet).</li>
+<li><strong>Detaljerad instruktion:</strong> <a href="webbgis-publicering.html">Publicera WebbGIS</a>, del 2–4 (förberedelser i Pro, Share As Web Layer, efterarbete på item i portalen). Tjänstenamn: <code>LstD_NNK_Granskning</code> och <code>LstD_Skyddade_Omraden</code>.</li>
 </ol>
 <h3 id="a28-skapa-webbgis-fran-de-publicerade-lagren">A2.8 · Skapa webbGIS från de publicerade lagren</h3>
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A2.7</p>
@@ -279,6 +281,7 @@ tr:last-child td{border-bottom:0}
 <li>Lägg till <code>LstD NNK granskning</code> och relevanta referenslager (t.ex. <em>NV Naturtypskartan NNK</em>, <em>NV Natura2000 områden</em>) i webbGIS-appen.</li>
 <li>Testa redigering mot ett enskilt objekt innan du meddelar kollegan att lagret är klart att använda (jämför med rutinen i A2.3, punkt 5).</li>
 <li>Vid frågor eller problem: <code>giampaolo.cocca@lansstyrelsen.se</code>.</li>
+<li><strong>Detaljerad instruktion:</strong> <a href="webbgis-publicering.html">Publicera WebbGIS</a>, del 5–7 (WebMap i Map Viewer, GK Konfigurator, test och överlämning).</li>
 </ol>
 <h3 id="a31-avstamning-med-chef">A3.1 · Avstämning med chef</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong></p>
