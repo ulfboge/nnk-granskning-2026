@@ -252,14 +252,16 @@ Ligger i `natura-2000: deliveries/nnk_granskning_sodermanland_20260901/forbered_
 ```python
 # -*- coding: utf-8 -*-
 """Förbereder NNK_Sodermanland_granskning.gdb för publicering (domäner, typer,
-alias, GlobalID, editor tracking). Körs i ArcGIS Pro:s Python-fönster."""
+alias, GlobalID, editor tracking, metadata). Körs i ArcGIS Pro:s Python-fönster."""
 import arcpy
+from arcpy import metadata as md
 
 MALL_GDB = r"C:\GIS\NNK\KartLits_NNK_GIS_mall\KartLits_NNK_granskning.gdb"
 VAR_GDB = r"C:\GIS\NNK\nnk_granskning_sodermanland_20260901\NNK_Sodermanland_granskning.gdb"
 PREFIX = "LstD_"
 GOR_GLOBALID = True
 GOR_EDITOR_TRACKING = True
+GOR_METADATA = True
 
 NNK_LAGER = {"NNK_naturaobjekt_yta": "NV_NNK_yta",
              "NNK_naturaobjekt_lin": "NV_NNK_linje",
@@ -321,6 +323,58 @@ ALIAS = {
     "kontroll3_text": "Vad ska kontrolleras 3 (klartext)",
     "metod_text": "Metod för kontroll (klartext)", "granskat_text": "Granskat (klartext)",
     "forandringsorsak_text": "Förändringsorsak (klartext)", "ursprung_text": "Ursprung (klartext)",
+}
+
+# Item-metadata per lager (steg 7) - källa/begränsning gemensam för alla fyra, se README.md
+# för de fullständiga beskrivningstexterna (kondenserat här för läsbarhet).
+_KALLA = ("Länsstyrelsen Södermanland (bearbetning/granskning); Naturvårdsverket, "
+          "NNK Ajourhålla (källdata, uttag 2026-08-26)")
+_BEGRANSNING = ("Preliminärt internt granskningsunderlag under NNK 2026 - INTE Naturvårdsverkets "
+                 "officiella NNK-data. Se README.md i leveransmappen för fullständig dokumentation.")
+_TAGGAR_NNK = ("NNK, Nationell naturtypskartering, Natura 2000, naturtyper, livsmiljötyper, "
+               "granskning, Södermanland, Länsstyrelsen, LstD")
+
+METADATA = {
+    "NNK_naturaobjekt_yta": {
+        "title": "NNK-granskningslager Södermanland – ytor",
+        "summary": "NNK-ytor för Södermanlands län, attribuerade med områdesnamn, skyddskategori "
+                    "och länstillhörighet, för länsstyrelsens desktopgranskning inom NNK 2026.",
+        "description": "Underlag för Länsstyrelsen Södermanlands granskning av NNK 2026, kopplat "
+                        "mot Natura 2000 och naturreservat/nationalpark. Innehåller mallens "
+                        "NNK-attribut (med klartextfält) samt granskningsfält för avvikelse/"
+                        "korrigeringsförslag, tillstånd och kontrollbehov. Länsuttaget är oklippt "
+                        "vid länsgränsen. Se README.md för fullständig beskrivning.",
+        "tags": _TAGGAR_NNK,
+    },
+    "NNK_naturaobjekt_lin": {
+        "title": "NNK-granskningslager Södermanland – linjer",
+        "summary": "NNK-linjer för Södermanlands län, attribuerade med områdesnamn, "
+                    "skyddskategori och länstillhörighet, för länsstyrelsens desktopgranskning.",
+        "description": "Samma underlag/attributschema som ytlagret (NNK_naturaobjekt_yta), men "
+                        "för NNK-objekt karterade som linjer. malnaturtyp1-3 finns inte på detta "
+                        "lager. Se ytlagrets metadata för fullständig beskrivning.",
+        "tags": _TAGGAR_NNK,
+    },
+    "NNK_naturaobjekt_pkt": {
+        "title": "NNK-granskningslager Södermanland – punkter",
+        "summary": "NNK-punkter för Södermanlands län, attribuerade med områdesnamn, "
+                    "skyddskategori och länstillhörighet, för länsstyrelsens desktopgranskning.",
+        "description": "Samma underlag/attributschema som ytlagret (NNK_naturaobjekt_yta), men "
+                        "för NNK-objekt karterade som punkter. malnaturtyp1-3 finns inte på detta "
+                        "lager. Se ytlagrets metadata för fullständig beskrivning.",
+        "tags": _TAGGAR_NNK,
+    },
+    "Skyddade_omraden": {
+        "title": "Skyddade områden Södermanland (referenslager, NNK-granskning)",
+        "summary": "Referenslager: Natura 2000-siter (SCI/SPA) och naturreservat/nationalpark i "
+                    "och kring Södermanlands län, till stöd för NNK-granskningen.",
+        "description": "Kontur per skyddskategori som NNK-lagrens skyddskategori/områdesnamn/"
+                        "sitecode-fält är matchade mot. Hämtat från NV:s N2000-källa och "
+                        "Naturvårdsregistret-WFS, utvidgat till angränsande län. Genomskinlig "
+                        "fyllning så NNK-lagrens granskningsfärger syns igenom.",
+        "tags": "Natura 2000, naturreservat, nationalpark, skyddade områden, Södermanland, "
+                "Länsstyrelsen, LstD, NNK",
+    },
 }
 
 
@@ -425,6 +479,22 @@ if GOR_EDITOR_TRACKING:
         arcpy.management.AlterField(tab, "lst_andrad_av", new_field_alias="Granskad av (senast ändrad av)")
         arcpy.management.AlterField(tab, "lst_andrad", new_field_alias="Granskad datum (senast ändrad)")
         print("    {}: aktiverat".format(lager))
+
+if GOR_METADATA:
+    print("7. Metadata...")
+    for lager, poster in METADATA.items():
+        tab = VAR_GDB + "\\" + lager
+        item_md = md.Metadata(tab)
+        if item_md.isReadOnly:
+            print("    {}: skrivskyddad - hoppade över".format(lager)); continue
+        item_md.title = poster["title"]
+        item_md.summary = poster["summary"]
+        item_md.description = poster["description"]
+        item_md.tags = poster["tags"]
+        item_md.credits = _KALLA
+        item_md.accessConstraints = _BEGRANSNING
+        item_md.save()
+        print("    {}: metadata satt".format(lager))
 
 print("KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.")
 ```
