@@ -55,7 +55,7 @@ Allt detta gör skriptet `forbered_gdb_for_publicering.py` (bilaga A) i ett svep
 
 1. **Ta en kopia av gdb:n först** (Utforskaren: kopiera mappen `NNK_Sodermanland_granskning.gdb` → `NNK_Sodermanland_granskning_ORIGINAL.gdb`). Skriptet ändrar schemat på plats.
 2. Öppna ArcGIS Pro med ett tomt projekt (eller ditt NNK-projekt). **Ta bort NNK-lagren ur kartan** om de ligger där — Pro låser annars gdb:n och stegen misslyckas med "lock"-fel.
-3. Öppna skriptet i Anteckningar. Ändra de två sökvägarna under `KONFIGURATION` (`MALL_GDB` = KartLits-mallens gdb, `VAR_GDB` = vår gdb). Spara.
+3. Öppna skriptet i Anteckningar. Ändra `MALL_GDB` (KartLits-mallens gdb) under `KONFIGURATION` om den skiljer sig från standardsökvägen. `VAR_GDB` (vår gdb) hittas numera automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först. Rätta `_RESERV_VAR_GDB` bara om automatiken inte hittar lagren (t.ex. körning utanför ett öppet projekt). Spara.
 4. *View → Python Window*. Klistra in HELA skriptet (Ctrl+A, Ctrl+C i Anteckningar → Ctrl+V i Python-fönstret) och tryck Enter. Alternativt: *Analysis → Python → Python Window*, högerklicka → *Load Code* → välj filen → Enter.
 5. Läs utskriften. Förväntat: `1.` (några rader "Double → Long" på ytlagret), `2.` 13 domäner skapade (`NV_NNK_yta → LstD_NNK_yta (230 koder)` osv.), `3.`/`4.` "klart" × 3, `5.` GlobalID tillagt × 4, `6.` aktiverat × 3, `KLART`.
 6. **Kontroll i Catalog:** högerklicka gdb:n → *Domains* — 13 domäner med prefix `LstD_`. Högerklicka `NNK_naturaobjekt_yta` → *Design → Fields*: kolumnen *Domain* ska vara ifylld för `naturtyp`, `granskat`, `tillstand`, `justering`, `utbredning`, `kontroll1–3`, `metod`, `livsmiljötyp1–3`, `malnaturtyp1–3` m.fl.; kolumnen *Alias* ska visa svenska namn; det ska finnas ett `GlobalID`-fält och fälten `lst_skapad_av/lst_skapad/lst_andrad_av/lst_andrad`.
@@ -257,7 +257,6 @@ import arcpy
 from arcpy import metadata as md
 
 MALL_GDB = r"C:\GIS\NNK\KartLits_NNK_GIS_mall\KartLits_NNK_granskning.gdb"
-VAR_GDB = r"C:\GIS\NNK\nnk_granskning_sodermanland_20260901\NNK_Sodermanland_granskning.gdb"
 PREFIX = "LstD_"
 GOR_GLOBALID = True
 GOR_EDITOR_TRACKING = True
@@ -266,6 +265,33 @@ GOR_METADATA = True
 NNK_LAGER = {"NNK_naturaobjekt_yta": "NV_NNK_yta",
              "NNK_naturaobjekt_lin": "NV_NNK_linje",
              "NNK_naturaobjekt_pkt": "NV_NNK_punkt"}
+
+def _hitta_gdb_fran_projektlager(kandidatnamn):
+    """Hittar gdb-sökvägen via ett lager i AKTIVA Pro-projektet vars namn finns
+    i kandidatnamn (lyr.connectionProperties['connection_info']['database']).
+    Returnerar None om inget/flera projekt-gdb:er hittas."""
+    try:
+        aprx = arcpy.mp.ArcGISProject("CURRENT")
+    except OSError:
+        return None
+    hittade = set()
+    for karta in aprx.listMaps():
+        for lyr in karta.listLayers():
+            if lyr.name not in kandidatnamn or not lyr.supports("DATASOURCE"):
+                continue
+            try:
+                cp = lyr.connectionProperties
+            except Exception:
+                continue
+            if not cp or cp.get("workspace_factory") != "File Geodatabase":
+                continue
+            gdb = (cp.get("connection_info") or {}).get("database")
+            if gdb:
+                hittade.add(gdb)
+    return hittade.pop() if len(hittade) == 1 else None
+
+_RESERV_VAR_GDB = r"C:\GIS\NNK\nnk_granskning_sodermanland_20260901\NNK_Sodermanland_granskning.gdb"
+VAR_GDB = _hitta_gdb_fran_projektlager(set(NNK_LAGER) | {"Skyddade_omraden"}) or _RESERV_VAR_GDB
 
 FALT_DOMAN = {
     "naturtyp": "NATURTYP", "livsmiljötyp1": "NATURTYP", "livsmiljötyp2": "NATURTYP",
