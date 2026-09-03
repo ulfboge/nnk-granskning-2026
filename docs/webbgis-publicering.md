@@ -274,6 +274,13 @@ FALT_DOMAN = {
     "metod": "LST_NNK_metod", "granskat": "LST_NNK_granskad",
 }
 
+# Tillagt 2026-09-03: mallens egen domän för `tillstand` visade sig omatchad mot både
+# blanketten och NV:s FAQ ("gott, inte gott eller okänt tillstånd") - kopieras inte,
+# byggs som egen domän i steg 2b i stället. Se README.md/naturtyp_koder.TILLSTAND_TEXT.
+EXKLUDERA_MALLDOMANER = {"LST_NNK_tillstand"}
+TILLSTAND_KORRIGERAD_DOMAN = {1: "Gott", 2: "Icke gott", 3: "Okänt – kan ej bedöma",
+                               4: "Blandat – se andelar"}
+
 ALIAS = {
     "omrade_namn": "Områdesnamn", "skyddskategori": "Skyddskategori",
     "lan": "Län (skyddat område)", "n2000_sitecode": "Natura 2000-kod (SE-nummer)",
@@ -290,7 +297,8 @@ ALIAS = {
     "justering": "Livsmiljötyp, behov av justering", "utbredning": "Utbredning, behov av justering",
     "livsmiljötyp1": "Livsmiljötyp 1", "livsmiljötyp2": "Livsmiljötyp 2", "livsmiljötyp3": "Livsmiljötyp 3",
     "kommentar_livsmil_utbred": "Kommentar - livsmiljötyp och utbredning",
-    "tillstand": "Tillstånd, behov av justering", "procent_gott": "Gott tillstånd (%)",
+    "tillstand": "Tillstånd",  # rättat 2026-09-03, se ovan
+    "procent_gott": "Gott tillstånd (%)",
     "procent_ej_gott": "Ej gott tillstånd (%)", "procent_osaker": "Osäker (%)",
     "kommentar_tillstand": "Kommentar - Tillstånd", "kontroll1": "Vad ska kontrolleras 1",
     "kontroll2": "Vad ska kontrolleras 2", "kontroll3": "Vad ska kontrolleras 3",
@@ -298,6 +306,18 @@ ALIAS = {
     "Kommentar_metod": "Kommentar - Metod", "forandringsorsak": "Förändringsorsak",
     "ursprung": "Ursprung", "komplex": "Komplex", "faltinventerare": "Fältinventerare",
     "egen_bet": "Egen beteckning",
+    # _text-fälten tillagda 2026-09-03 (sätts redan i lyrx:en, listade här för fullständighet)
+    "livsmiljötyp1_text": "Målnaturtyp 1, förslag (klartext)",
+    "livsmiljötyp2_text": "Målnaturtyp 2, förslag (klartext)",
+    "livsmiljötyp3_text": "Målnaturtyp 3, förslag (klartext)",
+    "komplex_text": "Komplex (klartext)", "tillstand_text": "Tillstånd (klartext)",
+    "justering_text": "Livsmiljötyp, justering (klartext)",
+    "utbredning_text": "Utbredning, justering (klartext)",
+    "kontroll1_text": "Vad ska kontrolleras 1 (klartext)",
+    "kontroll2_text": "Vad ska kontrolleras 2 (klartext)",
+    "kontroll3_text": "Vad ska kontrolleras 3 (klartext)",
+    "metod_text": "Metod för kontroll (klartext)", "granskat_text": "Granskat (klartext)",
+    "forandringsorsak_text": "Förändringsorsak (klartext)", "ursprung_text": "Ursprung (klartext)",
 }
 
 
@@ -339,6 +359,8 @@ karta = {}
 for d in arcpy.da.ListDomains(MALL_GDB):
     nytt = nytt_domannamn(d.name)
     karta[d.name] = nytt
+    if d.name in EXKLUDERA_MALLDOMANER:
+        continue  # se EXKLUDERA_MALLDOMANER ovan - tillstand får en egen, korrigerad domän i steg 2b
     if nytt in befintliga:
         print("    {} finns redan".format(nytt)); continue
     if d.domainType != "CodedValue":
@@ -347,6 +369,15 @@ for d in arcpy.da.ListDomains(MALL_GDB):
     for kod, text in d.codedValues.items():
         arcpy.management.AddCodedValueToDomain(VAR_GDB, nytt, kod, text)
     print("    {} -> {} ({} koder)".format(d.name, nytt, len(d.codedValues)))
+
+print("2b. Rättad tillstand-domän (blankettens fyra värden)...")
+nytt_tillstand = nytt_domannamn("LST_NNK_tillstand")
+if nytt_tillstand not in befintliga:
+    arcpy.management.CreateDomain(VAR_GDB, nytt_tillstand,
+        "Tillstånd (blankett_forvaltarkunskap_nnk.xlsx)", "LONG", "CODED")
+    for kod, text in TILLSTAND_KORRIGERAD_DOMAN.items():
+        arcpy.management.AddCodedValueToDomain(VAR_GDB, nytt_tillstand, kod, text)
+    print("    {} skapad ({} koder)".format(nytt_tillstand, len(TILLSTAND_KORRIGERAD_DOMAN)))
 
 print("3. Kopplar domäner...")
 for lager, naturtypsdoman in NNK_LAGER.items():
@@ -402,11 +433,25 @@ print("KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.")
 | `LstD_NNK_granskad` | granskat | 1 Ja · 2 Nej · 3 Påbörjat |
 | `LstD_NNK_justering` | justering | 1 Inget behov av justering · 2 Ändring till annan livsmiljötyp · 3 Ändring till utvecklingsmark · 4 Osäker – kan ej bedöma om livsmiljö eller inte · 5 Obestämd – kan ej bedöma vilken livsmiljö |
 | `LstD_NNK_utbredning` | utbredning | 1 Inget behov av justering · 2 Yttergränser, kvalitetsförbättring · 3 Yttergränser, ändrad utbredning · 4 Behov av att dela upp ytan, flera LMT |
-| `LstD_NNK_tillstand` | tillstand | 1 Inget behov av justering · 2 Okänt (kan ej bedöma) · 3 Annat tillstånd |
 | `LstD_NNK_kontroll` | kontroll1–3 | 1 Typiska och karakteristiska arter · 2 Strukturer · 3 Hävd · 4 Funktioner (hydrologi, störningar) · 5 Morfologi (jordart, formationer) · 6 Annan negativ påverkan |
 | `LstD_NNK_metod` | metod | 1 Fältbesök · 2 Fältinventering (standardiserad metodik) · 3 Skrivbord / granska mot andra underlag · 4 Annan metod |
 | `LstD_NNK_yta` / `_linje` / `_punkt` | naturtyp, livsmiljötyp1–3, malnaturtyp1–3 | NV:s naturtypskoder (230 / 24 / 15 koder) |
 | `LstD_NNK_Naturtypsstatus`, `_Karteringsstatus`, `_Komplex`, `_Forandringsorsak`, `_Ursprung` | resp. NV-fält | NV:s kodlistor (visas som klartext i popup) |
+
+**`LstD_NNK_tillstand` — rättad 2026-09-03, byggs INTE längre genom att kopiera mallen.**
+KartLits-mallens egen domän för fältet `tillstand` innehöll "1 Inget behov av justering · 2 Okänt
+(kan ej bedöma) · 3 Annat tillstånd" — en kopplingsbugg i själva NV-mallen (innehållet hörde
+snarare hemma vid `justering`/`utbredning`; matchade varken blanketten eller NV:s egen FAQ-text
+"gott, inte gott eller okänt tillstånd", FAQ fråga 30). `forbered_gdb_for_publicering.py` bygger
+i stället domänen direkt (steg 2b) med blankettens egna fyra värden:
+
+| Domän (nytt namn) | Fält | Koder |
+|---|---|---|
+| `LstD_NNK_tillstand` | tillstand | 1 Gott · 2 Icke gott · 3 Okänt – kan ej bedöma · 4 Blandat – se andelar |
+
+Samma fyra värden ligger även i det redan färdiga, read-only klartextfältet `tillstand_text` i
+gdb:n (`scripts/analysis/naturtyp_koder.py`, `TILLSTAND_TEXT`) — domänen ovan används bara för
+själva redigeringsrullistan vid publicering.
 
 ## Bilaga C · Checklista (speglar LstD GIS LOGG)
 

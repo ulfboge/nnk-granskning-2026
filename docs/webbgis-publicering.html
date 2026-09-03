@@ -514,6 +514,13 @@ FALT_DOMAN = {
     &quot;metod&quot;: &quot;LST_NNK_metod&quot;, &quot;granskat&quot;: &quot;LST_NNK_granskad&quot;,
 }
 
+# Tillagt 2026-09-03: mallens egen domän för `tillstand` visade sig omatchad mot både
+# blanketten och NV:s FAQ (&quot;gott, inte gott eller okänt tillstånd&quot;) - kopieras inte,
+# byggs som egen domän i steg 2b i stället. Se README.md/naturtyp_koder.TILLSTAND_TEXT.
+EXKLUDERA_MALLDOMANER = {&quot;LST_NNK_tillstand&quot;}
+TILLSTAND_KORRIGERAD_DOMAN = {1: &quot;Gott&quot;, 2: &quot;Icke gott&quot;, 3: &quot;Okänt – kan ej bedöma&quot;,
+                               4: &quot;Blandat – se andelar&quot;}
+
 ALIAS = {
     &quot;omrade_namn&quot;: &quot;Områdesnamn&quot;, &quot;skyddskategori&quot;: &quot;Skyddskategori&quot;,
     &quot;lan&quot;: &quot;Län (skyddat område)&quot;, &quot;n2000_sitecode&quot;: &quot;Natura 2000-kod (SE-nummer)&quot;,
@@ -530,7 +537,8 @@ ALIAS = {
     &quot;justering&quot;: &quot;Livsmiljötyp, behov av justering&quot;, &quot;utbredning&quot;: &quot;Utbredning, behov av justering&quot;,
     &quot;livsmiljötyp1&quot;: &quot;Livsmiljötyp 1&quot;, &quot;livsmiljötyp2&quot;: &quot;Livsmiljötyp 2&quot;, &quot;livsmiljötyp3&quot;: &quot;Livsmiljötyp 3&quot;,
     &quot;kommentar_livsmil_utbred&quot;: &quot;Kommentar - livsmiljötyp och utbredning&quot;,
-    &quot;tillstand&quot;: &quot;Tillstånd, behov av justering&quot;, &quot;procent_gott&quot;: &quot;Gott tillstånd (%)&quot;,
+    &quot;tillstand&quot;: &quot;Tillstånd&quot;,  # rättat 2026-09-03, se ovan
+    &quot;procent_gott&quot;: &quot;Gott tillstånd (%)&quot;,
     &quot;procent_ej_gott&quot;: &quot;Ej gott tillstånd (%)&quot;, &quot;procent_osaker&quot;: &quot;Osäker (%)&quot;,
     &quot;kommentar_tillstand&quot;: &quot;Kommentar - Tillstånd&quot;, &quot;kontroll1&quot;: &quot;Vad ska kontrolleras 1&quot;,
     &quot;kontroll2&quot;: &quot;Vad ska kontrolleras 2&quot;, &quot;kontroll3&quot;: &quot;Vad ska kontrolleras 3&quot;,
@@ -538,6 +546,18 @@ ALIAS = {
     &quot;Kommentar_metod&quot;: &quot;Kommentar - Metod&quot;, &quot;forandringsorsak&quot;: &quot;Förändringsorsak&quot;,
     &quot;ursprung&quot;: &quot;Ursprung&quot;, &quot;komplex&quot;: &quot;Komplex&quot;, &quot;faltinventerare&quot;: &quot;Fältinventerare&quot;,
     &quot;egen_bet&quot;: &quot;Egen beteckning&quot;,
+    # _text-fälten tillagda 2026-09-03 (sätts redan i lyrx:en, listade här för fullständighet)
+    &quot;livsmiljötyp1_text&quot;: &quot;Målnaturtyp 1, förslag (klartext)&quot;,
+    &quot;livsmiljötyp2_text&quot;: &quot;Målnaturtyp 2, förslag (klartext)&quot;,
+    &quot;livsmiljötyp3_text&quot;: &quot;Målnaturtyp 3, förslag (klartext)&quot;,
+    &quot;komplex_text&quot;: &quot;Komplex (klartext)&quot;, &quot;tillstand_text&quot;: &quot;Tillstånd (klartext)&quot;,
+    &quot;justering_text&quot;: &quot;Livsmiljötyp, justering (klartext)&quot;,
+    &quot;utbredning_text&quot;: &quot;Utbredning, justering (klartext)&quot;,
+    &quot;kontroll1_text&quot;: &quot;Vad ska kontrolleras 1 (klartext)&quot;,
+    &quot;kontroll2_text&quot;: &quot;Vad ska kontrolleras 2 (klartext)&quot;,
+    &quot;kontroll3_text&quot;: &quot;Vad ska kontrolleras 3 (klartext)&quot;,
+    &quot;metod_text&quot;: &quot;Metod för kontroll (klartext)&quot;, &quot;granskat_text&quot;: &quot;Granskat (klartext)&quot;,
+    &quot;forandringsorsak_text&quot;: &quot;Förändringsorsak (klartext)&quot;, &quot;ursprung_text&quot;: &quot;Ursprung (klartext)&quot;,
 }
 
 
@@ -579,6 +599,8 @@ karta = {}
 for d in arcpy.da.ListDomains(MALL_GDB):
     nytt = nytt_domannamn(d.name)
     karta[d.name] = nytt
+    if d.name in EXKLUDERA_MALLDOMANER:
+        continue  # se EXKLUDERA_MALLDOMANER ovan - tillstand får en egen, korrigerad domän i steg 2b
     if nytt in befintliga:
         print(&quot;    {} finns redan&quot;.format(nytt)); continue
     if d.domainType != &quot;CodedValue&quot;:
@@ -587,6 +609,15 @@ for d in arcpy.da.ListDomains(MALL_GDB):
     for kod, text in d.codedValues.items():
         arcpy.management.AddCodedValueToDomain(VAR_GDB, nytt, kod, text)
     print(&quot;    {} -&gt; {} ({} koder)&quot;.format(d.name, nytt, len(d.codedValues)))
+
+print(&quot;2b. Rättad tillstand-domän (blankettens fyra värden)...&quot;)
+nytt_tillstand = nytt_domannamn(&quot;LST_NNK_tillstand&quot;)
+if nytt_tillstand not in befintliga:
+    arcpy.management.CreateDomain(VAR_GDB, nytt_tillstand,
+        &quot;Tillstånd (blankett_forvaltarkunskap_nnk.xlsx)&quot;, &quot;LONG&quot;, &quot;CODED&quot;)
+    for kod, text in TILLSTAND_KORRIGERAD_DOMAN.items():
+        arcpy.management.AddCodedValueToDomain(VAR_GDB, nytt_tillstand, kod, text)
+    print(&quot;    {} skapad ({} koder)&quot;.format(nytt_tillstand, len(TILLSTAND_KORRIGERAD_DOMAN)))
 
 print(&quot;3. Kopplar domäner...&quot;)
 for lager, naturtypsdoman in NNK_LAGER.items():
@@ -660,11 +691,6 @@ print(&quot;KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.&quot;)
 <td>1 Inget behov av justering · 2 Yttergränser, kvalitetsförbättring · 3 Yttergränser, ändrad utbredning · 4 Behov av att dela upp ytan, flera LMT</td>
 </tr>
 <tr>
-<td><code>LstD_NNK_tillstand</code></td>
-<td>tillstand</td>
-<td>1 Inget behov av justering · 2 Okänt (kan ej bedöma) · 3 Annat tillstånd</td>
-</tr>
-<tr>
 <td><code>LstD_NNK_kontroll</code></td>
 <td>kontroll1–3</td>
 <td>1 Typiska och karakteristiska arter · 2 Strukturer · 3 Hävd · 4 Funktioner (hydrologi, störningar) · 5 Morfologi (jordart, formationer) · 6 Annan negativ påverkan</td>
@@ -686,6 +712,31 @@ print(&quot;KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.&quot;)
 </tr>
 </tbody>
 </table>
+<p><strong><code>LstD_NNK_tillstand</code> — rättad 2026-09-03, byggs INTE längre genom att kopiera mallen.</strong>
+KartLits-mallens egen domän för fältet <code>tillstand</code> innehöll "1 Inget behov av justering · 2 Okänt
+(kan ej bedöma) · 3 Annat tillstånd" — en kopplingsbugg i själva NV-mallen (innehållet hörde
+snarare hemma vid <code>justering</code>/<code>utbredning</code>; matchade varken blanketten eller NV:s egen FAQ-text
+"gott, inte gott eller okänt tillstånd", FAQ fråga 30). <code>forbered_gdb_for_publicering.py</code> bygger
+i stället domänen direkt (steg 2b) med blankettens egna fyra värden:</p>
+<table>
+<thead>
+<tr>
+<th>Domän (nytt namn)</th>
+<th>Fält</th>
+<th>Koder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LstD_NNK_tillstand</code></td>
+<td>tillstand</td>
+<td>1 Gott · 2 Icke gott · 3 Okänt – kan ej bedöma · 4 Blandat – se andelar</td>
+</tr>
+</tbody>
+</table>
+<p>Samma fyra värden ligger även i det redan färdiga, read-only klartextfältet <code>tillstand_text</code> i
+gdb:n (<code>scripts/analysis/naturtyp_koder.py</code>, <code>TILLSTAND_TEXT</code>) — domänen ovan används bara för
+själva redigeringsrullistan vid publicering.</p>
 <h2 id="bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</h2>
 <ul>
 <li>[ ] Kopia av gdb tagen · skript kört utan fel · 13 domäner · alias · GlobalID · editor tracking</li>
