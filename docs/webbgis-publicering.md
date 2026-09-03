@@ -162,7 +162,10 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
 4. **Symbol**: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): *Styles → Types (unique symbols)* på `granskat`, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.
 5. **Popup** per NNK-lager (*Pop-ups*): rubrik `{omrade_namn}` — lägg till en *Fields list* med de fält granskaren behöver läsa: Skyddskategori, Län, N2000-kod, Naturtyp + klartext, Naturtypsstatus + klartext, Karteringsstatus + klartext, Målnaturtyp 1–3 (klartext), NNK-kommentar, Granskat, Granskad av/datum. Håll granskningsfälten ur popupen — de fylls i formuläret. Lägg sist ett *Text*-element: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på *Pop-ups* även på referenslagren (N2000: så att bevarandeplanlänken syns).
 6. **Formulär (smart form)** — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Forms → Configure*. Dra in fälten i denna ordning och gruppera (*Group*-element):
-   - **Grupp "1. Livsmiljötyp och utbredning"**: Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 · Kommentar – livsmiljötyp och utbredning.
+   - **Grupp "1. Avvikelse och korrigeringsförslag"** (bytte namn 2026-09-03 för att spegla samma
+     ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
+     justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
+     Kommentar – livsmiljötyp och utbredning.
    - **Grupp "2. Tillstånd"**: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
    - **Grupp "3. Vad ska kontrolleras och hur"**: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
    - **Grupp "4. Klart?"**: Granskat.
@@ -307,9 +310,9 @@ ALIAS = {
     "ursprung": "Ursprung", "komplex": "Komplex", "faltinventerare": "Fältinventerare",
     "egen_bet": "Egen beteckning",
     # _text-fälten tillagda 2026-09-03 (sätts redan i lyrx:en, listade här för fullständighet)
-    "livsmiljötyp1_text": "Målnaturtyp 1, förslag (klartext)",
-    "livsmiljötyp2_text": "Målnaturtyp 2, förslag (klartext)",
-    "livsmiljötyp3_text": "Målnaturtyp 3, förslag (klartext)",
+    "livsmiljötyp1_text": "Livsmiljötyp 1, förslag (klartext)",
+    "livsmiljötyp2_text": "Livsmiljötyp 2, förslag (klartext)",
+    "livsmiljötyp3_text": "Livsmiljötyp 3, förslag (klartext)",
     "komplex_text": "Komplex (klartext)", "tillstand_text": "Tillstånd (klartext)",
     "justering_text": "Livsmiljötyp, justering (klartext)",
     "utbredning_text": "Utbredning, justering (klartext)",

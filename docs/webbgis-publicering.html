@@ -357,7 +357,10 @@ tr:last-child td{border-bottom:0}
 <li><strong>Symbol</strong>: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): <em>Styles → Types (unique symbols)</em> på <code>granskat</code>, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.</li>
 <li><strong>Popup</strong> per NNK-lager (<em>Pop-ups</em>): rubrik <code>{omrade_namn}</code> — lägg till en <em>Fields list</em> med de fält granskaren behöver läsa: Skyddskategori, Län, N2000-kod, Naturtyp + klartext, Naturtypsstatus + klartext, Karteringsstatus + klartext, Målnaturtyp 1–3 (klartext), NNK-kommentar, Granskat, Granskad av/datum. Håll granskningsfälten ur popupen — de fylls i formuläret. Lägg sist ett <em>Text</em>-element: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på <em>Pop-ups</em> även på referenslagren (N2000: så att bevarandeplanlänken syns).</li>
 <li><strong>Formulär (smart form)</strong> — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):
-   - <strong>Grupp "1. Livsmiljötyp och utbredning"</strong>: Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 · Kommentar – livsmiljötyp och utbredning.
+   - <strong>Grupp "1. Avvikelse och korrigeringsförslag"</strong> (bytte namn 2026-09-03 för att spegla samma
+     ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
+     justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
+     Kommentar – livsmiljötyp och utbredning.
    - <strong>Grupp "2. Tillstånd"</strong>: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
    - <strong>Grupp "3. Vad ska kontrolleras och hur"</strong>: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
    - <strong>Grupp "4. Klart?"</strong>: Granskat.
@@ -547,9 +550,9 @@ ALIAS = {
     &quot;ursprung&quot;: &quot;Ursprung&quot;, &quot;komplex&quot;: &quot;Komplex&quot;, &quot;faltinventerare&quot;: &quot;Fältinventerare&quot;,
     &quot;egen_bet&quot;: &quot;Egen beteckning&quot;,
     # _text-fälten tillagda 2026-09-03 (sätts redan i lyrx:en, listade här för fullständighet)
-    &quot;livsmiljötyp1_text&quot;: &quot;Målnaturtyp 1, förslag (klartext)&quot;,
-    &quot;livsmiljötyp2_text&quot;: &quot;Målnaturtyp 2, förslag (klartext)&quot;,
-    &quot;livsmiljötyp3_text&quot;: &quot;Målnaturtyp 3, förslag (klartext)&quot;,
+    &quot;livsmiljötyp1_text&quot;: &quot;Livsmiljötyp 1, förslag (klartext)&quot;,
+    &quot;livsmiljötyp2_text&quot;: &quot;Livsmiljötyp 2, förslag (klartext)&quot;,
+    &quot;livsmiljötyp3_text&quot;: &quot;Livsmiljötyp 3, förslag (klartext)&quot;,
     &quot;komplex_text&quot;: &quot;Komplex (klartext)&quot;, &quot;tillstand_text&quot;: &quot;Tillstånd (klartext)&quot;,
     &quot;justering_text&quot;: &quot;Livsmiljötyp, justering (klartext)&quot;,
     &quot;utbredning_text&quot;: &quot;Utbredning, justering (klartext)&quot;,
