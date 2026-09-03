@@ -55,7 +55,7 @@ Allt detta gör skriptet `forbered_gdb_for_publicering.py` (bilaga A) i ett svep
 
 1. **Ta en kopia av gdb:n först** (Utforskaren: kopiera mappen `NNK_Sodermanland_granskning.gdb` → `NNK_Sodermanland_granskning_ORIGINAL.gdb`). Skriptet ändrar schemat på plats.
 2. Öppna ArcGIS Pro med ett tomt projekt (eller ditt NNK-projekt). **Ta bort NNK-lagren ur kartan** om de ligger där — Pro låser annars gdb:n och stegen misslyckas med "lock"-fel.
-3. Öppna skriptet i Anteckningar. Ändra `MALL_GDB` (KartLits-mallens gdb) under `KONFIGURATION` om den skiljer sig från standardsökvägen. `VAR_GDB` (vår gdb) hittas numera automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först. Rätta `_RESERV_VAR_GDB` bara om automatiken inte hittar lagren (t.ex. körning utanför ett öppet projekt). Spara.
+3. Öppna skriptet i Anteckningar (behövs oftast inte). `VAR_GDB` (vår gdb) hittas automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först (steg 1 ovan). `MALL_GDB` (KartLits-mallens gdb) hittas automatiskt om hela natura-2000-repot är klonat på datorn (mallen ligger incheckad i repot: `docs/underlag/handledning/KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb`). Rätta `_RESERV_VAR_GDB`/`_RESERV_MALL_GDB` under `KONFIGURATION` bara om automatiken inte hittar rätt gdb (skriptet skriver ut en tydlig varning då). Spara.
 4. *View → Python Window*. Klistra in HELA skriptet (Ctrl+A, Ctrl+C i Anteckningar → Ctrl+V i Python-fönstret) och tryck Enter. Alternativt: *Analysis → Python → Python Window*, högerklicka → *Load Code* → välj filen → Enter.
 5. Läs utskriften. Förväntat: `1.` (några rader "Double → Long" på ytlagret), `2.` 13 domäner skapade (`NV_NNK_yta → LstD_NNK_yta (230 koder)` osv.), `3.`/`4.` "klart" × 3, `5.` GlobalID tillagt × 4, `6.` aktiverat × 3, `KLART`.
 6. **Kontroll i Catalog:** högerklicka gdb:n → *Domains* — 13 domäner med prefix `LstD_`. Högerklicka `NNK_naturaobjekt_yta` → *Design → Fields*: kolumnen *Domain* ska vara ifylld för `naturtyp`, `granskat`, `tillstand`, `justering`, `utbredning`, `kontroll1–3`, `metod`, `livsmiljötyp1–3`, `malnaturtyp1–3` m.fl.; kolumnen *Alias* ska visa svenska namn; det ska finnas ett `GlobalID`-fält och fälten `lst_skapad_av/lst_skapad/lst_andrad_av/lst_andrad`.
@@ -253,10 +253,30 @@ Ligger i `natura-2000: deliveries/nnk_granskning_sodermanland_20260901/forbered_
 # -*- coding: utf-8 -*-
 """Förbereder NNK_Sodermanland_granskning.gdb för publicering (domäner, typer,
 alias, GlobalID, editor tracking, metadata). Körs i ArcGIS Pro:s Python-fönster."""
+import os
 import arcpy
 from arcpy import metadata as md
 
-MALL_GDB = r"C:\GIS\NNK\KartLits_NNK_GIS_mall\KartLits_NNK_granskning.gdb"
+def _hitta_mall_gdb():
+    """Mallens gdb ligger incheckad i repot: docs/underlag/handledning/
+    KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb. Provar relativt skriptets
+    egen plats (kräver klonat repo) och sen reservsökvägen."""
+    kandidater = []
+    try:
+        har = os.path.dirname(os.path.abspath(__file__))
+        kandidater.append(os.path.normpath(os.path.join(
+            har, "..", "..", "docs", "underlag", "handledning",
+            "KartLits_NNK_GIS_mall", "KartLits_NNK_granskning.gdb")))
+    except NameError:
+        pass
+    kandidater.append(_RESERV_MALL_GDB)
+    for k in kandidater:
+        if arcpy.Exists(k):
+            return k
+    return None
+
+_RESERV_MALL_GDB = r"C:\GIS\NNK\KartLits_NNK_GIS_mall\KartLits_NNK_granskning.gdb"
+MALL_GDB = _hitta_mall_gdb() or _RESERV_MALL_GDB
 PREFIX = "LstD_"
 GOR_GLOBALID = True
 GOR_EDITOR_TRACKING = True
@@ -292,6 +312,8 @@ def _hitta_gdb_fran_projektlager(kandidatnamn):
 
 _RESERV_VAR_GDB = r"C:\GIS\NNK\nnk_granskning_sodermanland_20260901\NNK_Sodermanland_granskning.gdb"
 VAR_GDB = _hitta_gdb_fran_projektlager(set(NNK_LAGER) | {"Skyddade_omraden"}) or _RESERV_VAR_GDB
+
+_BEHOVDA_DOMANER = (set(FALT_DOMAN.values()) - {"NATURTYP", "LST_NNK_tillstand"}) | set(NNK_LAGER.values())
 
 FALT_DOMAN = {
     "naturtyp": "NATURTYP", "livsmiljötyp1": "NATURTYP", "livsmiljötyp2": "NATURTYP",
