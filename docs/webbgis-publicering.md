@@ -55,7 +55,7 @@ Allt detta gör skriptet `forbered_gdb_for_publicering.py` (bilaga A) i ett svep
 
 1. **Ta en kopia av gdb:n först** (Utforskaren: kopiera mappen `NNK_Sodermanland_granskning.gdb` → `NNK_Sodermanland_granskning_ORIGINAL.gdb`). Skriptet ändrar schemat på plats.
 2. Öppna ArcGIS Pro med ett tomt projekt (eller ditt NNK-projekt). **Ta bort NNK-lagren ur kartan** om de ligger där — Pro låser annars gdb:n och stegen misslyckas med "lock"-fel.
-3. Öppna skriptet i Anteckningar (behövs oftast inte). `VAR_GDB` (vår gdb) hittas automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först (steg 1 ovan). `MALL_GDB` (KartLits-mallens gdb) hittas automatiskt om hela natura-2000-repot är klonat på datorn (mallen ligger incheckad i repot: `docs/underlag/handledning/KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb`). Rätta `_RESERV_VAR_GDB`/`_RESERV_MALL_GDB` under `KONFIGURATION` bara om automatiken inte hittar rätt gdb (skriptet skriver ut en tydlig varning då). Spara.
+3. Öppna skriptet i Anteckningar (behövs oftast inte). `VAR_GDB` (vår gdb) hittas automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först (steg 1 ovan). `MALL_GDB` (KartLits-mallens gdb) hittas automatiskt via mappen `KartLits_mall/` som ligger bredvid skriptet i leveranszippen - fungerar oavsett om du bara laddat ner/packat upp zippen eller har hela natura-2000-repot klonat. Rätta `_RESERV_VAR_GDB`/`_RESERV_MALL_GDB` under `KONFIGURATION` bara om automatiken inte hittar rätt gdb (skriptet skriver ut en tydlig varning då). Spara.
 4. *View → Python Window*. Klistra in HELA skriptet (Ctrl+A, Ctrl+C i Anteckningar → Ctrl+V i Python-fönstret) och tryck Enter. Alternativt: *Analysis → Python → Python Window*, högerklicka → *Load Code* → välj filen → Enter.
 5. Läs utskriften. Förväntat: `1.` (några rader "Double → Long" på ytlagret), `2.` 13 domäner skapade (`NV_NNK_yta → LstD_NNK_yta (230 koder)` osv.), `3.`/`4.` "klart" × 3, `5.` GlobalID tillagt × 4, `6.` aktiverat × 3, `KLART`.
 6. **Kontroll i Catalog:** högerklicka gdb:n → *Domains* — 13 domäner med prefix `LstD_`. Högerklicka `NNK_naturaobjekt_yta` → *Design → Fields*: kolumnen *Domain* ska vara ifylld för `naturtyp`, `granskat`, `tillstand`, `justering`, `utbredning`, `kontroll1–3`, `metod`, `livsmiljötyp1–3`, `malnaturtyp1–3` m.fl.; kolumnen *Alias* ska visa svenska namn; det ska finnas ett `GlobalID`-fält och fälten `lst_skapad_av/lst_skapad/lst_andrad_av/lst_andrad`.
@@ -258,12 +258,15 @@ import arcpy
 from arcpy import metadata as md
 
 def _hitta_mall_gdb():
-    """Mallens gdb ligger incheckad i repot: docs/underlag/handledning/
-    KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb. Provar relativt skriptets
-    egen plats (kräver klonat repo) och sen reservsökvägen."""
+    """Mallens gdb följer med i leveranszippen (KartLits_mall/ bredvid det här
+    skriptet) - funkar utan git/klonat repo. Provar även repo-relativt
+    (docs/underlag/handledning/...) om hela natura-2000 är klonat, sen
+    reservsökvägen."""
     kandidater = []
     try:
         har = os.path.dirname(os.path.abspath(__file__))
+        kandidater.append(os.path.normpath(os.path.join(
+            har, "KartLits_mall", "KartLits_NNK_granskning.gdb")))
         kandidater.append(os.path.normpath(os.path.join(
             har, "..", "..", "docs", "underlag", "handledning",
             "KartLits_NNK_GIS_mall", "KartLits_NNK_granskning.gdb")))

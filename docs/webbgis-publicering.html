@@ -239,7 +239,7 @@ tr:last-child td{border-bottom:0}
 <ol>
 <li><strong>Ta en kopia av gdb:n först</strong> (Utforskaren: kopiera mappen <code>NNK_Sodermanland_granskning.gdb</code> → <code>NNK_Sodermanland_granskning_ORIGINAL.gdb</code>). Skriptet ändrar schemat på plats.</li>
 <li>Öppna ArcGIS Pro med ett tomt projekt (eller ditt NNK-projekt). <strong>Ta bort NNK-lagren ur kartan</strong> om de ligger där — Pro låser annars gdb:n och stegen misslyckas med "lock"-fel.</li>
-<li>Öppna skriptet i Anteckningar (behövs oftast inte). <code>VAR_GDB</code> (vår gdb) hittas automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först (steg 1 ovan). <code>MALL_GDB</code> (KartLits-mallens gdb) hittas automatiskt om hela natura-2000-repot är klonat på datorn (mallen ligger incheckad i repot: <code>docs/underlag/handledning/KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb</code>). Rätta <code>_RESERV_VAR_GDB</code>/<code>_RESERV_MALL_GDB</code> under <code>KONFIGURATION</code> bara om automatiken inte hittar rätt gdb (skriptet skriver ut en tydlig varning då). Spara.</li>
+<li>Öppna skriptet i Anteckningar (behövs oftast inte). <code>VAR_GDB</code> (vår gdb) hittas automatiskt via lagren i det aktiva Pro-projektet - lägg bara till lagren i en karta först (steg 1 ovan). <code>MALL_GDB</code> (KartLits-mallens gdb) hittas automatiskt via mappen <code>KartLits_mall/</code> som ligger bredvid skriptet i leveranszippen - fungerar oavsett om du bara laddat ner/packat upp zippen eller har hela natura-2000-repot klonat. Rätta <code>_RESERV_VAR_GDB</code>/<code>_RESERV_MALL_GDB</code> under <code>KONFIGURATION</code> bara om automatiken inte hittar rätt gdb (skriptet skriver ut en tydlig varning då). Spara.</li>
 <li><em>View → Python Window</em>. Klistra in HELA skriptet (Ctrl+A, Ctrl+C i Anteckningar → Ctrl+V i Python-fönstret) och tryck Enter. Alternativt: <em>Analysis → Python → Python Window</em>, högerklicka → <em>Load Code</em> → välj filen → Enter.</li>
 <li>Läs utskriften. Förväntat: <code>1.</code> (några rader "Double → Long" på ytlagret), <code>2.</code> 13 domäner skapade (<code>NV_NNK_yta → LstD_NNK_yta (230 koder)</code> osv.), <code>3.</code>/<code>4.</code> "klart" × 3, <code>5.</code> GlobalID tillagt × 4, <code>6.</code> aktiverat × 3, <code>KLART</code>.</li>
 <li><strong>Kontroll i Catalog:</strong> högerklicka gdb:n → <em>Domains</em> — 13 domäner med prefix <code>LstD_</code>. Högerklicka <code>NNK_naturaobjekt_yta</code> → <em>Design → Fields</em>: kolumnen <em>Domain</em> ska vara ifylld för <code>naturtyp</code>, <code>granskat</code>, <code>tillstand</code>, <code>justering</code>, <code>utbredning</code>, <code>kontroll1–3</code>, <code>metod</code>, <code>livsmiljötyp1–3</code>, <code>malnaturtyp1–3</code> m.fl.; kolumnen <em>Alias</em> ska visa svenska namn; det ska finnas ett <code>GlobalID</code>-fält och fälten <code>lst_skapad_av/lst_skapad/lst_andrad_av/lst_andrad</code>.</li>
@@ -498,12 +498,15 @@ import arcpy
 from arcpy import metadata as md
 
 def _hitta_mall_gdb():
-    &quot;&quot;&quot;Mallens gdb ligger incheckad i repot: docs/underlag/handledning/
-    KartLits_NNK_GIS_mall/KartLits_NNK_granskning.gdb. Provar relativt skriptets
-    egen plats (kräver klonat repo) och sen reservsökvägen.&quot;&quot;&quot;
+    &quot;&quot;&quot;Mallens gdb följer med i leveranszippen (KartLits_mall/ bredvid det här
+    skriptet) - funkar utan git/klonat repo. Provar även repo-relativt
+    (docs/underlag/handledning/...) om hela natura-2000 är klonat, sen
+    reservsökvägen.&quot;&quot;&quot;
     kandidater = []
     try:
         har = os.path.dirname(os.path.abspath(__file__))
+        kandidater.append(os.path.normpath(os.path.join(
+            har, &quot;KartLits_mall&quot;, &quot;KartLits_NNK_granskning.gdb&quot;)))
         kandidater.append(os.path.normpath(os.path.join(
             har, &quot;..&quot;, &quot;..&quot;, &quot;docs&quot;, &quot;underlag&quot;, &quot;handledning&quot;,
             &quot;KartLits_NNK_GIS_mall&quot;, &quot;KartLits_NNK_granskning.gdb&quot;)))
