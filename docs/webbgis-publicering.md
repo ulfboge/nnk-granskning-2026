@@ -166,26 +166,27 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
      ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
      justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
      Kommentar – livsmiljötyp och utbredning.
-     *Gruppbeskrivning:* "Fyll bara i om du bedömer att NV:s registrerade livsmiljötyp eller
-     utbredning är fel — inte annars. Ange vad som behöver justeras och ditt förslag (upp till tre
-     alternativ, i prioritetsordning vid osäkerhet). Igenväxning på grund av utebliven skötsel är
-     INTE skäl att ändra livsmiljötyp (sätt i stället Tillstånd = Icke gott, se lathundens R1). En
-     yta som är på väg att bli livsmiljötyp men inte är det än är utvecklingsmark, inte en ändring
-     av nuvarande typ (R5)."
+     *Gruppbeskrivning* (fältet är begränsat till 255 tecken, se not nedan): "Fyll i bara vid fel
+     klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga
+     utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte
+     samma sak som utvecklingsmark." (226 tecken)
    - **Grupp "2. Tillstånd"**: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
-     *Gruppbeskrivning:* "Bedöm om livsmiljötypen är i gott, icke gott eller okänt tillstånd, utifrån
-     struktur, funktion och typiska/karakteristiska arter. Blandade förhållanden inom ytan: ange
-     andelen gott/ej gott/osäker i procent (summa 100). Vid tveksamhet: välj Okänt eller Icke gott
-     snarare än att gissa (lathundens R4) — en dokumenterad osäkerhet är en fullgod leverans."
+     *Gruppbeskrivning:* "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
+     Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
+     Okänt/Icke gott — gissa inte." (189 tecken)
    - **Grupp "3. Vad ska kontrolleras och hur"**: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
-     *Gruppbeskrivning:* "Framåtsyftande: vad behöver kontrolleras eller inventeras inför nästa
-     bedömning (2027), och med vilken metod. Beskriv INTE hur du själv kom fram till dagens
-     bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd i stället."
+     *Gruppbeskrivning:* "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
+     vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
+     kommentar under Avvikelse/Tillstånd." (193 tecken)
    - **Grupp "4. Klart?"**: Granskat.
-     *Gruppbeskrivning:* "Sätt till Ja när ytan är färdiggranskad och fälten ovan är ifyllda.
-     Påbörjat sparar ett delresultat om du inte hinner klart i ett svep. Nej är standardläget för
-     ogranskade objekt."
+     *Gruppbeskrivning:* "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
+     delresultat, inte klart än. Nej är standardläget för ogranskade objekt." (145 tecken)
    - Sätt *beskrivning* per fält med lathundens text, t.ex. Tillstånd: "Okänt = kan ej bedöma. Annat tillstånd = du vill justera registrerad naturtypsstatus; ange då procent i de tre fälten (summa 100)." Metod: "Framåtsyftande — vilken metod BÖR användas 2027, inte hur du gjort hittills."
+   - **OBS — teckengräns:** *Beskrivning*-fältet (både grupp- och fältnivå i Forms/Configure) klipper
+     text vid **255 tecken** utan varning — sparas det längre klipps resten bort tyst. Räkna tecken
+     innan du sparar (Johan testade grupp 1:s första utkast: 255 tecken gick in, resten föll bort
+     mitt i en mening). Ovanstående gruppbeskrivningar och fältbeskrivningarna (Tillstånd 130 tecken,
+     Metod 76 tecken) är alla kontrollerade och ryms.
    - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
    Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
 7. **Kartans utgångsläge**: zooma till Södermanlands län. *Map properties → Item details*.
