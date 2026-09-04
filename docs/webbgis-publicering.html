@@ -374,6 +374,24 @@ tr:last-child td{border-bottom:0}
 <h4>Grupp 2 · Tillstånd</h4>
 <p><strong>Fält:</strong> Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.</p>
 <p><strong>Gruppbeskrivning:</strong> "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt/Icke gott — gissa inte."</p>
+<p><strong>Kontrollfält (summa av procentfälten):</strong> lägg till ett nytt fält i geodatabasen, t.ex. <code>kontroll_summa_procent</code> (kort text), alias "Kontroll: summa tillstånd (%)" (se Del 1). Republicera (Del 3) så fältet finns i den driftade tjänsten, dra sedan in det sist i den här gruppen och koppla ett kalkylerat Arcade-uttryck:</p>
+<ul>
+<li>Markera fältet i formulärdesignern → högerpanelen <strong>Logik</strong> → <strong>Kalkylerat värde</strong> → uttrycksknappen (kugghjulet) → <em>Nytt uttryck</em>.</li>
+<li>Klistra in:
+<pre><code>var gott   = DefaultValue($feature.procent_gott, 0)
+var ejgott = DefaultValue($feature.procent_ej_gott, 0)
+var osaker = DefaultValue($feature.procent_osaker, 0)
+var summa  = gott + ejgott + osaker
+
+return When(
+    summa == 100, "✅ Summa: 100 %",
+    summa == 0,   "Summa: 0 % — fyll i fälten ovan",
+    "⚠️ Summa: " + Text(summa, "#") + " % (ska bli 100 %)"
+)</code></pre>
+</li>
+<li>Testkör uttrycket, <em>Klar</em> → <em>OK</em>. Fältet låses automatiskt för manuell inmatning så länge det har ett kalkylerat uttryck — kontrollera ändå att <strong>Redigerbar</strong> inte är ibockad separat (då körs inte uttrycket, enligt Esri).</li>
+</ul>
+<p><strong>OBS:</strong> uttrycket är dynamiskt och uppdateras direkt i formuläret medan granskaren fyller i procenten, innan hen sparar. Det finns <strong>inget</strong> formulärelement i Map Viewer/Portal som visar ett beräknat värde <em>utan</em> att spara det (kontrollerat mot Esris dokumentation 2026-09-04) — kontrollfältets värde skrivs alltså till attributtabellen när formuläret sparas. Ofarligt eftersom det bara är en avstämning, inte en bedömning, och alltid går att räkna om — uteslut det ur ev. export till granskningsloggen om det stör.</p>
 
 <h4>Grupp 3 · Vad ska kontrolleras och hur</h4>
 <p><strong>Fält:</strong> Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.</p>
@@ -409,7 +427,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table>
 
-<p>Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 3</code>) men inte nödvändig i första versionen.</p>
+<p>Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 4</code>) men inte nödvändig i första versionen. <strong>Rättat 2026-09-04:</strong> tidigare stod det <code>tillstand == 3</code>, men i den korrigerade domänen från 2026-09-03 (<code>TILLSTAND_KORRIGERAD_DOMAN</code> i <code>forbered_gdb_for_publicering.py</code>) är 1 Gott · 2 Icke gott · 3 Okänt – kan ej bedöma · 4 Blandat – se andelar, så det är värde 4 som ska styra synligheten för procentfälten.</p>
 <p>Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).</p>
 </li>
 <li><strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.</li>
