@@ -443,9 +443,40 @@ tr:last-child td{border-bottom:0}
    - "Mitt område" — enkelt filter, <code>omrade_namn</code>, <em>Fråga efter värde</em> ✔ (granskaren skriver in namnet).
    Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</li>
 <li><strong>Fliken Widgetar</strong> — aktivera (✔) följande, resten av (≈ Stockholms app + attributtabell):
-   - <em>Meny och inloggning</em>: <strong>Inloggning krävs</strong> ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på <code>\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…</code> (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp <strong>"Lathund granskning"</strong> → länk till NV:s lathund (Samverkansytan) eller till <code>https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html</code>; knapp <strong>"Kodlista/attributbeskrivning"</strong>; knapp <strong>"Granskningslogg (G:)"</strong> kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. <em>Sidofält utfällt vid start</em> ✔ med <em>Lagerlista</em> öppen.
-   - <em>Information</em>: statisk välkomstruta ✔: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; <em>Ta bort</em> raderar objektet — klicka <em>Behåll geoobjektet</em> om du råkar trycka), var loggen ligger (<code>G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx</code>), kontakt (din mejl).
-   - <em>Lagerlista</em> ✔ (sidofält; <em>Automatisk popup</em> ✔; dölj inget), <em>Attributtabell</em> ✔ (paginering 50 rader, filtrera på kartutbredning ✔ — bra att kunna sortera på <code>granskat</code>), <em>Redigera</em> ✔ (sidofält; <em>Inkludera alltid alla redigerbara lager</em> ✘ — vi styr per lager i Lagerlistan), <em>Sök i kartan</em> ✔ (geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager), <em>Välj i kartan</em> ✔, <em>Rita och mät</em> ✔, <em>Bokmärken</em> ✔, <em>Dela karta</em> ✔, <em>Skala</em> ✔, <em>Visa koordinater</em> ✔, <em>Visa teckenförklaring</em> ✔, <em>Utskrift</em> ✔ (standardlayouter, A3 liggande), <em>Filter</em> ✔ (sidofält), <em>Export</em> ✔ men bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen), <em>Popupfunktioner</em> ✔, <em>Högerklick-meny</em> ✔, <em>Artsök</em> ✔ (FO Natur — artfynd från Artportalen, nyttigt för typiska arter), <em>Ärendekontroll</em> ✘, <em>Lägg till data</em> ✔ (fil + portal; granskaren kan dra in egna shapefiler), <em>Höjdprofil</em> ✘, MarkGIS/Små avlopp ✘.</li>
+<ul>
+<li><strong>Meny och inloggning</strong>: <strong>Inloggning krävs</strong> ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på <code>\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…</code> (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp <strong>"Lathund granskning"</strong> → länk till NV:s lathund (Samverkansytan) eller till <code>https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html</code>; knapp <strong>"Kodlista/attributbeskrivning"</strong>; knapp <strong>"Granskningslogg (G:)"</strong> kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. <em>Sidofält utfällt vid start</em> ✔ med <em>Lagerlista</em> öppen.</li>
+<li><strong>Information</strong>: statisk välkomstruta ✔ — rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; <em>Ta bort</em> raderar objektet — klicka <em>Behåll geoobjektet</em> om du råkar trycka), var loggen ligger (<code>G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx</code>), kontakt (din mejl).</li>
+</ul>
+<p>Övriga widgetar (✔ på, ✘ av):</p>
+<table>
+<thead>
+<tr><th>Widget</th><th>Status</th><th>Inställning / kommentar</th></tr>
+</thead>
+<tbody>
+<tr><td>Lagerlista</td><td>✔</td><td>sidofält; Automatisk popup ✔; dölj inget</td></tr>
+<tr><td>Attributtabell</td><td>✔</td><td>paginering 50 rader, filtrera på kartutbredning ✔ — bra att kunna sortera på <code>granskat</code></td></tr>
+<tr><td>Redigera</td><td>✔</td><td>sidofält; Inkludera alltid alla redigerbara lager ✘ — vi styr per lager i Lagerlistan</td></tr>
+<tr><td>Sök i kartan</td><td>✔</td><td>geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager</td></tr>
+<tr><td>Välj i kartan</td><td>✔</td><td>—</td></tr>
+<tr><td>Rita och mät</td><td>✔</td><td>—</td></tr>
+<tr><td>Bokmärken</td><td>✔</td><td>—</td></tr>
+<tr><td>Dela karta</td><td>✔</td><td>—</td></tr>
+<tr><td>Skala</td><td>✔</td><td>—</td></tr>
+<tr><td>Visa koordinater</td><td>✔</td><td>—</td></tr>
+<tr><td>Visa teckenförklaring</td><td>✔</td><td>—</td></tr>
+<tr><td>Utskrift</td><td>✔</td><td>standardlayouter, A3 liggande</td></tr>
+<tr><td>Filter</td><td>✔</td><td>sidofält</td></tr>
+<tr><td>Export</td><td>✔</td><td>men bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen)</td></tr>
+<tr><td>Popupfunktioner</td><td>✔</td><td>—</td></tr>
+<tr><td>Högerklick-meny</td><td>✔</td><td>—</td></tr>
+<tr><td>Artsök</td><td>✔</td><td>FO Natur — artfynd från Artportalen, nyttigt för typiska arter</td></tr>
+<tr><td>Ärendekontroll</td><td>✘</td><td>—</td></tr>
+<tr><td>Lägg till data</td><td>✔</td><td>fil + portal; granskaren kan dra in egna shapefiler</td></tr>
+<tr><td>Höjdprofil</td><td>✘</td><td>—</td></tr>
+<tr><td>MarkGIS/Små avlopp</td><td>✘</td><td>—</td></tr>
+</tbody>
+</table>
+</li>
 <li><strong>Fliken Förhandsgranska</strong> → kolla lagerlista, filter, formulär. Tillbaka till <em>Objekt → Starta</em> för att öppna appen i egen flik.</li>
 </ol>
 <hr />
