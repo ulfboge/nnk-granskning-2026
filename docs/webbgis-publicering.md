@@ -166,27 +166,51 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
      ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
      justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
      Kommentar – livsmiljötyp och utbredning.
-     *Gruppbeskrivning* (fältet är begränsat till 255 tecken, se not nedan): "Fyll i bara vid fel
-     klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga
-     utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte
-     samma sak som utvecklingsmark." (226 tecken)
+     *Gruppbeskrivning:* "Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark."
+     Lägg dessutom till ett **Info-element** överst i gruppen, för utförligare bakgrund och citat:
+     "Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i
+     granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.
+
+     Lathunden ('Vad kan vi ändra på?'): 'Behåll dock livsmiljötypen om en faktisk förändring
+     beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra,
+     snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen
+     i Icke gott tillstånd.'
+
+     Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ —
+     förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en
+     livsmiljötyp.
+
+     Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla
+     bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid
+     uppenbart fel eller faktisk förändring (FAQ 19)."
    - **Grupp "2. Tillstånd"**: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
      *Gruppbeskrivning:* "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
      Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
-     Okänt/Icke gott — gissa inte." (189 tecken)
+     Okänt/Icke gott — gissa inte."
    - **Grupp "3. Vad ska kontrolleras och hur"**: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
      *Gruppbeskrivning:* "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
      vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
-     kommentar under Avvikelse/Tillstånd." (193 tecken)
+     kommentar under Avvikelse/Tillstånd."
    - **Grupp "4. Klart?"**: Granskat.
      *Gruppbeskrivning:* "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
-     delresultat, inte klart än. Nej är standardläget för ogranskade objekt." (145 tecken)
-   - Sätt *beskrivning* per fält med lathundens text, t.ex. Tillstånd: "Okänt = kan ej bedöma. Annat tillstånd = du vill justera registrerad naturtypsstatus; ange då procent i de tre fälten (summa 100)." Metod: "Framåtsyftande — vilken metod BÖR användas 2027, inte hur du gjort hittills."
-   - **OBS — teckengräns:** *Beskrivning*-fältet (både grupp- och fältnivå i Forms/Configure) klipper
-     text vid **255 tecken** utan varning — sparas det längre klipps resten bort tyst. Räkna tecken
-     innan du sparar (Johan testade grupp 1:s första utkast: 255 tecken gick in, resten föll bort
-     mitt i en mening). Ovanstående gruppbeskrivningar och fältbeskrivningarna (Tillstånd 130 tecken,
-     Metod 76 tecken) är alla kontrollerade och ryms.
+     delresultat, inte klart än. Nej är standardläget för ogranskade objekt."
+   - **Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
+     - **Livsmiljötyp, behov av justering:** Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).
+     - **Utbredning, behov av justering:** Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.
+     - **Livsmiljötyp 1:** Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.
+     - **Livsmiljötyp 2:** Andrahandsförslag, om osäker mellan flera typer.
+     - **Livsmiljötyp 3:** Tredjehandsförslag, om osäker mellan flera typer.
+     - **Kommentar – livsmiljötyp och utbredning:** Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
+     - **Tillstånd, behov av justering:** Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren.
+     - **Gott tillstånd (%):** Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+     - **Ej gott tillstånd (%):** Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+     - **Osäker (%):** Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.
+     - **Kommentar – Tillstånd:** Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.
+     - **Vad ska kontrolleras 1–3:** Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.
+     - **Kommentar – Vad ska kontrolleras:** Motivera varför just detta bör kontrolleras.
+     - **Metod för kontroll:** Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.
+     - **Kommentar – Metod:** Kompletterande info om vald metod, t.ex. varför fältinventering behövs.
+     - **Granskat:** Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.
    - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
    Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
 7. **Kartans utgångsläge**: zooma till Södermanlands län. *Map properties → Item details*.

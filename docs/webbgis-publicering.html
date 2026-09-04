@@ -356,36 +356,59 @@ tr:last-child td{border-bottom:0}
 <li><strong>Ordning</strong> (uppifrån): NNK punkter, NNK linjer, Skyddade områden (kontur), NNK ytor, NV naturtypskarta (släckt vid start), Natura 2000-gränser, ängs- och betesmark (släckt), ortofoton (släckta), bakgrund. Slå på <em>Visible</em> bara för NNK-lagren, skyddade områden och N2000-gränser vid start.</li>
 <li><strong>Symbol</strong>: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): <em>Styles → Types (unique symbols)</em> på <code>granskat</code>, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.</li>
 <li><strong>Popup</strong> per NNK-lager (<em>Pop-ups</em>): <strong>redan klar — ärvs automatiskt</strong> från lagrets publicerade popup (del 2 steg 6), med samma sex rubriksatta sektioner som i Pro, inklusive granskningsstegen 1–4 som lässtöd. (Det är alltså MEDVETET att granskningsfälten syns i popupen och inte bara i formuläret — en tidigare version av den här manualen sa motsatsen, "håll granskningsfälten ur popupen"; det stämmer inte längre.) Kontrollera bara: öppna <em>Pop-ups</em> på ytlagret → sektionerna ska synas grupperade, med rubrik <code>{omrade_namn}</code> överst — bekräftat att detta stämmer 2026-09-04. Gör INGEN ny fältlista. Ser popupen i stället ogrupperad ut (platt fältlista utan rubriker): lagret lades troligen till i WebMap:en innan popup-uppdateringen i Pro — ta bort och lägg till lagret på nytt från portalen (samma cache-orsak som del 2 steg 6). Lägg sist till (manuellt, en gång) ett <em>Text</em>-element sist i listan: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på <em>Pop-ups</em> även på referenslagren (N2000: så att bevarandeplanlänken syns).</li>
-<li><strong>Formulär (smart form)</strong> — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):
+<li>
+<p><strong>Formulär (smart form)</strong> — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):
    - <strong>Grupp "1. Avvikelse och korrigeringsförslag"</strong> (bytte namn 2026-09-03 för att spegla samma
      ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
      justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
      Kommentar – livsmiljötyp och utbredning.
-     <em>Gruppbeskrivning</em> (fältet är begränsat till 255 tecken, se not nedan): "Fyll i bara vid fel
-     klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga
-     utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte
-     samma sak som utvecklingsmark." (226 tecken)
+     <em>Gruppbeskrivning:</em> "Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark."
+     Lägg dessutom till ett <strong>Info-element</strong> överst i gruppen, för utförligare bakgrund och citat:
+     "Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i
+     granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.</p>
+<p>Lathunden ('Vad kan vi ändra på?'): 'Behåll dock livsmiljötypen om en faktisk förändring
+ beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra,
+ snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen
+ i Icke gott tillstånd.'</p>
+<p>Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ —
+ förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en
+ livsmiljötyp.</p>
+<p>Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla
+ bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid
+ uppenbart fel eller faktisk förändring (FAQ 19)."
    - <strong>Grupp "2. Tillstånd"</strong>: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
-     <em>Gruppbeskrivning:</em> "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
-     Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
-     Okänt/Icke gott — gissa inte." (189 tecken)
+ <em>Gruppbeskrivning:</em> "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
+ Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
+ Okänt/Icke gott — gissa inte."
    - <strong>Grupp "3. Vad ska kontrolleras och hur"</strong>: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
-     <em>Gruppbeskrivning:</em> "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
-     vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
-     kommentar under Avvikelse/Tillstånd." (193 tecken)
+ <em>Gruppbeskrivning:</em> "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
+ vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
+ kommentar under Avvikelse/Tillstånd."
    - <strong>Grupp "4. Klart?"</strong>: Granskat.
-     <em>Gruppbeskrivning:</em> "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
-     delresultat, inte klart än. Nej är standardläget för ogranskade objekt." (145 tecken)
-   - Sätt <em>beskrivning</em> per fält med lathundens text, t.ex. Tillstånd: "Okänt = kan ej bedöma. Annat tillstånd = du vill justera registrerad naturtypsstatus; ange då procent i de tre fälten (summa 100)." Metod: "Framåtsyftande — vilken metod BÖR användas 2027, inte hur du gjort hittills."
-   - <strong>OBS — teckengräns:</strong> <em>Beskrivning</em>-fältet (både grupp- och fältnivå i Forms/Configure) klipper
-     text vid <strong>255 tecken</strong> utan varning — sparas det längre klipps resten bort tyst. Räkna tecken
-     innan du sparar (Johan testade grupp 1:s första utkast: 255 tecken gick in, resten föll bort
-     mitt i en mening). Ovanstående gruppbeskrivningar och fältbeskrivningarna (Tillstånd 130 tecken,
-     Metod 76 tecken) är alla kontrollerade och ryms.
+ <em>Gruppbeskrivning:</em> "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
+ delresultat, inte klart än. Nej är standardläget för ogranskade objekt."
+   - <strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
+ - <strong>Livsmiljötyp, behov av justering:</strong> Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).
+ - <strong>Utbredning, behov av justering:</strong> Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.
+ - <strong>Livsmiljötyp 1:</strong> Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.
+ - <strong>Livsmiljötyp 2:</strong> Andrahandsförslag, om osäker mellan flera typer.
+ - <strong>Livsmiljötyp 3:</strong> Tredjehandsförslag, om osäker mellan flera typer.
+ - <strong>Kommentar – livsmiljötyp och utbredning:</strong> Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
+ - <strong>Tillstånd, behov av justering:</strong> Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren.
+ - <strong>Gott tillstånd (%):</strong> Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+ - <strong>Ej gott tillstånd (%):</strong> Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+ - <strong>Osäker (%):</strong> Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.
+ - <strong>Kommentar – Tillstånd:</strong> Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.
+ - <strong>Vad ska kontrolleras 1–3:</strong> Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.
+ - <strong>Kommentar – Vad ska kontrolleras:</strong> Motivera varför just detta bör kontrolleras.
+ - <strong>Metod för kontroll:</strong> Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.
+ - <strong>Kommentar – Metod:</strong> Kompletterande info om vald metod, t.ex. varför fältinventering behövs.
+ - <strong>Granskat:</strong> Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.
    - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 3</code>) men inte nödvändig i första versionen.
-   Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).</li>
-<li><strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.</li>
-<li><strong>Spara</strong>: <em>Save as</em> → titel <code>LstD NNK Granskning – WebMap</code>, tagg <code>LstD NNK Granskning WebbGIS</code>, mapp <code>LstD NNK</code>, sammanfattning. <strong>Dela</strong> WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).</li>
+   Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
+7. <strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.
+8. <strong>Spara</strong>: <em>Save as</em> → titel <code>LstD NNK Granskning – WebMap</code>, tagg <code>LstD NNK Granskning WebbGIS</code>, mapp <code>LstD NNK</code>, sammanfattning. <strong>Dela</strong> WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).</p>
+</li>
 </ol>
 <hr />
 <h2 id="del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</h2>
