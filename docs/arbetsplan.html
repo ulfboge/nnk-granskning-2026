@@ -134,8 +134,8 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Version:</strong> 1.5
-<strong>Datum:</strong> 2026-08-25
+<p><strong>Version:</strong> 1.6 — A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och <code>LstD NNK Granskning</code> publicerat sedan 2026-09-01
+<strong>Datum:</strong> 2026-09-11
 <strong>Omfattning:</strong> Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 <strong>Bemanning:</strong> 1 handläggare heltid + 1 kollega ca 50 %
 <strong>Underlag:</strong> <code>natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf</code> (2026-07-03) · <code>natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf</code> · <code>natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf</code> · <code>natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx</code> · <code>natura-2000: docs/underlag/kartering.csv</code>
@@ -399,7 +399,7 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </table>
 <p>I hela länets NNK-uttag (<code>natura-2000: docs/underlag/kartering.csv</code> / <code>natura-2000: docs/underlag/naturtypskarta/NNK_YTA</code>, 14 830 polygoner för alla skyddsformer) är <strong>81 % skapade 2012</strong> — migreringen från BIDOS. Endast 31 polygoner är redigerade under 2025. <strong>Underlaget är i praktiken 14 år gammalt.</strong></p>
 <blockquote>
-<p>Uttaget är den <strong>publika</strong> Natura naturtypskartan. Den saknar områdesidentitet och strippar kommentarer och användaruppgifter (handledningen 1.3). Områdeskopplingen är löst geometriskt med <code>natura-2000: scripts/analysis/koppla_omraden.py</code>, som knyter 9 609 ytor till länets 197 Natura 2000-områden — validerat mot statistikuttaget till 0,1 %. För spårbarhetsfälten krävs ett uttag ur NNK Ajourhålla.</p>
+<p>Uttaget är den <strong>publika</strong> Natura naturtypskartan. Den saknar områdesidentitet och strippar kommentarer och användaruppgifter (handledningen 1.3). Områdeskopplingen är löst geometriskt med <code>natura-2000: scripts/analysis/koppla_omraden.py</code>, som knyter 9 609 ytor till länets 197 Natura 2000-områden — validerat mot statistikuttaget till 0,1 %. För spårbarhetsfälten krävdes ett uttag ur NNK Ajourhålla — ett sådant länsuttag hämtades 2026-08-26 (se arbetspaket H); att koppla det till sitecode-nivån återstår.</p>
 </blockquote>
 <h3 id="25-sallsynta-livsmiljotyper-i-lanet-50-ha-inom-n2000">2.5 Sällsynta livsmiljötyper i länet (&lt; 50 ha inom N2000)</h3>
 <p>Dessa har högt prioriteringsvärde enligt FAQ fråga 11 (liten utbredning) och samlas i ett fåtal objekt:</p>
@@ -507,25 +507,25 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 </tr>
 <tr>
 <td>A2.5</td>
-<td><strong>Begär datauttag för D-län</strong> ur NNK-Ajourhålla (punkter/linjer/ytor) — mejla <code>Sandra.Wennberg@naturvardsverket.se</code>. Skicka snarast, svarstid okänd (manualens steg 1)</td>
+<td>~~<strong>Begär datauttag för D-län</strong> ur NNK-Ajourhålla (punkter/linjer/ytor) — mejla <code>Sandra.Wennberg@naturvardsverket.se</code>.~~ Uttaget mottaget 2026-08-26</td>
 <td>v35</td>
 <td>Handläggare</td>
 </tr>
 <tr>
 <td>A2.6</td>
-<td>Kopiera in uttaget i mallens lager med verktyget Append (<code>Use the field map to reconcile field differences</code>), döp om domäner med prefix <code>LstD</code> (manualens steg 3)</td>
+<td>~~Kopiera in uttaget i mallens lager med verktyget Append~~, döp om domäner med prefix <code>LstD</code> (manualens steg 3) — genomfört 2026-09-01, men Append kringgicks (ERROR 010273) med ett eget skript (<code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code>) som byggde den attribuerade leveransen direkt</td>
 <td>v37</td>
 <td>Handläggare</td>
 </tr>
 <tr>
 <td>A2.7</td>
-<td>Publicera lagren som hostat webblager i Länsstyrelsens ArcGIS Enterprise-portal, döpt <code>LstD NNK granskning</code> (manualens steg 4)</td>
+<td>~~Publicera lagren som hostat webblager i Länsstyrelsens ArcGIS Enterprise-portal~~, döpt <code>LstD_NNK_Granskning</code> (+ referenslagret <code>LstD_Skyddade_Omraden</code>) — publicerat sedan 2026-09-01. Metadataposten i Geodatakatalogen (informationsklassning, åtkomstrestriktioner) stäms fortfarande av med GIS-avdelningen (per 2026-09-11)</td>
 <td>v37</td>
 <td>Handläggare</td>
 </tr>
 <tr>
 <td>A2.8</td>
-<td>Skapa webbGIS från de publicerade lagren enligt Länsstyrelsernas Generellt kartstöd; kontakt vid problem: <code>giampaolo.cocca@lansstyrelsen.se</code> (manualens steg 5)</td>
+<td>~~Skapa webbGIS från de publicerade lagren~~ — appen skapad via GK Konfigurator, se <code>docs/webbgis-publicering.md</code></td>
 <td>v37</td>
 <td>Handläggare</td>
 </tr>
@@ -571,8 +571,9 @@ Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden lig
 <p><strong>Upptäckt 2026-08-25:</strong> <code>LstAB NNK granskning</code> (nämnd i den nationella Lathund granskning WebbGIS-KartLitS)
 är Stockholms läns eget publicerade granskningslager, använt som illustrationsexempel — inte en delad resurs.
 Varje län ska enligt <code>Manual NNK mall för granskning.pdf</code> begära eget uttag och publicera ett eget lager med
-länskoden som prefix. D-läns lager (<code>LstD NNK granskning</code>) finns inte än — se A2.5–A2.8 ovan. Detta blockerar
-allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills det är publicerat.</p>
+länskoden som prefix. D-läns eget lager (<code>LstD NNK Granskning</code>) är sedan byggt och publicerat — se A2.5–A2.8
+ovan (klart 2026-09-01) och <code>docs/webbgis-publicering.md</code>. WebbGIS-baserat granskningsarbete (E3.1, H5.1,
+förvaltarsamtalen) är alltså inte längre blockerat av detta.</p>
 </blockquote>
 <p><strong>Leverans A:</strong> Fungerande arbetsplats, dokumenterad rollfördelning, bekräftad tolkning av uppdraget.</p>
 <hr />
@@ -887,7 +888,7 @@ allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills de
 <h3 id="h-forvaltardialog-naturvardsenhetens-kunskap-v35v48">H. Förvaltardialog — Naturvårdsenhetens kunskap · v35–v48</h3>
 <p>En stor del av det länsstyrelsen faktiskt vet om sina skyddade områden finns hos reservatsförvaltarna på Naturvårdsenheten och har aldrig nått NNK. Analysen av den publika Natura naturtypskartan för länet visar två konkreta luckor: <strong>277 ytor har fältdata men saknar tillståndsbedömning</strong>, och <strong>141 ytor har karteringsstatus 5 "Åtgärdas"</strong> — basinventeringens egen markering för att naturtypen inte gick att bestämma, oförändrad sedan 2008.</p>
 <blockquote>
-<p><strong>Notera om källan:</strong> <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code> och <code>REDIGERARE</code> är tomma i samtliga 14 830 polygoner i det publika uttaget, men det beror på att den publika versionen strippar kommentarer och användaruppgifter (handledningen 1.3) — inte nödvändigtvis på att fälten är oanvända. Kontrollera dem mot ett uttag ur NNK Ajourhålla innan slutsatser dras.</p>
+<p><strong>Notera om källan:</strong> <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code> och <code>REDIGERARE</code> är tomma i samtliga 14 830 polygoner i det publika uttaget, men det beror på att den publika versionen strippar kommentarer och användaruppgifter (handledningen 1.3) — inte nödvändigtvis på att fälten är oanvända. Detta gick att kontrollera i det uttag ur NNK Ajourhålla som hämtades 2026-08-26 (se H2.2).</p>
 </blockquote>
 <p>Naturvårdsverket godkänner uttryckligen lokalkännedom som kunskapskälla (Handledning för NNK 4.1; lathunden, <em>Utgångspunkter</em>; FAQ fråga 9). Detta är alltså inte en genväg utan den metod uppdraget förutsätter.</p>
 <p>Fullständig metodik finns i <code>docs/metodik.md</code>. Insamlingsinstrument: <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code>.</p>
@@ -921,7 +922,7 @@ allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills de
 </tr>
 <tr>
 <td>H2.2</td>
-<td>Checka ut NNK <strong>Ajourhålla</strong> i ArcGIS Pro och kontrollera <code>KOMMENTAR</code> för Åtgärdas-ytorna och de 277 fältbesökta — grunden kan redan stå där</td>
+<td>Checka ut NNK <strong>Ajourhålla</strong> i ArcGIS Pro och kontrollera <code>KOMMENTAR</code> för Åtgärdas-ytorna och de 277 fältbesökta — grunden kan redan stå där. Länsuttaget från 2026-08-26 har fältet för alla ytor redan; det som återstår är att faktiskt läsa igenom kommentarerna för just dessa objekt</td>
 <td>v37</td>
 <td>Handläggare</td>
 </tr>
@@ -1452,10 +1453,10 @@ allt WebbGIS-baserat granskningsarbete (E3.1, H5.1, förvaltarsamtalen) tills de
 <td>Börja med det som går utan NNK-skrivrättighet: bevarandeplaner, WebbGIS-mallen, statistikuttaget</td>
 </tr>
 <tr>
-<td>Granskningslagret <code>LstD NNK granskning</code> inte publicerat i tid</td>
+<td>~~Granskningslagret <code>LstD NNK Granskning</code> inte publicerat i tid~~ — <strong>löst 2026-09-01</strong>, lagret publicerat</td>
 <td>Hög</td>
 <td>Hög — allt WebbGIS-baserat granskningsarbete (E3, H5, förvaltarsamtal) blockeras</td>
-<td>Skicka uttagsbeställningen till NV omgående (A2.5); eskalera via <code>kartlitsN2000@naturvardsverket.se</code> om Sandra Wennberg inte svarat inom en vecka</td>
+<td>Se A2.5–A2.8 och <code>docs/webbgis-publicering.md</code></td>
 </tr>
 <tr>
 <td>BIDOS-underlaget visar sig sämre än väntat vid granskning</td>

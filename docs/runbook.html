@@ -174,7 +174,7 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Datum:</strong> 2026-08-21<br />
+<p><strong>Datum:</strong> 2026-09-11 (A2.5–A2.8 och H2.2 uppdaterade: länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat)<br />
 <strong>Omfattning:</strong> 58 uppgifter i sju arbetspaket, 266 konkreta steg<br />
 <strong>Hör ihop med:</strong> <code>docs/arbetsplan.md</code> (varför) · <code>kontrollrum.html</code> (överblick och avbockning) · <code>docs/metodik.md</code> (förvaltardialogen)</p>
 <hr />
@@ -252,7 +252,8 @@ tr:last-child td{border-bottom:0}
 <li>Mejla <code>Sandra.Wennberg@naturvardsverket.se</code> och begär ett uttag ur NNK-Ajourhålla för Södermanlands län (punkter, linjer, ytor), enligt <code>Manual NNK mall för granskning.pdf</code> steg 1.</li>
 <li>Du får instruktioner via mejl för att ladda ner en zipfil med geodatabasen för uttaget.</li>
 <li>Spara ner zipfilen, extrahera geodatabasen och öppna filerna i ArcGIS Pro. Kontrollera att allt ser rimligt ut (jämför gärna mot exemplet för Stockholm i manualen).</li>
-<li>Detta är en extern beroende som blockerar A2.6–A2.8 och i förlängningen allt WebbGIS-baserat granskningsarbete — skicka mejlet så tidigt som möjligt, gärna samtidigt som A2.3.</li>
+<li>Detta är en extern beroende som annars blockerar A2.6–A2.8 och i förlängningen allt WebbGIS-baserat granskningsarbete — skicka mejlet så tidigt som möjligt, gärna samtidigt som A2.3.</li>
+<li><strong>Läge 2026-08-26:</strong> uttaget mottaget och sparat (<code>Lansuttag_NNK_Sodermanland_20260826</code>, se <code>natura-2000: data/raw/backups/</code>). Inte längre blockerande.</li>
 </ol>
 <h3 id="a26-kopiera-in-uttaget-i-mallen">A2.6 · Kopiera in uttaget i mallen</h3>
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A2.3, A2.5</p>
@@ -269,19 +270,21 @@ tr:last-child td{border-bottom:0}
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A2.6</p>
 <ol>
 <li>Ta bort de rena uttagsfilerna från projektet (de som bara användes som källa till Append) så att bara de ifyllda mallagren återstår.</li>
-<li>Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. <code>LstD NNK granskning</code>.</li>
+<li>Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. <code>LstD NNK Granskning</code>.</li>
 <li>Ta ställning till om vissa koder ska sållas bort, eller om bara objekt som överlappar ett Natura 2000-område ska behållas, innan publicering.</li>
 <li>Klicka <strong>Share → Web Layer</strong> i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — jobbdatorns nätverksrestriktioner kan påverka vilken som går att nå från fältet).</li>
 <li><strong>Detaljerad instruktion:</strong> <a href="webbgis-publicering.html">Publicera WebbGIS</a>, del 2–4 (förberedelser i Pro, Share As Web Layer, efterarbete på item i portalen). Tjänstenamn: <code>LstD_NNK_Granskning</code> och <code>LstD_Skyddade_Omraden</code>.</li>
+<li><strong>Läge 2026-09-01:</strong> publicerat i Länsstyrelsens interna ArcGIS Enterprise-portal. Metadataposten i Geodatakatalogen (informationsklassning, åtkomst- och användningsrestriktioner) stäms fortfarande av med GIS-avdelningen, ej klar per 2026-09-11.</li>
 </ol>
 <h3 id="a28-skapa-webbgis-fran-de-publicerade-lagren">A2.8 · Skapa webbGIS från de publicerade lagren</h3>
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A2.7</p>
 <ol>
 <li>Följ Länsstyrelsernas interna vägledning <em>Generellt kartstöd</em> för hur man bygger ett webbGIS från publicerade lager (länken finns i manualen, på Länsstyrelsernas intranät).</li>
-<li>Lägg till <code>LstD NNK granskning</code> och relevanta referenslager (t.ex. <em>NV Naturtypskartan NNK</em>, <em>NV Natura2000 områden</em>) i webbGIS-appen.</li>
+<li>Lägg till <code>LstD NNK Granskning</code> och relevanta referenslager (t.ex. <em>NV Naturtypskartan NNK</em>, <em>NV Natura2000 områden</em>) i webbGIS-appen.</li>
 <li>Testa redigering mot ett enskilt objekt innan du meddelar kollegan att lagret är klart att använda (jämför med rutinen i A2.3, punkt 5).</li>
 <li>Vid frågor eller problem: <code>giampaolo.cocca@lansstyrelsen.se</code>.</li>
 <li><strong>Detaljerad instruktion:</strong> <a href="webbgis-publicering.html">Publicera WebbGIS</a>, del 5–7 (WebMap i Map Viewer, GK Konfigurator, test och överlämning).</li>
+<li><strong>Läge:</strong> webbGIS-appen skapad via GK Konfigurator.</li>
 </ol>
 <h3 id="a31-avstamning-med-chef">A3.1 · Avstämning med chef</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong></p>
@@ -538,8 +541,8 @@ se H1.1 och <code>natura-2000: data/forvaltare/README.md</code>.</p>
 <p><strong>v38–v48</strong> · <strong>[Karin]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
 <ol>
 <li>Öppna KartLitS WebbGIS, logga in med Automatisk inloggning.</li>
-<li>Zooma till objektet. Se till att lagret <em>LstD NNK granskning</em> är aktivt. Tänd även <em>NV Naturtypskartan NNK</em> så färger och mönster syns.</li>
-<li>Klicka Redigera → välj lager <em>LstD NNK granskning</em> → pilen under Redigera geoobjekt → infoklicka på polygonen.</li>
+<li>Zooma till objektet. Se till att lagret <em>LstD NNK Granskning</em> är aktivt. Tänd även <em>NV Naturtypskartan NNK</em> så färger och mönster syns.</li>
+<li>Klicka Redigera → välj lager <em>LstD NNK Granskning</em> → pilen under Redigera geoobjekt → infoklicka på polygonen.</li>
 <li>Fyll i: Livsmiljötyp behov av justering, Utbredning behov av justering, Livsmiljötyp 1–3, Kommentar livsmiljötyp och utbredning, Tillstånd behov av justering, procentandelarna, Kommentar tillstånd, Vad ska kontrolleras 1–3, Metod för kontroll, och sist Granskat = Ja eller Påbörjat.</li>
 <li>Spara med <em>Uppdatera</em> längst ner. Klicka ALDRIG <em>Ta bort</em> — det raderar hela geoobjektet. Vill du avbryta: bakåtpilen vid Redigera geoobjekt → Ignorera redigeringar.</li>
 <li>Enligt FAQ fråga 9.1 är det detta lager som blir underlaget till planen för 2027.</li>
@@ -667,7 +670,8 @@ fylls nu i automatiskt av <code>natura-2000: scripts/analysis/bygg_blankett.py</
 <p><strong>v37</strong> · <strong>[Handläggare]</strong> · förutsätter A1.2</p>
 <ol>
 <li>Detta är en KÄLLKRITISK kontroll som måste göras innan slutsatser dras om kunskapsläget.</li>
-<li>Bakgrund: i den publika NNK är KOMMENTAR, NNK_KOMMEN och REDIGERARE tomma i samtliga 14 830 polygoner — men handledningen 1.3 säger att den publika versionen strippar kommentarer och användaruppgifter. Fälten kan alltså vara ifyllda i Ajourhålla.</li>
+<li>Bakgrund: i den publika NNK är KOMMENTAR, NNK_KOMMEN och REDIGERARE tomma i samtliga 14 830 polygoner — men handledningen 1.3 säger att den publika versionen strippar kommentarer och användaruppgifter. Fälten kan alltså vara ifyllda i Ajourhålla.
+2b. <strong>Genväg sedan 2026-08-26:</strong> länsuttaget <code>Lansuttag_NNK_Sodermanland_20260826</code> har <code>kommentar</code>/<code>nnk_kommentar</code> ifyllda för alla ytor i länet redan — det kan gå snabbare att fråga i det direkt (<code>natura-2000: data/raw/backups/</code>) än att checka ut objekt för objekt enligt punkt 3–5 nedan.</li>
 <li>Checka ut ett av de sju Åtgärdas-objekten i ArcGIS Pro, förslagsvis SE0220020 Strandstuviken (25 ytor, hanterbart).</li>
 <li>Öppna attributtabellen och titta på KOMMENTAR och NNK_KOMMEN för ytorna med KARTERINGS = 5.</li>
 <li>Gör samma kontroll för några av de 277 ytorna med fältdata men ej bedömd status.</li>
@@ -694,7 +698,7 @@ fylls nu i automatiskt av <code>natura-2000: scripts/analysis/bygg_blankett.py</
 <h3 id="h32-genomfor-forvaltarsamtalen">H3.2 · Genomför förvaltarsamtalen</h3>
 <p><strong>v38–v44</strong> · <strong>[Båda]</strong> · förutsätter H3.1, H2.1 · bidrar till <em>Ifyllda blanketter från förvaltarsamtalen</em></p>
 <ol>
-<li>FÖRE, ca 30 min per objekt: ta fram objektet i WebbGIS med lagren <em>LstD NNK granskning</em> och <em>NV Naturtypskartan NNK</em> tända. Läs bevarandeplanen. Filtrera blanketten. Markera rader med karteringsstatus 3, 4 eller 5 — de har en historia.</li>
+<li>FÖRE, ca 30 min per objekt: ta fram objektet i WebbGIS med lagren <em>LstD NNK Granskning</em> och <em>NV Naturtypskartan NNK</em> tända. Läs bevarandeplanen. Filtrera blanketten. Markera rader med karteringsstatus 3, 4 eller 5 — de har en historia.</li>
 <li>UNDER, punkt 1: börja med Åtgärdas-ytorna. Konkret, och den erkänner att kunskapen finns hos dem.</li>
 <li>UNDER, punkt 2: gå igenom hävdberoende marker objekt för objekt — hävdas den, av vem, hur länge till, vad är trenden.</li>
 <li>UNDER, punkt 3: fråga efter dokument du inte känner till — uppföljningsprotokoll, ÄoB-blanketter, konsultrapporter, gamla skötselplansbilagor, foton. Det ligger ofta på en enhetsmapp ingen letat i.</li>

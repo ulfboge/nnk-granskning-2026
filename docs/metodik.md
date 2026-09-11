@@ -2,9 +2,9 @@
 
 ## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
 
-**Datum:** 2026-08-26
+**Datum:** 2026-09-11
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.2 — lagt till teknisk uppkopplingsbeskrivning för NNK i ArcGIS Pro (avsnitt 9)
+**Version:** 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -32,7 +32,7 @@ Analys av `natura-2000: docs/underlag/kartering.csv` respektive `natura-2000: do
 
 > **Viktigt om källan.** Detta är den **publika** Natura naturtypskartan, inte NNK Ajourhålla. Handledningen (avsnitt 1.3) säger att den publika versionen extraheras ur Ajourhålla och att *"några av attributen som finns i NNK Ajourhålla tas bort, såsom kommentarer och användaruppgifter"*. Tre fält är följaktligen tomma i samtliga 14 830 rader: `KOMMENTAR`, `NNK_KOMMEN` och `REDIGERARE`. **Det går alltså inte att dra slutsatsen att kommentarsfältet är oanvänt i länet** — det är borttaget ur exporten. Beviset ligger i datat: `REDIGERATA` (datum för attributredigering) har värden i 12 612 rader medan `REDIGERARE` (vem som redigerade) är tomt i alla 14 830. Attributen *har* redigerats; användaruppgifterna är strippade.
 >
-> **Konsekvens:** allt som rör grunder, kommentarer och vem som gjort vad måste kontrolleras mot ett uttag ur **NNK Ajourhålla** via ArcGIS Pro. Den publika versionen duger för utbredning, naturtyp, status och datum — inte för spårbarhet.
+> **Konsekvens:** allt som rör grunder, kommentarer och vem som gjort vad går inte att läsa ur den publika exporten — det krävde ett uttag ur **NNK Ajourhålla** via ArcGIS Pro. Ett sådant länsuttag hämtades **2026-08-26** (se avsnitt 8–9) och innehåller `kommentar`, `nnk_kommentar` samt redigeringshistorik (`created_user`/`last_edited_user`/`last_edited_date`). Den publika versionen duger fortfarande bäst för en snabb översikt av utbredning, naturtyp, status och datum — frågor om grund och spårbarhet besvaras nu ur länsuttaget, inte genom att vänta på ett nytt.
 
 Följande går däremot att läsa direkt ur den publika versionen, eftersom dessa fält inte strippas:
 
@@ -46,7 +46,7 @@ Följande går däremot att läsa direkt ur den publika versionen, eftersom dess
 | — varav karteringsstatus 1 Ej granskad | 2 592 | |
 | — varav karteringsstatus saknas | 432 | |
 
-**a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.** Någon har varit på plats — och tillståndet finns inte i NNK. Det är den snabbaste vinsten i hela uppdraget och kräver inget nytt fältarbete, bara att någon letar rätt på protokollet. Kontrollera `KOMMENTAR` för just dessa ytor i Ajourhålla först — där kan grunden redan stå.
+**a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.** Någon har varit på plats — och tillståndet finns inte i NNK. Det är den snabbaste vinsten i hela uppdraget och kräver inget nytt fältarbete, bara att någon letar rätt på protokollet. Kontrollera `kommentar`-fältet för just dessa ytor i länsuttaget från Ajourhålla (hämtat 2026-08-26, se avsnitt 8) — där kan grunden redan stå.
 
 **b) 141 ytor har karteringsstatus 5 "Åtgärdas".** Här skiljer sig de två källorna åt, och båda betydelserna är relevanta:
 
@@ -67,7 +67,7 @@ Datat pekar entydigt på den första: 139 av 141 har ursprung BIDOS, samtliga re
 
 Fördelningen är talande: nästan uteslutande hävdberoende marker — precis den kategori FAQ fråga 11 sätter högst. Och den ligger i objekt som redan är prioritet 1 i arbetsplanen. **Det gör listan till den bästa öppningsfrågan i ett förvaltarsamtal.**
 
-**c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.** Ni ska ange *vad som ligger till grund för bedömningen av utbredning*, *vad som ligger till grund för bedömningen av tillstånd*, och *hur aktuella dessa två bedömningar är*. Kontrollera först vad som faktiskt står i `KOMMENTAR` i Ajourhålla — det avgör om detta är en lucka eller bara osynlig i exporten. Oavsett svar gäller regeln framåt: ingen ytredigering bör lämna kommentarsfältet tomt.
+**c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.** Ni ska ange *vad som ligger till grund för bedömningen av utbredning*, *vad som ligger till grund för bedömningen av tillstånd*, och *hur aktuella dessa två bedömningar är*. Detta går nu att kontrollera direkt i länsuttaget från 2026-08-26 (se avsnitt 8) — det avgör om detta är en lucka eller bara var osynlig i den publika exporten. Oavsett svar gäller regeln framåt: ingen ytredigering bör lämna kommentarsfältet tomt.
 
 ---
 
@@ -91,7 +91,7 @@ Förvaltarkunskap är i regel andrahandsinformation som du inte själv har verif
                              fältkontrolleras först?
 ```
 
-> **Obs — granskningslagret finns inte än för D-län.** `LstAB NNK granskning`, som nämns i den nationella Lathund granskning WebbGIS-KartLitS och som förekommer nedan i denna sida, är **Stockholms läns (AB) eget publicerade lager** — det används som illustrativt exempel i den nationella lathunden ("Se exemplet nedan för Stockholm"), inte ett gemensamt resurslager alla län delar. Enligt `Manual NNK mall för granskning.pdf` (i KartLitS-mallzippen) ska varje län själv begära ett eget uttag ur NNK Ajourhålla, kopiera in det i mallen och publicera ett eget hostat lager, namngivet med länets kod som prefix. D-läns motsvarighet — nedan kallad **`LstD NNK granskning`** — finns ännu inte och behöver skapas och publiceras, se arbetsplanens A2.5–A2.8.
+> **Granskningslagret för D-län.** `LstAB NNK granskning`, som nämns i den nationella Lathund granskning WebbGIS-KartLitS, är **Stockholms läns (AB) eget publicerade lager** — det används som illustrativt exempel i den nationella lathunden ("Se exemplet nedan för Stockholm"), inte ett gemensamt resurslager alla län delar. Enligt `Manual NNK mall för granskning.pdf` (i KartLitS-mallzippen) ska varje län själv begära ett eget uttag ur NNK Ajourhålla, kopiera in det i mallen och publicera ett eget hostat lager, namngivet med länets kod som prefix. Södermanlands eget lager — **`LstD NNK Granskning`**, plus ett tillhörande referenslager för skyddade områden — är byggt och publicerat: länsuttaget hämtades 2026-08-26 och lagren publicerades i Länsstyrelsens interna ArcGIS Enterprise-portal från och med 2026-09-01, med en tillhörande WebbGIS-app skapad via GK Konfigurator. Se `docs/webbgis-publicering.md` för hela publiceringsprocessen. Metadataposten i Geodatakatalogen (informationsklassning, åtkomst- och användningsrestriktioner) höll fortfarande på att stämmas av med GIS-avdelningen per 2026-09-11 — det påverkar inte att lagret går att använda för granskning.
 
 **Varför två steg:**
 
@@ -208,7 +208,7 @@ Det här är den enda mekanism som gör FAQ fråga 4:s krav på *"hur aktuella d
 
 **Före (30 min per objekt):**
 
-1. Ta fram objektet i WebbGIS-KartLitS, tänd `LstD NNK granskning` och `NV Naturtypskartan NNK`
+1. Ta fram objektet i WebbGIS-KartLitS, tänd `LstD NNK Granskning` och `NV Naturtypskartan NNK`
 2. Läs bevarandeplanen — vilka livsmiljötyper är utpekade och vilka bevarandemål finns
 3. Filtrera blanketten till objektets rader
 4. Markera raderna med karteringsstatus 3, 4 eller 5 — de har en historia
@@ -255,11 +255,11 @@ Utdata: `data/nnk/nnk_yta_med_sitecode.gpkg` och `.csv` med fälten `SITECODE`, 
 | Behov | Hur |
 |---|---|
 | `NVRID` för de 5 221 ytorna utanför N2000 | Samma metod mot NVR-lagret från Naturvårdsregistret — behövs inför naturreservatsspåret 2027 (arbetspaket G) |
-| `KOMMENTAR`, `NNK_KOMMEN`, `REDIGERARE` | Finns bara i **NNK Ajourhålla**. Checka ut i ArcGIS Pro och exportera — den publika versionen kan aldrig ge detta |
-| `habitat_period_lastdata_start` / `_end` | Nya dateringsfälten, finns i Ajourhålla |
-| `habitat_priority_all`, `habitat_priority_6210_7130` | Prioriterad livsmiljötyp enligt habitatdirektivet, finns i Ajourhålla |
+| Koppla `KOMMENTAR`, `NNK_KOMMEN`, `REDIGERARE` samt de nya daterings-/prioritetsfälten till sitecode-nivån | Länsuttaget ur **NNK Ajourhålla** (hämtat 2026-08-26; fälten heter `kommentar`, `nnk_kommentar`, `created_user`/`last_edited_user`/`last_edited_date` i Ajourhålla-schemat) finns nu — `koppla_omraden.py` behöver köras om mot det. Inte gjort ännu |
+| `habitat_period_lastdata_start` / `_end` | Finns i länsuttaget från 2026-08-26, men tomma för nästan alla ytor — fylls i takt med förvaltarsamtalen (avsnitt 6–7) |
+| `habitat_priority_all`, `habitat_priority_6210_7130` | Finns i länsuttaget från 2026-08-26 |
 
-Med ett Ajourhålla-uttag kan samma skript köras om och då ger det full spårbarhet på polygonnivå.
+Länsuttaget ur Ajourhålla finns alltså sedan 2026-08-26 — det som återstår är att köra om `koppla_omraden.py` mot det för att ge full spårbarhet på polygonnivå.
 
 ---
 
@@ -279,6 +279,8 @@ Handledningens "checka ut" och "kör toolboxen" (3.3) är i praktiken detta (kä
 5. Editera, kör topologikontroll (se checklistan nedan), kör sedan verktyg 2 **"Validera attribut"** och verktyg 3 **"Ladda in kartering inför synkronisering"**, och synkronisera tillbaka. En central administratör godkänner uppladdningen innan den syns för andra i Ajourhalla.
 
 Kräver minst en **Standard-licens** i ArcGIS Pro (Basic räcker för att skapa feature-tjänst och ladda ner data, men Toolboxen — inklusive topologiregler — kräver Standard) samt ArcGIS Pro 3.5.
+
+**Genomfört i praktiken:** flödet ovan har körts två gånger — 2026-08-26 för det länsuttag som ligger till grund för avsnitt 2 och 8, och 2026-09-01 för att bygga granskningslagret `LstD NNK Granskning` i avsnitt 3.
 
 **Om ett område helt saknas i NNK** (inte bara behöver rättas) är det nykartering, inte redigering av befintlig yta: mejla underlag till `nnk-kartering@metria.se` så lägger de in området, varefter det går att justera som vanligt.
 
@@ -309,4 +311,4 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ---
 
-*Metodik v1.2 · 2026-08-26 · hör ihop med `docs/arbetsplan.md` (arbetspaket H) `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`*
+*Metodik v1.3 · 2026-09-11 · hör ihop med `docs/arbetsplan.md` (arbetspaket H), `docs/webbgis-publicering.md`, `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`*
