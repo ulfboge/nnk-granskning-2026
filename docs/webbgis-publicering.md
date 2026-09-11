@@ -285,6 +285,14 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
 | Konfiguratorn nere | driftsättning (fredagar 10.30–12, se driftinfo) | vänta; appen fungerar under tiden |
 | Frågor | | GK Konfigurator/portal: `giampaolo.cocca@lansstyrelsen.se` (NV-manualen), `fo.gk.team.applikation@lansstyrelsen.se` (GK), GIS-funktionen `gis.sodermanland@lansstyrelsen.se`; NNK-data: `Sandra.Wennberg@naturvardsverket.se` |
 
+**Hämta hem granskarnas redigeringar till lokal gdb/Pro**
+
+WebMap:en och appen läser och skriver alltid direkt mot den driftade tjänsten — inte mot din lokala gdb. De två är separata datakopior från publiceringstillfället, och synkas **inte** automatiskt. Innan en ny Overwrite Web Layer (t.ex. vid nästa Ajourhålla-uttag, se raden ovan), hämta hem aktuellt läge så du inte skriver över granskarnas arbete:
+
+1. I ArcGIS Pro: *Insert → Connections → Server* (eller *Add Data* mot REST-tjänsten direkt) för att lägga till den driftade tjänsten som ett live-lager, skilt från ditt lokala gdb-lager.
+2. Kör *Copy Features* (ny kopia) eller *Append* (skriv in i befintligt lager) från det hostade lagret till din lokala gdb.
+3. `Export data` är medvetet avstängt på tjänsteitemet (del 4) — det blockerar nedladdning via portalens gränssnitt, men inte Pro:s direkta REST-anslutning i steg 1–2.
+
 ---
 
 ## Bilaga A · Skriptet `forbered_gdb_for_publicering.py`

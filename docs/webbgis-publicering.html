@@ -586,6 +586,13 @@ return When(
 </tr>
 </tbody>
 </table>
+<p><strong>Hämta hem granskarnas redigeringar till lokal gdb/Pro</strong></p>
+<p>WebMap:en och appen läser och skriver alltid direkt mot den driftade tjänsten — inte mot din lokala gdb. De två är separata datakopior från publiceringstillfället, och synkas <strong>inte</strong> automatiskt. Innan en ny Overwrite Web Layer (t.ex. vid nästa Ajourhålla-uttag, se raden ovan), hämta hem aktuellt läge så du inte skriver över granskarnas arbete:</p>
+<ol>
+<li>I ArcGIS Pro: <em>Insert → Connections → Server</em> (eller <em>Add Data</em> mot REST-tjänsten direkt) för att lägga till den driftade tjänsten som ett live-lager, skilt från ditt lokala gdb-lager.</li>
+<li>Kör <em>Copy Features</em> (ny kopia) eller <em>Append</em> (skriv in i befintligt lager) från det hostade lagret till din lokala gdb.</li>
+<li><code>Export data</code> är medvetet avstängt på tjänsteitemet (del 4) — det blockerar nedladdning via portalens gränssnitt, men inte Pro:s direkta REST-anslutning i steg 1–2.</li>
+</ol>
 <hr />
 <h2 id="bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet <code>forbered_gdb_for_publicering.py</code></h2>
 <p>Ligger i <code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/forbered_gdb_for_publicering.py</code> (och i zip:en). Kopia här så att det går att kopiera från webbsidan:</p>
