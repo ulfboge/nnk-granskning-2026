@@ -246,8 +246,16 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
    - "Ej granskade" — `granskat` = 2.
    - "Påbörjade" — `granskat` = 3.
    - "Dölj marint (naturtyp 1000-serien)" — enkelt filter på ytlagret: `naturtyp < 1000 OR naturtyp >= 2000` (FAQ 16/29: marint ska inte in i NNK 2026).
-   - "Mitt område" — enkelt filter, `omrade_namn`, *Fråga efter värde* ✔ (granskaren skriver in namnet).
    Kombinera filtren med **OCH**. Aktiverande verktyg: *Nollställ alla* och *Stäng av alla* ✔.
+
+   **Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på `omrade_namn`) tas bort.**
+   Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till
+   widgeten **Sök i kartan** (aktiverad i del 6 steg 6), som söker direkt mot de sökbara fälten
+   `omrade_namn`/`n2000_sitecode` (satta under *Sökbart* i Lagerlistan, del 6 steg 4) via
+   geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den
+   redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara.
+   Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet)
+   för att hitta sitt område.
 6. **Fliken Widgetar** — aktivera (✔) följande, resten av (≈ Stockholms app + attributtabell):
    - *Meny och inloggning*: **Inloggning krävs** ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på `\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…` (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp **"Lathund granskning"** → länk till NV:s lathund (Samverkansytan) eller till `https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html`; knapp **"Kodlista/attributbeskrivning"**; knapp **"Granskningslogg (G:)"** kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. *Sidofält utfällt vid start* ✔ med *Lagerlista* öppen.
    - *Information*: statisk välkomstruta ✔: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; *Ta bort* raderar objektet — klicka *Behåll geoobjektet* om du råkar trycka), var loggen ligger (`G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`), kontakt (din mejl).
@@ -283,6 +291,7 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
 | Tjänstnamnet blev fel | *Name* kan inte ändras | ta bort itemet, publicera om med rätt namn (gör det innan WebMap/app byggs) |
 | Nytt Ajourhålla-uttag (t.ex. efter NV:s nya attribut i slutet av sept. 2026) | ny data, samma schema | kör om pipeline + del 1, sedan *Overwrite Web Layer* — **OBS: skriver över granskarnas ifyllda fält**. Exportera först attributtabellen (Excel) och slå ihop, eller vänta med överskrivning tills granskningen är klar. Om schemat ändras: ny tjänst + ny version av WebMap. |
 | Konfiguratorn nere | driftsättning (fredagar 10.30–12, se driftinfo) | vänta; appen fungerar under tiden |
+| Granskare hittar inte sitt område via filter | "Mitt område"-filtret borttaget 2026-09-15 (opålitliga träffar, se del 6 steg 5) | använd **Sök i kartan** (förstoringsglaset i sidofältet) i stället |
 | Frågor | | GK Konfigurator/portal: `giampaolo.cocca@lansstyrelsen.se` (NV-manualen), `fo.gk.team.applikation@lansstyrelsen.se` (GK), GIS-funktionen `gis.sodermanland@lansstyrelsen.se`; NNK-data: `Sandra.Wennberg@naturvardsverket.se` |
 
 **Hämta hem granskarnas redigeringar till lokal gdb/Pro**
