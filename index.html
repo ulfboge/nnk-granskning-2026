@@ -81,6 +81,19 @@ td.nu .mnd{display:block;font-size:11px;font-weight:500;color:var(--ink-3);
 .notis{background:var(--surface-1);border:1px solid var(--ring);border-left:3px solid var(--p-D);
  border-radius:10px;padding:14px 17px;font-size:13px;color:var(--ink-2);margin-top:16px;max-width:80ch}
 .notis b{color:var(--ink-1)}
+
+.barlist{display:grid;grid-template-columns:minmax(120px,220px) 1fr auto;
+ align-items:center;column-gap:10px;row-gap:7px;margin-top:16px}
+.bar-label{font-size:12.5px;color:var(--ink-2);text-align:right;line-height:1.35}
+.bar-track{position:relative}
+.bar-fill{height:18px;border-radius:4px;background:var(--p-A);min-width:3px}
+.bar-value{font-size:12px;color:var(--ink-1);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:520px){.barlist{grid-template-columns:96px 1fr auto}.bar-label{font-size:11px}}
+
+td.kod{font-variant-numeric:tabular-nums;color:var(--ink-3);width:1%;white-space:nowrap}
+td.ha{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.ejfast td{color:var(--ink-3);font-style:italic;border-top:2px solid var(--grid)}
+
 footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);
  font-size:12px;color:var(--ink-3)}
 </style>
@@ -168,6 +181,137 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--grid);
 
 <div class="notis">
   <b>2026 är ett kartläggningsår, inte ett produktionsår.</b> FAQ fråga 30 anger att Naturvårdsverket rekommenderar att man avvaktar med tillståndsbedömning i NNK tills de nya attributen driftsätts i slutet av september. Marina livsmiljötyper ska enligt FAQ fråga 16 och 29 inte läggas in i NNK i år.
+</div>
+
+<h2>Livsmiljötyper i länet</h2>
+<p class="lede">Areal per naturtyp i länets NNK-yta (14 830 ytor — samtliga skyddade områden, Natura 2000 och naturreservat/nationalpark, inte bara N2000-objekten). Klassificering enligt Naturvårdsverkets kodlista i tre steg: fastställd Natura-typ, obestämd/osäker Natura-typ, eller icke-natura.</p>
+
+<div class="grid tiles">
+  <div class="tile"><div class="v">27 250 ha</div><div class="l">Fastställd Natura-typ</div><div class="n">38 % av NNK-ytan · 62 typer</div></div>
+  <div class="tile"><div class="v">44 971 ha</div><div class="l">Ej fastställd typ / annan mark</div><div class="n">62 % · icke-natura, obestämd eller osäker</div></div>
+</div>
+
+<p class="lede" style="margin-top:22px">De 15 största fastställda livsmiljötyperna, sorterade efter areal:</p>
+<div class="barlist" role="img" aria-label="De 15 största fastställda livsmiljötyperna i länet, sorterade efter areal">
+  <div class="bar-label">3150 Naturligt näringsrika sjöar</div>
+  <div class="bar-track"><div class="bar-fill" style="width:100.0%" title="3150 Naturligt näringsrika sjöar: 5 314,7 ha, 115 ytor"></div></div>
+  <div class="bar-value">5 314,7 ha</div>
+  <div class="bar-label">9010 Taiga</div>
+  <div class="bar-track"><div class="bar-fill" style="width:99.7%" title="9010 Taiga: 5 300,5 ha, 1824 ytor"></div></div>
+  <div class="bar-value">5 300,5 ha</div>
+  <div class="bar-label">1170 Rev</div>
+  <div class="bar-track"><div class="bar-fill" style="width:82.5%" title="1170 Rev: 4 383,8 ha, 702 ytor"></div></div>
+  <div class="bar-value">4 383,8 ha</div>
+  <div class="bar-label">3110 Näringsfattiga slättsjöar</div>
+  <div class="bar-track"><div class="bar-fill" style="width:39.5%" title="3110 Näringsfattiga slättsjöar: 2 098,9 ha, 22 ytor"></div></div>
+  <div class="bar-value">2 098,9 ha</div>
+  <div class="bar-label">3130 Ävjestrandsjöar</div>
+  <div class="bar-track"><div class="bar-fill" style="width:36.0%" title="3130 Ävjestrandsjöar: 1 911,6 ha, 10 ytor"></div></div>
+  <div class="bar-value">1 911,6 ha</div>
+  <div class="bar-label">1110 Sublittorala sandbankar</div>
+  <div class="bar-track"><div class="bar-fill" style="width:32.3%" title="1110 Sublittorala sandbankar: 1 718,1 ha, 126 ytor"></div></div>
+  <div class="bar-value">1 718,1 ha</div>
+  <div class="bar-label">9070 Trädklädd betesmark</div>
+  <div class="bar-track"><div class="bar-fill" style="width:19.5%" title="9070 Trädklädd betesmark: 1 035,6 ha, 458 ytor"></div></div>
+  <div class="bar-value">1 035,6 ha</div>
+  <div class="bar-label">8230 Hällmarkstorräng</div>
+  <div class="bar-track"><div class="bar-fill" style="width:9.6%" title="8230 Hällmarkstorräng: 510,6 ha, 672 ytor"></div></div>
+  <div class="bar-value">510,6 ha</div>
+  <div class="bar-label">6270 Silikatgräsmarker</div>
+  <div class="bar-track"><div class="bar-fill" style="width:9.4%" title="6270 Silikatgräsmarker: 498,1 ha, 353 ytor"></div></div>
+  <div class="bar-value">498,1 ha</div>
+  <div class="bar-label">1160 Vikar och sund</div>
+  <div class="bar-track"><div class="bar-fill" style="width:8.4%" title="1160 Vikar och sund: 445,7 ha, 65 ytor"></div></div>
+  <div class="bar-value">445,7 ha</div>
+  <div class="bar-label">9740 Skogbevuxen myr (91D0)</div>
+  <div class="bar-track"><div class="bar-fill" style="width:8.3%" title="9740 Skogbevuxen myr (91D0): 442,0 ha, 248 ytor"></div></div>
+  <div class="bar-value">442,0 ha</div>
+  <div class="bar-label">9020 Nordlig ädellövskog</div>
+  <div class="bar-track"><div class="bar-fill" style="width:7.5%" title="9020 Nordlig ädellövskog: 396,2 ha, 111 ytor"></div></div>
+  <div class="bar-value">396,2 ha</div>
+  <div class="bar-label">1621 Skär i Östersjön - Terrester del</div>
+  <div class="bar-track"><div class="bar-fill" style="width:6.2%" title="1621 Skär i Östersjön - Terrester del: 328,3 ha, 1137 ytor"></div></div>
+  <div class="bar-value">328,3 ha</div>
+  <div class="bar-label">6410 Fuktängar</div>
+  <div class="bar-track"><div class="bar-fill" style="width:5.8%" title="6410 Fuktängar: 309,7 ha, 150 ytor"></div></div>
+  <div class="bar-value">309,7 ha</div>
+  <div class="bar-label">9050 Näringsrik granskog</div>
+  <div class="bar-track"><div class="bar-fill" style="width:5.0%" title="9050 Näringsrik granskog: 266,9 ha, 84 ytor"></div></div>
+  <div class="bar-value">266,9 ha</div>
+</div>
+
+<p class="lede" style="margin-top:26px">Samtliga 62 fastställda typer, störst till minst:</p>
+<table>
+  <thead><tr><th>Kod</th><th>Naturtyp</th><th>Areal (ha)</th><th>Andel av NNK-ytan</th><th>Antal ytor</th></tr></thead>
+  <tbody>
+    <tr><td class="kod">3150</td><td>Naturligt näringsrika sjöar</td><td class="ha">5 314,7</td><td class="ha">7.36 %</td><td class="ha">115</td></tr>
+    <tr><td class="kod">9010</td><td>Taiga</td><td class="ha">5 300,5</td><td class="ha">7.34 %</td><td class="ha">1824</td></tr>
+    <tr><td class="kod">1170</td><td>Rev</td><td class="ha">4 383,8</td><td class="ha">6.07 %</td><td class="ha">702</td></tr>
+    <tr><td class="kod">3110</td><td>Näringsfattiga slättsjöar</td><td class="ha">2 098,9</td><td class="ha">2.91 %</td><td class="ha">22</td></tr>
+    <tr><td class="kod">3130</td><td>Ävjestrandsjöar</td><td class="ha">1 911,6</td><td class="ha">2.65 %</td><td class="ha">10</td></tr>
+    <tr><td class="kod">1110</td><td>Sublittorala sandbankar</td><td class="ha">1 718,1</td><td class="ha">2.38 %</td><td class="ha">126</td></tr>
+    <tr><td class="kod">9070</td><td>Trädklädd betesmark</td><td class="ha">1 035,6</td><td class="ha">1.43 %</td><td class="ha">458</td></tr>
+    <tr><td class="kod">8230</td><td>Hällmarkstorräng</td><td class="ha">510,6</td><td class="ha">0.71 %</td><td class="ha">672</td></tr>
+    <tr><td class="kod">6270</td><td>Silikatgräsmarker</td><td class="ha">498,1</td><td class="ha">0.69 %</td><td class="ha">353</td></tr>
+    <tr><td class="kod">1160</td><td>Vikar och sund</td><td class="ha">445,7</td><td class="ha">0.62 %</td><td class="ha">65</td></tr>
+    <tr><td class="kod">9740</td><td>Skogbevuxen myr (91D0)</td><td class="ha">442,0</td><td class="ha">0.61 %</td><td class="ha">248</td></tr>
+    <tr><td class="kod">9020</td><td>Nordlig ädellövskog</td><td class="ha">396,2</td><td class="ha">0.55 %</td><td class="ha">111</td></tr>
+    <tr><td class="kod">1621</td><td>Skär i Östersjön - Terrester del</td><td class="ha">328,3</td><td class="ha">0.45 %</td><td class="ha">1137</td></tr>
+    <tr><td class="kod">6410</td><td>Fuktängar</td><td class="ha">309,7</td><td class="ha">0.43 %</td><td class="ha">150</td></tr>
+    <tr><td class="kod">9050</td><td>Näringsrik granskog</td><td class="ha">266,9</td><td class="ha">0.37 %</td><td class="ha">84</td></tr>
+    <tr><td class="kod">1630</td><td>Strandängar vid Östersjön</td><td class="ha">257,4</td><td class="ha">0.36 %</td><td class="ha">251</td></tr>
+    <tr><td class="kod">7142</td><td>Öppna mossar och kärr - Kärr och gungflyn</td><td class="ha">257,3</td><td class="ha">0.36 %</td><td class="ha">77</td></tr>
+    <tr><td class="kod">9080</td><td>Lövsumpskog</td><td class="ha">230,2</td><td class="ha">0.32 %</td><td class="ha">246</td></tr>
+    <tr><td class="kod">7140</td><td>Öppna mossar och kärr</td><td class="ha">207,8</td><td class="ha">0.29 %</td><td class="ha">119</td></tr>
+    <tr><td class="kod">1152</td><td>Laguner - Lagunartade vikar</td><td class="ha">167,1</td><td class="ha">0.23 %</td><td class="ha">22</td></tr>
+    <tr><td class="kod">3160</td><td>Myrsjöar</td><td class="ha">128,1</td><td class="ha">0.18 %</td><td class="ha">40</td></tr>
+    <tr><td class="kod">9060</td><td>Åsbarrskog</td><td class="ha">91,1</td><td class="ha">0.13 %</td><td class="ha">26</td></tr>
+    <tr><td class="kod">9006</td><td>Taiga - Sumpskog</td><td class="ha">89,4</td><td class="ha">0.12 %</td><td class="ha">130</td></tr>
+    <tr><td class="kod">7141</td><td>Öppna mossar och kärr - Svagt välvda mossar</td><td class="ha">71,5</td><td class="ha">0.10 %</td><td class="ha">17</td></tr>
+    <tr><td class="kod">1140</td><td>Blottade ler- och sandbottnar</td><td class="ha">70,4</td><td class="ha">0.10 %</td><td class="ha">59</td></tr>
+    <tr><td class="kod">9160</td><td>Näringsrik ekskog</td><td class="ha">65,7</td><td class="ha">0.09 %</td><td class="ha">22</td></tr>
+    <tr><td class="kod">7111</td><td>Högmossar - Öppna mosseplan</td><td class="ha">61,4</td><td class="ha">0.08 %</td><td class="ha">14</td></tr>
+    <tr><td class="kod">1150</td><td>Laguner</td><td class="ha">60,5</td><td class="ha">0.08 %</td><td class="ha">53</td></tr>
+    <tr><td class="kod">9071</td><td>Trädklädd betesmark - Ekhagar</td><td class="ha">54,6</td><td class="ha">0.08 %</td><td class="ha">36</td></tr>
+    <tr><td class="kod">6510</td><td>Slåtterängar i låglandet</td><td class="ha">53,0</td><td class="ha">0.07 %</td><td class="ha">60</td></tr>
+    <tr><td class="kod">7110</td><td>Högmossar</td><td class="ha">49,5</td><td class="ha">0.07 %</td><td class="ha">7</td></tr>
+    <tr><td class="kod">3260</td><td>Mindre vattendrag</td><td class="ha">44,0</td><td class="ha">0.06 %</td><td class="ha">8</td></tr>
+    <tr><td class="kod">9190</td><td>Näringsfattig ekskog</td><td class="ha">42,0</td><td class="ha">0.06 %</td><td class="ha">13</td></tr>
+    <tr><td class="kod">7230</td><td>Rikkärr</td><td class="ha">34,4</td><td class="ha">0.05 %</td><td class="ha">21</td></tr>
+    <tr><td class="kod">8220</td><td>Silikatbranter</td><td class="ha">32,9</td><td class="ha">0.05 %</td><td class="ha">65</td></tr>
+    <tr><td class="kod">9072</td><td>Trädklädd betesmark - Ädellövdominerade trädklädda betesmarker</td><td class="ha">30,5</td><td class="ha">0.04 %</td><td class="ha">29</td></tr>
+    <tr><td class="kod">8231</td><td>Hällmarkstorräng - Hällmarkstorrängstyp</td><td class="ha">28,8</td><td class="ha">0.04 %</td><td class="ha">80</td></tr>
+    <tr><td class="kod">6110</td><td>Basiska berghällar</td><td class="ha">26,6</td><td class="ha">0.04 %</td><td class="ha">17</td></tr>
+    <tr><td class="kod">6210</td><td>Kalkgräsmarker</td><td class="ha">26,3</td><td class="ha">0.04 %</td><td class="ha">26</td></tr>
+    <tr><td class="kod">4030</td><td>Torra hedar</td><td class="ha">16,0</td><td class="ha">0.02 %</td><td class="ha">11</td></tr>
+    <tr><td class="kod">6230</td><td>Stagg-gräsmarker</td><td class="ha">15,8</td><td class="ha">0.02 %</td><td class="ha">20</td></tr>
+    <tr><td class="kod">9180</td><td>Ädellövskog i branter</td><td class="ha">12,9</td><td class="ha">0.02 %</td><td class="ha">6</td></tr>
+    <tr><td class="kod">5130</td><td>Enbuskmarker</td><td class="ha">7,6</td><td class="ha">0.01 %</td><td class="ha">2</td></tr>
+    <tr><td class="kod">1640</td><td>Sandstränder vid Östersjön</td><td class="ha">7,3</td><td class="ha">0.01 %</td><td class="ha">11</td></tr>
+    <tr><td class="kod">5133</td><td>Enbuskmarker - Naturlig enbuskmark vid kust</td><td class="ha">7,2</td><td class="ha">0.01 %</td><td class="ha">16</td></tr>
+    <tr><td class="kod">9110</td><td>Näringsfattig bokskog</td><td class="ha">6,2</td><td class="ha">0.01 %</td><td class="ha">3</td></tr>
+    <tr><td class="kod">6280</td><td>Alvar</td><td class="ha">5,8</td><td class="ha">0.01 %</td><td class="ha">7</td></tr>
+    <tr><td class="kod">9750</td><td>Svämlövskog (91E0)</td><td class="ha">5,2</td><td class="ha">0.01 %</td><td class="ha">22</td></tr>
+    <tr><td class="kod">1220</td><td>Sten och grusvallar</td><td class="ha">4,9</td><td class="ha">0.01 %</td><td class="ha">17</td></tr>
+    <tr><td class="kod">7231</td><td>Rikkärr - Trädklädda och videbevuxna (krontäckning 30-100%)</td><td class="ha">4,4</td><td class="ha">0.01 %</td><td class="ha">5</td></tr>
+    <tr><td class="kod">8232</td><td>Hällmarkstorräng - Ej hävdberoende typ</td><td class="ha">2,8</td><td class="ha">0.00 %</td><td class="ha">10</td></tr>
+    <tr><td class="kod">9009</td><td>Taiga - Naturliga successionsstadier efter störning</td><td class="ha">2,2</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr><td class="kod">2181</td><td>Trädklädda dyner - Torr dynskog</td><td class="ha">1,9</td><td class="ha">0.00 %</td><td class="ha">2</td></tr>
+    <tr><td class="kod">6430</td><td>Högörtängar</td><td class="ha">1,3</td><td class="ha">0.00 %</td><td class="ha">5</td></tr>
+    <tr><td class="kod">1620</td><td>Skär i Östersjön</td><td class="ha">1,3</td><td class="ha">0.00 %</td><td class="ha">11</td></tr>
+    <tr><td class="kod">1232</td><td>Havsklippor - Silikatrika klippor</td><td class="ha">1,3</td><td class="ha">0.00 %</td><td class="ha">2</td></tr>
+    <tr><td class="kod">8210</td><td>Kalkbranter</td><td class="ha">1,1</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr><td class="kod">9030</td><td>Landhöjningsskog</td><td class="ha">1,1</td><td class="ha">0.00 %</td><td class="ha">2</td></tr>
+    <tr><td class="kod">1230</td><td>Havsklippor</td><td class="ha">1,1</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr><td class="kod">9162</td><td>Näringsrik ekskog - Ek-hassellund</td><td class="ha">0,6</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr><td class="kod">1153</td><td>Laguner - Flada på landhöjningskust</td><td class="ha">0,5</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr><td class="kod">9008</td><td>Taiga - Kalmark/glest beskogad mark med mycket död ved efter störning</td><td class="ha">0,1</td><td class="ha">0.00 %</td><td class="ha">1</td></tr>
+    <tr class="ejfast"><td class="kod">—</td><td>Ej fastställd typ (icke-natura, obestämd eller osäker)</td><td class="ha">44 970,6</td><td class="ha">62.27 %</td><td class="ha">7157</td></tr>
+  </tbody>
+</table>
+
+<div class="notis">
+  <b>Om underlaget.</b> Beräknat från NNK:s publika naturtypskarta för länet (14 830 ytor, 72 220 ha totalt) och Naturvårdsverkets kodlista för Natura-/icke-Natura-klassificering. 62 ytor har fastställd Natura-typ — övrig areal är obestämd, osäker eller icke-natura enligt NNK:s egen indelning, se raden "Ej fastställd typ" i tabellen. Observera: detta är hela länets NNK-yta, inte bara Natura 2000-objekten — jämför inte rakt av med sidans övriga siffror högst upp som är avgränsade till N2000. Uppdaterad 2026-09-15.
 </div>
 
 <h2>Var ligger vad</h2>
