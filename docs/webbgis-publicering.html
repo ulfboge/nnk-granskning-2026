@@ -71,6 +71,14 @@ tr:last-child td{border-bottom:0}
 .toc ul{margin:0;padding-left:18px;font-size:13.5px}
 .toc ul ul{padding-left:16px;font-size:13px}
 .toc li{margin:2px 0}
+
+.tabbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px;padding-bottom:16px;
+ border-bottom:1px solid var(--grid)}
+.tabbtn{font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+.tabbtn:hover{color:var(--ink-1)}
+.tabbtn.active{background:var(--p-A);border-color:var(--p-A);color:#fff;font-weight:620}
+.tabpane.js-hidden{display:none}
 </style>
 </head>
 <body>
@@ -90,9 +98,14 @@ tr:last-child td{border-bottom:0}
 <li><a href="#del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</a></li>
 <li><a href="#del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</a></li>
 <li><a href="#del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</a></li>
-<li><a href="#del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</a></li>
+<li><a href="#del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</a><ul>
+<li><a href="#steg-6-formular-smart-form">Steg 6 · Formulär (smart form)</a></li>
+</ul>
+</li>
 <li><a href="#del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</a><ul>
 <li><a href="#faktisk-lagerstruktur-facit-toc-export-2026-09-18">Faktisk lagerstruktur (facit, TOC-export 2026-09-18)</a></li>
+<li><a href="#steg-5-fliken-filter">Steg 5 · Fliken Filter</a></li>
+<li><a href="#steg-6-fliken-widgetar">Steg 6 · Fliken Widgetar</a></li>
 </ul>
 </li>
 <li><a href="#del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</a></li>
@@ -108,8 +121,7 @@ tr:last-child td{border-bottom:0}
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
 <p>Källor som manualen bygger på (alla i <code>natura-2000: docs/</code>): NV:s <em>Manual NNK mall för granskning</em> (steg 4–5), <em>Lathund granskning WebbGIS-KartLitS 2026-07-10</em> (hur slutprodukten ser ut och används), <em>GK Konfigurator och standardmall — Manual för producenter v.13 (2026-08-20)</em>, <em>Namnsättnings- och taggningsprincip … v2.0 (2026-04-22)</em>, <em>FO GK Riktlinjer för en stabil GIS-miljö</em>, Södermanlands egen <em>LstD GIS LOGG Publicering DriftadeGeodata</em> (checklista) samt GIS-funktionens användarstöd för ArcGIS Pro/portalerna.</p>
-<hr />
-<h2 id="0-oversikt-och-tidsatgang">0. Översikt och tidsåtgång</h2>
+<div class="tabbar"><button type="button" class="tabbtn active" data-tabid="p0" data-target="0-oversikt-och-tidsatgang">0. Översikt och tidsåtgång</button><button type="button" class="tabbtn" data-tabid="p1" data-target="del-1-forbered-geodatabasen-i-arcgis-pro">Del 1 · Förbered geodatabasen i ArcGIS Pro</button><button type="button" class="tabbtn" data-tabid="p2" data-target="del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</button><button type="button" class="tabbtn" data-tabid="p3" data-target="del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</button><button type="button" class="tabbtn" data-tabid="p4" data-target="del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</button><button type="button" class="tabbtn" data-tabid="p5" data-target="del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</button><button type="button" class="tabbtn" data-tabid="p6" data-target="del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</button><button type="button" class="tabbtn" data-tabid="p7" data-target="del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</button><button type="button" class="tabbtn" data-tabid="p8" data-target="del-8-felsokning-och-drift">Del 8 · Felsökning och drift</button><button type="button" class="tabbtn" data-tabid="p9" data-target="bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet forbered_gdb_for_publicering.py</button><button type="button" class="tabbtn" data-tabid="p10" data-target="bilaga-b-domanerna-som-kopieras-ur-kartlits-mallen">Bilaga B · Domänerna som kopieras (ur KartLits-mallen)</button><button type="button" class="tabbtn" data-tabid="p11" data-target="bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</button></div><div class="tabpane" data-tabid="p0"><h2 id="0-oversikt-och-tidsatgang">0. Översikt och tidsåtgång</h2>
 <table>
 <thead>
 <tr>
@@ -235,8 +247,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="del-1-forbered-geodatabasen-i-arcgis-pro">Del 1 · Förbered geodatabasen i ArcGIS Pro</h2>
+</div><div class="tabpane js-hidden" data-tabid="p1"><h2 id="del-1-forbered-geodatabasen-i-arcgis-pro">Del 1 · Förbered geodatabasen i ArcGIS Pro</h2>
 <p><strong>Varför:</strong> Vår gdb byggdes utanför ArcGIS (Python/GDAL) för att kringgå Append-buggen. Den har rätt fält och data, men <strong>saknar de 13 kodlistedomänerna</strong> från KartLits-mallen. Det är domänerna som ger rullistorna i WebbGIS-formuläret (<em>Inget behov av justering / Ändring till annan livsmiljötyp / …</em>). Dessutom är några kodfält av typen Double (ska vara Long), NV:s textfält <code>globalid</code> krockar med Esris GlobalID, och vi vill ha spårning av vem som granskat vad.</p>
 <p>Allt detta gör skriptet <code>forbered_gdb_for_publicering.py</code> (bilaga A) i ett svep. Gör så här:</p>
 <ol>
@@ -280,8 +291,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table>
 <p><strong>Utan skript (manuell reservväg, ~1 h):</strong> <em>Data Management → Domains → Domain To Table</em> på mallens gdb (en tabell per domän) → <em>Table To Domain</em> mot vår gdb med namn <code>LstD_…</code> → <em>Assign Domain To Field</em> per fält enligt tabellen <code>FALT_DOMAN</code> i skriptet → <em>Add Global IDs</em> → <em>Enable Editor Tracking</em> (ange nya fältnamn, <em>Add fields</em> ikryssat, UTC). Byt först namn på <code>globalid</code> → <code>nv_globalid</code> via <em>Alter Field</em>.</p>
-<hr />
-<h2 id="del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</h2>
+</div><div class="tabpane js-hidden" data-tabid="p2"><h2 id="del-2-forbered-kartan-i-arcgis-pro">Del 2 · Förbered kartan i ArcGIS Pro</h2>
 <ol>
 <li>Ny karta (<em>Insert → New Map</em>), koordinatsystem SWEREF 99 TM (EPSG:3006) — sätts automatiskt av första lagret.</li>
 <li>Lägg till de fyra lyrx-filerna från <code>lyrx/</code> (dra in från Catalog). Om de pekar fel: högerklicka lagret → <em>Properties → Source → Set Data Source</em> → peka på <code>NNK_Sodermanland_granskning.gdb</code> (en gång per lager). Lagren ska rita ut: alla NNK-objekt röda (<em>granskat = Nej</em>).</li>
@@ -296,8 +306,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Överväg urval före publicering</strong> (NV-manualens OBS i steg 4): "vill du sålla bort vissa koder eller bara behålla objekt som överlappar N2000?". Rekommendation för 2026: publicera <strong>allt</strong> (även <em>Ingen matchning</em> och naturreservatsobjekt) — granskningen 2026 avgränsas ändå till N2000 via filter i appen (del 6, steg 5), och vi slipper publicera om när avgränsningen ändras. Marina objekt (naturtyp 1000-serien) ska enligt FAQ 16/29 inte granskas i NNK 2026 — även dessa hanteras med filter, inte genom att ta bort dem.</li>
 <li>Spara projektet (t.ex. <code>C:\GIS\NNK\LstD_NNK_Granskning_publicering.aprx</code>) — det behövs igen vid nästa Ajourhålla-uttag.</li>
 </ol>
-<hr />
-<h2 id="del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</h2>
+</div><div class="tabpane js-hidden" data-tabid="p3"><h2 id="del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</h2>
 <p>Publicera <strong>två</strong> gånger: först NNK-lagren (tre lager i en tjänst), sedan referenslagret (egen tjänst, så att det kan vara oredigerbart och delas bredare).</p>
 <p><strong>Tjänst 1 — NNK-lagren</strong></p>
 <ol>
@@ -325,8 +334,7 @@ tr:last-child td{border-bottom:0}
 <p><strong>Tjänst 2 — referenslagret</strong></p>
 <p>Samma sak för <code>Skyddade_omraden</code>: <em>Name</em> <code>LstD_Skyddade_Omraden</code>, samma taggar, <strong>Enable editing AV</strong>, <em>Export data</em> kan vara på (data är öppna NV-data). Summary: "Natura 2000-siter (SCI/SPA) och naturreservat/nationalparker i och runt Södermanland, från Naturvårdsverkets Naturvårdsregistret 2026-09. Referenslager för NNK-granskningen."</p>
 <p><strong>Kontroll:</strong> i Catalog → Portal → My Content → mappen <code>LstD NNK</code> ska det finnas två <em>Feature Layer (hosted)</em>-items. Högerklicka → <em>Add To Current Map</em>, kolla i <em>Properties → Source</em> att källan är <code>https://lst-hostedgeodata.lansstyrelsen.se/arcgis/rest/services/Hosted/LstD_NNK_Granskning/FeatureServer</code> (så vet du att kartan nu läser från portalen, inte lokala filen).</p>
-<hr />
-<h2 id="del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</h2>
+</div><div class="tabpane js-hidden" data-tabid="p4"><h2 id="del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</h2>
 <p>Öppna <code>https://lst-geoportal.lansstyrelsen.se/arcgis/</code> → <em>Content</em> → mappen <code>LstD NNK</code>. För <strong>varje</strong> av de två items:</p>
 <ol>
 <li><strong>Titel</strong> (Overview → penna vid titeln): <code>LstD NNK Granskning – Driftat</code> resp. <code>LstD Skyddade områden (N2000 och naturreservat) – Driftat</code>. (Titeln är ett alias; tjänstnamnet i URL:en förblir <code>LstD_NNK_Granskning</code>.)</li>
@@ -344,8 +352,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Metadatapost i Geodatakatalogen (GDK)</strong> — principen kräver en post för huvudprodukten (appen), skapa den när appen finns (del 7). Titel = <code>LstD NNK Granskning – WebbGIS</code>; lägg in taggens portal-URL (klicka på taggen i portalen och kopiera adressen) som <em>Onlinekälla</em> med protokoll <em>ESRI Portal</em>; lägg sedan metadatapostens URL i appens/lagrets <em>Beskrivning</em>. Frågor om GDK → GIS-funktionen.</li>
 <li><strong>Logga i <code>LstD_GIS_LOGG_Publicering_DriftadeGeodata</code></strong> (GIS-funktionens SharePoint; kopia i <code>natura-2000: docs/D_GIS_manualer/Portalerna/</code>): ny rad per driftat lager med ansvarig GIS-are, informationsförvaltare, chef informerad, syfte, publiceringsdatum, REST-länk, delning. Kolumnerna i loggen är exakt de kontroller som gjorts i del 1–4 — bocka av.</li>
 </ol>
-<hr />
-<h2 id="del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</h2>
+</div><div class="tabpane js-hidden" data-tabid="p5"><h2 id="del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</h2>
 <p>Konfiguratorn läser lager <strong>bara via WebMaps</strong> (GK-manualen s.14). WebMap:en är också där popup, formulär och referenslager konfigureras.</p>
 <ol>
 <li>Portalen → <em>Map</em> (Map Viewer, inte Classic). <em>Add → Browse layers → My Content</em> → lägg till <code>LstD NNK Granskning – Driftat</code> (alla tre undernivåer följer med som grupp) och <code>LstD Skyddade områden … – Driftat</code>.</li>
@@ -359,62 +366,129 @@ tr:last-child td{border-bottom:0}
 <li><strong>Ordning</strong> (uppifrån): NNK punkter, NNK linjer, Skyddade områden (kontur), NNK ytor, NV naturtypskarta (släckt vid start), Natura 2000-gränser, ängs- och betesmark (släckt), ortofoton (släckta), bakgrund. Slå på <em>Visible</em> bara för NNK-lagren, skyddade områden och N2000-gränser vid start.</li>
 <li><strong>Symbol</strong>: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): <em>Styles → Types (unique symbols)</em> på <code>granskat</code>, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.</li>
 <li><strong>Popup</strong> per NNK-lager (<em>Pop-ups</em>): <strong>redan klar — ärvs automatiskt</strong> från lagrets publicerade popup (del 2 steg 6), med samma sex rubriksatta sektioner som i Pro, inklusive granskningsstegen 1–4 som lässtöd. (Det är alltså MEDVETET att granskningsfälten syns i popupen och inte bara i formuläret — en tidigare version av den här manualen sa motsatsen, "håll granskningsfälten ur popupen"; det stämmer inte längre.) Kontrollera bara: öppna <em>Pop-ups</em> på ytlagret → sektionerna ska synas grupperade, med rubrik <code>{omrade_namn}</code> överst — bekräftat att detta stämmer 2026-09-04. Gör INGEN ny fältlista. Ser popupen i stället ogrupperad ut (platt fältlista utan rubriker): lagret lades troligen till i WebMap:en innan popup-uppdateringen i Pro — ta bort och lägg till lagret på nytt från portalen (samma cache-orsak som del 2 steg 6). Lägg sist till (manuellt, en gång) ett <em>Text</em>-element sist i listan: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på <em>Pop-ups</em> även på referenslagren (N2000: så att bevarandeplanlänken syns).</li>
-<li>
-<p><strong>Formulär (smart form)</strong> — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):
-   - <strong>Grupp "1. Avvikelse och korrigeringsförslag"</strong> (bytte namn 2026-09-03 för att spegla samma
-     ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
-     justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
-     Kommentar – livsmiljötyp och utbredning.
-     <em>Gruppbeskrivning:</em> "Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark."
-     Lägg dessutom till ett <strong>Info-element</strong> överst i gruppen, för utförligare bakgrund och citat:
-     "Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i
-     granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.</p>
-<p>Lathunden ('Vad kan vi ändra på?'): 'Behåll dock livsmiljötypen om en faktisk förändring
- beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra,
- snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen
- i Icke gott tillstånd.'</p>
-<p>Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ —
- förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en
- livsmiljötyp.</p>
-<p>Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla
- bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid
- uppenbart fel eller faktisk förändring (FAQ 19)."
-   - <strong>Grupp "2. Tillstånd"</strong>: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
- <em>Gruppbeskrivning:</em> "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
- Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
- Okänt/Icke gott — gissa inte."
-   - <strong>Grupp "3. Vad ska kontrolleras och hur"</strong>: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
- <em>Gruppbeskrivning:</em> "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
- vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
- kommentar under Avvikelse/Tillstånd."
-   - <strong>Grupp "4. Klart?"</strong>: Granskat.
- <em>Gruppbeskrivning:</em> "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
- delresultat, inte klart än. Nej är standardläget för ogranskade objekt."
-   - <strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
- - <strong>Livsmiljötyp, behov av justering:</strong> Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).
- - <strong>Utbredning, behov av justering:</strong> Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.
- - <strong>Livsmiljötyp 1:</strong> Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.
- - <strong>Livsmiljötyp 2:</strong> Andrahandsförslag, om osäker mellan flera typer.
- - <strong>Livsmiljötyp 3:</strong> Tredjehandsförslag, om osäker mellan flera typer.
- - <strong>Kommentar – livsmiljötyp och utbredning:</strong> Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
- - <strong>Tillstånd, behov av justering:</strong> Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren.
- - <strong>Gott tillstånd (%):</strong> Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
- - <strong>Ej gott tillstånd (%):</strong> Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
- - <strong>Osäker (%):</strong> Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.
- - <strong>Kommentar – Tillstånd:</strong> Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.
- - <strong>Vad ska kontrolleras 1–3:</strong> Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.
- - <strong>Kommentar – Vad ska kontrolleras:</strong> Motivera varför just detta bör kontrolleras.
- - <strong>Metod för kontroll:</strong> Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.
- - <strong>Kommentar – Metod:</strong> Kompletterande info om vald metod, t.ex. varför fältinventering behövs.
- - <strong>Granskat:</strong> Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.
-   - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 3</code>) men inte nödvändig i första versionen.
-   Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
-7. <strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.
-8. <strong>Spara</strong>: <em>Save as</em> → titel <code>LstD NNK Granskning – WebMap</code>, tagg <code>LstD NNK Granskning WebbGIS</code>, mapp <code>LstD NNK</code>, sammanfattning. <strong>Dela</strong> WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).</p>
-</li>
 </ol>
-<hr />
-<h2 id="del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</h2>
+<h3 id="steg-6-formular-smart-form">Steg 6 · Formulär (smart form)</h3>
+<p>Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):</p>
+<table>
+<thead>
+<tr>
+<th>Grupp</th>
+<th>Fält (i ordning)</th>
+<th>Gruppbeskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Avvikelse och korrigeringsförslag</strong> (bytte namn 2026-09-03, se README.md i leveransmappen)</td>
+<td>Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Kommentar – livsmiljötyp och utbredning</td>
+<td>Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark.</td>
+</tr>
+<tr>
+<td><strong>2. Tillstånd</strong></td>
+<td>Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd</td>
+<td>Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt/Icke gott — gissa inte.</td>
+</tr>
+<tr>
+<td><strong>3. Vad ska kontrolleras och hur</strong></td>
+<td>Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod</td>
+<td>Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd.</td>
+</tr>
+<tr>
+<td><strong>4. Klart?</strong></td>
+<td>Granskat</td>
+<td>Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt.</td>
+</tr>
+</tbody>
+</table>
+<p>Lägg dessutom till ett <strong>Info-element</strong> överst i grupp 1, med denna längre bakgrundstext (klistras in ordagrant):</p>
+<blockquote>
+<p>Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.</p>
+<p>Lathunden ("Vad kan vi ändra på?"): "Behåll dock livsmiljötypen om en faktisk förändring beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra, snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen i Icke gott tillstånd."</p>
+<p>Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ — förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en livsmiljötyp.</p>
+<p>Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid uppenbart fel eller faktisk förändring (FAQ 19).</p>
+</blockquote>
+<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Beskrivning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Livsmiljötyp, behov av justering</td>
+<td>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).</td>
+</tr>
+<tr>
+<td>Utbredning, behov av justering</td>
+<td>Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.</td>
+</tr>
+<tr>
+<td>Livsmiljötyp 1</td>
+<td>Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.</td>
+</tr>
+<tr>
+<td>Livsmiljötyp 2</td>
+<td>Andrahandsförslag, om osäker mellan flera typer.</td>
+</tr>
+<tr>
+<td>Livsmiljötyp 3</td>
+<td>Tredjehandsförslag, om osäker mellan flera typer.</td>
+</tr>
+<tr>
+<td>Kommentar – livsmiljötyp och utbredning</td>
+<td>Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</td>
+</tr>
+<tr>
+<td>Tillstånd, behov av justering</td>
+<td>Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren.</td>
+</tr>
+<tr>
+<td>Gott tillstånd (%)</td>
+<td>Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</td>
+</tr>
+<tr>
+<td>Ej gott tillstånd (%)</td>
+<td>Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</td>
+</tr>
+<tr>
+<td>Osäker (%)</td>
+<td>Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.</td>
+</tr>
+<tr>
+<td>Kommentar – Tillstånd</td>
+<td>Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.</td>
+</tr>
+<tr>
+<td>Vad ska kontrolleras 1–3</td>
+<td>Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.</td>
+</tr>
+<tr>
+<td>Kommentar – Vad ska kontrolleras</td>
+<td>Motivera varför just detta bör kontrolleras.</td>
+</tr>
+<tr>
+<td>Metod för kontroll</td>
+<td>Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.</td>
+</tr>
+<tr>
+<td>Kommentar – Metod</td>
+<td>Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</td>
+</tr>
+<tr>
+<td>Granskat</td>
+<td>Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</td>
+</tr>
+</tbody>
+</table>
+<p>Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som <em>read-only</em> — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när <code>tillstand == 3</code>) men inte nödvändig i första versionen.</p>
+<p>Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).</p>
+<ol start="7">
+<li><strong>Kartans utgångsläge</strong>: zooma till Södermanlands län. <em>Map properties → Item details</em>.</li>
+<li><strong>Spara</strong>: <em>Save as</em> → titel <code>LstD NNK Granskning – WebMap</code>, tagg <code>LstD NNK Granskning WebbGIS</code>, mapp <code>LstD NNK</code>, sammanfattning. <strong>Dela</strong> WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).</li>
+</ol>
+</div><div class="tabpane js-hidden" data-tabid="p6"><h2 id="del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</h2>
 <p>Intern Konfigurator: <code>https://lst-webbgis-konfigurator.lansstyrelsen.se/</code> (logga in med portalkontot; kräver Producenter-gruppen). Arbetsflödet är GK-manualens 10 steg (s.6). Alla ändringar kräver <strong>Spara</strong> (knappen längst till vänster i varje flik).</p>
 <ol>
 <li><strong>Appar → Skapa</strong>. Mall: <em>GK Standardmall</em> (intern), <strong>senaste version</strong>. Titel: <code>LstD NNK Granskning – WebbGIS</code>. Spara → ett item skapas i portalen.</li>
@@ -495,29 +569,175 @@ jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns 
 <p>SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i två grupper var) —
 relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
 tillåter att samma datakälla läggs till i flera grupper.</p>
-<ol start="5">
-<li><strong>Fliken Filter</strong> (ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11). <em>Nytt filter</em> → <em>Gruppfilter</em>, datakälla NNK ytor + linjer + punkter:
-   - "Bara Natura 2000" — <code>skyddskategori</code> <em>innehåller</em> <code>Natura 2000</code> — <strong>aktivt vid start</strong> (lathunden: granskningen avgränsas till N2000-områden).
-   - "Ej granskade" — <code>granskat</code> = 2.
-   - "Påbörjade" — <code>granskat</code> = 3.
-   - "Dölj marint (naturtyp 1000-serien)" — enkelt filter på ytlagret: <code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code> (FAQ 16/29: marint ska inte in i NNK 2026).
-   Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</li>
+<h3 id="steg-5-fliken-filter">Steg 5 · Fliken Filter</h3>
+<p>Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. <em>Nytt filter</em> → <em>Gruppfilter</em>, datakälla NNK ytor + linjer + punkter:</p>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Villkor</th>
+<th>Kommentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Bara Natura 2000"</td>
+<td><code>skyddskategori</code> <em>innehåller</em> <code>Natura 2000</code></td>
+<td><strong>Aktivt vid start</strong> — lathunden avgränsar granskningen till N2000-områden</td>
+</tr>
+<tr>
+<td>"Ej granskade"</td>
+<td><code>granskat</code> = 2</td>
+<td></td>
+</tr>
+<tr>
+<td>"Påbörjade"</td>
+<td><code>granskat</code> = 3</td>
+<td></td>
+</tr>
+<tr>
+<td>"Dölj marint (naturtyp 1000-serien)"</td>
+<td><code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code> (ytlagret)</td>
+<td>FAQ 16/29: marint ska inte in i NNK 2026</td>
+</tr>
+</tbody>
+</table>
+<p>Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</p>
+<blockquote>
+<p><strong>Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på <code>omrade_namn</code>) tas bort.</strong> Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till widgeten <strong>Sök i kartan</strong> (aktiverad i steg 6 nedan), som söker direkt mot de sökbara fälten <code>omrade_namn</code>/<code>n2000_sitecode</code> (satta under <em>Sökbart</em> i Lagerlistan, steg 4) via geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara. Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet) för att hitta sitt område.</p>
+</blockquote>
+<h3 id="steg-6-fliken-widgetar">Steg 6 · Fliken Widgetar</h3>
+<p>Aktivera (✔) enligt tabellen nedan (≈ Stockholms app + attributtabell):</p>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Läge</th>
+<th>Detaljer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meny och inloggning</td>
+<td>✔</td>
+<td><strong>Inloggning krävs</strong> (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på <code>\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…</code> (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp <strong>"Lathund granskning"</strong> → länk till NV:s lathund (Samverkansytan) eller till <code>https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html</code>; knapp <strong>"Kodlista/attributbeskrivning"</strong>; knapp <strong>"Granskningslogg (G:)"</strong> kan inte länkas (filsökväg) — skriv sökvägen i välkomsttexten i stället. <em>Sidofält utfällt vid start</em> ✔ med <em>Lagerlista</em> öppen.</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>✔</td>
+<td>Statisk välkomstruta: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; <em>Ta bort</em> raderar objektet — klicka <em>Behåll geoobjektet</em> om du råkar trycka), var loggen ligger (<code>G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx</code>), kontakt (din mejl).</td>
+</tr>
+<tr>
+<td>Lagerlista</td>
+<td>✔</td>
+<td>Sidofält; <em>Automatisk popup</em> ✔; dölj inget</td>
+</tr>
+<tr>
+<td>Attributtabell</td>
+<td>✔</td>
+<td>Paginering 50 rader; filtrera på kartutbredning ✔ — bra att kunna sortera på <code>granskat</code></td>
+</tr>
+<tr>
+<td>Redigera</td>
+<td>✔</td>
+<td>Sidofält; <em>Inkludera alltid alla redigerbara lager</em> ✘ — vi styr per lager i Lagerlistan</td>
+</tr>
+<tr>
+<td>Sök i kartan</td>
+<td>✔</td>
+<td>Geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager</td>
+</tr>
+<tr>
+<td>Välj i kartan</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Rita och mät</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Bokmärken</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Dela karta</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Skala</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Visa koordinater</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Visa teckenförklaring</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Utskrift</td>
+<td>✔</td>
+<td>Standardlayouter, A3 liggande</td>
+</tr>
+<tr>
+<td>Filter</td>
+<td>✔</td>
+<td>Sidofält</td>
+</tr>
+<tr>
+<td>Export</td>
+<td>✔ (begränsat)</td>
+<td>Bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen)</td>
+</tr>
+<tr>
+<td>Popupfunktioner</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Högerklick-meny</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>Artsök</td>
+<td>✔</td>
+<td>FO Natur — artfynd från Artportalen, nyttigt för typiska arter</td>
+</tr>
+<tr>
+<td>Ärendekontroll</td>
+<td>✘</td>
+<td></td>
+</tr>
+<tr>
+<td>Lägg till data</td>
+<td>✔</td>
+<td>Fil + portal; granskaren kan dra in egna shapefiler</td>
+</tr>
+<tr>
+<td>Höjdprofil</td>
+<td>✘</td>
+<td></td>
+</tr>
+<tr>
+<td>MarkGIS/Små avlopp</td>
+<td>✘</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="7">
+<li><strong>Fliken Förhandsgranska</strong> → kolla lagerlista, filter, formulär. Tillbaka till <em>Objekt → Starta</em> för att öppna appen i egen flik.</li>
 </ol>
-<p><strong>Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på <code>omrade_namn</code>) tas bort.</strong>
-   Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till
-   widgeten <strong>Sök i kartan</strong> (aktiverad i del 6 steg 6), som söker direkt mot de sökbara fälten
-   <code>omrade_namn</code>/<code>n2000_sitecode</code> (satta under <em>Sökbart</em> i Lagerlistan, del 6 steg 4) via
-   geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den
-   redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara.
-   Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet)
-   för att hitta sitt område.
-6. <strong>Fliken Widgetar</strong> — aktivera (✔) följande, resten av (≈ Stockholms app + attributtabell):
-   - <em>Meny och inloggning</em>: <strong>Inloggning krävs</strong> ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på <code>\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…</code> (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp <strong>"Lathund granskning"</strong> → länk till NV:s lathund (Samverkansytan) eller till <code>https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html</code>; knapp <strong>"Kodlista/attributbeskrivning"</strong>; knapp <strong>"Granskningslogg (G:)"</strong> kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. <em>Sidofält utfällt vid start</em> ✔ med <em>Lagerlista</em> öppen.
-   - <em>Information</em>: statisk välkomstruta ✔: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; <em>Ta bort</em> raderar objektet — klicka <em>Behåll geoobjektet</em> om du råkar trycka), var loggen ligger (<code>G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx</code>), kontakt (din mejl).
-   - <em>Lagerlista</em> ✔ (sidofält; <em>Automatisk popup</em> ✔; dölj inget), <em>Attributtabell</em> ✔ (paginering 50 rader, filtrera på kartutbredning ✔ — bra att kunna sortera på <code>granskat</code>), <em>Redigera</em> ✔ (sidofält; <em>Inkludera alltid alla redigerbara lager</em> ✘ — vi styr per lager i Lagerlistan), <em>Sök i kartan</em> ✔ (geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager), <em>Välj i kartan</em> ✔, <em>Rita och mät</em> ✔, <em>Bokmärken</em> ✔, <em>Dela karta</em> ✔, <em>Skala</em> ✔, <em>Visa koordinater</em> ✔, <em>Visa teckenförklaring</em> ✔, <em>Utskrift</em> ✔ (standardlayouter, A3 liggande), <em>Filter</em> ✔ (sidofält), <em>Export</em> ✔ men bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen), <em>Popupfunktioner</em> ✔, <em>Högerklick-meny</em> ✔, <em>Artsök</em> ✔ (FO Natur — artfynd från Artportalen, nyttigt för typiska arter), <em>Ärendekontroll</em> ✘, <em>Lägg till data</em> ✔ (fil + portal; granskaren kan dra in egna shapefiler), <em>Höjdprofil</em> ✘, MarkGIS/Små avlopp ✘.
-7. <strong>Fliken Förhandsgranska</strong> → kolla lagerlista, filter, formulär. Tillbaka till <em>Objekt → Starta</em> för att öppna appen i egen flik.</p>
-<hr />
-<h2 id="del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</h2>
+</div><div class="tabpane js-hidden" data-tabid="p7"><h2 id="del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</h2>
 <ol>
 <li><strong>Redigeringstest</strong> (gör det själv innan någon annan får länken): öppna appen → <em>Logga in → Automatisk inloggning</em> → zooma till ett välkänt område → <em>Redigera</em> → <em>Välj lager att redigera: NNK ytor (granskning)</em> → <em>Redigera geoobjekt</em> → klicka på en polygon → formuläret ska visa grupperna 1–4 med <strong>rullistor</strong> (om du ser tomma textrutor i stället saknas domänerna — tillbaka till del 1) → sätt <em>Granskat = Påbörjat</em>, skriv testkommentar → <strong>Uppdatera</strong>. Polygonen ska bli gul direkt. Öppna attributtabellen → <code>Granskad av</code> ska visa ditt konto och <code>Granskad datum</code> nu. Återställ till <em>Nej</em> och tom kommentar.</li>
 <li><strong>Negativt test</strong>: kontrollera att <em>Ta bort</em> antingen saknas eller stoppas (vi stängde av Delete i del 4/6). Kontrollera att NV:s ursprungsfält inte går att ändra i formuläret.</li>
@@ -527,8 +747,7 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <li><strong>Överlämning</strong>: mejla/Teams:a granskarna appens länk (<code>https://lst-webbgis.lansstyrelsen.se/lstd_nnk_granskning/</code> — kopiera den exakta adressen från <em>Starta</em>), NV:s lathund, och instruktionen om granskningsloggen på G:. Boka en 30-minuters genomgång. Bocka av A2.7/A2.8 i kontrollrummet.</li>
 <li><strong>Kommunicera</strong> till Naturskyddsenheten/GIS-funktionen att <code>LstD NNK Granskning</code> finns, så att ingen publicerar en parallell kopia.</li>
 </ol>
-<hr />
-<h2 id="del-8-felsokning-och-drift">Del 8 · Felsökning och drift</h2>
+</div><div class="tabpane js-hidden" data-tabid="p8"><h2 id="del-8-felsokning-och-drift">Del 8 · Felsökning och drift</h2>
 <table>
 <thead>
 <tr>
@@ -612,8 +831,7 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <li>Kör <em>Copy Features</em> (ny kopia) eller <em>Append</em> (skriv in i befintligt lager) från det hostade lagret till din lokala gdb.</li>
 <li><code>Export data</code> är medvetet avstängt på tjänsteitemet (del 4) — det blockerar nedladdning via portalens gränssnitt, men inte Pro:s direkta REST-anslutning i steg 1–2.</li>
 </ol>
-<hr />
-<h2 id="bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet <code>forbered_gdb_for_publicering.py</code></h2>
+</div><div class="tabpane js-hidden" data-tabid="p9"><h2 id="bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet <code>forbered_gdb_for_publicering.py</code></h2>
 <p>Ligger i <code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/forbered_gdb_for_publicering.py</code> (och i zip:en). Kopia här så att det går att kopiera från webbsidan:</p>
 <pre><code class="language-python"># -*- coding: utf-8 -*-
 &quot;&quot;&quot;Förbereder NNK_Sodermanland_granskning.gdb för publicering (domäner, typer,
@@ -914,7 +1132,7 @@ if GOR_METADATA:
 
 print(&quot;KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.&quot;)
 </code></pre>
-<h2 id="bilaga-b-domanerna-som-kopieras-ur-kartlits-mallen">Bilaga B · Domänerna som kopieras (ur KartLits-mallen)</h2>
+</div><div class="tabpane js-hidden" data-tabid="p10"><h2 id="bilaga-b-domanerna-som-kopieras-ur-kartlits-mallen">Bilaga B · Domänerna som kopieras (ur KartLits-mallen)</h2>
 <table>
 <thead>
 <tr>
@@ -986,7 +1204,7 @@ i stället domänen direkt (steg 2b) med blankettens egna fyra värden:</p>
 <p>Samma fyra värden ligger även i det redan färdiga, read-only klartextfältet <code>tillstand_text</code> i
 gdb:n (<code>scripts/analysis/naturtyp_koder.py</code>, <code>TILLSTAND_TEXT</code>) — domänen ovan används bara för
 själva redigeringsrullistan vid publicering.</p>
-<h2 id="bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</h2>
+</div><div class="tabpane js-hidden" data-tabid="p11"><h2 id="bilaga-c-checklista-speglar-lstd-gis-logg">Bilaga C · Checklista (speglar LstD GIS LOGG)</h2>
 <ul>
 <li>[ ] Kopia av gdb tagen · skript kört utan fel · 13 domäner · alias · GlobalID · editor tracking</li>
 <li>[ ] Alla granskningsfält synliga i lagret · symbol på <code>granskat</code> · popup · display field · visningsintervall</li>
@@ -997,7 +1215,7 @@ själva redigeringsrullistan vid publicering.</p>
 <li>[ ] Konfigurator: app <code>– WebbGIS</code>, sökväg, lagerlista (5 grupper), sök- och redigeringsinställningar per lager, filter (N2000 aktivt), widgetar, välkomstruta, lagerlista exporterad (JSON)</li>
 <li>[ ] Test: rullistor i formuläret · Uppdatera fungerar · Granskad av/datum fylls · Ta bort går inte · kollega kan redigera</li>
 <li>[ ] GDK-metadatapost · LstD-logg ifylld · länk utskickad · A2.7/A2.8 avbockade i kontrollrummet</li>
-</ul>
+</ul></div>
 </div>
 <script>
 (function(){
@@ -1014,6 +1232,36 @@ själva redigeringsrullistan vid publicering.</p>
     r.setAttribute('data-theme',mork()?'light':'dark');rita();
   });
   rita();
+})();
+
+(function(){
+  var bar=document.querySelector('.tabbar');
+  if(!bar)return;
+  var btns=Array.prototype.slice.call(bar.querySelectorAll('.tabbtn'));
+  var panes=Array.prototype.slice.call(document.querySelectorAll('.tabpane'));
+  function activate(id){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.tabid===id);});
+    panes.forEach(function(p){p.classList.toggle('js-hidden',p.dataset.tabid!==id);});
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      activate(b.dataset.tabid);
+      history.replaceState(null,'','#'+b.dataset.target);
+    });
+  });
+  function franHash(){
+    var hash=location.hash.slice(1);
+    if(!hash)return false;
+    var el=document.getElementById(hash);
+    if(!el)return false;
+    var pane=el.closest('.tabpane');
+    if(!pane)return false;
+    activate(pane.dataset.tabid);
+    requestAnimationFrame(function(){el.scrollIntoView();});
+    return true;
+  }
+  window.addEventListener('hashchange',franHash);
+  if(!franHash() && btns.length)activate(btns[0].dataset.tabid);
 })();
 </script>
 </body>

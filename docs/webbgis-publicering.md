@@ -161,58 +161,53 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
 3. **Ordning** (uppifrån): NNK punkter, NNK linjer, Skyddade områden (kontur), NNK ytor, NV naturtypskarta (släckt vid start), Natura 2000-gränser, ängs- och betesmark (släckt), ortofoton (släckta), bakgrund. Slå på *Visible* bara för NNK-lagren, skyddade områden och N2000-gränser vid start.
 4. **Symbol**: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): *Styles → Types (unique symbols)* på `granskat`, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.
 5. **Popup** per NNK-lager (*Pop-ups*): **redan klar — ärvs automatiskt** från lagrets publicerade popup (del 2 steg 6), med samma sex rubriksatta sektioner som i Pro, inklusive granskningsstegen 1–4 som lässtöd. (Det är alltså MEDVETET att granskningsfälten syns i popupen och inte bara i formuläret — en tidigare version av den här manualen sa motsatsen, "håll granskningsfälten ur popupen"; det stämmer inte längre.) Kontrollera bara: öppna *Pop-ups* på ytlagret → sektionerna ska synas grupperade, med rubrik `{omrade_namn}` överst — bekräftat att detta stämmer 2026-09-04. Gör INGEN ny fältlista. Ser popupen i stället ogrupperad ut (platt fältlista utan rubriker): lagret lades troligen till i WebMap:en innan popup-uppdateringen i Pro — ta bort och lägg till lagret på nytt från portalen (samma cache-orsak som del 2 steg 6). Lägg sist till (manuellt, en gång) ett *Text*-element sist i listan: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på *Pop-ups* även på referenslagren (N2000: så att bevarandeplanlänken syns).
-6. **Formulär (smart form)** — det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Forms → Configure*. Dra in fälten i denna ordning och gruppera (*Group*-element):
-   - **Grupp "1. Avvikelse och korrigeringsförslag"** (bytte namn 2026-09-03 för att spegla samma
-     ombenämning som Pro-popupens grupper, se README.md i leveransmappen): Livsmiljötyp, behov av
-     justering · Utbredning, behov av justering · Livsmiljötyp 1 · Livsmiljötyp 2 · Livsmiljötyp 3 ·
-     Kommentar – livsmiljötyp och utbredning.
-     *Gruppbeskrivning:* "Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark."
-     Lägg dessutom till ett **Info-element** överst i gruppen, för utförligare bakgrund och citat:
-     "Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i
-     granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.
+### Steg 6 · Formulär (smart form)
 
-     Lathunden ('Vad kan vi ändra på?'): 'Behåll dock livsmiljötypen om en faktisk förändring
-     beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra,
-     snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen
-     i Icke gott tillstånd.'
+Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Forms → Configure*. Dra in fälten i denna ordning och gruppera (*Group*-element):
 
-     Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ —
-     förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en
-     livsmiljötyp.
+| Grupp | Fält (i ordning) | Gruppbeskrivning |
+| --- | --- | --- |
+| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen) | Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Kommentar – livsmiljötyp och utbredning | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
+| **2. Tillstånd** | Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt/Icke gott — gissa inte. |
+| **3. Vad ska kontrolleras och hur** | Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
+| **4. Klart?** | Granskat | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
 
-     Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla
-     bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid
-     uppenbart fel eller faktisk förändring (FAQ 19)."
-   - **Grupp "2. Tillstånd"**: Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd.
-     *Gruppbeskrivning:* "Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter).
-     Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj
-     Okänt/Icke gott — gissa inte."
-   - **Grupp "3. Vad ska kontrolleras och hur"**: Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod.
-     *Gruppbeskrivning:* "Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med
-     vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som
-     kommentar under Avvikelse/Tillstånd."
-   - **Grupp "4. Klart?"**: Granskat.
-     *Gruppbeskrivning:* "Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat =
-     delresultat, inte klart än. Nej är standardläget för ogranskade objekt."
-   - **Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
-     - **Livsmiljötyp, behov av justering:** Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).
-     - **Utbredning, behov av justering:** Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.
-     - **Livsmiljötyp 1:** Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.
-     - **Livsmiljötyp 2:** Andrahandsförslag, om osäker mellan flera typer.
-     - **Livsmiljötyp 3:** Tredjehandsförslag, om osäker mellan flera typer.
-     - **Kommentar – livsmiljötyp och utbredning:** Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
-     - **Tillstånd, behov av justering:** Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren.
-     - **Gott tillstånd (%):** Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
-     - **Ej gott tillstånd (%):** Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
-     - **Osäker (%):** Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.
-     - **Kommentar – Tillstånd:** Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.
-     - **Vad ska kontrolleras 1–3:** Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.
-     - **Kommentar – Vad ska kontrolleras:** Motivera varför just detta bör kontrolleras.
-     - **Metod för kontroll:** Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.
-     - **Kommentar – Metod:** Kompletterande info om vald metod, t.ex. varför fältinventering behövs.
-     - **Granskat:** Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.
-   - Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
-   Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
+Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre bakgrundstext (klistras in ordagrant):
+
+> Igenväxning på grund av utebliven skötsel är den vanligaste och allvarligaste fällan i granskningen. Ändra INTE livsmiljötypen av det skälet — sätt i stället Tillstånd = Icke gott.
+>
+> Lathunden ("Vad kan vi ändra på?"): "Behåll dock livsmiljötypen om en faktisk förändring beror på brist på nödvändiga bevarandeåtgärder – det är inte en giltig anledning att ändra, snarare har länen skyldighet att vidta nödvändiga bevarandeåtgärder. Ytan är då förmodligen i Icke gott tillstånd."
+>
+> Utvecklingsmark (framtida potential) är en annan sak än en korrigering av nuvarande typ — förutsätter Naturtypsstatus = Utvecklingsmark och att nuvarande Naturtyp INTE redan är en livsmiljötyp.
+>
+> Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid uppenbart fel eller faktisk förändring (FAQ 19).
+
+**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
+
+| Fält | Beskrivning |
+| --- | --- |
+| Livsmiljötyp, behov av justering | Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). |
+| Utbredning, behov av justering | Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet. |
+| Livsmiljötyp 1 | Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. |
+| Livsmiljötyp 2 | Andrahandsförslag, om osäker mellan flera typer. |
+| Livsmiljötyp 3 | Tredjehandsförslag, om osäker mellan flera typer. |
+| Kommentar – livsmiljötyp och utbredning | Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån. |
+| Tillstånd, behov av justering | Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. |
+| Gott tillstånd (%) | Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100. |
+| Ej gott tillstånd (%) | Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100. |
+| Osäker (%) | Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100. |
+| Kommentar – Tillstånd | Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa. |
+| Vad ska kontrolleras 1–3 | Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan. |
+| Kommentar – Vad ska kontrolleras | Motivera varför just detta bör kontrolleras. |
+| Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. |
+| Kommentar – Metod | Kompletterande info om vald metod, t.ex. varför fältinventering behövs. |
+| Granskat | Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt. |
+
+Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
+
+Gör samma sak för linje- och punktlagret (kopiera formulär går inte — det är 3 + 5 + 6 + 1 fält per lager, går fort).
+
+
 7. **Kartans utgångsläge**: zooma till Södermanlands län. *Map properties → Item details*.
 8. **Spara**: *Save as* → titel `LstD NNK Granskning – WebMap`, tagg `LstD NNK Granskning WebbGIS`, mapp `LstD NNK`, sammanfattning. **Dela** WebMap:en med samma grupp som lagren (annars kan Konfiguratorn/appen inte visa lagerlistan för granskarna — GK-manualen s.34).
 
@@ -266,25 +261,52 @@ SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i 
 relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
 tillåter att samma datakälla läggs till i flera grupper.
 
-5. **Fliken Filter** (ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11). *Nytt filter* → *Gruppfilter*, datakälla NNK ytor + linjer + punkter:
-   - "Bara Natura 2000" — `skyddskategori` *innehåller* `Natura 2000` — **aktivt vid start** (lathunden: granskningen avgränsas till N2000-områden).
-   - "Ej granskade" — `granskat` = 2.
-   - "Påbörjade" — `granskat` = 3.
-   - "Dölj marint (naturtyp 1000-serien)" — enkelt filter på ytlagret: `naturtyp < 1000 OR naturtyp >= 2000` (FAQ 16/29: marint ska inte in i NNK 2026).
-   Kombinera filtren med **OCH**. Aktiverande verktyg: *Nollställ alla* och *Stäng av alla* ✔.
+### Steg 5 · Fliken Filter
 
-   **Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på `omrade_namn`) tas bort.**
-   Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till
-   widgeten **Sök i kartan** (aktiverad i del 6 steg 6), som söker direkt mot de sökbara fälten
-   `omrade_namn`/`n2000_sitecode` (satta under *Sökbart* i Lagerlistan, del 6 steg 4) via
-   geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den
-   redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara.
-   Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet)
-   för att hitta sitt område.
-6. **Fliken Widgetar** — aktivera (✔) följande, resten av (≈ Stockholms app + attributtabell):
-   - *Meny och inloggning*: **Inloggning krävs** ✔ (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på `\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…` (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp **"Lathund granskning"** → länk till NV:s lathund (Samverkansytan) eller till `https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html`; knapp **"Kodlista/attributbeskrivning"**; knapp **"Granskningslogg (G:)"** kan inte länkas (filsökväg), skriv sökvägen i välkomsttexten i stället. *Sidofält utfällt vid start* ✔ med *Lagerlista* öppen.
-   - *Information*: statisk välkomstruta ✔: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; *Ta bort* raderar objektet — klicka *Behåll geoobjektet* om du råkar trycka), var loggen ligger (`G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`), kontakt (din mejl).
-   - *Lagerlista* ✔ (sidofält; *Automatisk popup* ✔; dölj inget), *Attributtabell* ✔ (paginering 50 rader, filtrera på kartutbredning ✔ — bra att kunna sortera på `granskat`), *Redigera* ✔ (sidofält; *Inkludera alltid alla redigerbara lager* ✘ — vi styr per lager i Lagerlistan), *Sök i kartan* ✔ (geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager), *Välj i kartan* ✔, *Rita och mät* ✔, *Bokmärken* ✔, *Dela karta* ✔, *Skala* ✔, *Visa koordinater* ✔, *Visa teckenförklaring* ✔, *Utskrift* ✔ (standardlayouter, A3 liggande), *Filter* ✔ (sidofält), *Export* ✔ men bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen), *Popupfunktioner* ✔, *Högerklick-meny* ✔, *Artsök* ✔ (FO Natur — artfynd från Artportalen, nyttigt för typiska arter), *Ärendekontroll* ✘, *Lägg till data* ✔ (fil + portal; granskaren kan dra in egna shapefiler), *Höjdprofil* ✘, MarkGIS/Små avlopp ✘.
+Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *Nytt filter* → *Gruppfilter*, datakälla NNK ytor + linjer + punkter:
+
+| Filter | Villkor | Kommentar |
+| --- | --- | --- |
+| "Bara Natura 2000" | `skyddskategori` *innehåller* `Natura 2000` | **Aktivt vid start** — lathunden avgränsar granskningen till N2000-områden |
+| "Ej granskade" | `granskat` = 2 | |
+| "Påbörjade" | `granskat` = 3 | |
+| "Dölj marint (naturtyp 1000-serien)" | `naturtyp < 1000 OR naturtyp >= 2000` (ytlagret) | FAQ 16/29: marint ska inte in i NNK 2026 |
+
+Kombinera filtren med **OCH**. Aktiverande verktyg: *Nollställ alla* och *Stäng av alla* ✔.
+
+> **Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på `omrade_namn`) tas bort.** Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till widgeten **Sök i kartan** (aktiverad i steg 6 nedan), som söker direkt mot de sökbara fälten `omrade_namn`/`n2000_sitecode` (satta under *Sökbart* i Lagerlistan, steg 4) via geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara. Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet) för att hitta sitt område.
+
+### Steg 6 · Fliken Widgetar
+
+Aktivera (✔) enligt tabellen nedan (≈ Stockholms app + attributtabell):
+
+| Widget | Läge | Detaljer |
+| --- | --- | --- |
+| Meny och inloggning | ✔ | **Inloggning krävs** (WebMap:en är inte publik, och redigering kräver inloggad användare med redigeringsroll). Logotyp: länets, via HTTPS-URL på `\\lansstyrelsen.se\lst_kartor\dokument\Sodermanland\…` (fråga GIS-funktionen efter befintlig logo-URL) eller lämna standard. Rubrik/underrubrik enligt tabell 0.2. Länksamling: knapp **"Lathund granskning"** → länk till NV:s lathund (Samverkansytan) eller till `https://ulfboge.github.io/nnk-granskning-2026/docs/runbook.html`; knapp **"Kodlista/attributbeskrivning"**; knapp **"Granskningslogg (G:)"** kan inte länkas (filsökväg) — skriv sökvägen i välkomsttexten i stället. *Sidofält utfällt vid start* ✔ med *Lagerlista* öppen. |
+| Information | ✔ | Statisk välkomstruta: rubrik "NNK-granskning Södermanland 2026", text: syfte (var har vi kunskap/var saknas — plan för 2027), vem (Naturskyddsenheten/NRR), hur (Redigera → välj lager → klicka polygon → fyll i → Uppdatera; *Ta bort* raderar objektet — klicka *Behåll geoobjektet* om du råkar trycka), var loggen ligger (`G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`), kontakt (din mejl). |
+| Lagerlista | ✔ | Sidofält; *Automatisk popup* ✔; dölj inget |
+| Attributtabell | ✔ | Paginering 50 rader; filtrera på kartutbredning ✔ — bra att kunna sortera på `granskat` |
+| Redigera | ✔ | Sidofält; *Inkludera alltid alla redigerbara lager* ✘ — vi styr per lager i Lagerlistan |
+| Sök i kartan | ✔ | Geografisk avgränsning: län Södermanland; plats/fastighet/adress + våra söklager |
+| Välj i kartan | ✔ | |
+| Rita och mät | ✔ | |
+| Bokmärken | ✔ | |
+| Dela karta | ✔ | |
+| Skala | ✔ | |
+| Visa koordinater | ✔ | |
+| Visa teckenförklaring | ✔ | |
+| Utskrift | ✔ | Standardlayouter, A3 liggande |
+| Filter | ✔ | Sidofält |
+| Export | ✔ (begränsat) | Bara Excel, endast från Attributtabell (för att exportera granskningsläget till loggen) |
+| Popupfunktioner | ✔ | |
+| Högerklick-meny | ✔ | |
+| Artsök | ✔ | FO Natur — artfynd från Artportalen, nyttigt för typiska arter |
+| Ärendekontroll | ✘ | |
+| Lägg till data | ✔ | Fil + portal; granskaren kan dra in egna shapefiler |
+| Höjdprofil | ✘ | |
+| MarkGIS/Små avlopp | ✘ | |
+
+
 7. **Fliken Förhandsgranska** → kolla lagerlista, filter, formulär. Tillbaka till *Objekt → Starta* för att öppna appen i egen flik.
 
 ---

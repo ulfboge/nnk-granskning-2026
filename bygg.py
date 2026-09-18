@@ -100,6 +100,88 @@ tr:last-child td{border-bottom:0}
 .toc li{margin:2px 0}
 """
 
+# Flikar (tabbar) for langa sidor med manga top-level h2-avsnitt. Rent
+# tillagg - paverkar bara sidor som byggs med flikar=True. Om JS ar
+# avstangt visar CSS:en ingenting extra fel: .tabpane har ingen display
+# satt via CSS (bara JS togglar den), sa allt forblir synligt i
+# dokumentflodet - ren progressiv forbattring.
+TAB_CSS = """
+.tabbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px;padding-bottom:16px;
+ border-bottom:1px solid var(--grid)}
+.tabbtn{font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+.tabbtn:hover{color:var(--ink-1)}
+.tabbtn.active{background:var(--p-A);border-color:var(--p-A);color:#fff;font-weight:620}
+.tabpane.js-hidden{display:none}
+"""
+
+TAB_JS = """
+(function(){
+  var bar=document.querySelector('.tabbar');
+  if(!bar)return;
+  var btns=Array.prototype.slice.call(bar.querySelectorAll('.tabbtn'));
+  var panes=Array.prototype.slice.call(document.querySelectorAll('.tabpane'));
+  function activate(id){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.tabid===id);});
+    panes.forEach(function(p){p.classList.toggle('js-hidden',p.dataset.tabid!==id);});
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      activate(b.dataset.tabid);
+      history.replaceState(null,'','#'+b.dataset.target);
+    });
+  });
+  function franHash(){
+    var hash=location.hash.slice(1);
+    if(!hash)return false;
+    var el=document.getElementById(hash);
+    if(!el)return false;
+    var pane=el.closest('.tabpane');
+    if(!pane)return false;
+    activate(pane.dataset.tabid);
+    requestAnimationFrame(function(){el.scrollIntoView();});
+    return true;
+  }
+  window.addEventListener('hashchange',franHash);
+  if(!franHash() && btns.length)activate(btns[0].dataset.tabid);
+})();
+"""
+
+
+def flikifiera(brod):
+    """Delar upp brodtexten i flikar per top-level <h2>-avsnitt.
+
+    Allt fore forsta h2 (rubrik, TOC, ingress) forblir alltid synligt
+    ovanfor fliksraden - bara sjalva "Del"-/"Bilaga"-avsnitten blir
+    flikar. Fungerar bara for sidor dar h2 aldrig ligger nastlat i
+    nagot annat block (sant for markdown-genererad HTML, dar rubriker
+    alltid ar block pa toppniva)."""
+    brod = re.sub(r"\s*<hr\s*/?>\s*", "\n", brod)
+    delar = re.split(r"(?=<h2\b)", brod)
+    inledning, sektioner = delar[0], delar[1:]
+    if len(sektioner) < 3:
+        return brod  # for fa avsnitt - inte lont att floka
+
+    flikar, paneler = [], []
+    for i, sek in enumerate(sektioner):
+        m = re.match(r'<h2 id="([^"]+)">(.*?)</h2>', sek, re.S)
+        tabid = f"p{i}"
+        aktiv = " active" if i == 0 else ""
+        dold = "" if i == 0 else " js-hidden"
+        if not m:
+            paneler.append(f'<div class="tabpane{dold}" data-tabid="{tabid}">{sek}</div>')
+            continue
+        hid, titel = m.group(1), re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        flikar.append(
+            f'<button type="button" class="tabbtn{aktiv}" data-tabid="{tabid}" '
+            f'data-target="{hid}">{titel}</button>'
+        )
+        paneler.append(f'<div class="tabpane{dold}" data-tabid="{tabid}">{sek}</div>')
+
+    flikrad = '<div class="tabbar">' + "".join(flikar) + "</div>"
+    return inledning + flikrad + "".join(paneler)
+
+
 SIDMALL = """<!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -122,7 +204,7 @@ SIDMALL = """<!DOCTYPE html>
 """
 
 
-def bygg_dok(md_sokvag, ut_sokvag):
+def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
     """Konverterar en markdownfil till en fristaende HTML-sida."""
     text = pathlib.Path(md_sokvag).read_text(encoding="utf-8")
     md = markdown.Markdown(
@@ -143,27 +225,45 @@ def bygg_dok(md_sokvag, ut_sokvag):
         else:
             brod = toc + brod
 
+    extra = DOK_CSS
+    js = TEMA_JS
+    if flikar:
+        brod = flikifiera(brod)
+        extra = DOK_CSS + TAB_CSS
+        js = TEMA_JS + TAB_JS
+
     sida = SIDMALL.format(
         titel=f"{titel} — NNK 2026",
         tokens=TOKENS,
         bas=BAS,
-        extra=DOK_CSS,
+        extra=extra,
         crumb='<a href="../index.html">← Kontrollpanel NNK 2026</a>',
         brod=brod,
-        js=TEMA_JS,
+        js=js,
     )
     pathlib.Path(ut_sokvag).write_text(sida, encoding="utf-8")
     return titel, len(sida)
 
 
-DOKUMENT = ["arbetsplan", "runbook", "metodik", "typiska-arter", "webbgis-publicering", "attributbeskrivning"]
+# Namn -> flikar (True delar upp sidan i flikar per Del/Bilaga-avsnitt).
+# Bara webbgis-publicering ar flikad hittills (den langsta, mest
+# stegvisa manualen) - satt True pa fler vid behov.
+DOKUMENT = {
+    "arbetsplan": False,
+    "runbook": False,
+    "metodik": False,
+    "typiska-arter": False,
+    "webbgis-publicering": True,
+    "attributbeskrivning": False,
+}
 
 if __name__ == "__main__":
     rot = pathlib.Path(__file__).parent
-    for namn in DOKUMENT:
-        md = rot / "docs" / f"{namn}.md"
-        if not md.exists():
-            print(f"hoppar over {namn} - {md} saknas")
+    for namn, flikar in DOKUMENT.items():
+        md_path = rot / "docs" / f"{namn}.md"
+        if not md_path.exists():
+            print(f"hoppar over {namn} - {md_path} saknas")
             continue
-        titel, n = bygg_dok(md, rot / "docs" / f"{namn}.html")
-        print(f"docs/{namn}.html  <- {titel}  ({n:,} tecken)")
+        titel, n = bygg_dok(md_path, rot / "docs" / f"{namn}.html", flikar=flikar)
+        tagg = " [flikar]" if flikar else ""
+        print(f"docs/{namn}.html  <- {titel}  ({n:,} tecken){tagg}")
