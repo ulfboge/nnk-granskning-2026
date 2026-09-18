@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.0 · 2026-09-01 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.
+**Version 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -241,6 +241,31 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
    - *Bakgrunder*: välj en ljus bakgrund (t.ex. LM Topografisk webbkarta nedtonad) som start.
    - *Kartans utgångsläge*: aktivera, zooma till Södermanland, Spara.
    - **Exportera lagerlistan** (knappen *Export* överst) → spara JSON-filen i `natura-2000: deliveries/nnk_granskning_sodermanland_20260901/` — backup om en WebMap försvinner ("Etikett kan inte hittas i WebMap", s.28).
+### Faktisk lagerstruktur (facit, TOC-export 2026-09-18)
+
+Ovanstående är principen för hur grupperna byggs (fem planerade grupper). Den färdiga appen fick
+fler och mer detaljerade grupper än så — nedan är den faktiska strukturen, hämtad direkt ur
+Konfiguratorns TOC-export (`toc_export_20260918_072736.csv`). Ingen "Fastighet och administrativt"-
+grupp byggdes; "Ortofoto och historiska kartor" delades i stället upp i en egen ortofoto-grupp och
+en historisk grupp, och flera nya ämnesgrupper (skog och vegetation, markfuktighet och hydrologi,
+jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns med i planen i del 5.
+
+| Grupp | Lager |
+| --- | --- |
+| **1. Granskning** | NNK naturaobjekt pkt · NNK naturaobjekt lin · NNK naturaobjekt yta (redigerbara feature layers) · LstD Skyddade områden (N2000 och naturreservat) – Driftat |
+| **2. Ortofoton och flygbilder** | LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025) |
+| **3. Skog och vegetation** | NV Naturtypskartan NNK (punkt/linje/yta) · NV Nationella Marktäckedata (NMD) – WMS (Låg fjällskog, Skoglig produktivitet, Basskikt) · SKS Trädhöjd 3_1 – WMS (6 sublager) · SKS Skogliga Grunddata 3.1 (Raster) – Grundyta_gron · SLU Skyddsvärda träd (Artportalen) · SKS Avverkningsinformation (Avverkningsanmälningar, Faktiskt avverkat) · SKS Naturskydd (Biotopskydd, Naturvårdsavtal, Vitryggsavtal) |
+| **4. Markfuktighet och hydrologi** | NV NMD Markfuktighetsindex (Raster) · SKS Markfuktighetskartan DTW 1_1 – WMS · NV Nationella Marktäckedata (NMD) – WMS (samma sublager som grupp 3) · SMHI SVAR2022 Vattenförekomster 2022–2027 (sjöar, vattendrag) · NV Våtmarksinventering – WMS (VMI_ytor, VMI_punkter) |
+| **5. Jordbruk och hävd** | SJV Ängs- och betesmarksinventeringen naturtyper + (Senaste) · SJV Jordbruksblock, ett lager per år 2003–2025 |
+| **6. Arter och naturvärden** | SLU Skyddsvärda träd (Artportalen, f.d. Trädportalen) |
+| **7. Historiska underlag** | LstD LM Ekonomiska kartan – 1950-tal (Raster) · LM Häradskartan Södermanlands län · LM Ekonomiska kartan |
+| **8. Jordarter och geologi** | SGU Jorddjup 2026 (Raster) · SGU Jordarter 1:25 000–1:100 000 – WMS (9 sublager) · SLU Torvkartan – WMS (3 sublager) · SGU Berggrund 1:50 000–1:250 000 – WMS (22 sublager) |
+| **9. Terräng och höjd** | LM Höjdmodell – WMS (Ursprung och kvalitet, Terränglutning, Terrängskuggning) · LM Höjddata Ekvidistanslinjer 1 meter (Raster) |
+
+SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i två grupper var) —
+relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
+tillåter att samma datakälla läggs till i flera grupper.
+
 5. **Fliken Filter** (ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11). *Nytt filter* → *Gruppfilter*, datakälla NNK ytor + linjer + punkter:
    - "Bara Natura 2000" — `skyddskategori` *innehåller* `Natura 2000` — **aktivt vid start** (lathunden: granskningen avgränsas till N2000-områden).
    - "Ej granskade" — `granskat` = 2.

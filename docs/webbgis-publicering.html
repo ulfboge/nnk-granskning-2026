@@ -91,7 +91,10 @@ tr:last-child td{border-bottom:0}
 <li><a href="#del-3-publicera-som-driftat-lager-share-web-layer">Del 3 · Publicera som driftat lager (Share → Web Layer)</a></li>
 <li><a href="#del-4-efterarbete-pa-items-i-geodataportalen-webblasaren">Del 4 · Efterarbete på items i Geodataportalen (webbläsaren)</a></li>
 <li><a href="#del-5-bygg-webmap-i-map-viewer">Del 5 · Bygg WebMap i Map Viewer</a></li>
-<li><a href="#del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</a></li>
+<li><a href="#del-6-bygg-appen-i-gk-konfigurator">Del 6 · Bygg appen i GK Konfigurator</a><ul>
+<li><a href="#faktisk-lagerstruktur-facit-toc-export-2026-09-18">Faktisk lagerstruktur (facit, TOC-export 2026-09-18)</a></li>
+</ul>
+</li>
 <li><a href="#del-7-test-namn-delning-och-overlamning">Del 7 · Test, namn, delning och överlämning</a></li>
 <li><a href="#del-8-felsokning-och-drift">Del 8 · Felsökning och drift</a></li>
 <li><a href="#bilaga-a-skriptet-forbered_gdb_for_publiceringpy">Bilaga A · Skriptet forbered_gdb_for_publicering.py</a></li>
@@ -100,7 +103,7 @@ tr:last-child td{border-bottom:0}
 </ul>
 </div>
 </nav>
-<p><strong>Version 1.0 · 2026-09-01 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
+<p><strong>Version 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -435,6 +438,64 @@ tr:last-child td{border-bottom:0}
    - <strong>Exportera lagerlistan</strong> (knappen <em>Export</em> överst) → spara JSON-filen i <code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code> — backup om en WebMap försvinner ("Etikett kan inte hittas i WebMap", s.28).</li>
 </ol>
 </li>
+</ol>
+<h3 id="faktisk-lagerstruktur-facit-toc-export-2026-09-18">Faktisk lagerstruktur (facit, TOC-export 2026-09-18)</h3>
+<p>Ovanstående är principen för hur grupperna byggs (fem planerade grupper). Den färdiga appen fick
+fler och mer detaljerade grupper än så — nedan är den faktiska strukturen, hämtad direkt ur
+Konfiguratorns TOC-export (<code>toc_export_20260918_072736.csv</code>). Ingen "Fastighet och administrativt"-
+grupp byggdes; "Ortofoto och historiska kartor" delades i stället upp i en egen ortofoto-grupp och
+en historisk grupp, och flera nya ämnesgrupper (skog och vegetation, markfuktighet och hydrologi,
+jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns med i planen i del 5.</p>
+<table>
+<thead>
+<tr>
+<th>Grupp</th>
+<th>Lager</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Granskning</strong></td>
+<td>NNK naturaobjekt pkt · NNK naturaobjekt lin · NNK naturaobjekt yta (redigerbara feature layers) · LstD Skyddade områden (N2000 och naturreservat) – Driftat</td>
+</tr>
+<tr>
+<td><strong>2. Ortofoton och flygbilder</strong></td>
+<td>LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025)</td>
+</tr>
+<tr>
+<td><strong>3. Skog och vegetation</strong></td>
+<td>NV Naturtypskartan NNK (punkt/linje/yta) · NV Nationella Marktäckedata (NMD) – WMS (Låg fjällskog, Skoglig produktivitet, Basskikt) · SKS Trädhöjd 3_1 – WMS (6 sublager) · SKS Skogliga Grunddata 3.1 (Raster) – Grundyta_gron · SLU Skyddsvärda träd (Artportalen) · SKS Avverkningsinformation (Avverkningsanmälningar, Faktiskt avverkat) · SKS Naturskydd (Biotopskydd, Naturvårdsavtal, Vitryggsavtal)</td>
+</tr>
+<tr>
+<td><strong>4. Markfuktighet och hydrologi</strong></td>
+<td>NV NMD Markfuktighetsindex (Raster) · SKS Markfuktighetskartan DTW 1_1 – WMS · NV Nationella Marktäckedata (NMD) – WMS (samma sublager som grupp 3) · SMHI SVAR2022 Vattenförekomster 2022–2027 (sjöar, vattendrag) · NV Våtmarksinventering – WMS (VMI_ytor, VMI_punkter)</td>
+</tr>
+<tr>
+<td><strong>5. Jordbruk och hävd</strong></td>
+<td>SJV Ängs- och betesmarksinventeringen naturtyper + (Senaste) · SJV Jordbruksblock, ett lager per år 2003–2025</td>
+</tr>
+<tr>
+<td><strong>6. Arter och naturvärden</strong></td>
+<td>SLU Skyddsvärda träd (Artportalen, f.d. Trädportalen)</td>
+</tr>
+<tr>
+<td><strong>7. Historiska underlag</strong></td>
+<td>LstD LM Ekonomiska kartan – 1950-tal (Raster) · LM Häradskartan Södermanlands län · LM Ekonomiska kartan</td>
+</tr>
+<tr>
+<td><strong>8. Jordarter och geologi</strong></td>
+<td>SGU Jorddjup 2026 (Raster) · SGU Jordarter 1:25 000–1:100 000 – WMS (9 sublager) · SLU Torvkartan – WMS (3 sublager) · SGU Berggrund 1:50 000–1:250 000 – WMS (22 sublager)</td>
+</tr>
+<tr>
+<td><strong>9. Terräng och höjd</strong></td>
+<td>LM Höjdmodell – WMS (Ursprung och kvalitet, Terränglutning, Terrängskuggning) · LM Höjddata Ekvidistanslinjer 1 meter (Raster)</td>
+</tr>
+</tbody>
+</table>
+<p>SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i två grupper var) —
+relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
+tillåter att samma datakälla läggs till i flera grupper.</p>
+<ol start="5">
 <li><strong>Fliken Filter</strong> (ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11). <em>Nytt filter</em> → <em>Gruppfilter</em>, datakälla NNK ytor + linjer + punkter:
    - "Bara Natura 2000" — <code>skyddskategori</code> <em>innehåller</em> <code>Natura 2000</code> — <strong>aktivt vid start</strong> (lathunden: granskningen avgränsas till N2000-områden).
    - "Ej granskade" — <code>granskat</code> = 2.

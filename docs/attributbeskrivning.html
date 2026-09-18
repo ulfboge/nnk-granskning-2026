@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Attributbeskrivning / kodlista — LstD NNK Granskning</title>
+<title>Attributbeskrivning / kodlista — LstD NNK Granskning — NNK 2026</title>
 <style>
 :root{
   color-scheme:light;
@@ -56,6 +56,9 @@ hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
 blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
 code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
@@ -68,396 +71,1399 @@ tr:last-child td{border-bottom:0}
 .toc ul{margin:0;padding-left:18px;font-size:13.5px}
 .toc ul ul{padding-left:16px;font-size:13px}
 .toc li{margin:2px 0}
-.antal{color:var(--ink-3);font-size:13px;margin-top:-8px}
-.sokbox{position:sticky;top:0;background:var(--plane);padding:10px 0;z-index:5}
-.sokbox input{width:100%;font:inherit;font-size:14px;padding:10px 14px;border-radius:10px;
- border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-1)}
-tr.dold{display:none}
-mark{background:var(--p-D);color:#0b0b0b;border-radius:3px;padding:0 2px}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="topbar">
-  <div class="crumb"><a href="webbgis-publicering.html">← webbgis-publicering.html</a></div>
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1>Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
-<p><strong>Version 1.0 · 2026-09-04 · Länsstyrelsen Södermanland, Naturskyddsenheten</strong> · Länkad från knappen
-"Kodlista/attributbeskrivning" i appens meny (se <code>webbgis-publicering.html</code>, Del 6).</p>
-<p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. <strong>Del A</strong> är fälten
-du själv fyller i som granskare. <strong>Del B</strong> är Naturvårdsverkets egna, skrivskyddade källfält som visas
-i popupen men som du inte ska ändra.</p>
-<p style="color:var(--ink-3);font-size:13px">Källor: <code>blankett_forvaltarkunskap_nnk.xlsx</code> (Kodlistor-fliken),
-KartLits-mallens ArcGIS-domäner, <code>Beskrivning_NNK_koder.pdf</code> (NV PM NV-08177-15),
-<code>Handledning NNK 20260703.pdf</code>.</p>
-<nav class="toc"><div class="t">Innehåll</div><ul>
-<li><a href="#del-a">Del A · Granskningsfälten</a><ul>
-<li><a href="#grupp-1-·-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</a></li>
-<li><a href="#grupp-2-·-tillstand">Grupp 2 · Tillstånd</a></li>
-<li><a href="#grupp-3-·-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</a></li>
-<li><a href="#grupp-4-·-klart?">Grupp 4 · Klart?</a></li>
-</ul></li>
-<li><a href="#del-b">Del B · NV:s ursprungsfält</a><ul>
-<li><a href="#naturtyp">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</a></li>
+<h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</a></li>
+<li><a href="#del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</a><ul>
+<li><a href="#grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</a></li>
+<li><a href="#grupp-2-tillstand">Grupp 2 · Tillstånd</a></li>
+<li><a href="#grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</a></li>
+<li><a href="#grupp-4-klart">Grupp 4 · Klart?</a></li>
+</ul>
+</li>
+<li><a href="#del-b-nvs-ursprungsfalt-skrivskyddade-kallfalt">Del B · NV:s ursprungsfält (skrivskyddade källfält)</a><ul>
+<li><a href="#naturtyp-livsmiljotyp-13-malnaturtyp-13">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</a></li>
 <li><a href="#naturtypsstatus">Naturtypsstatus</a></li>
 <li><a href="#karteringsstatus">Karteringsstatus</a></li>
 <li><a href="#komplex">Komplex</a></li>
 <li><a href="#forandringsorsak">Förändringsorsak</a></li>
 <li><a href="#ursprung">Ursprung</a></li>
-</ul></li>
-</ul></nav>
-<hr/>
-<h2 id="del-a">Del A · Granskningsfälten (det du fyller i)</h2>
-<h3 id="grupp-1-·-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</h3>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-livsmiljotyp-behov-av-justering">Livsmiljötyp, behov av justering</h4>
-<p>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).</p>
-<table class="kodtabell" id="grupp-1-·-livsmiljotyp-och-utbredning-livsmiljotyp-behov-av-justering-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Inget behov av justering</td></tr>
-<tr><td><code>2</code></td><td>Ändring till annan livsmiljötyp</td></tr>
-<tr><td><code>3</code></td><td>Ändring till utvecklingsmark</td></tr>
-<tr><td><code>4</code></td><td>Osäker – kan ej bedöma om livsmiljötyp eller inte</td></tr>
-<tr><td><code>5</code></td><td>Obestämd – kan ej bedöma vilken livsmiljötyp</td></tr></tbody></table>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-utbredning-behov-av-justering">Utbredning, behov av justering</h4>
-<p>Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.</p>
-<table class="kodtabell" id="grupp-1-·-livsmiljotyp-och-utbredning-utbredning-behov-av-justering-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Inget behov av justering</td></tr>
-<tr><td><code>2</code></td><td>Yttergränser, kvalitetsförbättring</td></tr>
-<tr><td><code>3</code></td><td>Yttergränser, ändrad utbredning</td></tr>
-<tr><td><code>4</code></td><td>Behov av att dela upp ytan, flera livsmiljötyper</td></tr></tbody></table>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-livsmiljotyp-1">Livsmiljötyp 1</h4>
-<p>Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. Koderna är samma kodutrymme som NV:s naturtypskoder — se tabellen i Del B.</p>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-livsmiljotyp-2">Livsmiljötyp 2</h4>
-<p>Andrahandsförslag, om osäker mellan flera typer.</p>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-livsmiljotyp-3">Livsmiljötyp 3</h4>
-<p>Tredjehandsförslag, om osäker mellan flera typer.</p>
-<h4 id="grupp-1-·-livsmiljotyp-och-utbredning-kommentar-livsmiljotyp-och-utbredning">Kommentar – livsmiljötyp och utbredning</h4>
-<p>Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</p>
-<h3 id="grupp-2-·-tillstand">Grupp 2 · Tillstånd</h3>
-<h4 id="grupp-2-·-tillstand-tillstand-behov-av-justering">Tillstånd, behov av justering</h4>
-<p>Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %).</p>
-<table class="kodtabell" id="grupp-2-·-tillstand-tillstand-behov-av-justering-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Gott</td></tr>
-<tr><td><code>2</code></td><td>Icke gott</td></tr>
-<tr><td><code>3</code></td><td>Okänt – kan ej bedöma</td></tr>
-<tr><td><code>4</code></td><td>Blandat – se andelar</td></tr></tbody></table>
-<h4 id="grupp-2-·-tillstand-gott-tillstand-%">Gott tillstånd (%)</h4>
-<p>Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</p>
-<h4 id="grupp-2-·-tillstand-ej-gott-tillstand-%">Ej gott tillstånd (%)</h4>
-<p>Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</p>
-<h4 id="grupp-2-·-tillstand-osaker-%">Osäker (%)</h4>
-<p>Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.</p>
-<h4 id="grupp-2-·-tillstand-kommentar-tillstand">Kommentar – Tillstånd</h4>
-<p>Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.</p>
-<h3 id="grupp-3-·-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</h3>
-<h4 id="grupp-3-·-vad-ska-kontrolleras-och-hur-vad-ska-kontrolleras-13">Vad ska kontrolleras 1–3</h4>
-<p>Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.</p>
-<table class="kodtabell" id="grupp-3-·-vad-ska-kontrolleras-och-hur-vad-ska-kontrolleras-13-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Typiska och karakteristiska arter</td></tr>
-<tr><td><code>2</code></td><td>Strukturer</td></tr>
-<tr><td><code>3</code></td><td>Hävd</td></tr>
-<tr><td><code>4</code></td><td>Funktioner (hydrologi, störningar)</td></tr>
-<tr><td><code>5</code></td><td>Morfologi (jordart, formationer)</td></tr>
-<tr><td><code>6</code></td><td>Annan negativ påverkan</td></tr></tbody></table>
-<h4 id="grupp-3-·-vad-ska-kontrolleras-och-hur-kommentar-vad-ska-kontrolleras">Kommentar – Vad ska kontrolleras</h4>
-<p>Motivera varför just detta bör kontrolleras.</p>
-<h4 id="grupp-3-·-vad-ska-kontrolleras-och-hur-metod-for-kontroll">Metod för kontroll</h4>
-<p>Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.</p>
-<table class="kodtabell" id="grupp-3-·-vad-ska-kontrolleras-och-hur-metod-for-kontroll-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Fältbesök</td></tr>
-<tr><td><code>2</code></td><td>Fältinventering (standardiserad metodik)</td></tr>
-<tr><td><code>3</code></td><td>Skrivbord / Granska mot andra underlag</td></tr>
-<tr><td><code>4</code></td><td>Annan metod</td></tr></tbody></table>
-<h4 id="grupp-3-·-vad-ska-kontrolleras-och-hur-kommentar-metod">Kommentar – Metod</h4>
-<p>Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</p>
-<h3 id="grupp-4-·-klart?">Grupp 4 · Klart?</h3>
-<h4 id="grupp-4-·-klart?-granskat">Granskat</h4>
-<p>Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</p>
-<table class="kodtabell" id="grupp-4-·-klart?-granskat-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Ja</td></tr>
-<tr><td><code>2</code></td><td>Nej</td></tr>
-<tr><td><code>3</code></td><td>Påbörjat</td></tr></tbody></table>
-<hr/>
-<h2 id="del-b">Del B · NV:s ursprungsfält (skrivskyddade källfält)</h2>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
+<p><strong>Version:</strong> 1.0 · 2026-09-04<br />
+<strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
+<strong>Källor:</strong> blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf</p>
+<p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen.</p>
+<hr />
+<h2 id="del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</h2>
+<h3 id="grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</h3>
+<p><strong>Livsmiljötyp, behov av justering</strong><br />
+Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Inget behov av justering</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ändring till annan livsmiljötyp</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ändring till utvecklingsmark</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Osäker – kan ej bedöma om livsmiljötyp eller inte</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Obestämd – kan ej bedöma vilken livsmiljötyp</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Utbredning, behov av justering</strong><br />
+Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Inget behov av justering</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yttergränser, kvalitetsförbättring</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Yttergränser, ändrad utbredning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Behov av att dela upp ytan, flera livsmiljötyper</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Livsmiljötyp 1</strong><br />
+Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. Koderna är samma kodutrymme som NV:s naturtypskoder — se tabellen längre ned.</p>
+<p><strong>Livsmiljötyp 2</strong><br />
+Andrahandsförslag, om osäker mellan flera typer.</p>
+<p><strong>Livsmiljötyp 3</strong><br />
+Tredjehandsförslag, om osäker mellan flera typer.</p>
+<p><strong>Kommentar – livsmiljötyp och utbredning</strong><br />
+Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</p>
+<h3 id="grupp-2-tillstand">Grupp 2 · Tillstånd</h3>
+<p><strong>Tillstånd, behov av justering</strong><br />
+Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %).</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Gott</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Icke gott</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Okänt – kan ej bedöma</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Blandat – se andelar</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gott tillstånd (%)</strong><br />
+Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</p>
+<p><strong>Ej gott tillstånd (%)</strong><br />
+Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</p>
+<p><strong>Osäker (%)</strong><br />
+Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.</p>
+<p><strong>Kommentar – Tillstånd</strong><br />
+Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.</p>
+<h3 id="grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</h3>
+<p><strong>Vad ska kontrolleras 1–3</strong><br />
+Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Typiska och karakteristiska arter</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Strukturer</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hävd</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Funktioner (hydrologi, störningar)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Morfologi (jordart, formationer)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Annan negativ påverkan</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kommentar – Vad ska kontrolleras</strong><br />
+Motivera varför just detta bör kontrolleras.</p>
+<p><strong>Metod för kontroll</strong><br />
+Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fältbesök</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fältinventering (standardiserad metodik)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Skrivbord / Granska mot andra underlag</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Annan metod</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kommentar – Metod</strong><br />
+Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</p>
+<h3 id="grupp-4-klart">Grupp 4 · Klart?</h3>
+<p><strong>Granskat</strong><br />
+Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nej</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Påbörjat</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="del-b-nvs-ursprungsfalt-skrivskyddade-kallfalt">Del B · NV:s ursprungsfält (skrivskyddade källfält)</h2>
 <p>Lämna dessa orörda — det är bara mallens granskningsfält i Del A som ska ändras (lathunden: "Vad kan vi ändra på?").</p>
-<div class="sokbox"><input type="search" id="sokfalt" placeholder="Sök kod eller text, t.ex. 6210 eller kalkgräsmark …" autocomplete="off"></div>
-<h3 id="naturtyp">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</h3>
+<h3 id="naturtyp-livsmiljotyp-13-malnaturtyp-13">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</h3>
 <p>NV:s egen kod för livsmiljötyp/naturtyp (Beskrivning_NNK_koder.pdf, NV PM NV-08177-15). Samma kodutrymme används i granskningsfälten Livsmiljötyp 1–3 när ni föreslår en annan typ.</p>
-<p class="antal">247 koder.</p>
-<table class="kodtabell" id="naturtyp-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>0</code></td><td>Ospecificerad kod (0)</td></tr>
-<tr><td><code>109</code></td><td>Dike/uträtat vattendrag</td></tr>
-<tr><td><code>120</code></td><td>Alpina vattendrag, &lt; 3 m</td></tr>
-<tr><td><code>121</code></td><td>Alpina vattendrag, 3-6 m</td></tr>
-<tr><td><code>122</code></td><td>Alpina vattendrag, vattenfall &lt; 3 m</td></tr>
-<tr><td><code>123</code></td><td>Alpina vattendrag, vattenfall 3-6 m</td></tr>
-<tr><td><code>124</code></td><td>Alpina vattendrag, fors &lt; 3 m</td></tr>
-<tr><td><code>125</code></td><td>Alpina vattendrag, fors 3-6 m</td></tr>
-<tr><td><code>126</code></td><td>Mindre vattendrag, &lt; 3 m</td></tr>
-<tr><td><code>127</code></td><td>Mindre vattendrag, 3-6 m</td></tr>
-<tr><td><code>128</code></td><td>Mindre vattendrag, vattenfall &lt; 3 m</td></tr>
-<tr><td><code>129</code></td><td>Mindre vattendrag, vattenfall 3-6 m</td></tr>
-<tr><td><code>130</code></td><td>Mindre vattendrag, fors &lt; 3 m</td></tr>
-<tr><td><code>131</code></td><td>Mindre vattendrag, fors 3-6 m</td></tr>
-<tr><td><code>132</code></td><td>Mindre vattendrag, sten- och blockrika partier &lt; 3m</td></tr>
-<tr><td><code>133</code></td><td>Mindre vattendrag, sten- och blockrika partier 3-6 m</td></tr>
-<tr><td><code>134</code></td><td>Mindre vattendrag, sten- och blockrika forssträckor &lt; 3 m</td></tr>
-<tr><td><code>135</code></td><td>Mindre vattendrag, sten- och blockrika forssträckor 3-6 m</td></tr>
-<tr><td><code>1000</code></td><td>Marint vatten</td></tr>
-<tr><td><code>1110</code></td><td>Sublittorala sandbankar</td></tr>
-<tr><td><code>1117</code></td><td>Sublittorala sandbankar - Med dominans av ålgräs/marina</td></tr>
-<tr><td><code>1118</code></td><td>Sublittorala sandbankar - Med dominans av makroalgsvegetation</td></tr>
-<tr><td><code>1119</code></td><td>Sublittorala sandbankar - Fri från vegetation</td></tr>
-<tr><td><code>1130</code></td><td>Estuarier</td></tr>
-<tr><td><code>1137</code></td><td>Estuarier - Med dominans av ålgräs/marina kärlväxter</td></tr>
-<tr><td><code>1138</code></td><td>Estuarier - Med dominans av makroalgsvegetation</td></tr>
-<tr><td><code>1139</code></td><td>Estuarier - Fri från vegetation</td></tr>
-<tr><td><code>1140</code></td><td>Blottade ler- och sandbottnar</td></tr>
-<tr><td><code>1147</code></td><td>Blottade ler- och sandbottnar - Med dominans av ålgräs/marina</td></tr>
-<tr><td><code>1150</code></td><td>Laguner</td></tr>
-<tr><td><code>1152</code></td><td>Laguner - Lagunartade vikar</td></tr>
-<tr><td><code>1153</code></td><td>Laguner - Flada på landhöjningskust</td></tr>
-<tr><td><code>1154</code></td><td>Laguner - Glo eller gloflada på landhöjningskust</td></tr>
-<tr><td><code>1157</code></td><td>Laguner - Med dominans av ålgräs/marina kärlväxter</td></tr>
-<tr><td><code>1158</code></td><td>Laguner - Med dominans av makroalgsvegetation</td></tr>
-<tr><td><code>1160</code></td><td>Vikar och sund</td></tr>
-<tr><td><code>1167</code></td><td>Vikar och sund - Med dominans av ålgräs/marina kärlväxter</td></tr>
-<tr><td><code>1168</code></td><td>Vikar och sund - Med dominans av makroalgsvegetation</td></tr>
-<tr><td><code>1169</code></td><td>Vikar och sund - Fri från vegetation</td></tr>
-<tr><td><code>1170</code></td><td>Rev</td></tr>
-<tr><td><code>1171</code></td><td>Rev - Biogent rev, mussel eller ostronbank</td></tr>
-<tr><td><code>1172</code></td><td>Rev - Biogent rev, korallogent (ögonkorall)</td></tr>
-<tr><td><code>1173</code></td><td>Rev - Biogent rev, krusta (kalkalgskrusta/märlbäddsbotten)</td></tr>
-<tr><td><code>1174</code></td><td>Rev - Geogent rev 0-30 meter (berg/blocksubstrat)</td></tr>
-<tr><td><code>1175</code></td><td>Rev - Geogent rev &gt; 30 meter (berg/blocksubstrat)</td></tr>
-<tr><td><code>1177</code></td><td>Rev - Med dominans av ålgräs/marina kärlväxter</td></tr>
-<tr><td><code>1178</code></td><td>Rev - Med dominans av makroalgsvegetation</td></tr>
-<tr><td><code>1180</code></td><td>Submarina strukturer orsakade av utläckande gas</td></tr>
-<tr><td><code>1181</code></td><td>Submarina strukturer orsakade av utläckande gas - Bubbelrev</td></tr>
-<tr><td><code>1182</code></td><td>Submarina strukturer orsakade av utläckande gas -</td></tr>
-<tr><td><code>1210</code></td><td>Driftvallar</td></tr>
-<tr><td><code>1220</code></td><td>Sten- och grusvallar</td></tr>
-<tr><td><code>1230</code></td><td>Havsklippor</td></tr>
-<tr><td><code>1231</code></td><td>Havsklippor - Kalkrika klippor</td></tr>
-<tr><td><code>1232</code></td><td>Havsklippor - Silikatrika klippor</td></tr>
-<tr><td><code>1310</code></td><td>Glasörtsstränder</td></tr>
-<tr><td><code>1330</code></td><td>Salta strandängar</td></tr>
-<tr><td><code>1610</code></td><td>Åsöar i Östersjön</td></tr>
-<tr><td><code>1620</code></td><td>Skär i Östersjön (endast komplexkod)</td></tr>
-<tr><td><code>1621</code></td><td>Skär i Östersjön - Terrester del</td></tr>
-<tr><td><code>1630</code></td><td>Strandängar vid Östersjön</td></tr>
-<tr><td><code>1631</code></td><td>Strandängar vid Östersjön - Ishyvlade</td></tr>
-<tr><td><code>1640</code></td><td>Sandstränder vid Östersjön</td></tr>
-<tr><td><code>1650</code></td><td>Smala vikar i Östersjön</td></tr>
-<tr><td><code>1820</code></td><td>Obestämd sten-/sandstrand i Östersjön (1220/1640)</td></tr>
-<tr><td><code>1830</code></td><td>Osäkra ler- eller sandsediment/ blottade bottnar</td></tr>
-<tr><td><code>1950</code></td><td>Icke-natura strand</td></tr>
-<tr><td><code>2100</code></td><td>Öppna kustdyner vid Atlant- och Östersjökusten</td></tr>
-<tr><td><code>2110</code></td><td>Fördyner</td></tr>
-<tr><td><code>2120</code></td><td>Vita dyner</td></tr>
-<tr><td><code>2130</code></td><td>Grå dyner</td></tr>
-<tr><td><code>2140</code></td><td>Risdyner</td></tr>
-<tr><td><code>2170</code></td><td>Sandvidedyner</td></tr>
-<tr><td><code>2180</code></td><td>Trädklädda dyner</td></tr>
-<tr><td><code>2181</code></td><td>Trädklädda dyner - Torr dynskog</td></tr>
-<tr><td><code>2182</code></td><td>Trädklädda dyner - Dynsumpskog</td></tr>
-<tr><td><code>2190</code></td><td>Dynvåtmark</td></tr>
-<tr><td><code>2300</code></td><td>Obestämd sanddominerad mark i inlandet (2320/2330)</td></tr>
-<tr><td><code>2320</code></td><td>Rissandhedar</td></tr>
-<tr><td><code>2330</code></td><td>Grässandhedar</td></tr>
-<tr><td><code>2920</code></td><td>Sanddominerad, icke-natura naturtyp</td></tr>
-<tr><td><code>3000</code></td><td>Vatten</td></tr>
-<tr><td><code>3100</code></td><td>Sjö</td></tr>
-<tr><td><code>3110</code></td><td>Näringsfattiga slättsjöar</td></tr>
-<tr><td><code>3130</code></td><td>Ävjestrandsjöar</td></tr>
-<tr><td><code>3140</code></td><td>Kransalgsjöar</td></tr>
-<tr><td><code>3150</code></td><td>Naturligt näringsrika sjöar</td></tr>
-<tr><td><code>3160</code></td><td>Myrsjöar</td></tr>
-<tr><td><code>3200</code></td><td>Vattendrag</td></tr>
-<tr><td><code>3210</code></td><td>Större vattendrag</td></tr>
-<tr><td><code>3211</code></td><td>Större vattendrag - Vattenfall</td></tr>
-<tr><td><code>3212</code></td><td>Större vattendrag - Forssträckor</td></tr>
-<tr><td><code>3213</code></td><td>Större vattendrag – Sten- och blockrika partier</td></tr>
-<tr><td><code>3214</code></td><td>Större vattendrag – Sten- och blockrika forssträckor</td></tr>
-<tr><td><code>3220</code></td><td>Alpina vattendrag</td></tr>
-<tr><td><code>3221</code></td><td>Alpina vattendrag - Vattenfall</td></tr>
-<tr><td><code>3222</code></td><td>Alpina vattendrag - Forssträckor</td></tr>
-<tr><td><code>3260</code></td><td>Mindre vattendrag</td></tr>
-<tr><td><code>3261</code></td><td>Mindre vattendrag - Flytbladstyp</td></tr>
-<tr><td><code>3262</code></td><td>Mindre vattendrag - Fontinalistyp</td></tr>
-<tr><td><code>3263</code></td><td>Mindre vattendrag - Vattenfall</td></tr>
-<tr><td><code>3264</code></td><td>Mindre vattendrag - Forssträckor</td></tr>
-<tr><td><code>3265</code></td><td>Mindre vattendrag – Sten- och blockrika partier</td></tr>
-<tr><td><code>3266</code></td><td>Mindre vattendrag – Sten- och blockrika forssträckor</td></tr>
-<tr><td><code>3268</code></td><td>Ospecificerad kod (3268)</td></tr>
-<tr><td><code>3900</code></td><td>Icke-natura sjö</td></tr>
-<tr><td><code>3920</code></td><td>Icke-natura sjö, småvatten i odlingslandskapet</td></tr>
-<tr><td><code>3942</code></td><td>Icke-natura sjö, oliogotrof sprickdalssjö</td></tr>
-<tr><td><code>3960</code></td><td>Icke-natura vattendrag - Alpint</td></tr>
-<tr><td><code>3999</code></td><td>Icke-natura vattendrag - Ej alpint</td></tr>
-<tr><td><code>4000</code></td><td>Rishedar, gräshedar och videbuskmarker</td></tr>
-<tr><td><code>4010</code></td><td>Fukthedar</td></tr>
-<tr><td><code>4030</code></td><td>Torra hedar</td></tr>
-<tr><td><code>4060</code></td><td>Alpina hedar</td></tr>
-<tr><td><code>4080</code></td><td>Alpina videbuskmarker</td></tr>
-<tr><td><code>4810</code></td><td>Obestämd torr-frisk hed/gräsmark nedanför trädgränsen</td></tr>
-<tr><td><code>4811</code></td><td>Obestämd fuktig-blöt hed/gräsmark/myrmark nedanför trädgränsen</td></tr>
-<tr><td><code>4812</code></td><td>Obestämd torr-frisk hed/gräsmark ovanför trädgränsen</td></tr>
-<tr><td><code>4813</code></td><td>Obestämd fuktig-blöt hed/gräsmark/myrmark ovan trädgränsen</td></tr>
-<tr><td><code>4880</code></td><td>Obestämd videbuskmark/högörtäng ovanför trädgränsen (4060/6430)</td></tr>
-<tr><td><code>5130</code></td><td>Enbuskmarker</td></tr>
-<tr><td><code>5131</code></td><td>Enbuskmarker - Enbuskmark på hed</td></tr>
-<tr><td><code>5132</code></td><td>Enbuskmarker - Enbuskmark på kalkgräsmark</td></tr>
-<tr><td><code>5133</code></td><td>Enbuskmarker - Naturlig enbuskmark vid kust</td></tr>
-<tr><td><code>6000</code></td><td>Gräsmarker, substratdominerade gräsmarker och alluviala gräsmarker</td></tr>
-<tr><td><code>6110</code></td><td>Basiska berghällar</td></tr>
-<tr><td><code>6120</code></td><td>Sandstäpp</td></tr>
-<tr><td><code>6150</code></td><td>Alpina silikatgräsmarker</td></tr>
-<tr><td><code>6170</code></td><td>Alpina kalkgräsmarker</td></tr>
-<tr><td><code>6210</code></td><td>Kalkgräsmarker</td></tr>
-<tr><td><code>6211</code></td><td>Kalkgräsmarker - Viktiga orkidélokaler</td></tr>
-<tr><td><code>6230</code></td><td>Stagg-gräsmarker</td></tr>
-<tr><td><code>6270</code></td><td>Silikatgräsmarker</td></tr>
-<tr><td><code>6280</code></td><td>Alvar</td></tr>
-<tr><td><code>6283</code></td><td>Prekambriska kalkhällmarker</td></tr>
-<tr><td><code>6410</code></td><td>Fuktängar</td></tr>
-<tr><td><code>6411</code></td><td>Fuktängar - Kalkfuktäng</td></tr>
-<tr><td><code>6412</code></td><td>Fuktängar – Fuktäng på surare jordar</td></tr>
-<tr><td><code>6413</code></td><td>Fuktängar - Ishyvlade</td></tr>
-<tr><td><code>6430</code></td><td>Högörtängar</td></tr>
-<tr><td><code>6450</code></td><td>Svämängar</td></tr>
-<tr><td><code>6451</code></td><td>Svämängar - Ishyvlade</td></tr>
-<tr><td><code>6510</code></td><td>Slåtterängar i låglandet</td></tr>
-<tr><td><code>6520</code></td><td>Höglänta slåtterängar</td></tr>
-<tr><td><code>6530</code></td><td>Lövängar</td></tr>
-<tr><td><code>6830</code></td><td>Obestämd naturlig högörts-/ översvämnings-/ alluvial äng</td></tr>
-<tr><td><code>6910</code></td><td>Öppen kultiverad gräsmark</td></tr>
-<tr><td><code>6911</code></td><td>Öppen kultiverad betesmark</td></tr>
-<tr><td><code>6912</code></td><td>Öppen kultiverad slåtteräng</td></tr>
-<tr><td><code>6913</code></td><td>Trädbärande kultiverad betesmark</td></tr>
-<tr><td><code>6914</code></td><td>Trädbärande kultiverad slåtteräng</td></tr>
-<tr><td><code>6917</code></td><td>Betad skog</td></tr>
-<tr><td><code>6918</code></td><td>Trädbärande kultiverad gräsmark</td></tr>
-<tr><td><code>6930</code></td><td>Åker</td></tr>
-<tr><td><code>6960</code></td><td>Öppen icke-naturanaturtyp</td></tr>
-<tr><td><code>6999</code></td><td>Exploaterad mark</td></tr>
-<tr><td><code>7000</code></td><td>Osäker våtmark</td></tr>
-<tr><td><code>7110</code></td><td>Högmossar</td></tr>
-<tr><td><code>7111</code></td><td>Högmossar - Öppna mosseplan</td></tr>
-<tr><td><code>7120</code></td><td>Skadade högmossar</td></tr>
-<tr><td><code>7130</code></td><td>Terrängtäckande mossar</td></tr>
-<tr><td><code>7140</code></td><td>Öppna mossar och kärr</td></tr>
-<tr><td><code>7141</code></td><td>Öppna mossar och kärr - Svagt välvda mossar</td></tr>
-<tr><td><code>7142</code></td><td>Öppna mossar och kärr - Kärr och gungflyn</td></tr>
-<tr><td><code>7143</code></td><td>Öppna mossar och kärr - Hävdade svagt välvda mossar, kärr och</td></tr>
-<tr><td><code>7160</code></td><td>Källor och källkärr</td></tr>
-<tr><td><code>7210</code></td><td>Agkärr</td></tr>
-<tr><td><code>7220</code></td><td>Kalktuffkällor</td></tr>
-<tr><td><code>7230</code></td><td>Rikkärr</td></tr>
-<tr><td><code>7231</code></td><td>Rikkärr - Trädklädda och videbevuxna (krontäckning 30-100 %)</td></tr>
-<tr><td><code>7232</code></td><td>Rikkärr - Öppna hävdade (krontäckning 0-30 %)</td></tr>
-<tr><td><code>7233</code></td><td>Rikkärr - Öppna (krontäckning 0-30%)</td></tr>
-<tr><td><code>7240</code></td><td>Alpina översilningskärr</td></tr>
-<tr><td><code>7310</code></td><td>Aapamyrar</td></tr>
-<tr><td><code>7320</code></td><td>Palsmyrar</td></tr>
-<tr><td><code>7810</code></td><td>Obestämd källa/källkärr (7160/7220)</td></tr>
-<tr><td><code>7820</code></td><td>Obestämd öppet rikkärr/annan öppen myr (7232/7233/7140)</td></tr>
-<tr><td><code>7830</code></td><td>Obestämd öppen myr, naturanaturtyp</td></tr>
-<tr><td><code>7930</code></td><td>Torvtäkt</td></tr>
-<tr><td><code>7999</code></td><td>Våtmark, icke-naturanaturtyp</td></tr>
-<tr><td><code>8000</code></td><td>Osäker substratmark</td></tr>
-<tr><td><code>8110</code></td><td>Silikatrasmarker</td></tr>
-<tr><td><code>8120</code></td><td>Kalkrasmarker</td></tr>
-<tr><td><code>8210</code></td><td>Kalkbranter</td></tr>
-<tr><td><code>8220</code></td><td>Silikatbranter</td></tr>
-<tr><td><code>8230</code></td><td>Hällmarkstorräng</td></tr>
-<tr><td><code>8231</code></td><td>Hällmarkstorräng - Hällmarkstorrängstyp</td></tr>
-<tr><td><code>8232</code></td><td>Hällmarkstorräng - Ej hävdberoende typ</td></tr>
-<tr><td><code>8240</code></td><td>Karsthällmarker</td></tr>
-<tr><td><code>8310</code></td><td>Grottor</td></tr>
-<tr><td><code>8330</code></td><td>Havsgrottor, helt eller delvis under vattenytan</td></tr>
-<tr><td><code>8340</code></td><td>Glaciärer</td></tr>
-<tr><td><code>8810</code></td><td>Obestämd silikat/basisk rasmark (8110/8120)</td></tr>
-<tr><td><code>8820</code></td><td>Obestämd silikat/kalkrik klippvegetation (8210/8220)</td></tr>
-<tr><td><code>8840</code></td><td>Obestämd hällmark basisk/silikat (6110/8230)</td></tr>
-<tr><td><code>8900</code></td><td>Öppna substratmarker, icke-naturanaturtyp</td></tr>
-<tr><td><code>8920</code></td><td>Gles hällmarkstallskog, &lt;30% krontäckning</td></tr>
-<tr><td><code>8949</code></td><td>Blekemark</td></tr>
-<tr><td><code>9000</code></td><td>Skog</td></tr>
-<tr><td><code>9005</code></td><td>Taiga - Kalkbarrskog</td></tr>
-<tr><td><code>9006</code></td><td>Taiga - Sumpskog</td></tr>
-<tr><td><code>9008</code></td><td>Taiga - Kalmark/glest beskogad mark med mycket död ved efter</td></tr>
-<tr><td><code>9009</code></td><td>Taiga - Naturliga successionsstadier efter störning</td></tr>
-<tr><td><code>9010</code></td><td>Taiga</td></tr>
-<tr><td><code>9020</code></td><td>Nordlig ädellövskog</td></tr>
-<tr><td><code>9030</code></td><td>Landhöjningsskog</td></tr>
-<tr><td><code>9040</code></td><td>Fjällbjörkskog</td></tr>
-<tr><td><code>9050</code></td><td>Näringsrik granskog</td></tr>
-<tr><td><code>9060</code></td><td>Åsbarrskog</td></tr>
-<tr><td><code>9061</code></td><td>Åsbarrskog - Örtrik talltyp</td></tr>
-<tr><td><code>9062</code></td><td>Åsbarrskog - Örtrik grantyp</td></tr>
-<tr><td><code>9070</code></td><td>Trädklädd betesmark</td></tr>
-<tr><td><code>9071</code></td><td>Trädklädda betesmarker - Ekhagar</td></tr>
-<tr><td><code>9072</code></td><td>Trädklädda betesmarker - Ädellövskogdominerade</td></tr>
-<tr><td><code>9080</code></td><td>Lövsumpskog</td></tr>
-<tr><td><code>9110</code></td><td>Näringsfattig bokskog</td></tr>
-<tr><td><code>9130</code></td><td>Näringsrik bokskog</td></tr>
-<tr><td><code>9160</code></td><td>Näringsrik ekskog</td></tr>
-<tr><td><code>9161</code></td><td>Näringsrik ekskog - Ek-avenbokskog</td></tr>
-<tr><td><code>9162</code></td><td>Näringsrik ekskog - Ek-hassellund</td></tr>
-<tr><td><code>9170</code></td><td>Torr ekskog</td></tr>
-<tr><td><code>9180</code></td><td>Ädellövskog i branter</td></tr>
-<tr><td><code>9190</code></td><td>Näringsfattig ekskog</td></tr>
-<tr><td><code>9740</code></td><td>Skogbevuxen myr (91D0)</td></tr>
-<tr><td><code>9750</code></td><td>Svämlövskog (91E0)</td></tr>
-<tr><td><code>9760</code></td><td>Svämädellövskog (91F0)</td></tr>
-<tr><td><code>9801</code></td><td>Osäker lövskog</td></tr>
-<tr><td><code>9810</code></td><td>Osäker Taiga/ickenatura skog</td></tr>
-<tr><td><code>9820</code></td><td>Obestämd ädellövskog (9020/9850/9860)</td></tr>
-<tr><td><code>9830</code></td><td>Obestämd näringsrik granskog/västlig taiga (9050/9010)</td></tr>
-<tr><td><code>9840</code></td><td>Obestämd svämskog (9750/9760)</td></tr>
-<tr><td><code>9841</code></td><td>Obestämd lövsumpskog/ skogbevuxen myr (9080/9740)</td></tr>
-<tr><td><code>9842</code></td><td>Obestämd lövsumpskog/ skogbevuxen myr/ trädklädda rikkärr</td></tr>
-<tr><td><code>9843</code></td><td>Obestämd skogbevuxen myr/ Taiga (9740/9010)</td></tr>
-<tr><td><code>9850</code></td><td>Obestämd bokskog (9110/9130)</td></tr>
-<tr><td><code>9860</code></td><td>Obestämd ekskog (9160/9190)</td></tr>
-<tr><td><code>9870</code></td><td>Osäker skogbevuxen myr – icke naturanaturtyp</td></tr>
-<tr><td><code>9900</code></td><td>Ickenatura-skog</td></tr>
-<tr><td><code>9903</code></td><td>Icke-natura-skog, barrskog</td></tr>
-<tr><td><code>9905</code></td><td>Icke-natura-skog, blandskog (lövblandad barrskog)</td></tr>
-<tr><td><code>9906</code></td><td>Icke-natura-skog, triviallövskog</td></tr>
-<tr><td><code>9907</code></td><td>Icke-natura-skog, ädellövskogar</td></tr>
-<tr><td><code>9908</code></td><td>Icke-natura-skog, triviallövskog med ädellövinslag</td></tr>
-<tr><td><code>9909</code></td><td>Icke-natura-skog, kalkbarrskog</td></tr>
-<tr><td><code>9915</code></td><td>Icke-natura-skog, sandbarrskog</td></tr>
-<tr><td><code>9925</code></td><td>Icke-natura-skog, fuktig/blöt mark</td></tr>
-<tr><td><code>9940</code></td><td>Icke-natura-skog, gles fjällbarrskog</td></tr></tbody></table>
+<p><em>(247 koder — sök i webbläsaren med Ctrl+F, eller använd sökrutan på HTML-sidan.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Ospecificerad kod (0)</td>
+</tr>
+<tr>
+<td>109</td>
+<td>Dike/uträtat vattendrag</td>
+</tr>
+<tr>
+<td>120</td>
+<td>Alpina vattendrag, &lt; 3 m</td>
+</tr>
+<tr>
+<td>121</td>
+<td>Alpina vattendrag, 3-6 m</td>
+</tr>
+<tr>
+<td>122</td>
+<td>Alpina vattendrag, vattenfall &lt; 3 m</td>
+</tr>
+<tr>
+<td>123</td>
+<td>Alpina vattendrag, vattenfall 3-6 m</td>
+</tr>
+<tr>
+<td>124</td>
+<td>Alpina vattendrag, fors &lt; 3 m</td>
+</tr>
+<tr>
+<td>125</td>
+<td>Alpina vattendrag, fors 3-6 m</td>
+</tr>
+<tr>
+<td>126</td>
+<td>Mindre vattendrag, &lt; 3 m</td>
+</tr>
+<tr>
+<td>127</td>
+<td>Mindre vattendrag, 3-6 m</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Mindre vattendrag, vattenfall &lt; 3 m</td>
+</tr>
+<tr>
+<td>129</td>
+<td>Mindre vattendrag, vattenfall 3-6 m</td>
+</tr>
+<tr>
+<td>130</td>
+<td>Mindre vattendrag, fors &lt; 3 m</td>
+</tr>
+<tr>
+<td>131</td>
+<td>Mindre vattendrag, fors 3-6 m</td>
+</tr>
+<tr>
+<td>132</td>
+<td>Mindre vattendrag, sten- och blockrika partier &lt; 3m</td>
+</tr>
+<tr>
+<td>133</td>
+<td>Mindre vattendrag, sten- och blockrika partier 3-6 m</td>
+</tr>
+<tr>
+<td>134</td>
+<td>Mindre vattendrag, sten- och blockrika forssträckor &lt; 3 m</td>
+</tr>
+<tr>
+<td>135</td>
+<td>Mindre vattendrag, sten- och blockrika forssträckor 3-6 m</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Marint vatten</td>
+</tr>
+<tr>
+<td>1110</td>
+<td>Sublittorala sandbankar</td>
+</tr>
+<tr>
+<td>1117</td>
+<td>Sublittorala sandbankar - Med dominans av ålgräs/marina</td>
+</tr>
+<tr>
+<td>1118</td>
+<td>Sublittorala sandbankar - Med dominans av makroalgsvegetation</td>
+</tr>
+<tr>
+<td>1119</td>
+<td>Sublittorala sandbankar - Fri från vegetation</td>
+</tr>
+<tr>
+<td>1130</td>
+<td>Estuarier</td>
+</tr>
+<tr>
+<td>1137</td>
+<td>Estuarier - Med dominans av ålgräs/marina kärlväxter</td>
+</tr>
+<tr>
+<td>1138</td>
+<td>Estuarier - Med dominans av makroalgsvegetation</td>
+</tr>
+<tr>
+<td>1139</td>
+<td>Estuarier - Fri från vegetation</td>
+</tr>
+<tr>
+<td>1140</td>
+<td>Blottade ler- och sandbottnar</td>
+</tr>
+<tr>
+<td>1147</td>
+<td>Blottade ler- och sandbottnar - Med dominans av ålgräs/marina</td>
+</tr>
+<tr>
+<td>1150</td>
+<td>Laguner</td>
+</tr>
+<tr>
+<td>1152</td>
+<td>Laguner - Lagunartade vikar</td>
+</tr>
+<tr>
+<td>1153</td>
+<td>Laguner - Flada på landhöjningskust</td>
+</tr>
+<tr>
+<td>1154</td>
+<td>Laguner - Glo eller gloflada på landhöjningskust</td>
+</tr>
+<tr>
+<td>1157</td>
+<td>Laguner - Med dominans av ålgräs/marina kärlväxter</td>
+</tr>
+<tr>
+<td>1158</td>
+<td>Laguner - Med dominans av makroalgsvegetation</td>
+</tr>
+<tr>
+<td>1160</td>
+<td>Vikar och sund</td>
+</tr>
+<tr>
+<td>1167</td>
+<td>Vikar och sund - Med dominans av ålgräs/marina kärlväxter</td>
+</tr>
+<tr>
+<td>1168</td>
+<td>Vikar och sund - Med dominans av makroalgsvegetation</td>
+</tr>
+<tr>
+<td>1169</td>
+<td>Vikar och sund - Fri från vegetation</td>
+</tr>
+<tr>
+<td>1170</td>
+<td>Rev</td>
+</tr>
+<tr>
+<td>1171</td>
+<td>Rev - Biogent rev, mussel eller ostronbank</td>
+</tr>
+<tr>
+<td>1172</td>
+<td>Rev - Biogent rev, korallogent (ögonkorall)</td>
+</tr>
+<tr>
+<td>1173</td>
+<td>Rev - Biogent rev, krusta (kalkalgskrusta/märlbäddsbotten)</td>
+</tr>
+<tr>
+<td>1174</td>
+<td>Rev - Geogent rev 0-30 meter (berg/blocksubstrat)</td>
+</tr>
+<tr>
+<td>1175</td>
+<td>Rev - Geogent rev &gt; 30 meter (berg/blocksubstrat)</td>
+</tr>
+<tr>
+<td>1177</td>
+<td>Rev - Med dominans av ålgräs/marina kärlväxter</td>
+</tr>
+<tr>
+<td>1178</td>
+<td>Rev - Med dominans av makroalgsvegetation</td>
+</tr>
+<tr>
+<td>1180</td>
+<td>Submarina strukturer orsakade av utläckande gas</td>
+</tr>
+<tr>
+<td>1181</td>
+<td>Submarina strukturer orsakade av utläckande gas - Bubbelrev</td>
+</tr>
+<tr>
+<td>1182</td>
+<td>Submarina strukturer orsakade av utläckande gas -</td>
+</tr>
+<tr>
+<td>1210</td>
+<td>Driftvallar</td>
+</tr>
+<tr>
+<td>1220</td>
+<td>Sten- och grusvallar</td>
+</tr>
+<tr>
+<td>1230</td>
+<td>Havsklippor</td>
+</tr>
+<tr>
+<td>1231</td>
+<td>Havsklippor - Kalkrika klippor</td>
+</tr>
+<tr>
+<td>1232</td>
+<td>Havsklippor - Silikatrika klippor</td>
+</tr>
+<tr>
+<td>1310</td>
+<td>Glasörtsstränder</td>
+</tr>
+<tr>
+<td>1330</td>
+<td>Salta strandängar</td>
+</tr>
+<tr>
+<td>1610</td>
+<td>Åsöar i Östersjön</td>
+</tr>
+<tr>
+<td>1620</td>
+<td>Skär i Östersjön (endast komplexkod)</td>
+</tr>
+<tr>
+<td>1621</td>
+<td>Skär i Östersjön - Terrester del</td>
+</tr>
+<tr>
+<td>1630</td>
+<td>Strandängar vid Östersjön</td>
+</tr>
+<tr>
+<td>1631</td>
+<td>Strandängar vid Östersjön - Ishyvlade</td>
+</tr>
+<tr>
+<td>1640</td>
+<td>Sandstränder vid Östersjön</td>
+</tr>
+<tr>
+<td>1650</td>
+<td>Smala vikar i Östersjön</td>
+</tr>
+<tr>
+<td>1820</td>
+<td>Obestämd sten-/sandstrand i Östersjön (1220/1640)</td>
+</tr>
+<tr>
+<td>1830</td>
+<td>Osäkra ler- eller sandsediment/ blottade bottnar</td>
+</tr>
+<tr>
+<td>1950</td>
+<td>Icke-natura strand</td>
+</tr>
+<tr>
+<td>2100</td>
+<td>Öppna kustdyner vid Atlant- och Östersjökusten</td>
+</tr>
+<tr>
+<td>2110</td>
+<td>Fördyner</td>
+</tr>
+<tr>
+<td>2120</td>
+<td>Vita dyner</td>
+</tr>
+<tr>
+<td>2130</td>
+<td>Grå dyner</td>
+</tr>
+<tr>
+<td>2140</td>
+<td>Risdyner</td>
+</tr>
+<tr>
+<td>2170</td>
+<td>Sandvidedyner</td>
+</tr>
+<tr>
+<td>2180</td>
+<td>Trädklädda dyner</td>
+</tr>
+<tr>
+<td>2181</td>
+<td>Trädklädda dyner - Torr dynskog</td>
+</tr>
+<tr>
+<td>2182</td>
+<td>Trädklädda dyner - Dynsumpskog</td>
+</tr>
+<tr>
+<td>2190</td>
+<td>Dynvåtmark</td>
+</tr>
+<tr>
+<td>2300</td>
+<td>Obestämd sanddominerad mark i inlandet (2320/2330)</td>
+</tr>
+<tr>
+<td>2320</td>
+<td>Rissandhedar</td>
+</tr>
+<tr>
+<td>2330</td>
+<td>Grässandhedar</td>
+</tr>
+<tr>
+<td>2920</td>
+<td>Sanddominerad, icke-natura naturtyp</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>Vatten</td>
+</tr>
+<tr>
+<td>3100</td>
+<td>Sjö</td>
+</tr>
+<tr>
+<td>3110</td>
+<td>Näringsfattiga slättsjöar</td>
+</tr>
+<tr>
+<td>3130</td>
+<td>Ävjestrandsjöar</td>
+</tr>
+<tr>
+<td>3140</td>
+<td>Kransalgsjöar</td>
+</tr>
+<tr>
+<td>3150</td>
+<td>Naturligt näringsrika sjöar</td>
+</tr>
+<tr>
+<td>3160</td>
+<td>Myrsjöar</td>
+</tr>
+<tr>
+<td>3200</td>
+<td>Vattendrag</td>
+</tr>
+<tr>
+<td>3210</td>
+<td>Större vattendrag</td>
+</tr>
+<tr>
+<td>3211</td>
+<td>Större vattendrag - Vattenfall</td>
+</tr>
+<tr>
+<td>3212</td>
+<td>Större vattendrag - Forssträckor</td>
+</tr>
+<tr>
+<td>3213</td>
+<td>Större vattendrag – Sten- och blockrika partier</td>
+</tr>
+<tr>
+<td>3214</td>
+<td>Större vattendrag – Sten- och blockrika forssträckor</td>
+</tr>
+<tr>
+<td>3220</td>
+<td>Alpina vattendrag</td>
+</tr>
+<tr>
+<td>3221</td>
+<td>Alpina vattendrag - Vattenfall</td>
+</tr>
+<tr>
+<td>3222</td>
+<td>Alpina vattendrag - Forssträckor</td>
+</tr>
+<tr>
+<td>3260</td>
+<td>Mindre vattendrag</td>
+</tr>
+<tr>
+<td>3261</td>
+<td>Mindre vattendrag - Flytbladstyp</td>
+</tr>
+<tr>
+<td>3262</td>
+<td>Mindre vattendrag - Fontinalistyp</td>
+</tr>
+<tr>
+<td>3263</td>
+<td>Mindre vattendrag - Vattenfall</td>
+</tr>
+<tr>
+<td>3264</td>
+<td>Mindre vattendrag - Forssträckor</td>
+</tr>
+<tr>
+<td>3265</td>
+<td>Mindre vattendrag – Sten- och blockrika partier</td>
+</tr>
+<tr>
+<td>3266</td>
+<td>Mindre vattendrag – Sten- och blockrika forssträckor</td>
+</tr>
+<tr>
+<td>3268</td>
+<td>Ospecificerad kod (3268)</td>
+</tr>
+<tr>
+<td>3900</td>
+<td>Icke-natura sjö</td>
+</tr>
+<tr>
+<td>3920</td>
+<td>Icke-natura sjö, småvatten i odlingslandskapet</td>
+</tr>
+<tr>
+<td>3942</td>
+<td>Icke-natura sjö, oliogotrof sprickdalssjö</td>
+</tr>
+<tr>
+<td>3960</td>
+<td>Icke-natura vattendrag - Alpint</td>
+</tr>
+<tr>
+<td>3999</td>
+<td>Icke-natura vattendrag - Ej alpint</td>
+</tr>
+<tr>
+<td>4000</td>
+<td>Rishedar, gräshedar och videbuskmarker</td>
+</tr>
+<tr>
+<td>4010</td>
+<td>Fukthedar</td>
+</tr>
+<tr>
+<td>4030</td>
+<td>Torra hedar</td>
+</tr>
+<tr>
+<td>4060</td>
+<td>Alpina hedar</td>
+</tr>
+<tr>
+<td>4080</td>
+<td>Alpina videbuskmarker</td>
+</tr>
+<tr>
+<td>4810</td>
+<td>Obestämd torr-frisk hed/gräsmark nedanför trädgränsen</td>
+</tr>
+<tr>
+<td>4811</td>
+<td>Obestämd fuktig-blöt hed/gräsmark/myrmark nedanför trädgränsen</td>
+</tr>
+<tr>
+<td>4812</td>
+<td>Obestämd torr-frisk hed/gräsmark ovanför trädgränsen</td>
+</tr>
+<tr>
+<td>4813</td>
+<td>Obestämd fuktig-blöt hed/gräsmark/myrmark ovan trädgränsen</td>
+</tr>
+<tr>
+<td>4880</td>
+<td>Obestämd videbuskmark/högörtäng ovanför trädgränsen (4060/6430)</td>
+</tr>
+<tr>
+<td>5130</td>
+<td>Enbuskmarker</td>
+</tr>
+<tr>
+<td>5131</td>
+<td>Enbuskmarker - Enbuskmark på hed</td>
+</tr>
+<tr>
+<td>5132</td>
+<td>Enbuskmarker - Enbuskmark på kalkgräsmark</td>
+</tr>
+<tr>
+<td>5133</td>
+<td>Enbuskmarker - Naturlig enbuskmark vid kust</td>
+</tr>
+<tr>
+<td>6000</td>
+<td>Gräsmarker, substratdominerade gräsmarker och alluviala gräsmarker</td>
+</tr>
+<tr>
+<td>6110</td>
+<td>Basiska berghällar</td>
+</tr>
+<tr>
+<td>6120</td>
+<td>Sandstäpp</td>
+</tr>
+<tr>
+<td>6150</td>
+<td>Alpina silikatgräsmarker</td>
+</tr>
+<tr>
+<td>6170</td>
+<td>Alpina kalkgräsmarker</td>
+</tr>
+<tr>
+<td>6210</td>
+<td>Kalkgräsmarker</td>
+</tr>
+<tr>
+<td>6211</td>
+<td>Kalkgräsmarker - Viktiga orkidélokaler</td>
+</tr>
+<tr>
+<td>6230</td>
+<td>Stagg-gräsmarker</td>
+</tr>
+<tr>
+<td>6270</td>
+<td>Silikatgräsmarker</td>
+</tr>
+<tr>
+<td>6280</td>
+<td>Alvar</td>
+</tr>
+<tr>
+<td>6283</td>
+<td>Prekambriska kalkhällmarker</td>
+</tr>
+<tr>
+<td>6410</td>
+<td>Fuktängar</td>
+</tr>
+<tr>
+<td>6411</td>
+<td>Fuktängar - Kalkfuktäng</td>
+</tr>
+<tr>
+<td>6412</td>
+<td>Fuktängar – Fuktäng på surare jordar</td>
+</tr>
+<tr>
+<td>6413</td>
+<td>Fuktängar - Ishyvlade</td>
+</tr>
+<tr>
+<td>6430</td>
+<td>Högörtängar</td>
+</tr>
+<tr>
+<td>6450</td>
+<td>Svämängar</td>
+</tr>
+<tr>
+<td>6451</td>
+<td>Svämängar - Ishyvlade</td>
+</tr>
+<tr>
+<td>6510</td>
+<td>Slåtterängar i låglandet</td>
+</tr>
+<tr>
+<td>6520</td>
+<td>Höglänta slåtterängar</td>
+</tr>
+<tr>
+<td>6530</td>
+<td>Lövängar</td>
+</tr>
+<tr>
+<td>6830</td>
+<td>Obestämd naturlig högörts-/ översvämnings-/ alluvial äng</td>
+</tr>
+<tr>
+<td>6910</td>
+<td>Öppen kultiverad gräsmark</td>
+</tr>
+<tr>
+<td>6911</td>
+<td>Öppen kultiverad betesmark</td>
+</tr>
+<tr>
+<td>6912</td>
+<td>Öppen kultiverad slåtteräng</td>
+</tr>
+<tr>
+<td>6913</td>
+<td>Trädbärande kultiverad betesmark</td>
+</tr>
+<tr>
+<td>6914</td>
+<td>Trädbärande kultiverad slåtteräng</td>
+</tr>
+<tr>
+<td>6917</td>
+<td>Betad skog</td>
+</tr>
+<tr>
+<td>6918</td>
+<td>Trädbärande kultiverad gräsmark</td>
+</tr>
+<tr>
+<td>6930</td>
+<td>Åker</td>
+</tr>
+<tr>
+<td>6960</td>
+<td>Öppen icke-naturanaturtyp</td>
+</tr>
+<tr>
+<td>6999</td>
+<td>Exploaterad mark</td>
+</tr>
+<tr>
+<td>7000</td>
+<td>Osäker våtmark</td>
+</tr>
+<tr>
+<td>7110</td>
+<td>Högmossar</td>
+</tr>
+<tr>
+<td>7111</td>
+<td>Högmossar - Öppna mosseplan</td>
+</tr>
+<tr>
+<td>7120</td>
+<td>Skadade högmossar</td>
+</tr>
+<tr>
+<td>7130</td>
+<td>Terrängtäckande mossar</td>
+</tr>
+<tr>
+<td>7140</td>
+<td>Öppna mossar och kärr</td>
+</tr>
+<tr>
+<td>7141</td>
+<td>Öppna mossar och kärr - Svagt välvda mossar</td>
+</tr>
+<tr>
+<td>7142</td>
+<td>Öppna mossar och kärr - Kärr och gungflyn</td>
+</tr>
+<tr>
+<td>7143</td>
+<td>Öppna mossar och kärr - Hävdade svagt välvda mossar, kärr och</td>
+</tr>
+<tr>
+<td>7160</td>
+<td>Källor och källkärr</td>
+</tr>
+<tr>
+<td>7210</td>
+<td>Agkärr</td>
+</tr>
+<tr>
+<td>7220</td>
+<td>Kalktuffkällor</td>
+</tr>
+<tr>
+<td>7230</td>
+<td>Rikkärr</td>
+</tr>
+<tr>
+<td>7231</td>
+<td>Rikkärr - Trädklädda och videbevuxna (krontäckning 30-100 %)</td>
+</tr>
+<tr>
+<td>7232</td>
+<td>Rikkärr - Öppna hävdade (krontäckning 0-30 %)</td>
+</tr>
+<tr>
+<td>7233</td>
+<td>Rikkärr - Öppna (krontäckning 0-30%)</td>
+</tr>
+<tr>
+<td>7240</td>
+<td>Alpina översilningskärr</td>
+</tr>
+<tr>
+<td>7310</td>
+<td>Aapamyrar</td>
+</tr>
+<tr>
+<td>7320</td>
+<td>Palsmyrar</td>
+</tr>
+<tr>
+<td>7810</td>
+<td>Obestämd källa/källkärr (7160/7220)</td>
+</tr>
+<tr>
+<td>7820</td>
+<td>Obestämd öppet rikkärr/annan öppen myr (7232/7233/7140)</td>
+</tr>
+<tr>
+<td>7830</td>
+<td>Obestämd öppen myr, naturanaturtyp</td>
+</tr>
+<tr>
+<td>7930</td>
+<td>Torvtäkt</td>
+</tr>
+<tr>
+<td>7999</td>
+<td>Våtmark, icke-naturanaturtyp</td>
+</tr>
+<tr>
+<td>8000</td>
+<td>Osäker substratmark</td>
+</tr>
+<tr>
+<td>8110</td>
+<td>Silikatrasmarker</td>
+</tr>
+<tr>
+<td>8120</td>
+<td>Kalkrasmarker</td>
+</tr>
+<tr>
+<td>8210</td>
+<td>Kalkbranter</td>
+</tr>
+<tr>
+<td>8220</td>
+<td>Silikatbranter</td>
+</tr>
+<tr>
+<td>8230</td>
+<td>Hällmarkstorräng</td>
+</tr>
+<tr>
+<td>8231</td>
+<td>Hällmarkstorräng - Hällmarkstorrängstyp</td>
+</tr>
+<tr>
+<td>8232</td>
+<td>Hällmarkstorräng - Ej hävdberoende typ</td>
+</tr>
+<tr>
+<td>8240</td>
+<td>Karsthällmarker</td>
+</tr>
+<tr>
+<td>8310</td>
+<td>Grottor</td>
+</tr>
+<tr>
+<td>8330</td>
+<td>Havsgrottor, helt eller delvis under vattenytan</td>
+</tr>
+<tr>
+<td>8340</td>
+<td>Glaciärer</td>
+</tr>
+<tr>
+<td>8810</td>
+<td>Obestämd silikat/basisk rasmark (8110/8120)</td>
+</tr>
+<tr>
+<td>8820</td>
+<td>Obestämd silikat/kalkrik klippvegetation (8210/8220)</td>
+</tr>
+<tr>
+<td>8840</td>
+<td>Obestämd hällmark basisk/silikat (6110/8230)</td>
+</tr>
+<tr>
+<td>8900</td>
+<td>Öppna substratmarker, icke-naturanaturtyp</td>
+</tr>
+<tr>
+<td>8920</td>
+<td>Gles hällmarkstallskog, &lt;30% krontäckning</td>
+</tr>
+<tr>
+<td>8949</td>
+<td>Blekemark</td>
+</tr>
+<tr>
+<td>9000</td>
+<td>Skog</td>
+</tr>
+<tr>
+<td>9005</td>
+<td>Taiga - Kalkbarrskog</td>
+</tr>
+<tr>
+<td>9006</td>
+<td>Taiga - Sumpskog</td>
+</tr>
+<tr>
+<td>9008</td>
+<td>Taiga - Kalmark/glest beskogad mark med mycket död ved efter</td>
+</tr>
+<tr>
+<td>9009</td>
+<td>Taiga - Naturliga successionsstadier efter störning</td>
+</tr>
+<tr>
+<td>9010</td>
+<td>Taiga</td>
+</tr>
+<tr>
+<td>9020</td>
+<td>Nordlig ädellövskog</td>
+</tr>
+<tr>
+<td>9030</td>
+<td>Landhöjningsskog</td>
+</tr>
+<tr>
+<td>9040</td>
+<td>Fjällbjörkskog</td>
+</tr>
+<tr>
+<td>9050</td>
+<td>Näringsrik granskog</td>
+</tr>
+<tr>
+<td>9060</td>
+<td>Åsbarrskog</td>
+</tr>
+<tr>
+<td>9061</td>
+<td>Åsbarrskog - Örtrik talltyp</td>
+</tr>
+<tr>
+<td>9062</td>
+<td>Åsbarrskog - Örtrik grantyp</td>
+</tr>
+<tr>
+<td>9070</td>
+<td>Trädklädd betesmark</td>
+</tr>
+<tr>
+<td>9071</td>
+<td>Trädklädda betesmarker - Ekhagar</td>
+</tr>
+<tr>
+<td>9072</td>
+<td>Trädklädda betesmarker - Ädellövskogdominerade</td>
+</tr>
+<tr>
+<td>9080</td>
+<td>Lövsumpskog</td>
+</tr>
+<tr>
+<td>9110</td>
+<td>Näringsfattig bokskog</td>
+</tr>
+<tr>
+<td>9130</td>
+<td>Näringsrik bokskog</td>
+</tr>
+<tr>
+<td>9160</td>
+<td>Näringsrik ekskog</td>
+</tr>
+<tr>
+<td>9161</td>
+<td>Näringsrik ekskog - Ek-avenbokskog</td>
+</tr>
+<tr>
+<td>9162</td>
+<td>Näringsrik ekskog - Ek-hassellund</td>
+</tr>
+<tr>
+<td>9170</td>
+<td>Torr ekskog</td>
+</tr>
+<tr>
+<td>9180</td>
+<td>Ädellövskog i branter</td>
+</tr>
+<tr>
+<td>9190</td>
+<td>Näringsfattig ekskog</td>
+</tr>
+<tr>
+<td>9740</td>
+<td>Skogbevuxen myr (91D0)</td>
+</tr>
+<tr>
+<td>9750</td>
+<td>Svämlövskog (91E0)</td>
+</tr>
+<tr>
+<td>9760</td>
+<td>Svämädellövskog (91F0)</td>
+</tr>
+<tr>
+<td>9801</td>
+<td>Osäker lövskog</td>
+</tr>
+<tr>
+<td>9810</td>
+<td>Osäker Taiga/ickenatura skog</td>
+</tr>
+<tr>
+<td>9820</td>
+<td>Obestämd ädellövskog (9020/9850/9860)</td>
+</tr>
+<tr>
+<td>9830</td>
+<td>Obestämd näringsrik granskog/västlig taiga (9050/9010)</td>
+</tr>
+<tr>
+<td>9840</td>
+<td>Obestämd svämskog (9750/9760)</td>
+</tr>
+<tr>
+<td>9841</td>
+<td>Obestämd lövsumpskog/ skogbevuxen myr (9080/9740)</td>
+</tr>
+<tr>
+<td>9842</td>
+<td>Obestämd lövsumpskog/ skogbevuxen myr/ trädklädda rikkärr</td>
+</tr>
+<tr>
+<td>9843</td>
+<td>Obestämd skogbevuxen myr/ Taiga (9740/9010)</td>
+</tr>
+<tr>
+<td>9850</td>
+<td>Obestämd bokskog (9110/9130)</td>
+</tr>
+<tr>
+<td>9860</td>
+<td>Obestämd ekskog (9160/9190)</td>
+</tr>
+<tr>
+<td>9870</td>
+<td>Osäker skogbevuxen myr – icke naturanaturtyp</td>
+</tr>
+<tr>
+<td>9900</td>
+<td>Ickenatura-skog</td>
+</tr>
+<tr>
+<td>9903</td>
+<td>Icke-natura-skog, barrskog</td>
+</tr>
+<tr>
+<td>9905</td>
+<td>Icke-natura-skog, blandskog (lövblandad barrskog)</td>
+</tr>
+<tr>
+<td>9906</td>
+<td>Icke-natura-skog, triviallövskog</td>
+</tr>
+<tr>
+<td>9907</td>
+<td>Icke-natura-skog, ädellövskogar</td>
+</tr>
+<tr>
+<td>9908</td>
+<td>Icke-natura-skog, triviallövskog med ädellövinslag</td>
+</tr>
+<tr>
+<td>9909</td>
+<td>Icke-natura-skog, kalkbarrskog</td>
+</tr>
+<tr>
+<td>9915</td>
+<td>Icke-natura-skog, sandbarrskog</td>
+</tr>
+<tr>
+<td>9925</td>
+<td>Icke-natura-skog, fuktig/blöt mark</td>
+</tr>
+<tr>
+<td>9940</td>
+<td>Icke-natura-skog, gles fjällbarrskog</td>
+</tr>
+</tbody>
+</table>
 <h3 id="naturtypsstatus">Naturtypsstatus</h3>
 <p>NV:s status för naturtypsbedömningen (Handledning NNK, tabell 6).</p>
-<table class="kodtabell" id="naturtypsstatus-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Fullgod Natura-naturtyp</td></tr>
-<tr><td><code>2</code></td><td>Icke fullgod Natura-naturtyp</td></tr>
-<tr><td><code>3</code></td><td>Utvecklingsmark, icke Natura-naturtyp</td></tr>
-<tr><td><code>4</code></td><td>Övrigt, icke Natura-naturtyp</td></tr>
-<tr><td><code>5</code></td><td>Ej bedömd status</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fullgod Natura-naturtyp</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Icke fullgod Natura-naturtyp</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Utvecklingsmark, icke Natura-naturtyp</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Övrigt, icke Natura-naturtyp</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ej bedömd status</td>
+</tr>
+</tbody>
+</table>
 <h3 id="karteringsstatus">Karteringsstatus</h3>
 <p>Hur senaste karteringen gjordes (Handledning NNK, tabell 7).</p>
-<table class="kodtabell" id="karteringsstatus-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Ej granskad</td></tr>
-<tr><td><code>2</code></td><td>Granskad vid skrivbordet</td></tr>
-<tr><td><code>3</code></td><td>Besökt i fält</td></tr>
-<tr><td><code>4</code></td><td>Inventerad i fält</td></tr>
-<tr><td><code>5</code></td><td>Åtgärdas</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ej granskad</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Granskad vid skrivbordet</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Besökt i fält</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Inventerad i fält</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Åtgärdas</td>
+</tr>
+</tbody>
+</table>
 <h3 id="komplex">Komplex</h3>
 <p>NV:s kod för sammansatta naturtyper (komplexkoder) — förekommer bara för dessa sex kombinationer.</p>
-<table class="kodtabell" id="komplex-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1130</code></td><td>Estuarier</td></tr>
-<tr><td><code>1160</code></td><td>Vikar och sund (1110, 1140, 1170, 1610, 1620)</td></tr>
-<tr><td><code>1610</code></td><td>Åsöar i Östersjön – förekommer endast som komplexkod</td></tr>
-<tr><td><code>1620</code></td><td>Skär i Östersjön – förekommer endast som komplexkod</td></tr>
-<tr><td><code>7110</code></td><td>Högmossar</td></tr>
-<tr><td><code>7310</code></td><td>Aapamyrar</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1130</td>
+<td>Estuarier</td>
+</tr>
+<tr>
+<td>1160</td>
+<td>Vikar och sund (1110, 1140, 1170, 1610, 1620)</td>
+</tr>
+<tr>
+<td>1610</td>
+<td>Åsöar i Östersjön – förekommer endast som komplexkod</td>
+</tr>
+<tr>
+<td>1620</td>
+<td>Skär i Östersjön – förekommer endast som komplexkod</td>
+</tr>
+<tr>
+<td>7110</td>
+<td>Högmossar</td>
+</tr>
+<tr>
+<td>7310</td>
+<td>Aapamyrar</td>
+</tr>
+</tbody>
+</table>
 <h3 id="forandringsorsak">Förändringsorsak</h3>
 <p>NV:s kod för varför en tidigare bedömning ändrats.</p>
-<table class="kodtabell" id="forandringsorsak-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>Rättning av felaktig kartering</td></tr>
-<tr><td><code>2</code></td><td>Faktisk förändring av bevarandestatus/naturtypsareal</td></tr>
-<tr><td><code>3</code></td><td>Komplettering</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rättning av felaktig kartering</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Faktisk förändring av bevarandestatus/naturtypsareal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Komplettering</td>
+</tr>
+</tbody>
+</table>
 <h3 id="ursprung">Ursprung</h3>
 <p>NV:s kod för varifrån uppgiften ursprungligen kommer.</p>
-<table class="kodtabell" id="ursprung-tabell"><thead><tr><th style="width:90px">Kod</th><th>Klartext</th></tr></thead><tbody><tr><td><code>1</code></td><td>BIDOS</td></tr>
-<tr><td><code>2</code></td><td>NNK</td></tr>
-<tr><td><code>3</code></td><td>BIDOS Sammanslagning</td></tr>
-<tr><td><code>4</code></td><td>BIDOS + NNK</td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BIDOS</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NNK</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BIDOS Sammanslagning</td>
+</tr>
+<tr>
+<td>4</td>
+<td>BIDOS + NNK</td>
+</tr>
+</tbody>
+</table>
 </div>
 <script>
 (function(){
@@ -474,21 +1480,6 @@ KartLits-mallens ArcGIS-domäner, <code>Beskrivning_NNK_koder.pdf</code> (NV PM 
     r.setAttribute('data-theme',mork()?'light':'dark');rita();
   });
   rita();
-})();
-(function(){
-  var s=document.getElementById('sokfalt');
-  if(!s)return;
-  var tables=Array.prototype.slice.call(document.querySelectorAll('table.kodtabell'));
-  s.addEventListener('input',function(){
-    var q=s.value.trim().toLowerCase();
-    tables.forEach(function(t){
-      var rows=t.querySelectorAll('tbody tr');
-      rows.forEach(function(tr){
-        var txt=tr.textContent.toLowerCase();
-        tr.classList.toggle('dold', q.length>0 && txt.indexOf(q)===-1);
-      });
-    });
-  });
 })();
 </script>
 </body>
