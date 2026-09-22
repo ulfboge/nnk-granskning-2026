@@ -22,6 +22,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Area (ha)** ligger i gruppen *Naturtyp (NNK-data)*, inte i *Identifiering och skydd* där `bygg_nnk_lyrx.py`s `NEW_FIELDS`-ordning ursprungligen placerade den.
 - **Fältnamnet för metod-kommentaren** skrivs `kommentar_metod` (gemener) i Arcade-uttrycket för Granskning 3, medan övrig dokumentation (`webbgis-publicering.md`, `metodik.md`) genomgående skriver `Kommentar_metod` (stort K). Arcades fältuppslagning är skiftlägesokänslig så det är sannolikt ofarligt, men värt att göra konsekvent i dokumentationen.
 - **Grupp 1–3** slår upp klartext direkt med `DomainName($feature, "fältnamn")` på kodfälten (`livsmiljötyp1–3`, `justering`, `utbredning`, `tillstand`, `kontroll1–3`, `metod`), inte via de förberäknade `_text`-fälten som `bygg_nnk_lyrx.py` annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade `_text`-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).
+- **Startdatum/Slutdatum senaste inventering** (`habitat_period_lastdata_start`/`_end`) tillagda i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. **Kräver en publiceringsförberedelse som inte är gjord än:** fältsynlighet för `habitat_period_*` måste slås PA i `NNK_naturaobjekt_yta`/`lin`/`pkt` (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.
 
 ---
 
@@ -132,6 +133,38 @@ if (!IsEmpty($feature.karteringsstatus_text)) {
         label: "Karteringsstatus"
     });
     attrs["karteringsstatus_varde"] = $feature.karteringsstatus_text;
+}
+
+// Startdatum senaste inventering av naturtypen
+// OBS (2026-09-22): kräver att fältsynlighet för habitat_period_* slås PA i
+// NNK_naturaobjekt_yta/lin/pkt (Data > Fields i Pro) och läget republiceras
+// (Share As Web Layer > Overwrite) - just nu står webbgis-publicering.md steg 3
+// att dessa ska hållas AVSTÄNGDA, så fälten finns inte i den publicerade
+// tjänsten än. Formatering antar Date-fält (TypeOf-koll gör den ofarlig även
+// om fältet visar sig vara Text/Short istället).
+if (!IsEmpty($feature.habitat_period_lastdata_start)) {
+    Push(infos, {
+        fieldName: "habitat_period_lastdata_start_varde",
+        label: "Startdatum senaste inventering"
+    });
+    attrs["habitat_period_lastdata_start_varde"] = IIf(
+        TypeOf($feature.habitat_period_lastdata_start) == "Date",
+        Text($feature.habitat_period_lastdata_start, "YYYY"),
+        Text($feature.habitat_period_lastdata_start)
+    );
+}
+
+// Slutdatum senaste inventering av naturtypen
+if (!IsEmpty($feature.habitat_period_lastdata_end)) {
+    Push(infos, {
+        fieldName: "habitat_period_lastdata_end_varde",
+        label: "Slutdatum senaste inventering"
+    });
+    attrs["habitat_period_lastdata_end_varde"] = IIf(
+        TypeOf($feature.habitat_period_lastdata_end) == "Date",
+        Text($feature.habitat_period_lastdata_end, "YYYY"),
+        Text($feature.habitat_period_lastdata_end)
+    );
 }
 
 // Målnaturtyp 1

@@ -107,6 +107,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Area (ha)</strong> ligger i gruppen <em>Naturtyp (NNK-data)</em>, inte i <em>Identifiering och skydd</em> där <code>bygg_nnk_lyrx.py</code>s <code>NEW_FIELDS</code>-ordning ursprungligen placerade den.</li>
 <li><strong>Fältnamnet för metod-kommentaren</strong> skrivs <code>kommentar_metod</code> (gemener) i Arcade-uttrycket för Granskning 3, medan övrig dokumentation (<code>webbgis-publicering.md</code>, <code>metodik.md</code>) genomgående skriver <code>Kommentar_metod</code> (stort K). Arcades fältuppslagning är skiftlägesokänslig så det är sannolikt ofarligt, men värt att göra konsekvent i dokumentationen.</li>
 <li><strong>Grupp 1–3</strong> slår upp klartext direkt med <code>DomainName($feature, "fältnamn")</code> på kodfälten (<code>livsmiljötyp1–3</code>, <code>justering</code>, <code>utbredning</code>, <code>tillstand</code>, <code>kontroll1–3</code>, <code>metod</code>), inte via de förberäknade <code>_text</code>-fälten som <code>bygg_nnk_lyrx.py</code> annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade <code>_text</code>-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).</li>
+<li><strong>Startdatum/Slutdatum senaste inventering</strong> (<code>habitat_period_lastdata_start</code>/<code>_end</code>) tillagda i <em>Naturtyp (NNK-data)</em> 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. <strong>Kräver en publiceringsförberedelse som inte är gjord än:</strong> fältsynlighet för <code>habitat_period_*</code> måste slås PA i <code>NNK_naturaobjekt_yta</code>/<code>lin</code>/<code>pkt</code> (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.</li>
 </ul>
 <hr />
 <h2 id="1-identifiering-och-skydd">1. Identifiering och skydd</h2>
@@ -211,6 +212,38 @@ if (!IsEmpty($feature.karteringsstatus_text)) {
         label: &quot;Karteringsstatus&quot;
     });
     attrs[&quot;karteringsstatus_varde&quot;] = $feature.karteringsstatus_text;
+}
+
+// Startdatum senaste inventering av naturtypen
+// OBS (2026-09-22): kräver att fältsynlighet för habitat_period_* slås PA i
+// NNK_naturaobjekt_yta/lin/pkt (Data &gt; Fields i Pro) och läget republiceras
+// (Share As Web Layer &gt; Overwrite) - just nu står webbgis-publicering.md steg 3
+// att dessa ska hållas AVSTÄNGDA, så fälten finns inte i den publicerade
+// tjänsten än. Formatering antar Date-fält (TypeOf-koll gör den ofarlig även
+// om fältet visar sig vara Text/Short istället).
+if (!IsEmpty($feature.habitat_period_lastdata_start)) {
+    Push(infos, {
+        fieldName: &quot;habitat_period_lastdata_start_varde&quot;,
+        label: &quot;Startdatum senaste inventering&quot;
+    });
+    attrs[&quot;habitat_period_lastdata_start_varde&quot;] = IIf(
+        TypeOf($feature.habitat_period_lastdata_start) == &quot;Date&quot;,
+        Text($feature.habitat_period_lastdata_start, &quot;YYYY&quot;),
+        Text($feature.habitat_period_lastdata_start)
+    );
+}
+
+// Slutdatum senaste inventering av naturtypen
+if (!IsEmpty($feature.habitat_period_lastdata_end)) {
+    Push(infos, {
+        fieldName: &quot;habitat_period_lastdata_end_varde&quot;,
+        label: &quot;Slutdatum senaste inventering&quot;
+    });
+    attrs[&quot;habitat_period_lastdata_end_varde&quot;] = IIf(
+        TypeOf($feature.habitat_period_lastdata_end) == &quot;Date&quot;,
+        Text($feature.habitat_period_lastdata_end, &quot;YYYY&quot;),
+        Text($feature.habitat_period_lastdata_end)
+    );
 }
 
 // Målnaturtyp 1
