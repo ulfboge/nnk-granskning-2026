@@ -255,6 +255,7 @@ DOKUMENT = {
     "typiska-arter": False,
     "webbgis-publicering": True,
     "attributbeskrivning": False,
+    "popup-arcade-uttryck": False,
 }
 
 if __name__ == "__main__":

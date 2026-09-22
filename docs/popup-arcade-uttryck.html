@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Popup-uttryck (Arcade) — LstD NNK Granskning — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="popup-uttryck-arcade-lstd-nnk-granskning">Popup-uttryck (Arcade) — LstD NNK Granskning</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</a></li>
+<li><a href="#bakgrund">Bakgrund</a></li>
+<li><a href="#1-identifiering-och-skydd">1. Identifiering och skydd</a></li>
+<li><a href="#2-naturtyp-nnk-data">2. Naturtyp (NNK-data)</a></li>
+<li><a href="#3-granskning-1-avvikelse-och-korrigeringsforslag">3. Granskning 1 — Avvikelse och korrigeringsförslag</a></li>
+<li><a href="#4-granskning-2-tillstand">4. Granskning 2 — Tillstånd</a></li>
+<li><a href="#5-granskning-3-kontroll-och-metod">5. Granskning 3 — Kontroll och metod</a></li>
+<li><a href="#6-granskning-4-granskat-och-kommentarer">6. Granskning 4 — Granskat och kommentarer</a></li>
+</ul>
+</div>
+</nav>
+<h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
+<p><strong>Version:</strong> 1.0 · 2026-09-22
+<strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 2 steg 6, Del 5 steg 5)
+<strong>Status:</strong> Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som <code>bygg_nnk_lyrx.py</code> genererar.</p>
+<hr />
+<h2 id="bakgrund">Bakgrund</h2>
+<p>Popupen för NNK-ytlagret beskrevs ursprungligen (Del 2 steg 6, Del 5 steg 5) som att den byggs en gång av <code>bygg_nnk_lyrx.py</code> (sex <code>CIMTableMediaInfo</code>-sektioner i <code>mediaInfos</code>) och sedan ärvs oförändrad hela vägen till WebMap och Konfigurator. Det stämmer inte längre.</p>
+<p>Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna <strong>Arcade-popuputtryck</strong> direkt i Map Viewers popup-konfiguration för NNK-ytlagret, ett <code>type: "fields"</code>-uttryck per grupp. Anledningen är att en vanlig fältlista i Map Viewer inte kan dölja rader som saknar värde per objekt — det kan ett Arcade-uttryck. Varje uttryck bygger sin egen <code>fieldInfos</code>/<code>attributes</code>-lista dynamiskt och visar "Ingen information registrerad i denna del." om alla fält i gruppen är tomma.</p>
+<p><strong>Det här är den enda versionshanterade kopian av koden.</strong> Den lever annars bara inne i portalens popup-konfiguration (per-lager, i WebMap:en), inte i något lyrx eller skript. Om popupen någon gång nollställs (t.ex. genom att ta bort och lägga till lagret på nytt i WebMap:en — se varningen i Del 5 steg 5) är det här filen att kopiera tillbaka ifrån, uttryck för uttryck.</p>
+<p><strong>Kända avvikelser mot den ursprungliga <code>bygg_nnk_lyrx.py</code>-designen</strong>, upptäckta när koden nedan dokumenterades:</p>
+<ul>
+<li>~~<strong>Granskning 4</strong> saknade <code>nnk_kommentar</code>, <code>faltinventerare</code>, <code>egen_bet</code>~~ — åtgärdat 2026-09-22, alla fem fälten är nu med (se avsnitt 6 nedan).</li>
+<li><strong>Area (ha)</strong> ligger i gruppen <em>Naturtyp (NNK-data)</em>, inte i <em>Identifiering och skydd</em> där <code>bygg_nnk_lyrx.py</code>s <code>NEW_FIELDS</code>-ordning ursprungligen placerade den.</li>
+<li><strong>Fältnamnet för metod-kommentaren</strong> skrivs <code>kommentar_metod</code> (gemener) i Arcade-uttrycket för Granskning 3, medan övrig dokumentation (<code>webbgis-publicering.md</code>, <code>metodik.md</code>) genomgående skriver <code>Kommentar_metod</code> (stort K). Arcades fältuppslagning är skiftlägesokänslig så det är sannolikt ofarligt, men värt att göra konsekvent i dokumentationen.</li>
+<li><strong>Grupp 1–3</strong> slår upp klartext direkt med <code>DomainName($feature, "fältnamn")</code> på kodfälten (<code>livsmiljötyp1–3</code>, <code>justering</code>, <code>utbredning</code>, <code>tillstand</code>, <code>kontroll1–3</code>, <code>metod</code>), inte via de förberäknade <code>_text</code>-fälten som <code>bygg_nnk_lyrx.py</code> annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade <code>_text</code>-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).</li>
+</ul>
+<hr />
+<h2 id="1-identifiering-och-skydd">1. Identifiering och skydd</h2>
+<pre><code class="language-js">// Identifiering och skydd
+// Grundläggande identifiering visas alltid.
+// Skydds-ID visas endast när värde finns.
+
+var infos = [];
+var attrs = {};
+
+// --- Alltid synliga ---
+
+Push(infos, {
+    fieldName: &quot;omrade_varde&quot;,
+    label: &quot;Område&quot;
+});
+attrs[&quot;omrade_varde&quot;] = $feature.omrade_namn;
+
+Push(infos, {
+    fieldName: &quot;skyddskategori_varde&quot;,
+    label: &quot;Skyddskategori&quot;
+});
+attrs[&quot;skyddskategori_varde&quot;] = $feature.skyddskategori;
+
+Push(infos, {
+    fieldName: &quot;lan_varde&quot;,
+    label: &quot;Län (skyddat område)&quot;
+});
+attrs[&quot;lan_varde&quot;] = $feature.lan;
+
+// --- Visas endast när värde finns ---
+
+if (!IsEmpty($feature.n2000_sitecode)) {
+    Push(infos, {
+        fieldName: &quot;n2000_sitecode_varde&quot;,
+        label: &quot;Natura 2000-kod (SE-nummer)&quot;
+    });
+    attrs[&quot;n2000_sitecode_varde&quot;] = $feature.n2000_sitecode;
+}
+
+if (!IsEmpty($feature.n2000_typ)) {
+    Push(infos, {
+        fieldName: &quot;n2000_typ_varde&quot;,
+        label: &quot;Natura 2000-typ (SCI/SPA)&quot;
+    });
+    attrs[&quot;n2000_typ_varde&quot;] = $feature.n2000_typ;
+}
+
+if (!IsEmpty($feature.naturreservat_nvrid)) {
+    Push(infos, {
+        fieldName: &quot;nvrid_varde&quot;,
+        label: &quot;Naturreservat-ID (NVRID)&quot;
+    });
+    attrs[&quot;nvrid_varde&quot;] = $feature.naturreservat_nvrid;
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Identifiering och skydd&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+<h2 id="2-naturtyp-nnk-data">2. Naturtyp (NNK-data)</h2>
+<pre><code class="language-js">// Naturtyp (NNK-data)
+// Visar endast fält som innehåller ett värde.
+
+var infos = [];
+var attrs = {};
+
+// Naturtyp – kod + klartext
+if (!IsEmpty($feature.naturtyp_kod_text)) {
+    Push(infos, {
+        fieldName: &quot;naturtyp_varde&quot;,
+        label: &quot;Naturtyp&quot;
+    });
+    attrs[&quot;naturtyp_varde&quot;] = $feature.naturtyp_kod_text;
+}
+
+// Naturtypsstatus
+if (!IsEmpty($feature.naturtypsstatus_text)) {
+    Push(infos, {
+        fieldName: &quot;naturtypsstatus_varde&quot;,
+        label: &quot;Naturtypsstatus&quot;
+    });
+    attrs[&quot;naturtypsstatus_varde&quot;] = $feature.naturtypsstatus_text;
+}
+
+// Area
+if (!IsEmpty($feature.area_ha)) {
+    Push(infos, {
+        fieldName: &quot;area_varde&quot;,
+        label: &quot;Area (ha)&quot;
+    });
+    attrs[&quot;area_varde&quot;] = Round($feature.area_ha, 2);
+}
+
+// Karteringsstatus
+if (!IsEmpty($feature.karteringsstatus_text)) {
+    Push(infos, {
+        fieldName: &quot;karteringsstatus_varde&quot;,
+        label: &quot;Karteringsstatus&quot;
+    });
+    attrs[&quot;karteringsstatus_varde&quot;] = $feature.karteringsstatus_text;
+}
+
+// Målnaturtyp 1
+if (!IsEmpty($feature.malnaturtyp1_text)) {
+    Push(infos, {
+        fieldName: &quot;malnaturtyp1_varde&quot;,
+        label: &quot;Målnaturtyp 1&quot;
+    });
+    attrs[&quot;malnaturtyp1_varde&quot;] = $feature.malnaturtyp1_text;
+}
+
+// Målnaturtyp 2
+if (!IsEmpty($feature.malnaturtyp2_text)) {
+    Push(infos, {
+        fieldName: &quot;malnaturtyp2_varde&quot;,
+        label: &quot;Målnaturtyp 2&quot;
+    });
+    attrs[&quot;malnaturtyp2_varde&quot;] = $feature.malnaturtyp2_text;
+}
+
+// Målnaturtyp 3
+if (!IsEmpty($feature.malnaturtyp3_text)) {
+    Push(infos, {
+        fieldName: &quot;malnaturtyp3_varde&quot;,
+        label: &quot;Målnaturtyp 3&quot;
+    });
+    attrs[&quot;malnaturtyp3_varde&quot;] = $feature.malnaturtyp3_text;
+}
+
+// Komplex
+if (!IsEmpty($feature.komplex_text)) {
+    Push(infos, {
+        fieldName: &quot;komplex_varde&quot;,
+        label: &quot;Komplex&quot;
+    });
+    attrs[&quot;komplex_varde&quot;] = $feature.komplex_text;
+}
+
+// Ursprung
+if (!IsEmpty($feature.ursprung_text)) {
+    Push(infos, {
+        fieldName: &quot;ursprung_varde&quot;,
+        label: &quot;Ursprung&quot;
+    });
+    attrs[&quot;ursprung_varde&quot;] = $feature.ursprung_text;
+}
+
+// Förändringsorsak
+if (!IsEmpty($feature.forandringsorsak_text)) {
+    Push(infos, {
+        fieldName: &quot;forandringsorsak_varde&quot;,
+        label: &quot;Förändringsorsak&quot;
+    });
+    attrs[&quot;forandringsorsak_varde&quot;] = $feature.forandringsorsak_text;
+}
+
+// Om hela sektionen saknar information
+if (Count(infos) == 0) {
+    return {
+        type: &quot;fields&quot;,
+        title: &quot;Naturtyp (NNK-data)&quot;,
+        fieldInfos: [{
+            fieldName: &quot;tom_info&quot;,
+            label: &quot;Information&quot;
+        }],
+        attributes: {
+            tom_info: &quot;Ingen information registrerad i denna del.&quot;
+        }
+    };
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Naturtyp (NNK-data)&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+<h2 id="3-granskning-1-avvikelse-och-korrigeringsforslag">3. Granskning 1 — Avvikelse och korrigeringsförslag</h2>
+<p><strong>Utökad 2026-09-22:</strong> nytt block för <code>forandringsorsak_forslag</code> ("Förändringsorsak, förslag") — granskarens EGNA förslagskod, inte det skrivskyddade källfältet <code>forandringsorsak</code> som redan syns i gruppen <em>Naturtyp (NNK-data)</em>. Kräver att fältet finns i tjänsten (gdb-kedjan → republicering, se <code>webbgis-publicering.html</code> Del 5 steg 6) innan den här versionen kan klistras in. Placerat sist i "vad"-delen, direkt före kommentaren — gruppen läses nu "vad" (föreslagen typ/justering) följt av "varför" (förändringsorsak + fritextkommentar).</p>
+<pre><code class="language-js">// Granskning 1 – Avvikelse och korrigeringsförslag
+// Visar endast fält som innehåller ett värde.
+
+var infos = [];
+var attrs = {};
+
+if (!IsEmpty($feature.livsmiljötyp1)) {
+    Push(infos, {
+        fieldName: &quot;livsmiljo1_varde&quot;,
+        label: &quot;Förslag livsmiljötyp 1&quot;
+    });
+    attrs[&quot;livsmiljo1_varde&quot;] = DomainName($feature, &quot;livsmiljötyp1&quot;);
+}
+
+if (!IsEmpty($feature.livsmiljötyp2)) {
+    Push(infos, {
+        fieldName: &quot;livsmiljo2_varde&quot;,
+        label: &quot;Förslag livsmiljötyp 2&quot;
+    });
+    attrs[&quot;livsmiljo2_varde&quot;] = DomainName($feature, &quot;livsmiljötyp2&quot;);
+}
+
+if (!IsEmpty($feature.livsmiljötyp3)) {
+    Push(infos, {
+        fieldName: &quot;livsmiljo3_varde&quot;,
+        label: &quot;Förslag livsmiljötyp 3&quot;
+    });
+    attrs[&quot;livsmiljo3_varde&quot;] = DomainName($feature, &quot;livsmiljötyp3&quot;);
+}
+
+if (!IsEmpty($feature.justering)) {
+    Push(infos, {
+        fieldName: &quot;justering_varde&quot;,
+        label: &quot;Behöver livsmiljötypen justeras?&quot;
+    });
+    attrs[&quot;justering_varde&quot;] = DomainName($feature, &quot;justering&quot;);
+}
+
+if (!IsEmpty($feature.utbredning)) {
+    Push(infos, {
+        fieldName: &quot;utbredning_varde&quot;,
+        label: &quot;Behöver utbredningen justeras?&quot;
+    });
+    attrs[&quot;utbredning_varde&quot;] = DomainName($feature, &quot;utbredning&quot;);
+}
+
+// Förändringsorsak, förslag (nytt 2026-09-22)
+if (!IsEmpty($feature.forandringsorsak_forslag)) {
+    Push(infos, {
+        fieldName: &quot;forandringsorsak_forslag_varde&quot;,
+        label: &quot;Förändringsorsak, förslag&quot;
+    });
+    attrs[&quot;forandringsorsak_forslag_varde&quot;] = DomainName($feature, &quot;forandringsorsak_forslag&quot;);
+}
+
+if (!IsEmpty($feature.kommentar_livsmil_utbred)) {
+    Push(infos, {
+        fieldName: &quot;kommentar_varde&quot;,
+        label: &quot;Kommentar&quot;
+    });
+    attrs[&quot;kommentar_varde&quot;] = $feature.kommentar_livsmil_utbred;
+}
+
+if (Count(infos) == 0) {
+    return {
+        type: &quot;fields&quot;,
+        title: &quot;Granskning 1: Avvikelse och korrigeringsförslag&quot;,
+        fieldInfos: [{
+            fieldName: &quot;tom_info&quot;,
+            label: &quot;Information&quot;
+        }],
+        attributes: {
+            tom_info: &quot;Ingen information registrerad i denna del.&quot;
+        }
+    };
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Granskning 1: Avvikelse och korrigeringsförslag&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+<h2 id="4-granskning-2-tillstand">4. Granskning 2 — Tillstånd</h2>
+<pre><code class="language-js">// Granskning 2 – Tillstånd
+// Visar endast fält som innehåller ett värde.
+
+var infos = [];
+var attrs = {};
+
+if (!IsEmpty($feature.tillstand)) {
+    Push(infos, {
+        fieldName: &quot;tillstand_varde&quot;,
+        label: &quot;Tillstånd&quot;
+    });
+    attrs[&quot;tillstand_varde&quot;] = DomainName($feature, &quot;tillstand&quot;);
+}
+
+if (!IsEmpty($feature.procent_gott)) {
+    Push(infos, {
+        fieldName: &quot;procent_gott_varde&quot;,
+        label: &quot;Gott tillstånd (%)&quot;
+    });
+    attrs[&quot;procent_gott_varde&quot;] = $feature.procent_gott;
+}
+
+if (!IsEmpty($feature.procent_ej_gott)) {
+    Push(infos, {
+        fieldName: &quot;procent_ej_gott_varde&quot;,
+        label: &quot;Ej gott tillstånd (%)&quot;
+    });
+    attrs[&quot;procent_ej_gott_varde&quot;] = $feature.procent_ej_gott;
+}
+
+if (!IsEmpty($feature.procent_osaker)) {
+    Push(infos, {
+        fieldName: &quot;procent_osaker_varde&quot;,
+        label: &quot;Osäkert tillstånd (%)&quot;
+    });
+    attrs[&quot;procent_osaker_varde&quot;] = $feature.procent_osaker;
+}
+
+if (!IsEmpty($feature.kommentar_tillstand)) {
+    Push(infos, {
+        fieldName: &quot;kommentar_varde&quot;,
+        label: &quot;Kommentar&quot;
+    });
+    attrs[&quot;kommentar_varde&quot;] = $feature.kommentar_tillstand;
+}
+
+if (Count(infos) == 0) {
+    return {
+        type: &quot;fields&quot;,
+        title: &quot;Granskning 2: Tillstånd&quot;,
+        fieldInfos: [{
+            fieldName: &quot;tom_info&quot;,
+            label: &quot;Information&quot;
+        }],
+        attributes: {
+            tom_info: &quot;Ingen information registrerad i denna del.&quot;
+        }
+    };
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Granskning 2: Tillstånd&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+<h2 id="5-granskning-3-kontroll-och-metod">5. Granskning 3 — Kontroll och metod</h2>
+<pre><code class="language-js">// Granskning 3 – Kontroll och metod
+// Visar endast fält som innehåller ett värde.
+
+var infos = [];
+var attrs = {};
+
+if (!IsEmpty($feature.kontroll1)) {
+    Push(infos, {
+        fieldName: &quot;kontroll1_varde&quot;,
+        label: &quot;Vad ska kontrolleras 1&quot;
+    });
+    attrs[&quot;kontroll1_varde&quot;] = DomainName($feature, &quot;kontroll1&quot;);
+}
+
+if (!IsEmpty($feature.kontroll2)) {
+    Push(infos, {
+        fieldName: &quot;kontroll2_varde&quot;,
+        label: &quot;Vad ska kontrolleras 2&quot;
+    });
+    attrs[&quot;kontroll2_varde&quot;] = DomainName($feature, &quot;kontroll2&quot;);
+}
+
+if (!IsEmpty($feature.kontroll3)) {
+    Push(infos, {
+        fieldName: &quot;kontroll3_varde&quot;,
+        label: &quot;Vad ska kontrolleras 3&quot;
+    });
+    attrs[&quot;kontroll3_varde&quot;] = DomainName($feature, &quot;kontroll3&quot;);
+}
+
+if (!IsEmpty($feature.kommentar_kontroll)) {
+    Push(infos, {
+        fieldName: &quot;kommentar_kontroll_varde&quot;,
+        label: &quot;Kommentar – kontrollbehov&quot;
+    });
+    attrs[&quot;kommentar_kontroll_varde&quot;] = $feature.kommentar_kontroll;
+}
+
+if (!IsEmpty($feature.metod)) {
+    Push(infos, {
+        fieldName: &quot;metod_varde&quot;,
+        label: &quot;Metod för kontroll&quot;
+    });
+    attrs[&quot;metod_varde&quot;] = DomainName($feature, &quot;metod&quot;);
+}
+
+if (!IsEmpty($feature.kommentar_metod)) {
+    Push(infos, {
+        fieldName: &quot;kommentar_metod_varde&quot;,
+        label: &quot;Kommentar – metod&quot;
+    });
+    attrs[&quot;kommentar_metod_varde&quot;] = $feature.kommentar_metod;
+}
+
+if (Count(infos) == 0) {
+    return {
+        type: &quot;fields&quot;,
+        title: &quot;Granskning 3: Kontroll och metod&quot;,
+        fieldInfos: [{
+            fieldName: &quot;tom_info&quot;,
+            label: &quot;Information&quot;
+        }],
+        attributes: {
+            tom_info: &quot;Ingen information registrerad i denna del.&quot;
+        }
+    };
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Granskning 3: Kontroll och metod&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+<h2 id="6-granskning-4-granskat-och-kommentarer">6. Granskning 4 — Granskat och kommentarer</h2>
+<p><strong>Åtgärdat 2026-09-22:</strong> kopplar nu in samtliga fem fält (<code>granskat</code>, <code>kommentar</code>, <code>nnk_kommentar</code>, <code>faltinventerare</code>, <code>egen_bet</code>) — matchar gruppens ursprungliga fältlista i <code>bygg_nnk_lyrx.py</code>.</p>
+<pre><code class="language-js">// Granskning 4
+// Visar endast fält som faktiskt innehåller ett värde.
+
+var infos = [];
+var attrs = {};
+
+// Granskat?
+if (!IsEmpty($feature.granskat)) {
+    Push(infos, {
+        fieldName: &quot;granskat_varde&quot;,
+        label: &quot;Granskat?&quot;
+    });
+    attrs[&quot;granskat_varde&quot;] = DomainName($feature, &quot;granskat&quot;);
+}
+
+// Kommentar
+if (!IsEmpty($feature.kommentar)) {
+    Push(infos, {
+        fieldName: &quot;kommentar_varde&quot;,
+        label: &quot;Kommentar&quot;
+    });
+    attrs[&quot;kommentar_varde&quot;] = $feature.kommentar;
+}
+
+// NNK-kommentar
+if (!IsEmpty($feature.nnk_kommentar)) {
+    Push(infos, {
+        fieldName: &quot;nnk_kommentar_varde&quot;,
+        label: &quot;NNK-kommentar&quot;
+    });
+    attrs[&quot;nnk_kommentar_varde&quot;] = $feature.nnk_kommentar;
+}
+
+// Fältinventerare
+if (!IsEmpty($feature.faltinventerare)) {
+    Push(infos, {
+        fieldName: &quot;faltinventerare_varde&quot;,
+        label: &quot;Fältinventerare&quot;
+    });
+    attrs[&quot;faltinventerare_varde&quot;] = $feature.faltinventerare;
+}
+
+// Egen beteckning
+if (!IsEmpty($feature.egen_bet)) {
+    Push(infos, {
+        fieldName: &quot;egen_bet_varde&quot;,
+        label: &quot;Egen beteckning&quot;
+    });
+    attrs[&quot;egen_bet_varde&quot;] = $feature.egen_bet;
+}
+
+// Om alla fält är tomma
+if (Count(infos) == 0) {
+    return {
+        type: &quot;fields&quot;,
+        title: &quot;Granskning 4: Granskat och kommentarer&quot;,
+        fieldInfos: [{
+            fieldName: &quot;tom_info&quot;,
+            label: &quot;Information&quot;
+        }],
+        attributes: {
+            tom_info: &quot;Ingen information registrerad i denna del.&quot;
+        }
+    };
+}
+
+return {
+    type: &quot;fields&quot;,
+    title: &quot;Granskning 4: Granskat och kommentarer&quot;,
+    fieldInfos: infos,
+    attributes: attrs
+};
+</code></pre>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+</script>
+</body>
+</html>

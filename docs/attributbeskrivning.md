@@ -44,6 +44,9 @@ Andrahandsförslag, om osäker mellan flera typer.
 **Livsmiljötyp 3**  
 Tredjehandsförslag, om osäker mellan flera typer.
 
+**Förändringsorsak, förslag** *(tillagd 2026-09-22)*  
+Granskarens eget förslag till varför bedömningen ändras — fylls i även när du vid skrivbordsgranskning bekräftar att objektets "ej bedömda" status faktiskt stämmer. Skild från det skrivskyddade käll­fältet Förändringsorsak i Del B, som visar NV:s NUVARANDE registrerade värde. Samma tre koder, samma domän (NV_NNK_Förändringsorsak) — se Del B nedan för kodlistan. Nästan alltid kod 3 Komplettering (R2-regeln, se `metodik.html` avsnitt 5): kunskapen fanns, den var bara inte registrerad. Kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken.
+
 **Kommentar – livsmiljötyp och utbredning**  
 Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
 

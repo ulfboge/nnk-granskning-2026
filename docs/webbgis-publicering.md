@@ -81,6 +81,8 @@ Allt detta gör skriptet `forbered_gdb_for_publicering.py` (bilaga A) i ett svep
 4. **Alias:** i samma Fields-vy syns nu domänernas och aliasens effekt. Vill du ändra ordalydelse gör du det här (lagrets alias vinner över gdb:ns vid publicering).
 5. **Symbol:** behåll mallens *Unique Values* på `granskat` (grön Ja / röd Nej / gul Påbörjat). Den följer med till webblagret. Kontrollera att "Övriga värden" (*Show all other values*) är på, annars försvinner objekt med okänd kod.
 6. **Popup:** kommer redan färdig med lyrx-filen (steg 2) — byggd av `bygg_nnk_lyrx.py` med sex rubriksatta sektioner (*Identifiering och skydd* · *Naturtyp (NNK-data)* · *Granskning 1: Avvikelse och korrigeringsförslag* · *2: Tillstånd* · *3: Vad ska kontrolleras och metod* · *4: Granskat och kommentarer*) — tekniskt flera `CIMTableMediaInfo`-poster i `mediaInfos`, inte `Configure Pop-ups`-dialogens enda fältlista. **Bygg inte om den här.** Högerklicka → *Pop-ups* bara för att KONTROLLERA att sektionerna syns grupperade — rör ingenting. Ser popupen ogrupperad ut trots att lyrx-filen är den senaste: Pro cachar en tidigare öppnad popup-konfiguration per lager — ta bort lagret ur kartan och lägg till lyrx-filen på nytt (samma fix som för en felaktig dataConnection, se steg 2). Popupen följer med till webblagret som standardpopup och ärvs sedan automatiskt av WebMap:en i Map Viewer, del 5 — den ska INTE byggas om där heller.
+
+> **Uppdatering 2026-09-22: denna popup är sedan dess helt ersatt i Map Viewer.** Den lyrx-byggda `CIMTableMediaInfo`-popupen ovan var bara utgångspunkten. Samtliga sex sektioner har därefter skrivits om som egna Arcade-popuputtryck (`type: "fields"`) direkt i Map Viewers popup-konfiguration för NNK-ytlagret, för att kunna dölja fält utan värde per objekt — något en vanlig fältlista inte klarar. Pro/lyrx-popupen ovan är alltså bara den startpunkt Map Viewer en gång ärvde, inte det som visas i drift idag. Den faktiska, levande koden för alla sex sektioner finns i `docs/popup-arcade-uttryck.html` — det är den enda versionshanterade kopian, eftersom Arcade-uttrycken bara lever i portalens popup-konfiguration.
 7. **Display field:** *Properties → Display → Display field* = `omrade_namn` (ger begripliga träfflistor i webbGIS).
 8. **Lagernamn i Contents** (det som blir undernamn i tjänsten): döp om till `NNK ytor (granskning)`, `NNK linjer (granskning)`, `NNK punkter (granskning)` och `Skyddade områden (N2000 och naturreservat)`. Undernamn får ha åäö och mellanslag — det är bara tjänstens *Name* som är begränsat.
 9. **Ordning i Contents:** punkter överst, linjer, ytor, referenslagret underst (eller överst med genomskinlig fyllning som i leveransen — båda fungerar, WebbGIS-användaren kan ändå styra ritordning).
@@ -161,13 +163,17 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
 3. **Ordning** (uppifrån): NNK punkter, NNK linjer, Skyddade områden (kontur), NNK ytor, NV naturtypskarta (släckt vid start), Natura 2000-gränser, ängs- och betesmark (släckt), ortofoton (släckta), bakgrund. Slå på *Visible* bara för NNK-lagren, skyddade områden och N2000-gränser vid start.
 4. **Symbol**: kommer från Pro. Vill du ha kontur i stället för fyllning på NNK-ytorna (så naturtypskartan syns igenom): *Styles → Types (unique symbols)* på `granskat`, tjock kontur grön/röd/gul, fyllning 70 % genomskinlig.
 5. **Popup** per NNK-lager (*Pop-ups*): **redan klar — ärvs automatiskt** från lagrets publicerade popup (del 2 steg 6), med samma sex rubriksatta sektioner som i Pro, inklusive granskningsstegen 1–4 som lässtöd. (Det är alltså MEDVETET att granskningsfälten syns i popupen och inte bara i formuläret — en tidigare version av den här manualen sa motsatsen, "håll granskningsfälten ur popupen"; det stämmer inte längre.) Kontrollera bara: öppna *Pop-ups* på ytlagret → sektionerna ska synas grupperade, med rubrik `{omrade_namn}` överst — bekräftat att detta stämmer 2026-09-04. Gör INGEN ny fältlista. Ser popupen i stället ogrupperad ut (platt fältlista utan rubriker): lagret lades troligen till i WebMap:en innan popup-uppdateringen i Pro — ta bort och lägg till lagret på nytt från portalen (samma cache-orsak som del 2 steg 6). Lägg sist till (manuellt, en gång) ett *Text*-element sist i listan: "Redigera via knappen Redigera → välj lager LstD NNK Granskning → klicka på objektet." Slå på *Pop-ups* även på referenslagren (N2000: så att bevarandeplanlänken syns).
+
+> **Uppdatering 2026-09-22: "ärvs automatiskt" och "Gör INGEN ny fältlista" stämmer inte längre.** Alla sex sektioner (Identifiering och skydd · Naturtyp (NNK-data) · Granskning 1–4) är omdefinierade som handskrivna Arcade-popuputtryck direkt här i Map Viewer — se `docs/popup-arcade-uttryck.html` för den fullständiga, aktuella koden per sektion, och för kända avvikelser mot ursprungsdesignen (Granskning 4 saknar t.ex. `nnk_kommentar`/`faltinventerare`/`egen_bet`).
+>
+> **Ta ALDRIG bort och lägg till NNK-ytlagret på nytt i WebMap:en** som felsökning för en ogrupperad eller cachead popup (rådet i föregående stycke gäller inte längre). Det nollställer popupen till lagrets ursprungliga lyrx-popupInfo och raderar alla sex Arcade-uttrycken utan varning. Behöver popupen byggas om från grunden: kopiera in uttrycken från `docs/popup-arcade-uttryck.html` på nytt, sektion för sektion, i stället för att ta bort/lägga till lagret.
 ### Steg 6 · Formulär (smart form)
 
 Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Forms → Configure*. Dra in fälten i denna ordning och gruppera (*Group*-element):
 
 | Grupp | Fält (i ordning) | Gruppbeskrivning |
 | --- | --- | --- |
-| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen) | Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Kommentar – livsmiljötyp och utbredning | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
+| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22, se not nedan) | Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Förändringsorsak, förslag · Kommentar – livsmiljötyp och utbredning | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
 | **2. Tillstånd** | Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt/Icke gott — gissa inte. |
 | **3. Vad ska kontrolleras och hur** | Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
 | **4. Klart?** | Granskat | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
@@ -182,6 +188,10 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre ba
 >
 > Utpekade livsmiljötyper (grund för N2000-områdets urval) har särskilt skydd — kolla bevarandeplanen (fältet BEVPLAN i N2000-lagret) innan du föreslår ändring; ändra bara vid uppenbart fel eller faktisk förändring (FAQ 19).
 
+> **Uppdatering 2026-09-22: nytt fält `forandringsorsak_forslag` ("Förändringsorsak, förslag") i grupp 1.** Beslutat för att fånga R2-regeln (`metodik.html` avsnitt 5) redan vid skrivbordsgranskningen, i stället för att avgöra förändringsorsak-koden först när uppgiften väl förs in i NNK Ajourhålla. Separat, redigerbart fält — inte samma som det skrivskyddade käll­fältet `forandringsorsak` (NV:s nuvarande värde, syns i popupgruppen *Naturtyp (NNK-data)*). Kräver att hela gdb-kedjan körs om (`koppla_nnk_skyddskategori.py` → `bygg_nnk_lyrx.py` → `forbered_gdb_for_publicering.py` → Share/Overwrite Web Layer) innan fältet finns i tjänsten — se `docs/popup-arcade-uttryck.html` för den uppdaterade Granskning 1-popupen och smart-formulärets nya fältordning.
+>
+> Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.
+
 **Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
 
 | Fält | Beskrivning |
@@ -191,6 +201,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre ba
 | Livsmiljötyp 1 | Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. |
 | Livsmiljötyp 2 | Andrahandsförslag, om osäker mellan flera typer. |
 | Livsmiljötyp 3 | Tredjehandsförslag, om osäker mellan flera typer. |
+| Förändringsorsak, förslag | Fyll alltid i, även när ni bara bekräftar en "ej bedömd" status som redan korrekt (dvs. en komplettering, inte en ändring). Nästan alltid kod 3 Komplettering — kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken (R2-regeln). |
 | Kommentar – livsmiljötyp och utbredning | Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån. |
 | Tillstånd, behov av justering | Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. |
 | Gott tillstånd (%) | Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100. |
@@ -429,7 +440,9 @@ FALT_DOMAN = {
     "livsmiljötyp3": "NATURTYP", "malnaturtyp1": "NATURTYP", "malnaturtyp2": "NATURTYP",
     "malnaturtyp3": "NATURTYP", "komplex": "NV_NNK_Komplex",
     "naturtypsstatus": "NV_NNK_Naturtypsstatus", "karteringsstatus": "NV_NNK_Karteringsstatus",
-    "forandringsorsak": "NV_NNK_Förändringsorsak", "ursprung": "NV_NNK_Ursprung",
+    "forandringsorsak": "NV_NNK_Förändringsorsak",
+    "forandringsorsak_forslag": "NV_NNK_Förändringsorsak",  # nytt 2026-09-22, delar domän
+    "ursprung": "NV_NNK_Ursprung",
     "tillstand": "LST_NNK_tillstand", "justering": "LST_NNK_justering",
     "utbredning": "LST_NNK_utbredning", "kontroll1": "LST_NNK_kontroll",
     "kontroll2": "LST_NNK_kontroll", "kontroll3": "LST_NNK_kontroll",
@@ -466,6 +479,7 @@ ALIAS = {
     "kontroll2": "Vad ska kontrolleras 2", "kontroll3": "Vad ska kontrolleras 3",
     "kommentar_kontroll": "Kommentar - Vad ska kontrolleras", "metod": "Metod för kontroll",
     "Kommentar_metod": "Kommentar - Metod", "forandringsorsak": "Förändringsorsak",
+    "forandringsorsak_forslag": "Förändringsorsak, förslag",  # nytt 2026-09-22
     "ursprung": "Ursprung", "komplex": "Komplex", "faltinventerare": "Fältinventerare",
     "egen_bet": "Egen beteckning",
     # _text-fälten tillagda 2026-09-03 (sätts redan i lyrx:en, listade här för fullständighet)
@@ -667,6 +681,7 @@ print("KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.")
 | `LstD_NNK_metod` | metod | 1 Fältbesök · 2 Fältinventering (standardiserad metodik) · 3 Skrivbord / granska mot andra underlag · 4 Annan metod |
 | `LstD_NNK_yta` / `_linje` / `_punkt` | naturtyp, livsmiljötyp1–3, malnaturtyp1–3 | NV:s naturtypskoder (230 / 24 / 15 koder) |
 | `LstD_NNK_Naturtypsstatus`, `_Karteringsstatus`, `_Komplex`, `_Forandringsorsak`, `_Ursprung` | resp. NV-fält | NV:s kodlistor (visas som klartext i popup) |
+| `LstD_NNK_Forandringsorsak` (samma domän) | `forandringsorsak_forslag` *(nytt 2026-09-22)* | Samma tre koder som ovan — granskarens EGET förslag, inte NV:s nuvarande värde. Flera fält får redan dela domän (t.ex. `kontroll1–3` → `LstD_NNK_kontroll`), samma mönster här. |
 
 **`LstD_NNK_tillstand` — rättad 2026-09-03, byggs INTE längre genom att kopiera mallen.**
 KartLits-mallens egen domän för fältet `tillstand` innehöll "1 Inget behov av justering · 2 Okänt
