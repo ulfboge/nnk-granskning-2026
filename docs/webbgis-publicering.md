@@ -282,6 +282,7 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Ej granskade" | `granskat` = 2 | |
 | "Påbörjade" | `granskat` = 3 | |
 | "Dölj marint (naturtyp 1000-serien)" | `naturtyp < 1000 OR naturtyp >= 2000` (ytlagret) | FAQ 16/29: marint ska inte in i NNK 2026 |
+| "Prio P1" / "Prio P2" / "Prio P3" / "Prio P4" | `prio = 'P1'` osv. (fyra separata filter, ett per klass) | Prioritetsklassning enligt arbetsplanen avsnitt 5.2 (hävdberoende/sällsynthet/terrester areal). Fältet `prio` fylls i av `jobbdator_koppla_nnk_skyddskategori.py` via uppslag mot `data/analysis/nnk_prioklass.csv` — tillagt 2026-09-22, se punkt 8 i kvarvarande-punkter-notatet. |
 
 Kombinera filtren med **OCH**. Aktiverande verktyg: *Nollställ alla* och *Stäng av alla* ✔.
 

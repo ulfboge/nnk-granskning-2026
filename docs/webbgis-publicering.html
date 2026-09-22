@@ -613,6 +613,11 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td><code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code> (ytlagret)</td>
 <td>FAQ 16/29: marint ska inte in i NNK 2026</td>
 </tr>
+<tr>
+<td>"Prio P1" / "Prio P2" / "Prio P3" / "Prio P4"</td>
+<td><code>prio = 'P1'</code> osv. (fyra separata filter, ett per klass)</td>
+<td>Prioritetsklassning enligt arbetsplanen avsnitt 5.2 (hävdberoende/sällsynthet/terrester areal). Fältet <code>prio</code> fylls i av <code>jobbdator_koppla_nnk_skyddskategori.py</code> via uppslag mot <code>data/analysis/nnk_prioklass.csv</code> — tillagt 2026-09-22, se punkt 8 i kvarvarande-punkter-notatet.</td>
+</tr>
 </tbody>
 </table>
 <p>Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</p>
