@@ -23,6 +23,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Fältnamnet för metod-kommentaren** skrivs `kommentar_metod` (gemener) i Arcade-uttrycket för Granskning 3, medan övrig dokumentation (`webbgis-publicering.md`, `metodik.md`) genomgående skriver `Kommentar_metod` (stort K). Arcades fältuppslagning är skiftlägesokänslig så det är sannolikt ofarligt, men värt att göra konsekvent i dokumentationen.
 - **Grupp 1–3** slår upp klartext direkt med `DomainName($feature, "fältnamn")` på kodfälten (`livsmiljötyp1–3`, `justering`, `utbredning`, `tillstand`, `kontroll1–3`, `metod`), inte via de förberäknade `_text`-fälten som `bygg_nnk_lyrx.py` annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade `_text`-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).
 - **Startdatum/Slutdatum senaste inventering** (`habitat_period_lastdata_start`/`_end`) tillagda i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. **Kräver en publiceringsförberedelse som inte är gjord än:** fältsynlighet för `habitat_period_*` måste slås PA i `NNK_naturaobjekt_yta`/`lin`/`pkt` (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.
+- **Bevarandeplan, fastställd (år)** (`bevarandeplan_ar`) tillagt i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av `jobbdator_koppla_nnk_skyddskategori.py` (kräver att `data/analysis/bevarandeplan_platser.csv` kopieras till jobbdatorn, se README/kvarvarande_punkter_20260922.md) — **hela pipelinen måste köras om** (koppla_nnk_skyddskategori → forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.
 
 ---
 
@@ -165,6 +166,19 @@ if (!IsEmpty($feature.habitat_period_lastdata_end)) {
         Text($feature.habitat_period_lastdata_end, "YYYY"),
         Text($feature.habitat_period_lastdata_end)
     );
+}
+
+// Bevarandeplanens fastställelseår - vilket år den senaste bevarandeplanen
+// för N2000-siten fastställdes (bara sitecoder med en bevarandeplan har ett
+// värde här). Tillagt 2026-09-22 på Johans önskemål ("så att det är klart
+// från vilket år det senast fanns bedömning"). Rent heltalsfält (Long), inte
+// Date - Text() räcker, ingen TypeOf/Date-formatering behövs.
+if (!IsEmpty($feature.bevarandeplan_ar)) {
+    Push(infos, {
+        fieldName: "bevarandeplan_ar_varde",
+        label: "Bevarandeplan, fastställd (år)"
+    });
+    attrs["bevarandeplan_ar_varde"] = Text($feature.bevarandeplan_ar);
 }
 
 // Målnaturtyp 1
