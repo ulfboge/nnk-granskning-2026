@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Version:** 1.6 — A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
+**Version:** 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
 **Datum:** 2026-09-11
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
@@ -266,6 +266,8 @@ Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävd
 | D4.1 | Notera avvikelser mot fastställd bevarandeplan/reservatsbeslut (FAQ f.24) | löpande | Handläggare |
 | D4.2 | Lista objekt där nuvarande beslut/skötselplan **hindrar** nödvändig skötsel → revideringsbehov | v48 | Handläggare |
 | D4.3 | Utvecklingsmark: peka ut ytor där bevarandemål finns om utökad areal, ange upp till tre målnaturtyper (FAQ f.23). Idag har bara 87 polygoner i hela länet en angiven målnaturtyp | v45–v50 | Handläggare |
+| D5.1 | **Fältprotokoll för tillståndsbedömning:** stäm av parameterlistan (`natura-2000: docs/nnk/parameterlista_tillstand_livsmiljotyper_utkast.xlsx`) mot NNK:s nya attribut, ta ställning till luckorna mot LST:s målindikatorer, bestäm leveransformat (eget lager, NNK:s objekt-ID). Används av konsult 2026 (D5.2) och i eget fältarbete 2027 | v40–v42 | Handläggare |
+| D5.2 | **Konsultuppdrag för fältbedömning hösten 2026 — villkorat, inte beslutat.** Urval av P1-objekt som flaggats för fältkontroll, förfrågningsunderlag, leveranskrav och registrering i NNK. Sen säsong: struktur och påverkan går att bedöma, typiska arter knappast | v41–v43 | Handläggare |
 
 > **Håll tillbaka där osäkerheten är verklig.** FAQ fråga 22: är ni inte säkra och kan inte prioritera fältinsats — behåll tidigare bedömning eller ange okänt tillstånd, och dokumentera vad ni är osäkra på. Gissa inte.
 
@@ -442,8 +444,8 @@ I Skärgårdsreservaten är merparten av *arealen* marin (ca 7 000 ha i ~390 sto
 | v38 | C4 batch B klar, C3 batch A, **H3.2 samtal** | C4 batch B klar, **H3.2**, H4.1 | **M2: batch B granskad** |
 | v39 | C3 batch A, C2 batch S start, D1.1, H3.2 | C3 batch A, H3.2, H4.1 | |
 | v40 | C2 batch S, D1.2, D1.3 | D1.2, D1.3 | **M3: nya NNK-attribut driftsatta** |
-| v41 | C2 batch S, D2.1, H5.2 | C3 batch A klar, H4.1 | |
-| v42 | C2 batch S, D2.1, H3.2 | C5 batch C, G1.1, H3.2 | |
+| v41 | C2 batch S, D2.1, D5.1, H5.2, D5.2 (villkorat) | C3 batch A klar, H4.1 | |
+| v42 | C2 batch S, D2.1, D5.1 klar, D5.2 (villkorat), H3.2 | C5 batch C, G1.1, H3.2 | |
 | v43 | C2 batch S, D2.1, H5.2 | C5 batch C, C6 batch D, H4.1 | |
 | v44 | C2 batch S, C7, **H3.2 sista samtalen** | C6 batch D, G1.1 klar, H3.2 | **M4: förvaltardialog genomförd** |
 | v45 | C2 batch S, D2.1, H5.2 | E1.1, C6 batch D, H4.1 klar | |
@@ -485,7 +487,7 @@ Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter
 | **Uppdateringar under minsta karteringsenhet görs inte** (0,25 ha generellt, 1 ha skog/våtmark, 0,5 ha ädellöv) | f.12 |
 | **Tidigare signifikansbedömningar görs inte om** — endast nytillkomna livsmiljötyper bedöms | f.15 |
 | **Naturreservat utanför N2000** får screening, inte genomgång | f.6 (deadline 2027) |
-| **Fältkontroll flyttas till 2027.** Arbetspaket B (fältsäsong) genomförs inte under 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Ytor som ändå kräver fältbesök flaggas i granskningsloggen till 2027 | Beslut Johan 2026-08-25 |
+| **Eget fältarbete flyttas till 2027.** Arbetspaket B (fältsäsong) genomförs inte under 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Ytor som kräver fältbesök flaggas i granskningsloggen till 2027. Undantag: ett begränsat konsultuppdrag hösten 2026 är troligt men inte beslutat (D5.2) | Beslut Johan 2026-08-25, justerat 2026-09-25 |
 
 ---
 

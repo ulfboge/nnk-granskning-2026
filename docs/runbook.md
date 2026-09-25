@@ -2,8 +2,8 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Datum:** 2026-09-25 (A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 58 uppgifter i sju arbetspaket, 266 konkreta steg  
+**Datum:** 2026-09-25 (A2.3 och H5.1: nya fält i granskningslagret; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 60 uppgifter i sju arbetspaket, 279 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -280,7 +280,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 ## D. Tillståndsbedömning i NNK
 
-*v40–v50 · 9 uppgifter*
+*v40–v50 · 11 uppgifter*
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
@@ -298,7 +298,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 1. Läs igenom vad som ändrats. Två saker är viktiga: fältnamnen byter från *natura-naturtyp* till *livsmiljötyp*, och tillstånd anges nu som procentuell andel av ytan.
 2. Konsekvensen av procentandelen: du behöver INTE längre dela upp en yta för att ange olika tillstånd. Det sparar mycket geometriarbete.
 3. Namnbytet sker automatiskt — det du redan lagt in påverkas inte.
-4. Uppdatera granskningsrutinen och fältprotokollmallen med de nya fälten.
+4. Uppdatera granskningsrutinen med de nya fälten. Fältprotokollet hanteras i D5.1.
 
 ### D1.3 · Delta i NV:s utbildning
 
@@ -363,6 +363,29 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 4. Prioritera ytor med påtaglig utvecklingspotential — de är enligt FAQ fråga 23 normalt högre prioriterade för skydds- och skötselresurser än ytor med ringa potential.
 5. Arronderingsmark och mark som på längre sikt skulle kunna restaureras sätts som icke-natura-typ, inte utvecklingsmark.
 6. Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — ta frågan i H3.2.
+
+### D5.1 · Fältprotokoll för tillståndsbedömning
+
+**v40–v42** · **[Handläggare]** · förutsätter D1.2
+
+1. Utgå från utkastet `natura-2000: docs/nnk/parameterlista_tillstand_livsmiljotyper_utkast.xlsx` (54 parametrar i XLSForm-struktur). Flikarna *LST-målindikatorer* och *Luckor* visar hur uppföljningsplanernas 181 målindikatorer täcks.
+2. Stäm av mot NNK:s nya tillståndsattribut från D1.2. Den samlade bedömningen (G10) ska använda exakt NNK:s klasser och procentandelar.
+3. Ta ställning till luckorna: graninslag i 9010, 9080 och 9070, föryngring av tall och löv, död ved i 9070 och områdesspecifika rödlistade arter. Kör om `natura-2000: scripts/analysis/koppla_malindikatorer_parameterlista.py` efter ändringar.
+4. Stäm av den orange kolumnen (indikation gott tillstånd) mot NV:s vägledningar, för 9010 och 9050 mot de reviderade versionerna från februari 2026.
+5. Bestäm leveransformat: fältdata i ett eget hostat lager eller en egen tabell, aldrig i granskningslagret (Overwrite raderar fältdatan). Koppla på NNK:s objekt-ID, inte GlobalID.
+6. Protokollet ska fungera både för ett eventuellt konsultuppdrag hösten 2026 (D5.2) och för eget fältarbete 2027. Survey123-appen byggs först när protokollet är fastställt.
+
+### D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)
+
+**v41–v43** · **[Handläggare]** · förutsätter D5.1
+
+1. VILLKORAT: gäller om beslut fattas om konsult. Inte spikat per 2026-09-25, men troligt. Stäm av beslut och budget med chef först.
+2. Välj områden: i första hand P1-objekt där skrivbordsgranskningen gett *kontrolleras i fält* (granskningsloggen, C-batcherna), gärna hävdberoende typer enligt FAQ fråga 11.
+3. Stäm av med inköp/upphandlare vilken upphandlingsform som gäller för beloppet innan förfrågan skickas.
+4. Förfrågningsunderlag: områden med karta, fältprotokollet från D5.1, leveransformat, tidsram och krav på dokumentation (foto, datum, inventerare).
+5. Säsong: från oktober går strukturer och påverkan att bedöma (död ved, graninslag, hydrologi, igenväxning, grässvål vid säsongens slut), men knappast typiska arter eller rödlistade kärlväxter. Skriv in det i beställningen så att förväntningarna blir rätt.
+6. Bestäm hur konsultens uppgifter förs in i NNK: vem registrerar, `faltinventerare` = konsultens namn, metod och datum i kommentarsfälten, avstämning innan registrering.
+7. Resultatet ska med i kunskapslägesrapporten (E2.1) och räknas av i volymuppskattningen för 2027 (F1.2).
 
 ---
 
@@ -729,7 +752,7 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 | Uppdateringar under minsta karteringsenhet görs inte | 0,25 ha generellt, 1 ha skog och våtmark, 0,5 ha ädellöv | FAQ f.12 |
 | Tidigare signifikansbedömningar görs inte om | Endast nytillkomna livsmiljötyper bedöms | FAQ f.15 |
 | Naturreservat utanför N2000 får screening, inte genomgång | Deadline är 2027 | FAQ f.6 |
-| Fältkontroll flyttas till 2027 | Arbetspaket B genomförs inte 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap | Beslut Johan 2026-08-25 |
+| Eget fältarbete flyttas till 2027 | Arbetspaket B genomförs inte 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Undantag: ett begränsat konsultuppdrag hösten 2026 är troligt men inte beslutat (D5.2) | Beslut Johan 2026-08-25, justerat 2026-09-25 |
 
 ---
 
