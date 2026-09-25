@@ -290,7 +290,7 @@ hbar('c5',[['Granskad vid skrivbordet',8578],['Inventerad i fält',390,'var(--c-
 /* ---- tabell ---- */
 const TCOL={P1:'var(--p1)',P2:'var(--p2)',P3:'var(--p3)',P4:'var(--p4)'};
 let filt='P1',sk='havd',sd=-1;
-const fdefs=[['P1','Prioritet 1 (40)'],['P2','Prioritet 2 (43)'],['P3','Prioritet 3 (108)'],['ALL','Alla 197']];
+const fdefs=[['P1','Prioritet 1 (40)'],['P2','Prioritet 2 (43)'],['P3','Prioritet 3 (108)'],['P4','Prioritet 4 (6)'],['ALL','Alla 197']];
 document.getElementById('filters').innerHTML=fdefs.map(f=>
  `<button data-f="${f[0]}" aria-pressed="${f[0]===filt}">${f[1]}</button>`).join('');
 document.getElementById('filters').addEventListener('click',e=>{
