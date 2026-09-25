@@ -39,10 +39,10 @@ Projektöversikten för hela naturrestaureringsuppdraget finns i det tredje sysk
 | Fil/mapp | Vad det är |
 |----------|------------|
 | `index.html` | Kontrollpanel — ingång till allt |
-| `kontrollrum.html` | Gantt v34–v52, 58 uppgifter med avbockning, leveranser, milstolpar |
+| `kontrollrum.html` | Gantt v34–v52, alla uppgifter med avbockning, leveranser, milstolpar. **Genereras** ur natura-2000 — redigera inte här |
 | `kunskapslage.html` | Kunskapsläge per Natura 2000-område |
 | `docs/arbetsplan.md` (+ genererad `.html`) | Arbetsplan — kravnedbrytning, arbetspaket A–H |
-| `docs/runbook.md` (+ `.html`) | Runbook — steg för steg genom alla 58 uppgifter |
+| `docs/runbook.md` (+ `.html`) | Runbook — steg för steg genom alla uppgifter. **Genereras** ur `natura-2000/scripts/analysis/uppgifter.py` — redigera inte här |
 | `docs/metodik.md` (+ `.html`) | Metodik förvaltarkunskap — arbetspaket H |
 | `docs/typiska-arter.md` (+ `.html`) | Typiska/karakteristiska arter per naturtyp |
 | `blanketter/blankett_forvaltarkunskap_nnk.xlsx` | Excelmall för insamling av förvaltarkunskap — genereras av `natura-2000/scripts/analysis/bygg_blankett.py`, kopieras hit som referensversion. **Den fil förvaltarna faktiskt fyller i ligger på G:-enheten** (`G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\blankett_forvaltarkunskap_nnk.xlsx`) — GitHub-kopian är alltså aldrig arbetskopian. |
@@ -88,8 +88,11 @@ tillståndsattribut är driftsatta (enligt Naturvårdsverket: slutet av septembe
 4. **Håll sidorna fristående** — inga CDN:er, inga externa skript/typsnitt, inga inloggningar.
    Nya funktioner ska fungera offline/bakom brandvägg precis som befintliga sidor.
 5. **Kontrollera om filer redan finns** innan du skapar nya (undvik dubbletter av dokument/sidor).
-6. **Synka mot syskonrepona** — ändringar som rör arbetsplan/runbook/uppgifter uppdateras ofta
-   parallellt i `natura-2000/scripts/analysis/uppgifter.py` (kontrollrummets datakälla). Se efter
+6. **Runbook och kontrollrum genereras** (sedan 2026-09-25) — `kontrollrum.html` och `docs/runbook.md`
+   skrivs av `natura-2000/scripts/analysis/bygg_kontrollrum.py` ur `uppgifter.py` och `kontrollrum_mall.html`.
+   Ändra där, kör skriptet och sedan `python bygg.py` här. Redigera aldrig dessa två filer direkt.
+   Arbetsplanen (`docs/arbetsplan.md`) redigeras däremot här, men ändringar i uppgifter behöver oftast
+   göras i båda. Se efter
    om en ändring här också kräver en motsvarande ändring där.
 7. **`blanketter/blankett_forvaltarkunskap_nnk.xlsx` är en referenskopia** — den senaste
    genererade versionen från `natura-2000`, inte den faktiska arbetskopian (se avsnitt 3). Länka

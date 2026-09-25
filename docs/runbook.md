@@ -2,8 +2,8 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Datum:** 2026-09-25 (A2.3 och H5.1: nya fält i granskningslagret; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 60 uppgifter i sju arbetspaket, 279 konkreta steg  
+**Datum:** 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 64 uppgifter i 7 arbetspaket, 306 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -18,7 +18,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## A. Etablering och förutsättningar
 
-*v34–v36 · 13 uppgifter*
+*v34–v36 · 17 uppgifter*
 
 ### A1.1 · Beställ och verifiera systembehörigheter
 
@@ -76,7 +76,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 1. Packa upp `natura-2000: docs/underlag/handledning/KartLits_NNK_GIS_mall_v_2.zip` till en lokal projektmapp.
 2. Mallen innehåller `KartLits_NNK_granskning.gdb` med tre tomma lager i SWEREF 99 TM: NNK_naturaobjekt_yta, _lin och _pkt. Plus tre .lyrx-filer med färdig symbologi.
 3. Lägg till lagren i ArcGIS Pro-projektet och applicera .lyrx-filerna: högerklick på lagret → Symbology → Import from Layer File.
-4. Granska attributtabellen för NNK_naturaobjekt_yta. Fälten du kommer använda: `tillstand`, `procent_gott`, `procent_ej_gott`, `procent_osaker`, `justering`, `utbredning`, `livsmiljötyp1–3`, `malnaturtyp1–3`, `kontroll1–3`, `metod`, `granskat`, `faltinventerare`, `egen_bet`, `habitat_period_lastdata_start`/`_end`, `forandringsorsak_forslag` samt fyra kommentarsfält. Länets eget publicerade lager (`LstD NNK Granskning`) har dessutom skrivskyddade stödfält som pipelinen fyller i: `prio` (P1–P4), `bevarandeplan_ar`, `area_ha` och `naturtyp_kod_text`. De finns inte i den tomma KartLitS-mallen. Se `docs/attributbeskrivning.md` Del C.
+4. Granska attributtabellen för NNK_naturaobjekt_yta. Fälten du kommer använda: `tillstand`, `procent_gott`, `procent_ej_gott`, `procent_osaker`, `justering`, `utbredning`, `livsmiljötyp1–3`, `malnaturtyp1–3`, `kontroll1–3`, `metod`, `granskat`, `faltinventerare`, `egen_bet`, `habitat_period_lastdata_start`/`_end`, `forandringsorsak_forslag` samt fyra kommentarsfält. Länets eget publicerade lager (`LstD NNK Granskning`) har dessutom skrivskyddade stödfält som pipelinen fyller i: `prio` (P1–P4), `bevarandeplan_ar`, `area_ha` och `naturtyp_kod_text`. De finns inte i den tomma KartLitS-mallen. Se [Attributbeskrivning](attributbeskrivning.html), del C.
 5. Testa att lägga till en dummy-post och fylla i fälten, så att du känner igen dem i WebbGIS-gränssnittet. Radera den sedan.
 
 ### A2.4 · Hämta fastställda vägledningar — kontrollera status
@@ -147,9 +147,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v36** · **[Handläggare]**
 
-**Uppdaterat 2026-08-26:** en sammanställd lista fanns redan (länsstyrelsens förvaltarlista, uttag
-2026-05-27) — kolumn I *Förvaltare* i blanketten är nu automatiskt ifylld för 186 av 197 sitecodes,
-se H1.1 och `natura-2000: data/forvaltare/README.md`.
+**Uppdaterat 2026-08-26:** en sammanställd lista fanns redan (länsstyrelsens förvaltarlista, uttag 2026-05-27) — kolumn I *Förvaltare* i blanketten är nu automatiskt ifylld för 186 av 197 sitecodes, se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 1. Be Naturvårdsenheten bekräfta eller komplettera den automatiska kopplingen, snarare än att börja om från grunden.
 2. Per Flodin är första rådgivare för skötselhistorik och tidigare åtgärder — fråga honom innan du jagar dokument på egen hand.
@@ -173,7 +171,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 1. Maila `kartlitsN2000@naturvardsverket.se`. Anmäl er till arbetsgrupperna för skog, gräsmark och våtmark.
 2. Passa på att i samma mail ställa frågorna i arbetsplanens avsnitt 10 — särskilt om storobjekten och om generaliseringar. Svaren styr hela hösten, så ju tidigare desto bättre.
 3. Notera att arbetsgrupperna för akvatiska miljöer och fjäll startar hösten 2026 — de är inte relevanta för D-län i år.
-4. Spara svaren i `docs/nnk/` — de är underlag till planen för 2027.
+4. Spara svaren i `natura-2000: docs/nnk/` — de är underlag till planen för 2027.
 
 ### A4.1 · Skapa arbetsstruktur för dokumentation
 
@@ -182,7 +180,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 1. Mapparna `natura-2000: docs/faltprotokoll/` och `natura-2000: data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från jobbdatorn. Ligger på G:-enheten, alltså utanför Git — committas aldrig.)
 2. Fältdokumentation: en fil per fältdag i `natura-2000: docs/faltprotokoll/`. Fältarbetet är flyttat till 2027 (beslut 2026-08-25) — mappen står färdig men väntas inte fyllas på under 2026.
 3. NNK-uttag: spara i `natura-2000: data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra. Hela mappen är gitignorad utom README.md — filerna committas inte, de är bara lokala arbetskopior.
-4. Under 2026 finns ingen daglig commit-rutin kopplad till granskningsarbetet — resultatet av skrivbordsgranskningen (C1.1) hamnar i KartLitS WebbGIS-mallen och i granskningsloggen på G:-enheten, inte i något repo. Committa som vanligt när du faktiskt ändrar filer i natura-2000 eller här (dokument, analysskript, kodurval m.m.).
+4. Under 2026 finns ingen daglig commit-rutin kopplad till granskningsarbetet — resultatet av skrivbordsgranskningen (C1.1) hamnar i KartLitS WebbGIS-mallen och i granskningsloggen på G:-enheten, inte i något repo. Committa som vanligt när du faktiskt ändrar filer i natura-2000 eller nnk-granskning-2026 (dokument, analysskript, kodurval m.m.).
 5. Kontrollera att `natura-2000: data/uttag/` (hela mappen, inte bara *.gpkg) och `natura-2000: data/nnk/*.gpkg` ligger i `.gitignore` — stora geodatafiler hör inte hemma i Git.
 6. Diarieföring (beslut 5 aug): öppna ärenden allteftersom förfrågningar kommer in, och stäng dem när svaret är diariefört. Stäm av rutinen med diariet.
 
@@ -192,7 +190,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 1. Dokumentera exakt hur du gör uttaget, så att det går att upprepa identiskt i v45: vilket lager, vilka fält, vilket filter, vilket format.
 2. Uttaget ska innehålla minst: NOID, NATURTYP, NATURTYPKO, NATURTYPSS, KARTERINGS, FORANDRING, URSPRUNG, KOMMENTAR, NNK_KOMMEN, REDIGERARE, REDIGERATA, REDIGERATG, SKAPATDATU, MALNATUR1–3, samt de nya tillstånds- och dateringsfälten när de driftsatts.
-3. Exportera som shapefile eller GPKG till `data/uttag/nnk_YYYYMMDD.gpkg`.
+3. Exportera som shapefile eller GPKG till `natura-2000: data/uttag/nnk_YYYYMMDD.gpkg`.
 4. Kör `python natura-2000: scripts/analysis/koppla_omraden.py` mot uttaget för att få SITECODE på varje yta. Sätt miljövariabeln NNK_SHP till uttagets sökväg först.
 5. Kör `python natura-2000: scripts/analysis/nnk_kunskapslage.py` för att uppdatera nollmätningen.
 
@@ -306,7 +304,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 1. Anmäl båda till utbildningen så snart datum finns.
 2. Ta med konkreta frågor från arbetet: storobjektsmetoden, generaliseringar, hur procentandelarna ska tolkas för mosaikartade ytor.
-3. Anteckna och lägg i `docs/nnk/`. Notera särskilt allt som avviker från handledningen från juli.
+3. Anteckna och lägg i `natura-2000: docs/nnk/`. Notera särskilt allt som avviker från handledningen från juli.
 
 ### D2.1 · Registrera tillstånd där kunskapen redan finns
 
@@ -342,7 +340,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 1. FAQ fråga 24: när det du dokumenterar i NNK avviker från fastställd bevarandeplan eller reservatsbeslut ska länsstyrelsen göra en notering om avvikelsen.
 2. För en enkel lista i granskningsloggen: objekt, livsmiljötyp, vad bevarandeplanen säger, vad NNK nu visar, och varför.
 3. Bedömningen av vilka faktiska åtgärder som ska vidtas ingår INTE i KartLitS — men noteringen ska finnas.
-4. Bevarandeplanen når du via WebbGIS-lagret *NV Natura2000 områden*, raden BEVPLAN i attributtabellen. Länken finns även i `data/nnk/nnk_yta_med_sitecode.csv`.
+4. Bevarandeplanen når du via WebbGIS-lagret *NV Natura2000 områden*, raden BEVPLAN i attributtabellen. Länken finns även i `natura-2000: data/nnk/nnk_yta_med_sitecode.csv`.
 
 ### D4.2 · Lista objekt där beslut hindrar nödvändig skötsel
 
@@ -398,7 +396,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 **v45** · **[Karin]** · förutsätter A4.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Kör uttagsrutinen från A4.2 igen, exakt samma struktur som januariuttaget.
-2. Spara som `data/uttag/nnk_20261110.gpkg`.
+2. Spara som `natura-2000: data/uttag/nnk_20261110.gpkg`.
 3. Kör `python natura-2000: scripts/analysis/koppla_omraden.py` — sätt NNK_SHP till det nya uttaget.
 4. Kör `python natura-2000: scripts/analysis/nnk_kunskapslage.py` och jämför mot nollmätningen. Nyckeltalet: andel polygoner med bedömd status ska ha rört sig från 8 %.
 5. Spara utskriften i granskningsloggen — det är den mätbara progressen.
@@ -408,7 +406,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 **v46** · **[Karin]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Ta fram areal per livsmiljötyp × tillståndsklass per objekt ur det nya uttaget.
-2. Använd `data/nnk/nnk_yta_med_sitecode.csv` som grund — den har redan SITECODE på varje yta.
+2. Använd `natura-2000: data/nnk/nnk_yta_med_sitecode.csv` som grund — den har redan SITECODE på varje yta.
 3. Pivotera i Python eller Excel: rader = sitecode × naturtypskod, kolumner = tillståndsklass, värden = hektar.
 4. Detta är kärnan i vad FAQ fråga 6 efterfrågar för 2026.
 
@@ -566,10 +564,7 @@ se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
 **v35–v36** · **[Karin]** · bidrar till *Förvaltarkarta: vem förvaltar vilka objekt*
 
-**Uppdaterat 2026-08-26:** kolumn I *Förvaltare* i `blanketter/blankett_forvaltarkunskap_nnk.xlsx`
-fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopplat via
-`natura-2000: scripts/analysis/koppla_forvaltare.py` mot länsstyrelsens förvaltarlista
-(uttag 2026-05-27). 186 av 197 sitecodes fick en träff vid körningen 2026-08-26.
+**Uppdaterat 2026-08-26:** kolumn I *Förvaltare* i `blanketter/blankett_forvaltarkunskap_nnk.xlsx` fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopplat via `natura-2000: scripts/analysis/koppla_forvaltare.py` mot länsstyrelsens förvaltarlista (uttag 2026-05-27). 186 av 197 sitecodes fick en träff vid körningen 2026-08-26.
 
 1. Öppna `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Blankett, kolumn I — redan ifylld för de flesta objekt. Ett "(?)" efter namnet betyder osäker namn-matchning.
 2. Kontrollera de 5 lågsäkra matchningarna listade i `natura-2000: data/forvaltare/README.md` — särskilt SE0220330 Tolamossen/Torsmossen.
@@ -604,12 +599,12 @@ fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopp
 
 1. Detta är en KÄLLKRITISK kontroll som måste göras innan slutsatser dras om kunskapsläget.
 2. Bakgrund: i den publika NNK är KOMMENTAR, NNK_KOMMEN och REDIGERARE tomma i samtliga 14 830 polygoner — men handledningen 1.3 säger att den publika versionen strippar kommentarer och användaruppgifter. Fälten kan alltså vara ifyllda i Ajourhålla.
-2b. **Genväg sedan 2026-08-26:** länsuttaget `Lansuttag_NNK_Sodermanland_20260826` har `kommentar`/`nnk_kommentar` ifyllda för alla ytor i länet redan — det kan gå snabbare att fråga i det direkt (`natura-2000: data/raw/backups/`) än att checka ut objekt för objekt enligt punkt 3–5 nedan.
-3. Checka ut ett av de sju Åtgärdas-objekten i ArcGIS Pro, förslagsvis SE0220020 Strandstuviken (25 ytor, hanterbart).
-4. Öppna attributtabellen och titta på KOMMENTAR och NNK_KOMMEN för ytorna med KARTERINGS = 5.
-5. Gör samma kontroll för några av de 277 ytorna med fältdata men ej bedömd status.
-6. Notera resultatet i granskningsloggen. Står grunden redan där är en stor del av arbetet redan gjort — då ska det bara läsas in och tillståndet registreras.
-7. Checka in utan ändringar.
+3. **Genväg sedan 2026-08-26:** länsuttaget `Lansuttag_NNK_Sodermanland_20260826` har `kommentar`/`nnk_kommentar` ifyllda för alla ytor i länet redan — det kan gå snabbare att fråga i det direkt (`natura-2000: data/raw/backups/`) än att checka ut objekt för objekt enligt punkt 4–6 nedan.
+4. Checka ut ett av de sju Åtgärdas-objekten i ArcGIS Pro, förslagsvis SE0220020 Strandstuviken (25 ytor, hanterbart).
+5. Öppna attributtabellen och titta på KOMMENTAR och NNK_KOMMEN för ytorna med KARTERINGS = 5.
+6. Gör samma kontroll för några av de 277 ytorna med fältdata men ej bedömd status.
+7. Notera resultatet i granskningsloggen. Står grunden redan där är en stor del av arbetet redan gjort — då ska det bara läsas in och tillståndet registreras.
+8. Checka in utan ändringar.
 
 ### H2.3 · Kör områdeskopplingen mot NVR-lagret
 
@@ -617,7 +612,7 @@ fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopp
 
 1. 5 221 NNK-ytor ligger utanför Natura 2000 — de finns i naturreservat och nationalpark och saknar områdesidentitet.
 2. Öppna `natura-2000: scripts/analysis/koppla_omraden.py`. Kopiera funktionen `hamta_sci` till en variant som hämtar NVR-lagret från Naturvårdsregistret i stället, och byt fältnamnet SITE_CODE mot NVRID.
-3. NVR-nedladdningen finns på `geodata.naturvardsverket.se/nedladdning/naturvardsregistret/`. `data/sources_sodermanland.csv` har mönstret för URL:erna.
+3. NVR-nedladdningen finns på `geodata.naturvardsverket.se/nedladdning/naturvardsregistret/`. `natura-2000: data/sources_sodermanland.csv` har mönstret för URL:erna.
 4. Kör och kontrollera att antalet reservat stämmer mot flik 3 i statistikuttaget.
 5. Resultatet behövs för arbetspaket G och för naturreservatsspåret 2027.
 
@@ -648,30 +643,14 @@ fylls nu i automatiskt av `natura-2000: scripts/analysis/bygg_blankett.py`, kopp
 
 **v38–v46** · **[Karin]** · förutsätter H3.2
 
-**Uppdaterat 2026-08-26:** `natura-2000: docs/underlag/NRF_2026_underlag.zip` — en export av
-`G:\5_Naturvard_miljoskydd\` (~9 400 filer, 20 GB: skötselplaner, LIFE-projekt (CoastBenefit,
-Life Taiga, RestoRED, MIA, RIWUS, GrazedWoods), uppföljningsrapporter, en marin inventering
-2016–17 för skärgårdsöarna, bevarandeplan-utkast) täcker det mesta av punkt 2–4 nedan redan.
+**Uppdaterat 2026-08-26:** `natura-2000: docs/underlag/NRF_2026_underlag.zip` — en export av `G:\5_Naturvard_miljoskydd\` (~9 400 filer, 20 GB: skötselplaner, LIFE-projekt (CoastBenefit, Life Taiga, RestoRED, MIA, RIWUS, GrazedWoods), uppföljningsrapporter, en marin inventering 2016–17 för skärgårdsöarna, bevarandeplan-utkast) täcker det mesta av punkt 2–4 nedan redan.
 
-**Djupgranskning klar 2026-08-26** (samma dag, "ett steg i taget"): de 38 site-specifika
-uppföljningsplanerna (målindikatorer per naturtyp) är inkopplade i Blanketten (ny kolumn K)
-och en ny geo-fil `natura-2000: data/analysis/nnk_med_uppfoljningsplan_2026.gpkg`. LIFE-projekten
-och den limniska vattendragskartläggningen 2022 är genomgångna — se
-`natura-2000: data/analysis/README.md` för detaljer per delprojekt. Viktigast: **LIFE
-GrazedWoods (Tynnelsö) har själva flaggat att de behöver NNK-statusklassning som en del av sitt
-projekt** — värt att lyfta med projektledningen för samordning innan NNK-arbetet och LIFE GW körs
-parallellt utan kontakt.
+**Djupgranskning klar 2026-08-26** (samma dag, "ett steg i taget"): de 38 site-specifika uppföljningsplanerna (målindikatorer per naturtyp) är inkopplade i Blanketten (ny kolumn K) och en ny geo-fil `natura-2000: data/analysis/nnk_med_uppfoljningsplan_2026.gpkg`. LIFE-projekten och den limniska vattendragskartläggningen 2022 är genomgångna — se `natura-2000: data/analysis/README.md` för detaljer per delprojekt. Viktigast: **LIFE GrazedWoods (Tynnelsö) har själva flaggat att de behöver NNK-statusklassning som en del av sitt projekt** — värt att lyfta med projektledningen för samordning innan NNK-arbetet och LIFE GW körs parallellt utan kontakt.
 
-**Metodlärdom, viktig för punkt 3 nedan:** en ren sitecode-/N2000-namnsökning i arkivet missar
-underlag som ligger under ett naturreservats EGNA namn när reservatet bara delvis täcker ett
-N2000-område. Bekräftat geografiskt (inte bara namnmatchning) via en ny hämtning från
-Naturvårdsverkets Naturvårdsregistret-WFS: 121 av 195 naturreservat i länet överlappar Natura
-2000, se `natura-2000: data/analysis/naturreservat_n2000_overlapp.csv`. Använd den listan som
-ett extra sökregister när du letar i enhetsmappar (punkt 3) — sök på reservatets namn, inte bara
-sitecoden eller N2000-områdets namn.
+**Metodlärdom, viktig för punkt 3 nedan:** en ren sitecode-/N2000-namnsökning i arkivet missar underlag som ligger under ett naturreservats EGNA namn när reservatet bara delvis täcker ett N2000-område. Bekräftat geografiskt (inte bara namnmatchning) via en ny hämtning från Naturvårdsverkets Naturvårdsregistret-WFS: 121 av 195 naturreservat i länet överlappar Natura 2000, se `natura-2000: data/analysis/naturreservat_n2000_overlapp.csv`. Använd den listan som ett extra sökregister när du letar i enhetsmappar (punkt 3) — sök på reservatets namn, inte bara sitecoden eller N2000-områdets namn.
 
 1. Börja med Per Flodin — han sitter på skötselhistorik, artkunskap och tidigare åtgärder. Gör detta ändå, arkivet ersätter inte samtalet.
-2. ~~Leta systematiskt efter...~~ — se `natura-2000: data/analysis/nrf_2026_underlag_per_sitecode.csv` för vad som redan finns per objekt innan du letar på egen hand.
+2. Se `natura-2000: data/analysis/nrf_2026_underlag_per_sitecode.csv` för vad som redan finns per objekt innan du letar på egen hand.
 3. Sök på enhetsmappar, i diariet, och i SkötselDOS för det som inte redan låg i G:\5_Naturvard_miljoskydd. Fråga även dem som slutat, om det går.
 4. Prioritera underlag som rör de 277 ytorna med fältdata men ej bedömd status — där finns det med största sannolikhet ett protokoll någonstans.
 5. Skanna in det som bara finns på papper.
@@ -680,14 +659,9 @@ sitecoden eller N2000-områdets namn.
 
 **v38–v48** · **[Karin]** · förutsätter H4.1
 
-**Uppdaterat 2026-08-26:** för `NRF_2026_underlag.zip` är detta redan gjort automatiskt —
-`natura-2000: scripts/analysis/katalogisera_nrf_underlag.py` indexerade 3 697 av 9 422 filer
-(39 %) mot 199 sitecodes utan att öppna innehållet, se `data/analysis/nrf_2026_underlag_katalog.csv`
-(fil-nivå) och `..._per_sitecode.csv` (sitecode-nivå). `data/sources_sodermanland.csv` har en
-sammanfattningsrad som pekar dit — det är en bulkarkiv-post, inte en per-dokument-rad, eftersom
-den filens kolumner är gjorda för nedladdningsbara GIS-lager.
+**Uppdaterat 2026-08-26:** för `NRF_2026_underlag.zip` är detta redan gjort automatiskt — `natura-2000: scripts/analysis/katalogisera_nrf_underlag.py` indexerade 3 697 av 9 422 filer (39 %) mot 199 sitecodes utan att öppna innehållet, se `natura-2000: data/analysis/nrf_2026_underlag_katalog.csv` (fil-nivå) och `..._per_sitecode.csv` (sitecode-nivå). `natura-2000: data/sources_sodermanland.csv` har en sammanfattningsrad som pekar dit — det är en bulkarkiv-post, inte en per-dokument-rad, eftersom den filens kolumner är gjorda för nedladdningsbara GIS-lager.
 
-1. Lägg in varje YTTERLIGARE funnet underlag (Per Flodin-samtalet, papper som skannas in) i `data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
+1. Lägg in varje YTTERLIGARE funnet underlag (Per Flodin-samtalet, papper som skannas in) i `natura-2000: data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
 2. Ange: vad det är, vilket objekt eller vilka objekt det gäller, årtal, var det ligger, och om det är digitalt eller papper.
 3. Registret är i sig en leverans — det svarar på FAQ fråga 4 om vad bedömningarna vilar på.
 
@@ -786,4 +760,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.2 · 2026-08-25 · fältarbete (arbetspaket B) flyttat till 2027 — se `docs/arbetsplan.md` avsnitt 8 · ursprungligen genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py`, denna ändring gjord direkt i `nnk-granskning-2026`*
+*Runbook v1.3 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*

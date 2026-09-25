@@ -7,7 +7,7 @@
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
 **Underlag:** `natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf` (2026-07-03) · `natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf` · `natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` · `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` · `natura-2000: docs/underlag/kartering.csv`
-**Syskondokument:** `docs/runbook.md` (steg för steg, 58 uppgifter) · `kontrollrum.html` (Gantt och avbockning) · `docs/metodik.md` (arbetspaket H) · `blanketter/blankett_forvaltarkunskap_nnk.xlsx` · `kunskapslage.html` · `natura-2000: scripts/analysis/koppla_omraden.py`
+**Syskondokument:** `docs/runbook.md` (steg för steg, genereras ur `natura-2000: scripts/analysis/uppgifter.py`) · `kontrollrum.html` (Gantt och avbockning) · `docs/metodik.md` (arbetspaket H) · `blanketter/blankett_forvaltarkunskap_nnk.xlsx` · `kunskapslage.html` · `natura-2000: scripts/analysis/koppla_omraden.py`
 
 ---
 
