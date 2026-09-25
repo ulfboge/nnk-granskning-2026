@@ -2,11 +2,11 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.0 · 2026-09-04  
+**Version:** 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
-Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen.
+Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till.
 
 ---
 
@@ -428,3 +428,36 @@ NV:s kod för varifrån uppgiften ursprungligen kommer.
 | 2 | NNK |
 | 3 | BIDOS Sammanslagning |
 | 4 | BIDOS + NNK |
+
+---
+
+## Del C · Datering och länets stödfält
+
+Visas i popupens avsnitt *Naturtyp (NNK-data)* eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (`jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py`) varje gång lagret byggs om. Lämna dem orörda.
+
+### Startdatum / Slutdatum senaste inventering
+`habitat_period_lastdata_start` / `habitat_period_lastdata_end` · datum, visas som årtal i popupen  
+Slutdatum är när naturtypen senast bedömdes, startdatum gången före. Vid en faktisk förändring ska datumen avgränsa perioden då förändringen skedde (Handledningen, bilaga 1). Fälten är nya och tomma för nästan alla ytor. **Uppdatera framför allt slutdatum när du granskar** — det är det enda sättet att besvara FAQ fråga 4 om hur aktuell bedömningen är. Motsvarar blankettens *År för senaste bedömning*.
+
+### Bevarandeplan, fastställd (år)
+`bevarandeplan_ar` · heltal · skrivskyddat  
+Året då bevarandeplanen för Natura 2000-området fastställdes, hämtat ur `bevarandeplan_platser.csv`. Tomt om det inte finns någon bevarandeplan i underlaget. Visar hur gammal bevarandeplanens bedömning är — kontrollera alltid om den fortfarande stämmer.
+
+### Prioklass NNK (P1-P4)
+`prio` · text · skrivskyddat · filtrerbart i webbGIS  
+Objektets prioritetsklass för granskningen, enligt arbetsplanen avsnitt 5.2. Hämtas ur `nnk_prioklass.csv`.
+
+| Kod | Kriterium | Insats 2026 |
+|---|---|---|
+| P1 | ≥ 20 ha hävdberoende eller ≥ 5 ha sällsynt livsmiljötyp (40 objekt) | Full skrivbordsgranskning |
+| P2 | ≥ 20 ha terrester livsmiljötyp eller ≥ 5 ha osäker/obestämd (43 objekt) | Skrivbordsgranskning om tid finns, annars 2027 |
+| P3 | Övriga objekt med terrester livsmiljötyp (108 objekt) | 2027 |
+| P4 | Ingen terrester livsmiljötyp — rent limniska/marina (6 objekt) | Ingen insats, medvetet nedprioriterat |
+
+### Areal (ha)
+`area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  
+Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.
+
+### Naturtyp (kod + klartext)
+`naturtyp_kod_text` · text · skrivskyddat  
+NV:s naturtypskod och namn i samma fält, t.ex. "9010 - Taiga". Själva koden (`naturtyp`) finns som egen kolumn att filtrera på.

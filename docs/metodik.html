@@ -107,9 +107,9 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
-<p><strong>Datum:</strong> 2026-09-11
+<p><strong>Datum:</strong> 2026-09-25
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
-<strong>Version:</strong> 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+<strong>Version:</strong> 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 <strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -348,6 +348,12 @@ tr:last-child td{border-bottom:0}
 <td><code>KOMMENTAR</code> (namn + roll)</td>
 </tr>
 <tr>
+<td><strong>Varför</strong> uppgiften ändras — nästan alltid att kunskapen fanns men aldrig registrerats</td>
+<td>— (sätts av dig, se R2 i blanketten)</td>
+<td><code>forandringsorsak_forslag</code> (Förändringsorsak, förslag)</td>
+<td><code>FÖRÄNDRINGSORSAK</code></td>
+</tr>
+<tr>
 <td>"Det borde någon titta närmare på"</td>
 <td>Vad ska kontrolleras</td>
 <td><code>kontroll1–3</code>, <code>kommentar_kontroll</code></td>
@@ -361,6 +367,40 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
+<p><code>forandringsorsak_forslag</code> är granskarens eget förslag och ligger i formulärgruppen <em>1. Avvikelse och korrigeringsförslag</em>. Det är skilt från det skrivskyddade källfältet <code>forandringsorsak</code>, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.</p>
+<p><strong>Skrivskyddade stödfält.</strong> Granskningslagret har också några fält som länets egen pipeline fyller i (<code>jobbdator_koppla_nnk_skyddskategori.py</code>). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:</p>
+<table>
+<thead>
+<tr>
+<th>Fält (alias)</th>
+<th>Innehåll</th>
+<th>Motsvarighet i blanketten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prio</code> (Prioklass NNK (P1-P4))</td>
+<td>Objektets prioritetsklass enligt arbetsplanen 5.2. Går att filtrera på i webbGIS</td>
+<td>Kolumn A <em>Prio</em></td>
+</tr>
+<tr>
+<td><code>bevarandeplan_ar</code> (Bevarandeplan, fastställd (år))</td>
+<td>Året då bevarandeplanen för N2000-området fastställdes. Tomt om det saknas bevarandeplan</td>
+<td>Kolumn K <em>År</em> (bevarandeplanens årtal) och kolumn L <em>Bevarandeplan (skrivbord)</em></td>
+</tr>
+<tr>
+<td><code>area_ha</code> (Areal (ha))</td>
+<td>Polygonens areal, 2 decimaler</td>
+<td>Kolumn G <em>Areal (ha)</em> (summerad per objekt och livsmiljötyp)</td>
+</tr>
+<tr>
+<td><code>naturtyp_kod_text</code> (Naturtyp (kod + klartext))</td>
+<td>T.ex. "9010 - Taiga"</td>
+<td>Kolumn D–E <em>Kod</em>, <em>Livsmiljötyp</em></td>
+</tr>
+</tbody>
+</table>
+<p>Blankettens kolumn J <em>Bevarandestatus</em> (bevarandetillståndet enligt bevarandeplanen) har ingen egen motsvarighet i lagret. Den är ett skrivbordsunderlag inför bedömningen av <code>tillstand</code> och är inget facit. Sedan blankettversion 1.9 finns alla 197 Natura 2000-objekt med, även de som saknar terrester livsmiljötyp (P4 m.fl.).</p>
 <p><strong>Kodvärden för <code>Vad ska kontrolleras</code></strong> (från lathunden, tre likadana rullistor så flera val går att göra): Typiska och karakteristiska arter · Strukturer · Hävd · Funktioner (hydrologi, störningar) · Morfologi (jordart, formationer) · Annan negativ påverkan</p>
 <p><em>Se <a href="typiska-arter.html">Typiska och karakteristiska arter</a> för artlistor per naturtyp, som stöd när detta väljs.</em></p>
 <p><strong>Kodvärden för <code>Metod för kontroll</code></strong>: Fältbesök · Fältinventering (standardiserad metodik) · Skrivbord / Granska mot andra underlag · Annan metod
@@ -475,6 +515,7 @@ tr:last-child td{border-bottom:0}
 <li>För in i granskningslagret samma vecka — minnesbilder av andras minnesbilder blir snabbt oanvändbara</li>
 <li>Sätt <code>faltinventerare</code> = förvaltarens namn, inte ditt</li>
 <li>Sätt <code>habitat_period_lastdata_end</code> = året förvaltaren angav</li>
+<li>Sätt <code>forandringsorsak_forslag</code> = 3 Komplettering, om inte naturen faktiskt har förändrats</li>
 <li>Skriv <code>Kommentar_metod</code> i klartext: <em>"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."</em></li>
 <li>Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift</li>
 </ol>

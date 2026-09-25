@@ -174,7 +174,7 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Datum:</strong> 2026-09-11 (A2.5–A2.8 och H2.2 uppdaterade: länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat)<br />
+<p><strong>Datum:</strong> 2026-09-25 (A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat<br />
 <strong>Omfattning:</strong> 58 uppgifter i sju arbetspaket, 266 konkreta steg<br />
 <strong>Hör ihop med:</strong> <code>docs/arbetsplan.md</code> (varför) · <code>kontrollrum.html</code> (överblick och avbockning) · <code>docs/metodik.md</code> (förvaltardialogen)</p>
 <hr />
@@ -234,7 +234,7 @@ tr:last-child td{border-bottom:0}
 <li>Packa upp <code>natura-2000: docs/underlag/handledning/KartLits_NNK_GIS_mall_v_2.zip</code> till en lokal projektmapp.</li>
 <li>Mallen innehåller <code>KartLits_NNK_granskning.gdb</code> med tre tomma lager i SWEREF 99 TM: NNK_naturaobjekt_yta, _lin och _pkt. Plus tre .lyrx-filer med färdig symbologi.</li>
 <li>Lägg till lagren i ArcGIS Pro-projektet och applicera .lyrx-filerna: högerklick på lagret → Symbology → Import from Layer File.</li>
-<li>Granska attributtabellen för NNK_naturaobjekt_yta. Fälten du kommer använda: <code>tillstand</code>, <code>procent_gott</code>, <code>procent_ej_gott</code>, <code>procent_osaker</code>, <code>justering</code>, <code>utbredning</code>, <code>livsmiljötyp1–3</code>, <code>malnaturtyp1–3</code>, <code>kontroll1–3</code>, <code>metod</code>, <code>granskat</code>, <code>faltinventerare</code>, <code>egen_bet</code>, <code>habitat_period_lastdata_start</code>/<code>_end</code> samt fyra kommentarsfält.</li>
+<li>Granska attributtabellen för NNK_naturaobjekt_yta. Fälten du kommer använda: <code>tillstand</code>, <code>procent_gott</code>, <code>procent_ej_gott</code>, <code>procent_osaker</code>, <code>justering</code>, <code>utbredning</code>, <code>livsmiljötyp1–3</code>, <code>malnaturtyp1–3</code>, <code>kontroll1–3</code>, <code>metod</code>, <code>granskat</code>, <code>faltinventerare</code>, <code>egen_bet</code>, <code>habitat_period_lastdata_start</code>/<code>_end</code>, <code>forandringsorsak_forslag</code> samt fyra kommentarsfält. Länets eget publicerade lager (<code>LstD NNK Granskning</code>) har dessutom skrivskyddade stödfält som pipelinen fyller i: <code>prio</code> (P1–P4), <code>bevarandeplan_ar</code>, <code>area_ha</code> och <code>naturtyp_kod_text</code>. De finns inte i den tomma KartLitS-mallen. Se <code>docs/attributbeskrivning.md</code> Del C.</li>
 <li>Testa att lägga till en dummy-post och fylla i fälten, så att du känner igen dem i WebbGIS-gränssnittet. Radera den sedan.</li>
 </ol>
 <h3 id="a24-hamta-faststallda-vagledningar-kontrollera-status">A2.4 · Hämta fastställda vägledningar — kontrollera status</h3>
@@ -755,6 +755,7 @@ den filens kolumner är gjorda för nedladdningsbara GIS-lager.</p>
 <li>Samma vecka som samtalet. Följ stegen i E3.1 för WebbGIS-redigeringen.</li>
 <li>Sätt <code>faltinventerare</code> = förvaltarens namn, inte ditt.</li>
 <li>Sätt <code>habitat_period_lastdata_end</code> = det årtal förvaltaren angav.</li>
+<li>Sätt <code>forandringsorsak_forslag</code> (Förändringsorsak, förslag) = 3 Komplettering i nästan alla fall. 2 Faktisk förändring bara vid en verklig, daterad förändring. Samma val förs sedan in i NNK i H5.2 steg 4.</li>
 <li>Skriv <code>Kommentar_metod</code> i klartext: <em>"Uppgift från NN, förvaltare, samtal 2026-09-24. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."</em></li>
 <li>Fältmappningen finns i blankettens flik <em>Fältmappning</em> — den visar vilken blankettkolumn som hamnar i vilket fält.</li>
 </ol>

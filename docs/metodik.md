@@ -2,9 +2,9 @@
 
 ## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
 
-**Datum:** 2026-09-11
+**Datum:** 2026-09-25
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -121,8 +121,22 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 | **På vilken grund** hen vet det | Grund för bedömning | `Kommentar_metod` + `metod` | `KOMMENTAR` |
 | **När** hen senast var där | År för senaste bedömning | `habitat_period_lastdata_end` | Slutdatum senaste inventering |
 | **Vem** som bedömt | Bedömare | `faltinventerare` | `KOMMENTAR` (namn + roll) |
+| **Varför** uppgiften ändras — nästan alltid att kunskapen fanns men aldrig registrerats | — (sätts av dig, se R2 i blanketten) | `forandringsorsak_forslag` (Förändringsorsak, förslag) | `FÖRÄNDRINGSORSAK` |
 | "Det borde någon titta närmare på" | Vad ska kontrolleras | `kontroll1–3`, `kommentar_kontroll` | `KARTERINGS` = 5 + `KOMMENTAR` |
 | Fri kommentar | Kommentar | `kommentar_tillstand` / `kommentar_livsmil_utbred` | `KOMMENTAR` |
+
+`forandringsorsak_forslag` är granskarens eget förslag och ligger i formulärgruppen *1. Avvikelse och korrigeringsförslag*. Det är skilt från det skrivskyddade källfältet `forandringsorsak`, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.
+
+**Skrivskyddade stödfält.** Granskningslagret har också några fält som länets egen pipeline fyller i (`jobbdator_koppla_nnk_skyddskategori.py`). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:
+
+| Fält (alias) | Innehåll | Motsvarighet i blanketten |
+|---|---|---|
+| `prio` (Prioklass NNK (P1-P4)) | Objektets prioritetsklass enligt arbetsplanen 5.2. Går att filtrera på i webbGIS | Kolumn A *Prio* |
+| `bevarandeplan_ar` (Bevarandeplan, fastställd (år)) | Året då bevarandeplanen för N2000-området fastställdes. Tomt om det saknas bevarandeplan | Kolumn K *År* (bevarandeplanens årtal) och kolumn L *Bevarandeplan (skrivbord)* |
+| `area_ha` (Areal (ha)) | Polygonens areal, 2 decimaler | Kolumn G *Areal (ha)* (summerad per objekt och livsmiljötyp) |
+| `naturtyp_kod_text` (Naturtyp (kod + klartext)) | T.ex. "9010 - Taiga" | Kolumn D–E *Kod*, *Livsmiljötyp* |
+
+Blankettens kolumn J *Bevarandestatus* (bevarandetillståndet enligt bevarandeplanen) har ingen egen motsvarighet i lagret. Den är ett skrivbordsunderlag inför bedömningen av `tillstand` och är inget facit. Sedan blankettversion 1.9 finns alla 197 Natura 2000-objekt med, även de som saknar terrester livsmiljötyp (P4 m.fl.).
 
 **Kodvärden för `Vad ska kontrolleras`** (från lathunden, tre likadana rullistor så flera val går att göra): Typiska och karakteristiska arter · Strukturer · Hävd · Funktioner (hydrologi, störningar) · Morfologi (jordart, formationer) · Annan negativ påverkan
 
@@ -227,8 +241,9 @@ Det här är den enda mekanism som gör FAQ fråga 4:s krav på *"hur aktuella d
 1. För in i granskningslagret samma vecka — minnesbilder av andras minnesbilder blir snabbt oanvändbara
 2. Sätt `faltinventerare` = förvaltarens namn, inte ditt
 3. Sätt `habitat_period_lastdata_end` = året förvaltaren angav
-4. Skriv `Kommentar_metod` i klartext: *"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."*
-5. Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift
+4. Sätt `forandringsorsak_forslag` = 3 Komplettering, om inte naturen faktiskt har förändrats
+5. Skriv `Kommentar_metod` i klartext: *"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."*
+6. Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift
 
 ---
 
