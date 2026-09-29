@@ -4,7 +4,7 @@
 
 **Datum:** 2026-09-29
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -233,6 +233,17 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 | Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS), TUVA högst 10 år gammal utan negativa noteringar, och orto/IR-orto utan igenväxning, plöjning eller gödsling. |
 | Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, eller ortot visar igenväxning. Typen behålls (R1). |
 | Till fält | Underlagen motsäger varandra; BIDOS-typ utan TUVA eller med TUVA äldre än 15 år; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
+
+**Underlag för hävden — jordbruksskiften.** Granskningslagret har fältet *Hävd enligt jordbruksskiften* (`havd_skiften`), framräknat ur Jordbruksverkets årslager av jordbruksskiften 2015–2025 (grödkoder för bete och slåtter). Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
+
+| Värde | Betyder | Så används det i R7A |
+|---|---|---|
+| Ja | Hävd varje år från typens startår, eller från 2015 | Uppfyller hävdvillkoret för *fullgod*. Kontrollera ändå orto och TUVA. |
+| Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod*. |
+| Nej | Ytan träffar skiften men aldrig bete | Även en smal kantträff mot åker räcker, så värdet säger lite på skogs- och myrytor. På hävdberoende typer tyder det på upphörd hävd — pröva *icke fullgod* mot ortot. |
+| Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
+
+*Vall senaste året* (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.
 
 **R7B Skog**
 

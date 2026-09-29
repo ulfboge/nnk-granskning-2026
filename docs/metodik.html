@@ -110,7 +110,7 @@ tr:last-child td{border-bottom:0}
 <h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
 <p><strong>Datum:</strong> 2026-09-29
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
-<strong>Version:</strong> 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+<strong>Version:</strong> 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 <strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -543,6 +543,39 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
+<p><strong>Underlag för hävden — jordbruksskiften.</strong> Granskningslagret har fältet <em>Hävd enligt jordbruksskiften</em> (<code>havd_skiften</code>), framräknat ur Jordbruksverkets årslager av jordbruksskiften 2015–2025 (grödkoder för bete och slåtter). Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.</p>
+<table>
+<thead>
+<tr>
+<th>Värde</th>
+<th>Betyder</th>
+<th>Så används det i R7A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ja</td>
+<td>Hävd varje år från typens startår, eller från 2015</td>
+<td>Uppfyller hävdvillkoret för <em>fullgod</em>. Kontrollera ändå orto och TUVA.</td>
+</tr>
+<tr>
+<td>Delvis</td>
+<td>Hävd vissa år men inte obrutet. Fältet <em>År utan bete/slåtter</em> visar vilka år som saknas</td>
+<td>Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger <em>icke fullgod</em>.</td>
+</tr>
+<tr>
+<td>Nej</td>
+<td>Ytan träffar skiften men aldrig bete</td>
+<td>Även en smal kantträff mot åker räcker, så värdet säger lite på skogs- och myrytor. På hävdberoende typer tyder det på upphörd hävd — pröva <em>icke fullgod</em> mot ortot.</td>
+</tr>
+<tr>
+<td>Oklart</td>
+<td>Ingen skiftesträff alls</td>
+<td>Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — <em>till fält</em> om inget annat underlag finns.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Vall senaste året</em> (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.</p>
 <p><strong>R7B Skog</strong></p>
 <table>
 <thead>

@@ -290,6 +290,10 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Åtgärdas" | `karteringsstatus_text = 'Åtgärdas'` | Ytor flaggade Åtgärdas i NNK. |
 | "Fältkontrollerade" | `karteringsstatus_text IN ('Besökt i fält', 'Inventerad i fält')` | Besökt eller inventerad i fält — återanvänd kunskapen. |
 | "Typiska arter i Artportalen" | `typarter IS NOT NULL` | Ytor med fynd av minst en typisk art för naturtypen. Filtrerar på textfältet `typarter` eftersom `typarter_antal` publicerades som Big Integer 2026-09-29, vilket filteruttryck inte stöder (rättat i kedjan till nästa körning). Kräver att `artportalen_typiska_arter.py` körts och att `typiska_arter_per_yta.csv` finns på jobbdatorn (tillagt 2026-09-29). |
+| "Hävd enligt skiften: Ja" / "…: Delvis" / "…: Nej" / "…: Oklart" | `havd_skiften = 'Ja'` osv. (fyra separata filter) | Hävd enligt Jordbruksverkets jordbruksskiften 2015–2025, bara ytlagret. Underlag för R7A i metodiken. Kombinera med *Hävdberoende* — på skogs- och myrytor betyder *Nej* oftast bara att ytan gränsar till åker. Fälten sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `havd_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_havd.py`, kopieras till jobbdatorns `Bearbetning\`). Tillagt 2026-09-29. |
+| "Vall senaste året" | `havd_varning_vall = 'Ja'` | Minst halva ytan låg på vall (åkermark) senaste året — varningssignal för t.ex. 6270 och 6410. Tillagt 2026-09-29. |
+
+**Urval för R7A-piloten:** *Hävdberoende* + *Dölj marint* + ett av hävdfiltren. *Ja* ger kandidater till fullgod, *Nej* kandidater till icke fullgod, och *Delvis*/*Oklart* är de som oftast behöver fält eller TUVA. Excelfilen `n2000_statusforslag.xlsx` (privata repot) har samma värden per polygon och används som översikt och för att välja pilotens fältkontroller.
 
 **Kombinera filtren för C2.1** (Batch S): slå på *Batch S* + *Dölj marint*, och sedan antingen *Större än 5 ha*, *Hävdberoende*, *Sällsynt livsmiljötyp* eller *Åtgärdas* för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.
 

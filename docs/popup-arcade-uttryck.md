@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.1 · 2026-09-29 (sektion 7 Typiska arter tillagd)
+**Version:** 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -26,6 +26,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Bevarandeplan, fastställd (år)** (`bevarandeplan_ar`) tillagt i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av `jobbdator_koppla_nnk_skyddskategori.py` (kräver att `data/analysis/bevarandeplan_platser.csv` kopieras till jobbdatorn, se README/kvarvarande_punkter_20260922.md) — **hela pipelinen måste köras om** (koppla_nnk_skyddskategori → forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.
 
 - **Typiska arter (Artportalen)** — ny sektion 7, tillagd 2026-09-29. Visar fälten `typarter_antal`, `typarter` och `typarter_senaste_ar`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `typiska_arter_per_yta.csv` (framräknad av `natura-2000: scripts/analysis/artportalen_typiska_arter.py`). Uttrycket kontrollerar med `HasKey` att fälten finns, så det går att klistra in innan tjänsten är republicerad — sektionen visar då bara en rad om att underlaget saknas.
+- **Hävd enligt jordbruksskiften** — ny sektion 8, tillagd 2026-09-29. Visar fälten `havd_skiften`, `havd_obrutet_sedan`, `havd_ar_utan_bete`, `havd_andel_bete_senaste`, `havd_varning_vall` och `havd_period`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `havd_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_havd.py`). Sektionen visas bara för hävdberoende typer och för ytor där skiftesdata visar hävd — på övriga ytor säger värdet lite. Samma `HasKey`-skydd som sektion 7.
 
 ---
 
@@ -631,5 +632,75 @@ if (HasKey($feature, "typarter_senaste_ar") && !IsEmpty($feature.typarter_senast
     Push(rader, ["Senaste fynd (år)", Text($feature.typarter_senaste_ar)]);
 }
 Push(rader, ["Underlag", underlag]);
+return svar(rader);
+```
+
+## 8. Hävd enligt jordbruksskiften
+
+Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A i `metodik.md`.
+
+```js
+// Hävd enligt jordbruksskiften
+// Ur Jordbruksverkets årslager av jordbruksskiften, framräknat av nnk_havd.py.
+// Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
+// Visas för hävdberoende typer, och för andra ytor bara när skiftena visar hävd.
+
+var titel = "Hävd enligt jordbruksskiften";
+
+// rader = lista med [etikett, värde] - en lista så att ordningen håller
+function svar(rader) {
+    var infos = [];
+    var attrs = {};
+    for (var i in rader) {
+        var namn = "rad_" + Text(i);
+        Push(infos, { fieldName: namn, label: rader[i][0] });
+        attrs[namn] = rader[i][1];
+    }
+    return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
+}
+
+// Fälten finns inte förrän tjänsten republicerats med de nya fälten
+if (!HasKey($feature, "havd_skiften")) {
+    return svar([["Information", "Underlaget är inte inläst i lagret än."]]);
+}
+
+var v = $feature.havd_skiften;
+var havdberoende = HasKey($feature, "havdberoende") && $feature.havdberoende == "Ja";
+
+if (IsEmpty(v)) {
+    return svar([["Information", "Ytan ingick inte i hävdanalysen (bara ytlagret analyseras)."]]);
+}
+// På övriga typer säger Nej/Oklart lite - visa ingenting
+if (!havdberoende && (v == "Nej" || v == "Oklart")) {
+    return svar([["Information", "Inte relevant för ytans naturtyp."]]);
+}
+
+// Alla havd_-fält publiceras tillsammans, så de finns om havd_skiften finns
+var period = DefaultValue($feature.havd_period, "");
+var forklaring = Decode(v,
+    "Ja", "Bete eller slåtter varje år från typens startår eller första dataåret.",
+    "Delvis", "Hävd vissa år, men inte obrutet.",
+    "Nej", "Ytan träffar skiften men aldrig bete eller slåtter.",
+    "Oklart", "Ingen skiftesträff. Bete utan stöd syns inte i skiftesdata.",
+    "");
+
+var rader = [["Hävd enligt skiften", v + IIf(period == "", "", " (" + period + ")")],
+             ["Förklaring", forklaring]];
+
+if (!IsEmpty($feature.havd_obrutet_sedan)) {
+    Push(rader, ["Obruten hävd sedan", Text($feature.havd_obrutet_sedan)]);
+}
+if (v == "Delvis" && !IsEmpty($feature.havd_ar_utan_bete)) {
+    Push(rader, ["År utan bete/slåtter", $feature.havd_ar_utan_bete]);
+    if ($feature.havd_ar_utan_bete == "2015") {
+        Push(rader, ["Att tänka på", "Bara 2015 saknas. Skiftesdata 2015 är ofullständiga, så det är troligen inget verkligt uppehåll."]);
+    }
+}
+if (!IsEmpty($feature.havd_andel_bete_senaste)) {
+    Push(rader, ["Andel bete/slåtter senaste året", Text($feature.havd_andel_bete_senaste) + " %"]);
+}
+if ($feature.havd_varning_vall == "Ja") {
+    Push(rader, ["Varning", "Minst halva ytan låg på vall (åkermark) senaste året."]);
+}
 return svar(rader);
 ```

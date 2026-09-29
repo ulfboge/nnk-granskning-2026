@@ -2,8 +2,8 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Datum:** 2026-09-29 (avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 64 uppgifter i 7 arbetspaket, 299 konkreta steg  
+**Datum:** 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 65 uppgifter i 7 arbetspaket, 306 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -390,7 +390,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## D. Tillståndsbedömning i NNK
 
-*v40–v50 · 11 uppgifter*
+*v40–v50 · 12 uppgifter*
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
@@ -400,6 +400,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 | [D2.1 · Registrera tillstånd där kunskapen redan finns](#d21-registrera-tillstand-dar-kunskapen-redan-finns) | v41–v48 | Båda | D1.2 | L-D |
 | [D2.2 · Dokumentera grunden för varje bedömning](#d22-dokumentera-grunden-for-varje-bedomning) | v41–v48 | Båda | – | L-D |
 | [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
+| [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Handläggare | – | – |
 | [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Handläggare | – | – |
 | [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Handläggare | D4.1 | – |
 | [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Handläggare | D1.2 | L-D |
@@ -458,6 +459,18 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 1. Är tillståndet oförändrat sedan tidigare bedömning — registrera det ändå, med grund och datum. FAQ fråga 9: "oförändrat" är också ett svar.
 2. Skillnaden mellan *ej bedömd* och *bedömd som oförändrad* är hela poängen med årets uppdrag.
 3. Sätt karteringsstatus 2 om grunden är befintlig kunskap, och uppdatera slutdatum till dagens datum.
+
+### D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)
+
+**v40–v41** · **[Handläggare]**
+
+1. Hämta Jordbruksverkets årslager av jordbruksskiften (WFS `inspire:arslager_skifte`) för alla år från 2015 till senaste året, klippt på bbox runt länet. Spara som `natura-2000: data/skiften/jordbruksskiften_<år>.gpkg` — se `natura-2000: data/skiften/README.md` (BBOX i CQL kräver `'EPSG:3006'` som sista argument, annars 0 träffar).
+2. Lägg till det nya året i grödkodslistan `natura-2000: data/grodkoder/grodkoder_<år>.csv` (BETE = 52, 53, 55, 61, 89, 90, 95; VALL = 49, 50) och utöka `SKIFTEN` i `natura-2000: scripts/analysis/nnk_havd.py`.
+3. Bygg om `natura-2000: data/nnk/nnk_join.gpkg` med `python natura-2000: scripts/analysis/bygg_nnk_join.py` om ett nytt NNK-uttag finns, och kör sedan `python natura-2000: scripts/analysis/nnk_havd.py` på hemdatorn (knappt en minut).
+4. Resultat: `natura-2000: data/resultat/n2000_statusforslag.xlsx` (översikt och urval av pilotens 30 fältkontroller) och `natura-2000: data/resultat/havd_for_granskning.csv`. Kopiera CSV:n till `C:\Lst\ArcGISProData\Projects\NNK_NRF\Bearbetning\` på jobbdatorn.
+5. Publicera fälten: `jobbdator_BACKUP_granskning.py` → `jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py` → `jobbdator_bygg_nnk_lyrx_KORRIGERAD_V3.py` → Overwrite → `jobbdator_ATERSTALL_granskning.py`. Hoppa aldrig över backupen när granskningen har startat.
+6. Lägg in filtren *Hävd enligt skiften* och *Vall senaste året* i Konfiguratorn och popupavsnittet *Hävd enligt jordbruksskiften*, se [webbGIS-publicering](webbgis-publicering.html) (Del 6, steg 5) och [popup-uttryck](popup-arcade-uttryck.html) (avsnitt 8).
+7. Så används fältet i bedömningen: [metodik](metodik.html), R7A. Upprepa varje år när Jordbruksverket publicerat årets skiften.
 
 ### D4.1 · Notera avvikelser mot bevarandeplan och beslut
 

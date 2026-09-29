@@ -653,8 +653,19 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td><code>typarter IS NOT NULL</code></td>
 <td>Ytor med fynd av minst en typisk art för naturtypen. Filtrerar på textfältet <code>typarter</code> eftersom <code>typarter_antal</code> publicerades som Big Integer 2026-09-29, vilket filteruttryck inte stöder (rättat i kedjan till nästa körning). Kräver att <code>artportalen_typiska_arter.py</code> körts och att <code>typiska_arter_per_yta.csv</code> finns på jobbdatorn (tillagt 2026-09-29).</td>
 </tr>
+<tr>
+<td>"Hävd enligt skiften: Ja" / "…: Delvis" / "…: Nej" / "…: Oklart"</td>
+<td><code>havd_skiften = 'Ja'</code> osv. (fyra separata filter)</td>
+<td>Hävd enligt Jordbruksverkets jordbruksskiften 2015–2025, bara ytlagret. Underlag för R7A i metodiken. Kombinera med <em>Hävdberoende</em> — på skogs- och myrytor betyder <em>Nej</em> oftast bara att ytan gränsar till åker. Fälten sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>havd_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_havd.py</code>, kopieras till jobbdatorns <code>Bearbetning\</code>). Tillagt 2026-09-29.</td>
+</tr>
+<tr>
+<td>"Vall senaste året"</td>
+<td><code>havd_varning_vall = 'Ja'</code></td>
+<td>Minst halva ytan låg på vall (åkermark) senaste året — varningssignal för t.ex. 6270 och 6410. Tillagt 2026-09-29.</td>
+</tr>
 </tbody>
 </table>
+<p><strong>Urval för R7A-piloten:</strong> <em>Hävdberoende</em> + <em>Dölj marint</em> + ett av hävdfiltren. <em>Ja</em> ger kandidater till fullgod, <em>Nej</em> kandidater till icke fullgod, och <em>Delvis</em>/<em>Oklart</em> är de som oftast behöver fält eller TUVA. Excelfilen <code>n2000_statusforslag.xlsx</code> (privata repot) har samma värden per polygon och används som översikt och för att välja pilotens fältkontroller.</p>
 <p><strong>Kombinera filtren för C2.1</strong> (Batch S): slå på <em>Batch S</em> + <em>Dölj marint</em>, och sedan antingen <em>Större än 5 ha</em>, <em>Hävdberoende</em>, <em>Sällsynt livsmiljötyp</em> eller <em>Åtgärdas</em> för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.</p>
 <p>Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</p>
 <blockquote>
