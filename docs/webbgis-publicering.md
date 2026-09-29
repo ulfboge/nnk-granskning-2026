@@ -287,9 +287,9 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Hävdberoende" | `havdberoende = 'Ja'` | Ytan har en hävdberoende livsmiljötyp (arbetsplanens bilaga 3). Tillagt 2026-09-29. |
 | "Sällsynt livsmiljötyp" | `sallsynt = 'Ja'` | Livsmiljötyp med < 50 ha i länets N2000 (bilaga 3, 28 koder). Tillagt 2026-09-29. |
 | "Större än 5 ha" | `area_ha > 5` | C2.1: ytor som granskas individuellt. |
-| "Åtgärdas" | `karteringsstatus = 5` | Ytor flaggade Åtgärdas i NNK. |
-| "Fältkontrollerade" | `karteringsstatus IN (3, 4)` | Besökt eller inventerad i fält — återanvänd kunskapen. |
-| "Typiska arter i Artportalen" | `typarter_antal > 0` | Ytor med fynd av minst en typisk art för naturtypen. Kräver att `artportalen_typiska_arter.py` körts och att `typiska_arter_per_yta.csv` finns på jobbdatorn (tillagt 2026-09-29). |
+| "Åtgärdas" | `karteringsstatus_text = 'Åtgärdas'` | Ytor flaggade Åtgärdas i NNK. |
+| "Fältkontrollerade" | `karteringsstatus_text IN ('Besökt i fält', 'Inventerad i fält')` | Besökt eller inventerad i fält — återanvänd kunskapen. |
+| "Typiska arter i Artportalen" | `typarter IS NOT NULL` | Ytor med fynd av minst en typisk art för naturtypen. Filtrerar på textfältet `typarter` eftersom `typarter_antal` publicerades som Big Integer 2026-09-29, vilket filteruttryck inte stöder (rättat i kedjan till nästa körning). Kräver att `artportalen_typiska_arter.py` körts och att `typiska_arter_per_yta.csv` finns på jobbdatorn (tillagt 2026-09-29). |
 
 **Kombinera filtren för C2.1** (Batch S): slå på *Batch S* + *Dölj marint*, och sedan antingen *Större än 5 ha*, *Hävdberoende*, *Sällsynt livsmiljötyp* eller *Åtgärdas* för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.
 

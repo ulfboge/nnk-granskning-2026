@@ -640,18 +640,18 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 </tr>
 <tr>
 <td>"Åtgärdas"</td>
-<td><code>karteringsstatus = 5</code></td>
+<td><code>karteringsstatus_text = 'Åtgärdas'</code></td>
 <td>Ytor flaggade Åtgärdas i NNK.</td>
 </tr>
 <tr>
 <td>"Fältkontrollerade"</td>
-<td><code>karteringsstatus IN (3, 4)</code></td>
+<td><code>karteringsstatus_text IN ('Besökt i fält', 'Inventerad i fält')</code></td>
 <td>Besökt eller inventerad i fält — återanvänd kunskapen.</td>
 </tr>
 <tr>
 <td>"Typiska arter i Artportalen"</td>
-<td><code>typarter_antal &gt; 0</code></td>
-<td>Ytor med fynd av minst en typisk art för naturtypen. Kräver att <code>artportalen_typiska_arter.py</code> körts och att <code>typiska_arter_per_yta.csv</code> finns på jobbdatorn (tillagt 2026-09-29).</td>
+<td><code>typarter IS NOT NULL</code></td>
+<td>Ytor med fynd av minst en typisk art för naturtypen. Filtrerar på textfältet <code>typarter</code> eftersom <code>typarter_antal</code> publicerades som Big Integer 2026-09-29, vilket filteruttryck inte stöder (rättat i kedjan till nästa körning). Kräver att <code>artportalen_typiska_arter.py</code> körts och att <code>typiska_arter_per_yta.csv</code> finns på jobbdatorn (tillagt 2026-09-29).</td>
 </tr>
 </tbody>
 </table>
