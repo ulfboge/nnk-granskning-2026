@@ -176,8 +176,8 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
-<p><strong>Datum:</strong> 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat<br />
-<strong>Omfattning:</strong> 64 uppgifter i 7 arbetspaket, 306 konkreta steg<br />
+<p><strong>Datum:</strong> 2026-09-29 (avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat<br />
+<strong>Omfattning:</strong> 64 uppgifter i 7 arbetspaket, 299 konkreta steg<br />
 <strong>Hör ihop med:</strong> <code>docs/arbetsplan.md</code> (varför) · <code>kontrollrum.html</code> (överblick och avbockning) · <code>docs/metodik.md</code> (förvaltardialogen)</p>
 <hr />
 <h2 id="sa-anvands-dokumentet">Så används dokumentet</h2>
@@ -186,6 +186,138 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="a-etablering-och-forutsattningar">A. Etablering och förutsättningar</h2>
 <p><em>v34–v36 · 17 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#a11-bestall-och-verifiera-systembehorigheter">A1.1 · Beställ och verifiera systembehörigheter</a></td>
+<td>v34–v35</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a12-verifiera-att-nnk-utcheckning-fungerar-mot-ett-testobjekt">A1.2 · Verifiera att NNK-utcheckning fungerar mot ett testobjekt</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>A1.1</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a13-atkomst-till-samverkansytan-for-livsmiljotyper">A1.3 · Åtkomst till samverkansytan för Livsmiljötyper</a></td>
+<td>v34</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a21-las-handledningen-och-lathunden">A2.1 · Läs handledningen och lathunden</a></td>
+<td>v34</td>
+<td>Båda</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a22-ga-igenom-kodlistan">A2.2 · Gå igenom kodlistan</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>A1.3</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a23-installera-kartlits-gis-mall-och-testa-den">A2.3 · Installera KartLitS GIS-mall och testa den</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>A1.2</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a24-hamta-faststallda-vagledningar-kontrollera-status">A2.4 · Hämta fastställda vägledningar — kontrollera status</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a25-begar-datauttag-for-d-lan">A2.5 · Begär datauttag för D-län</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a26-kopiera-in-uttaget-i-mallen">A2.6 · Kopiera in uttaget i mallen</a></td>
+<td>v37</td>
+<td>Handläggare</td>
+<td>A2.3, A2.5</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a27-publicera-granskningslagret-i-portalen">A2.7 · Publicera granskningslagret i portalen</a></td>
+<td>v37</td>
+<td>Handläggare</td>
+<td>A2.6</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a28-skapa-webbgis-fran-de-publicerade-lagren">A2.8 · Skapa webbGIS från de publicerade lagren</a></td>
+<td>v37</td>
+<td>Handläggare</td>
+<td>A2.7</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a31-avstamning-med-chef">A3.1 · Avstämning med chef</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a32-kartlagg-forvaltaransvaret-pa-naturvardsenheten">A3.2 · Kartlägg förvaltaransvaret på Naturvårdsenheten</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a33-rollfordelning-med-karin">A3.3 · Rollfördelning med Karin</a></td>
+<td>v35</td>
+<td>Båda</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a34-anmal-er-till-kartlits-arbetsgrupper">A3.4 · Anmäl er till KartLitS arbetsgrupper</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>A1.3</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a41-skapa-arbetsstruktur-for-dokumentation">A4.1 · Skapa arbetsstruktur för dokumentation</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#a42-etablera-rutin-for-nnk-uttag">A4.2 · Etablera rutin för NNK-uttag</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>A1.2</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
 <h3 id="a11-bestall-och-verifiera-systembehorigheter">A1.1 · Beställ och verifiera systembehörigheter</h3>
 <p><strong>v34–v35</strong> · <strong>[Handläggare]</strong></p>
 <ol>
@@ -345,8 +477,71 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="c-skrivbordsgranskning-av-utbredning">C. Skrivbordsgranskning av utbredning</h2>
 <p><em>v35–v46 · 7 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#c11-etablera-granskningsrutinen">C1.1 · Etablera granskningsrutinen</a></td>
+<td>v35</td>
+<td>Handläggare</td>
+<td>A2.1, A2.3</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#c21-batch-s-storobjekten-skargardsreservaten-och-nynas">C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs</a></td>
+<td>v41–v46</td>
+<td>Handläggare</td>
+<td>C1.1, A3.4</td>
+<td>L-C</td>
+</tr>
+<tr>
+<td><a href="#c31-batch-a-kust-och-skargard">C3.1 · Batch A — kust och skärgård</a></td>
+<td>v38–v42</td>
+<td>Båda</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+<tr>
+<td><a href="#c41-batch-b-angs-och-hagmark-inland">C4.1 · Batch B — ängs- och hagmark inland</a></td>
+<td>v35–v38</td>
+<td>Karin</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+<tr>
+<td><a href="#c51-batch-c-vatmark-och-vattendrag">C5.1 · Batch C — våtmark och vattendrag</a></td>
+<td>v42–v44</td>
+<td>Karin</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+<tr>
+<td><a href="#c61-batch-d-skog-och-adellov">C6.1 · Batch D — skog och ädellöv</a></td>
+<td>v43–v46</td>
+<td>Karin</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+<tr>
+<td><a href="#c71-okarterade-ytor-och-lanssoverskridande-objekt">C7.1 · Okarterade ytor och länssöverskridande objekt</a></td>
+<td>v44</td>
+<td>Handläggare</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+</tbody>
+</table>
 <h3 id="c11-etablera-granskningsrutinen">C1.1 · Etablera granskningsrutinen</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong> · förutsätter A2.1, A2.3</p>
+<p><strong>Nytt 2026-09-29 — stöd för steg (5):</strong> fynd av typiska arter i Artportalen finns sammanställda per yta, se <a href="typiska-arter.html">typiska arter</a> (avsnittet <em>Fynd i Artportalen per yta</em>). Fälten <code>typarter_antal</code>, <code>typarter</code> och <code>typarter_senaste_ar</code> i granskningslagret, och Excelfilen <code>natura-2000: data/outputs/typiska_arter_artportalen.xlsx</code>. Körs med <code>python natura-2000: scripts/analysis/artportalen_typiska_arter.py</code> på hemdatorn.</p>
 <ol>
 <li>Skriv ned rutinen som en mall du kopierar per objekt i granskningsloggen (<code>.../NRF/granskningslogg_mall.xlsx</code>, fliken <em>Objektgranskning</em>).</li>
 <li>Rutinen per objekt, åtta steg: (1) öppna objektet i KartLitS WebbGIS och i ArcGIS Pro mot NNK; (2) läs bevarandeplanen — vilka livsmiljötyper är utpekade, vilka är prioriterade bevarandevärden, vilka bevarandemål finns; (3) jämför bevarandeplanens typer mot vad NNK visar, notera differenser; (4) kontrollera mot aktuellt ortofoto och IR-ortofoto — syns uppenbara förändringar sedan 2012?; (5) kontrollera mot TUVA, VMI, VISS och Artportalen; (6) bedöm per yta: stämmer utbredningen — OK / justera / kontrolleras i fält / osäker; (7) notera i WebbGIS-mallen; (8) justera geometri i NNK endast där det påverkar arealen meningsfullt.</li>
@@ -356,36 +551,477 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="c21-batch-s-storobjekten-skargardsreservaten-och-nynas">C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs</h3>
 <p><strong>v41–v46</strong> · <strong>[Handläggare]</strong> · förutsätter C1.1, A3.4 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sitecode</th>
+<th>Område</th>
+<th style="text-align: right;">Terrester (ha)</th>
+<th style="text-align: right;">Hävdberoende (ha)</th>
+<th style="text-align: right;">Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th style="text-align: right;">Polygoner</th>
+<th style="text-align: right;">Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220129</td>
+<td>Skärgårdsreservaten</td>
+<td style="text-align: right;">1 341,5</td>
+<td style="text-align: right;">501,3</td>
+<td style="text-align: right;">69,3</td>
+<td>1220, 1620, 4030, 5133, 6210, 6230</td>
+<td style="text-align: right;">2915</td>
+<td style="text-align: right;">198</td>
+</tr>
+<tr>
+<td>SE0220126</td>
+<td>Nynäs</td>
+<td style="text-align: right;">521,8</td>
+<td style="text-align: right;">168,7</td>
+<td style="text-align: right;">23,9</td>
+<td>1640, 4030, 6110, 6210, 6230, 8231</td>
+<td style="text-align: right;">1433</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>2 objekt</strong></td>
+<td style="text-align: right;"><strong>1 863,3</strong></td>
+<td style="text-align: right;"><strong>670,0</strong></td>
+<td style="text-align: right;"><strong>93,2</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>4348</strong></td>
+<td style="text-align: right;"><strong>228</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hantering</strong></p>
+<table>
+<thead>
+<tr>
+<th>Urval</th>
+<th>Vilka ytor</th>
+<th>Hur</th>
+<th>Filter i webbGIS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marint — lämnas</td>
+<td><code>1000</code> och <code>11xx</code> (~390 polygoner i Skärgårdsreservaten)</td>
+<td>Rörs inte 2026 (FAQ f.16)</td>
+<td>Dölj marint</td>
+</tr>
+<tr>
+<td>Individuellt</td>
+<td>Terrestra ytor &gt; 5 ha (bara ~30 st), alla hävdberoende, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten)</td>
+<td>Granskningsrutinen C1.1 per yta</td>
+<td>Batch S + <em>Större än 5 ha</em> / <em>Hävdberoende</em> / <em>Sällsynt livsmiljötyp</em> / <em>Åtgärdas</em> (ett i taget)</td>
+</tr>
+<tr>
+<td>Gruppvis</td>
+<td>Små hällmarks-, skogs- och skärytor med samma kod och samma bedömningsgrund: <code>9010</code>, <code>8230</code>/<code>8231</code>, <code>1621</code></td>
+<td>Sätt attribut i grupp + EN gemensam kommentar</td>
+<td>Batch S + naturtyp = 9010, 8230, 8231 eller 1621 och <code>area_ha</code> ≤ 5</td>
+</tr>
+<tr>
+<td>Återanvänd</td>
+<td>Redan fältkontrollerade: 198 i Skärgårdsreservaten, 30 i Nynäs</td>
+<td>Läs in befintlig kunskap — gör inte om den</td>
+<td>Batch S + <em>Fältkontrollerade</em></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>SE0220129 Skärgårdsreservaten har 2 915 polygoner totalt, men merparten av arealen är marin och lämnas enligt FAQ f.16 (~390 marina polygoner / <code>1000</code> och <code>11xx</code>). Kvar på land: ca 2 500 polygoner (ca 1 800 ha), varav bara ~30 är ≥ 5 ha. SE0220126 Nynäs har 1 433 polygoner, nästan samtliga terrestra. Yta för yta på det terrestra är inte realistiskt.</li>
-<li>Stratifiera det terrestra i ArcGIS Pro: filtrera bort marina koder, symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.</li>
-<li>Hantera individuellt: alla terrestra ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).</li>
-<li>Hantera gruppvis: små hällmarks-, skogs- och skärytor (<code>9010</code>, <code>8230</code>/<code>8231</code>, <code>1621</code>) med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.</li>
-<li>Skärgårdsreservaten har redan 198 fältkontrollerade polygoner. Filtrera fram dem (KARTERINGS 3 eller 4) och återanvänd kunskapen — gör inte om den.</li>
+<li>Yta för yta på det terrestra är inte realistiskt i de två storobjekten (se tabellen <em>Objekt</em>). Dela i stället upp ytorna enligt tabellen <em>Hantering</em> och arbeta rad för rad.</li>
+<li>Stratifiera i ArcGIS Pro: symbolisera på <code>naturtyp</code> och sortera attributtabellen på <code>area_ha</code> fallande. Samma urval går att göra med filter i webbGIS-appen, se kolumnen <em>Filter i webbGIS</em> och filtertabellen i <a href="webbgis-publicering.html">webbGIS-publicering</a> (Del 6, steg 5).</li>
+<li>Gruppvis hantering: selektera med Select By Attributes, sätt attributen i grupp och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.</li>
 <li>Invänta svar från KartLitS (A3.4) på om metoden accepteras innan du kör hela vägen. Fråga 1 i arbetsplanens avsnitt 10.</li>
 </ol>
 <h3 id="c31-batch-a-kust-och-skargard">C3.1 · Batch A — kust och skärgård</h3>
 <p><strong>v38–v42</strong> · <strong>[Båda]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sitecode</th>
+<th>Område</th>
+<th style="text-align: right;">Terrester (ha)</th>
+<th style="text-align: right;">Hävdberoende (ha)</th>
+<th style="text-align: right;">Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th style="text-align: right;">Polygoner</th>
+<th style="text-align: right;">Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220439</td>
+<td>Askö</td>
+<td style="text-align: right;">346,0</td>
+<td style="text-align: right;">218,3</td>
+<td style="text-align: right;">6,9</td>
+<td>1220, 1640, 2181, 8231, 9006</td>
+<td style="text-align: right;">506</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr>
+<td>SE0220020</td>
+<td>Strandstuviken</td>
+<td style="text-align: right;">268,4</td>
+<td style="text-align: right;">155,6</td>
+<td style="text-align: right;">15,5</td>
+<td>1220, 1640, 8231, 8232, 9006, 9190</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td>SE0220034</td>
+<td>Tullgarn södra</td>
+<td style="text-align: right;">327,1</td>
+<td style="text-align: right;">90,6</td>
+<td style="text-align: right;">24,4</td>
+<td>1620, 6110, 6210</td>
+<td style="text-align: right;">254</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr>
+<td>SE0220231</td>
+<td>Rågö</td>
+<td style="text-align: right;">174,3</td>
+<td style="text-align: right;">72,4</td>
+<td style="text-align: right;">4,5</td>
+<td>8220, 8231, 9006, 9072</td>
+<td style="text-align: right;">371</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>SE0220218</td>
+<td>Stendörren</td>
+<td style="text-align: right;">167,8</td>
+<td style="text-align: right;">69,7</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">277</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr>
+<td>SE0220077</td>
+<td>Ridö-Sundbyholmsarkipelagen södra</td>
+<td style="text-align: right;">408,9</td>
+<td style="text-align: right;">84,5</td>
+<td style="text-align: right;">14,8</td>
+<td>9110, 9190</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>6 objekt</strong></td>
+<td style="text-align: right;"><strong>1 692,5</strong></td>
+<td style="text-align: right;"><strong>691,1</strong></td>
+<td style="text-align: right;"><strong>66,1</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>1858</strong></td>
+<td style="text-align: right;"><strong>164</strong></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>Sex objekt: SE0220439 Askö, SE0220020 Strandstuviken, SE0220034 Tullgarn södra, SE0220231 Rågö, SE0220218 Stendörren, SE0220077 Ridö-Sundbyholmsarkipelagen södra. 1 692 ha terrester livsmiljötyp, varav 691 ha hävdberoende.</li>
-<li>Kör granskningsrutinen C1.1 per objekt.</li>
+<li>Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 1 692 ha terrester livsmiljötyp, varav 691 ha hävdberoende.</li>
 <li>Särskilt att titta på: 1630 strandängar — hävdas de fortfarande? Strandstuviken har 15 Åtgärdas-ytor av typen 1630 och Rågö har 4.</li>
 <li>Marina ytor inom objekten: rör dem inte. FAQ fråga 16.</li>
-<li>Tullgarn södra har 299 ha okarterat — se C7.1.</li>
+<li>Tullgarn södra: de 299 ha som står som okarterade ligger i den del av objektet som är utanför länsgränsen — se C7.1.</li>
 </ol>
 <h3 id="c41-batch-b-angs-och-hagmark-inland">C4.1 · Batch B — ängs- och hagmark inland</h3>
 <p><strong>v35–v38</strong> · <strong>[Karin]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sitecode</th>
+<th>Område</th>
+<th style="text-align: right;">Terrester (ha)</th>
+<th style="text-align: right;">Hävdberoende (ha)</th>
+<th style="text-align: right;">Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th style="text-align: right;">Polygoner</th>
+<th style="text-align: right;">Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220110</td>
+<td>Skåraviken</td>
+<td style="text-align: right;">94,9</td>
+<td style="text-align: right;">94,9</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220017</td>
+<td>Svanviken-Lindbacke</td>
+<td style="text-align: right;">73,6</td>
+<td style="text-align: right;">73,6</td>
+<td style="text-align: right;">5,0</td>
+<td>5130</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>SE0220063</td>
+<td>Sparreholms ekhagar</td>
+<td style="text-align: right;">83,3</td>
+<td style="text-align: right;">83,3</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220118</td>
+<td>Labro ängar</td>
+<td style="text-align: right;">52,4</td>
+<td style="text-align: right;">52,4</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220182</td>
+<td>Segersön</td>
+<td style="text-align: right;">96,7</td>
+<td style="text-align: right;">44,0</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220150</td>
+<td>Tåkenön</td>
+<td style="text-align: right;">85,8</td>
+<td style="text-align: right;">38,1</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>SE0220085</td>
+<td>Gripsholms Hjorthage</td>
+<td style="text-align: right;">36,6</td>
+<td style="text-align: right;">36,6</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220363</td>
+<td>Lindön</td>
+<td style="text-align: right;">57,4</td>
+<td style="text-align: right;">31,4</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220115</td>
+<td>Marsviken-Marsäng</td>
+<td style="text-align: right;">42,8</td>
+<td style="text-align: right;">42,8</td>
+<td style="text-align: right;">0,4</td>
+<td>6230</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>SE0220206</td>
+<td>Floden</td>
+<td style="text-align: right;">31,1</td>
+<td style="text-align: right;">31,1</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220088</td>
+<td>Herröknanäs</td>
+<td style="text-align: right;">33,4</td>
+<td style="text-align: right;">28,8</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220603</td>
+<td>Jungfruvassen</td>
+<td style="text-align: right;">52,0</td>
+<td style="text-align: right;">34,4</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td>SE0220344</td>
+<td>Lövön</td>
+<td style="text-align: right;">35,4</td>
+<td style="text-align: right;">25,7</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220309</td>
+<td>Brebol</td>
+<td style="text-align: right;">24,4</td>
+<td style="text-align: right;">24,4</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220435</td>
+<td>Gesta</td>
+<td style="text-align: right;">21,8</td>
+<td style="text-align: right;">21,8</td>
+<td style="text-align: right;">0,0</td>
+<td>–</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220228</td>
+<td>Ånhammarsnäset</td>
+<td style="text-align: right;">28,8</td>
+<td style="text-align: right;">20,4</td>
+<td style="text-align: right;">0,5</td>
+<td>6430</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>16 objekt</strong></td>
+<td style="text-align: right;"><strong>850,4</strong></td>
+<td style="text-align: right;"><strong>683,7</strong></td>
+<td style="text-align: right;"><strong>5,9</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>447</strong></td>
+<td style="text-align: right;"><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>16 objekt: SE0220110 Skåraviken, SE0220017 Svanviken-Lindbacke, SE0220063 Sparreholms ekhagar, SE0220118 Labro ängar, SE0220182 Segersön, SE0220150 Tåkenön, SE0220085 Gripsholms Hjorthage, SE0220363 Lindön, SE0220115 Marsviken-Marsäng, SE0220206 Floden, SE0220088 Herröknanäs, SE0220603 Jungfruvassen, SE0220344 Lövön, SE0220309 Brebol, SE0220435 Gesta, SE0220228 Ånhammarsnäset. 851 ha terrester, 684 ha hävdberoende, bara 447 polygoner.</li>
-<li>Denna batch går FÖRST, medvetet: objekten är små och snabba, vilket kalibrerar rutinen och tidsuppskattningen innan de tunga batcharna.</li>
+<li>Denna batch går FÖRST, medvetet: objekten är små och snabba (851 ha terrester, 684 ha hävdberoende, bara 447 polygoner), vilket kalibrerar rutinen och tidsuppskattningen innan de tunga batcharna.</li>
 <li>Tidsätt varje objekt och notera i loggen. Siffran används i F1.2.</li>
 <li>TUVA är det viktigaste sidounderlaget här — nästan allt är ängs- och betesmark.</li>
 <li>Milstolpe M2 i v38: batchen klar och rutinen kalibrerad.</li>
 </ol>
 <h3 id="c51-batch-c-vatmark-och-vattendrag">C5.1 · Batch C — våtmark och vattendrag</h3>
 <p><strong>v42–v44</strong> · <strong>[Karin]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sitecode</th>
+<th>Område</th>
+<th style="text-align: right;">Terrester (ha)</th>
+<th style="text-align: right;">Hävdberoende (ha)</th>
+<th style="text-align: right;">Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th style="text-align: right;">Polygoner</th>
+<th style="text-align: right;">Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220176</td>
+<td>Tovhulta stormosse</td>
+<td style="text-align: right;">47,0</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">47,0</td>
+<td>7110</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220137</td>
+<td>Bråtamossen</td>
+<td style="text-align: right;">25,8</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">14,9</td>
+<td>7230</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220103</td>
+<td>Pilgöljan</td>
+<td style="text-align: right;">8,4</td>
+<td style="text-align: right;">0,1</td>
+<td style="text-align: right;">7,6</td>
+<td>7230, 7231</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220021</td>
+<td>Sjösakärren</td>
+<td style="text-align: right;">20,9</td>
+<td style="text-align: right;">2,2</td>
+<td style="text-align: right;">5,7</td>
+<td>7230</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>SE0220106</td>
+<td>Fjällmossen norra</td>
+<td style="text-align: right;">230,5</td>
+<td style="text-align: right;">0,4</td>
+<td style="text-align: right;">7,4</td>
+<td>9006</td>
+<td style="text-align: right;">144</td>
+<td style="text-align: right;">109</td>
+</tr>
+<tr>
+<td>SE0220304</td>
+<td>Kilaån-Vretaån</td>
+<td style="text-align: right;">45,9</td>
+<td style="text-align: right;">6,2</td>
+<td style="text-align: right;">44,9</td>
+<td>3260, 9750</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>6 objekt</strong></td>
+<td style="text-align: right;"><strong>378,5</strong></td>
+<td style="text-align: right;"><strong>8,9</strong></td>
+<td style="text-align: right;"><strong>127,5</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>401</strong></td>
+<td style="text-align: right;"><strong>151</strong></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>Sex objekt: SE0220176 Tovhulta stormosse, SE0220137 Bråtamossen, SE0220103 Pilgöljan, SE0220021 Sjösakärren, SE0220106 Fjällmossen norra, SE0220304 Kilaån-Vretaån. 378 ha terrester, varav 128 ha sällsynta typer.</li>
+<li>Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 378 ha terrester, varav 128 ha sällsynta typer.</li>
 <li>Sällsynta typer här: 7110 högmossar (47 ha i länet), 7230 rikkärr (34 ha), 7231 rikkärr undertyp (4 ha), 3260 vattendrag (44 ha), 9750 svämskog (2,7 ha).</li>
 <li>Limniska ytor: ange livsmiljötyp i befintliga ytor och linjer där förekomsten är känd, men justera INTE ytterkanter eller vattendragsgeometri. FAQ fråga 16.</li>
 <li>VMI är sidounderlaget för våtmarkerna, VISS för vattendragen.</li>
@@ -393,8 +1029,135 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="c61-batch-d-skog-och-adellov">C6.1 · Batch D — skog och ädellöv</h3>
 <p><strong>v43–v46</strong> · <strong>[Karin]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sitecode</th>
+<th>Område</th>
+<th style="text-align: right;">Terrester (ha)</th>
+<th style="text-align: right;">Hävdberoende (ha)</th>
+<th style="text-align: right;">Sällsynt (ha)</th>
+<th>Sällsynta koder</th>
+<th style="text-align: right;">Polygoner</th>
+<th style="text-align: right;">Fältkontrollerade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220602</td>
+<td>Vilsta</td>
+<td style="text-align: right;">248,2</td>
+<td style="text-align: right;">12,3</td>
+<td style="text-align: right;">7,9</td>
+<td>9006, 9072</td>
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>SE0220343</td>
+<td>Askholmen</td>
+<td style="text-align: right;">54,9</td>
+<td style="text-align: right;">20,2</td>
+<td style="text-align: right;">18,0</td>
+<td>9072, 9190</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>SE0220503</td>
+<td>Fjellskäfte</td>
+<td style="text-align: right;">15,0</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">15,0</td>
+<td>9060</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220217</td>
+<td>Tore Grav</td>
+<td style="text-align: right;">10,2</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">10,2</td>
+<td>9060</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220130</td>
+<td>Lotsängsbacken</td>
+<td style="text-align: right;">13,8</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">8,3</td>
+<td>9180</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220211</td>
+<td>Ekorneberg</td>
+<td style="text-align: right;">8,5</td>
+<td style="text-align: right;">8,5</td>
+<td style="text-align: right;">6,6</td>
+<td>6230</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220234</td>
+<td>Persö</td>
+<td style="text-align: right;">8,0</td>
+<td style="text-align: right;">5,8</td>
+<td style="text-align: right;">5,8</td>
+<td>6280</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220348</td>
+<td>Tynnelsö Djurgård</td>
+<td style="text-align: right;">21,2</td>
+<td style="text-align: right;">8,2</td>
+<td style="text-align: right;">8,2</td>
+<td>9072</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>SE0220507</td>
+<td>Lundäng</td>
+<td style="text-align: right;">7,5</td>
+<td style="text-align: right;">1,1</td>
+<td style="text-align: right;">6,4</td>
+<td>4030</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SE0220438</td>
+<td>Åsa gravfält</td>
+<td style="text-align: right;">6,2</td>
+<td style="text-align: right;">1,0</td>
+<td style="text-align: right;">5,2</td>
+<td>4030</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Summa</strong></td>
+<td><strong>10 objekt</strong></td>
+<td style="text-align: right;"><strong>393,5</strong></td>
+<td style="text-align: right;"><strong>57,1</strong></td>
+<td style="text-align: right;"><strong>91,6</strong></td>
+<td></td>
+<td style="text-align: right;"><strong>264</strong></td>
+<td style="text-align: right;"><strong>23</strong></td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>Tio objekt: SE0220602 Vilsta, SE0220343 Askholmen, SE0220503 Fjellskäfte, SE0220217 Tore Grav, SE0220130 Lotsängsbacken, SE0220211 Ekorneberg, SE0220234 Persö, SE0220348 Tynnelsö Djurgård, SE0220507 Lundäng, SE0220438 Åsa gravfält. 393 ha terrester, 92 ha sällsynta typer.</li>
+<li>Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 393 ha terrester, 92 ha sällsynta typer.</li>
 <li>Sällsynta typer: 9060 åsbarrskog (29 ha), 9072 ädellövdominerad betesmark (29 ha), 9180 ädellövskog i branter (10 ha), 4030 torra hedar (16 ha), 9110 bokskog (6 ha), 6280 alvar (6 ha).</li>
 <li>För 9010 taiga: kontrollera hällmarker i anslutning — handledningen 3.1 påpekar att grundkarteringen avgränsat taiga främst inom produktiv skog, så angränsande hällmarker kan behöva justeras.</li>
 <li>Kontrollera avverkningsanmälningar via Skogsstyrelsen för objekt med skogsmark — det är den vanligaste faktiska förändringen.</li>
@@ -402,19 +1165,137 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="c71-okarterade-ytor-och-lanssoverskridande-objekt">C7.1 · Okarterade ytor och länssöverskridande objekt</h3>
 <p><strong>v44</strong> · <strong>[Handläggare]</strong> · förutsätter C1.1 · bidrar till <em>Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027</em></p>
+<p><strong>Objekt</strong></p>
+<table>
+<thead>
+<tr>
+<th>Objekt</th>
+<th>Okarterat</th>
+<th>Vad det är</th>
+<th>Åtgärd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SE0220303 Båven</td>
+<td>4 845 ha av 6 200 ha</td>
+<td>Sjöytan</td>
+<td>Lägg INGEN tid på ytterkanterna (FAQ f.16 och 29). Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Dokumentera i loggen att det är medvetet nedprioriterat.</td>
+</tr>
+<tr>
+<td>SE0220034 Tullgarn södra</td>
+<td>299 ha av 2 014 ha</td>
+<td>Kontrollerat 2026-09-29: NNK täcker hela den del av objektet som ligger inom länet (1 690 ha) — det finns inga hål där. Objektet är 2 014 ha enligt den rikstäckande SCI-gränsen; resten (324 ha) ligger utanför länsgränsen och är därför bortklippt ur länsuttaget och ur lagret Skyddade områden. De 299 ha okarterat ligger i den delen.</td>
+<td>Eftersom D-län är rapporterande län räknas delen utanför länsgränsen ändå hit. Lägg den rikstäckande SCI-gränsen (<code>natura-2000: data/raw/SCI_Rikstackande.zip</code>) över ortofoto och avgör om ytan är land eller vatten. Land: felanmäl som karteringsgap. Vatten: samma som Båven. Stäm av med Stockholms län enligt punkt 4.</td>
+</tr>
+<tr>
+<td>SE0220077 Ridö-Sundbyholmsarkipelagen södra</td>
+<td>–</td>
+<td>Gränsar mot Västmanlands län</td>
+<td>Samma avstämning som för Tullgarn södra.</td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>SE0220303 Båven: 4 845 ha okarterat av 6 200 ha. Det är sjöytan. Lägg INGEN tid på ytterkanterna — FAQ fråga 16 och 29. Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Dokumentera i loggen att det är medvetet nedprioriterat, med hänvisning till FAQ.</li>
-<li>SE0220034 Tullgarn södra: 299 ha okarterat av 2 014 ha. Kontrollera i ArcGIS Pro vad ytan består av — lägg NNK-lagret över objektsgränsen och titta på hålen.</li>
-<li>Är hålet terrestert är det ett faktiskt karteringsgap. Felanmäl till <code>NNK-kartering@metria.se</code> med sitecode, en skärmbild och en kort beskrivning.</li>
-<li>Är det vatten gäller samma sak som för Båven.</li>
-<li>Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).</li>
-<li>Länssöverskridande objekt: arealer utanför länsgräns tillfaller <strong>rapporterande län</strong> enligt NV:s NNK-statistik (fliken <em>Beskrivning</em>). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3. I D-län är Tullgarn södra (SE0220034, mot Stockholms län) det tydligaste fallet; Ridö-Sundbyholmsarkipelagen södra (SE0220077) gränsar mot Västmanland.</li>
+<li>Gå igenom objekten i tabellen. Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).</li>
+<li>Är ett hål inom länet terrestert är det ett faktiskt karteringsgap. Felanmäl till <code>NNK-kartering@metria.se</code> med sitecode, en skärmbild och en kort beskrivning. Är det vatten gäller samma sak som för Båven.</li>
+<li>Länssöverskridande objekt: arealer utanför länsgräns tillfaller <strong>rapporterande län</strong> enligt NV:s NNK-statistik (fliken <em>Beskrivning</em>). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3.</li>
 <li>Kontakta NNK/NRF-handläggaren på det andra länet och kom överens om vem som bedömer vilken del. Vet du inte vem: maila <code>kartlitsN2000@naturvardsverket.se</code>. Det är inte Metrias sak — <code>NNK-kartering@metria.se</code> är bara för karteringsgap.</li>
 <li>Dokumentera vilket län som är rapporterande och hur ni delar arbetet. (Åtgärd från möte 20 aug.)</li>
 </ol>
 <hr />
 <h2 id="d-tillstandsbedomning-i-nnk">D. Tillståndsbedömning i NNK</h2>
 <p><em>v40–v50 · 11 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen">D1.1 · Bevaka driftsättningen av de nya NNK-attributen</a></td>
+<td>v39–v40</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d12-ga-igenom-den-nya-attributlistan">D1.2 · Gå igenom den nya attributlistan</a></td>
+<td>v40</td>
+<td>Båda</td>
+<td>D1.1</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d13-delta-i-nvs-utbildning">D1.3 · Delta i NV:s utbildning</a></td>
+<td>v40–v41</td>
+<td>Båda</td>
+<td>D1.1</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d21-registrera-tillstand-dar-kunskapen-redan-finns">D2.1 · Registrera tillstånd där kunskapen redan finns</a></td>
+<td>v41–v48</td>
+<td>Båda</td>
+<td>D1.2</td>
+<td>L-D</td>
+</tr>
+<tr>
+<td><a href="#d22-dokumentera-grunden-for-varje-bedomning">D2.2 · Dokumentera grunden för varje bedömning</a></td>
+<td>v41–v48</td>
+<td>Båda</td>
+<td>–</td>
+<td>L-D</td>
+</tr>
+<tr>
+<td><a href="#d23-registrera-aktivt-aven-oforandrat-tillstand">D2.3 · Registrera aktivt även oförändrat tillstånd</a></td>
+<td>v41–v48</td>
+<td>Båda</td>
+<td>–</td>
+<td>L-D</td>
+</tr>
+<tr>
+<td><a href="#d41-notera-avvikelser-mot-bevarandeplan-och-beslut">D4.1 · Notera avvikelser mot bevarandeplan och beslut</a></td>
+<td>v41–v48</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel">D4.2 · Lista objekt där beslut hindrar nödvändig skötsel</a></td>
+<td>v48</td>
+<td>Handläggare</td>
+<td>D4.1</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper">D4.3 · Peka ut utvecklingsmark och ange målnaturtyper</a></td>
+<td>v45–v50</td>
+<td>Handläggare</td>
+<td>D1.2</td>
+<td>L-D</td>
+</tr>
+<tr>
+<td><a href="#d51-faltprotokoll-for-tillstandsbedomning">D5.1 · Fältprotokoll för tillståndsbedömning</a></td>
+<td>v40–v42</td>
+<td>Handläggare</td>
+<td>D1.2</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#d52-konsultuppdrag-for-faltbedomning-hosten-2026-villkorat">D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)</a></td>
+<td>v41–v43</td>
+<td>Handläggare</td>
+<td>D5.1</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
 <h3 id="d11-bevaka-driftsattningen-av-de-nya-nnk-attributen">D1.1 · Bevaka driftsättningen av de nya NNK-attributen</h3>
 <p><strong>v39–v40</strong> · <strong>[Handläggare]</strong></p>
 <ol>
@@ -512,6 +1393,68 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="e-sammanstallning-av-kunskapslaget">E. Sammanställning av kunskapsläget</h2>
 <p><em>v45–v50 · 7 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#e11-nytt-nnk-uttag-for-foreefter-jamforelse">E1.1 · Nytt NNK-uttag för före/efter-jämförelse</a></td>
+<td>v45</td>
+<td>Karin</td>
+<td>A4.2</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e12-statistik-per-natura-2000-omrade">E1.2 · Statistik per Natura 2000-område</a></td>
+<td>v46</td>
+<td>Karin</td>
+<td>E1.1</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e13-statistik-per-livsmiljotyp-for-hela-lanet">E1.3 · Statistik per livsmiljötyp för hela länet</a></td>
+<td>v46</td>
+<td>Karin</td>
+<td>E1.1</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e21-kvantifiera-kunskapsluckorna-per-objekt">E2.1 · Kvantifiera kunskapsluckorna per objekt</a></td>
+<td>v47</td>
+<td>Handläggare</td>
+<td>E1.2</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e22-redovisa-vilka-livsmiljotyper-per-objekt-som-ar-osakra">E2.2 · Redovisa vilka livsmiljötyper per objekt som är osäkra</a></td>
+<td>v47</td>
+<td>Handläggare</td>
+<td>E2.1</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e23-kvalitetsbrister-pa-systemniva">E2.3 · Kvalitetsbrister på systemnivå</a></td>
+<td>v47</td>
+<td>Handläggare</td>
+<td>E1.1</td>
+<td>L-E</td>
+</tr>
+<tr>
+<td><a href="#e31-fyll-i-kartlits-webbgis-mallen-for-granskade-objekt">E3.1 · Fyll i KartLitS WebbGIS-mallen för granskade objekt</a></td>
+<td>v38–v48</td>
+<td>Karin</td>
+<td>C1.1</td>
+<td>L-C</td>
+</tr>
+</tbody>
+</table>
 <h3 id="e11-nytt-nnk-uttag-for-foreefter-jamforelse">E1.1 · Nytt NNK-uttag för före/efter-jämförelse</h3>
 <p><strong>v45</strong> · <strong>[Karin]</strong> · förutsätter A4.2 · bidrar till <em>Kunskapslägesrapport D-län per 2026-12-31</em></p>
 <ol>
@@ -571,6 +1514,61 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="f-plan-for-2027">F. Plan för 2027</h2>
 <p><em>v46–v52 · 6 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#f11-vilka-insatser-kravs-och-vem-gor-det">F1.1 · Vilka insatser krävs och vem gör det</a></td>
+<td>v46–v49</td>
+<td>Handläggare</td>
+<td>E2.1</td>
+<td>L-F1</td>
+</tr>
+<tr>
+<td><a href="#f12-volymuppskattning-for-2027">F1.2 · Volymuppskattning för 2027</a></td>
+<td>v47–v48</td>
+<td>Handläggare</td>
+<td>C4.1, E2.1</td>
+<td>L-F1</td>
+</tr>
+<tr>
+<td><a href="#f21-er-prioritering-for-2027">F2.1 · Er prioritering för 2027</a></td>
+<td>v48–v49</td>
+<td>Handläggare</td>
+<td>F1.2</td>
+<td>L-F1</td>
+</tr>
+<tr>
+<td><a href="#f22-antaganden-och-generaliseringar">F2.2 · Antaganden och generaliseringar</a></td>
+<td>v48–v49</td>
+<td>Handläggare</td>
+<td>H3.2</td>
+<td>L-F1</td>
+</tr>
+<tr>
+<td><a href="#f31-vad-ni-gor-sjalva-och-vad-ni-behover-hjalp-med">F3.1 · Vad ni gör själva och vad ni behöver hjälp med</a></td>
+<td>v49</td>
+<td>Handläggare</td>
+<td>F1.1</td>
+<td>L-F1</td>
+</tr>
+<tr>
+<td><a href="#f41-underlag-till-arsredovisningen-2026">F4.1 · Underlag till årsredovisningen 2026</a></td>
+<td>v50–v52</td>
+<td>Handläggare</td>
+<td>E2.1, F2.1</td>
+<td>L-F2</td>
+</tr>
+</tbody>
+</table>
 <h3 id="f11-vilka-insatser-kravs-och-vem-gor-det">F1.1 · Vilka insatser krävs och vem gör det</h3>
 <p><strong>v46–v49</strong> · <strong>[Handläggare]</strong> · förutsätter E2.1 · bidrar till <em>Plan för 2027 enligt FAQ fråga 9</em></p>
 <ol>
@@ -621,6 +1619,47 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="g-naturreservat-och-nationalpark">G. Naturreservat och nationalpark</h2>
 <p><em>v42–v52 · 4 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#g11-ga-igenom-flik-3-i-nnk-statistiken">G1.1 · Gå igenom flik 3 i NNK-statistiken</a></td>
+<td>v42–v44</td>
+<td>Karin</td>
+<td>–</td>
+<td>L-G</td>
+</tr>
+<tr>
+<td><a href="#g12-screening-av-havdberoende-och-sallsynta-typer-i-reservaten">G1.2 · Screening av hävdberoende och sällsynta typer i reservaten</a></td>
+<td>v46</td>
+<td>Karin</td>
+<td>G1.1</td>
+<td>L-G</td>
+</tr>
+<tr>
+<td><a href="#g13-grov-volymuppskattning-for-naturreservaten">G1.3 · Grov volymuppskattning för naturreservaten</a></td>
+<td>v48</td>
+<td>Karin</td>
+<td>G1.2</td>
+<td>L-G</td>
+</tr>
+<tr>
+<td><a href="#g21-ta-med-nrnp-i-planen-till-naturvardsverket">G2.1 · Ta med NR/NP i planen till Naturvårdsverket</a></td>
+<td>v50</td>
+<td>Handläggare</td>
+<td>G1.3, F1.2</td>
+<td>L-F1</td>
+</tr>
+</tbody>
+</table>
 <h3 id="g11-ga-igenom-flik-3-i-nnk-statistiken">G1.1 · Gå igenom flik 3 i NNK-statistiken</h3>
 <p><strong>v42–v44</strong> · <strong>[Karin]</strong> · bidrar till <em>Screening av naturreservat med volymuppskattning för 2027</em></p>
 <ol>
@@ -632,6 +1671,7 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="g12-screening-av-havdberoende-och-sallsynta-typer-i-reservaten">G1.2 · Screening av hävdberoende och sällsynta typer i reservaten</h3>
 <p><strong>v46</strong> · <strong>[Karin]</strong> · förutsätter G1.1 · bidrar till <em>Screening av naturreservat med volymuppskattning för 2027</em></p>
+<p><strong>Beslut 2026-09-29 — Artportalen-fynd för naturreservaten tas 2027.</strong> Hämtningen av fynd och typiska arter per yta (<code>natura-2000: scripts/analysis/artportalen_typiska_arter.py</code>) kördes 2026 bara för de 197 Natura 2000-områdena. Naturreservat och nationalpark utanför N2000 hämtas 2027, när tillståndsbedömningen för NR/NP ska göras (FAQ fråga 6). Skriptet behöver då kompletteras så att det kan välja reservat (lagret Skyddade områden, NVRID) i stället för sitecode.</p>
 <ol>
 <li>Använd samma prioriteringsgrunder som för N2000: hävdberoende marker och sällsynta livsmiljötyper först.</li>
 <li>Kolumnerna längst till höger i flik 3 ger areal per naturtypskod per reservat — samma struktur som flik 2.</li>
@@ -655,6 +1695,103 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="h-forvaltardialog">H. Förvaltardialog</h2>
 <p><em>v35–v48 · 12 uppgifter</em></p>
+<table>
+<thead>
+<tr>
+<th>Uppgift</th>
+<th>Vecka</th>
+<th>Ansvar</th>
+<th>Förutsätter</th>
+<th>Bidrar till</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#h11-kartlagg-vem-som-forvaltar-vilka-objekt">H1.1 · Kartlägg vem som förvaltar vilka objekt</a></td>
+<td>v35–v36</td>
+<td>Karin</td>
+<td>–</td>
+<td>L-H1</td>
+</tr>
+<tr>
+<td><a href="#h12-forankra-upplagget-med-naturvardsenhetens-chef">H1.2 · Förankra upplägget med Naturvårdsenhetens chef</a></td>
+<td>v36</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h21-ga-igenom-de-141-atgardas-ytorna">H2.1 · Gå igenom de 141 Åtgärdas-ytorna</a></td>
+<td>v37</td>
+<td>Handläggare</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h22-kontrollera-kommentar-i-nnk-ajourhalla">H2.2 · Kontrollera KOMMENTAR i NNK Ajourhålla</a></td>
+<td>v37</td>
+<td>Handläggare</td>
+<td>A1.2</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h23-kor-omradeskopplingen-mot-nvr-lagret">H2.3 · Kör områdeskopplingen mot NVR-lagret</a></td>
+<td>v43</td>
+<td>Karin</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h31-boka-forvaltarsamtalen">H3.1 · Boka förvaltarsamtalen</a></td>
+<td>v37</td>
+<td>Karin</td>
+<td>H1.1, H1.2</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h32-genomfor-forvaltarsamtalen">H3.2 · Genomför förvaltarsamtalen</a></td>
+<td>v38–v44</td>
+<td>Båda</td>
+<td>H3.1, H2.1</td>
+<td>L-H2</td>
+</tr>
+<tr>
+<td><a href="#h41-eftersok-odokumenterade-underlag">H4.1 · Eftersök odokumenterade underlag</a></td>
+<td>v38–v46</td>
+<td>Karin</td>
+<td>H3.2</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h42-registrera-funna-underlag-i-datakalleregistret">H4.2 · Registrera funna underlag i datakälleregistret</a></td>
+<td>v38–v48</td>
+<td>Karin</td>
+<td>H4.1</td>
+<td>–</td>
+</tr>
+<tr>
+<td><a href="#h51-for-in-forvaltarkunskapen-i-granskningslagret">H5.1 · För in förvaltarkunskapen i granskningslagret</a></td>
+<td>v38–v46</td>
+<td>Båda</td>
+<td>H3.2</td>
+<td>L-H2</td>
+</tr>
+<tr>
+<td><a href="#h52-registrera-i-nnk-efter-avstamning">H5.2 · Registrera i NNK efter avstämning</a></td>
+<td>v41–v48</td>
+<td>Handläggare</td>
+<td>H5.1, D1.2</td>
+<td>L-D</td>
+</tr>
+<tr>
+<td><a href="#h53-skicka-avstamning-tillbaka-till-forvaltaren">H5.3 · Skicka avstämning tillbaka till förvaltaren</a></td>
+<td>v38–v48</td>
+<td>Handläggare</td>
+<td>H5.1</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
 <h3 id="h11-kartlagg-vem-som-forvaltar-vilka-objekt">H1.1 · Kartlägg vem som förvaltar vilka objekt</h3>
 <p><strong>v35–v36</strong> · <strong>[Karin]</strong> · bidrar till <em>Förvaltarkarta: vem förvaltar vilka objekt</em></p>
 <p><strong>Uppdaterat 2026-08-26:</strong> kolumn I <em>Förvaltare</em> i <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> fylls nu i automatiskt av <code>natura-2000: scripts/analysis/bygg_blankett.py</code>, kopplat via <code>natura-2000: scripts/analysis/koppla_forvaltare.py</code> mot länsstyrelsens förvaltarlista (uttag 2026-05-27). 186 av 197 sitecodes fick en träff vid körningen 2026-08-26.</p>
@@ -989,7 +2126,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table>
 <hr />
-<p><em>Runbook v1.3 · genererad ur <code>natura-2000: scripts/analysis/uppgifter.py</code> med <code>bygg_kontrollrum.py</code> — redigera där, inte i den här filen</em></p>
+<p><em>Runbook v1.4 · genererad ur <code>natura-2000: scripts/analysis/uppgifter.py</code> med <code>bygg_kontrollrum.py</code> — redigera där, inte i den här filen</em></p>
 </div>
 <script>
 (function(){

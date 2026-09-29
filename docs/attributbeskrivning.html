@@ -102,6 +102,10 @@ tr:last-child td{border-bottom:0}
 <li><a href="#startdatum-slutdatum-senaste-inventering">Startdatum / Slutdatum senaste inventering</a></li>
 <li><a href="#bevarandeplan-faststalld-ar">Bevarandeplan, fastställd (år)</a></li>
 <li><a href="#prioklass-nnk-p1-p4">Prioklass NNK (P1-P4)</a></li>
+<li><a href="#batch-sabcd">Batch (S/A/B/C/D)</a></li>
+<li><a href="#havdberoende-livsmiljotyp">Hävdberoende livsmiljötyp</a></li>
+<li><a href="#sallsynt-livsmiljotyp-i-lanet">Sällsynt livsmiljötyp i länet</a></li>
+<li><a href="#typiska-arter-i-artportalen">Typiska arter i Artportalen</a></li>
 <li><a href="#areal-ha">Areal (ha)</a></li>
 <li><a href="#naturtyp-kod-klartext">Naturtyp (kod + klartext)</a></li>
 </ul>
@@ -1517,6 +1521,54 @@ Objektets prioritetsklass för granskningen, enligt arbetsplanen avsnitt 5.2. H�
 </tr>
 </tbody>
 </table>
+<h3 id="batch-sabcd">Batch (S/A/B/C/D)</h3>
+<p><code>batch</code> · text · skrivskyddat · filtrerbart i webbGIS<br />
+Vilken granskningsbatch objektet tillhör enligt arbetsplanens bilaga 2. Bara de 40 P1-objekten har en batch, övriga är tomma. Hämtas ur kolumnen <code>batch</code> i <code>nnk_prioklass.csv</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Batch</th>
+<th>Uppgift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Storobjekt (Skärgårdsreservaten, Nynäs)</td>
+<td>C2.1</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Kust och skärgård</td>
+<td>C3.1</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Ängs- och hagmark inland</td>
+<td>C4.1</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Våtmark och vattendrag</td>
+<td>C5.1</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Skog och ädellöv</td>
+<td>C6.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="havdberoende-livsmiljotyp">Hävdberoende livsmiljötyp</h3>
+<p><code>havdberoende</code> · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS<br />
+Ja om ytans naturtyp är hävdberoende enligt arbetsplanens bilaga 3: 1630, 1631, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6412, 6430, 6510, 6520, 8230, 8231, 8232, 9070, 9071, 9072.</p>
+<h3 id="sallsynt-livsmiljotyp-i-lanet">Sällsynt livsmiljötyp i länet</h3>
+<p><code>sallsynt</code> · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS<br />
+Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natura 2000-områden (marina koder undantagna), enligt NNK-statistiken 2026-01-20: 1220, 1620, 1640, 2181, 3260, 4030, 5130, 5133, 6110, 6210, 6230, 6280, 6430, 7110, 7230, 7231, 8210, 8220, 8231, 8232, 9006, 9060, 9072, 9110, 9162, 9180, 9190, 9750. Listan räknas om med <code>nnk_kunskapslage.py</code> när ett nytt statistikuttag kommer.</p>
+<h3 id="typiska-arter-i-artportalen">Typiska arter i Artportalen</h3>
+<p><code>typarter_antal</code> · heltal · <code>typarter</code> · text · <code>typarter_senaste_ar</code> · heltal · skrivskyddade · filtrerbara i webbGIS<br />
+Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a href="typiska-arter.html">typiska arter</a>) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av <code>artportalen_typiska_arter.py</code> (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). <strong>0</strong> = ytan söktes men inga fynd. <strong>Tomt</strong> = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.</p>
 <h3 id="areal-ha">Areal (ha)</h3>
 <p><code>area_ha</code> · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret<br />
 Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.</p>

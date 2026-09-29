@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.0 · 2026-09-22
+**Version:** 1.1 · 2026-09-29 (sektion 7 Typiska arter tillagd)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -24,6 +24,8 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Grupp 1–3** slår upp klartext direkt med `DomainName($feature, "fältnamn")` på kodfälten (`livsmiljötyp1–3`, `justering`, `utbredning`, `tillstand`, `kontroll1–3`, `metod`), inte via de förberäknade `_text`-fälten som `bygg_nnk_lyrx.py` annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade `_text`-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).
 - **Startdatum/Slutdatum senaste inventering** (`habitat_period_lastdata_start`/`_end`) tillagda i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. **Kräver en publiceringsförberedelse som inte är gjord än:** fältsynlighet för `habitat_period_*` måste slås PA i `NNK_naturaobjekt_yta`/`lin`/`pkt` (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.
 - **Bevarandeplan, fastställd (år)** (`bevarandeplan_ar`) tillagt i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av `jobbdator_koppla_nnk_skyddskategori.py` (kräver att `data/analysis/bevarandeplan_platser.csv` kopieras till jobbdatorn, se README/kvarvarande_punkter_20260922.md) — **hela pipelinen måste köras om** (koppla_nnk_skyddskategori → forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.
+
+- **Typiska arter (Artportalen)** — ny sektion 7, tillagd 2026-09-29. Visar fälten `typarter_antal`, `typarter` och `typarter_senaste_ar`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `typiska_arter_per_yta.csv` (framräknad av `natura-2000: scripts/analysis/artportalen_typiska_arter.py`). Uttrycket kontrollerar med `HasKey` att fälten finns, så det går att klistra in innan tjänsten är republicerad — sektionen visar då bara en rad om att underlaget saknas.
 
 ---
 
@@ -575,4 +577,59 @@ return {
     fieldInfos: infos,
     attributes: attrs
 };
+```
+
+## 7. Typiska arter (Artportalen)
+
+Nytt uttryck (Map Viewer → NNK-ytlagret → *Configure pop-ups* → *Add content* → *Arcade*). Placera det direkt efter *Naturtyp (NNK-data)*. Texten om tidsperiod och noggrannhet gäller skriptets standardinställningar (fynd från 2010, koordinatnoggrannhet ≤ 100 m) — ändra den om skriptet körs med andra värden.
+
+```js
+// Typiska arter (Artportalen)
+// Fynd av naturtypens typiska arter inom ytan, enligt artportalen_typiska_arter.py.
+// typarter_antal: tomt = ytan söktes inte eller naturtypen saknar artlista,
+//                 0 = söktes men inga fynd, > 0 = antal olika typiska arter med fynd.
+
+var titel = "Typiska arter (Artportalen)";
+var underlag = "Fynd från 2010, koordinatnoggrannhet ≤ 100 m. Skyddsklassade fynd ingår inte.";
+
+// rader = lista med [etikett, värde] - en lista (inte en dictionary) så att ordningen håller
+function svar(rader) {
+    var infos = [];
+    var attrs = {};
+    for (var i in rader) {
+        var namn = "rad_" + Text(i);
+        Push(infos, { fieldName: namn, label: rader[i][0] });
+        attrs[namn] = rader[i][1];
+    }
+    return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
+}
+
+// Fälten finns inte förrän tjänsten republicerats med de nya fälten
+if (!HasKey($feature, "typarter_antal")) {
+    return svar([["Information", "Underlaget är inte inläst i lagret än."]]);
+}
+
+var antal = $feature.typarter_antal;
+
+if (IsEmpty(antal)) {
+    return svar([["Information", "Ingen artlista för ytans naturtyp, eller ytan ingick inte i sökningen."]]);
+}
+
+if (antal == 0) {
+    return svar([
+        ["Typiska arter", "Inga fynd"],
+        ["Att tänka på", "Inga fynd betyder oftast att ingen har letat — inte att arterna saknas."],
+        ["Underlag", underlag]
+    ]);
+}
+
+var rader = [["Antal typiska arter med fynd", Text(antal)]];
+if (HasKey($feature, "typarter") && !IsEmpty($feature.typarter)) {
+    Push(rader, ["Arter", $feature.typarter]);
+}
+if (HasKey($feature, "typarter_senaste_ar") && !IsEmpty($feature.typarter_senaste_ar)) {
+    Push(rader, ["Senaste fynd (år)", Text($feature.typarter_senaste_ar)]);
+}
+Push(rader, ["Underlag", underlag]);
+return svar(rader);
 ```

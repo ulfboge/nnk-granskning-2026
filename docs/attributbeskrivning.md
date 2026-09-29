@@ -454,6 +454,30 @@ Objektets prioritetsklass för granskningen, enligt arbetsplanen avsnitt 5.2. H�
 | P3 | Övriga objekt med terrester livsmiljötyp (108 objekt) | 2027 |
 | P4 | Ingen terrester livsmiljötyp — rent limniska/marina (6 objekt) | Ingen insats, medvetet nedprioriterat |
 
+### Batch (S/A/B/C/D)
+`batch` · text · skrivskyddat · filtrerbart i webbGIS  
+Vilken granskningsbatch objektet tillhör enligt arbetsplanens bilaga 2. Bara de 40 P1-objekten har en batch, övriga är tomma. Hämtas ur kolumnen `batch` i `nnk_prioklass.csv`.
+
+| Kod | Batch | Uppgift |
+|---|---|---|
+| S | Storobjekt (Skärgårdsreservaten, Nynäs) | C2.1 |
+| A | Kust och skärgård | C3.1 |
+| B | Ängs- och hagmark inland | C4.1 |
+| C | Våtmark och vattendrag | C5.1 |
+| D | Skog och ädellöv | C6.1 |
+
+### Hävdberoende livsmiljötyp
+`havdberoende` · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS  
+Ja om ytans naturtyp är hävdberoende enligt arbetsplanens bilaga 3: 1630, 1631, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6412, 6430, 6510, 6520, 8230, 8231, 8232, 9070, 9071, 9072.
+
+### Sällsynt livsmiljötyp i länet
+`sallsynt` · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS  
+Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natura 2000-områden (marina koder undantagna), enligt NNK-statistiken 2026-01-20: 1220, 1620, 1640, 2181, 3260, 4030, 5130, 5133, 6110, 6210, 6230, 6280, 6430, 7110, 7230, 7231, 8210, 8220, 8231, 8232, 9006, 9060, 9072, 9110, 9162, 9180, 9190, 9750. Listan räknas om med `nnk_kunskapslage.py` när ett nytt statistikuttag kommer.
+
+### Typiska arter i Artportalen
+`typarter_antal` · heltal · `typarter` · text · `typarter_senaste_ar` · heltal · skrivskyddade · filtrerbara i webbGIS  
+Hur många av ytans **typiska arter** (T-arter för naturtypen i [typiska arter](typiska-arter.html)) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av `artportalen_typiska_arter.py` (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). **0** = ytan söktes men inga fynd. **Tomt** = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.
+
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  
 Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.

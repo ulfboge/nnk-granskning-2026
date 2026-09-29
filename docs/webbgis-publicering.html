@@ -609,17 +609,53 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td></td>
 </tr>
 <tr>
-<td>"Dölj marint (naturtyp 1000-serien)"</td>
-<td><code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code> (ytlagret)</td>
-<td>FAQ 16/29: marint ska inte in i NNK 2026</td>
+<td>"Dölj marint"</td>
+<td><code>naturtyp NOT IN (1000, 1110, 1130, 1140, 1150, 1152, 1160, 1170, 1174)</code> (ytlagret)</td>
+<td>FAQ 16/29: marint ska inte in i NNK 2026. <strong>Rättat 2026-09-29:</strong> det tidigare villkoret (<code>naturtyp &lt; 1000 OR naturtyp &gt;= 2000</code>) dolde hela 1000-serien, alltså även strandängar (1630), skär (1620), alvar på öar (1640) och driftvallar (1220) som är terrestra och ska granskas. Samma marina koder som <code>nnk_kunskapslage.py</code> använder.</td>
 </tr>
 <tr>
 <td>"Prio P1" / "Prio P2" / "Prio P3" / "Prio P4"</td>
 <td><code>prio = 'P1'</code> osv. (fyra separata filter, ett per klass)</td>
 <td>Prioritetsklassning enligt arbetsplanen avsnitt 5.2 (hävdberoende/sällsynthet/terrester areal). Fältet <code>prio</code> fylls i av <code>jobbdator_koppla_nnk_skyddskategori.py</code> via uppslag mot <code>data/analysis/nnk_prioklass.csv</code> — tillagt 2026-09-22, se punkt 8 i kvarvarande-punkter-notatet.</td>
 </tr>
+<tr>
+<td>"Batch S" / "Batch A" / "Batch B" / "Batch C" / "Batch D"</td>
+<td><code>batch = 'S'</code> osv. (fem separata filter)</td>
+<td>Arbetsplanens bilaga 2 — bara de 40 P1-objekten har batch. Tillagt 2026-09-29.</td>
+</tr>
+<tr>
+<td>"Hävdberoende"</td>
+<td><code>havdberoende = 'Ja'</code></td>
+<td>Ytan har en hävdberoende livsmiljötyp (arbetsplanens bilaga 3). Tillagt 2026-09-29.</td>
+</tr>
+<tr>
+<td>"Sällsynt livsmiljötyp"</td>
+<td><code>sallsynt = 'Ja'</code></td>
+<td>Livsmiljötyp med &lt; 50 ha i länets N2000 (bilaga 3, 28 koder). Tillagt 2026-09-29.</td>
+</tr>
+<tr>
+<td>"Större än 5 ha"</td>
+<td><code>area_ha &gt; 5</code></td>
+<td>C2.1: ytor som granskas individuellt.</td>
+</tr>
+<tr>
+<td>"Åtgärdas"</td>
+<td><code>karteringsstatus = 5</code></td>
+<td>Ytor flaggade Åtgärdas i NNK.</td>
+</tr>
+<tr>
+<td>"Fältkontrollerade"</td>
+<td><code>karteringsstatus IN (3, 4)</code></td>
+<td>Besökt eller inventerad i fält — återanvänd kunskapen.</td>
+</tr>
+<tr>
+<td>"Typiska arter i Artportalen"</td>
+<td><code>typarter_antal &gt; 0</code></td>
+<td>Ytor med fynd av minst en typisk art för naturtypen. Kräver att <code>artportalen_typiska_arter.py</code> körts och att <code>typiska_arter_per_yta.csv</code> finns på jobbdatorn (tillagt 2026-09-29).</td>
+</tr>
 </tbody>
 </table>
+<p><strong>Kombinera filtren för C2.1</strong> (Batch S): slå på <em>Batch S</em> + <em>Dölj marint</em>, och sedan antingen <em>Större än 5 ha</em>, <em>Hävdberoende</em>, <em>Sällsynt livsmiljötyp</em> eller <em>Åtgärdas</em> för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.</p>
 <p>Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</p>
 <blockquote>
 <p><strong>Beslut 2026-09-15: "Mitt område"-filtret (fråga-efter-värde på <code>omrade_namn</code>) tas bort.</strong> Filtret gav opålitliga/ofullständiga träffar i drift. Områdessök hänvisas i stället till widgeten <strong>Sök i kartan</strong> (aktiverad i steg 6 nedan), som söker direkt mot de sökbara fälten <code>omrade_namn</code>/<code>n2000_sitecode</code> (satta under <em>Sökbart</em> i Lagerlistan, steg 4) via geometrin — mer robust än ett textfilter som kan missa stavningsvarianter. Åtgärda i den redan byggda appen: Konfigurator → fliken Filter → ta bort filtret "Mitt område" → Spara. Informera granskargruppen om att de ska använda Sök i kartan (förstoringsglaset i sidofältet) för att hitta sitt område.</p>

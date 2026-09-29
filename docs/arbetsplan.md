@@ -245,7 +245,7 @@ Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävd
 | Objekt | Okarterat | Åtgärd |
 |---|---|---|
 | Båven SE0220303 | 4 845 ha av 6 200 | Sjöyta, limniskt. **Lägg ingen tid på ytterkanterna** (FAQ f.16). Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Notera i planen som medvetet nedprioriterat. |
-| Tullgarn södra SE0220034 | 299 ha av 2 014 | Kontrollera vad ytan består av — om terrestert är det ett faktiskt karteringsgap som ska anmälas till Metria (FAQ f.26). Objektet gränsar mot Stockholms län — se nedan. |
+| Tullgarn södra SE0220034 | 299 ha av 2 014 | **Kontrollerat 2026-09-29:** inga hål inom länet — NNK täcker hela den del som ligger i D-län (1 690 ha). De 299 ha ligger i den del av objektet (324 ha) som är utanför länsgränsen och bortklippt ur länsuttaget. Avgör mot ortofoto om den delen är land (karteringsgap, anmäl till Metria enligt FAQ f.26) eller vatten, och stäm av med Stockholms län — se nedan. |
 
 **Länssöverskridande SCI:** arealer utanför länsgräns tillfaller **rapporterande län** enligt NV:s NNK-statistik (fliken *Beskrivning* i `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx`). Det är samma sak som förklarar 0,2 %-avvikelsen i bilaga 3. Kontakta NNK/NRF-handläggaren på det andra länet; vet du inte vem, maila `kartlitsN2000@naturvardsverket.se`. I D-län: Tullgarn södra mot Stockholm, Ridö-Sundbyholmsarkipelagen södra mot Västmanland.
 
@@ -514,7 +514,7 @@ Skickas till `kartlitsN2000@naturvardsverket.se` (FAQ f.10). Ju tidigare desto b
 2. **Generaliseringar:** Kan hävdstatus i TUVA användas som proxy för tillstånd i 6270/6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök?
 3. **BIDOS-ursprung:** 96 % av länets polygoner kommer från basinventeringen med vägledningar före 2011. Vilken ambitionsnivå förväntas för systematisk korrigering — och vad ligger inom Metrias uppdrag?
 4. **Båven:** 4 845 ha okarterat i ett limniskt objekt. Bekräfta att detta ska lämnas till den nationella limniska karteringen.
-5. **Tullgarn södra:** 299 ha okarterat — är det ett karteringsgap som ska felanmälas till Metria?
+5. **Tullgarn södra:** 299 ha okarterat — ligger utanför länsgränsen (se C7.1). Kvar att avgöra: land eller vatten, och vem som bedömer delen — D-län som rapporterande län eller Stockholms län?
 6. **Tidpunkt:** Bekräfta driftsättningsdatum för de nya tillståndsattributen, och när utbildning ges.
 7. **Formatet för planen:** FAQ f.7 säger att formatet återkommer "så snart vi kan". Efterfråga det tidigt så att E-arbetet kan struktureras rätt från början.
 8. **Klimatvägledningens tolkning av försämringsbegreppet:** EU-kommissionens vägledning om Natura 2000 och klimatförändringarna (C/2026/3567, 13.7.2026) anger att klimatdrivna, oundvikliga naturtypsövergångar (t.ex. en skogsnaturtyp som ersätts av en annan) bör hanteras genom översyn av det områdesspecifika bevarandemålet snarare än att automatiskt bokföras som en försämring enligt artikel 6.2 habitatdirektivet. Ska detta tillämpas i NNK-statusbedömningen 2027, och finns nationell vägledning på gång som adresserar frågan?

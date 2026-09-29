@@ -2,8 +2,8 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Datum:** 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 64 uppgifter i 7 arbetspaket, 306 konkreta steg  
+**Datum:** 2026-09-29 (avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 64 uppgifter i 7 arbetspaket, 299 konkreta steg  
 **Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
 
 ---
@@ -19,6 +19,26 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 ## A. Etablering och förutsättningar
 
 *v34–v36 · 17 uppgifter*
+
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [A1.1 · Beställ och verifiera systembehörigheter](#a11-bestall-och-verifiera-systembehorigheter) | v34–v35 | Handläggare | – | – |
+| [A1.2 · Verifiera att NNK-utcheckning fungerar mot ett testobjekt](#a12-verifiera-att-nnk-utcheckning-fungerar-mot-ett-testobjekt) | v35 | Handläggare | A1.1 | – |
+| [A1.3 · Åtkomst till samverkansytan för Livsmiljötyper](#a13-atkomst-till-samverkansytan-for-livsmiljotyper) | v34 | Handläggare | – | – |
+| [A2.1 · Läs handledningen och lathunden](#a21-las-handledningen-och-lathunden) | v34 | Båda | – | – |
+| [A2.2 · Gå igenom kodlistan](#a22-ga-igenom-kodlistan) | v35 | Handläggare | A1.3 | – |
+| [A2.3 · Installera KartLitS GIS-mall och testa den](#a23-installera-kartlits-gis-mall-och-testa-den) | v35 | Handläggare | A1.2 | – |
+| [A2.4 · Hämta fastställda vägledningar — kontrollera status](#a24-hamta-faststallda-vagledningar-kontrollera-status) | v36 | Handläggare | – | – |
+| [A2.5 · Begär datauttag för D-län](#a25-begar-datauttag-for-d-lan) | v35 | Handläggare | – | – |
+| [A2.6 · Kopiera in uttaget i mallen](#a26-kopiera-in-uttaget-i-mallen) | v37 | Handläggare | A2.3, A2.5 | – |
+| [A2.7 · Publicera granskningslagret i portalen](#a27-publicera-granskningslagret-i-portalen) | v37 | Handläggare | A2.6 | – |
+| [A2.8 · Skapa webbGIS från de publicerade lagren](#a28-skapa-webbgis-fran-de-publicerade-lagren) | v37 | Handläggare | A2.7 | – |
+| [A3.1 · Avstämning med chef](#a31-avstamning-med-chef) | v35 | Handläggare | – | – |
+| [A3.2 · Kartlägg förvaltaransvaret på Naturvårdsenheten](#a32-kartlagg-forvaltaransvaret-pa-naturvardsenheten) | v36 | Handläggare | – | – |
+| [A3.3 · Rollfördelning med Karin](#a33-rollfordelning-med-karin) | v35 | Båda | – | – |
+| [A3.4 · Anmäl er till KartLitS arbetsgrupper](#a34-anmal-er-till-kartlits-arbetsgrupper) | v36 | Handläggare | A1.3 | – |
+| [A4.1 · Skapa arbetsstruktur för dokumentation](#a41-skapa-arbetsstruktur-for-dokumentation) | v36 | Handläggare | – | – |
+| [A4.2 · Etablera rutin för NNK-uttag](#a42-etablera-rutin-for-nnk-uttag) | v36 | Handläggare | A1.2 | – |
 
 ### A1.1 · Beställ och verifiera systembehörigheter
 
@@ -200,9 +220,21 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 *v35–v46 · 7 uppgifter*
 
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [C1.1 · Etablera granskningsrutinen](#c11-etablera-granskningsrutinen) | v35 | Handläggare | A2.1, A2.3 | – |
+| [C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs](#c21-batch-s-storobjekten-skargardsreservaten-och-nynas) | v41–v46 | Handläggare | C1.1, A3.4 | L-C |
+| [C3.1 · Batch A — kust och skärgård](#c31-batch-a-kust-och-skargard) | v38–v42 | Båda | C1.1 | L-C |
+| [C4.1 · Batch B — ängs- och hagmark inland](#c41-batch-b-angs-och-hagmark-inland) | v35–v38 | Karin | C1.1 | L-C |
+| [C5.1 · Batch C — våtmark och vattendrag](#c51-batch-c-vatmark-och-vattendrag) | v42–v44 | Karin | C1.1 | L-C |
+| [C6.1 · Batch D — skog och ädellöv](#c61-batch-d-skog-och-adellov) | v43–v46 | Karin | C1.1 | L-C |
+| [C7.1 · Okarterade ytor och länssöverskridande objekt](#c71-okarterade-ytor-och-lanssoverskridande-objekt) | v44 | Handläggare | C1.1 | L-C |
+
 ### C1.1 · Etablera granskningsrutinen
 
 **v35** · **[Handläggare]** · förutsätter A2.1, A2.3
+
+**Nytt 2026-09-29 — stöd för steg (5):** fynd av typiska arter i Artportalen finns sammanställda per yta, se [typiska arter](typiska-arter.html) (avsnittet *Fynd i Artportalen per yta*). Fälten `typarter_antal`, `typarter` och `typarter_senaste_ar` i granskningslagret, och Excelfilen `natura-2000: data/outputs/typiska_arter_artportalen.xlsx`. Körs med `python natura-2000: scripts/analysis/artportalen_typiska_arter.py` på hemdatorn.
 
 1. Skriv ned rutinen som en mall du kopierar per objekt i granskningsloggen (`.../NRF/granskningslogg_mall.xlsx`, fliken *Objektgranskning*).
 2. Rutinen per objekt, åtta steg: (1) öppna objektet i KartLitS WebbGIS och i ArcGIS Pro mot NNK; (2) läs bevarandeplanen — vilka livsmiljötyper är utpekade, vilka är prioriterade bevarandevärden, vilka bevarandemål finns; (3) jämför bevarandeplanens typer mot vad NNK visar, notera differenser; (4) kontrollera mot aktuellt ortofoto och IR-ortofoto — syns uppenbara förändringar sedan 2012?; (5) kontrollera mot TUVA, VMI, VISS och Artportalen; (6) bedöm per yta: stämmer utbredningen — OK / justera / kontrolleras i fält / osäker; (7) notera i WebbGIS-mallen; (8) justera geometri i NNK endast där det påverkar arealen meningsfullt.
@@ -214,38 +246,97 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v41–v46** · **[Handläggare]** · förutsätter C1.1, A3.4 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. SE0220129 Skärgårdsreservaten har 2 915 polygoner totalt, men merparten av arealen är marin och lämnas enligt FAQ f.16 (~390 marina polygoner / `1000` och `11xx`). Kvar på land: ca 2 500 polygoner (ca 1 800 ha), varav bara ~30 är ≥ 5 ha. SE0220126 Nynäs har 1 433 polygoner, nästan samtliga terrestra. Yta för yta på det terrestra är inte realistiskt.
-2. Stratifiera det terrestra i ArcGIS Pro: filtrera bort marina koder, symbolisera på NATURTYPKO och sortera attributtabellen på Shape_Area fallande.
-3. Hantera individuellt: alla terrestra ytor över 5 ha, alla hävdberoende ytor, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten).
-4. Hantera gruppvis: små hällmarks-, skogs- och skärytor (`9010`, `8230`/`8231`, `1621`) med samma kod och samma bedömningsgrund. Selektera med Select By Attributes, sätt attributen i grupp, och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.
-5. Skärgårdsreservaten har redan 198 fältkontrollerade polygoner. Filtrera fram dem (KARTERINGS 3 eller 4) och återanvänd kunskapen — gör inte om den.
-6. Invänta svar från KartLitS (A3.4) på om metoden accepteras innan du kör hela vägen. Fråga 1 i arbetsplanens avsnitt 10.
+**Objekt**
+
+| Sitecode | Område | Terrester (ha) | Hävdberoende (ha) | Sällsynt (ha) | Sällsynta koder | Polygoner | Fältkontrollerade |
+|---|---|---:|---:|---:|---|---:|---:|
+| SE0220129 | Skärgårdsreservaten | 1 341,5 | 501,3 | 69,3 | 1220, 1620, 4030, 5133, 6210, 6230 | 2915 | 198 |
+| SE0220126 | Nynäs | 521,8 | 168,7 | 23,9 | 1640, 4030, 6110, 6210, 6230, 8231 | 1433 | 30 |
+| **Summa** | **2 objekt** | **1 863,3** | **670,0** | **93,2** |  | **4348** | **228** |
+
+**Hantering**
+
+| Urval | Vilka ytor | Hur | Filter i webbGIS |
+|---|---|---|---|
+| Marint — lämnas | `1000` och `11xx` (~390 polygoner i Skärgårdsreservaten) | Rörs inte 2026 (FAQ f.16) | Dölj marint |
+| Individuellt | Terrestra ytor > 5 ha (bara ~30 st), alla hävdberoende, alla sällsynta livsmiljötyper, alla Åtgärdas-ytor (91 i Skärgårdsreservaten) | Granskningsrutinen C1.1 per yta | Batch S + *Större än 5 ha* / *Hävdberoende* / *Sällsynt livsmiljötyp* / *Åtgärdas* (ett i taget) |
+| Gruppvis | Små hällmarks-, skogs- och skärytor med samma kod och samma bedömningsgrund: `9010`, `8230`/`8231`, `1621` | Sätt attribut i grupp + EN gemensam kommentar | Batch S + naturtyp = 9010, 8230, 8231 eller 1621 och `area_ha` ≤ 5 |
+| Återanvänd | Redan fältkontrollerade: 198 i Skärgårdsreservaten, 30 i Nynäs | Läs in befintlig kunskap — gör inte om den | Batch S + *Fältkontrollerade* |
+
+1. Yta för yta på det terrestra är inte realistiskt i de två storobjekten (se tabellen *Objekt*). Dela i stället upp ytorna enligt tabellen *Hantering* och arbeta rad för rad.
+2. Stratifiera i ArcGIS Pro: symbolisera på `naturtyp` och sortera attributtabellen på `area_ha` fallande. Samma urval går att göra med filter i webbGIS-appen, se kolumnen *Filter i webbGIS* och filtertabellen i [webbGIS-publicering](webbgis-publicering.html) (Del 6, steg 5).
+3. Gruppvis hantering: selektera med Select By Attributes, sätt attributen i grupp och skriv EN gemensam kommentar som anger att det är en generalisering och på vilken grund.
+4. Invänta svar från KartLitS (A3.4) på om metoden accepteras innan du kör hela vägen. Fråga 1 i arbetsplanens avsnitt 10.
 
 ### C3.1 · Batch A — kust och skärgård
 
 **v38–v42** · **[Båda]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. Sex objekt: SE0220439 Askö, SE0220020 Strandstuviken, SE0220034 Tullgarn södra, SE0220231 Rågö, SE0220218 Stendörren, SE0220077 Ridö-Sundbyholmsarkipelagen södra. 1 692 ha terrester livsmiljötyp, varav 691 ha hävdberoende.
-2. Kör granskningsrutinen C1.1 per objekt.
-3. Särskilt att titta på: 1630 strandängar — hävdas de fortfarande? Strandstuviken har 15 Åtgärdas-ytor av typen 1630 och Rågö har 4.
-4. Marina ytor inom objekten: rör dem inte. FAQ fråga 16.
-5. Tullgarn södra har 299 ha okarterat — se C7.1.
+**Objekt**
+
+| Sitecode | Område | Terrester (ha) | Hävdberoende (ha) | Sällsynt (ha) | Sällsynta koder | Polygoner | Fältkontrollerade |
+|---|---|---:|---:|---:|---|---:|---:|
+| SE0220439 | Askö | 346,0 | 218,3 | 6,9 | 1220, 1640, 2181, 8231, 9006 | 506 | 48 |
+| SE0220020 | Strandstuviken | 268,4 | 155,6 | 15,5 | 1220, 1640, 8231, 8232, 9006, 9190 | 255 | 40 |
+| SE0220034 | Tullgarn södra | 327,1 | 90,6 | 24,4 | 1620, 6110, 6210 | 254 | 38 |
+| SE0220231 | Rågö | 174,3 | 72,4 | 4,5 | 8220, 8231, 9006, 9072 | 371 | 15 |
+| SE0220218 | Stendörren | 167,8 | 69,7 | 0,0 | – | 277 | 11 |
+| SE0220077 | Ridö-Sundbyholmsarkipelagen södra | 408,9 | 84,5 | 14,8 | 9110, 9190 | 195 | 12 |
+| **Summa** | **6 objekt** | **1 692,5** | **691,1** | **66,1** |  | **1858** | **164** |
+
+1. Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 1 692 ha terrester livsmiljötyp, varav 691 ha hävdberoende.
+2. Särskilt att titta på: 1630 strandängar — hävdas de fortfarande? Strandstuviken har 15 Åtgärdas-ytor av typen 1630 och Rågö har 4.
+3. Marina ytor inom objekten: rör dem inte. FAQ fråga 16.
+4. Tullgarn södra: de 299 ha som står som okarterade ligger i den del av objektet som är utanför länsgränsen — se C7.1.
 
 ### C4.1 · Batch B — ängs- och hagmark inland
 
 **v35–v38** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. 16 objekt: SE0220110 Skåraviken, SE0220017 Svanviken-Lindbacke, SE0220063 Sparreholms ekhagar, SE0220118 Labro ängar, SE0220182 Segersön, SE0220150 Tåkenön, SE0220085 Gripsholms Hjorthage, SE0220363 Lindön, SE0220115 Marsviken-Marsäng, SE0220206 Floden, SE0220088 Herröknanäs, SE0220603 Jungfruvassen, SE0220344 Lövön, SE0220309 Brebol, SE0220435 Gesta, SE0220228 Ånhammarsnäset. 851 ha terrester, 684 ha hävdberoende, bara 447 polygoner.
-2. Denna batch går FÖRST, medvetet: objekten är små och snabba, vilket kalibrerar rutinen och tidsuppskattningen innan de tunga batcharna.
-3. Tidsätt varje objekt och notera i loggen. Siffran används i F1.2.
-4. TUVA är det viktigaste sidounderlaget här — nästan allt är ängs- och betesmark.
-5. Milstolpe M2 i v38: batchen klar och rutinen kalibrerad.
+**Objekt**
+
+| Sitecode | Område | Terrester (ha) | Hävdberoende (ha) | Sällsynt (ha) | Sällsynta koder | Polygoner | Fältkontrollerade |
+|---|---|---:|---:|---:|---|---:|---:|
+| SE0220110 | Skåraviken | 94,9 | 94,9 | 0,0 | – | 43 | 0 |
+| SE0220017 | Svanviken-Lindbacke | 73,6 | 73,6 | 5,0 | 5130 | 30 | 1 |
+| SE0220063 | Sparreholms ekhagar | 83,3 | 83,3 | 0,0 | – | 25 | 0 |
+| SE0220118 | Labro ängar | 52,4 | 52,4 | 0,0 | – | 22 | 0 |
+| SE0220182 | Segersön | 96,7 | 44,0 | 0,0 | – | 65 | 0 |
+| SE0220150 | Tåkenön | 85,8 | 38,1 | 0,0 | – | 50 | 2 |
+| SE0220085 | Gripsholms Hjorthage | 36,6 | 36,6 | 0,0 | – | 7 | 0 |
+| SE0220363 | Lindön | 57,4 | 31,4 | 0,0 | – | 27 | 0 |
+| SE0220115 | Marsviken-Marsäng | 42,8 | 42,8 | 0,4 | 6230 | 26 | 2 |
+| SE0220206 | Floden | 31,1 | 31,1 | 0,0 | – | 13 | 0 |
+| SE0220088 | Herröknanäs | 33,4 | 28,8 | 0,0 | – | 13 | 0 |
+| SE0220603 | Jungfruvassen | 52,0 | 34,4 | 0,0 | – | 12 | 4 |
+| SE0220344 | Lövön | 35,4 | 25,7 | 0,0 | – | 20 | 0 |
+| SE0220309 | Brebol | 24,4 | 24,4 | 0,0 | – | 42 | 0 |
+| SE0220435 | Gesta | 21,8 | 21,8 | 0,0 | – | 22 | 0 |
+| SE0220228 | Ånhammarsnäset | 28,8 | 20,4 | 0,5 | 6430 | 30 | 0 |
+| **Summa** | **16 objekt** | **850,4** | **683,7** | **5,9** |  | **447** | **9** |
+
+1. Denna batch går FÖRST, medvetet: objekten är små och snabba (851 ha terrester, 684 ha hävdberoende, bara 447 polygoner), vilket kalibrerar rutinen och tidsuppskattningen innan de tunga batcharna.
+2. Tidsätt varje objekt och notera i loggen. Siffran används i F1.2.
+3. TUVA är det viktigaste sidounderlaget här — nästan allt är ängs- och betesmark.
+4. Milstolpe M2 i v38: batchen klar och rutinen kalibrerad.
 
 ### C5.1 · Batch C — våtmark och vattendrag
 
 **v42–v44** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. Sex objekt: SE0220176 Tovhulta stormosse, SE0220137 Bråtamossen, SE0220103 Pilgöljan, SE0220021 Sjösakärren, SE0220106 Fjällmossen norra, SE0220304 Kilaån-Vretaån. 378 ha terrester, varav 128 ha sällsynta typer.
+**Objekt**
+
+| Sitecode | Område | Terrester (ha) | Hävdberoende (ha) | Sällsynt (ha) | Sällsynta koder | Polygoner | Fältkontrollerade |
+|---|---|---:|---:|---:|---|---:|---:|
+| SE0220176 | Tovhulta stormosse | 47,0 | 0,0 | 47,0 | 7110 | 8 | 0 |
+| SE0220137 | Bråtamossen | 25,8 | 0,0 | 14,9 | 7230 | 10 | 0 |
+| SE0220103 | Pilgöljan | 8,4 | 0,1 | 7,6 | 7230, 7231 | 9 | 0 |
+| SE0220021 | Sjösakärren | 20,9 | 2,2 | 5,7 | 7230 | 16 | 1 |
+| SE0220106 | Fjällmossen norra | 230,5 | 0,4 | 7,4 | 9006 | 144 | 109 |
+| SE0220304 | Kilaån-Vretaån | 45,9 | 6,2 | 44,9 | 3260, 9750 | 214 | 41 |
+| **Summa** | **6 objekt** | **378,5** | **8,9** | **127,5** |  | **401** | **151** |
+
+1. Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 378 ha terrester, varav 128 ha sällsynta typer.
 2. Sällsynta typer här: 7110 högmossar (47 ha i länet), 7230 rikkärr (34 ha), 7231 rikkärr undertyp (4 ha), 3260 vattendrag (44 ha), 9750 svämskog (2,7 ha).
 3. Limniska ytor: ange livsmiljötyp i befintliga ytor och linjer där förekomsten är känd, men justera INTE ytterkanter eller vattendragsgeometri. FAQ fråga 16.
 4. VMI är sidounderlaget för våtmarkerna, VISS för vattendragen.
@@ -255,7 +346,23 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v43–v46** · **[Karin]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. Tio objekt: SE0220602 Vilsta, SE0220343 Askholmen, SE0220503 Fjellskäfte, SE0220217 Tore Grav, SE0220130 Lotsängsbacken, SE0220211 Ekorneberg, SE0220234 Persö, SE0220348 Tynnelsö Djurgård, SE0220507 Lundäng, SE0220438 Åsa gravfält. 393 ha terrester, 92 ha sällsynta typer.
+**Objekt**
+
+| Sitecode | Område | Terrester (ha) | Hävdberoende (ha) | Sällsynt (ha) | Sällsynta koder | Polygoner | Fältkontrollerade |
+|---|---|---:|---:|---:|---|---:|---:|
+| SE0220602 | Vilsta | 248,2 | 12,3 | 7,9 | 9006, 9072 | 146 | 8 |
+| SE0220343 | Askholmen | 54,9 | 20,2 | 18,0 | 9072, 9190 | 41 | 14 |
+| SE0220503 | Fjellskäfte | 15,0 | 0,0 | 15,0 | 9060 | 10 | 0 |
+| SE0220217 | Tore Grav | 10,2 | 0,0 | 10,2 | 9060 | 1 | 0 |
+| SE0220130 | Lotsängsbacken | 13,8 | 0,0 | 8,3 | 9180 | 8 | 0 |
+| SE0220211 | Ekorneberg | 8,5 | 8,5 | 6,6 | 6230 | 11 | 0 |
+| SE0220234 | Persö | 8,0 | 5,8 | 5,8 | 6280 | 20 | 0 |
+| SE0220348 | Tynnelsö Djurgård | 21,2 | 8,2 | 8,2 | 9072 | 19 | 1 |
+| SE0220507 | Lundäng | 7,5 | 1,1 | 6,4 | 4030 | 4 | 0 |
+| SE0220438 | Åsa gravfält | 6,2 | 1,0 | 5,2 | 4030 | 4 | 0 |
+| **Summa** | **10 objekt** | **393,5** | **57,1** | **91,6** |  | **264** | **23** |
+
+1. Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 393 ha terrester, 92 ha sällsynta typer.
 2. Sällsynta typer: 9060 åsbarrskog (29 ha), 9072 ädellövdominerad betesmark (29 ha), 9180 ädellövskog i branter (10 ha), 4030 torra hedar (16 ha), 9110 bokskog (6 ha), 6280 alvar (6 ha).
 3. För 9010 taiga: kontrollera hällmarker i anslutning — handledningen 3.1 påpekar att grundkarteringen avgränsat taiga främst inom produktiv skog, så angränsande hällmarker kan behöva justeras.
 4. Kontrollera avverkningsanmälningar via Skogsstyrelsen för objekt med skogsmark — det är den vanligaste faktiska förändringen.
@@ -265,20 +372,39 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 **v44** · **[Handläggare]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
-1. SE0220303 Båven: 4 845 ha okarterat av 6 200 ha. Det är sjöytan. Lägg INGEN tid på ytterkanterna — FAQ fråga 16 och 29. Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Dokumentera i loggen att det är medvetet nedprioriterat, med hänvisning till FAQ.
-2. SE0220034 Tullgarn södra: 299 ha okarterat av 2 014 ha. Kontrollera i ArcGIS Pro vad ytan består av — lägg NNK-lagret över objektsgränsen och titta på hålen.
-3. Är hålet terrestert är det ett faktiskt karteringsgap. Felanmäl till `NNK-kartering@metria.se` med sitecode, en skärmbild och en kort beskrivning.
-4. Är det vatten gäller samma sak som för Båven.
-5. Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).
-6. Länssöverskridande objekt: arealer utanför länsgräns tillfaller **rapporterande län** enligt NV:s NNK-statistik (fliken *Beskrivning*). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3. I D-län är Tullgarn södra (SE0220034, mot Stockholms län) det tydligaste fallet; Ridö-Sundbyholmsarkipelagen södra (SE0220077) gränsar mot Västmanland.
-7. Kontakta NNK/NRF-handläggaren på det andra länet och kom överens om vem som bedömer vilken del. Vet du inte vem: maila `kartlitsN2000@naturvardsverket.se`. Det är inte Metrias sak — `NNK-kartering@metria.se` är bara för karteringsgap.
-8. Dokumentera vilket län som är rapporterande och hur ni delar arbetet. (Åtgärd från möte 20 aug.)
+**Objekt**
+
+| Objekt | Okarterat | Vad det är | Åtgärd |
+|---|---|---|---|
+| SE0220303 Båven | 4 845 ha av 6 200 ha | Sjöytan | Lägg INGEN tid på ytterkanterna (FAQ f.16 och 29). Ange livsmiljötyp i befintliga ytor om förekomsten är känd. Dokumentera i loggen att det är medvetet nedprioriterat. |
+| SE0220034 Tullgarn södra | 299 ha av 2 014 ha | Kontrollerat 2026-09-29: NNK täcker hela den del av objektet som ligger inom länet (1 690 ha) — det finns inga hål där. Objektet är 2 014 ha enligt den rikstäckande SCI-gränsen; resten (324 ha) ligger utanför länsgränsen och är därför bortklippt ur länsuttaget och ur lagret Skyddade områden. De 299 ha okarterat ligger i den delen. | Eftersom D-län är rapporterande län räknas delen utanför länsgränsen ändå hit. Lägg den rikstäckande SCI-gränsen (`natura-2000: data/raw/SCI_Rikstackande.zip`) över ortofoto och avgör om ytan är land eller vatten. Land: felanmäl som karteringsgap. Vatten: samma som Båven. Stäm av med Stockholms län enligt punkt 4. |
+| SE0220077 Ridö-Sundbyholmsarkipelagen södra | – | Gränsar mot Västmanlands län | Samma avstämning som för Tullgarn södra. |
+
+1. Gå igenom objekten i tabellen. Notera resultatet i loggen — båda posterna ska med i kunskapslägesrapporten (E2.1).
+2. Är ett hål inom länet terrestert är det ett faktiskt karteringsgap. Felanmäl till `NNK-kartering@metria.se` med sitecode, en skärmbild och en kort beskrivning. Är det vatten gäller samma sak som för Båven.
+3. Länssöverskridande objekt: arealer utanför länsgräns tillfaller **rapporterande län** enligt NV:s NNK-statistik (fliken *Beskrivning*). Det är samma sak som förklarar 0,2 %-avvikelsen i arbetsplanens bilaga 3.
+4. Kontakta NNK/NRF-handläggaren på det andra länet och kom överens om vem som bedömer vilken del. Vet du inte vem: maila `kartlitsN2000@naturvardsverket.se`. Det är inte Metrias sak — `NNK-kartering@metria.se` är bara för karteringsgap.
+5. Dokumentera vilket län som är rapporterande och hur ni delar arbetet. (Åtgärd från möte 20 aug.)
 
 ---
 
 ## D. Tillståndsbedömning i NNK
 
 *v40–v50 · 11 uppgifter*
+
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [D1.1 · Bevaka driftsättningen av de nya NNK-attributen](#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen) | v39–v40 | Handläggare | – | – |
+| [D1.2 · Gå igenom den nya attributlistan](#d12-ga-igenom-den-nya-attributlistan) | v40 | Båda | D1.1 | – |
+| [D1.3 · Delta i NV:s utbildning](#d13-delta-i-nvs-utbildning) | v40–v41 | Båda | D1.1 | – |
+| [D2.1 · Registrera tillstånd där kunskapen redan finns](#d21-registrera-tillstand-dar-kunskapen-redan-finns) | v41–v48 | Båda | D1.2 | L-D |
+| [D2.2 · Dokumentera grunden för varje bedömning](#d22-dokumentera-grunden-for-varje-bedomning) | v41–v48 | Båda | – | L-D |
+| [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
+| [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Handläggare | – | – |
+| [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Handläggare | D4.1 | – |
+| [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Handläggare | D1.2 | L-D |
+| [D5.1 · Fältprotokoll för tillståndsbedömning](#d51-faltprotokoll-for-tillstandsbedomning) | v40–v42 | Handläggare | D1.2 | – |
+| [D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)](#d52-konsultuppdrag-for-faltbedomning-hosten-2026-villkorat) | v41–v43 | Handläggare | D5.1 | – |
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
@@ -391,6 +517,16 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 *v45–v50 · 7 uppgifter*
 
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [E1.1 · Nytt NNK-uttag för före/efter-jämförelse](#e11-nytt-nnk-uttag-for-foreefter-jamforelse) | v45 | Karin | A4.2 | L-E |
+| [E1.2 · Statistik per Natura 2000-område](#e12-statistik-per-natura-2000-omrade) | v46 | Karin | E1.1 | L-E |
+| [E1.3 · Statistik per livsmiljötyp för hela länet](#e13-statistik-per-livsmiljotyp-for-hela-lanet) | v46 | Karin | E1.1 | L-E |
+| [E2.1 · Kvantifiera kunskapsluckorna per objekt](#e21-kvantifiera-kunskapsluckorna-per-objekt) | v47 | Handläggare | E1.2 | L-E |
+| [E2.2 · Redovisa vilka livsmiljötyper per objekt som är osäkra](#e22-redovisa-vilka-livsmiljotyper-per-objekt-som-ar-osakra) | v47 | Handläggare | E2.1 | L-E |
+| [E2.3 · Kvalitetsbrister på systemnivå](#e23-kvalitetsbrister-pa-systemniva) | v47 | Handläggare | E1.1 | L-E |
+| [E3.1 · Fyll i KartLitS WebbGIS-mallen för granskade objekt](#e31-fyll-i-kartlits-webbgis-mallen-for-granskade-objekt) | v38–v48 | Karin | C1.1 | L-C |
+
 ### E1.1 · Nytt NNK-uttag för före/efter-jämförelse
 
 **v45** · **[Karin]** · förutsätter A4.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
@@ -460,6 +596,15 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 *v46–v52 · 6 uppgifter*
 
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [F1.1 · Vilka insatser krävs och vem gör det](#f11-vilka-insatser-kravs-och-vem-gor-det) | v46–v49 | Handläggare | E2.1 | L-F1 |
+| [F1.2 · Volymuppskattning för 2027](#f12-volymuppskattning-for-2027) | v47–v48 | Handläggare | C4.1, E2.1 | L-F1 |
+| [F2.1 · Er prioritering för 2027](#f21-er-prioritering-for-2027) | v48–v49 | Handläggare | F1.2 | L-F1 |
+| [F2.2 · Antaganden och generaliseringar](#f22-antaganden-och-generaliseringar) | v48–v49 | Handläggare | H3.2 | L-F1 |
+| [F3.1 · Vad ni gör själva och vad ni behöver hjälp med](#f31-vad-ni-gor-sjalva-och-vad-ni-behover-hjalp-med) | v49 | Handläggare | F1.1 | L-F1 |
+| [F4.1 · Underlag till årsredovisningen 2026](#f41-underlag-till-arsredovisningen-2026) | v50–v52 | Handläggare | E2.1, F2.1 | L-F2 |
+
 ### F1.1 · Vilka insatser krävs och vem gör det
 
 **v46–v49** · **[Handläggare]** · förutsätter E2.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
@@ -519,6 +664,13 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 *v42–v52 · 4 uppgifter*
 
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [G1.1 · Gå igenom flik 3 i NNK-statistiken](#g11-ga-igenom-flik-3-i-nnk-statistiken) | v42–v44 | Karin | – | L-G |
+| [G1.2 · Screening av hävdberoende och sällsynta typer i reservaten](#g12-screening-av-havdberoende-och-sallsynta-typer-i-reservaten) | v46 | Karin | G1.1 | L-G |
+| [G1.3 · Grov volymuppskattning för naturreservaten](#g13-grov-volymuppskattning-for-naturreservaten) | v48 | Karin | G1.2 | L-G |
+| [G2.1 · Ta med NR/NP i planen till Naturvårdsverket](#g21-ta-med-nrnp-i-planen-till-naturvardsverket) | v50 | Handläggare | G1.3, F1.2 | L-F1 |
+
 ### G1.1 · Gå igenom flik 3 i NNK-statistiken
 
 **v42–v44** · **[Karin]** · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
@@ -532,6 +684,8 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 ### G1.2 · Screening av hävdberoende och sällsynta typer i reservaten
 
 **v46** · **[Karin]** · förutsätter G1.1 · bidrar till *Screening av naturreservat med volymuppskattning för 2027*
+
+**Beslut 2026-09-29 — Artportalen-fynd för naturreservaten tas 2027.** Hämtningen av fynd och typiska arter per yta (`natura-2000: scripts/analysis/artportalen_typiska_arter.py`) kördes 2026 bara för de 197 Natura 2000-områdena. Naturreservat och nationalpark utanför N2000 hämtas 2027, när tillståndsbedömningen för NR/NP ska göras (FAQ fråga 6). Skriptet behöver då kompletteras så att det kan välja reservat (lagret Skyddade områden, NVRID) i stället för sitecode.
 
 1. Använd samma prioriteringsgrunder som för N2000: hävdberoende marker och sällsynta livsmiljötyper först.
 2. Kolumnerna längst till höger i flik 3 ger areal per naturtypskod per reservat — samma struktur som flik 2.
@@ -559,6 +713,21 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 ## H. Förvaltardialog
 
 *v35–v48 · 12 uppgifter*
+
+| Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
+|---|---|---|---|---|
+| [H1.1 · Kartlägg vem som förvaltar vilka objekt](#h11-kartlagg-vem-som-forvaltar-vilka-objekt) | v35–v36 | Karin | – | L-H1 |
+| [H1.2 · Förankra upplägget med Naturvårdsenhetens chef](#h12-forankra-upplagget-med-naturvardsenhetens-chef) | v36 | Handläggare | – | – |
+| [H2.1 · Gå igenom de 141 Åtgärdas-ytorna](#h21-ga-igenom-de-141-atgardas-ytorna) | v37 | Handläggare | – | – |
+| [H2.2 · Kontrollera KOMMENTAR i NNK Ajourhålla](#h22-kontrollera-kommentar-i-nnk-ajourhalla) | v37 | Handläggare | A1.2 | – |
+| [H2.3 · Kör områdeskopplingen mot NVR-lagret](#h23-kor-omradeskopplingen-mot-nvr-lagret) | v43 | Karin | – | – |
+| [H3.1 · Boka förvaltarsamtalen](#h31-boka-forvaltarsamtalen) | v37 | Karin | H1.1, H1.2 | – |
+| [H3.2 · Genomför förvaltarsamtalen](#h32-genomfor-forvaltarsamtalen) | v38–v44 | Båda | H3.1, H2.1 | L-H2 |
+| [H4.1 · Eftersök odokumenterade underlag](#h41-eftersok-odokumenterade-underlag) | v38–v46 | Karin | H3.2 | – |
+| [H4.2 · Registrera funna underlag i datakälleregistret](#h42-registrera-funna-underlag-i-datakalleregistret) | v38–v48 | Karin | H4.1 | – |
+| [H5.1 · För in förvaltarkunskapen i granskningslagret](#h51-for-in-forvaltarkunskapen-i-granskningslagret) | v38–v46 | Båda | H3.2 | L-H2 |
+| [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v41–v48 | Handläggare | H5.1, D1.2 | L-D |
+| [H5.3 · Skicka avstämning tillbaka till förvaltaren](#h53-skicka-avstamning-tillbaka-till-forvaltaren) | v38–v48 | Handläggare | H5.1 | – |
 
 ### H1.1 · Kartlägg vem som förvaltar vilka objekt
 
@@ -760,4 +929,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.3 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*
+*Runbook v1.4 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*

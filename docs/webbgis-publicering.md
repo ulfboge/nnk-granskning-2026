@@ -281,8 +281,17 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Bara Natura 2000" | `skyddskategori` *innehåller* `Natura 2000` | **Aktivt vid start** — lathunden avgränsar granskningen till N2000-områden |
 | "Ej granskade" | `granskat` = 2 | |
 | "Påbörjade" | `granskat` = 3 | |
-| "Dölj marint (naturtyp 1000-serien)" | `naturtyp < 1000 OR naturtyp >= 2000` (ytlagret) | FAQ 16/29: marint ska inte in i NNK 2026 |
+| "Dölj marint" | `naturtyp NOT IN (1000, 1110, 1130, 1140, 1150, 1152, 1160, 1170, 1174)` (ytlagret) | FAQ 16/29: marint ska inte in i NNK 2026. **Rättat 2026-09-29:** det tidigare villkoret (`naturtyp < 1000 OR naturtyp >= 2000`) dolde hela 1000-serien, alltså även strandängar (1630), skär (1620), alvar på öar (1640) och driftvallar (1220) som är terrestra och ska granskas. Samma marina koder som `nnk_kunskapslage.py` använder. |
 | "Prio P1" / "Prio P2" / "Prio P3" / "Prio P4" | `prio = 'P1'` osv. (fyra separata filter, ett per klass) | Prioritetsklassning enligt arbetsplanen avsnitt 5.2 (hävdberoende/sällsynthet/terrester areal). Fältet `prio` fylls i av `jobbdator_koppla_nnk_skyddskategori.py` via uppslag mot `data/analysis/nnk_prioklass.csv` — tillagt 2026-09-22, se punkt 8 i kvarvarande-punkter-notatet. |
+| "Batch S" / "Batch A" / "Batch B" / "Batch C" / "Batch D" | `batch = 'S'` osv. (fem separata filter) | Arbetsplanens bilaga 2 — bara de 40 P1-objekten har batch. Tillagt 2026-09-29. |
+| "Hävdberoende" | `havdberoende = 'Ja'` | Ytan har en hävdberoende livsmiljötyp (arbetsplanens bilaga 3). Tillagt 2026-09-29. |
+| "Sällsynt livsmiljötyp" | `sallsynt = 'Ja'` | Livsmiljötyp med < 50 ha i länets N2000 (bilaga 3, 28 koder). Tillagt 2026-09-29. |
+| "Större än 5 ha" | `area_ha > 5` | C2.1: ytor som granskas individuellt. |
+| "Åtgärdas" | `karteringsstatus = 5` | Ytor flaggade Åtgärdas i NNK. |
+| "Fältkontrollerade" | `karteringsstatus IN (3, 4)` | Besökt eller inventerad i fält — återanvänd kunskapen. |
+| "Typiska arter i Artportalen" | `typarter_antal > 0` | Ytor med fynd av minst en typisk art för naturtypen. Kräver att `artportalen_typiska_arter.py` körts och att `typiska_arter_per_yta.csv` finns på jobbdatorn (tillagt 2026-09-29). |
+
+**Kombinera filtren för C2.1** (Batch S): slå på *Batch S* + *Dölj marint*, och sedan antingen *Större än 5 ha*, *Hävdberoende*, *Sällsynt livsmiljötyp* eller *Åtgärdas* för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.
 
 Kombinera filtren med **OCH**. Aktiverande verktyg: *Nollställ alla* och *Stäng av alla* ✔.
 

@@ -27,27 +27,27 @@ Sorterade efter antal karterade delytor i länets N2000-områden (preliminär pr
 | Kod | Naturtyp | Delytor (NNK, preliminärt) | Vägledning (PDF) |
 |---|---|---|---|
 | [9010](#9010-taiga) | Taiga | 1 956 | [länk](https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9010-taiga-maj--2.pdf) |
-| [8230](#8230-hällmarkstorräng) | Hällmarkstorräng | 762 | [länk](https://www.naturvardsverket.se/4ac1d4/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8230-hallmarkstorrang.pdf) |
-| [9070](#9070-trädklädd-betesmark) | Trädklädd betesmark | 523 | [länk](https://www.naturvardsverket.se/4ac5b7/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9070-tradkladd-betesmark-maj-12.pdf) |
-| [6270](#6270-silikatgräsmarker) | Silikatgräsmarker | 353 | [länk](https://www.naturvardsverket.se/4ac4dd/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6270-silikatgrasmarker.pdf) |
+| [8230](#8230-hallmarkstorrang) | Hällmarkstorräng | 762 | [länk](https://www.naturvardsverket.se/4ac1d4/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8230-hallmarkstorrang.pdf) |
+| [9070](#9070-tradkladd-betesmark) | Trädklädd betesmark | 523 | [länk](https://www.naturvardsverket.se/4ac5b7/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9070-tradkladd-betesmark-maj-12.pdf) |
+| [6270](#6270-silikatgrasmarker) | Silikatgräsmarker | 353 | [länk](https://www.naturvardsverket.se/4ac4dd/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6270-silikatgrasmarker.pdf) |
 | [9740 / 91D0](#9740-91d0-skogbevuxen-myr) | Skogbevuxen myr | 248 | [länk](https://www.naturvardsverket.se/4ac5a9/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91d0-skogsbevuxenmyr-maj-12.pdf) |
-| [9080](#9080-lövsumpskog) | Lövsumpskog | 246 | [länk](https://www.naturvardsverket.se/4a6378/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9080-lovsumpskog-maj-12.pdf) |
-| [7140](#7140-öppna-mossar-och-kärr) | Öppna mossar och kärr | 213 | [länk](https://www.naturvardsverket.se/4ac581/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7140-oppnamossarochkarr.pdf) |
-| [6410](#6410-fuktängar) | Fuktängar | 150 | [länk](https://www.naturvardsverket.se/4ac4df/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6410-fuktangar.pdf) |
-| [3150](#3150-naturligt-näringsrika-sjöar) | Naturligt näringsrika sjöar | 115 | [länk](https://www.naturvardsverket.se/4ac5d4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3150-naturligtnaringsrikasjoar.pdf) |
-| [9020](#9020-nordlig-ädellövskog) | Nordlig ädellövskog | 111 | [länk](https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9020-nordligadellovskog-maj-12.pdf) |
-| [9050](#9050-näringsrik-granskog) | Näringsrik granskog | 84 | [se not — ingen fristående vägledning ännu](#9050-näringsrik-granskog) |
+| [9080](#9080-lovsumpskog) | Lövsumpskog | 246 | [länk](https://www.naturvardsverket.se/4a6378/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9080-lovsumpskog-maj-12.pdf) |
+| [7140](#7140-oppna-mossar-och-karr) | Öppna mossar och kärr | 213 | [länk](https://www.naturvardsverket.se/4ac581/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7140-oppnamossarochkarr.pdf) |
+| [6410](#6410-fuktangar) | Fuktängar | 150 | [länk](https://www.naturvardsverket.se/4ac4df/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6410-fuktangar.pdf) |
+| [3150](#3150-naturligt-naringsrika-sjoar) | Naturligt näringsrika sjöar | 115 | [länk](https://www.naturvardsverket.se/4ac5d4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3150-naturligtnaringsrikasjoar.pdf) |
+| [9020](#9020-nordlig-adellovskog) | Nordlig ädellövskog | 111 | [länk](https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9020-nordligadellovskog-maj-12.pdf) |
+| [9050](#9050-naringsrik-granskog) | Näringsrik granskog | 84 | [se not — ingen fristående vägledning ännu](#9050-naringsrik-granskog) |
 | [8220](#8220-silikatbranter) | Silikatbranter | 65 | [länk](https://www.naturvardsverket.se/4ac1dd/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8220-silkikatbranter.pdf) |
-| [6510](#6510-slåtterängar-i-låglandet) | Slåtterängar i låglandet | 60 | [länk](https://www.naturvardsverket.se/4ac4e7/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6510-laglandsslatterangar.pdf) |
-| [3160](#3160-myrsjöar) | Myrsjöar | 40 | [länk](https://www.naturvardsverket.se/4ac5e4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3160-myrsjoar.pdf) |
-| [9060](#9060-åsbarrskog) | Åsbarrskog | 26 | [länk](https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9060-asbarrskog-maj-12.pdf) |
-| [6210](#6210-kalkgräsmarker) | Kalkgräsmarker | 26 | [länk](https://www.naturvardsverket.se/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6210-kalkgrasmarker.pdf) |
-| [9750 / 91E0](#9750-91e0-svämlövskog) | Svämlövskog | 22 | [länk](https://www.naturvardsverket.se/4ac5b3/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91e0-svamlovskog-apr-12.pdf) |
-| [3110](#3110-näringsfattiga-slättsjöar) | Näringsfattiga slättsjöar | 22 | [länk](https://www.naturvardsverket.se/4ac5ca/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3110-naringsfattigaslattsjoar.pdf) |
-| [9160](#9160-näringsrik-ekskog) | Näringsrik ekskog | 23 | [länk](https://www.naturvardsverket.se/4ac594/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9160-naringsrikekskog-maj-12.pdf) |
-| [7230](#7230-rikkärr) | Rikkärr | 26 | [länk](https://www.naturvardsverket.se/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7230-rikkarr.pdf) |
-| [6230](#6230-stagg-gräsmarker) | Stagg-gräsmarker | 20 | [länk](https://www.naturvardsverket.se/4a6674/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6230-staggrasmarker.pdf) |
-| [7110](#7110-högmossar) | Högmossar (inkl. delyta 7111) | 21 | [länk](https://www.naturvardsverket.se/4ac55e/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7110-hogmossar.pdf) |
+| [6510](#6510-slatterangar-i-laglandet) | Slåtterängar i låglandet | 60 | [länk](https://www.naturvardsverket.se/4ac4e7/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6510-laglandsslatterangar.pdf) |
+| [3160](#3160-myrsjoar) | Myrsjöar | 40 | [länk](https://www.naturvardsverket.se/4ac5e4/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3160-myrsjoar.pdf) |
+| [9060](#9060-asbarrskog) | Åsbarrskog | 26 | [länk](https://www.naturvardsverket.se/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9060-asbarrskog-maj-12.pdf) |
+| [6210](#6210-kalkgrasmarker) | Kalkgräsmarker | 26 | [länk](https://www.naturvardsverket.se/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6210-kalkgrasmarker.pdf) |
+| [9750 / 91E0](#9750-91e0-svamlovskog) | Svämlövskog | 22 | [länk](https://www.naturvardsverket.se/4ac5b3/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91e0-svamlovskog-apr-12.pdf) |
+| [3110](#3110-naringsfattiga-slattsjoar) | Näringsfattiga slättsjöar | 22 | [länk](https://www.naturvardsverket.se/4ac5ca/contentassets/ec73882eff2b418d8c12f225e8938343/vl-3110-naringsfattigaslattsjoar.pdf) |
+| [9160](#9160-naringsrik-ekskog) | Näringsrik ekskog | 23 | [länk](https://www.naturvardsverket.se/4ac594/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9160-naringsrikekskog-maj-12.pdf) |
+| [7230](#7230-rikkarr) | Rikkärr | 26 | [länk](https://www.naturvardsverket.se/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7230-rikkarr.pdf) |
+| [6230](#6230-stagg-grasmarker) | Stagg-gräsmarker | 20 | [länk](https://www.naturvardsverket.se/4a6674/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6230-staggrasmarker.pdf) |
+| [7110](#7110-hogmossar-inkl-delyta-7111-oppna-mosseplan) | Högmossar (inkl. delyta 7111) | 21 | [länk](https://www.naturvardsverket.se/4ac55e/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7110-hogmossar.pdf) |
 
 Övriga, mindre frekventa naturtyper i länets kartering (t.ex. 4030 Torra hedar, 3130 Ävjestrandsjöar, 6280 Alvar, 9180 Ädellövskog i branter, 6430 Högörtängar, 9110 Näringsfattig bokskog, 8210 Kalkbranter, 9030 Landhöjningsskog) finns inte med här men kan tas fram på samma sätt vid behov.
 
@@ -333,6 +333,21 @@ Sorterade efter antal karterade delytor i länets N2000-områden (preliminär pr
 **Fåglar T-art:** Blå kärrhök (*Circus cyaneus*), Gulärla (*Motacilla flava*), Storspov (*Numenius arquata*), Småspov (*N. phaeopus*), Ljungpipare (*Pluvialis apricaria*), Grönbena (*Tringa glareola*)
 
 ---
+
+## Fynd i Artportalen per yta (2026-09-29)
+
+Listorna ovan används av skriptet `natura-2000: scripts/analysis/artportalen_typiska_arter.py`. Det hämtar fynd från Artportalen via SLU Artdatabankens öppna API för en vald tidsperiod och räknar, för varje NNK-yta, vilka av ytans egna T- och K-arter som har fynd inom ytan.
+
+| Vad | Hur |
+|---|---|
+| Urval | P1-objekten som standard (`--alla` för alla 197, `--sitecode` för enstaka). Naturreservat och nationalpark utanför Natura 2000 ingår inte — de tas 2027 (se G1.2 i runbooken) |
+| Tidsperiod | 2010-01-01 till i dag som standard (`--fran`, `--till`) |
+| Noggrannhet | Bara fynd med koordinatnoggrannhet ≤ 100 m (`--noggrannhet`) |
+| Matchning | Svenskt eller vetenskapligt namn (släkte + art). Undertyper använder huvudtypens lista (8231 → 8230, 9072 → 9070) |
+| Resultat | Excel med flikarna *Per yta*, *Per område* och *Arter*, samt fälten `typarter_antal`, `typarter` och `typarter_senaste_ar` i granskningslagret |
+| Kräver | Gratis API-nyckel från api-portal.artdatabanken.se, i miljövariabeln `ARTDATABANKEN_KEY` |
+
+**Så läses resultatet:** fynd av typiska arter stödjer bedömningen gott tillstånd. Frånvaro av fynd betyder oftast att ingen har letat, så det är aldrig ensamt ett skäl för *icke gott*. Skyddsklassade fynd ingår inte i det öppna API:t. Namn som är felstavade i listorna ovan ger aldrig träff — fliken *Arter* visar vilka listnamn som faktiskt matchat.
 
 ## Nästa steg (förslag)
 
