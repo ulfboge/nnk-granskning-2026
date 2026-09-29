@@ -2,9 +2,9 @@
 
 ## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
 
-**Datum:** 2026-09-25
+**Datum:** 2026-09-29
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -147,7 +147,7 @@ Blankettens kolumn J *Bevarandestatus* (bevarandetillståndet enligt bevarandepl
 
 ---
 
-## 5. Sex beslutsregler — där det går fel
+## 5. Beslutsregler — där det går fel
 
 ### R1. Igenväxning på grund av utebliven skötsel ändrar inte livsmiljötypen
 
@@ -204,6 +204,69 @@ I hela länet har idag bara 87 polygoner en angiven målnaturtyp. Förvaltarna v
 > — FAQ fråga 19
 
 Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Länken finns i WebbGIS-lagret *NV Natura2000 områden*, raden `BEVPLAN` i attributtabellen.
+
+### R7. Regelstyrd skrivbordsbedömning av naturtypsstatus — UTKAST
+
+> **Utkast 2026-09-29.** Regeln används inte skarpt förrän piloten nedan är genomförd och fältkontrollerad. Bedömningar enligt R7 förs in som **förslag i granskningslagret**, inte direkt i NNK.
+
+**Varför:** 6 847 av länets 7 673 delytor med Natura-naturtyp har *Ej bedömd status* (publika NNK-uttaget). De flesta kommer från BIDOS och har aldrig fått sin status satt. Handledningen säger att status ska uppdateras "om det är möjligt", och FAQ 13 godtar äldre underlag när risken för förändring är låg. Där underlaget räcker kan status alltså sättas vid skrivbordet.
+
+**Gäller:** ytor med Natura-naturtyp och Naturtypsstatus 5. Gäller **inte** marina typer (1110–1170, FAQ 16/29) eller obestämda/osäkra koder — de behöver typbestämning först.
+
+**Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området, fältprotokoll eller fynd av typiska arter. Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
+
+**Registrering:** Karteringsstatus 2 (R3), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.
+
+**Utfall:** varje delregel ger *fullgod*, *icke fullgod* eller *till fält*. *Till fält* är ett fullgott utfall — FAQ 11 säger att man ska invänta NV:s och HaV:s metoder där tillståndet inte är tydligt (R4).
+
+| Grupp | Typer |
+|---|---|
+| **A** Hävdberoende | 1630, 4030, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6430, 6510, 8231, 9070, 9071, 9072 |
+| **B** Skog | 2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750 |
+| **C** Myr, våtmark, sjö | 3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231 |
+| **D** Stabila | 1220, 1230, 1232, 1620, 1621, 1640, 8210, 8220, 8230, 8232 |
+
+**R7A Hävdberoende**
+
+| Utfall | Villkor |
+|---|---|
+| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS), TUVA högst 10 år gammal utan negativa noteringar, och orto/IR-orto utan igenväxning, plöjning eller gödsling. |
+| Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, eller ortot visar igenväxning. Typen behålls (R1). |
+| Till fält | Underlagen motsäger varandra; BIDOS-typ utan TUVA eller med TUVA äldre än 15 år; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
+
+**R7B Skog**
+
+| Utfall | Villkor |
+|---|---|
+| Fullgod | Ingen avverkning, gallring eller dikning sedan karteringen (Skogsstyrelsens avverkningsanmälningar och utförda avverkningar, laserdata, orto). Fri utveckling säkerställd (reservat, biotopskydd, naturvårdsavtal). Minst ett stöd för strukturerna, t.ex. sluten äldre skog i laserdata eller typiska arter i Artportalen. |
+| Icke fullgod | Avverkning, gallring, dikning eller granplantering i lövtyper inom ytan efter karteringen. För 9740 och 9750 även dikning eller reglering. |
+| Till fält | Ingen synlig påverkan, men strukturerna går inte att bedöma vid skrivbordet (t.ex. död ved i 9010 enligt de nya kraven). |
+
+**R7C Myr, våtmark, sjö**
+
+| Utfall | Villkor |
+|---|---|
+| Fullgod | Myr och kärr: inga diken, torvtäkt eller vägar i eller i anslutning till ytan (IR-orto, laser) och ingen igenväxning. Sjöar och vattendrag: ekologisk status god eller hög i VISS och opåverkad hydromorfologi. |
+| Icke fullgod | Diken som påverkar ytan, VISS-status måttlig eller sämre på grund av faktorer som är avgörande för typen, eller rikkärr där nödvändig hävd har upphört. |
+| Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
+
+**R7D Stabila typer**
+
+| Utfall | Villkor |
+|---|---|
+| Fullgod | Orto från senaste och tidigare omdrev visar ingen exploatering, täkt, bebyggelse eller igenväxning. Får bedömas gruppvis per objekt med en gemensam kommentar. |
+| Icke fullgod | Exploatering, slitage eller igenväxning som påverkar typen. |
+| Till fält | Sällan. |
+
+**Hällmarkstorräng och basiska berghällar** (beslut 2026-09-29, efter NV:s vägledningar): 6110 är enligt vägledningen "i de flesta fall beroende av ett extensivt bete" och bedöms enligt R7A, liksom den hävdade undertypen 8231. 8232 (*Ej hävdberoende typ*) bedöms enligt R7D. 8230 utan undertyp bedöms på **krontäckning och igenväxning** — under 30 % krontäckning och ingen tydlig igenväxning i orto ger fullgod — eftersom vägledningen beskriver typen som störningsberoende men naturligt gles på grund av tunt jordlager och torka, särskilt vid kusten. Ligger en 8230-yta i betesmark eller ett TUVA-objekt prövas den även enligt R7A. Arbetsplanens lista över hävdberoende typer (bilaga 3) påverkas inte — den styr prioriteringen, inte bedömningen.
+
+**Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.
+
+**Pilot innan regeln används skarpt:** grupp A i batch B (ängs- och hagmark i inlandet), 100 ytor med *Ej bedömd status*. 30 av dem fältkontrolleras, slumpat men med fler ur *icke fullgod* och *till fält*. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.
+
+**Oklart i NV:s underlag:**
+- Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
+- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
 
 ---
 
