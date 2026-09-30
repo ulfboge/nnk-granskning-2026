@@ -90,12 +90,12 @@ tr:last-child td{border-bottom:0}
 <li><a href="#5-granskning-3-kontroll-och-metod">5. Granskning 3 — Kontroll och metod</a></li>
 <li><a href="#6-granskning-4-granskat-och-kommentarer">6. Granskning 4 — Granskat och kommentarer</a></li>
 <li><a href="#7-typiska-arter-artportalen">7. Typiska arter (Artportalen)</a></li>
-<li><a href="#8-havd-enligt-jordbruksskiften">8. Hävd enligt jordbruksskiften</a></li>
+<li><a href="#8-havd-enligt-jordbruksskiften-och-tuva">8. Hävd enligt jordbruksskiften och TUVA</a></li>
 </ul>
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
-<p><strong>Version:</strong> 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+<p><strong>Version:</strong> 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 2 steg 6, Del 5 steg 5)
 <strong>Status:</strong> Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som <code>bygg_nnk_lyrx.py</code> genererar.</p>
 <hr />
@@ -117,6 +117,7 @@ tr:last-child td{border-bottom:0}
 <p><strong>Typiska arter (Artportalen)</strong> — ny sektion 7, tillagd 2026-09-29. Visar fälten <code>typarter_antal</code>, <code>typarter</code> och <code>typarter_senaste_ar</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>typiska_arter_per_yta.csv</code> (framräknad av <code>natura-2000: scripts/analysis/artportalen_typiska_arter.py</code>). Uttrycket kontrollerar med <code>HasKey</code> att fälten finns, så det går att klistra in innan tjänsten är republicerad — sektionen visar då bara en rad om att underlaget saknas.</p>
 </li>
 <li><strong>Hävd enligt jordbruksskiften</strong> — ny sektion 8, tillagd 2026-09-29. Visar fälten <code>havd_skiften</code>, <code>havd_obrutet_sedan</code>, <code>havd_ar_utan_bete</code>, <code>havd_andel_bete_senaste</code>, <code>havd_varning_vall</code> och <code>havd_period</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>havd_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_havd.py</code>). Sektionen visas bara för hävdberoende typer och för ytor där skiftesdata visar hävd — på övriga ytor säger värdet lite. Samma <code>HasKey</code>-skydd som sektion 7.</li>
+<li><strong>TUVA i sektion 8</strong> — tillagt 2026-09-30. Fälten <code>tuva_objekt_id</code>, <code>tuva_andel_overlapp</code>, <code>tuva_antal_objekt</code>, <code>tuva_inv_ar</code>, <code>tuva_havdstatus</code>, <code>tuva_havdregim</code>, <code>tuva_igenvaxning</code>, <code>tuva_naturtyp</code> och <code>tuva_paverkan</code> sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>tuva_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_tuva.py</code>). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. <code>HasKey</code>-skyddat för sig, så uttrycket fungerar både före och efter att TUVA-fälten publicerats.</li>
 </ul>
 <hr />
 <h2 id="1-identifiering-och-skydd">1. Identifiering och skydd</h2>
@@ -700,17 +701,17 @@ if (HasKey($feature, &quot;typarter_senaste_ar&quot;) &amp;&amp; !IsEmpty($featu
 Push(rader, [&quot;Underlag&quot;, underlag]);
 return svar(rader);
 </code></pre>
-<h2 id="8-havd-enligt-jordbruksskiften">8. Hävd enligt jordbruksskiften</h2>
-<p>Nytt uttryck, placera det efter <em>Typiska arter (Artportalen)</em>. Underlag för R7A i <code>metodik.md</code>.</p>
-<pre><code class="language-js">// Hävd enligt jordbruksskiften
-// Ur Jordbruksverkets årslager av jordbruksskiften, framräknat av nnk_havd.py.
-// Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
-// Visas för hävdberoende typer, och för andra ytor bara när skiftena visar hävd.
-
-var titel = &quot;Hävd enligt jordbruksskiften&quot;;
+<h2 id="8-havd-enligt-jordbruksskiften-och-tuva">8. Hävd enligt jordbruksskiften och TUVA</h2>
+<p>Nytt uttryck, placera det efter <em>Typiska arter (Artportalen)</em>. Underlag för R7A i <code>metodik.md</code>. Titeln i popupen är fortfarande <em>Hävd enligt jordbruksskiften</em> när ytan saknar TUVA-träff. Uppdaterat 2026-09-30 med TUVA-raderna.</p>
+<pre><code class="language-js">// Hävd enligt jordbruksskiften och TUVA
+// Skiften: Jordbruksverkets årslager av jordbruksskiften, framräknat av nnk_havd.py.
+//   Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
+// TUVA: Jordbruksverkets ängs- och betesmarksinventering, senaste inventering per objekt,
+//   kopplat av nnk_tuva.py (störst överlapp, &gt;= 1 % av ytan eller &gt;= 0,25 ha).
+// Visas för hävdberoende typer, för ytor där skiftena visar hävd och för alla ytor med TUVA-träff.
 
 // rader = lista med [etikett, värde] - en lista så att ordningen håller
-function svar(rader) {
+function svar(titel, rader) {
     var infos = [];
     var attrs = {};
     for (var i in rader) {
@@ -721,50 +722,102 @@ function svar(rader) {
     return { type: &quot;fields&quot;, title: titel, fieldInfos: infos, attributes: attrs };
 }
 
+var harSkiften = HasKey($feature, &quot;havd_skiften&quot;);
+var harTuvaFalt = HasKey($feature, &quot;tuva_objekt_id&quot;);
+
 // Fälten finns inte förrän tjänsten republicerats med de nya fälten
-if (!HasKey($feature, &quot;havd_skiften&quot;)) {
-    return svar([[&quot;Information&quot;, &quot;Underlaget är inte inläst i lagret än.&quot;]]);
+if (!harSkiften &amp;&amp; !harTuvaFalt) {
+    return svar(&quot;Hävd enligt jordbruksskiften&quot;, [[&quot;Information&quot;, &quot;Underlaget är inte inläst i lagret än.&quot;]]);
 }
 
-var v = $feature.havd_skiften;
+// Inte IIf här: Arcade utvärderar båda grenarna, och fältet kan saknas
+var v = null;
+if (harSkiften) {
+    v = $feature.havd_skiften;
+}
+var tuva = harTuvaFalt &amp;&amp; !IsEmpty($feature.tuva_objekt_id);
 var havdberoende = HasKey($feature, &quot;havdberoende&quot;) &amp;&amp; $feature.havdberoende == &quot;Ja&quot;;
+var titel = IIf(tuva, &quot;Hävd enligt jordbruksskiften och TUVA&quot;, &quot;Hävd enligt jordbruksskiften&quot;);
 
-if (IsEmpty(v)) {
-    return svar([[&quot;Information&quot;, &quot;Ytan ingick inte i hävdanalysen (bara ytlagret analyseras).&quot;]]);
+if (IsEmpty(v) &amp;&amp; !tuva) {
+    return svar(titel, [[&quot;Information&quot;, &quot;Ytan ingick inte i hävdanalysen (bara ytlagret analyseras).&quot;]]);
 }
-// På övriga typer säger Nej/Oklart lite - visa ingenting
-if (!havdberoende &amp;&amp; (v == &quot;Nej&quot; || v == &quot;Oklart&quot;)) {
-    return svar([[&quot;Information&quot;, &quot;Inte relevant för ytans naturtyp.&quot;]]);
+// På övriga typer säger Nej/Oklart lite - visa ingenting, om inte ytan har TUVA-träff
+if (!havdberoende &amp;&amp; !tuva &amp;&amp; (v == &quot;Nej&quot; || v == &quot;Oklart&quot;)) {
+    return svar(titel, [[&quot;Information&quot;, &quot;Inte relevant för ytans naturtyp.&quot;]]);
 }
 
+var rader = [];
+
+// ---- Skiften ----
 // Alla havd_-fält publiceras tillsammans, så de finns om havd_skiften finns
-var period = DefaultValue($feature.havd_period, &quot;&quot;);
-var forklaring = Decode(v,
-    &quot;Ja&quot;, &quot;Bete eller slåtter varje år från typens startår eller första dataåret.&quot;,
-    &quot;Delvis&quot;, &quot;Hävd vissa år, men inte obrutet.&quot;,
-    &quot;Nej&quot;, &quot;Ytan träffar skiften men aldrig bete eller slåtter.&quot;,
-    &quot;Oklart&quot;, &quot;Ingen skiftesträff. Bete utan stöd syns inte i skiftesdata.&quot;,
-    &quot;&quot;);
+if (!IsEmpty(v)) {
+    var period = DefaultValue($feature.havd_period, &quot;&quot;);
+    var forklaring = Decode(v,
+        &quot;Ja&quot;, &quot;Bete eller slåtter varje år från typens startår eller första dataåret.&quot;,
+        &quot;Delvis&quot;, &quot;Hävd vissa år, men inte obrutet.&quot;,
+        &quot;Nej&quot;, &quot;Ytan träffar skiften men aldrig bete eller slåtter.&quot;,
+        &quot;Oklart&quot;, &quot;Ingen skiftesträff. Bete utan stöd syns inte i skiftesdata.&quot;,
+        &quot;&quot;);
+    Push(rader, [&quot;Hävd enligt skiften&quot;, v + IIf(period == &quot;&quot;, &quot;&quot;, &quot; (&quot; + period + &quot;)&quot;)]);
+    Push(rader, [&quot;Förklaring&quot;, forklaring]);
 
-var rader = [[&quot;Hävd enligt skiften&quot;, v + IIf(period == &quot;&quot;, &quot;&quot;, &quot; (&quot; + period + &quot;)&quot;)],
-             [&quot;Förklaring&quot;, forklaring]];
-
-if (!IsEmpty($feature.havd_obrutet_sedan)) {
-    Push(rader, [&quot;Obruten hävd sedan&quot;, Text($feature.havd_obrutet_sedan)]);
-}
-if (v == &quot;Delvis&quot; &amp;&amp; !IsEmpty($feature.havd_ar_utan_bete)) {
-    Push(rader, [&quot;År utan bete/slåtter&quot;, $feature.havd_ar_utan_bete]);
-    if ($feature.havd_ar_utan_bete == &quot;2015&quot;) {
-        Push(rader, [&quot;Att tänka på&quot;, &quot;Bara 2015 saknas. Skiftesdata 2015 är ofullständiga, så det är troligen inget verkligt uppehåll.&quot;]);
+    if (!IsEmpty($feature.havd_obrutet_sedan)) {
+        Push(rader, [&quot;Obruten hävd sedan&quot;, Text($feature.havd_obrutet_sedan)]);
+    }
+    if (v == &quot;Delvis&quot; &amp;&amp; !IsEmpty($feature.havd_ar_utan_bete)) {
+        Push(rader, [&quot;År utan bete/slåtter&quot;, $feature.havd_ar_utan_bete]);
+        if ($feature.havd_ar_utan_bete == &quot;2015&quot;) {
+            Push(rader, [&quot;Att tänka på&quot;, &quot;Bara 2015 saknas. Skiftesdata 2015 är ofullständiga, så det är troligen inget verkligt uppehåll.&quot;]);
+        }
+    }
+    if (!IsEmpty($feature.havd_andel_bete_senaste)) {
+        Push(rader, [&quot;Andel bete/slåtter senaste året&quot;, Text($feature.havd_andel_bete_senaste) + &quot; %&quot;]);
+    }
+    if ($feature.havd_varning_vall == &quot;Ja&quot;) {
+        Push(rader, [&quot;Varning&quot;, &quot;Minst halva ytan låg på vall (åkermark) senaste året.&quot;]);
     }
 }
-if (!IsEmpty($feature.havd_andel_bete_senaste)) {
-    Push(rader, [&quot;Andel bete/slåtter senaste året&quot;, Text($feature.havd_andel_bete_senaste) + &quot; %&quot;]);
+
+// ---- TUVA ----
+// Alla tuva_-fält publiceras tillsammans, så de finns om tuva_objekt_id finns
+if (tuva) {
+    var obj = $feature.tuva_objekt_id;
+    if (!IsEmpty($feature.tuva_andel_overlapp)) {
+        obj += &quot; (täcker &quot; + Text($feature.tuva_andel_overlapp) + &quot; % av ytan)&quot;;
+    }
+    if (!IsEmpty($feature.tuva_antal_objekt) &amp;&amp; $feature.tuva_antal_objekt &gt; 1) {
+        obj += &quot;, ytan överlappar &quot; + Text($feature.tuva_antal_objekt) + &quot; TUVA-objekt, här visas det största&quot;;
+    }
+    Push(rader, [&quot;TUVA-objekt&quot;, obj]);
+
+    var ar = $feature.tuva_inv_ar;
+    if (!IsEmpty(ar)) {
+        var alder = Year(Now()) - ar;
+        var arText = &quot;Inventerad &quot; + Text(ar) + &quot; (&quot; + Text(alder) + &quot; år sedan)&quot;;
+        if (alder &gt; 15) {
+            arText += &quot;. Äldre än 15 år, räknas inte som aktuellt underlag (R7A)&quot;;
+        }
+        Push(rader, [&quot;TUVA, inventeringsår&quot;, arText]);
+    }
+    if (!IsEmpty($feature.tuva_havdstatus)) {
+        Push(rader, [&quot;TUVA, hävdstatus&quot;, $feature.tuva_havdstatus]);
+    }
+    if (!IsEmpty($feature.tuva_havdregim)) {
+        Push(rader, [&quot;TUVA, markslag/hävdregim&quot;, $feature.tuva_havdregim]);
+    }
+    if (!IsEmpty($feature.tuva_igenvaxning) &amp;&amp; $feature.tuva_igenvaxning != &quot;Ej angiven&quot;) {
+        Push(rader, [&quot;TUVA, igenväxning&quot;, $feature.tuva_igenvaxning]);
+    }
+    if (!IsEmpty($feature.tuva_naturtyp)) {
+        Push(rader, [&quot;TUVA, naturtyper i objektet&quot;, $feature.tuva_naturtyp]);
+    }
+    if (!IsEmpty($feature.tuva_paverkan) &amp;&amp; $feature.tuva_paverkan != &quot;Ingen angiven&quot;) {
+        Push(rader, [&quot;TUVA, påverkan&quot;, $feature.tuva_paverkan]);
+    }
+    Push(rader, [&quot;Öppna i TUVA&quot;, &quot;https://etjanst.sjv.se/tuvaut/?f=&amp;id=&quot; + $feature.tuva_objekt_id]);
 }
-if ($feature.havd_varning_vall == &quot;Ja&quot;) {
-    Push(rader, [&quot;Varning&quot;, &quot;Minst halva ytan låg på vall (åkermark) senaste året.&quot;]);
-}
-return svar(rader);
+return svar(titel, rader);
 </code></pre>
 </div>
 <script>

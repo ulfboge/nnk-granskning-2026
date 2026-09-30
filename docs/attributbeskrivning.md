@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -477,6 +477,21 @@ Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natu
 ### Typiska arter i Artportalen
 `typarter_antal` · heltal · `typarter` · text · `typarter_senaste_ar` · heltal · skrivskyddade · filtrerbara i webbGIS  
 Hur många av ytans **typiska arter** (T-arter för naturtypen i [typiska arter](typiska-arter.html)) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av `artportalen_typiska_arter.py` (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). **0** = ytan söktes men inga fynd. **Tomt** = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.
+
+### TUVA — ängs- och betesmarksinventeringen
+Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskning.csv` (`nnk_tuva.py`, TUVA-uttag 2026-08-21, senaste inventering per objekt). Ytan kopplas till det TUVA-objekt som täcker mest av den, med samma tröskel som för sitecode: minst 1 % av ytan eller 0,25 ha. Tomt = ingen träff. Används i R7A tillsammans med hävdfälten från skiftena, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `tuva_objekt_id` | text | TUVA:s fält-ID, t.ex. "42B-QEP". Objektrapport: `https://etjanst.sjv.se/tuvaut/?f=&id=<fält-ID>` |
+| `tuva_andel_overlapp` | heltal | Hur stor del av NNK-ytan (%) som täcks av TUVA-objektet |
+| `tuva_antal_objekt` | heltal | Antal TUVA-objekt som överlappar ytan över tröskeln. Fler än 1: kontrollera de andra i TUVA |
+| `tuva_inv_ar` | heltal | År för senaste inventeringen. Äldre än 15 år räknas inte som aktuellt underlag (R7A) |
+| `tuva_havdstatus` | text | Dominerande hävdklass med andel: *Välhävdad*, *Svagt hävdad* eller *Ingen hävd* (lika andelar ger den sämre). *Ohävdad (restaurerbar)* = markslag Restaurerbar, *Ej aktuell* = objektet är inte längre ängs- eller betesmark |
+| `tuva_havdregim` | text | Markslag: *Bete*, *Slåtter (äng)*, *Restaurerbar* eller *Ej aktuell*, med hävdform om den är angiven (möjlig äng, skogsbete, fäbodbete) |
+| `tuva_igenvaxning` | text | *Igenväxt (ej aktuell)*, *Restaurerbar*, eller igenväxningens andel av busk- och trädskiktet: *Tydlig* (≥ 30 %), *Viss* (1–29 %), *Ingen*. *Ej angiven* för de flesta objekt från 2000-talets första inventering, som saknar fältet |
+| `tuva_naturtyp` | text | Natura-naturtyper i hela TUVA-objektet med areal, störst först, t.ex. "6270 (3,98 ha), 6410 (0,15 ha)" |
+| `tuva_paverkan` | text | Produktionshöjande åtgärder (gödsling m.m.) med andel av objektet, tillskottsutfodring, upplag, täkt. *Ingen angiven* om inget är noterat |
 
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  

@@ -2,9 +2,9 @@
 
 ## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
 
-**Datum:** 2026-09-29
+**Datum:** 2026-09-30
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -244,6 +244,19 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 | Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
 
 *Vall senaste året* (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.
+
+**Underlag för hävden — TUVA.** Granskningslagret har också TUVA-fält (`tuva_objekt_id`, `tuva_inv_ar`, `tuva_havdstatus`, `tuva_havdregim`, `tuva_igenvaxning`, `tuva_naturtyp`, `tuva_paverkan`). De kommer från Jordbruksverkets ängs- och betesmarksinventering, senaste inventering per objekt (uttag 2026-08-21), och kopplas till den NNK-yta som objektet överlappar mest, med samma tröskel som för sitecode (minst 1 % av ytan eller 0,25 ha). 2 425 av länets 15 837 ytor har träff, och 1 964 av dem inventerades före 2011. TUVA beskriver marken som den var vid inventeringen, skiftena visar om den hävdats år för år 2015–2025. Använd dem tillsammans:
+
+| Läge | Så används det i R7A |
+|---|---|
+| TUVA högst 10 år, välhävdad, utan negativa noteringar | Uppfyller TUVA-villkoret för *fullgod*. Hävden sedan inventeringen ska ändå synas i skiftena (*Ja*) eller i skötselavtal/SkötselDOS. |
+| TUVA 11–15 år | Styrker typen och att marken hävdades då, men räcker inte för *fullgod*. Tillståndet avgörs av skiftena och ortot. Ger de inget tydligt svar: *till fält*. |
+| TUVA äldre än 15 år | Räknas inte som aktuellt underlag. Finns inget annat underlag (skiften *Oklart*, inget skötselavtal eller SkötselDOS, ortot otydligt) blir utfallet ***till fält***. Gäller även när TUVA-objektet ser välhävdat ut. |
+| Negativ notering i TUVA | *Ingen hävd*, *Ohävdad (restaurerbar)*, *Ej aktuell*, igenväxning *Tydlig* eller *Igenväxt*, tydlig produktionshöjande påverkan (gödsling) eller tillskottsutfodring. Pröva *icke fullgod* mot skiftena och ortot. Visar skiftena *Ja* efter inventeringsåret kan hävden ha tagits upp igen: *till fält*. |
+| Skiften *Oklart* men TUVA-träff | 307 ytor. Bete utan stöd syns inte i skiftena men kan finnas i TUVA. TUVA högst 15 år kan ersätta skiftena som belägg för hävd vid inventeringen. Äldre än så: raden ovan. |
+| Skiften och TUVA säger emot varandra | T.ex. skiften *Ja* och TUVA *Ingen hävd*, eller skiften *Nej* och TUVA *Välhävdad*: *till fält*. |
+
+Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (`tuva_antal_objekt` > 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i `tuva_naturtyp` gäller hela TUVA-objektet, inte NNK-ytan. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken *Öppna i TUVA* i popupen).
 
 **R7B Skog**
 

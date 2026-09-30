@@ -663,9 +663,19 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td><code>havd_varning_vall = 'Ja'</code></td>
 <td>Minst halva ytan låg på vall (åkermark) senaste året — varningssignal för t.ex. 6270 och 6410. Tillagt 2026-09-29.</td>
 </tr>
+<tr>
+<td>"TUVA-träff"</td>
+<td><code>tuva_objekt_id IS NOT NULL</code></td>
+<td>Ytan överlappar ett TUVA-objekt (ängs- och betesmarksinventeringen) med minst 1 % av ytan eller 0,25 ha, bara ytlagret. 2 425 ytor. Fälten sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>tuva_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_tuva.py</code>, kopieras till jobbdatorns <code>Bearbetning\</code>). Tillagt 2026-09-30.</td>
+</tr>
+<tr>
+<td>"TUVA ohävdad/igenväxande"</td>
+<td><code>tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'</code></td>
+<td>Negativa noteringar i TUVA: dominerande hävdklass <em>Ingen hävd</em>, markslag <em>Restaurerbar</em> eller <em>Ej aktuell</em>, eller tydlig igenväxning. Kandidater till <em>icke fullgod</em> i R7A — kontrollera inventeringsåret, TUVA äldre än 15 år räcker inte. Går uttrycket inte att skriva som ett villkor i Konfiguratorn: lägg varje del som ett eget uttryck i samma filter med <em>ELLER</em>. Tillagt 2026-09-30.</td>
+</tr>
 </tbody>
 </table>
-<p><strong>Urval för R7A-piloten:</strong> <em>Hävdberoende</em> + <em>Dölj marint</em> + ett av hävdfiltren. <em>Ja</em> ger kandidater till fullgod, <em>Nej</em> kandidater till icke fullgod, och <em>Delvis</em>/<em>Oklart</em> är de som oftast behöver fält eller TUVA. Excelfilen <code>n2000_statusforslag.xlsx</code> (privata repot) har samma värden per polygon och används som översikt och för att välja pilotens fältkontroller.</p>
+<p><strong>Urval för R7A-piloten:</strong> <em>Hävdberoende</em> + <em>Dölj marint</em> + ett av hävdfiltren. <em>Ja</em> ger kandidater till fullgod, <em>Nej</em> kandidater till icke fullgod, och <em>Delvis</em>/<em>Oklart</em> är de som oftast behöver fält eller TUVA. Lägg till <em>TUVA-träff</em> för att se vilka av dem som har TUVA-underlag, och <em>TUVA ohävdad/igenväxande</em> för kandidater till icke fullgod. Excelfilen <code>n2000_statusforslag.xlsx</code> (privata repot) har samma värden per polygon och används som översikt och för att välja pilotens fältkontroller.</p>
 <p><strong>Kombinera filtren för C2.1</strong> (Batch S): slå på <em>Batch S</em> + <em>Dölj marint</em>, och sedan antingen <em>Större än 5 ha</em>, <em>Hävdberoende</em>, <em>Sällsynt livsmiljötyp</em> eller <em>Åtgärdas</em> för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.</p>
 <p>Kombinera filtren med <strong>OCH</strong>. Aktiverande verktyg: <em>Nollställ alla</em> och <em>Stäng av alla</em> ✔.</p>
 <blockquote>
