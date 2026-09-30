@@ -71,6 +71,14 @@ tr:last-child td{border-bottom:0}
 .toc ul{margin:0;padding-left:18px;font-size:13.5px}
 .toc ul ul{padding-left:16px;font-size:13px}
 .toc li{margin:2px 0}
+
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
 </style>
 </head>
 <body>
@@ -91,11 +99,12 @@ tr:last-child td{border-bottom:0}
 <li><a href="#6-granskning-4-granskat-och-kommentarer">6. Granskning 4 — Granskat och kommentarer</a></li>
 <li><a href="#7-typiska-arter-artportalen">7. Typiska arter (Artportalen)</a></li>
 <li><a href="#8-havd-enligt-jordbruksskiften-och-tuva">8. Hävd enligt jordbruksskiften och TUVA</a></li>
+<li><a href="#9-skog-laserdata">9. Skog (laserdata)</a></li>
 </ul>
 </div>
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
-<p><strong>Version:</strong> 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+<p><strong>Version:</strong> 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 2 steg 6, Del 5 steg 5)
 <strong>Status:</strong> Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som <code>bygg_nnk_lyrx.py</code> genererar.</p>
 <hr />
@@ -118,6 +127,7 @@ tr:last-child td{border-bottom:0}
 </li>
 <li><strong>Hävd enligt jordbruksskiften</strong> — ny sektion 8, tillagd 2026-09-29. Visar fälten <code>havd_skiften</code>, <code>havd_obrutet_sedan</code>, <code>havd_ar_utan_bete</code>, <code>havd_andel_bete_senaste</code>, <code>havd_varning_vall</code> och <code>havd_period</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>havd_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_havd.py</code>). Sektionen visas bara för hävdberoende typer och för ytor där skiftesdata visar hävd — på övriga ytor säger värdet lite. Samma <code>HasKey</code>-skydd som sektion 7.</li>
 <li><strong>TUVA i sektion 8</strong> — tillagt 2026-09-30. Fälten <code>tuva_objekt_id</code>, <code>tuva_andel_overlapp</code>, <code>tuva_antal_objekt</code>, <code>tuva_inv_ar</code>, <code>tuva_havdstatus</code>, <code>tuva_havdregim</code>, <code>tuva_igenvaxning</code>, <code>tuva_naturtyp</code> och <code>tuva_paverkan</code> sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>tuva_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_tuva.py</code>). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. <code>HasKey</code>-skyddat för sig, så uttrycket fungerar både före och efter att TUVA-fälten publicerats.</li>
+<li><strong>Skog (laserdata)</strong> — ny sektion 9, tillagd 2026-09-30. Visar fälten <code>laser_hojd_medel</code>, <code>laser_volym_medel</code>, <code>laser_grundyta_medel</code>, <code>laser_diameter_medel</code>, <code>laser_skanning_ar</code>, <code>laser_hojdforandring_medel</code>, <code>laser_andel_sankt</code>, <code>laser_forandring_period</code>, <code>laser_flagga</code>, <code>diken_m_inom</code> och <code>diken_m_50m</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>laser_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_laser.py</code>). Visas för skogstyperna i R7 grupp B (inklusive 9740 och 9750) och, med bara dikesraderna och titeln <em>Diken (laserdata)</em>, för myrarna i grupp C (7110–7231). Skanningsår och förändringsperiod står i klartext. <code>HasKey</code>-skyddat, så uttrycket fungerar före publiceringen av fälten.</li>
 </ul>
 <hr />
 <h2 id="1-identifiering-och-skydd">1. Identifiering och skydd</h2>
@@ -819,6 +829,93 @@ if (tuva) {
 }
 return svar(titel, rader);
 </code></pre>
+<hr />
+<h2 id="9-skog-laserdata">9. Skog (laserdata)</h2>
+<p>Nytt uttryck, placera det efter <em>Hävd enligt jordbruksskiften och TUVA</em>. Underlag för R7B och R7C i <code>metodik.md</code>. Visas för skogstyperna (R7 grupp B, inklusive 9740 skogbevuxen myr och 9750 svämlövskog). För myrarna 7110–7231 visas bara dikesraderna, med titeln <em>Diken (laserdata)</em>. Övriga typer får en kort rad om att sektionen inte gäller.</p>
+<pre><code class="language-js">// Skog (laserdata)
+// Laser: Skogsstyrelsens Skogliga grunddata, omdrev 1 (2010-2012) och omdrev 2 (2020-2023),
+//   framräknat av nnk_laser.py. Bara 10 m-pixlar helt inom ytan. Värdena är modellskattningar.
+// Diken: Skogsstyrelsens AI-karterade diken (NV:s vektorversion), inom ytan och i 50 m-zon runt den.
+
+function svar(titel, rader) {
+    var infos = [];
+    var attrs = {};
+    for (var i in rader) {
+        var namn = &quot;rad_&quot; + Text(i);
+        Push(infos, { fieldName: namn, label: rader[i][0] });
+        attrs[namn] = rader[i][1];
+    }
+    return { type: &quot;fields&quot;, title: titel, fieldInfos: infos, attributes: attrs };
+}
+
+var skog = [2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162,
+            9180, 9190, 9740, 9750];
+var myrar = [7110, 7111, 7140, 7141, 7142, 7230, 7231];
+var kod = null;
+if (HasKey($feature, &quot;naturtyp_kod_text&quot;) &amp;&amp; !IsEmpty($feature.naturtyp_kod_text)) {
+    kod = Number(Left($feature.naturtyp_kod_text, 4));
+}
+var arSkog = !IsEmpty(kod) &amp;&amp; Includes(skog, kod);
+var arMyr = !IsEmpty(kod) &amp;&amp; Includes(myrar, kod);
+var titel = IIf(arSkog, &quot;Skog (laserdata)&quot;, &quot;Diken (laserdata)&quot;);
+
+if (!arSkog &amp;&amp; !arMyr) {
+    return svar(&quot;Skog (laserdata)&quot;, [[&quot;Information&quot;, &quot;Gäller skogstyper och myrar (R7B och R7C).&quot;]]);
+}
+if (!HasKey($feature, &quot;diken_m_inom&quot;)) {
+    return svar(titel, [[&quot;Information&quot;, &quot;Underlaget är inte inläst i lagret än.&quot;]]);
+}
+
+var rader = [];
+
+// ---- Laser (bara skog) ----
+// Alla laser_-fält publiceras tillsammans med diken_-fälten
+if (arSkog) {
+    if (IsEmpty($feature.laser_hojd_medel)) {
+        Push(rader, [&quot;Laserdata&quot;, &quot;Ytan är för liten (färre än tre hela 10 m-pixlar) eller saknar laserdata.&quot;]);
+    } else {
+        var ar = $feature.laser_skanning_ar;
+        Push(rader, [&quot;Senaste laserskanning&quot;, IIf(IsEmpty(ar), &quot;okänt år&quot;, Text(ar))]);
+        Push(rader, [&quot;Medelhöjd&quot;, Text($feature.laser_hojd_medel / 10, &quot;#,##0.0&quot;) + &quot; m&quot;]);
+        Push(rader, [&quot;Virkesvolym&quot;, Text($feature.laser_volym_medel) + &quot; m³sk/ha&quot;]);
+        Push(rader, [&quot;Grundyta&quot;, Text($feature.laser_grundyta_medel) + &quot; m²/ha&quot;]);
+        Push(rader, [&quot;Medeldiameter&quot;, Text($feature.laser_diameter_medel) + &quot; cm&quot;]);
+
+        var per = DefaultValue($feature.laser_forandring_period, &quot;&quot;);
+        if (!IsEmpty($feature.laser_hojdforandring_medel)) {
+            var dh = $feature.laser_hojdforandring_medel / 10;
+            var dhText = IIf(dh &gt; 0, &quot;+&quot;, &quot;&quot;) + Text(dh, &quot;#,##0.0&quot;) + &quot; m&quot;;
+            Push(rader, [&quot;Höjdförändring&quot; + IIf(per == &quot;&quot;, &quot;&quot;, &quot; &quot; + per), dhText]);
+        }
+        if (!IsEmpty($feature.laser_andel_sankt)) {
+            Push(rader, [&quot;Andel sänkt mer än 5 m&quot; + IIf(per == &quot;&quot;, &quot;&quot;, &quot; &quot; + per),
+                         Text($feature.laser_andel_sankt) + &quot; % av ytan&quot;]);
+        }
+        var fl = DefaultValue($feature.laser_flagga, &quot;&quot;);
+        if (fl != &quot;&quot;) {
+            var flText = Decode(fl,
+                &quot;Möjlig avverkning&quot;, &quot;Möjlig avverkning: höjden har sjunkit mer än 5 m på minst 10 % av ytan eller minst 0,1 ha. Kontrollera i orto och i Skogsstyrelsens avverkningsinformation.&quot;,
+                &quot;Möjlig gallring&quot;, &quot;Möjlig gallring: grundytan har minskat tydligt men inte höjden. Kontrollera i orto.&quot;,
+                &quot;Osäker (lövat/olövat)&quot;, &quot;Osäker: den äldsta skanningen gjordes i lövat läge, den senaste i olövat. Minskningen kan bero på det. Kontrollera i orto.&quot;,
+                fl);
+            Push(rader, [&quot;Laserflagga&quot;, flText]);
+        }
+        Push(rader, [&quot;Att tänka på&quot;, &quot;Laserdata visar inte död ved eller trädslag. Förändringar efter &quot; + IIf(IsEmpty(ar), &quot;senaste skanningen&quot;, Text(ar)) + &quot; syns inte.&quot;]);
+    }
+}
+
+// ---- Diken (skog och myr) ----
+var di = $feature.diken_m_inom;
+var du = $feature.diken_m_50m;
+if (!IsEmpty(di) || !IsEmpty(du)) {
+    Push(rader, [&quot;Diken inom ytan&quot;, Text(DefaultValue(di, 0)) + &quot; m&quot;]);
+    Push(rader, [&quot;Diken inom 50 m utanför ytan&quot;, Text(DefaultValue(du, 0)) + &quot; m&quot;]);
+    if (DefaultValue(di, 0) &gt; 0 || DefaultValue(du, 0) &gt; 0) {
+        Push(rader, [&quot;Om dikena&quot;, &quot;AI-karterade ur laserdata (Skogsstyrelsen). Kontrollera i terrängskuggning, karteringen missar igenvuxna diken och kan ta med bäckar.&quot;]);
+    }
+}
+return svar(titel, rader);
+</code></pre>
 </div>
 <script>
 (function(){
@@ -835,6 +932,28 @@ return svar(titel, rader);
     r.setAttribute('data-theme',mork()?'light':'dark');rita();
   });
   rita();
+})();
+
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat ✓':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
 })();
 </script>
 </body>

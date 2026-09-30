@@ -4,7 +4,7 @@
 
 **Datum:** 2026-09-30
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -266,6 +266,22 @@ Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera o
 | Icke fullgod | Avverkning, gallring, dikning eller granplantering i lövtyper inom ytan efter karteringen. För 9740 och 9750 även dikning eller reglering. |
 | Till fält | Ingen synlig påverkan, men strukturerna går inte att bedöma vid skrivbordet (t.ex. död ved i 9010 enligt de nya kraven). |
 
+**Underlag för skogen — laserdata.** Granskningslagret har laserfält för skogsytorna (grupp B, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.
+
+| Fält | Betyder | Så används det i R7B |
+|---|---|---|
+| `laser_hojd_medel` (dm), `laser_volym_medel` (m³sk/ha), `laser_grundyta_medel` (m²/ha), `laser_diameter_medel` (cm) | Medelvärde för ytan i den senaste skanningen (`laser_skanning_ar`) | Stöd för *sluten äldre skog*, ett av stöden för strukturerna vid *fullgod*. Volym och diameter skiljer gammal grov skog från tät medelålders skog bättre än höjden, som planar ut tidigt. Jämför mot typens median i länet: för 9010 är den 16 m, 161 m³sk/ha och 20 cm; för 9050 och 9060 kring 24 m, 360–400 m³sk/ha och 32 cm. |
+| `laser_hojdforandring_medel` (dm) | Medelhöjden i senaste skanningen minus den äldsta, under `laser_forandring_period` (t.ex. 2010-2020). Negativt = sänkning | Normal tillväxt ger några dm till 1–2 m (median +0,7 m). Sänkning i medelvärdet tyder på ingrepp eller störning i en stor del av ytan. |
+| `laser_andel_sankt` (%) | Andel av ytan där höjden sjunkit mer än 5 m mellan skanningarna | Fångar avverkning och kraftig gallring, även ingrepp som inte krävt anmälan, och störningar som storm och granbarkborre. |
+| `laser_flagga` | *Möjlig avverkning*: minst 10 % av ytan eller minst 0,1 ha sänkt. *Möjlig gallring*: grundytan har minskat minst 3 m²/ha och 15 % medan medelhöjden inte sjunkit mer än 1 m. *Osäker (lövat/olövat)*: se begränsningar nedan | Flaggad yta prövas mot orto och Skogsstyrelsens underlag. Bekräftas ingreppet efter karteringen: *icke fullgod*. Kan orsaken vara naturlig störning (storm, brand, insekter): *till fält*, eftersom det kan vara en del av typens dynamik. Tom flagga är inget belägg för att inget har hänt, se nedan. |
+
+*Avverkning och gallring.* Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är förslag. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. De övriga 57 kan vara naturliga störningar, naturvårdsåtgärder eller ingrepp som är för små för satellitdetekteringen, och ska kontrolleras i orto. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (*SKS Trädhöjd 3_1*, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.
+
+**Begränsningar:**
+- **Död ved** syns inte tillförlitligt i laserdata. För 9010 enligt de nya kraven (februari 2026) ger laserdata stöd för sluten äldre skog, men mängden död ved avgörs i fält: utfallet blir fortfarande *till fält* om inget annat underlag finns.
+- **Trädslag.** Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
+- **Lövat eller olövat läge.** Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med *Osäker (lövat/olövat)* (115 ytor). Pröva dem i orto.
+
 **R7C Myr, våtmark, sjö**
 
 | Utfall | Villkor |
@@ -273,6 +289,10 @@ Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera o
 | Fullgod | Myr och kärr: inga diken, torvtäkt eller vägar i eller i anslutning till ytan (IR-orto, laser) och ingen igenväxning. Sjöar och vattendrag: ekologisk status god eller hög i VISS och opåverkad hydromorfologi. |
 | Icke fullgod | Diken som påverkar ytan, VISS-status måttlig eller sämre på grund av faktorer som är avgörande för typen, eller rikkärr där nödvändig hävd har upphört. |
 | Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
+
+**Underlag för diken.** Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (grupp B) och myrarna i grupp C (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): `diken_m_inom` (meter dike inom ytan) och `diken_m_50m` (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger *icke fullgod*. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som *i anslutning till ytan*.
+
+Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.
 
 **R7D Stabila typer**
 

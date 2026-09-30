@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -492,6 +492,23 @@ Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `tuva_igenvaxning` | text | *Igenväxt (ej aktuell)*, *Restaurerbar*, eller igenväxningens andel av busk- och trädskiktet: *Tydlig* (≥ 30 %), *Viss* (1–29 %), *Ingen*. *Ej angiven* för de flesta objekt från 2000-talets första inventering, som saknar fältet |
 | `tuva_naturtyp` | text | Natura-naturtyper i hela TUVA-objektet med areal, störst först, t.ex. "6270 (3,98 ha), 6410 (0,15 ha)" |
 | `tuva_paverkan` | text | Produktionshöjande åtgärder (gödsling m.m.) med andel av objektet, tillskottsutfodring, upplag, täkt. *Ingen angiven* om inget är noterat |
+
+### Laserdata och diken
+Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur `laser_for_granskning.csv` (`nnk_laser.py`). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (R7 grupp B, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Skog (laserdata)*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `laser_hojd_medel` | heltal | Grundytevägd medelhöjd, medel för ytan, senaste skanningen (dm, 185 = 18,5 m) |
+| `laser_volym_medel` | heltal | Virkesvolym, senaste skanningen (m³sk/ha) |
+| `laser_grundyta_medel` | heltal | Grundyta, senaste skanningen (m²/ha) |
+| `laser_diameter_medel` | heltal | Grundytevägd medeldiameter, senaste skanningen (cm) |
+| `laser_skanning_ar` | heltal | År för senaste skanningen. Förändringar efter det året syns inte i laserfälten |
+| `laser_hojdforandring_medel` | heltal | Medelhöjden i senaste skanningen minus den äldsta (dm). Negativt = sänkning. Normal tillväxt ger några dm till 1–2 m |
+| `laser_andel_sankt` | heltal | Andel av ytan (%) där höjden sjunkit mer än 5 m mellan skanningarna |
+| `laser_forandring_period` | text | Skanningsåren som jämförs, t.ex. "2010-2020" |
+| `laser_flagga` | text | *Möjlig avverkning* (minst 10 % av ytan eller 0,1 ha sänkt mer än 5 m), *Möjlig gallring* (grundytan minskat minst 3 m²/ha och 15 %, höjden inte sänkt), *Osäker (lövat/olövat)* (lövskogstyp där den äldsta skanningen var i lövat läge) eller tomt. Trösklarna är förslag |
+| `diken_m_inom` | heltal | Meter dike inom ytan enligt Skogsstyrelsens AI-karterade diken (NV:s vektorversion). Alla dikestyper, även vägdiken |
+| `diken_m_50m` | heltal | Meter dike i en 50 m bred zon runt ytan (utanför ytan) |
 
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  

@@ -71,6 +71,14 @@ tr:last-child td{border-bottom:0}
 .toc ul{margin:0;padding-left:18px;font-size:13.5px}
 .toc ul ul{padding-left:16px;font-size:13px}
 .toc li{margin:2px 0}
+
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
 </style>
 </head>
 <body>
@@ -110,7 +118,7 @@ tr:last-child td{border-bottom:0}
 <h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
 <p><strong>Datum:</strong> 2026-09-30
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
-<strong>Version:</strong> 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+<strong>Version:</strong> 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 <strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -635,6 +643,43 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
+<p><strong>Underlag för skogen — laserdata.</strong> Granskningslagret har laserfält för skogsytorna (grupp B, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Betyder</th>
+<th>Så används det i R7B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>laser_hojd_medel</code> (dm), <code>laser_volym_medel</code> (m³sk/ha), <code>laser_grundyta_medel</code> (m²/ha), <code>laser_diameter_medel</code> (cm)</td>
+<td>Medelvärde för ytan i den senaste skanningen (<code>laser_skanning_ar</code>)</td>
+<td>Stöd för <em>sluten äldre skog</em>, ett av stöden för strukturerna vid <em>fullgod</em>. Volym och diameter skiljer gammal grov skog från tät medelålders skog bättre än höjden, som planar ut tidigt. Jämför mot typens median i länet: för 9010 är den 16 m, 161 m³sk/ha och 20 cm; för 9050 och 9060 kring 24 m, 360–400 m³sk/ha och 32 cm.</td>
+</tr>
+<tr>
+<td><code>laser_hojdforandring_medel</code> (dm)</td>
+<td>Medelhöjden i senaste skanningen minus den äldsta, under <code>laser_forandring_period</code> (t.ex. 2010-2020). Negativt = sänkning</td>
+<td>Normal tillväxt ger några dm till 1–2 m (median +0,7 m). Sänkning i medelvärdet tyder på ingrepp eller störning i en stor del av ytan.</td>
+</tr>
+<tr>
+<td><code>laser_andel_sankt</code> (%)</td>
+<td>Andel av ytan där höjden sjunkit mer än 5 m mellan skanningarna</td>
+<td>Fångar avverkning och kraftig gallring, även ingrepp som inte krävt anmälan, och störningar som storm och granbarkborre.</td>
+</tr>
+<tr>
+<td><code>laser_flagga</code></td>
+<td><em>Möjlig avverkning</em>: minst 10 % av ytan eller minst 0,1 ha sänkt. <em>Möjlig gallring</em>: grundytan har minskat minst 3 m²/ha och 15 % medan medelhöjden inte sjunkit mer än 1 m. <em>Osäker (lövat/olövat)</em>: se begränsningar nedan</td>
+<td>Flaggad yta prövas mot orto och Skogsstyrelsens underlag. Bekräftas ingreppet efter karteringen: <em>icke fullgod</em>. Kan orsaken vara naturlig störning (storm, brand, insekter): <em>till fält</em>, eftersom det kan vara en del av typens dynamik. Tom flagga är inget belägg för att inget har hänt, se nedan.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Avverkning och gallring.</em> Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är förslag. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. De övriga 57 kan vara naturliga störningar, naturvårdsåtgärder eller ingrepp som är för små för satellitdetekteringen, och ska kontrolleras i orto. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (<em>SKS Trädhöjd 3_1</em>, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.</p>
+<p><strong>Begränsningar:</strong>
+- <strong>Död ved</strong> syns inte tillförlitligt i laserdata. För 9010 enligt de nya kraven (februari 2026) ger laserdata stöd för sluten äldre skog, men mängden död ved avgörs i fält: utfallet blir fortfarande <em>till fält</em> om inget annat underlag finns.
+- <strong>Trädslag.</strong> Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
+- <strong>Lövat eller olövat läge.</strong> Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med <em>Osäker (lövat/olövat)</em> (115 ytor). Pröva dem i orto.</p>
 <p><strong>R7C Myr, våtmark, sjö</strong></p>
 <table>
 <thead>
@@ -658,6 +703,8 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
+<p><strong>Underlag för diken.</strong> Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (grupp B) och myrarna i grupp C (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): <code>diken_m_inom</code> (meter dike inom ytan) och <code>diken_m_50m</code> (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger <em>icke fullgod</em>. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som <em>i anslutning till ytan</em>.</p>
+<p>Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.</p>
 <p><strong>R7D Stabila typer</strong></p>
 <table>
 <thead>
@@ -863,6 +910,28 @@ tr:last-child td{border-bottom:0}
     r.setAttribute('data-theme',mork()?'light':'dark');rita();
   });
   rita();
+})();
+
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat ✓':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
 })();
 </script>
 </body>

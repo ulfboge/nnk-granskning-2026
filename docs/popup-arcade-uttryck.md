@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -28,6 +28,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Typiska arter (Artportalen)** — ny sektion 7, tillagd 2026-09-29. Visar fälten `typarter_antal`, `typarter` och `typarter_senaste_ar`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `typiska_arter_per_yta.csv` (framräknad av `natura-2000: scripts/analysis/artportalen_typiska_arter.py`). Uttrycket kontrollerar med `HasKey` att fälten finns, så det går att klistra in innan tjänsten är republicerad — sektionen visar då bara en rad om att underlaget saknas.
 - **Hävd enligt jordbruksskiften** — ny sektion 8, tillagd 2026-09-29. Visar fälten `havd_skiften`, `havd_obrutet_sedan`, `havd_ar_utan_bete`, `havd_andel_bete_senaste`, `havd_varning_vall` och `havd_period`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `havd_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_havd.py`). Sektionen visas bara för hävdberoende typer och för ytor där skiftesdata visar hävd — på övriga ytor säger värdet lite. Samma `HasKey`-skydd som sektion 7.
 - **TUVA i sektion 8** — tillagt 2026-09-30. Fälten `tuva_objekt_id`, `tuva_andel_overlapp`, `tuva_antal_objekt`, `tuva_inv_ar`, `tuva_havdstatus`, `tuva_havdregim`, `tuva_igenvaxning`, `tuva_naturtyp` och `tuva_paverkan` sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `tuva_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_tuva.py`). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. `HasKey`-skyddat för sig, så uttrycket fungerar både före och efter att TUVA-fälten publicerats.
+- **Skog (laserdata)** — ny sektion 9, tillagd 2026-09-30. Visar fälten `laser_hojd_medel`, `laser_volym_medel`, `laser_grundyta_medel`, `laser_diameter_medel`, `laser_skanning_ar`, `laser_hojdforandring_medel`, `laser_andel_sankt`, `laser_forandring_period`, `laser_flagga`, `diken_m_inom` och `diken_m_50m`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `laser_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_laser.py`). Visas för skogstyperna i R7 grupp B (inklusive 9740 och 9750) och, med bara dikesraderna och titeln *Diken (laserdata)*, för myrarna i grupp C (7110–7231). Skanningsår och förändringsperiod står i klartext. `HasKey`-skyddat, så uttrycket fungerar före publiceringen av fälten.
 
 ---
 
@@ -754,6 +755,98 @@ if (tuva) {
         Push(rader, ["TUVA, påverkan", $feature.tuva_paverkan]);
     }
     Push(rader, ["Öppna i TUVA", "https://etjanst.sjv.se/tuvaut/?f=&id=" + $feature.tuva_objekt_id]);
+}
+return svar(titel, rader);
+```
+
+---
+
+## 9. Skog (laserdata)
+
+Nytt uttryck, placera det efter *Hävd enligt jordbruksskiften och TUVA*. Underlag för R7B och R7C i `metodik.md`. Visas för skogstyperna (R7 grupp B, inklusive 9740 skogbevuxen myr och 9750 svämlövskog). För myrarna 7110–7231 visas bara dikesraderna, med titeln *Diken (laserdata)*. Övriga typer får en kort rad om att sektionen inte gäller.
+
+```js
+// Skog (laserdata)
+// Laser: Skogsstyrelsens Skogliga grunddata, omdrev 1 (2010-2012) och omdrev 2 (2020-2023),
+//   framräknat av nnk_laser.py. Bara 10 m-pixlar helt inom ytan. Värdena är modellskattningar.
+// Diken: Skogsstyrelsens AI-karterade diken (NV:s vektorversion), inom ytan och i 50 m-zon runt den.
+
+function svar(titel, rader) {
+    var infos = [];
+    var attrs = {};
+    for (var i in rader) {
+        var namn = "rad_" + Text(i);
+        Push(infos, { fieldName: namn, label: rader[i][0] });
+        attrs[namn] = rader[i][1];
+    }
+    return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
+}
+
+var skog = [2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162,
+            9180, 9190, 9740, 9750];
+var myrar = [7110, 7111, 7140, 7141, 7142, 7230, 7231];
+var kod = null;
+if (HasKey($feature, "naturtyp_kod_text") && !IsEmpty($feature.naturtyp_kod_text)) {
+    kod = Number(Left($feature.naturtyp_kod_text, 4));
+}
+var arSkog = !IsEmpty(kod) && Includes(skog, kod);
+var arMyr = !IsEmpty(kod) && Includes(myrar, kod);
+var titel = IIf(arSkog, "Skog (laserdata)", "Diken (laserdata)");
+
+if (!arSkog && !arMyr) {
+    return svar("Skog (laserdata)", [["Information", "Gäller skogstyper och myrar (R7B och R7C)."]]);
+}
+if (!HasKey($feature, "diken_m_inom")) {
+    return svar(titel, [["Information", "Underlaget är inte inläst i lagret än."]]);
+}
+
+var rader = [];
+
+// ---- Laser (bara skog) ----
+// Alla laser_-fält publiceras tillsammans med diken_-fälten
+if (arSkog) {
+    if (IsEmpty($feature.laser_hojd_medel)) {
+        Push(rader, ["Laserdata", "Ytan är för liten (färre än tre hela 10 m-pixlar) eller saknar laserdata."]);
+    } else {
+        var ar = $feature.laser_skanning_ar;
+        Push(rader, ["Senaste laserskanning", IIf(IsEmpty(ar), "okänt år", Text(ar))]);
+        Push(rader, ["Medelhöjd", Text($feature.laser_hojd_medel / 10, "#,##0.0") + " m"]);
+        Push(rader, ["Virkesvolym", Text($feature.laser_volym_medel) + " m³sk/ha"]);
+        Push(rader, ["Grundyta", Text($feature.laser_grundyta_medel) + " m²/ha"]);
+        Push(rader, ["Medeldiameter", Text($feature.laser_diameter_medel) + " cm"]);
+
+        var per = DefaultValue($feature.laser_forandring_period, "");
+        if (!IsEmpty($feature.laser_hojdforandring_medel)) {
+            var dh = $feature.laser_hojdforandring_medel / 10;
+            var dhText = IIf(dh > 0, "+", "") + Text(dh, "#,##0.0") + " m";
+            Push(rader, ["Höjdförändring" + IIf(per == "", "", " " + per), dhText]);
+        }
+        if (!IsEmpty($feature.laser_andel_sankt)) {
+            Push(rader, ["Andel sänkt mer än 5 m" + IIf(per == "", "", " " + per),
+                         Text($feature.laser_andel_sankt) + " % av ytan"]);
+        }
+        var fl = DefaultValue($feature.laser_flagga, "");
+        if (fl != "") {
+            var flText = Decode(fl,
+                "Möjlig avverkning", "Möjlig avverkning: höjden har sjunkit mer än 5 m på minst 10 % av ytan eller minst 0,1 ha. Kontrollera i orto och i Skogsstyrelsens avverkningsinformation.",
+                "Möjlig gallring", "Möjlig gallring: grundytan har minskat tydligt men inte höjden. Kontrollera i orto.",
+                "Osäker (lövat/olövat)", "Osäker: den äldsta skanningen gjordes i lövat läge, den senaste i olövat. Minskningen kan bero på det. Kontrollera i orto.",
+                fl);
+            Push(rader, ["Laserflagga", flText]);
+        }
+        Push(rader, ["Att tänka på", "Laserdata visar inte död ved eller trädslag. Förändringar efter " + IIf(IsEmpty(ar), "senaste skanningen", Text(ar)) + " syns inte."]);
+    }
+}
+
+// ---- Diken (skog och myr) ----
+var di = $feature.diken_m_inom;
+var du = $feature.diken_m_50m;
+if (!IsEmpty(di) || !IsEmpty(du)) {
+    Push(rader, ["Diken inom ytan", Text(DefaultValue(di, 0)) + " m"]);
+    Push(rader, ["Diken inom 50 m utanför ytan", Text(DefaultValue(du, 0)) + " m"]);
+    if (DefaultValue(di, 0) > 0 || DefaultValue(du, 0) > 0) {
+        Push(rader, ["Om dikena", "AI-karterade ur laserdata (Skogsstyrelsen). Kontrollera i terrängskuggning, karteringen missar igenvuxna diken och kan ta med bäckar."]);
+    }
 }
 return svar(titel, rader);
 ```

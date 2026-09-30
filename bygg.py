@@ -182,6 +182,44 @@ def flikifiera(brod):
     return inledning + flikrad + "".join(paneler)
 
 
+# Kopiera-knapp pa alla kodrutor (tillagd 2026-09-30). Clipboard-API:t
+# kraver https (github.io); execCommand-reserven gor att det fungerar
+# aven nar sidan oppnas som lokal fil.
+KOPIERA_CSS = """
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+"""
+
+KOPIERA_JS = """
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat \u2713':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
+})();
+"""
+
+
 SIDMALL = """<!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -225,12 +263,12 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
         else:
             brod = toc + brod
 
-    extra = DOK_CSS
-    js = TEMA_JS
+    extra = DOK_CSS + KOPIERA_CSS
+    js = TEMA_JS + KOPIERA_JS
     if flikar:
         brod = flikifiera(brod)
-        extra = DOK_CSS + TAB_CSS
-        js = TEMA_JS + TAB_JS
+        extra = DOK_CSS + KOPIERA_CSS + TAB_CSS
+        js = TEMA_JS + KOPIERA_JS + TAB_JS
 
     sida = SIDMALL.format(
         titel=f"{titel} — NNK 2026",

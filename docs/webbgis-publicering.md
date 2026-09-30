@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.
+**Version 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -272,6 +272,25 @@ SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i 
 relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
 tillåter att samma datakälla läggs till i flera grupper.
 
+#### Tillägg 2026-09-30 · Underlag för R7B och R7C (skog, diken)
+
+Kontrollerat mot Konfiguratorns lagerexport 2026-09-30 (`lst-webbgis-konfigurator_…_tocconfig_744_2026-09-30….json`). Tre ändringar behövs. Alla tre datakällorna finns redan som items i portalen (siteadmin), så inget behöver publiceras.
+
+**a) Skog och vegetation — virkesvolym och medeldiameter.** Gruppen har i dag bara *Grundyta_gron* ur SKS Skogliga grunddata och trädhöjden. Samma bildtjänst (`SkogligaGrunddata_3_1`) har rasterfunktionsmallarna `Volym_gron`/`Volym_rod`, `Medeldiameter_gron`/`Medeldiameter_gulrod`, `Medelhojd_gron`, `Biomassa_gron` samt beräkningsmallar (`Tillvaxt`, `Gallringsindex` m.fl.). Tjänsten kräver inloggning (SKS svarar 401 utan). Lägg därför till den via portalens item och inte via en URL:
+1. Map Viewer, vår WebMap *LstD NNK Granskning – WebMap* → *Add → Browse layers → My Organization* → sök "Skogliga Grunddata 3.1". Lägg till bildtjänstlagret två gånger.
+2. Första kopian: *Properties → Image display → Processing template* = `Volym_gron`. Byt namn till "SKS Skogliga grunddata – Virkesvolym (m³sk/ha)". Andra kopian: `Medeldiameter_gron`, namn "SKS Skogliga grunddata – Medeldiameter (cm)". Släckta vid start. Spara WebMap:en.
+3. Konfiguratorn → Lagerlista → gruppen *Skog och vegetation* → lägg till de två lagren från vår WebMap, direkt under *Grundyta_gron*.
+4. Valfritt: Skogsstyrelsens WMS `VisaDatumlaserskanning_1_0` visar skanningsdatum per 2,5 km-ruta. Det är samma uppgift som `laser_skanning_ar` i popupen, men för hela kartbilden.
+
+**b) Trädhöjd 3_1 — röd/grön är färgskalor, inte förändring.** Enligt Skogsstyrelsens tekniska beskrivning (2024-02-09) visar `*_rod` trädhöjden i en grön-gul-röd skala och `*_gron` samma höjd i en gul-grön skala. *Laser* bygger på Lantmäteriets laserskanning, *Flygbild* på bildmatchning av flygbilder. Inget av lagren är ett förändringsskikt, och lagren kan därför inte användas direkt som belägg för *icke fullgod*. En avverkning syns bara om man jämför Laser och Flygbild (olika år) för hand. Använd `laser_flagga` (förändring mellan två laserskanningar) och *SKS Avverkningsinformation* för att hitta ingrepp, och trädhöjdslagren för att se hur skogen ser ut. Ett av färgparen räcker. Släck gärna `*_rod`-sublagren i Konfiguratorn så att listan blir kortare.
+
+**c) Markfuktighet och hydrologi — terrängskuggning och diken saknas.** Terrängskuggningen finns bara som sublager i *LM Höjdmodell – WMS* under *Terräng och höjd*, och AI-karterade diken finns inte i appen alls. Lägg till i gruppen *Markfuktighet och hydrologi*, i den här ordningen överst:
+1. *NV Dikeskartering – WebMap* (item `d929ace4ffe644d099cada3c3a2ab606`). Det är NV:s bearbetning av Skogsstyrelsens AI-karterade diken, samma data som fälten `diken_m_inom`/`diken_m_50m`.
+2. *LM Höjdmodell Terrängskuggning* (item `042ce4b461914c7992f837957e50b89c`). Diken syns i terrängskuggningen även under krontak. Lägg den under dikena med 30–40 % genomskinlighet.
+3. *SLU Markfuktighetskarta (WMS) – WebMap* (item `897e58de0b104684bed4de60a1a58bd2`). Metodiken (R7C) hänvisar till den för att kontrollera att sumpskogar och myrar ligger blött. Gruppen har i dag bara DTW-versionen och NMD-indexet.
+
+Items som redan är egna WebMaps läggs till direkt i Konfiguratorn från sina WebMaps (del 6 steg 4), utan att gå via vår WebMap. Exportera en ny lagerlista-backup efteråt.
+
 ### Steg 5 · Fliken Filter
 
 Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *Nytt filter* → *Gruppfilter*, datakälla NNK ytor + linjer + punkter:
@@ -294,8 +313,13 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Vall senaste året" | `havd_varning_vall = 'Ja'` | Minst halva ytan låg på vall (åkermark) senaste året — varningssignal för t.ex. 6270 och 6410. Tillagt 2026-09-29. |
 | "TUVA-träff" | `tuva_objekt_id IS NOT NULL` | Ytan överlappar ett TUVA-objekt (ängs- och betesmarksinventeringen) med minst 1 % av ytan eller 0,25 ha, bara ytlagret. 2 425 ytor. Fälten sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `tuva_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_tuva.py`, kopieras till jobbdatorns `Bearbetning\`). Tillagt 2026-09-30. |
 | "TUVA ohävdad/igenväxande" | `tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'` | Negativa noteringar i TUVA: dominerande hävdklass *Ingen hävd*, markslag *Restaurerbar* eller *Ej aktuell*, eller tydlig igenväxning. Kandidater till *icke fullgod* i R7A — kontrollera inventeringsåret, TUVA äldre än 15 år räcker inte. Går uttrycket inte att skriva som ett villkor i Konfiguratorn: lägg varje del som ett eget uttryck i samma filter med *ELLER*. Tillagt 2026-09-30. |
+| "Laser: möjlig avverkning" | `laser_flagga = 'Möjlig avverkning'` | Höjden har sjunkit mer än 5 m mellan laserskanningarna (2010–2012 och 2020–2023) på minst 10 % av ytan eller minst 0,1 ha. Bara skogsytorna (R7 grupp B), 70 ytor. Kandidater till *icke fullgod* i R7B — kontrollera i orto och i Skogsstyrelsens avverkningsinformation, orsaken kan också vara storm eller insekter. Fälten sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `laser_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_laser.py`, kopieras till jobbdatorns `Bearbetning\`). Tillagt 2026-09-30. |
+| "Laser: möjlig gallring" | `laser_flagga = 'Möjlig gallring'` | Grundytan har minskat minst 3 m²/ha och 15 % medan höjden inte sjunkit. 144 ytor. Svagare signal än avverkning — kontrollera i orto. Lägg vid behov till ett eget filter för `laser_flagga = 'Osäker (lövat/olövat)'` (115 lövskogsytor där den äldsta skanningen var lövad). Tillagt 2026-09-30. |
+| "Diken inom ytan" | `diken_m_inom > 0` | Skogsstyrelsens AI-karterade diken inom ytan, för skogsytorna och myrarna (7110–7231). 749 ytor. Kandidater till *icke fullgod* i R7B (9740, 9750, sumpskogar) och R7C — kontrollera i terrängskuggning. Diken i zonen 50 m runt ytan finns i `diken_m_50m` och i popupen. Tillagt 2026-09-30. |
 
 **Urval för R7A-piloten:** *Hävdberoende* + *Dölj marint* + ett av hävdfiltren. *Ja* ger kandidater till fullgod, *Nej* kandidater till icke fullgod, och *Delvis*/*Oklart* är de som oftast behöver fält eller TUVA. Lägg till *TUVA-träff* för att se vilka av dem som har TUVA-underlag, och *TUVA ohävdad/igenväxande* för kandidater till icke fullgod. Excelfilen `n2000_statusforslag.xlsx` (privata repot) har samma värden per polygon och används som översikt och för att välja pilotens fältkontroller.
+
+**Urval för R7B (skog):** *Dölj marint* + *Laser: möjlig avverkning* eller *Laser: möjlig gallring* ger kandidater till *icke fullgod*. För sumpskogar, 9740 och 9750 lägg till *Diken inom ytan*. Ytor utan flagga och utan diken är kandidater till *fullgod*, men kontrollera också Skogsstyrelsens avverkningsinformation efter senaste skanningen (2020) och sektionen *Skog (laserdata)* i popupen för volym och diameter.
 
 **Kombinera filtren för C2.1** (Batch S): slå på *Batch S* + *Dölj marint*, och sedan antingen *Större än 5 ha*, *Hävdberoende*, *Sällsynt livsmiljötyp* eller *Åtgärdas* för de ytor som granskas en och en. Filtren i ett gruppfilter kombineras med OCH — för ELLER mellan kriterierna, slå på dem ett i taget.
 

@@ -71,6 +71,14 @@ tr:last-child td{border-bottom:0}
 .toc ul{margin:0;padding-left:18px;font-size:13.5px}
 .toc ul ul{padding-left:16px;font-size:13px}
 .toc li{margin:2px 0}
+
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
 </style>
 </head>
 <body>
@@ -2162,6 +2170,28 @@ tr:last-child td{border-bottom:0}
     r.setAttribute('data-theme',mork()?'light':'dark');rita();
   });
   rita();
+})();
+
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat ✓':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
 })();
 </script>
 </body>
