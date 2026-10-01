@@ -124,7 +124,7 @@ tr:last-child td{border-bottom:0}
 </ul>
 </div>
 </nav>
-<p><strong>Version 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
+<p><strong>Version 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -693,6 +693,16 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td>"TUVA ohävdad/igenväxande"</td>
 <td><code>tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'</code></td>
 <td>Negativa noteringar i TUVA: dominerande hävdklass <em>Ingen hävd</em>, markslag <em>Restaurerbar</em> eller <em>Ej aktuell</em>, eller tydlig igenväxning. Kandidater till <em>icke fullgod</em> i R7A — kontrollera inventeringsåret, TUVA äldre än 15 år räcker inte. Går uttrycket inte att skriva som ett villkor i Konfiguratorn: lägg varje del som ett eget uttryck i samma filter med <em>ELLER</em>. Tillagt 2026-09-30.</td>
+</tr>
+<tr>
+<td>"SkötselDOS: bete/slåtter"</td>
+<td><code>skdos_havd_typ IS NOT NULL</code></td>
+<td>Utförd bete- eller slåtteråtgärd i SkötselDOS över ytan (Metrias uttag 2026-10-01), bara ytlagret. 486 ytor, varav 159 hävdberoende. Fälten sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>skotseldos_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_skotseldos.py</code>). Tillagt 2026-10-01.</td>
+</tr>
+<tr>
+<td>"Uppföljning: Dålig"</td>
+<td><code>uppf_antal_dalig &gt; 0</code></td>
+<td>Minst en uppföljningspunkt med måluppfyllelse <em>Dålig</em>. 17 ytor. Kandidater till <em>icke fullgod</em>. Vill du se alla med uppföljning: <code>uppf_punkter_bedomda &gt; 0</code> (101 ytor). Tillagt 2026-10-01.</td>
 </tr>
 <tr>
 <td>"Laser: möjlig avverkning"</td>

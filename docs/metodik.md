@@ -4,7 +4,7 @@
 
 **Datum:** 2026-09-30
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+**Version:** 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 **Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
 
 ---
@@ -257,6 +257,18 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 | Skiften och TUVA säger emot varandra | T.ex. skiften *Ja* och TUVA *Ingen hävd*, eller skiften *Nej* och TUVA *Välhävdad*: *till fält*. |
 
 Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (`tuva_antal_objekt` > 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i `tuva_naturtyp` gäller hela TUVA-objektet, inte NNK-ytan. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken *Öppna i TUVA* i popupen).
+
+**Underlag för hävden — SkötselDOS.** Sedan 2026-10-01 har granskningslagret fält ur Metrias SkötselDOS-uttag. `skdos_havd_typ` och `skdos_havd_senaste_ar` visar utförd bete eller slåtter enligt reservatsförvaltningen (486 ytor, 159 hävdberoende). Det är det underlag som skiftena saknar för bete utan stöd. `uppf_*` sammanfattar uppföljningspunkterna för naturtyper (målindikatorer, 2015–2022) inom ytan (101 ytor).
+
+| Läge | Så används det i R7A |
+|---|---|
+| SkötselDOS bete/slåtter senast 2020 eller senare | Belägg för hävd, likvärdigt med skiften *Ja* för de år som står i SkötselDOS. Tillsammans med typen rimlig och utan negativ notering: kandidat till *fullgod*. |
+| Skiften *Nej*/*Oklart* men SkötselDOS bete | 53 hävdberoende ytor. SkötselDOS väger tyngre än skiftena för bete utan stöd. Kontrollera att åtgärden verkligen ligger på ytan (ortot) och inte bara på reservatet. |
+| SkötselDOS utan år eller äldre än 2020 | Visar att ytan har skötts, men inte att den sköts nu. Avgörs av skiftena och ortot, annars *till fält*. |
+| Uppföljning med punkter *Dålig* | 17 ytor. Pröva *icke fullgod* för de målindikatorer som brister. Punkterna är från 2015–2022, så kontrollera om skötseln ändrats sedan dess. |
+| Uppföljning med enbart *Bra* | Stöd för *fullgod*, om uppföljningen är högst 10 år gammal. |
+
+Åtgärder i SkötselDOS är ibland ritade större än den yta som faktiskt betas. Åtgärder på 200 ha eller mer är därför bortfiltrerade, men en stor fålla kan fortfarande täcka skog som inte betas.
 
 **R7B Skog**
 

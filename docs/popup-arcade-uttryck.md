@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -27,6 +27,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 
 - **Typiska arter (Artportalen)** — ny sektion 7, tillagd 2026-09-29. Visar fälten `typarter_antal`, `typarter` och `typarter_senaste_ar`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `typiska_arter_per_yta.csv` (framräknad av `natura-2000: scripts/analysis/artportalen_typiska_arter.py`). Uttrycket kontrollerar med `HasKey` att fälten finns, så det går att klistra in innan tjänsten är republicerad — sektionen visar då bara en rad om att underlaget saknas.
 - **Hävd enligt jordbruksskiften** — ny sektion 8, tillagd 2026-09-29. Visar fälten `havd_skiften`, `havd_obrutet_sedan`, `havd_ar_utan_bete`, `havd_andel_bete_senaste`, `havd_varning_vall` och `havd_period`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `havd_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_havd.py`). Sektionen visas bara för hävdberoende typer och för ytor där skiftesdata visar hävd — på övriga ytor säger värdet lite. Samma `HasKey`-skydd som sektion 7.
+- **SkötselDOS och uppföljning i sektion 8** — tillagt 2026-10-01. Fälten `skdos_havd_senaste_ar`, `skdos_havd_antal_ar`, `skdos_havd_typ`, `uppf_punkter_bedomda`, `uppf_andel_bra`, `uppf_antal_dalig` och `uppf_senaste_ar` sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `skotseldos_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_skotseldos.py` ur Metrias SkötselDOS-uttag). Sektionen visas nu också för ytor med SkötselDOS-hävd eller uppföljningspunkter. `HasKey`-skyddat, så uttrycket kan klistras in före publiceringen.
 - **TUVA i sektion 8** — tillagt 2026-09-30. Fälten `tuva_objekt_id`, `tuva_andel_overlapp`, `tuva_antal_objekt`, `tuva_inv_ar`, `tuva_havdstatus`, `tuva_havdregim`, `tuva_igenvaxning`, `tuva_naturtyp` och `tuva_paverkan` sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `tuva_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_tuva.py`). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. `HasKey`-skyddat för sig, så uttrycket fungerar både före och efter att TUVA-fälten publicerats.
 - **Skog (laserdata)** — ny sektion 9, tillagd 2026-09-30. Visar fälten `laser_hojd_medel`, `laser_volym_medel`, `laser_grundyta_medel`, `laser_diameter_medel`, `laser_skanning_ar`, `laser_hojdforandring_medel`, `laser_andel_sankt`, `laser_forandring_period`, `laser_flagga`, `diken_m_inom` och `diken_m_50m`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `laser_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_laser.py`). Visas för skogstyperna i R7 grupp B (inklusive 9740 och 9750) och, med bara dikesraderna och titeln *Diken (laserdata)*, för myrarna i grupp C (7110–7231). Skanningsår och förändringsperiod står i klartext. `HasKey`-skyddat, så uttrycket fungerar före publiceringen av fälten.
 
@@ -639,7 +640,7 @@ return svar(rader);
 
 ## 8. Hävd enligt jordbruksskiften och TUVA
 
-Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A i `metodik.md`. Titeln i popupen är fortfarande *Hävd enligt jordbruksskiften* när ytan saknar TUVA-träff. Uppdaterat 2026-09-30 med TUVA-raderna.
+Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A i `metodik.md`. Titeln i popupen är fortfarande *Hävd enligt jordbruksskiften* när ytan saknar TUVA-träff. Uppdaterat 2026-09-30 med TUVA-raderna och 2026-10-01 med SkötselDOS och uppföljning (titeln får då tillägget *, SkötselDOS*).
 
 ```js
 // Hävd enligt jordbruksskiften och TUVA
@@ -647,7 +648,10 @@ Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A
 //   Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
 // TUVA: Jordbruksverkets ängs- och betesmarksinventering, senaste inventering per objekt,
 //   kopplat av nnk_tuva.py (störst överlapp, >= 1 % av ytan eller >= 0,25 ha).
-// Visas för hävdberoende typer, för ytor där skiftena visar hävd och för alla ytor med TUVA-träff.
+// SkötselDOS: Metrias uttag 2026-10-01, utförda bete-/slåtteråtgärder och
+//   uppföljningspunkter (målindikatorer), kopplat av nnk_skotseldos.py.
+// Visas för hävdberoende typer, för ytor där skiftena visar hävd och för alla ytor med
+// TUVA-träff, SkötselDOS-hävd eller uppföljningspunkter.
 
 // rader = lista med [etikett, värde] - en lista så att ordningen håller
 function svar(titel, rader) {
@@ -676,13 +680,18 @@ if (harSkiften) {
 }
 var tuva = harTuvaFalt && !IsEmpty($feature.tuva_objekt_id);
 var havdberoende = HasKey($feature, "havdberoende") && $feature.havdberoende == "Ja";
+var skdos = HasKey($feature, "skdos_havd_typ") && !IsEmpty($feature.skdos_havd_typ);
+var uppf = HasKey($feature, "uppf_punkter_bedomda") && !IsEmpty($feature.uppf_punkter_bedomda);
 var titel = IIf(tuva, "Hävd enligt jordbruksskiften och TUVA", "Hävd enligt jordbruksskiften");
+if (skdos || uppf) {
+    titel += ", SkötselDOS";
+}
 
-if (IsEmpty(v) && !tuva) {
+if (IsEmpty(v) && !tuva && !skdos && !uppf) {
     return svar(titel, [["Information", "Ytan ingick inte i hävdanalysen (bara ytlagret analyseras)."]]);
 }
 // På övriga typer säger Nej/Oklart lite - visa ingenting, om inte ytan har TUVA-träff
-if (!havdberoende && !tuva && (v == "Nej" || v == "Oklart")) {
+if (!havdberoende && !tuva && !skdos && !uppf && (v == "Nej" || v == "Oklart")) {
     return svar(titel, [["Information", "Inte relevant för ytans naturtyp."]]);
 }
 
@@ -755,6 +764,36 @@ if (tuva) {
         Push(rader, ["TUVA, påverkan", $feature.tuva_paverkan]);
     }
     Push(rader, ["Öppna i TUVA", "https://etjanst.sjv.se/tuvaut/?f=&id=" + $feature.tuva_objekt_id]);
+}
+
+// ---- SkötselDOS: utförd bete/slåtter ----
+if (skdos) {
+    var sk = $feature.skdos_havd_typ;
+    if (!IsEmpty($feature.skdos_havd_senaste_ar)) {
+        sk += ", senast " + Text($feature.skdos_havd_senaste_ar);
+        if (!IsEmpty($feature.skdos_havd_antal_ar) && $feature.skdos_havd_antal_ar > 1) {
+            sk += " (" + Text($feature.skdos_havd_antal_ar) + " olika år)";
+        }
+    } else {
+        sk += ", år saknas i åtgärdens namn";
+    }
+    Push(rader, ["SkötselDOS, utförd hävd", sk]);
+    if (v == "Nej" || v == "Oklart") {
+        Push(rader, ["Att tänka på", "Skiftena visar ingen hävd men SkötselDOS gör det. Bete utan stöd syns inte i skiftena. Kontrollera åtgärden i SkötselDOS."]);
+    }
+}
+
+// ---- Uppföljning av naturtyper (målindikatorer) ----
+if (uppf) {
+    var up = Text($feature.uppf_punkter_bedomda) + " bedömda punkter, " +
+             Text($feature.uppf_andel_bra) + " % Bra";
+    if (!IsEmpty($feature.uppf_antal_dalig) && $feature.uppf_antal_dalig > 0) {
+        up += ", " + Text($feature.uppf_antal_dalig) + " Dålig";
+    }
+    if (!IsEmpty($feature.uppf_senaste_ar)) {
+        up += " (senast " + Text($feature.uppf_senaste_ar) + ")";
+    }
+    Push(rader, ["Uppföljning, målindikatorer", up]);
 }
 return svar(titel, rader);
 ```
