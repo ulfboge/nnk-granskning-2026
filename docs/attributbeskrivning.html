@@ -116,6 +116,7 @@ tr:last-child td{border-bottom:0}
 <li><a href="#typiska-arter-i-artportalen">Typiska arter i Artportalen</a></li>
 <li><a href="#tuva-angs-och-betesmarksinventeringen">TUVA — ängs- och betesmarksinventeringen</a></li>
 <li><a href="#skotseldos-utford-havd-och-uppfoljning">SkötselDOS — utförd hävd och uppföljning</a></li>
+<li><a href="#floravakteri-artportalen">Floraväkteri (Artportalen)</a></li>
 <li><a href="#laserdata-och-diken">Laserdata och diken</a></li>
 <li><a href="#areal-ha">Areal (ha)</a></li>
 <li><a href="#naturtyp-kod-klartext">Naturtyp (kod + klartext)</a></li>
@@ -1683,6 +1684,64 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td><code>uppf_senaste_ar</code></td>
 <td>heltal</td>
 <td>År för den senaste bedömda punkten (2015–2022)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="floravakteri-artportalen">Floraväkteri (Artportalen)</h3>
+<p>Nio fält, alla skrivskyddade, heltal utom <code>fv_arter</code>, och bara i ytlagret. Hämtas ur <code>floravakteri_for_granskning.csv</code> (<code>nnk_floravakteri.py</code>, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten <em>Floraväkteri Sverige</em> och <em>Arkiv Floraväktarlokaler</em>): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt <em>Floraväkteri (Artportalen)</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Typ</th>
+<th>Innehåll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fv_antal_arter</code></td>
+<td>heltal</td>
+<td>Antal arter med floraväktarrapport i ytan</td>
+</tr>
+<tr>
+<td><code>fv_antal_rapporter</code></td>
+<td>heltal</td>
+<td>Antal rapporter, alla år</td>
+</tr>
+<tr>
+<td><code>fv_senaste_ar</code></td>
+<td>heltal</td>
+<td>År för den senaste rapporten</td>
+</tr>
+<tr>
+<td><code>fv_hotade_arter</code></td>
+<td>heltal</td>
+<td>Antal arter i kategori CR, EN eller VU</td>
+</tr>
+<tr>
+<td><code>fv_bilaga2_arter</code></td>
+<td>heltal</td>
+<td>Antal arter i habitatdirektivets bilaga 2</td>
+</tr>
+<tr>
+<td><code>fv_ej_aterfunna</code></td>
+<td>heltal</td>
+<td>Antal arter där senaste rapporten är <em>ej återfunnen</em></td>
+</tr>
+<tr>
+<td><code>fv_minskande</code></td>
+<td>heltal</td>
+<td>Antal arter där senaste räknade antal är under hälften av det första (samma enhet, minst två räknade besök)</td>
+</tr>
+<tr>
+<td><code>fv_anm_havd</code></td>
+<td>heltal</td>
+<td>Antal rapporter vars kommentar nämner igenväxning, upphört bete, sly o.d. Enkel textsökning, läs kommentaren innan du drar slutsatser</td>
+</tr>
+<tr>
+<td><code>fv_arter</code></td>
+<td>text</td>
+<td>Arterna med rödlistekategori, hotade först, t.ex. "finnögontröst (EN); sen fältgentiana (VU); …". Avkortad till 250 tecken</td>
 </tr>
 </tbody>
 </table>

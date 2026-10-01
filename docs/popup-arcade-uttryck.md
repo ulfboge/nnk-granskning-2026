@@ -31,6 +31,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **TUVA i sektion 8** — tillagt 2026-09-30. Fälten `tuva_objekt_id`, `tuva_andel_overlapp`, `tuva_antal_objekt`, `tuva_inv_ar`, `tuva_havdstatus`, `tuva_havdregim`, `tuva_igenvaxning`, `tuva_naturtyp` och `tuva_paverkan` sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `tuva_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_tuva.py`). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. Klistra in efter Overwrite (se OBS nedan).
 - **Skog (laserdata)** — ny sektion 9, tillagd 2026-09-30. Visar fälten `laser_hojd_medel`, `laser_volym_medel`, `laser_grundyta_medel`, `laser_diameter_medel`, `laser_skanning_ar`, `laser_hojdforandring_medel`, `laser_andel_sankt`, `laser_forandring_period`, `laser_flagga`, `diken_m_inom` och `diken_m_50m`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `laser_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_laser.py`). Visas för skogstyperna i R7 grupp B (inklusive 9740 och 9750) och, med bara dikesraderna och titeln *Diken (laserdata)*, för myrarna i grupp C (7110–7231). Skanningsår och förändringsperiod står i klartext. Klistra in efter Overwrite (se OBS nedan).
 
+- **Floraväkteri (Artportalen)** — ny sektion 10, tillagd 2026-10-01. Visar fälten `fv_antal_arter`, `fv_antal_rapporter`, `fv_senaste_ar`, `fv_hotade_arter`, `fv_bilaga2_arter`, `fv_ej_aterfunna`, `fv_minskande`, `fv_anm_havd` och `fv_arter`, som sätts av `jobbdator_koppla_nnk_skyddskategori.py` ur `floravakteri_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_floravakteri.py` ur SLU:s publika SOS-WFS, Artportalen-projekten Floraväkteri Sverige och Arkiv Floraväktarlokaler). Skyddsklassade fynd ingår inte. Visas bara för ytor med minst en floraväktarrapport. Klistra in efter Overwrite (se OBS nedan).
 
 > **OBS (2026-10-01): klistra in uttrycken först efter Share As Web Layer → Overwrite.** `HasKey` skyddar bara när uttrycket körs. Map Viewers Arcade-redigerare kontrollerar dessutom att alla `$feature.fält` finns i lagret, och saknas fälten i tjänsten går det att trycka *Kör* men inte *Klar*. Samma sak om fälten finns men är dolda (Visible av i Pro före publiceringen).
 ---
@@ -889,5 +890,60 @@ if (!IsEmpty(di) || !IsEmpty(du)) {
         Push(rader, ["Om dikena", "AI-karterade ur laserdata (Skogsstyrelsen). Kontrollera i terrängskuggning, karteringen missar igenvuxna diken och kan ta med bäckar."]);
     }
 }
+return svar(titel, rader);
+```
+
+
+## 10. Floraväkteri (Artportalen)
+
+Nytt uttryck, placera det efter *Skog (laserdata)*. Underlag för tillståndsbedömningen (typiska och hotade arter) och en kontroll av hävden i R7A. Visas bara för ytor med minst en floraväktarrapport, övriga ytor får en kort rad.
+
+```js
+// Floraväkteri (Artportalen)
+// Floraväktarnas rapporter (projekten Floraväkteri Sverige och Arkiv Floraväktarlokaler) ur
+//   SLU:s publika SOS-WFS, kopplat av nnk_floravakteri.py: punkt inom ytan, noggrannhet <= 100 m.
+//   Skyddsklassade fynd finns inte i den publika tjänsten och saknas alltså här.
+
+function svar(titel, rader) {
+    var infos = [];
+    var attrs = {};
+    for (var i in rader) {
+        var namn = "rad_" + Text(i);
+        Push(infos, { fieldName: namn, label: rader[i][0] });
+        attrs[namn] = rader[i][1];
+    }
+    return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
+}
+
+var titel = "Floraväkteri (Artportalen)";
+if (!HasKey($feature, "fv_antal_arter")) {
+    return svar(titel, [["Information", "Underlaget är inte inläst i lagret än."]]);
+}
+if (IsEmpty($feature.fv_antal_arter)) {
+    return svar(titel, [["Information", "Inga floraväktarrapporter i ytan."]]);
+}
+
+var rader = [];
+var ar = $feature.fv_senaste_ar;
+var alder = Year(Now()) - ar;
+Push(rader, ["Arter", $feature.fv_arter]);
+Push(rader, ["Antal", Text($feature.fv_antal_arter) + " arter, " + Text($feature.fv_antal_rapporter) + " rapporter"]);
+Push(rader, ["Senaste rapport", Text(ar) + IIf(alder > 10, " (äldre än 10 år)", "")]);
+if ($feature.fv_hotade_arter > 0) {
+    Push(rader, ["Hotade arter (CR/EN/VU)", Text($feature.fv_hotade_arter)]);
+}
+if ($feature.fv_bilaga2_arter > 0) {
+    Push(rader, ["Arter i habitatdirektivets bilaga 2", Text($feature.fv_bilaga2_arter)]);
+}
+if ($feature.fv_ej_aterfunna > 0) {
+    Push(rader, ["Ej återfunna", Text($feature.fv_ej_aterfunna) + " arter, senaste rapporten säger ej återfunnen"]);
+}
+if ($feature.fv_minskande > 0) {
+    Push(rader, ["Minskande", Text($feature.fv_minskande) + " arter, senaste antal under hälften av första"]);
+}
+if ($feature.fv_anm_havd > 0) {
+    Push(rader, ["Anmärkning om hävd", Text($feature.fv_anm_havd) + " rapporter nämner igenväxning eller upphört bete. Läs kommentaren i Artportalen."]);
+}
+Push(rader, ["Att tänka på", "Skyddsklassade arter ingår inte. Rapporterna gäller arternas växtplatser, inte hela ytan."]);
 return svar(titel, rader);
 ```

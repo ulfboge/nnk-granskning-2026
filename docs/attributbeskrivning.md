@@ -506,6 +506,21 @@ Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_gr
 | `uppf_antal_dalig` | heltal | Antal punkter med måluppfyllelse *Dålig*. 17 ytor har minst en |
 | `uppf_senaste_ar` | heltal | År för den senaste bedömda punkten (2015–2022) |
 
+### Floraväkteri (Artportalen)
+Nio fält, alla skrivskyddade, heltal utom `fv_arter`, och bara i ytlagret. Hämtas ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten *Floraväkteri Sverige* och *Arkiv Floraväktarlokaler*): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt *Floraväkteri (Artportalen)*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `fv_antal_arter` | heltal | Antal arter med floraväktarrapport i ytan |
+| `fv_antal_rapporter` | heltal | Antal rapporter, alla år |
+| `fv_senaste_ar` | heltal | År för den senaste rapporten |
+| `fv_hotade_arter` | heltal | Antal arter i kategori CR, EN eller VU |
+| `fv_bilaga2_arter` | heltal | Antal arter i habitatdirektivets bilaga 2 |
+| `fv_ej_aterfunna` | heltal | Antal arter där senaste rapporten är *ej återfunnen* |
+| `fv_minskande` | heltal | Antal arter där senaste räknade antal är under hälften av det första (samma enhet, minst två räknade besök) |
+| `fv_anm_havd` | heltal | Antal rapporter vars kommentar nämner igenväxning, upphört bete, sly o.d. Enkel textsökning, läs kommentaren innan du drar slutsatser |
+| `fv_arter` | text | Arterna med rödlistekategori, hotade först, t.ex. "finnögontröst (EN); sen fältgentiana (VU); …". Avkortad till 250 tecken |
+
 ### Laserdata och diken
 Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur `laser_for_granskning.csv` (`nnk_laser.py`). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (R7 grupp B, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Skog (laserdata)*.
 
