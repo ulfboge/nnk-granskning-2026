@@ -878,6 +878,72 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ---
 
+## Filterguide för webbGIS
+
+Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — *Natura 2000-typ*, *Marina objekt* och *Dölj icke-Natura-livsmiljötyper* — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. ● huvudfilter · ○ komplement · på = slå alltid på · siffran = ytor inom N2000 i gruppen som träffas.
+
+| Filter | Villkor | A Hävdberoende | B Skog | C Myr, våtmark, sjö | D Stabila (strand, klippa, skär) | Så läser du träffen |
+|---|---|---|---|---|---|---|
+| **Natura 2000-typ** | `n2000_typ` = SCI eller SCI+SPA | på | på | på | på | Aktivt vid start. Avgränsar till Natura 2000-områden av typen SCI eller SCI+SPA. |
+| **Marina objekt** | `naturtyp NOT IN (1000, 1110 … 1174)` | på | på | på | på | Aktivt vid start. Döljer de marina typerna. Strandängar (1630), skär (1620), alvar (1640) och driftvallar (1220) ligger kvar. |
+| **Dölj icke-Natura-livsmiljötyper** | `naturtyp NOT IN (1950, 2920 …)` | på | på | på | på | Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper. |
+| **Osäker/obestämd naturtyp** | `naturtyp IN (2300, 4810 … 9870)` |  |  |  |  | Eget spår, inte statusbedömning: typen måste bestämmas först (E2.1, P2-kriteriet). Använd utan gruppfiltren och utan *Dölj icke-Natura*. |
+| **Prio P1–P4** | `prio = 'P1'` osv. | ○ | ○ | ○ | ○ | Arbetsordning enligt arbetsplanen 5.2. Säger inget om tillståndet. |
+| **Batch S / A / B / C / D** | `batch = 'S'` osv. | ○ | ○ | ○ | ○ | Bara de 40 P1-objekten. Batch B ≈ grupp A i inlandet, C ≈ grupp C, D ≈ grupp B, A = kusten (1630 i grupp A, skär och stränder i grupp D), S = storobjekten (blandat). |
+| **Ej granskade / Granskning påbörjad** | `granskat = 2` / `3` | ○ | ○ | ○ | ○ | Arbetsläge. Kombinera med gruppens filter för att se vad som återstår. |
+| **Större än 5 ha** | `area_ha > 5` | ○ | ○ | ○ | ○ | C2.1: ytor som granskas en och en i storobjekten. |
+| **Sällsynt livsmiljötyp** | `sallsynt = 'Ja'` | ○ | ○ | ○ | ○ | Under 50 ha i länets N2000 (28 koder). Varje yta väger tungt för länets andel — ta dem tidigt. |
+| **Hävdberoende** | `havdberoende = 'Ja'` | på |  |  |  | Motsvarar grupp A. Slå alltid på för R7A, annars drar hävdfiltren med sig skog och myr. |
+| **Hävd enligt skiften: Ja** | `havd_skiften = 'Ja'` | ● 158 |  |  |  | Bete eller slåtter varje år sedan 2015 (eller sedan typen sattes) → kandidat *fullgod*. Kontrollera orto. |
+| **Hävd enligt skiften: Delvis** | `havd_skiften = 'Delvis'` | ● 607 |  |  | ○ 83 | Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS. |
+| **Hävd enligt skiften: Nej** | `havd_skiften = 'Nej'` | ● 369 |  |  |  | Träffar skiften men aldrig bete/slåtter → kandidat *icke fullgod* på hävdberoende ytor. På skog och myr betyder Nej oftast bara att ytan gränsar mot åker — använd inte där. |
+| **Hävd enligt skiften: Oklart** | `havd_skiften = 'Oklart'` | ○ 241 |  |  |  | Inga skiften alls. Bete utan stöd syns inte — gå vidare med SkötselDOS och TUVA. |
+| **Vall senaste året** | `havd_varning_vall = 'Ja'` | ○ 2 |  |  |  | Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter. |
+| **SkötselDOS: bete/slåtter** | `skdos_havd_typ IS NOT NULL` | ● 122 | ○ 77 | ○ 42 |  | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
+| **TUVA-träff** | `tuva_antal_objekt IS NOT NULL` | ● 980 | ○ 104 |  | ○ 132 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
+| **TUVA ohävdad/igenväxande** | se rättelsen nedan | ● 133 | ○ 57 |  | ○ 27 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
+| **Laser: möjlig avverkning** | `laser_flagga = 'Möjlig avverkning'` |  | ● 37 |  |  | Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat *icke fullgod*. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för grupp B. |
+| **Laser: möjlig gallring** | `laser_flagga = 'Möjlig gallring'` |  | ○ 106 |  |  | Grundytan minskade, höjden oförändrad. Svagare signal — kontrollera i orto. |
+| **Diken inom ytan** | `diken_m_inom > 0` |  | ● 440 | ● 25 |  | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
+| **Typiska arter i Artportalen** | `typarter_antal IS NOT NULL` | ○ | ○ | ○ | ○ | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
+| **Uppföljning: dålig** | `uppf_antal_dalig > 0` | ● 12 | ○ 1 |  |  | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
+
+**Grupp A · Hävdberoende (R7A)** — 1630, 4030, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6430, 6510, 8231, 9070, 9071, 9072
+
+1. Slå på **Hävdberoende**.
+2. Lägg till ett skiftesfilter i taget: **Ja** → kandidater till fullgod, **Nej** → kandidater till icke fullgod, **Delvis**/**Oklart** → behöver mer underlag.
+3. För Delvis, Oklart och Nej: slå på **SkötselDOS: bete/slåtter** — bete utan stöd syns bara där.
+4. **TUVA-träff** visar vilka som har TUVA-underlag. **TUVA ohävdad/igenväxande** och **Uppföljning: dålig** ger kandidater till icke fullgod.
+5. 6430 längs vattendrag är ofta inte hävdberoende → *till fält*. Laserfälten finns inte för 9070.
+
+**Grupp B · Skog (R7B)** — 2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750
+
+1. **Laser: möjlig avverkning** → kandidater till icke fullgod. Kontrollera orto och avverkningsinformationen.
+2. **Laser: möjlig gallring** → svagare signal, kontrollera orto.
+3. För sumpskog (9080), 9740 och 9750: **Diken inom ytan**.
+4. Ytor utan laserflagga och utan diken är kandidater till fullgod — kolla ändå avverkningar efter 2020.
+5. Skiftesfiltren säger inget här. **TUVA-träff** eller **SkötselDOS** på skog: pröva om typen egentligen är trädklädd betesmark (9070).
+
+**Grupp C · Myr, våtmark, sjö (R7C)** — 3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231
+
+1. Myrar (7110–7231): **Diken inom ytan** → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.
+2. Rikkärr (7230): **SkötselDOS: bete/slåtter** visar var hävd ingår i skötseln.
+3. Sjöar och vattendrag (3110–3260): lagret har inga filter som ger tillståndssignal — oftast *till fält* eller andra underlag.
+4. **Typiska arter i Artportalen** stöder att typen är rätt.
+
+**Grupp D · Stabila (strand, klippa, skär) (R7D)** — 1220, 1230, 1232, 1620, 1621, 1640, 8210, 8220, 8230, 8232
+
+1. Få filter ger tillståndssignal — gruppen är stabil och R7D bygger mest på att typen är rimlig.
+2. **Typiska arter i Artportalen** och **Större än 5 ha** för de ytor som granskas en och en.
+3. **TUVA-träff** eller **Hävd enligt skiften: Delvis** på strand eller häll: pröva om ytan egentligen är strandäng (1630) eller annan hävdberoende typ.
+4. Kusten granskas i **Batch A**.
+
+> **Rätta i appen: TUVA ohävdad/igenväxande.** Uttrycket i appen träffar 7 ytor i stället för ca 540: värdena har suffix som ”Ingen hävd (100 %)” så `LIKE` behöver `%`, ”Ovävdad” är felstavat, och Tydlig/Igenväxt ligger i fältet `tuva_igenvaxning`, inte `tuva_havdstatus`.
+>
+> `tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'`
+
+---
+
 ## Checklista före incheckning i NNK
 
 Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 3.3.
