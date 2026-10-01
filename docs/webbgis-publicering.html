@@ -124,7 +124,7 @@ tr:last-child td{border-bottom:0}
 </ul>
 </div>
 </nav>
-<p><strong>Version 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
+<p><strong>Version 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på jobbdatorn utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -675,6 +675,21 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td>Ytor med fynd av minst en typisk art för naturtypen. Filtrerar på textfältet <code>typarter</code> eftersom <code>typarter_antal</code> publicerades som Big Integer 2026-09-29, vilket filteruttryck inte stöder (rättat i kedjan till nästa körning). Kräver att <code>artportalen_typiska_arter.py</code> körts och att <code>typiska_arter_per_yta.csv</code> finns på jobbdatorn (tillagt 2026-09-29).</td>
 </tr>
 <tr>
+<td>"Floraväkteri: rapporterade arter"</td>
+<td><code>fv_antal_arter IS NOT NULL</code></td>
+<td>Ytan har minst en rapport från Floraväktarna (rödlistade arter och arter i habitatdirektivet, Artportalen). Bara ytlagret. 368 ytor, ca 290 inom N2000. Skyddsklassade fynd ingår inte. Fälten sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>floravakteri_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_floravakteri.py</code>). Tillagt 2026-10-01.</td>
+</tr>
+<tr>
+<td>"Floraväkteri: hotad art"</td>
+<td><code>fv_hotade_arter &gt; 0</code></td>
+<td>Minst en art i kategori CR, EN eller VU. 221 ytor, ca 176 inom N2000. Stöder att ytan har höga värden — men säger inget om att tillståndet är gott. Tillagt 2026-10-01.</td>
+</tr>
+<tr>
+<td>"Floraväkteri: försämring"</td>
+<td><code>fv_ej_aterfunna &gt; 0 OR fv_minskande &gt; 0 OR fv_anm_havd &gt; 0</code></td>
+<td>Någon art är ej återfunnen, har minskat till under hälften av första räkningen, eller rapporten nämner igenväxning/upphört bete. 100 ytor, ca 83 inom N2000. Kandidater till <em>icke fullgod</em> — läs rapporterna i Artportalen. Går OR inte i ett villkor: tre uttryck i samma filter med <em>ELLER</em>. Tillagt 2026-10-01.</td>
+</tr>
+<tr>
 <td>"Hävd enligt skiften: Ja" / "…: Delvis" / "…: Nej" / "…: Oklart"</td>
 <td><code>havd_skiften = 'Ja'</code> osv. (fyra separata filter)</td>
 <td>Hävd enligt Jordbruksverkets jordbruksskiften 2015–2025, bara ytlagret. Underlag för R7A i metodiken. Kombinera med <em>Hävdberoende</em> — på skogs- och myrytor betyder <em>Nej</em> oftast bara att ytan gränsar till åker. Fälten sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>havd_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_havd.py</code>, kopieras till jobbdatorns <code>Bearbetning\</code>). Tillagt 2026-09-29.</td>
@@ -703,6 +718,11 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td>"Uppföljning: Dålig"</td>
 <td><code>uppf_antal_dalig &gt; 0</code></td>
 <td>Minst en uppföljningspunkt med måluppfyllelse <em>Dålig</em>. 17 ytor. Kandidater till <em>icke fullgod</em>. Vill du se alla med uppföljning: <code>uppf_punkter_bedomda &gt; 0</code> (101 ytor). Tillagt 2026-10-01.</td>
+</tr>
+<tr>
+<td>"TUVA välhävdad, floraväkteri försämring"</td>
+<td><code>havdberoende = 'Ja' AND tuva_havdstatus LIKE 'Välhävdad%' AND (fv_ej_aterfunna &gt; 0 OR fv_minskande &gt; 0 OR fv_anm_havd &gt; 0)</code></td>
+<td>Motsägelse mellan underlagen: TUVA säger välhävdad men floraväktarna ser att arter försvinner, minskar eller att det växer igen. 24 ytor, ca 23 inom N2000. Prioritera för kontroll i R7A — TUVA kan vara gammal. Bygg som två villkor med <em>OCH</em> (<code>havdberoende</code>, <code>tuva_havdstatus</code>) plus ett ELLER-block för fv-fälten, eller slå på <em>Hävdberoende</em> + <em>Floraväkteri: försämring</em> och lägg bara till <code>tuva_havdstatus LIKE 'Välhävdad%'</code>. Tillagt 2026-10-01.</td>
 </tr>
 <tr>
 <td>"Laser: möjlig avverkning"</td>
