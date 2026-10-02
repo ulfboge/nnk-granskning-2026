@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vägledningar per livsmiljötyp — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="vagledningar-per-livsmiljotyp">Vägledningar per livsmiljötyp</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#kust-och-hav">Kust och hav</a></li>
+<li><a href="#dyner">Dyner</a></li>
+<li><a href="#sjoar-och-vattendrag">Sjöar och vattendrag</a></li>
+<li><a href="#hedar-och-buskmarker">Hedar och buskmarker</a></li>
+<li><a href="#grasmarker">Gräsmarker</a></li>
+<li><a href="#myrar-och-karr">Myrar och kärr</a></li>
+<li><a href="#berg-och-hallmarker">Berg och hällmarker</a></li>
+<li><a href="#skog">Skog</a></li>
+<li><a href="#gemensamma-texter-och-tolkningar">Gemensamma texter och tolkningar</a></li>
+</ul>
+</div>
+</nav>
+<p>Senaste fastställda vägledning för varje Natura 2000-livsmiljötyp som finns i Södermanlands NNK (45 typer). <strong>Bedöm alltid mot den här versionen, oavsett om den är från 2011–2012 eller 2026.</strong> Remissversioner används inte (FAQ fråga 10).</p>
+<p><strong>Kontrollerad:</strong> 2026-10-02. Alla 45 är fastställda, ingen är på remiss. NV och HaV reviderar löpande, så kontrollera källsidan inför en bedömning: terrestra typer på <a href="https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/">Naturvårdsverkets Natura 2000-sida</a>, akvatiska (11xx, 31xx–32xx) på <a href="https://www.havochvatten.se/arter-och-livsmiljoer/vagledningar-om-akvatiska-livsmiljotyper.html">Havs- och vattenmyndighetens sida</a>.</p>
+<p><strong>Lokala kopior:</strong> <code>natura-2000: docs/underlag/natura2000/naturtyper/</code> (översikt i <code>Status_vagledningar_A2.4.md</code>). Länkarna nedan går direkt till myndigheternas PDF:er.</p>
+<p><strong>Hitta rätt vägledning från en yta:</strong> kolumnen <em>NNK-koder</em> visar undertyper och NNK:s egna koder (t.ex. 9071 → 9070, 9740 → 91D0). Obestämda koder (9830 = 9050/9010, 8840 = 6110/8230, 9860 = 9160/9190) läses mot båda typernas vägledningar. 9050 heter <em>Näringsrik granskog</em> i NNK men <em>Örtrik skog med gran</em> i 2026-vägledningen.</p>
+<h2 id="kust-och-hav">Kust och hav</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1110</td>
+<td>1110</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc70fd/1789710707634/1110-sandbankar.pdf">Sandbankar</a></td>
+<td><strong>2026-06-15</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>1140</td>
+<td>1140</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc70ff/1789710707684/1140-blottade-ler-och-sandbottnar.pdf">Blottade ler- och sandbottnar</a></td>
+<td><strong>2026-06-15</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>1150</td>
+<td>1150, 1152, 1153</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7100/1789710707700/1150-laguner.pdf">Laguner</a></td>
+<td><strong>2026-06-15</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>1160</td>
+<td>1160</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7101/1789710707722/1160-stora-vikar-och-sund.pdf">Stora vikar och sund</a></td>
+<td><strong>2026-06-15</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>1170</td>
+<td>1170</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7102/1789710707746/1170-rev.pdf">Rev</a></td>
+<td><strong>2026-06-15</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>1220</td>
+<td>1220</td>
+<td><a href="https://www.naturvardsverket.se/4ac541/contentassets/859b23bbe0e3491d84ba5d3763cb1544/vl-1220-stengrusvallar.pdf">Sten- och grusvallar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>1230</td>
+<td>1230, 1232</td>
+<td><a href="https://www.naturvardsverket.se/4ac531/contentassets/859b23bbe0e3491d84ba5d3763cb1544/vl-1230-havsklippor.pdf">Vegetationsklädda havsklippor</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>1620</td>
+<td>1620, 1621</td>
+<td><a href="https://www.naturvardsverket.se/4ac52d/contentassets/859b23bbe0e3491d84ba5d3763cb1544/vl-1620skariostersjon.pdf">Skär i Östersjön</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>1630</td>
+<td>1630</td>
+<td><a href="https://www.naturvardsverket.se/4ac546/contentassets/859b23bbe0e3491d84ba5d3763cb1544/vl-1630-brackstrandang.pdf">Strandängar vid Östersjön</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>1640</td>
+<td>1640</td>
+<td><a href="https://www.naturvardsverket.se/4ac538/contentassets/859b23bbe0e3491d84ba5d3763cb1544/vl-1640-ostersjosandstrander.pdf">Sandstränder vid Östersjön</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dyner">Dyner</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2180</td>
+<td>2181</td>
+<td><a href="https://www.naturvardsverket.se/4ac4ae/contentassets/76c742b7eb154cbca25e6fa98935d1ed/vl-2180-tradkladdadyner.pdf">Trädklädda dyner</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sjoar-och-vattendrag">Sjöar och vattendrag</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3110</td>
+<td>3110</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7105/1789710707830/3110-naringsfattiga-slattsjoar.pdf">Näringsfattiga slättsjöar</a></td>
+<td><strong>2026-03-27</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>3130</td>
+<td>3130</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7106/1789710707839/3130-avjestrandsjoar.pdf">Ävjestrandsjöar</a></td>
+<td><strong>2026-03-27</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>3150</td>
+<td>3150</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7108/1789710707859/3150-naturligt-naringsrika-sjoar.pdf">Naturligt näringsrika sjöar</a></td>
+<td><strong>2026-03-27</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>3160</td>
+<td>3160</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7109/1789710707869/3160-myrsjoar.pdf">Myrsjöar</a></td>
+<td><strong>2026-03-27</strong></td>
+<td>HaV</td>
+</tr>
+<tr>
+<td>3260</td>
+<td>3260</td>
+<td><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc710c/1789710707913/3260-mindre-vattendrag.pdf">Mindre vattendrag</a></td>
+<td><strong>2026-03-27</strong></td>
+<td>HaV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hedar-och-buskmarker">Hedar och buskmarker</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4030</td>
+<td>4030</td>
+<td><a href="https://www.naturvardsverket.se/4ac4f1/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-4030-torr-hed.pdf">Torra hedar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>5130</td>
+<td>5130, 5133</td>
+<td><a href="https://www.naturvardsverket.se/4ac4d4/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-5130-enbuskmarker.pdf">Enebuskmarker</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="grasmarker">Gräsmarker</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6110</td>
+<td>6110</td>
+<td><a href="https://www.naturvardsverket.se/4ac4c0/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6110-basiskaberghallar.pdf">Basiska berghällar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6210</td>
+<td>6210</td>
+<td><a href="https://www.naturvardsverket.se/4ac4d8/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6210-kalkgrasmarker.pdf">Kalkgräsmarker</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6230</td>
+<td>6230</td>
+<td><a href="https://www.naturvardsverket.se/4ac4fb/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6230-staggrasmarker.pdf">Stagg-gräsmarker</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6270</td>
+<td>6270</td>
+<td><a href="https://www.naturvardsverket.se/4ac4dd/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6270-silikatgrasmarker.pdf">Silikatgräsmarker</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6280</td>
+<td>6280</td>
+<td><a href="https://www.naturvardsverket.se/4ac4b6/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6280-alvar.pdf">Alvar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6410</td>
+<td>6410</td>
+<td><a href="https://www.naturvardsverket.se/4ac4df/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6410-fuktangar.pdf">Fuktängar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6430</td>
+<td>6430</td>
+<td><a href="https://www.naturvardsverket.se/4ac4c4/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6430-hogortangar.pdf">Högörtängar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>6510</td>
+<td>6510</td>
+<td><a href="https://www.naturvardsverket.se/4ac4e7/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-6510-laglandsslatterangar.pdf">Slåtterängar i låglandet</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="myrar-och-karr">Myrar och kärr</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7110</td>
+<td>7110, 7111</td>
+<td><a href="https://www.naturvardsverket.se/4ac55e/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7110-hogmossar.pdf">Högmossar</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>7140</td>
+<td>7140, 7141, 7142</td>
+<td><a href="https://www.naturvardsverket.se/4ac581/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7140-oppnamossarochkarr.pdf">Öppna mossar och kärr</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>7230</td>
+<td>7230, 7231</td>
+<td><a href="https://www.naturvardsverket.se/4ac56d/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7230-rikkarr.pdf">Rikkärr</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="berg-och-hallmarker">Berg och hällmarker</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8210</td>
+<td>8210</td>
+<td><a href="https://www.naturvardsverket.se/4ac1cd/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8210-kalkbranter.pdf">Kalkbranter</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>8220</td>
+<td>8220</td>
+<td><a href="https://www.naturvardsverket.se/4ac1dd/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8220-silkikatbranter.pdf">Silikatbranter</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>8230</td>
+<td>8230, 8231, 8232</td>
+<td><a href="https://www.naturvardsverket.se/4ac1d4/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/vl-8230-hallmarkstorrang.pdf">Hällmarkstorräng</a></td>
+<td>nov 2011</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="skog">Skog</h2>
+<table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>NNK-koder</th>
+<th>Livsmiljötyp</th>
+<th>Fastställd</th>
+<th>Myndighet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9010</td>
+<td>9010, 9006, 9008, 9009</td>
+<td><a href="https://www.naturvardsverket.se/4927f9/contentassets/cd497005d9a74a5f829c11f54849bb0b/9010-taiga-ta.pdf">Taiga</a></td>
+<td><strong>2026-02-19</strong></td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9020</td>
+<td>9020</td>
+<td><a href="https://www.naturvardsverket.se/4ac590/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9020-nordligadellovskog-maj-12.pdf">Nordlig ädellövskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9030</td>
+<td>9030</td>
+<td><a href="https://www.naturvardsverket.se/4ac571/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9030-landhojningsskog-maj-12.pdf">Landhöjningsskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9050</td>
+<td>9050</td>
+<td><a href="https://www.naturvardsverket.se/4927f9/contentassets/cd497005d9a74a5f829c11f54849bb0b/9050-ortrik-skog-med-gran-ta.pdf">Örtrik skog med gran</a></td>
+<td><strong>2026-02-19</strong></td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9060</td>
+<td>9060</td>
+<td><a href="https://www.naturvardsverket.se/4ac5ad/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9060-asbarrskog-maj-12.pdf">Åsbarrskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9070</td>
+<td>9070, 9071, 9072</td>
+<td><a href="https://www.naturvardsverket.se/4ac5b7/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9070-tradkladd-betesmark-maj-12.pdf">Trädklädd betesmark</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9080</td>
+<td>9080</td>
+<td><a href="https://www.naturvardsverket.se/4ac586/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9080-lovsumpskog-maj-12.pdf">Lövsumpskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9110</td>
+<td>9110</td>
+<td><a href="https://www.naturvardsverket.se/4ac59a/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9110-naringsfattigbokskog-maj-12.pdf">Näringsfattig bokskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9160</td>
+<td>9160, 9162</td>
+<td><a href="https://www.naturvardsverket.se/4ac594/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9160-naringsrikekskog-maj-12.pdf">Näringsrik ekskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9180</td>
+<td>9180</td>
+<td><a href="https://www.naturvardsverket.se/4ac5c1/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9180-adellovskogsbranter-apr-12.pdf">Ädellövskogsbranter</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>9190</td>
+<td>9190</td>
+<td><a href="https://www.naturvardsverket.se/4ac57f/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-9190-naringsfattigekskog-maj-12.pdf">Näringsfattig ekskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>91D0</td>
+<td>9740</td>
+<td><a href="https://www.naturvardsverket.se/4ac5a9/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91d0-skogsbevuxenmyr-maj-12.pdf">Skogsbevuxen myr</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+<tr>
+<td>91E0</td>
+<td>9750</td>
+<td><a href="https://www.naturvardsverket.se/4ac5b3/contentassets/cd497005d9a74a5f829c11f54849bb0b/vl-91e0-svamlovskog-apr-12.pdf">Svämlövskog</a></td>
+<td>maj 2012</td>
+<td>NV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gemensamma-texter-och-tolkningar">Gemensamma texter och tolkningar</h2>
+<p>Läs tillsammans med typens vägledning. NV:s gemensamma text gäller de terrestra vägledningarna, HaV:s övergripande instruktion de akvatiska. Tolkningsdokumenten beskriver hur närliggande typer avgränsas mot varandra.</p>
+<ul>
+<li><a href="https://www.naturvardsverket.se/4ac1b5/contentassets/f3bef5a94c1b4a9b968c33ecb64d281e/berg-och-substrattolkningar-2011.pdf">Tolkningar för berg och substratmarker</a></li>
+<li><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc727d/1789711252955/Bilaga%201%20PM%20%C3%96vergripande%20instruktion_beslutad%202025.pdf">PM Övergripande instruktion (HaV, gemensam text akvatiska)</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac48b/contentassets/76c742b7eb154cbca25e6fa98935d1ed/dyntolkningar-2011.pdf">Tolkningar för dyner</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac3dc/globalassets/vagledning/skyddad-natur/natura-2000/gemensamt-svenska-naturtyper.pdf">Naturtyper: Gemensam text</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac3e6/globalassets/vagledning/skyddad-natur/natura-2000/karakteristiska-arter-och-kriterier.pdf">Karaktäristiska arter och kriterier</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac55a/contentassets/314d0c514b614f52901c298a9c6bec97/myrtolkningar-2011.pdf">Tolkningar för myrar</a></li>
+<li><a href="https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc6ef4/1789710282643/sammanfattning-med-motiveringar-till-andringar.pdf">Sammanställning över ändringar med motiveringar som gjorts i översynen av vägledningarna för livsmiljötyper pdf, 196.9 kB.</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac567/contentassets/cd497005d9a74a5f829c11f54849bb0b/skogstolkningar_2011.pdf">Tolkningar för skog</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac3fa/globalassets/vagledning/skyddad-natur/natura-2000/typiska-arterkriterier.pdf">Typiska arter och kriterier</a></li>
+<li><a href="https://www.naturvardsverket.se/4ac4a7/contentassets/ef0795d1c7434cb4833ec4b9170e95f8/vl-grasmarkstolkningar-2011.pdf">Tolkningar för ris och gräsmarker</a></li>
+</ul>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat ✓':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
+})();
+</script>
+</body>
+</html>

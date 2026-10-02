@@ -291,6 +291,7 @@ DOKUMENT = {
     "runbook": False,
     "metodik": False,
     "typiska-arter": False,
+    "vagledningar": False,
     "webbgis-publicering": True,
     "attributbeskrivning": False,
     "popup-arcade-uttryck": False,
