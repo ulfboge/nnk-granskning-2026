@@ -938,10 +938,6 @@ Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmilj�
 3. **TUVA-träff** eller **Hävd enligt skiften: Delvis** på strand eller häll: pröva om ytan egentligen är strandäng (1630) eller annan hävdberoende typ.
 4. Kusten granskas i **Batch A**.
 
-> **Rätta i appen: Floraväkteri: försämring.** Samma problem: tre villkor med ELLER. Byt till samlingsfältet `fv_forsamring` efter ompubliceringen. Tills dess: tre filter, `fv_ej_aterfunna > 0`, `fv_minskande > 0` och `fv_anm_havd > 0`.
->
-> `fv_forsamring = 'Ja'`
-
 ---
 
 ## Checklista före incheckning i NNK

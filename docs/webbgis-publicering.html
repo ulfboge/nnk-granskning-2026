@@ -606,7 +606,7 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <h3 id="steg-5-fliken-filter">Steg 5 · Fliken Filter</h3>
 <p>Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. <em>Nytt filter</em> → <em>Gruppfilter</em>, datakälla NNK ytor + linjer + punkter. Namnen nedan är de som står i appen (kontrollerade mot skärmbilder 2026-10-01). Kontrollrummets <strong>Filterguide för webbGIS</strong> visar vilka filter som ger något för vilken R7-grupp.</p>
 <blockquote>
-<p><strong>Inget filter får blanda OCH och ELLER</strong> (uppdaterat 2026-10-02). Konfiguratorn klarar inte det, och filtret ger då fel eller inga träffar. Varje filter ska vara ett enda villkor, eller flera villkor som alla binds med samma operator. Där vi behöver ELLER mellan flera fält har kedjan fått ett samlingsfält med <em>Ja</em>/<em>Nej</em>: <code>tuva_negativ</code> (i drift) och <code>fv_forsamring</code>. Det senare finns i lagret efter nästa körning av <code>jobbdator_koppla_nnk_skyddskategori.py</code> och <em>Overwrite</em> (del 4); fram till dess gäller filtren märkta <em>tills vidare</em>.</p>
+<p><strong>Inget filter får blanda OCH och ELLER</strong> (uppdaterat 2026-10-02). Konfiguratorn klarar inte det, och filtret ger då fel eller inga träffar. Varje filter ska vara ett enda villkor, eller flera villkor som alla binds med samma operator. Där vi behöver ELLER mellan flera fält har kedjan fått ett samlingsfält med <em>Ja</em>/<em>Nej</em>: <code>tuva_negativ</code> och <code>fv_forsamring</code> (båda i drift sedan 2026-10-02).</p>
 </blockquote>
 <p><strong>Grundurval</strong></p>
 <table>
@@ -801,12 +801,12 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <tr>
 <td>"Floraväkteri: försämring"</td>
 <td><code>fv_forsamring = 'Ja'</code></td>
-<td>Någon art är ej återfunnen, har minskat till under hälften av första räkningen, eller rapporten nämner igenväxning/upphört bete. 100 ytor, 83 inom N2000. Kandidater till <em>icke fullgod</em> — läs rapporterna i Artportalen. <strong>Ändrat 2026-10-02</strong> från tre villkor med ELLER. Kräver ompublicering. <em>Tills vidare:</em> tre separata filter <code>fv_ej_aterfunna &gt; 0</code>, <code>fv_minskande &gt; 0</code> och <code>fv_anm_havd &gt; 0</code>, ett i taget.</td>
+<td>Någon art är ej återfunnen, har minskat till under hälften av första räkningen, eller rapporten nämner igenväxning/upphört bete. 100 ytor, 83 inom N2000. Kandidater till <em>icke fullgod</em> — läs rapporterna i Artportalen. <strong>Ändrat 2026-10-02</strong> från tre villkor med ELLER till samlingsfältet <code>fv_forsamring</code>.</td>
 </tr>
 <tr>
 <td>"TUVA välhävdad, floraväkteri försämring"</td>
 <td><code>havdberoende = 'Ja'</code> OCH <code>tuva_havdstatus LIKE 'Välhävdad%'</code> OCH <code>fv_forsamring = 'Ja'</code></td>
-<td>Motsägelse mellan underlagen: TUVA säger välhävdad men floraväktarna ser att arter försvinner, minskar eller att det växer igen. 24 ytor, 23 inom N2000. Prioritera för kontroll i R7A — TUVA kan vara gammal. Bara OCH, så det fungerar i Konfiguratorn. Kräver ompublicering. <em>Tills vidare:</em> slå på <em>Hävdberoende</em> + ett av fv-filtren ovan, och lägg till ett filter med bara <code>tuva_havdstatus LIKE 'Välhävdad%'</code>.</td>
+<td>Motsägelse mellan underlagen: TUVA säger välhävdad men floraväktarna ser att arter försvinner, minskar eller att det växer igen. 24 ytor, 23 inom N2000. Prioritera för kontroll i R7A — TUVA kan vara gammal. Bara OCH, så det fungerar i Konfiguratorn. Ändrat 2026-10-02.</td>
 </tr>
 </tbody>
 </table>
