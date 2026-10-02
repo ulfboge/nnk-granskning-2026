@@ -1939,7 +1939,7 @@ tr:last-child td{border-bottom:0}
 </ol>
 <hr />
 <h2 id="filterguide-for-webbgis">Filterguide för webbGIS</h2>
-<p>Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — <em>Natura 2000-typ</em>, <em>Marina objekt</em> och <em>Dölj icke-Natura-livsmiljötyper</em> — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. ● huvudfilter · ○ komplement · på = slå alltid på · siffran = ytor inom N2000 i gruppen som träffas.</p>
+<p>Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — <em>Natura 2000-typ</em>, <em>Marina objekt</em> och <em>Dölj icke-Natura-livsmiljötyper</em> — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. <strong>på</strong> = slå alltid på för gruppen · <strong>●</strong> huvudfilter, ger kandidater till fullgod/icke fullgod · <strong>○</strong> komplement, stöder bedömningen eller styr arbetsordningen · tom ruta = ger inget för gruppen · siffran efter symbolen = antal ytor inom N2000 i gruppen som filtret träffar (uttag 2026-08-26); ingen siffra = filtret säger inget om tillståndet, bara urval eller ordning.</p>
 <table>
 <thead>
 <tr>
@@ -2108,7 +2108,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 <tr>
 <td><strong>TUVA ohävdad/igenväxande</strong></td>
-<td>se rättelsen nedan</td>
+<td><code>tuva_negativ = 'Ja'</code></td>
 <td>● 133</td>
 <td>○ 57</td>
 <td></td>
@@ -2193,8 +2193,8 @@ tr:last-child td{border-bottom:0}
 <li>Kusten granskas i <strong>Batch A</strong>.</li>
 </ol>
 <blockquote>
-<p><strong>Rätta i appen: TUVA ohävdad/igenväxande.</strong> Uttrycket i appen träffar 7 ytor i stället för ca 540: värdena har suffix som ”Ingen hävd (100 %)” så <code>LIKE</code> behöver <code>%</code>, ”Ovävdad” är felstavat, och Tydlig/Igenväxt ligger i fältet <code>tuva_igenvaxning</code>, inte <code>tuva_havdstatus</code>.</p>
-<p><code>tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'</code></p>
+<p><strong>Rätta i appen: Floraväkteri: försämring.</strong> Samma problem: tre villkor med ELLER. Byt till samlingsfältet <code>fv_forsamring</code> efter ompubliceringen. Tills dess: tre filter, <code>fv_ej_aterfunna &gt; 0</code>, <code>fv_minskande &gt; 0</code> och <code>fv_anm_havd &gt; 0</code>.</p>
+<p><code>fv_forsamring = 'Ja'</code></p>
 </blockquote>
 <hr />
 <h2 id="checklista-fore-incheckning-i-nnk">Checklista före incheckning i NNK</h2>

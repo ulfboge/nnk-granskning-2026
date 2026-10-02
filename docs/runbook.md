@@ -880,7 +880,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## Filterguide för webbGIS
 
-Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — *Natura 2000-typ*, *Marina objekt* och *Dölj icke-Natura-livsmiljötyper* — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. ● huvudfilter · ○ komplement · på = slå alltid på · siffran = ytor inom N2000 i gruppen som träffas.
+Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — *Natura 2000-typ*, *Marina objekt* och *Dölj icke-Natura-livsmiljötyper* — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. **på** = slå alltid på för gruppen · **●** huvudfilter, ger kandidater till fullgod/icke fullgod · **○** komplement, stöder bedömningen eller styr arbetsordningen · tom ruta = ger inget för gruppen · siffran efter symbolen = antal ytor inom N2000 i gruppen som filtret träffar (uttag 2026-08-26); ingen siffra = filtret säger inget om tillståndet, bara urval eller ordning.
 
 | Filter | Villkor | A Hävdberoende | B Skog | C Myr, våtmark, sjö | D Stabila (strand, klippa, skär) | Så läser du träffen |
 |---|---|---|---|---|---|---|
@@ -901,7 +901,7 @@ Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmilj�
 | **Vall senaste året** | `havd_varning_vall = 'Ja'` | ○ 2 |  |  |  | Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter. |
 | **SkötselDOS: bete/slåtter** | `skdos_havd_typ IS NOT NULL` | ● 122 | ○ 77 | ○ 42 |  | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **TUVA-träff** | `tuva_antal_objekt IS NOT NULL` | ● 980 | ○ 104 |  | ○ 132 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
-| **TUVA ohävdad/igenväxande** | se rättelsen nedan | ● 133 | ○ 57 |  | ○ 27 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
+| **TUVA ohävdad/igenväxande** | `tuva_negativ = 'Ja'` | ● 133 | ○ 57 |  | ○ 27 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
 | **Laser: möjlig avverkning** | `laser_flagga = 'Möjlig avverkning'` |  | ● 37 |  |  | Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat *icke fullgod*. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för grupp B. |
 | **Laser: möjlig gallring** | `laser_flagga = 'Möjlig gallring'` |  | ○ 106 |  |  | Grundytan minskade, höjden oförändrad. Svagare signal — kontrollera i orto. |
 | **Diken inom ytan** | `diken_m_inom > 0` |  | ● 440 | ● 25 |  | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
@@ -938,9 +938,9 @@ Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmilj�
 3. **TUVA-träff** eller **Hävd enligt skiften: Delvis** på strand eller häll: pröva om ytan egentligen är strandäng (1630) eller annan hävdberoende typ.
 4. Kusten granskas i **Batch A**.
 
-> **Rätta i appen: TUVA ohävdad/igenväxande.** Uttrycket i appen träffar 7 ytor i stället för ca 540: värdena har suffix som ”Ingen hävd (100 %)” så `LIKE` behöver `%`, ”Ovävdad” är felstavat, och Tydlig/Igenväxt ligger i fältet `tuva_igenvaxning`, inte `tuva_havdstatus`.
+> **Rätta i appen: Floraväkteri: försämring.** Samma problem: tre villkor med ELLER. Byt till samlingsfältet `fv_forsamring` efter ompubliceringen. Tills dess: tre filter, `fv_ej_aterfunna > 0`, `fv_minskande > 0` och `fv_anm_havd > 0`.
 >
-> `tuva_havdstatus LIKE 'Ingen hävd%' OR tuva_havdstatus LIKE 'Ohävdad%' OR tuva_havdstatus = 'Ej aktuell' OR tuva_igenvaxning LIKE 'Tydlig%' OR tuva_igenvaxning LIKE 'Igenväxt%'`
+> `fv_forsamring = 'Ja'`
 
 ---
 

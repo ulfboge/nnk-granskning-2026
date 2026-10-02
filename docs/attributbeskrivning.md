@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -479,7 +479,7 @@ Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natu
 Hur många av ytans **typiska arter** (T-arter för naturtypen i [typiska arter](typiska-arter.html)) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av `artportalen_typiska_arter.py` (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). **0** = ytan söktes men inga fynd. **Tomt** = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.
 
 ### TUVA — ängs- och betesmarksinventeringen
-Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskning.csv` (`nnk_tuva.py`, TUVA-uttag 2026-08-21, senaste inventering per objekt). Ytan kopplas till det TUVA-objekt som täcker mest av den, med samma tröskel som för sitecode: minst 1 % av ytan eller 0,25 ha. Tomt = ingen träff. Används i R7A tillsammans med hävdfälten från skiftena, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
+Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskning.csv` (`nnk_tuva.py`, TUVA-uttag 2026-08-21, senaste inventering per objekt). Ytan kopplas till det TUVA-objekt som täcker mest av den, med samma tröskel som för sitecode: minst 1 % av ytan eller 0,25 ha. Tomt = ingen träff. Används i R7A tillsammans med hävdfälten från skiftena, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
@@ -492,6 +492,7 @@ Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `tuva_igenvaxning` | text | *Igenväxt (ej aktuell)*, *Restaurerbar*, eller igenväxningens andel av busk- och trädskiktet: *Tydlig* (≥ 30 %), *Viss* (1–29 %), *Ingen*. *Ej angiven* för de flesta objekt från 2000-talets första inventering, som saknar fältet |
 | `tuva_naturtyp` | text | Natura-naturtyper i hela TUVA-objektet med areal, störst först, t.ex. "6270 (3,98 ha), 6410 (0,15 ha)" |
 | `tuva_paverkan` | text | Produktionshöjande åtgärder (gödsling m.m.) med andel av objektet, tillskottsutfodring, upplag, täkt. *Ingen angiven* om inget är noterat |
+| `tuva_negativ` | text | *Ja* om TUVA har en negativ notering: dominerande hävdklass *Ingen hävd*, *Ohävdad (restaurerbar)* eller *Ej aktuell*, eller igenväxning *Tydlig*/*Igenväxt*. Annars *Nej*. Finns för att webbGIS-filtret *TUVA ohävdad/igenväxande* ska bli ett enda villkor. Tillagt 2026-10-02 |
 
 ### SkötselDOS — utförd hävd och uppföljning
 Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_granskning.csv` (`nnk_skotseldos.py`, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
@@ -507,7 +508,7 @@ Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_gr
 | `uppf_senaste_ar` | heltal | År för den senaste bedömda punkten (2015–2022) |
 
 ### Floraväkteri (Artportalen)
-Nio fält, alla skrivskyddade, heltal utom `fv_arter`, och bara i ytlagret. Hämtas ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten *Floraväkteri Sverige* och *Arkiv Floraväktarlokaler*): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt *Floraväkteri (Artportalen)*.
+Tio fält, alla skrivskyddade, heltal utom `fv_arter` och `fv_forsamring`, och bara i ytlagret. Hämtas ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten *Floraväkteri Sverige* och *Arkiv Floraväktarlokaler*): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt *Floraväkteri (Artportalen)*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
@@ -520,6 +521,7 @@ Nio fält, alla skrivskyddade, heltal utom `fv_arter`, och bara i ytlagret. Häm
 | `fv_minskande` | heltal | Antal arter där senaste räknade antal är under hälften av det första (samma enhet, minst två räknade besök) |
 | `fv_anm_havd` | heltal | Antal rapporter vars kommentar nämner igenväxning, upphört bete, sly o.d. Enkel textsökning, läs kommentaren innan du drar slutsatser |
 | `fv_arter` | text | Arterna med rödlistekategori, hotade först, t.ex. "finnögontröst (EN); sen fältgentiana (VU); …". Avkortad till 250 tecken |
+| `fv_forsamring` | text | *Ja* om `fv_ej_aterfunna`, `fv_minskande` eller `fv_anm_havd` är större än 0, annars *Nej*. Finns för att webbGIS-filtret *Floraväkteri: försämring* ska bli ett enda villkor. Tillagt 2026-10-02 |
 
 ### Laserdata och diken
 Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur `laser_for_granskning.csv` (`nnk_laser.py`). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (R7 grupp B, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Skog (laserdata)*.
