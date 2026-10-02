@@ -382,7 +382,8 @@ tr:last-child td{border-bottom:0}
 <li>Testa att lägga till en dummy-post och fylla i fälten, så att du känner igen dem i WebbGIS-gränssnittet. Radera den sedan.</li>
 </ol>
 <h3 id="a24-hamta-faststallda-vagledningar-kontrollera-status">A2.4 · Hämta fastställda vägledningar — kontrollera status</h3>
-<p><strong>v36</strong> · <strong>[Handläggare]</strong></p>
+<p><strong>v36</strong> · <strong>[Handläggare]</strong> · klar 2026-10-02</p>
+<p><strong>Läge 2026-10-02:</strong> vägledningarna för alla 45 livsmiljötyper som finns i länets NNK är nedladdade till <code>natura-2000: docs/underlag/natura2000/naturtyper/</code>, plus gemensamma texter och tolkningsdokument i undermappen <code>gemensamt/</code>. Översikt med NNK-koder, datum och källa per typ: <code>natura-2000: docs/underlag/natura2000/naturtyper/Status_vagledningar_A2.4.md</code>. Alla är fastställda, ingen är på remiss. Använd den senaste fastställda versionen för typen, oavsett ålder. Akvatiska typer (11xx, 31xx–32xx) kommer från Havs- och vattenmyndigheten, övriga från Naturvårdsverket.</p>
 <ol>
 <li>Gå till Naturvårdsverkets sida <em>Natura 2000 i Sverige</em> → vägledningar för naturtyper.</li>
 <li>Ladda hem vägledningarna för de livsmiljötyper som finns i D-län. Prioritera 9010, 9070, 8230, 6270, 6410, 1630, 7110, 7140, 7230, 9080, 9190.</li>
@@ -551,6 +552,7 @@ tr:last-child td{border-bottom:0}
 </table>
 <h3 id="c11-etablera-granskningsrutinen">C1.1 · Etablera granskningsrutinen</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong> · förutsätter A2.1, A2.3</p>
+<p><strong>Vägledningar:</strong> senaste fastställda vägledning för varje livsmiljötyp i länet finns i <code>natura-2000: docs/underlag/natura2000/naturtyper/</code> (översikt med NNK-koder i <code>Status_vagledningar_A2.4.md</code>). Bedöm alltid mot den, oavsett om den är från 2011–2012 eller 2026.</p>
 <p><strong>Nytt 2026-09-29 — stöd för steg (5):</strong> fynd av typiska arter i Artportalen finns sammanställda per yta, se <a href="typiska-arter.html">typiska arter</a> (avsnittet <em>Fynd i Artportalen per yta</em>). Fälten <code>typarter_antal</code>, <code>typarter</code> och <code>typarter_senaste_ar</code> i granskningslagret, och Excelfilen <code>natura-2000: data/outputs/typiska_arter_artportalen.xlsx</code>. Körs med <code>python natura-2000: scripts/analysis/artportalen_typiska_arter.py</code> på hemdatorn.</p>
 <ol>
 <li>Skriv ned rutinen som en mall du kopierar per objekt i granskningsloggen (<code>.../NRF/granskningslogg_mall.xlsx</code>, fliken <em>Objektgranskning</em>).</li>
@@ -1338,6 +1340,7 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="d21-registrera-tillstand-dar-kunskapen-redan-finns">D2.1 · Registrera tillstånd där kunskapen redan finns</h3>
 <p><strong>v41–v48</strong> · <strong>[Båda]</strong> · förutsätter D1.2 · bidrar till <em>Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt</em></p>
+<p><strong>Vägledningar:</strong> bedöm mot den senaste fastställda vägledningen för typen, se <code>natura-2000: docs/underlag/natura2000/naturtyper/Status_vagledningar_A2.4.md</code> (alla 45 typer i länet, med NNK-koder och datum).</p>
 <ol>
 <li>Börja med de 277 ytorna som har karteringsstatus 3 eller 4 (fältdata) men naturtypsstatus 5 (ej bedömd). Det är hela uppdragets snabbaste vinst — kunskapen finns, den registrerades aldrig.</li>
 <li>Hitta dem: i ArcGIS Pro, Select By Attributes på NNK-lagret: <code>KARTERINGS IN ('3 - Besökt i fält','4 - Inventerad i fält') AND NATURTYPSS LIKE '5%'</code>.</li>
