@@ -116,9 +116,9 @@ tr:last-child td{border-bottom:0}
 </div>
 </nav>
 <h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
-<p><strong>Datum:</strong> 2026-09-30
+<p><strong>Datum:</strong> 2026-10-02
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
-<strong>Version:</strong> 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+<strong>Version:</strong> 2.0 — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet. Version 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 <strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -663,7 +663,7 @@ tr:last-child td{border-bottom:0}
 <tbody>
 <tr>
 <td>Fullgod</td>
-<td>Ingen avverkning, gallring eller dikning sedan karteringen (Skogsstyrelsens avverkningsanmälningar och utförda avverkningar, laserdata, orto). Fri utveckling säkerställd (reservat, biotopskydd, naturvårdsavtal). Minst ett stöd för strukturerna, t.ex. sluten äldre skog i laserdata eller typiska arter i Artportalen.</td>
+<td>Ingen avverkning, gallring eller dikning sedan karteringen (Skogsstyrelsens avverkningsanmälningar och utförda avverkningar, laserdata, orto). Fri utveckling säkerställd (reservat, biotopskydd, naturvårdsavtal). Minst ett stöd för strukturerna, t.ex. sluten äldre skog i laserdata eller typiska arter i Artportalen. <strong>Gäller inte 9010 och 9050</strong>, se nedan.</td>
 </tr>
 <tr>
 <td>Icke fullgod</td>
@@ -671,10 +671,39 @@ tr:last-child td{border-bottom:0}
 </tr>
 <tr>
 <td>Till fält</td>
-<td>Ingen synlig påverkan, men strukturerna går inte att bedöma vid skrivbordet (t.ex. död ved i 9010 enligt de nya kraven).</td>
+<td>Ingen synlig påverkan, men strukturerna går inte att bedöma vid skrivbordet (t.ex. död ved i 9010 och 9050 enligt de nya kraven, se nedan).</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Undantag: 9010 och 9050 kan inte bli fullgod vid skrivbordet.</strong> Gäller 9010 med undertyperna 9006, 9008 och 9009, 9050, och den obestämda koden 9830 (9050/9010). Enligt NV:s vägledningar från 2026-02-19 ska en förekomst uppfylla <em>samtliga</em> klassningskrav för att vara livsmiljötypen. Död ved är ett av dem, alltså ett krav för typen och inte bara en del av tillståndet:</p>
+<ul>
+<li><strong>9010 Taiga:</strong> en påtaglig mängd död ved som har varit död längre än ett år (bedöms efter de ekologiska förutsättningarna på platsen), och död ved av särskild betydelse för taigans arter, t.ex. grov död ved, förrötade lågor, ved i flera nedbrytningsstadier, senvuxen eller brandpåverkad ved. Kvalitetskravet gäller inte lövsuccessioner, mängdkravet gäller alltid.</li>
+<li><strong>9050 Örtrik skog med gran:</strong> död ved som har varit död längre än ett år och som är av olika kvaliteter.</li>
+</ul>
+<p>Död ved går inte att fastställa vid skrivbordet, varken i laserdata, orto eller registren. Därför:</p>
+<table>
+<thead>
+<tr>
+<th>Läge</th>
+<th>Utfall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avverkning, gallring eller dikning efter karteringen</td>
+<td><em>Icke fullgod</em>, som för övriga skogstyper.</td>
+</tr>
+<tr>
+<td>Ingen synlig påverkan</td>
+<td><em>Till fält</em>, även om laserdata visar sluten äldre skog och typiska arter finns.</td>
+</tr>
+<tr>
+<td>Ingen synlig påverkan och indirekt stöd för död ved (vedlevande signal- eller rödlistade arter i Artportalen, fältbeskrivning, skötselplan)</td>
+<td><em>Till fält</em>, med kommentaren <em>typen trolig, död ved ej kontrollerad</em>. Prioritera ytan i fält.</td>
+</tr>
+</tbody>
+</table>
+<p>Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas om mot 2026-kriterierna ställs till NV via KartlitsN2000. Tills svar finns behandlas alla 9010- och 9050-ytor enligt tabellen ovan.</p>
 <p><strong>Underlag för skogen — laserdata.</strong> Granskningslagret har laserfält för skogsytorna (grupp B, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.</p>
 <table>
 <thead>
@@ -709,7 +738,7 @@ tr:last-child td{border-bottom:0}
 </table>
 <p><em>Avverkning och gallring.</em> Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är förslag. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. De övriga 57 kan vara naturliga störningar, naturvårdsåtgärder eller ingrepp som är för små för satellitdetekteringen, och ska kontrolleras i orto. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (<em>SKS Trädhöjd 3_1</em>, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.</p>
 <p><strong>Begränsningar:</strong>
-- <strong>Död ved</strong> syns inte tillförlitligt i laserdata. För 9010 enligt de nya kraven (februari 2026) ger laserdata stöd för sluten äldre skog, men mängden död ved avgörs i fält: utfallet blir fortfarande <em>till fält</em> om inget annat underlag finns.
+- <strong>Död ved</strong> syns inte tillförlitligt i laserdata. För 9010 och 9050 är död ved ett klassningskrav (vägledningarna februari 2026). Laserdata kan stödja sluten äldre skog, men utfallet blir alltid <em>till fält</em>, se undantaget ovan.
 - <strong>Trädslag.</strong> Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
 - <strong>Lövat eller olövat läge.</strong> Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med <em>Osäker (lövat/olövat)</em> (115 ytor). Pröva dem i orto.</p>
 <p><strong>R7C Myr, våtmark, sjö</strong></p>

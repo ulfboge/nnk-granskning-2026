@@ -187,7 +187,7 @@ tr:last-child td{border-bottom:0}
 </nav>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
 <p><strong>Datum:</strong> 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat<br />
-<strong>Omfattning:</strong> 65 uppgifter i 7 arbetspaket, 306 konkreta steg<br />
+<strong>Omfattning:</strong> 65 uppgifter i 7 arbetspaket, 307 konkreta steg<br />
 <strong>Hör ihop med:</strong> <code>docs/arbetsplan.md</code> (varför) · <code>kontrollrum.html</code> (överblick och avbockning) · <code>docs/metodik.md</code> (förvaltardialogen)</p>
 <hr />
 <h2 id="sa-anvands-dokumentet">Så används dokumentet</h2>
@@ -552,6 +552,7 @@ tr:last-child td{border-bottom:0}
 </table>
 <h3 id="c11-etablera-granskningsrutinen">C1.1 · Etablera granskningsrutinen</h3>
 <p><strong>v35</strong> · <strong>[Handläggare]</strong> · förutsätter A2.1, A2.3</p>
+<p><strong>Död ved är ett krav för 9010 och 9050 (2026-10-02):</strong> enligt NV:s vägledningar 2026-02-19 ska en förekomst uppfylla samtliga klassningskrav, bland annat död ved. Det går inte att fastställa vid skrivbordet, så 9010 (inkl. 9006, 9008, 9009), 9050 och 9830 kan bli <em>icke fullgod</em> eller <em>till fält</em>, aldrig <em>fullgod</em>. Se R7B i <a href="metodik.html">metodiken</a>.</p>
 <p><strong>Vägledningar:</strong> senaste fastställda vägledning för varje livsmiljötyp i länet nås via <a href="vagledningar.html">Vägledningar per livsmiljötyp</a>, lokala kopior i <code>natura-2000: docs/underlag/natura2000/naturtyper/</code>. Bedöm alltid mot den, oavsett om den är från 2011–2012 eller 2026.</p>
 <p><strong>Nytt 2026-09-29 — stöd för steg (5):</strong> fynd av typiska arter i Artportalen finns sammanställda per yta, se <a href="typiska-arter.html">typiska arter</a> (avsnittet <em>Fynd i Artportalen per yta</em>). Fälten <code>typarter_antal</code>, <code>typarter</code> och <code>typarter_senaste_ar</code> i granskningslagret, och Excelfilen <code>natura-2000: data/outputs/typiska_arter_artportalen.xlsx</code>. Körs med <code>python natura-2000: scripts/analysis/artportalen_typiska_arter.py</code> på hemdatorn.</p>
 <ol>
@@ -1340,6 +1341,7 @@ tr:last-child td{border-bottom:0}
 </ol>
 <h3 id="d21-registrera-tillstand-dar-kunskapen-redan-finns">D2.1 · Registrera tillstånd där kunskapen redan finns</h3>
 <p><strong>v41–v48</strong> · <strong>[Båda]</strong> · förutsätter D1.2 · bidrar till <em>Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt</em></p>
+<p><strong>Död ved är ett krav för 9010 och 9050 (2026-10-02):</strong> enligt NV:s vägledningar 2026-02-19 ska en förekomst uppfylla samtliga klassningskrav, bland annat död ved. Det går inte att fastställa vid skrivbordet, så 9010 (inkl. 9006, 9008, 9009), 9050 och 9830 kan bli <em>icke fullgod</em> eller <em>till fält</em>, aldrig <em>fullgod</em>. Se R7B i <a href="metodik.html">metodiken</a>.</p>
 <p><strong>Vägledningar:</strong> bedöm mot den senaste fastställda vägledningen för typen, se <a href="vagledningar.html">Vägledningar per livsmiljötyp</a> (alla 45 typer i länet, med NNK-koder och datum).</p>
 <ol>
 <li>Börja med de 277 ytorna som har karteringsstatus 3 eller 4 (fältdata) men naturtypsstatus 5 (ej bedömd). Det är hela uppdragets snabbaste vinst — kunskapen finns, den registrerades aldrig.</li>
@@ -1407,6 +1409,7 @@ tr:last-child td{border-bottom:0}
 <li>Stäm av mot NNK:s nya tillståndsattribut från D1.2. Den samlade bedömningen (G10) ska använda exakt NNK:s klasser och procentandelar.</li>
 <li>Ta ställning till luckorna: graninslag i 9010, 9080 och 9070, föryngring av tall och löv, död ved i 9070 och områdesspecifika rödlistade arter. Kör om <code>natura-2000: scripts/analysis/koppla_malindikatorer_parameterlista.py</code> efter ändringar.</li>
 <li>Stäm av den orange kolumnen (indikation gott tillstånd) mot NV:s vägledningar, för 9010 och 9050 mot de reviderade versionerna från februari 2026.</li>
+<li>För 9010 och 9050: död ved ska finnas som obligatorisk fråga i protokollet, eftersom den avgör om ytan är typen (mängd död ved äldre än ett år, och för 9010 även kvalitet: grov ved, förrötade lågor, flera nedbrytningsstadier, senvuxen eller brandpåverkad ved). Se R7B i <a href="metodik.html">metodiken</a>.</li>
 <li>Bestäm leveransformat: fältdata i ett eget hostat lager eller en egen tabell, aldrig i granskningslagret (Overwrite raderar fältdatan). Koppla på NNK:s objekt-ID, inte GlobalID.</li>
 <li>Protokollet ska fungera både för ett eventuellt konsultuppdrag hösten 2026 (D5.2) och för eget fältarbete 2027. Survey123-appen byggs först när protokollet är fastställt.</li>
 </ol>
@@ -2175,10 +2178,11 @@ tr:last-child td{border-bottom:0}
 </ol>
 <p><strong>Grupp B · Skog (R7B)</strong> — 2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750</p>
 <ol>
+<li><strong>9010 och 9050</strong> (inkl. 9006, 9008, 9009, 9830) blir aldrig <em>fullgod</em> vid skrivbordet — död ved är ett klassningskrav. Filtren ger bara kandidater till icke fullgod; övriga blir <em>till fält</em>.</li>
 <li><strong>Laser: möjlig avverkning</strong> → kandidater till icke fullgod. Kontrollera orto och avverkningsinformationen.</li>
 <li><strong>Laser: möjlig gallring</strong> → svagare signal, kontrollera orto.</li>
 <li>För sumpskog (9080), 9740 och 9750: <strong>Diken inom ytan</strong>.</li>
-<li>Ytor utan laserflagga och utan diken är kandidater till fullgod — kolla ändå avverkningar efter 2020.</li>
+<li>Ytor utan laserflagga och utan diken är kandidater till fullgod (utom 9010/9050) — kolla ändå avverkningar efter 2020.</li>
 <li>Skiftesfiltren säger inget här. <strong>TUVA-träff</strong> eller <strong>SkötselDOS</strong> på skog: pröva om typen egentligen är trädklädd betesmark (9070).</li>
 </ol>
 <p><strong>Grupp C · Myr, våtmark, sjö (R7C)</strong> — 3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231</p>
