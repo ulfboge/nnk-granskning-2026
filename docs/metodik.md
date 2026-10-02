@@ -404,11 +404,11 @@ Utdata: `data/nnk/nnk_yta_med_sitecode.gpkg` och `.csv` med fälten `SITECODE`, 
 | Behov | Hur |
 |---|---|
 | `NVRID` för de 5 221 ytorna utanför N2000 | Samma metod mot NVR-lagret från Naturvårdsregistret — behövs inför naturreservatsspåret 2027 (arbetspaket G) |
-| Koppla `KOMMENTAR`, `NNK_KOMMEN`, `REDIGERARE` samt de nya daterings-/prioritetsfälten till sitecode-nivån | Länsuttaget ur **NNK Ajourhålla** (hämtat 2026-08-26; fälten heter `kommentar`, `nnk_kommentar`, `created_user`/`last_edited_user`/`last_edited_date` i Ajourhålla-schemat) finns nu — `koppla_omraden.py` behöver köras om mot det. Inte gjort ännu |
+| Koppla `KOMMENTAR`, `NNK_KOMMEN`, `REDIGERARE` samt de nya daterings-/prioritetsfälten till sitecode-nivån | **Löst (konstaterat 2026-10-02).** Granskningslagret (`natura-2000: deliveries/nnk_granskning_sodermanland_20260901/`) bygger på länsuttaget ur NNK Ajourhålla 2026-08-26. `jobbdator_koppla_nnk_skyddskategori.py` ger varje polygon `n2000_sitecode` (minst 1 % av ytan eller 0,25 ha inom området), och `kommentar`, `nnk_kommentar`, `created_user`/`last_edited_user`/`last_edited_date` samt `habitat_priority_*` följer med per polygon. Gjordes i jobbdatorkedjan, inte genom att köra om `koppla_omraden.py` |
 | `habitat_period_lastdata_start` / `_end` | Finns i länsuttaget från 2026-08-26, men tomma för nästan alla ytor — fylls i takt med förvaltarsamtalen (avsnitt 6–7) |
 | `habitat_priority_all`, `habitat_priority_6210_7130` | Finns i länsuttaget från 2026-08-26 |
 
-Länsuttaget ur Ajourhålla finns alltså sedan 2026-08-26 — det som återstår är att köra om `koppla_omraden.py` mot det för att ge full spårbarhet på polygonnivå.
+Länsuttaget ur Ajourhålla finns sedan 2026-08-26 och spårbarheten på polygonnivå finns nu i granskningslagret. Kvar av tabellen ovan är `NVRID` för ytorna utanför N2000 (naturreservatsspåret) och `habitat_period_lastdata_*`, som fylls i takt med förvaltarsamtalen.
 
 ---
 

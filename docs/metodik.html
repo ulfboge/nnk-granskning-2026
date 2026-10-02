@@ -881,7 +881,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 <tr>
 <td>Koppla <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code>, <code>REDIGERARE</code> samt de nya daterings-/prioritetsfälten till sitecode-nivån</td>
-<td>Länsuttaget ur <strong>NNK Ajourhålla</strong> (hämtat 2026-08-26; fälten heter <code>kommentar</code>, <code>nnk_kommentar</code>, <code>created_user</code>/<code>last_edited_user</code>/<code>last_edited_date</code> i Ajourhålla-schemat) finns nu — <code>koppla_omraden.py</code> behöver köras om mot det. Inte gjort ännu</td>
+<td><strong>Löst (konstaterat 2026-10-02).</strong> Granskningslagret (<code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code>) bygger på länsuttaget ur NNK Ajourhålla 2026-08-26. <code>jobbdator_koppla_nnk_skyddskategori.py</code> ger varje polygon <code>n2000_sitecode</code> (minst 1 % av ytan eller 0,25 ha inom området), och <code>kommentar</code>, <code>nnk_kommentar</code>, <code>created_user</code>/<code>last_edited_user</code>/<code>last_edited_date</code> samt <code>habitat_priority_*</code> följer med per polygon. Gjordes i jobbdatorkedjan, inte genom att köra om <code>koppla_omraden.py</code></td>
 </tr>
 <tr>
 <td><code>habitat_period_lastdata_start</code> / <code>_end</code></td>
@@ -893,7 +893,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table>
-<p>Länsuttaget ur Ajourhålla finns alltså sedan 2026-08-26 — det som återstår är att köra om <code>koppla_omraden.py</code> mot det för att ge full spårbarhet på polygonnivå.</p>
+<p>Länsuttaget ur Ajourhålla finns sedan 2026-08-26 och spårbarheten på polygonnivå finns nu i granskningslagret. Kvar av tabellen ovan är <code>NVRID</code> för ytorna utanför N2000 (naturreservatsspåret) och <code>habitat_period_lastdata_*</code>, som fylls i takt med förvaltarsamtalen.</p>
 <hr />
 <h2 id="9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</h2>
 <p>Från handledningen avsnitt 3.3 och checklistan i 2.3:</p>
