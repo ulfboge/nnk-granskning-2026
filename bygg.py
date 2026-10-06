@@ -253,12 +253,76 @@ p,ul,ol{max-width:80ch}
 """
 
 
-def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True):
+# Fast innehallsforteckning i vanstermarginalen (2026-10-06, forst for metodiken).
+# Markerar avsnittet man last i (IntersectionObserver). Under 960 px blir den en
+# hopfallbar ruta overst. Utan JS fungerar den som vanlig lankslista.
+SIDOMENY_CSS = """
+.wrap{max-width:1240px}
+.dokgrid{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.sidotoc{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
+ font-size:13px;line-height:1.4;padding:4px 6px 20px 0;border-right:1px solid var(--grid)}
+.sidotoc .t{font-size:11.5px;font-weight:650;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin:0 0 8px}
+.sidotoc ul{list-style:none;margin:0;padding:0}
+.sidotoc ul ul{padding-left:12px;margin:2px 0 4px;border-left:1px solid var(--grid)}
+.sidotoc ul ul ul{font-size:12.5px}
+.sidotoc li{margin:0}
+.sidotoc a{display:block;padding:3px 8px;border-radius:6px;color:var(--ink-2)}
+.sidotoc a:hover{background:var(--surface-1);color:var(--ink-1);text-decoration:none}
+.sidotoc a.aktiv{background:color-mix(in srgb,var(--p-A) 12%,transparent);color:var(--ink-1);font-weight:600}
+.sidotoc summary{display:none}
+.sidotoc .toc{background:none;border:0;border-radius:0;padding:0;margin:0}
+.sidotoc .toc ul{padding-left:0;font-size:13px}
+.sidotoc .toc ul ul{padding-left:12px}
+.dokgrid article{min-width:0}
+article h2,article h3,article h4{scroll-margin-top:14px}
+h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-top:1px dashed var(--grid)}
+@media(max-width:960px){
+ .dokgrid{grid-template-columns:1fr;gap:0}
+ .sidotoc{position:static;max-height:none;border-right:0;border:1px solid var(--ring);border-radius:12px;
+  background:var(--surface-1);padding:10px 14px;margin:0 0 24px}
+ .sidotoc summary{display:block;cursor:pointer;font-weight:620;font-size:13.5px}
+ .sidotoc .t{display:none}
+}
+@media print{.sidotoc{display:none}.dokgrid{display:block}}
+"""
+
+SIDOMENY_JS = """
+(function(){
+  var toc=document.querySelector('.sidotoc'); if(!toc) return;
+  var d=toc.querySelector('details');
+  if(d && window.matchMedia('(max-width:960px)').matches) d.open=false; // hopfallen på mobil
+  var lankar={};
+  toc.querySelectorAll('a[href^="#"]').forEach(function(a){lankar[decodeURIComponent(a.getAttribute('href').slice(1))]=a;});
+  var rubriker=[].slice.call(document.querySelectorAll('article h2[id],article h3[id],article h4[id]'))
+    .filter(function(h){return lankar[h.id];});
+  if(!('IntersectionObserver' in window) || !rubriker.length) return;
+  var synlig={};
+  function markera(){
+    var forsta=null;
+    for(var i=0;i<rubriker.length;i++){ if(synlig[rubriker[i].id]){forsta=rubriker[i];break;} }
+    if(!forsta){ // ingen rubrik i bild: ta den senaste ovanfor
+      for(var j=rubriker.length-1;j>=0;j--){ if(rubriker[j].getBoundingClientRect().top<0){forsta=rubriker[j];break;} }
+    }
+    toc.querySelectorAll('a.aktiv').forEach(function(a){a.classList.remove('aktiv');});
+    if(forsta){ var a=lankar[forsta.id]; a.classList.add('aktiv');
+      var r=a.getBoundingClientRect(), tr=toc.getBoundingClientRect();
+      if(r.top<tr.top||r.bottom>tr.bottom) a.scrollIntoView({block:'nearest'}); }
+  }
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){synlig[x.target.id]=x.isIntersecting;});markera();},
+    {rootMargin:'0px 0px -70% 0px'});
+  rubriker.forEach(function(h){io.observe(h);});
+  window.addEventListener('scroll',function(){ if(!Object.keys(synlig).some(function(k){return synlig[k];})) markera(); },{passive:true});
+})();
+"""
+
+
+def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True, sidomeny=False):
     """Konverterar en markdownfil till en fristaende HTML-sida."""
     text = pathlib.Path(md_sokvag).read_text(encoding="utf-8")
     md = markdown.Markdown(
         extensions=["extra", "toc", "sane_lists", "admonition"],
-        extension_configs={"toc": {"permalink": False, "toc_depth": "2-3"}},
+        extension_configs={"toc": {"permalink": False, "toc_depth": "2-4" if sidomeny else "2-3"}},
     )
     brod = md.convert(text)
     # tabeller i ett eget omslag som scrollar i sidled pa smala skarmar
@@ -268,7 +332,11 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True):
     titel = re.sub(r"<[^>]+>", "", forsta.group(1)).strip() if forsta else pathlib.Path(md_sokvag).stem
 
     toc = ""
-    if toc and md.toc_tokens:
+    if sidomeny and md.toc_tokens:
+        meny = (f'<nav class="sidotoc" aria-label="Innehåll"><details open><summary>Innehåll</summary>'
+                f'<div class="t">Innehåll</div>{md.toc}</details></nav>')
+        brod = f'<div class="dokgrid">{meny}<article>{brod}</article></div>'
+    elif toc and md.toc_tokens:
         toc = f'<nav class="toc"><div class="t">Innehåll</div>{md.toc}</nav>'
         # lagg innehallsforteckningen direkt efter rubriken
         if forsta:
@@ -276,8 +344,8 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True):
         else:
             brod = toc + brod
 
-    extra = DOK_CSS + KOPIERA_CSS + (BRED_CSS if bred else "")
-    js = TEMA_JS + KOPIERA_JS
+    extra = DOK_CSS + KOPIERA_CSS + (BRED_CSS if bred else "") + (SIDOMENY_CSS if sidomeny else "")
+    js = TEMA_JS + KOPIERA_JS + (SIDOMENY_JS if sidomeny else "")
     if flikar:
         brod = flikifiera(brod)
         extra = DOK_CSS + KOPIERA_CSS + TAB_CSS + (BRED_CSS if bred else "")
@@ -304,7 +372,7 @@ DOKUMENT = {
     "arbetsplan": {},
     "runbook": {"flikar": True, "bred": True, "toc": False},
     "filterguide": {"flikar": True, "bred": True, "toc": False},
-    "metodik": {},
+    "metodik": {"sidomeny": True},
     "typiska-arter": {},
     "vagledningar": {},
     "webbgis-publicering": {"flikar": True},

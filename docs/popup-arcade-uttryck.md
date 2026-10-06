@@ -276,7 +276,7 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 - **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*.
 - **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.
 
-Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **`last_edited_date` är avstängt i lagret i dag** (webbgis-publicering Del 2 steg 3). Slå på *Visible* för det vid nästa Overwrite, annars kan raden *Statusens ålder* bara visa BIDOS-ursprunget.
+Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **Statusens ålder läses ur heltalsfältet `nnk_andrad_ar`**, som `forbered_gdb_for_publicering.py` (steg 1d) räknar fram ur NV:s `last_edited_date`. NV:s fält går inte att publicera: det är *Date, Time and Timezone Offset* och ger fel 00403 (konstaterat 2026-10-06). Låt `last_edited_date` vara avstängt och se till att `nnk_andrad_ar` är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.
 
 ```js
 // Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
@@ -315,7 +315,8 @@ var status = DefaultValue(F("naturtypsstatus_text"), "");
 var urs = DefaultValue(F("ursprung_text"), "");
 var bidos = Find("BIDOS", urs) > -1;
 var slut = Ar(F("habitat_period_lastdata_end"));
-var red = Ar(F("last_edited_date"));
+var red = Ar(F("nnk_andrad_ar"));   // år ur NV:s last_edited_date, se forbered_gdb steg 1d
+if (IsEmpty(red)) { red = Ar(F("last_edited_date")); }
 var statusAr = IIf(IsEmpty(slut), red, slut);
 
 var alder = "Okänt år";

@@ -83,6 +83,35 @@ tr:last-child td{border-bottom:0}
  color:var(--ink-2);cursor:pointer;opacity:.85}
 .kopiera:hover{opacity:1;color:var(--ink)}
 .kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+
+.wrap{max-width:1240px}
+.dokgrid{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.sidotoc{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
+ font-size:13px;line-height:1.4;padding:4px 6px 20px 0;border-right:1px solid var(--grid)}
+.sidotoc .t{font-size:11.5px;font-weight:650;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin:0 0 8px}
+.sidotoc ul{list-style:none;margin:0;padding:0}
+.sidotoc ul ul{padding-left:12px;margin:2px 0 4px;border-left:1px solid var(--grid)}
+.sidotoc ul ul ul{font-size:12.5px}
+.sidotoc li{margin:0}
+.sidotoc a{display:block;padding:3px 8px;border-radius:6px;color:var(--ink-2)}
+.sidotoc a:hover{background:var(--surface-1);color:var(--ink-1);text-decoration:none}
+.sidotoc a.aktiv{background:color-mix(in srgb,var(--p-A) 12%,transparent);color:var(--ink-1);font-weight:600}
+.sidotoc summary{display:none}
+.sidotoc .toc{background:none;border:0;border-radius:0;padding:0;margin:0}
+.sidotoc .toc ul{padding-left:0;font-size:13px}
+.sidotoc .toc ul ul{padding-left:12px}
+.dokgrid article{min-width:0}
+article h2,article h3,article h4{scroll-margin-top:14px}
+h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-top:1px dashed var(--grid)}
+@media(max-width:960px){
+ .dokgrid{grid-template-columns:1fr;gap:0}
+ .sidotoc{position:static;max-height:none;border-right:0;border:1px solid var(--ring);border-radius:12px;
+  background:var(--surface-1);padding:10px 14px;margin:0 0 24px}
+ .sidotoc summary{display:block;cursor:pointer;font-weight:620;font-size:13.5px}
+ .sidotoc .t{display:none}
+}
+@media print{.sidotoc{display:none}.dokgrid{display:block}}
 </style>
 </head>
 <body>
@@ -91,8 +120,43 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
-<h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
+<div class="dokgrid"><nav class="sidotoc" aria-label="Innehåll"><details open><summary>Innehåll</summary><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</a></li>
+<li><a href="#2-vad-nnk-uttaget-sager-om-problemets-storlek">2. Vad NNK-uttaget säger om problemets storlek</a></li>
+<li><a href="#3-flodet-tva-steg-inte-ett">3. Flödet — två steg, inte ett</a></li>
+<li><a href="#4-faltmappning-vilken-uppgift-hamnar-var">4. Fältmappning — vilken uppgift hamnar var</a></li>
+<li><a href="#5-beslutsregler-dar-det-gar-fel">5. Beslutsregler — där det går fel</a><ul>
+<li><a href="#r1-igenvaxning-pa-grund-av-utebliven-skotsel-andrar-inte-livsmiljotypen">R1. Igenväxning på grund av utebliven skötsel ändrar inte livsmiljötypen</a></li>
+<li><a href="#r2-forandringsorsak-nastan-aldrig-kod-2">R2. Förändringsorsak — nästan aldrig kod 2</a></li>
+<li><a href="#r3-karteringsstatus-speglar-underlaget-inte-din-anstrangning">R3. Karteringsstatus speglar underlaget, inte din ansträngning</a></li>
+<li><a href="#r4-osakerhet-dokumenteras-den-gissas-inte-bort">R4. Osäkerhet dokumenteras, den gissas inte bort</a></li>
+<li><a href="#r5-utvecklingsmark-har-tva-formella-krav">R5. Utvecklingsmark har två formella krav</a></li>
+<li><a href="#r6-utpekade-livsmiljotyper-har-ett-sarskilt-skydd">R6. Utpekade livsmiljötyper har ett särskilt skydd</a></li>
+<li><a href="#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">R7. Regelstyrd skrivbordsbedömning av naturtypsstatus — UTKAST</a><ul>
+<li><a href="#r7a-havd">R7A · Hävd</a></li>
+<li><a href="#r7b-skog">R7B · Skog</a></li>
+<li><a href="#r7c-vatmark">R7C · Våtmark</a></li>
+<li><a href="#r7d-stabila">R7D · Stabila</a></li>
+<li><a href="#r7-omprovning-ytor-som-redan-har-status">R7-omprövning · ytor som redan har status</a></li>
+<li><a href="#pilot-innan-regeln-anvands-skarpt">Pilot innan regeln används skarpt</a></li>
+<li><a href="#oklart-i-nvs-underlag">Oklart i NV:s underlag</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#6-datering-det-som-gloms-bort">6. Datering — det som glöms bort</a></li>
+<li><a href="#7-sa-lagger-du-upp-samtalet">7. Så lägger du upp samtalet</a></li>
+<li><a href="#8-omradesidentitet-lost-men-bara-for-den-publika-versionen">8. Områdesidentitet — löst, men bara för den publika versionen</a></li>
+<li><a href="#9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</a><ul>
+<li><a href="#teknisk-uppkoppling-nnk-i-arcgis-pro">Teknisk uppkoppling — NNK i ArcGIS Pro</a></li>
+</ul>
+</li>
+<li><a href="#10-vad-detta-ger-till-arets-leverans">10. Vad detta ger till årets leverans</a></li>
+</ul>
+</div>
+</details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
+<p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
 <p><strong>Datum:</strong> 2026-10-06
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
 <strong>Version:</strong> 2.1 — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel <em>R7-omprövning</em> för ytor som redan har status. Version 2.0 — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet. Version 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
@@ -508,7 +572,7 @@ tr:last-child td{border-bottom:0}
 <blockquote>
 <p><strong>Grupp är inte batch.</strong> Batcherna S, A, B, C och D i arbetsplanen är arbetsordningen per Natura 2000-område. Grupperna ovan avgör vilken delregel som gäller för en enskild yta, och ett område innehåller ytor från flera grupper. Gruppen visas i popupen som <em>Bedömningsgrupp (R7)</em>.</p>
 </blockquote>
-<p><strong>R7A · Hävd</strong></p>
+<h4 id="r7a-havd">R7A · Hävd</h4>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -632,7 +696,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table></div>
 <p>Åtgärder i SkötselDOS är ibland ritade större än den yta som faktiskt betas. Åtgärder på 200 ha eller mer är därför bortfiltrerade, men en stor fålla kan fortfarande täcka skog som inte betas.</p>
-<p><strong>R7B · Skog</strong></p>
+<h4 id="r7b-skog">R7B · Skog</h4>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -721,7 +785,7 @@ tr:last-child td{border-bottom:0}
 - <strong>Död ved</strong> syns inte tillförlitligt i laserdata. För 9010 och 9050 är död ved ett klassningskrav (vägledningarna februari 2026). Laserdata kan stödja sluten äldre skog, men utfallet blir alltid <em>till fält</em>, se undantaget ovan.
 - <strong>Trädslag.</strong> Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
 - <strong>Lövat eller olövat läge.</strong> Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med <em>Osäker (lövat/olövat)</em> (115 ytor). Pröva dem i orto.</p>
-<p><strong>R7C · Våtmark</strong></p>
+<h4 id="r7c-vatmark">R7C · Våtmark</h4>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -746,7 +810,7 @@ tr:last-child td{border-bottom:0}
 </table></div>
 <p><strong>Underlag för diken.</strong> Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (gruppen Skog) och myrarna i gruppen Våtmark (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): <code>diken_m_inom</code> (meter dike inom ytan) och <code>diken_m_50m</code> (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger <em>icke fullgod</em>. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som <em>i anslutning till ytan</em>.</p>
 <p>Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.</p>
-<p><strong>R7D · Stabila</strong></p>
+<h4 id="r7d-stabila">R7D · Stabila</h4>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -770,7 +834,8 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table></div>
 <p><strong>Hällmarkstorräng och basiska berghällar</strong> (beslut 2026-09-29, efter NV:s vägledningar): 6110 är enligt vägledningen "i de flesta fall beroende av ett extensivt bete" och bedöms enligt R7A, liksom den hävdade undertypen 8231. 8232 (<em>Ej hävdberoende typ</em>) bedöms enligt R7D. 8230 utan undertyp bedöms på <strong>krontäckning och igenväxning</strong> — under 30 % krontäckning och ingen tydlig igenväxning i orto ger fullgod — eftersom vägledningen beskriver typen som störningsberoende men naturligt gles på grund av tunt jordlager och torka, särskilt vid kusten. Ligger en 8230-yta i betesmark eller ett TUVA-objekt prövas den även enligt R7A. Arbetsplanens lista över hävdberoende typer (bilaga 3) påverkas inte — den styr prioriteringen, inte bedömningen.</p>
-<p><strong>R7-omprövning · ytor som redan har status</strong> (beslut 2026-10-06)</p>
+<h4 id="r7-omprovning-ytor-som-redan-har-status">R7-omprövning · ytor som redan har status</h4>
+<p><em>Beslut 2026-10-06.</em></p>
 <p>Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 <em>Fullgod</em> eller 2 <em>Icke fullgod</em>. I länets NNK-uttag (2026-08-26) är det 838 ytor, de flesta från basinventeringen (BIDOS).</p>
 <p><em>Statusen är inte daterad i sig.</em> Den visar bedömningen när den gjordes. Hur gammal den är får läsas ur andra fält. De tre första står i popupen under <em>Naturtyp (NNK-data)</em>; sektionen <em>Bedömning vid skrivbordet (R7)</em> sammanfattar dem på raden <em>Statusens ålder</em>:</p>
 <div class="tabell"><table>
@@ -790,7 +855,7 @@ tr:last-child td{border-bottom:0}
 <td><em>BIDOS</em> betyder att statusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal.</td>
 </tr>
 <tr>
-<td>Attribut senast ändrade (<code>last_edited_date</code>, i <em>Statusens ålder</em>)</td>
+<td>Attribut senast ändrade (<code>nnk_andrad_ar</code>, året ur NV:s <code>last_edited_date</code>, i <em>Statusens ålder</em>)</td>
 <td>Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då.</td>
 </tr>
 <tr>
@@ -809,10 +874,13 @@ tr:last-child td{border-bottom:0}
 </ol>
 <p>Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.</p>
 <p><strong>Ytor med gammal fältdata:</strong> 277 ytor har Karteringsstatus 3 eller 4 men ändå <em>Ej bedömd status</em>. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.</p>
-<p><strong>Pilot innan regeln används skarpt:</strong> hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med <em>Ej bedömd status</em>. 30 av dem fältkontrolleras, slumpat men med fler ur <em>icke fullgod</em> och <em>till fält</em>. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.</p>
-<p><strong>Oklart i NV:s underlag:</strong>
-- Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
-- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.</p>
+<h4 id="pilot-innan-regeln-anvands-skarpt">Pilot innan regeln används skarpt</h4>
+<p>Hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med <em>Ej bedömd status</em>. 30 av dem fältkontrolleras, slumpat men med fler ur <em>icke fullgod</em> och <em>till fält</em>. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.</p>
+<h4 id="oklart-i-nvs-underlag">Oklart i NV:s underlag</h4>
+<ul>
+<li>Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".</li>
+<li>NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.</li>
+</ul>
 <hr />
 <h2 id="6-datering-det-som-gloms-bort">6. Datering — det som glöms bort</h2>
 <p>Två nya fält i NNK, <em>Startdatum/Slutdatum senaste inventering av naturtypen</em>, motsvarar <code>habitat_period_lastdata_start</code> / <code>_end</code> i granskningslagret:</p>
@@ -972,7 +1040,7 @@ tr:last-child td{border-bottom:0}
 </tbody>
 </table></div>
 <hr />
-<p><em>Metodik v1.3 · 2026-09-11 · hör ihop med <code>docs/arbetsplan.md</code> (arbetspaket H), <code>docs/webbgis-publicering.md</code>, <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> och <code>natura-2000: scripts/analysis/koppla_omraden.py</code></em></p>
+<p><em>Metodik v1.3 · 2026-09-11 · hör ihop med <code>docs/arbetsplan.md</code> (arbetspaket H), <code>docs/webbgis-publicering.md</code>, <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> och <code>natura-2000: scripts/analysis/koppla_omraden.py</code></em></p></article></div>
 </div>
 <script>
 (function(){
@@ -1011,6 +1079,33 @@ tr:last-child td{border-bottom:0}
       }else{klar(reserv(t));}
     });
   });
+})();
+
+(function(){
+  var toc=document.querySelector('.sidotoc'); if(!toc) return;
+  var d=toc.querySelector('details');
+  if(d && window.matchMedia('(max-width:960px)').matches) d.open=false; // hopfallen på mobil
+  var lankar={};
+  toc.querySelectorAll('a[href^="#"]').forEach(function(a){lankar[decodeURIComponent(a.getAttribute('href').slice(1))]=a;});
+  var rubriker=[].slice.call(document.querySelectorAll('article h2[id],article h3[id],article h4[id]'))
+    .filter(function(h){return lankar[h.id];});
+  if(!('IntersectionObserver' in window) || !rubriker.length) return;
+  var synlig={};
+  function markera(){
+    var forsta=null;
+    for(var i=0;i<rubriker.length;i++){ if(synlig[rubriker[i].id]){forsta=rubriker[i];break;} }
+    if(!forsta){ // ingen rubrik i bild: ta den senaste ovanfor
+      for(var j=rubriker.length-1;j>=0;j--){ if(rubriker[j].getBoundingClientRect().top<0){forsta=rubriker[j];break;} }
+    }
+    toc.querySelectorAll('a.aktiv').forEach(function(a){a.classList.remove('aktiv');});
+    if(forsta){ var a=lankar[forsta.id]; a.classList.add('aktiv');
+      var r=a.getBoundingClientRect(), tr=toc.getBoundingClientRect();
+      if(r.top<tr.top||r.bottom>tr.bottom) a.scrollIntoView({block:'nearest'}); }
+  }
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){synlig[x.target.id]=x.isIntersecting;});markera();},
+    {rootMargin:'0px 0px -70% 0px'});
+  rubriker.forEach(function(h){io.observe(h);});
+  window.addEventListener('scroll',function(){ if(!Object.keys(synlig).some(function(k){return synlig[k];})) markera(); },{passive:true});
 })();
 </script>
 </body>

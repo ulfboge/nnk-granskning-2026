@@ -358,7 +358,7 @@ return {
 <li><strong>Vad gäller</strong> — <em>bedöm</em> (Ej bedömd status), <em>ompröva</em> (status finns redan, se R7-omprövning i metodiken) eller <em>ingår inte</em>.</li>
 <li><strong>Underlag</strong> — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.</li>
 </ul>
-<p>Uttrycket läser fälten dynamiskt med <code>Expects($feature, "*")</code>, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. <strong><code>last_edited_date</code> är avstängt i lagret i dag</strong> (webbgis-publicering Del 2 steg 3). Slå på <em>Visible</em> för det vid nästa Overwrite, annars kan raden <em>Statusens ålder</em> bara visa BIDOS-ursprunget.</p>
+<p>Uttrycket läser fälten dynamiskt med <code>Expects($feature, "*")</code>, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. <strong>Statusens ålder läses ur heltalsfältet <code>nnk_andrad_ar</code></strong>, som <code>forbered_gdb_for_publicering.py</code> (steg 1d) räknar fram ur NV:s <code>last_edited_date</code>. NV:s fält går inte att publicera: det är <em>Date, Time and Timezone Offset</em> och ger fel 00403 (konstaterat 2026-10-06). Låt <code>last_edited_date</code> vara avstängt och se till att <code>nnk_andrad_ar</code> är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.</p>
 <pre><code class="language-js">// Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
 // Grupp, statusens ålder och vilka underlag som är nyare än statusen.
 // Fälten läses dynamiskt: saknas ett fält i tjänsten hoppas raden över.
@@ -395,7 +395,8 @@ var status = DefaultValue(F(&quot;naturtypsstatus_text&quot;), &quot;&quot;);
 var urs = DefaultValue(F(&quot;ursprung_text&quot;), &quot;&quot;);
 var bidos = Find(&quot;BIDOS&quot;, urs) &gt; -1;
 var slut = Ar(F(&quot;habitat_period_lastdata_end&quot;));
-var red = Ar(F(&quot;last_edited_date&quot;));
+var red = Ar(F(&quot;nnk_andrad_ar&quot;));   // år ur NV:s last_edited_date, se forbered_gdb steg 1d
+if (IsEmpty(red)) { red = Ar(F(&quot;last_edited_date&quot;)); }
 var statusAr = IIf(IsEmpty(slut), red, slut);
 
 var alder = &quot;Okänt år&quot;;

@@ -1,6 +1,6 @@
 # Från förvaltarkunskap till NNK
 
-## Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper
+*Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
 **Datum:** 2026-10-06
 **Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
@@ -228,7 +228,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 > **Grupp är inte batch.** Batcherna S, A, B, C och D i arbetsplanen är arbetsordningen per Natura 2000-område. Grupperna ovan avgör vilken delregel som gäller för en enskild yta, och ett område innehåller ytor från flera grupper. Gruppen visas i popupen som *Bedömningsgrupp (R7)*.
 
-**R7A · Hävd**
+#### R7A · Hävd
 
 | Utfall | Villkor |
 |---|---|
@@ -272,7 +272,7 @@ Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera o
 
 Åtgärder i SkötselDOS är ibland ritade större än den yta som faktiskt betas. Åtgärder på 200 ha eller mer är därför bortfiltrerade, men en stor fålla kan fortfarande täcka skog som inte betas.
 
-**R7B · Skog**
+#### R7B · Skog
 
 | Utfall | Villkor |
 |---|---|
@@ -311,7 +311,7 @@ Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas o
 - **Trädslag.** Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
 - **Lövat eller olövat läge.** Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med *Osäker (lövat/olövat)* (115 ytor). Pröva dem i orto.
 
-**R7C · Våtmark**
+#### R7C · Våtmark
 
 | Utfall | Villkor |
 |---|---|
@@ -323,7 +323,7 @@ Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas o
 
 Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.
 
-**R7D · Stabila**
+#### R7D · Stabila
 
 | Utfall | Villkor |
 |---|---|
@@ -333,7 +333,9 @@ Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger
 
 **Hällmarkstorräng och basiska berghällar** (beslut 2026-09-29, efter NV:s vägledningar): 6110 är enligt vägledningen "i de flesta fall beroende av ett extensivt bete" och bedöms enligt R7A, liksom den hävdade undertypen 8231. 8232 (*Ej hävdberoende typ*) bedöms enligt R7D. 8230 utan undertyp bedöms på **krontäckning och igenväxning** — under 30 % krontäckning och ingen tydlig igenväxning i orto ger fullgod — eftersom vägledningen beskriver typen som störningsberoende men naturligt gles på grund av tunt jordlager och torka, särskilt vid kusten. Ligger en 8230-yta i betesmark eller ett TUVA-objekt prövas den även enligt R7A. Arbetsplanens lista över hävdberoende typer (bilaga 3) påverkas inte — den styr prioriteringen, inte bedömningen.
 
-**R7-omprövning · ytor som redan har status** (beslut 2026-10-06)
+#### R7-omprövning · ytor som redan har status
+
+*Beslut 2026-10-06.*
 
 Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke fullgod*. I länets NNK-uttag (2026-08-26) är det 838 ytor, de flesta från basinventeringen (BIDOS).
 
@@ -343,7 +345,7 @@ Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke f
 |---|---|
 | Slutdatum senaste inventering | Rätt fält för när typen och statusen senast bedömdes. Tomt för nästan alla ytor än så länge. |
 | Ursprung | *BIDOS* betyder att statusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal. |
-| Attribut senast ändrade (`last_edited_date`, i *Statusens ålder*) | Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då. |
+| Attribut senast ändrade (`nnk_andrad_ar`, året ur NV:s `last_edited_date`, i *Statusens ålder*) | Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då. |
 | Karteringsstatus | *Hur* bedömningen gjordes (2 skrivbord, 3 besök, 4 inventering), inte *när*. *Granskad vid skrivbordet* betyder att typ och status senast sattes utan fältbesök. |
 
 *Regeln:*
@@ -358,9 +360,11 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 
 **Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.
 
-**Pilot innan regeln används skarpt:** hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med *Ej bedömd status*. 30 av dem fältkontrolleras, slumpat men med fler ur *icke fullgod* och *till fält*. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.
+#### Pilot innan regeln används skarpt
 
-**Oklart i NV:s underlag:**
+Hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med *Ej bedömd status*. 30 av dem fältkontrolleras, slumpat men med fler ur *icke fullgod* och *till fält*. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.
+
+#### Oklart i NV:s underlag
 - Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
 - NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
 
