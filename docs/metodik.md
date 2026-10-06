@@ -2,10 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Datum:** 2026-10-06
-**Gäller:** Natura 2000-områden och statliga naturreservat i Södermanlands län
-**Version:** 2.1 — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel *R7-omprövning* för ytor som redan har status. Version 2.0 — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli *fullgod* vid skrivbordet. Version 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
-**Bygger på:** Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5
+**Version 2.1 · 2026-10-06** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* grupperna i R7 heter Hävd, Skog, Våtmark och Stabila, och ny delregel för omprövning av befintlig status. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -489,4 +487,27 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ---
 
-*Metodik v1.3 · 2026-09-11 · hör ihop med `docs/arbetsplan.md` (arbetspaket H), `docs/webbgis-publicering.md`, `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`*
+## Om dokumentet
+
+**Hör ihop med:** [arbetsplanen](arbetsplan.html) (arbetspaket H), [webbGIS-publicering](webbgis-publicering.html), [bedömningsguiden](../bedomningsguide.html), `blanketter/blankett_forvaltarkunskap_nnk.xlsx` och `natura-2000: scripts/analysis/koppla_omraden.py`.
+
+### Bygger på
+
+- Handledning för NNK (NV, 2026-07-03, NV-26-002862)
+- Lathund granskning WebbGIS-KartLitS (2026-07-10)
+- FAQ om uppdraget v1.1 (2026-07-03)
+- NNK publik produktbeskrivning
+- Manual NNK mall för granskning (KartLitS-mallzippen)
+- NNK i ArcGIS Pro, arbetsbeskrivning v1.5
+
+### Versionshistorik
+
+- **2.1** (2026-10-06) — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel *R7-omprövning* för ytor som redan har status.
+- **2.0** — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli *fullgod* vid skrivbordet.
+- **1.9** — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret.
+- **1.8** — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används.
+- **1.7** — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger *till fält* om inget annat underlag finns).
+- **1.6** — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet `havd_skiften` i granskningslagret).
+- **1.5** — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus.
+- **1.4** — avsnitt 4 och 7: nya fält i granskningslagret (`forandringsorsak_forslag` samt de skrivskyddade stödfälten `prio`, `bevarandeplan_ar`, `area_ha`, `naturtyp_kod_text`) och blankettens kolumner Bevarandestatus/År.
+- **1.3** — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta.
