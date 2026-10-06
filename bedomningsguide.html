@@ -113,9 +113,21 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .nav{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;padding-top:16px;border-top:1px solid var(--grid);align-items:center;flex-wrap:wrap}
 .nav .hint{font-size:12.5px;color:var(--ink-3)}
 .klart{text-align:center;padding:30px 20px}
+.valj{display:grid;grid-template-columns:minmax(220px,1fr) minmax(260px,1.3fr);gap:10px 18px;margin:0 0 18px;align-items:end}
+.valj h2{grid-column:1/-1;font-size:14px;margin:0;font-weight:640}
+.falt label{display:block;font-size:12px;color:var(--ink-3);font-weight:620;margin:0 0 3px}
+.falt select,.falt input{font:inherit;font-size:14px;padding:6px 9px;border-radius:8px;border:1px solid var(--axis);
+ background:var(--surface-1);color:var(--ink-1);width:100%}
+.falt .rad{display:flex;gap:6px;margin-top:6px}
+.falt .rad input{flex:1}
+.falt .rad[hidden]{display:none}
+.omrinfo{grid-column:1/-1;font-size:13.5px;color:var(--ink-2);min-height:1.2em}
+.omrinfo b{color:var(--ink-1)}
+.bplank{border-left:3px solid var(--good);background:var(--surface-1);border-radius:0 10px 10px 0;padding:10px 16px;margin:0 0 16px;font-size:14px}
 .klart h2{font-size:22px;margin:0 0 8px}
 @media(max-width:820px){
   .intro{grid-template-columns:1fr}
+  .valj{grid-template-columns:1fr}
   .layout{grid-template-columns:1fr}
   .stepper{position:static;display:flex;gap:4px;overflow-x:auto;padding-bottom:6px}
   .stepper li{flex:none}
@@ -124,7 +136,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
   .stepper .aktiv .txt{display:inline}
 }
 @media print{
-  .lageknapp,.stepper,.nav,#themeBtn{display:none!important}
+  .lageknapp,.stepper,.nav,#themeBtn,.valj{display:none!important}
   .layout{display:block}
   .steg-sida{display:block!important;break-inside:avoid-page;margin-bottom:30px}
 }
@@ -160,6 +172,24 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
       <dt>Varför Floden</dt><dd>Både ytor utan status och ytor med status från basinventeringen, och underlag som pekar åt olika håll.</dd>
     </dl>
   </div>
+</div>
+
+<div class="card valj" id="valj">
+  <h2>Din granskning</h2>
+  <div class="falt">
+    <label for="granskare">Granskare</label>
+    <select id="granskare"></select>
+    <div class="rad" id="annatRad" hidden>
+      <input id="annatNamn" type="text" placeholder="Förnamn Efternamn" autocomplete="name">
+      <button type="button" id="laggTill">Lägg till</button>
+    </div>
+  </div>
+  <div class="falt">
+    <label for="omrade">Område (SITECODE eller namn)</label>
+    <input id="omrade" type="text" list="omradeLista" placeholder="t.ex. SE0220206 eller Floden" autocomplete="off">
+    <datalist id="omradeLista"></datalist>
+  </div>
+  <div class="omrinfo" id="omradeInfo"></div>
 </div>
 
 <div class="lageknapp" role="group" aria-label="Visningsläge">
@@ -251,8 +281,8 @@ const STEG = [
 { id:'valj', titel:'Välj området och starta loggraden',
   mal:'Hitta området i kartan och lägg upp raden i loggen. De grå kolumnerna fylls i när du skriver SITECODE.',
   gor:[
-    'Skriv <b>SE0220206</b> eller <b>Floden</b> i <i>Sök i kartan</i> och zooma till området.',
-    'Ny rad i loggen: datum, ditt namn och SITECODE (skriv eller välj i listan).',
+    'Skriv <b>{{SITE}}</b> eller <b>{{NAMN}}</b> i <i>Sök i kartan</i> och zooma till området.',
+    'Ny rad i loggen: datum, ditt namn{{GRANSKARE}} och SITECODE (skriv eller välj i listan).',
     'Kontrollera att de grå kolumnerna fylldes i. Står det <i>okänd sitecode</i> är koden felstavad.',
     'Sätt <i>Status</i> = Påbörjad.'
   ],
@@ -260,13 +290,13 @@ const STEG = [
     ['Identifiering och skydd','Område, Natura 2000-kod (SE-nummer)','Vilket område ytan ligger i. Klicka på en yta och kontrollera att du är i rätt område innan du börjar.'],
     ['','Skyddskategori, Naturreservat-ID','Om området också är naturreservat. Då finns ofta skötselplan och SkötselDOS-uppgifter att använda i steg 7.']
   ],
-  logg: [['Datum, Granskare, SITECODE','Du fyller i'],['Område, Batch, Prio, Uppgift, Förvaltare, Bevarandeplan fastställd, Utpekade typer, Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt'],['Status','Påbörjad']],
+  logg: [['Datum, Granskare, SITECODE','Du fyller i. Granskare: välj i listan, eller skriv ett nytt namn — det läggs då till i listan (fliken Granskare).'],['Område, Batch, Prio, Uppgift, Förvaltare, Bevarandeplan fastställd, Utpekade typer, Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt'],['Status','Påbörjad']],
   ex: () => ex('<p>Autofyllningen ger: Floden · batch B · P1 · C4.1 · utpekade 3150, 6270, 6410, 6510 · <b>10 ytor R7</b>, varav <b>2 Ej bedömd</b> och <b>8 med status</b>. Bevarandeplanens år saknas i underlaget — det tar du ur själva planen i nästa steg.</p>') },
 
 { id:'bevplan', titel:'Läs bevarandeplanen',
   mal:'Ta reda på vilka livsmiljötyper som är utpekade och vilka bevarandemål som gäller. Det avgör hur försiktig du ska vara med att föreslå ändringar.',
   gor:[
-    'Öppna bevarandeplanen: lagret <i>NV Natura2000 områden</i>, raden <code>BEVPLAN</code> i attributtabellen.',
+    'Öppna bevarandeplanen: {{BEVPLAN}}',
     'Notera vilka livsmiljötyper som är utpekade och vilka som är prioriterade bevarandevärden.',
     'Notera vilket år planen fastställdes. Det behövs i steg 6 för att avgöra om planen är nyare än karteringen.',
     'Läs bevarandemålen för de hävdberoende typerna — de säger vad som räknas som gott tillstånd i just det här området.'
@@ -432,18 +462,240 @@ const POPUP = [
 ];
 
 /* ------------------------------------------------------------------
+   Områden: [sitecode, namn, batch, prio, länk till bevarandeplan, fastställd år]
+------------------------------------------------------------------- */
+/* OMRADEN:START — skrivs av natura-2000/scripts/analysis/uppdatera_guide_omraden.py, ändra inte för hand */
+const OMRADEN = [
+ ["SE0220343", "Askholmen", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267263", ""],
+ ["SE0220439", "Askö", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267264", ""],
+ ["SE0220152", "Barrsjömossen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253935", ""],
+ ["SE0220427", "Berga Kulle", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267265", ""],
+ ["SE0220401", "Berga-Lista", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267266", ""],
+ ["SE0220238", "Björnvad", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253957", ""],
+ ["SE0220215", "Bokö-Oxnö", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285785", ""],
+ ["SE0220440", "Borgmästarholmen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253995", ""],
+ ["SE0220301", "Borsö", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267267", ""],
+ ["SE0220309", "Brebol", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267268", ""],
+ ["SE0220434", "Bredsjönäs", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295115", ""],
+ ["SE0220160", "Bränntorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253938", ""],
+ ["SE0220137", "Bråtamossen", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253932", ""],
+ ["SE0220166", "Bråtön", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285786", ""],
+ ["SE0220011", "Bärstakärret", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253916", ""],
+ ["SE0220303", "Båven", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286058", ""],
+ ["SE0220145", "Båvenöarna", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295114", ""],
+ ["SE0220338", "Dagöholmsbackarna", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253982", ""],
+ ["SE0220148", "Davik", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253933", ""],
+ ["SE0220349", "Djupdalshagen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253986", ""],
+ ["SE0220202", "Djupviksnäs", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253943", ""],
+ ["SE0220251", "Djupvikssjöskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267269", ""],
+ ["SE0220351", "Djurgården", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285787", ""],
+ ["SE0220519", "Duvtorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254003", ""],
+ ["SE0220243", "Eknäset", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267270", ""],
+ ["SE0220211", "Ekorneberg", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253946", ""],
+ ["SE0220201", "Evighetsbacken", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267271", ""],
+ ["SE0220431", "Femörehuvud", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285788", ""],
+ ["SE0220226", "Fiholm", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253950", ""],
+ ["SE0220503", "Fjellskäfte", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253997", ""],
+ ["SE0220106", "Fjällmossen norra", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285789", ""],
+ ["SE0220305", "Floda-Kyrksjön", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285790", ""],
+ ["SE0220206", "Floden", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285791", ""],
+ ["SE0220213", "Fräkenkärret", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290270", ""],
+ ["SE0220311", "Fräkenvassen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253968", ""],
+ ["SE0220432", "Furön", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253993", ""],
+ ["SE0220255", "Fågelboskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253966", ""],
+ ["SE0220435", "Gesta", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253994", ""],
+ ["SE0220199", "Gorsingeholm", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253942", ""],
+ ["SE0220443", "Gorsingeholmskullarna", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253996", ""],
+ ["SE0220515", "Gorsingelund", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254001", ""],
+ ["SE0220059", "Grindstugan", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253919", ""],
+ ["SE0220085", "Gripsholms Hjorthage", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253924", ""],
+ ["SE0220516", "Gölet", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254002", ""],
+ ["SE0220408", "Haga hage", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290149", ""],
+ ["SE0220336", "Harpebolnäset", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253981", ""],
+ ["SE0220322", "Harpsund-Ön", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253973", ""],
+ ["SE0220433", "Hasselö-Bergö", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267272", ""],
+ ["SE0220514", "Hasta", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254000", ""],
+ ["SE0220247", "Hedensö", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253962", ""],
+ ["SE0220194", "Henaredalen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267273", ""],
+ ["SE0220088", "Herröknanäs", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267274", ""],
+ ["SE0220334", "Himlingeskogen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253979", ""],
+ ["SE0220191", "Himlingeåsen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285792", ""],
+ ["SE0220232", "Holmtorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253952", ""],
+ ["SE0220360", "Hornskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267276", ""],
+ ["SE0220124", "Horsvik", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253930", ""],
+ ["SE0220506", "Hvalsta", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/278841", ""],
+ ["SE0220346", "Hyltingeravinen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267277", ""],
+ ["SE0220411", "Hällesta", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290276", ""],
+ ["SE0220314", "Hällvik", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253970", ""],
+ ["SE0220028", "Hävringe-Källskären", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286063", "2006"],
+ ["SE0220204", "Hålvetten-Näsnaren", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267279", ""],
+ ["SE0220151", "Igelbålen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253934", ""],
+ ["SE0220252", "Igelsjöskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267280", ""],
+ ["SE0220193", "Jaktstuguskogen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267281", ""],
+ ["SE0220603", "Jungfruvassen", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254004", ""],
+ ["SE0220197", "Kalkbro", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253941", ""],
+ ["SE0220235", "Kalkugnstorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253954", ""],
+ ["SE0220402", "Karlslundsskogen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253989", ""],
+ ["SE0220317", "Kila", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253972", ""],
+ ["SE0220304", "Kilaån-Vretaån", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/320712", ""],
+ ["SE0220229", "Koholmen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267282", ""],
+ ["SE0220327", "Kokärret", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253974", ""],
+ ["SE0220509", "Kråmö", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285793", ""],
+ ["SE0220328", "Källarhalsen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253975", ""],
+ ["SE0220240", "Kårtorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253959", ""],
+ ["SE0220118", "Labro ängar", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285794", ""],
+ ["SE0220210", "Lenellstorpskärret", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285795", ""],
+ ["SE0220236", "Lerböle", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253955", ""],
+ ["SE0220353", "Lervik", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267283", ""],
+ ["SE0220340", "Lidakärret", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295116", ""],
+ ["SE0220357", "Likstammen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267284", ""],
+ ["SE0220156", "Lilla Tjärbruket", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253937", ""],
+ ["SE0220363", "Lindön", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285796", ""],
+ ["SE0220119", "Linudden", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253928", ""],
+ ["SE0220241", "Lisstorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253960", ""],
+ ["SE0220350", "Ljuvalund", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267285", ""],
+ ["SE0220208", "Lomsjöskogen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267286", ""],
+ ["SE0220130", "Lotsängsbacken", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253931", ""],
+ ["SE0220507", "Lundäng", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253998", ""],
+ ["SE0220203", "Lånestaheden", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253944", ""],
+ ["SE0220362", "Lögarbäcken", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267287", ""],
+ ["SE0220344", "Lövön", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253984", ""],
+ ["SE0220369", "Magsjötorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290281", ""],
+ ["SE0220604", "Malmaåsen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290282", ""],
+ ["SE0220329", "Marsjön", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295117", ""],
+ ["SE0220115", "Marsviken-Marsäng", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267288", ""],
+ ["SE0220174", "Marvikarna", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267290", ""],
+ ["SE0220356", "Masugnsskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267291", ""],
+ ["SE0220237", "Melån", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253956", ""],
+ ["SE0220339", "Misätters ekhagar", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/278842", ""],
+ ["SE0220168", "Mora hage", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253939", ""],
+ ["SE0220250", "Norrby kyrkskog", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253964", ""],
+ ["SE0220333", "Nya kärren", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253978", ""],
+ ["SE0220083", "Nybbleholme", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253923", ""],
+ ["SE0220220", "Nyckelmossen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253948", ""],
+ ["SE0220347", "Nykärr", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253985", ""],
+ ["SE0220126", "Nynäs", "S", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286069", ""],
+ ["SE0220413", "Nytorpsravinen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295111", ""],
+ ["SE0220224", "Näsberget", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253949", ""],
+ ["SE0220306", "Näsnaren", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285797", ""],
+ ["SE0220606", "Nästorp", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254005", ""],
+ ["SE0220012", "Nävsjöskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253917", ""],
+ ["SE0220504", "Ormsjöbergen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267292", ""],
+ ["SE0220234", "Persö", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267293", ""],
+ ["SE0220103", "Pilgöljan", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253926", ""],
+ ["SE0220069", "Putbergen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253921", ""],
+ ["SE0220077", "Ridö-Sundbyholmsarkipelagen södra", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/366850", ""],
+ ["SE0220513", "Rinkesta såg", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290278", ""],
+ ["SE0220216", "Rosenlund", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267295", ""],
+ ["SE0220517", "Rosmossen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290277", ""],
+ ["SE0220403", "Råby-Myrhem", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295094", ""],
+ ["SE0220231", "Rågö", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/326995", ""],
+ ["SE0220417", "Rösätter-Viksätter", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253991", ""],
+ ["SE0220182", "Segersön", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295092", ""],
+ ["SE0220703", "Sibro", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286075", "2007"],
+ ["SE0220420", "Simonsbol", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253992", ""],
+ ["SE0220021", "Sjösakärren", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267297", ""],
+ ["SE0220219", "Skedevi", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267298", ""],
+ ["SE0220368", "Skiren-Kvicken", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285798", ""],
+ ["SE0220318", "Skogstorpshagen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267299", ""],
+ ["SE0220358", "Skolmästarhagen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267300", ""],
+ ["SE0220312", "Skyle", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253969", ""],
+ ["SE0220129", "Skärgårdsreservaten", "S", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286056", "2007"],
+ ["SE0220110", "Skåraviken", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285799", ""],
+ ["SE0220078", "Sofiebergsåsen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253922", ""],
+ ["SE0220063", "Sparreholms ekhagar", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253920", ""],
+ ["SE0220072", "Stampmossen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267301", ""],
+ ["SE0220227", "Stavåsen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285800", ""],
+ ["SE0220601", "Stenby äng", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285801", ""],
+ ["SE0220218", "Stendörren", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267302", ""],
+ ["SE0220345", "Stenhammars Kohage", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267303", ""],
+ ["SE0220245", "Stenstorps hagkärr", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253961", ""],
+ ["SE0220414", "Stora Brandsbol", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253990", ""],
+ ["SE0220009", "Stora Bötet", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285802", ""],
+ ["SE0220205", "Stora Munkebo", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267304", ""],
+ ["SE0220233", "Stora Åsa", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253953", ""],
+ ["SE0220337", "Storhultet", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290283", ""],
+ ["SE0220212", "Stortrön", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/270364", ""],
+ ["SE0220020", "Strandstuviken", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286077", "2007"],
+ ["SE0220248", "Sundängen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253963", ""],
+ ["SE0220017", "Svanviken-Lindbacke", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267306", ""],
+ ["SE0220223", "Svartsjömyren", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290147", ""],
+ ["SE0220341", "Svinnäset", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253983", ""],
+ ["SE0220702", "Svärtaån", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285803", ""],
+ ["SE0220354", "Säbyviken-Bädarn", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253988", ""],
+ ["SE0220104", "Sågartorpskärret", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253927", ""],
+ ["SE0220087", "Söderfjärden", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285804", ""],
+ ["SE0220175", "Södra Kärrlången", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285805", ""],
+ ["SE0220511", "Södra Lämund", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253999", ""],
+ ["SE0220429", "Timmermon", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290284", ""],
+ ["SE0220367", "Tomsängen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267307", ""],
+ ["SE0220257", "Tomtaklintskogen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285806", ""],
+ ["SE0220217", "Tore Grav", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253947", ""],
+ ["SE0220421", "Tornskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267308", ""],
+ ["SE0220405", "Torparskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267310", ""],
+ ["SE0220330", "Torsmossen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253976", ""],
+ ["SE0220176", "Tovhulta stormosse", "C", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253940", ""],
+ ["SE0220034", "Tullgarn södra", "A", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286080", ""],
+ ["SE0220089", "Tuna", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253925", ""],
+ ["SE0220253", "Tussmötet", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253965", ""],
+ ["SE0220348", "Tynnelsö Djurgård", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295091", ""],
+ ["SE0220370", "Tynnelsö-Prästholmen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290279", ""],
+ ["SE0220320", "Tynäs ekhagar", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/290275", ""],
+ ["SE0220150", "Tåkenön", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286084", "2007"],
+ ["SE0220335", "Utnorsskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253980", ""],
+ ["SE0220214", "Utnäset", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267311", ""],
+ ["SE0220425", "Valdemarsön", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267312", ""],
+ ["SE0220505", "Varglyan", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267314", ""],
+ ["SE0220239", "Veckla äng", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253958", ""],
+ ["SE0220701", "Vedaån", "", "P4", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/254006", ""],
+ ["SE0220602", "Vilsta", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267315", ""],
+ ["SE0220315", "Vreten", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253971", ""],
+ ["SE0220352", "Vurstusbacken", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253987", ""],
+ ["SE0220364", "Väsby", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267316", ""],
+ ["SE0220122", "Västra Djupvik", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253929", ""],
+ ["SE0220310", "Västra Kolberga", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253967", ""],
+ ["SE0220013", "Ängbacken", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253918", ""],
+ ["SE0220373", "Åboravinen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/286085", "2006"],
+ ["SE0220372", "Ånga", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/285807", ""],
+ ["SE0220228", "Ånhammarsnäset", "B", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253951", ""],
+ ["SE0220438", "Åsa gravfält", "D", "P1", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/267317", ""],
+ ["SE0220207", "Åtorpskogen", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253945", ""],
+ ["SE0220331", "Ödesängssjön", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253977", ""],
+ ["SE0220154", "Öknaby", "", "P3", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/253936", ""],
+ ["SE0220332", "Örmossen", "", "P2", "https://geodata.naturvardsverket.se/handlingar/rest/dokument/295093", ""]
+];
+/* OMRADEN:END */
+const GRANSKARE = ['Johan', 'Karin'];
+
+/* ------------------------------------------------------------------
    Tillstånd (sparas i webbläsaren, bara för den som tittar)
 ------------------------------------------------------------------- */
 const NYCKEL = 'nnk-bedomningsguide-v1';
-let ST = {bock:{}, aktiv:0, lage:'steg'};
+let ST = {bock:{}, aktiv:0, lage:'steg', granskare:'', egna:[], site:''};
 try { const s = JSON.parse(localStorage.getItem(NYCKEL)); if (s && s.bock) ST = Object.assign(ST, s); } catch(e) {}
 function spara(){ try { localStorage.setItem(NYCKEL, JSON.stringify(ST)); } catch(e) {} }
+
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const omr = () => OMRADEN.find(o => o[0] === ST.site);
+function bevplanHtml(kort){
+  const o = omr();
+  if (!o) return kort ? '' : 'välj området under <i>Din granskning</i> överst på sidan, så visas länken här. Annars: lagret <i>NV Natura2000 områden</i>, raden <code>BEVPLAN</code> i attributtabellen.';
+  if (!o[4]) return `${kort ? '' : ''}ingen bevarandeplan hittades för ${esc(o[1])} i underlaget. Kontrollera lagret <i>NV Natura2000 områden</i>, raden <code>BEVPLAN</code>.`;
+  return `<a href="${esc(o[4])}" target="_blank" rel="noopener">Bevarandeplan för ${esc(o[1])} (${o[0]}) ↗</a>${o[5] ? `, fastställd ${o[5]}` : ''}`;
+}
+function fyll(h){
+  const o = omr();
+  return h.replaceAll('{{SITE}}', o ? o[0] : 'SE0220206').replaceAll('{{NAMN}}', o ? esc(o[1]) : 'Floden')
+    .replaceAll('{{GRANSKARE}}', ST.granskare ? ` (<b>${esc(ST.granskare)}</b>)` : '')
+    .replaceAll('{{BEVPLAN}}', bevplanHtml(false));
+}
 
 const klart = i => STEG[i].gor.every((_,j) => ST.bock[STEG[i].id+':'+j]);
 const upplast = i => ST.lage === 'alla' || i === 0 || STEG.slice(0,i).every((_,k) => klart(k));
 
 function stegHtml(s, i){
   let h = `<section class="steg-sida" data-i="${i}"><p class="ovr">Steg ${i+1} av ${STEG.length}</p><h2>${s.titel}</h2><p class="mal">${s.mal}</p>`;
+  if (s.id === 'bevplan' && omr() && omr()[4]) h += `<div class="bplank">${bevplanHtml(true)}</div>`;
   h += `<h3>Gör så här</h3><ul class="check">` + s.gor.map((g,j) => {
     const k = s.id+':'+j, on = !!ST.bock[k];
     return `<li class="${on?'ok':''}"><input type="checkbox" id="c-${k}" data-k="${k}"${on?' checked':''}><label for="c-${k}">${g}</label></li>`;
@@ -458,7 +710,7 @@ function stegHtml(s, i){
       <span class="hint">${ok ? 'Klart — gå vidare.' : 'Bocka av alla punkter för att gå vidare.'}</span>
       <button type="button" class="prim" data-gaa="${sista ? 'klar' : i+1}"${ok?'':' disabled'}>${sista ? 'Avsluta' : 'Nästa steg →'}</button></div>`;
   }
-  return h + `</section>`;
+  return fyll(h) + `</section>`;
 }
 
 function rita(){
@@ -512,7 +764,46 @@ document.addEventListener('click', e => {
   }
   const l = e.target.closest('[data-lage]'); if (l) { ST.lage = l.dataset.lage; if (ST.aktiv === 'klar') ST.aktiv = 0; spara(); rita(); }
 });
-document.getElementById('aterstall').addEventListener('click', () => { ST.bock = {}; ST.aktiv = 0; ST.lage = 'steg'; spara(); rita(); });
+document.getElementById('aterstall').addEventListener('click', () => { ST.bock = {}; ST.aktiv = 0; ST.lage = 'steg'; ST.site = ''; spara(); ritaVal(); rita(); });
+
+/* ------------------------------------------------------------------
+   Din granskning: granskare och område
+------------------------------------------------------------------- */
+const selG = document.getElementById('granskare'), annatRad = document.getElementById('annatRad'),
+      annat = document.getElementById('annatNamn'), inO = document.getElementById('omrade'),
+      infoO = document.getElementById('omradeInfo');
+document.getElementById('omradeLista').innerHTML = OMRADEN.map(o => `<option value="${o[0]} ${esc(o[1])}">`).join('');
+function ritaVal(){
+  const namn = [...GRANSKARE, ...ST.egna.filter(n => !GRANSKARE.includes(n))];
+  selG.innerHTML = `<option value="">Välj granskare…</option>` + namn.map(n => `<option${n === ST.granskare ? ' selected' : ''}>${esc(n)}</option>`).join('')
+    + `<option value="__annat">Annat namn…</option>`;
+  annatRad.hidden = true;
+  const o = omr();
+  inO.value = o ? `${o[0]} ${o[1]}` : '';
+  infoO.innerHTML = o
+    ? `<b>${esc(o[1])}</b> · ${o[0]} · batch ${o[2] || '–'} · ${o[3] || 'ingen prio'} · ${bevplanHtml(true) || 'ingen bevarandeplan i underlaget'} · <a href="#" id="rensaO">Byt område</a>`
+    : 'Välj område så fylls stegen i med rätt namn och länken till bevarandeplanen (steg 3).';
+}
+function uppd(){ spara(); const y = window.scrollY; rita(); window.scrollTo(0, y); }
+selG.addEventListener('change', () => {
+  if (selG.value === '__annat') { annatRad.hidden = false; annat.focus(); return; }
+  ST.granskare = selG.value; annatRad.hidden = true; uppd();
+});
+function laggTill(){
+  const n = annat.value.trim().replace(/\s+/g, ' '); if (!n) return;
+  if (!GRANSKARE.includes(n) && !ST.egna.includes(n)) ST.egna.push(n);
+  ST.granskare = n; annat.value = ''; ritaVal(); uppd();
+}
+document.getElementById('laggTill').addEventListener('click', laggTill);
+annat.addEventListener('keydown', e => { if (e.key === 'Enter') laggTill(); });
+inO.addEventListener('change', () => {
+  const v = inO.value.trim(), m = v.match(/SE\d{7}/i);
+  let o = m ? OMRADEN.find(x => x[0] === m[0].toUpperCase()) : OMRADEN.find(x => x[1].toLowerCase() === v.toLowerCase());
+  if (!o && v) { infoO.innerHTML = `Hittar inget område som heter <b>${esc(v)}</b>. Välj i listan som visas när du skriver.`; return; }
+  ST.site = o ? o[0] : ''; ritaVal(); uppd();
+});
+infoO.addEventListener('click', e => { if (e.target.id === 'rensaO') { e.preventDefault(); ST.site = ''; ritaVal(); uppd(); inO.focus(); } });
+ritaVal();
 
 // #steg-N i adressen öppnar det steget om det är upplåst
 (function(){
