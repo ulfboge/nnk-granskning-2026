@@ -138,6 +138,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <li><a href="#r7b-skog">R7B · Skog</a></li>
 <li><a href="#r7c-vatmark">R7C · Våtmark</a></li>
 <li><a href="#r7d-stabila">R7D · Stabila</a></li>
+<li><a href="#bevarandeplanen-som-underlag">Bevarandeplanen som underlag</a></li>
 <li><a href="#r7-omprovning-ytor-som-redan-har-status">R7-omprövning · ytor som redan har status</a></li>
 <li><a href="#pilot-innan-regeln-anvands-skarpt">Pilot innan regeln används skarpt</a></li>
 <li><a href="#oklart-i-nvs-underlag">Oklart i NV:s underlag</a></li>
@@ -162,8 +163,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.1 · 2026-10-06</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> grupperna i R7 heter Hävd, Skog, Våtmark och Stabila, och ny delregel för omprövning av befintlig status. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.2 · 2026-10-06</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> R7 anger när bevarandeplanen räknas som underlag för typ och tillstånd, och alla 197 planer har nu fastställelseår. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -438,7 +439,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td><code>bevarandeplan_ar</code> (Bevarandeplan, fastställd (år))</td>
-<td>Året då bevarandeplanen för N2000-området fastställdes. Tomt om det saknas bevarandeplan</td>
+<td>Året för bevarandeplanens gällande version (fastställd eller senast uppdaterad). Finns för alla 197 områden</td>
 <td>Kolumn K <em>År</em> (bevarandeplanens årtal) och kolumn L <em>Bevarandeplan (skrivbord)</em></td>
 </tr>
 <tr>
@@ -543,7 +544,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </blockquote>
 <p><strong>Varför:</strong> 6 847 av länets 7 673 delytor med Natura-naturtyp har <em>Ej bedömd status</em> (publika NNK-uttaget). De flesta kommer från BIDOS och har aldrig fått sin status satt. Handledningen säger att status ska uppdateras "om det är möjligt", och FAQ 13 godtar äldre underlag när risken för förändring är låg. Där underlaget räcker kan status alltså sättas vid skrivbordet.</p>
 <p><strong>Gäller:</strong> ytor med Natura-naturtyp och Naturtypsstatus 5. Gäller <strong>inte</strong> marina typer (1110–1170, FAQ 16/29) eller obestämda/osäkra koder — de behöver typbestämning först.</p>
-<p><strong>Förutsättning för alla grupper — typen ska vara rimlig.</strong> Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området, fältprotokoll eller fynd av typiska arter. Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (<em>Åtgärdas</em>) och en kommentar.</p>
+<p><strong>Förutsättning för alla grupper — typen ska vara rimlig.</strong> Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området (se <em>Bevarandeplanen som underlag</em> nedan), fältprotokoll eller fynd av typiska arter. Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (<em>Åtgärdas</em>) och en kommentar.</p>
 <p><strong>Registrering:</strong> Karteringsstatus 2 (R3), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.</p>
 <p><strong>Utfall:</strong> varje delregel ger <em>fullgod</em>, <em>icke fullgod</em> eller <em>till fält</em>. <em>Till fält</em> är ett fullgott utfall — FAQ 11 säger att man ska invänta NV:s och HaV:s metoder där tillståndet inte är tydligt (R4).</p>
 <div class="tabell"><table>
@@ -837,6 +838,39 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tbody>
 </table></div>
 <p><strong>Hällmarkstorräng och basiska berghällar</strong> (beslut 2026-09-29, efter NV:s vägledningar): 6110 är enligt vägledningen "i de flesta fall beroende av ett extensivt bete" och bedöms enligt R7A, liksom den hävdade undertypen 8231. 8232 (<em>Ej hävdberoende typ</em>) bedöms enligt R7D. 8230 utan undertyp bedöms på <strong>krontäckning och igenväxning</strong> — under 30 % krontäckning och ingen tydlig igenväxning i orto ger fullgod — eftersom vägledningen beskriver typen som störningsberoende men naturligt gles på grund av tunt jordlager och torka, särskilt vid kusten. Ligger en 8230-yta i betesmark eller ett TUVA-objekt prövas den även enligt R7A. Arbetsplanens lista över hävdberoende typer (bilaga 3) påverkas inte — den styr prioriteringen, inte bedömningen.</p>
+<h4 id="bevarandeplanen-som-underlag">Bevarandeplanen som underlag</h4>
+<p><em>Utkast 2026-10-06, del av R7.</em></p>
+<p>Popupen visar året för planens gällande version på raden <em>Bevarandeplan, fastställd (år)</em> (<code>bevarandeplan_ar</code>): fastställelsen, eller den senaste uppdateringen om planen uppdaterats. Året är utläst ur planerna själva och finns för alla 197 områden. 185 planer är från 2016 eller senare, 3 från 2014–2015 (två av dem är reservatens skötselplaner som också gäller som bevarandeplan) och 9 från 2005–2009.</p>
+<p><strong>Typen.</strong> Planen räknas som stöd för att typen är rimlig (förutsättningen ovan) bara om båda villkoren är uppfyllda:</p>
+<ol>
+<li>Den gällande versionen är fastställd <strong>efter karteringen</strong> av ytan. För BIDOS-ytor är karteringen i regel från 2009–2011.</li>
+<li>Planen bygger på <strong>eget underlag</strong> och upprepar inte bara basinventeringen eller regeringsbeslutet. Skriver planen att bedömningsunderlaget är bristfälligt, eller att inventering behövs för att avgöra om typen uppfyller kraven, räknas den inte som stöd för den typen.</li>
+</ol>
+<p>Det andra villkoret går bara att pröva i själva dokumentet. Läs därför planens avsnitt om typen och om bevarandeåtgärder (steg 3 i bedömningsguiden).</p>
+<p><strong>Tillståndet.</strong> Planens bevarandetillstånd per typ (<em>Gynnsamt</em>, <em>Ej gynnsamt</em>, <em>Okänt</em>; blankettens kolumn <em>Bevarandestatus</em>) är ett myndighetsomdöme från när planen skrevs. Planen säger sällan vad det bygger på, och ett bevarandemål är inte detsamma som gott tillstånd (NV:s preliminära vägledning 2026-09-02). Därför gäller samma åldersgränser som för TUVA:</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Planens ålder (gällande version)</th>
+<th>Så används tillståndet i R7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Högst 10 år</td>
+<td>Styrker utfallet men räcker aldrig ensamt för <em>fullgod</em>. <em>Ej gynnsamt</em>: pröva <em>icke fullgod</em> mot skiften, SkötselDOS och ortot, som en negativ notering i TUVA.</td>
+</tr>
+<tr>
+<td>11–15 år</td>
+<td>Styrker typen men inte tillståndet.</td>
+</tr>
+<tr>
+<td>Äldre än 15 år</td>
+<td>Räknas inte som aktuellt underlag för tillståndet.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Gränsen räknas från granskningsåret. 2027 passerar de 90 planerna från 2016 gränsen till 11–15 år.</p>
 <h4 id="r7-omprovning-ytor-som-redan-har-status">R7-omprövning · ytor som redan har status</h4>
 <p><em>Beslut 2026-10-06.</em></p>
 <p>Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 <em>Fullgod</em> eller 2 <em>Icke fullgod</em>. I länets NNK-uttag (2026-08-26) är det 838 ytor, de flesta från basinventeringen (BIDOS).</p>
@@ -1056,6 +1090,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.2</strong> (2026-10-06) — avsnitt 5, R7: nytt avsnitt <em>Bevarandeplanen som underlag</em> (när planen stöder typen, åldersgränser för planens tillstånd som för TUVA). Fastställelseåret för alla 197 planer utläst ur PDF:erna (<code>bevarandeplan_platser.csv</code>, skriptet <code>hamta_bevarandeplan_datum.py</code> i natura-2000).</li>
 <li><strong>2.1</strong> (2026-10-06) — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel <em>R7-omprövning</em> för ytor som redan har status.</li>
 <li><strong>2.0</strong> — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet.</li>
 <li><strong>1.9</strong> — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret.</li>
