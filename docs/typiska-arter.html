@@ -47,7 +47,7 @@ button:hover{color:var(--ink-1)}
 h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
 h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
  padding-bottom:6px;border-bottom:1px solid var(--grid)}
-h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
 h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
 p{margin:0 0 14px;max-width:74ch}
 ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
@@ -61,6 +61,10 @@ pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
 pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
@@ -87,37 +91,7 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="typiska-och-karakteristiska-arter-for-natura-2000-naturtyper">Typiska och karakteristiska arter för Natura 2000-naturtyper</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
-<ul>
-<li><a href="#sa-anvands-listan">Så används listan</a></li>
-<li><a href="#naturtyper-i-denna-sammanstallning">Naturtyper i denna sammanställning</a></li>
-<li><a href="#9010-taiga">9010 Taiga</a></li>
-<li><a href="#8230-hallmarkstorrang">8230 Hällmarkstorräng</a></li>
-<li><a href="#9070-tradkladd-betesmark">9070 Trädklädd betesmark</a></li>
-<li><a href="#6270-silikatgrasmarker">6270 Silikatgräsmarker</a></li>
-<li><a href="#9740-91d0-skogbevuxen-myr">9740 / 91D0 Skogbevuxen myr</a></li>
-<li><a href="#9080-lovsumpskog">9080 Lövsumpskog</a></li>
-<li><a href="#7140-oppna-mossar-och-karr">7140 Öppna mossar och kärr</a></li>
-<li><a href="#6410-fuktangar">6410 Fuktängar</a></li>
-<li><a href="#3150-naturligt-naringsrika-sjoar">3150 Naturligt näringsrika sjöar</a></li>
-<li><a href="#9020-nordlig-adellovskog">9020 Nordlig ädellövskog</a></li>
-<li><a href="#9050-naringsrik-granskog">9050 Näringsrik granskog</a></li>
-<li><a href="#8220-silikatbranter">8220 Silikatbranter</a></li>
-<li><a href="#6510-slatterangar-i-laglandet">6510 Slåtterängar i låglandet</a></li>
-<li><a href="#3160-myrsjoar">3160 Myrsjöar</a></li>
-<li><a href="#9060-asbarrskog">9060 Åsbarrskog</a></li>
-<li><a href="#6210-kalkgrasmarker">6210 Kalkgräsmarker</a></li>
-<li><a href="#9750-91e0-svamlovskog">9750 / 91E0 Svämlövskog</a></li>
-<li><a href="#3110-naringsfattiga-slattsjoar">3110 Näringsfattiga slättsjöar</a></li>
-<li><a href="#9160-naringsrik-ekskog">9160 Näringsrik ekskog</a></li>
-<li><a href="#7230-rikkarr">7230 Rikkärr</a></li>
-<li><a href="#6230-stagg-grasmarker">6230 Stagg-gräsmarker</a></li>
-<li><a href="#7110-hogmossar-inkl-delyta-7111-oppna-mosseplan">7110 Högmossar (inkl. delyta 7111 Öppna mosseplan)</a></li>
-<li><a href="#fynd-i-artportalen-per-yta-2026-09-29">Fynd i Artportalen per yta (2026-09-29)</a></li>
-<li><a href="#nasta-steg-forslag">Nästa steg (förslag)</a></li>
-</ul>
-</div>
-</nav>
+<h1 id="typiska-och-karakteristiska-arter-for-natura-2000-naturtyper">Typiska och karakteristiska arter för Natura 2000-naturtyper</h1>
 <p>Sammanställning till stöd för NNK-statusbedömning (gynnsam bevarandestatus, GYBS) och för fältet <strong>"Vad ska kontrollera → Typiska och karakteristiska arter"</strong> i <a href="metodik.html">metodiken</a>.</p>
 <p><strong>Källa:</strong> Naturvårdsverkets naturtypsvisa vägledningar, se <a href="https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/">Natura 2000 i Sverige</a> samt PDF-länk per naturtyp nedan.
 <strong>Sammanställd:</strong> 2026-08-21
@@ -136,7 +110,7 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="naturtyper-i-denna-sammanstallning">Naturtyper i denna sammanställning</h2>
 <p>Sorterade efter antal karterade delytor i länets N2000-områden (preliminär proxy för hur vanlig naturtypen är, inte för areal).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -279,7 +253,7 @@ tr:last-child td{border-bottom:0}
 <td><a href="https://www.naturvardsverket.se/4ac55e/contentassets/314d0c514b614f52901c298a9c6bec97/vl-7110-hogmossar.pdf">länk</a></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Övriga, mindre frekventa naturtyper i länets kartering (t.ex. 4030 Torra hedar, 3130 Ävjestrandsjöar, 6280 Alvar, 9180 Ädellövskog i branter, 6430 Högörtängar, 9110 Näringsfattig bokskog, 8210 Kalkbranter, 9030 Landhöjningsskog) finns inte med här men kan tas fram på samma sätt vid behov.</p>
 <hr />
 <h2 id="9010-taiga">9010 Taiga</h2>
@@ -442,7 +416,7 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="fynd-i-artportalen-per-yta-2026-09-29">Fynd i Artportalen per yta (2026-09-29)</h2>
 <p>Listorna ovan används av skriptet <code>natura-2000: scripts/analysis/artportalen_typiska_arter.py</code>. Det hämtar fynd från Artportalen via SLU Artdatabankens öppna API för en vald tidsperiod och räknar, för varje NNK-yta, vilka av ytans egna T- och K-arter som har fynd inom ytan.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Vad</th>
@@ -475,7 +449,7 @@ tr:last-child td{border-bottom:0}
 <td>Gratis API-nyckel från api-portal.artdatabanken.se, i miljövariabeln <code>ARTDATABANKEN_KEY</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Så läses resultatet:</strong> fynd av typiska arter stödjer bedömningen gott tillstånd. Frånvaro av fynd betyder oftast att ingen har letat, så det är aldrig ensamt ett skäl för <em>icke gott</em>. Skyddsklassade fynd ingår inte i det öppna API:t. Namn som är felstavade i listorna ovan ger aldrig träff — fliken <em>Arter</em> visar vilka listnamn som faktiskt matchat.</p>
 <h2 id="nasta-steg-forslag">Nästa steg (förslag)</h2>
 <ol>

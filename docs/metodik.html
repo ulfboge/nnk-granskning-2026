@@ -47,7 +47,7 @@ button:hover{color:var(--ink-1)}
 h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
 h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
  padding-bottom:6px;border-bottom:1px solid var(--grid)}
-h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
 h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
 p{margin:0 0 14px;max-width:74ch}
 ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
@@ -61,6 +61,10 @@ pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
 pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
@@ -87,38 +91,11 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
-<ul>
-<li><a href="#metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</a></li>
-<li><a href="#1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</a></li>
-<li><a href="#2-vad-nnk-uttaget-sager-om-problemets-storlek">2. Vad NNK-uttaget säger om problemets storlek</a></li>
-<li><a href="#3-flodet-tva-steg-inte-ett">3. Flödet — två steg, inte ett</a></li>
-<li><a href="#4-faltmappning-vilken-uppgift-hamnar-var">4. Fältmappning — vilken uppgift hamnar var</a></li>
-<li><a href="#5-beslutsregler-dar-det-gar-fel">5. Beslutsregler — där det går fel</a><ul>
-<li><a href="#r1-igenvaxning-pa-grund-av-utebliven-skotsel-andrar-inte-livsmiljotypen">R1. Igenväxning på grund av utebliven skötsel ändrar inte livsmiljötypen</a></li>
-<li><a href="#r2-forandringsorsak-nastan-aldrig-kod-2">R2. Förändringsorsak — nästan aldrig kod 2</a></li>
-<li><a href="#r3-karteringsstatus-speglar-underlaget-inte-din-anstrangning">R3. Karteringsstatus speglar underlaget, inte din ansträngning</a></li>
-<li><a href="#r4-osakerhet-dokumenteras-den-gissas-inte-bort">R4. Osäkerhet dokumenteras, den gissas inte bort</a></li>
-<li><a href="#r5-utvecklingsmark-har-tva-formella-krav">R5. Utvecklingsmark har två formella krav</a></li>
-<li><a href="#r6-utpekade-livsmiljotyper-har-ett-sarskilt-skydd">R6. Utpekade livsmiljötyper har ett särskilt skydd</a></li>
-<li><a href="#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">R7. Regelstyrd skrivbordsbedömning av naturtypsstatus — UTKAST</a></li>
-</ul>
-</li>
-<li><a href="#6-datering-det-som-gloms-bort">6. Datering — det som glöms bort</a></li>
-<li><a href="#7-sa-lagger-du-upp-samtalet">7. Så lägger du upp samtalet</a></li>
-<li><a href="#8-omradesidentitet-lost-men-bara-for-den-publika-versionen">8. Områdesidentitet — löst, men bara för den publika versionen</a></li>
-<li><a href="#9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</a><ul>
-<li><a href="#teknisk-uppkoppling-nnk-i-arcgis-pro">Teknisk uppkoppling — NNK i ArcGIS Pro</a></li>
-</ul>
-</li>
-<li><a href="#10-vad-detta-ger-till-arets-leverans">10. Vad detta ger till årets leverans</a></li>
-</ul>
-</div>
-</nav>
+<h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <h2 id="metodik-for-att-fanga-in-och-registrera-naturvardsenhetens-kunskap-om-livsmiljotyper">Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</h2>
-<p><strong>Datum:</strong> 2026-10-02
+<p><strong>Datum:</strong> 2026-10-06
 <strong>Gäller:</strong> Natura 2000-områden och statliga naturreservat i Södermanlands län
-<strong>Version:</strong> 2.0 — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet. Version 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
+<strong>Version:</strong> 2.1 — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel <em>R7-omprövning</em> för ytor som redan har status. Version 2.0 — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet. Version 1.9 — avsnitt 5, R7A: SkötselDOS (utförd bete/slåtter och uppföljning av målindikatorer) som fält i granskningslagret. Version 1.8 — avsnitt 5, R7B och R7C: laserdata (Skogsstyrelsens Skogliga grunddata, två omdrev) och diken som fält i granskningslagret, med tabell för hur de används. Version 1.7 — avsnitt 5, R7A: TUVA som fält i granskningslagret och hur det används tillsammans med skiftena (TUVA äldre än 15 år ger <em>till fält</em> om inget annat underlag finns). Version 1.6 — avsnitt 5, R7A: hävd enligt jordbruksskiften som underlag (fältet <code>havd_skiften</code> i granskningslagret). Version 1.5 — avsnitt 5: ny regel R7 (utkast) för regelstyrd skrivbordsbedömning av naturtypsstatus. Version 1.4 — avsnitt 4 och 7: nya fält i granskningslagret (<code>forandringsorsak_forslag</code> samt de skrivskyddade stödfälten <code>prio</code>, <code>bevarandeplan_ar</code>, <code>area_ha</code>, <code>naturtyp_kod_text</code>) och blankettens kolumner Bevarandestatus/År. Version 1.3 — avsnitt 2, 3 och 8 uppdaterade: länsuttaget ur NNK Ajourhålla hämtades 2026-08-26 och granskningslagret för D-län är byggt och publicerat — väntar inte längre på detta
 <strong>Bygger på:</strong> Handledning för NNK (NV, 2026-07-03, NV-26-002862) · Lathund granskning WebbGIS-KartLitS (2026-07-10) · FAQ om uppdraget v1.1 (2026-07-03) · NNK publik produktbeskrivning · Manual NNK mall för granskning (KartLitS-mallzippen) · NNK i ArcGIS Pro, arbetsbeskrivning v1.5</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -140,7 +117,7 @@ tr:last-child td{border-bottom:0}
 <p><strong>Konsekvens:</strong> allt som rör grunder, kommentarer och vem som gjort vad går inte att läsa ur den publika exporten — det krävde ett uttag ur <strong>NNK Ajourhålla</strong> via ArcGIS Pro. Ett sådant länsuttag hämtades <strong>2026-08-26</strong> (se avsnitt 8–9) och innehåller <code>kommentar</code>, <code>nnk_kommentar</code> samt redigeringshistorik (<code>created_user</code>/<code>last_edited_user</code>/<code>last_edited_date</code>). Den publika versionen duger fortfarande bäst för en snabb översikt av utbredning, naturtyp, status och datum — frågor om grund och spårbarhet besvaras nu ur länsuttaget, inte genom att vänta på ett nytt.</p>
 </blockquote>
 <p>Följande går däremot att läsa direkt ur den publika versionen, eftersom dessa fält inte strippas:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Observation</th>
@@ -185,7 +162,7 @@ tr:last-child td{border-bottom:0}
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.</strong> Någon har varit på plats — och tillståndet finns inte i NNK. Det är den snabbaste vinsten i hela uppdraget och kräver inget nytt fältarbete, bara att någon letar rätt på protokollet. Kontrollera <code>kommentar</code>-fältet för just dessa ytor i länsuttaget från Ajourhålla (hämtat 2026-08-26, se avsnitt 8) — där kan grunden redan stå.</p>
 <p><strong>b) 141 ytor har karteringsstatus 5 "Åtgärdas".</strong> Här skiljer sig de två källorna åt, och båda betydelserna är relevanta:</p>
 <ul>
@@ -193,7 +170,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Handledningen 2026</strong> (tabell 7) beskriver den som länsstyrelsens administrativa stöd för ytor man bör återkomma till, och som <em>ska</em> kompletteras med en kommentar.</li>
 </ul>
 <p>Datat pekar entydigt på den första: 139 av 141 har ursprung BIDOS, samtliga redigerades 2007–2008 (tre stycken 2019), och alla har naturtypsstatus 5. Det här är alltså <strong>basinventeringens egen markering "vi kunde inte bestämma naturtypen här" — en dokumenterad kunskapslucka som stått öppen i nitton år.</strong> Efter koppling till områdesidentitet (avsnitt 8) visar de sig ligga koncentrerat i sju objekt:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Objekt</th>
@@ -246,7 +223,7 @@ tr:last-child td{border-bottom:0}
 <td>7110 högmossar (3)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Fördelningen är talande: nästan uteslutande hävdberoende marker — precis den kategori FAQ fråga 11 sätter högst. Och den ligger i objekt som redan är prioritet 1 i arbetsplanen. <strong>Det gör listan till den bästa öppningsfrågan i ett förvaltarsamtal.</strong></p>
 <p><strong>c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.</strong> Ni ska ange <em>vad som ligger till grund för bedömningen av utbredning</em>, <em>vad som ligger till grund för bedömningen av tillstånd</em>, och <em>hur aktuella dessa två bedömningar är</em>. Detta går nu att kontrollera direkt i länsuttaget från 2026-08-26 (se avsnitt 8) — det avgör om detta är en lucka eller bara var osynlig i den publika exporten. Oavsett svar gäller regeln framåt: ingen ytredigering bör lämna kommentarsfältet tomt.</p>
 <hr />
@@ -280,7 +257,7 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="4-faltmappning-vilken-uppgift-hamnar-var">4. Fältmappning — vilken uppgift hamnar var</h2>
 <p>Kolumnnamnen i blanketten (<code>blankett_forvaltarkunskap_nnk.xlsx</code>) är valda så att de mappar rakt av.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Vad förvaltaren berättar</th>
@@ -375,10 +352,10 @@ tr:last-child td{border-bottom:0}
 <td><code>KOMMENTAR</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><code>forandringsorsak_forslag</code> är granskarens eget förslag och ligger i formulärgruppen <em>1. Avvikelse och korrigeringsförslag</em>. Det är skilt från det skrivskyddade källfältet <code>forandringsorsak</code>, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.</p>
 <p><strong>Skrivskyddade stödfält.</strong> Granskningslagret har också några fält som länets egen pipeline fyller i (<code>jobbdator_koppla_nnk_skyddskategori.py</code>). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält (alias)</th>
@@ -408,7 +385,7 @@ tr:last-child td{border-bottom:0}
 <td>Kolumn D–E <em>Kod</em>, <em>Livsmiljötyp</em></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Blankettens kolumn J <em>Bevarandestatus</em> (bevarandetillståndet enligt bevarandeplanen) har ingen egen motsvarighet i lagret. Den är ett skrivbordsunderlag inför bedömningen av <code>tillstand</code> och är inget facit. Sedan blankettversion 1.9 finns alla 197 Natura 2000-objekt med, även de som saknar terrester livsmiljötyp (P4 m.fl.).</p>
 <p><strong>Kodvärden för <code>Vad ska kontrolleras</code></strong> (från lathunden, tre likadana rullistor så flera val går att göra): Typiska och karakteristiska arter · Strukturer · Hävd · Funktioner (hydrologi, störningar) · Morfologi (jordart, formationer) · Annan negativ påverkan</p>
 <p><em>Se <a href="typiska-arter.html">Typiska och karakteristiska arter</a> för artlistor per naturtyp, som stöd när detta väljs.</em></p>
@@ -426,7 +403,7 @@ tr:last-child td{border-bottom:0}
 <p>Konsekvensen om man gör fel: länets areal av hävdberoende livsmiljötyper krymper på papperet, restaureringsbehovet försvinner ur statistiken, och NRF-uppföljningen visar en förbättring som inte finns.</p>
 <h3 id="r2-forandringsorsak-nastan-aldrig-kod-2">R2. Förändringsorsak — nästan aldrig kod 2</h3>
 <p>Handledningen 5.4: attributet finns <em>"för att kunna identifiera och sammanställa verkliga arealförändringar för livsmiljötyper från kvalitetsförbättrande åtgärder i databasen"</em>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Situation</th>
@@ -447,10 +424,10 @@ tr:last-child td{border-bottom:0}
 <td><strong>2 – Faktisk förändring av bevarandestatus/naturtypsareal</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Nästan all förvaltarkunskap är <strong>kod 3</strong>. Slarvar du och sätter kod 2 rapporterar länet in arealförändringar som aldrig hänt.</p>
 <h3 id="r3-karteringsstatus-speglar-underlaget-inte-din-anstrangning">R3. Karteringsstatus speglar underlaget, inte din ansträngning</h3>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Underlag</th>
@@ -475,7 +452,7 @@ tr:last-child td{border-bottom:0}
 <td><strong>5 – Åtgärdas</strong> + obligatorisk kommentar</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Handledningen är tydlig med att kod 2 förutsätter att <em>"underlaget som använts bedöms vara så aktuellt att uppgifterna fortfarande är giltiga"</em>. En förvaltares minnesbild från 2015 av en hävdberoende mark är sannolikt inte aktuell — då är svaret okänt tillstånd plus kod 5, inte en gissning.</p>
 <h3 id="r4-osakerhet-dokumenteras-den-gissas-inte-bort">R4. Osäkerhet dokumenteras, den gissas inte bort</h3>
 <blockquote>
@@ -502,34 +479,37 @@ tr:last-child td{border-bottom:0}
 <p><strong>Förutsättning för alla grupper — typen ska vara rimlig.</strong> Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området, fältprotokoll eller fynd av typiska arter. Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (<em>Åtgärdas</em>) och en kommentar.</p>
 <p><strong>Registrering:</strong> Karteringsstatus 2 (R3), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.</p>
 <p><strong>Utfall:</strong> varje delregel ger <em>fullgod</em>, <em>icke fullgod</em> eller <em>till fält</em>. <em>Till fält</em> är ett fullgott utfall — FAQ 11 säger att man ska invänta NV:s och HaV:s metoder där tillståndet inte är tydligt (R4).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
-<th>Grupp</th>
+<th>Grupp (regel)</th>
 <th>Typer</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>A</strong> Hävdberoende</td>
+<td><strong>Hävd</strong> (R7A)</td>
 <td>1630, 4030, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6430, 6510, 8231, 9070, 9071, 9072</td>
 </tr>
 <tr>
-<td><strong>B</strong> Skog</td>
+<td><strong>Skog</strong> (R7B)</td>
 <td>2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750</td>
 </tr>
 <tr>
-<td><strong>C</strong> Myr, våtmark, sjö</td>
+<td><strong>Våtmark</strong> (R7C) — myr, våtmark, sjö</td>
 <td>3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231</td>
 </tr>
 <tr>
-<td><strong>D</strong> Stabila</td>
+<td><strong>Stabila</strong> (R7D) — strand, klippa, skär</td>
 <td>1220, 1230, 1232, 1620, 1621, 1640, 8210, 8220, 8230, 8232</td>
 </tr>
 </tbody>
-</table>
-<p><strong>R7A Hävdberoende</strong></p>
-<table>
+</table></div>
+<blockquote>
+<p><strong>Grupp är inte batch.</strong> Batcherna S, A, B, C och D i arbetsplanen är arbetsordningen per Natura 2000-område. Grupperna ovan avgör vilken delregel som gäller för en enskild yta, och ett område innehåller ytor från flera grupper. Gruppen visas i popupen som <em>Bedömningsgrupp (R7)</em>.</p>
+</blockquote>
+<p><strong>R7A · Hävd</strong></p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Utfall</th>
@@ -550,9 +530,9 @@ tr:last-child td{border-bottom:0}
 <td>Underlagen motsäger varandra; BIDOS-typ utan TUVA eller med TUVA äldre än 15 år; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag).</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Underlag för hävden — jordbruksskiften.</strong> Granskningslagret har fältet <em>Hävd enligt jordbruksskiften</em> (<code>havd_skiften</code>), framräknat ur Jordbruksverkets årslager av jordbruksskiften 2015–2025 (grödkoder för bete och slåtter). Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Värde</th>
@@ -582,10 +562,10 @@ tr:last-child td{border-bottom:0}
 <td>Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — <em>till fält</em> om inget annat underlag finns.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><em>Vall senaste året</em> (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.</p>
 <p><strong>Underlag för hävden — TUVA.</strong> Granskningslagret har också TUVA-fält (<code>tuva_objekt_id</code>, <code>tuva_inv_ar</code>, <code>tuva_havdstatus</code>, <code>tuva_havdregim</code>, <code>tuva_igenvaxning</code>, <code>tuva_naturtyp</code>, <code>tuva_paverkan</code>). De kommer från Jordbruksverkets ängs- och betesmarksinventering, senaste inventering per objekt (uttag 2026-08-21), och kopplas till den NNK-yta som objektet överlappar mest, med samma tröskel som för sitecode (minst 1 % av ytan eller 0,25 ha). 2 425 av länets 15 837 ytor har träff, och 1 964 av dem inventerades före 2011. TUVA beskriver marken som den var vid inventeringen, skiftena visar om den hävdats år för år 2015–2025. Använd dem tillsammans:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Läge</th>
@@ -618,10 +598,10 @@ tr:last-child td{border-bottom:0}
 <td>T.ex. skiften <em>Ja</em> och TUVA <em>Ingen hävd</em>, eller skiften <em>Nej</em> och TUVA <em>Välhävdad</em>: <em>till fält</em>.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (<code>tuva_antal_objekt</code> &gt; 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i <code>tuva_naturtyp</code> gäller hela TUVA-objektet, inte NNK-ytan. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken <em>Öppna i TUVA</em> i popupen).</p>
 <p><strong>Underlag för hävden — SkötselDOS.</strong> Sedan 2026-10-01 har granskningslagret fält ur Metrias SkötselDOS-uttag. <code>skdos_havd_typ</code> och <code>skdos_havd_senaste_ar</code> visar utförd bete eller slåtter enligt reservatsförvaltningen (486 ytor, 159 hävdberoende). Det är det underlag som skiftena saknar för bete utan stöd. <code>uppf_*</code> sammanfattar uppföljningspunkterna för naturtyper (målindikatorer, 2015–2022) inom ytan (101 ytor).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Läge</th>
@@ -650,10 +630,10 @@ tr:last-child td{border-bottom:0}
 <td>Stöd för <em>fullgod</em>, om uppföljningen är högst 10 år gammal.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Åtgärder i SkötselDOS är ibland ritade större än den yta som faktiskt betas. Åtgärder på 200 ha eller mer är därför bortfiltrerade, men en stor fålla kan fortfarande täcka skog som inte betas.</p>
-<p><strong>R7B Skog</strong></p>
-<table>
+<p><strong>R7B · Skog</strong></p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Utfall</th>
@@ -674,14 +654,14 @@ tr:last-child td{border-bottom:0}
 <td>Ingen synlig påverkan, men strukturerna går inte att bedöma vid skrivbordet (t.ex. död ved i 9010 och 9050 enligt de nya kraven, se nedan).</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Undantag: 9010 och 9050 kan inte bli fullgod vid skrivbordet.</strong> Gäller 9010 med undertyperna 9006, 9008 och 9009, 9050, och den obestämda koden 9830 (9050/9010). Enligt NV:s vägledningar från 2026-02-19 ska en förekomst uppfylla <em>samtliga</em> klassningskrav för att vara livsmiljötypen. Död ved är ett av dem, alltså ett krav för typen och inte bara en del av tillståndet:</p>
 <ul>
 <li><strong>9010 Taiga:</strong> en påtaglig mängd död ved som har varit död längre än ett år (bedöms efter de ekologiska förutsättningarna på platsen), och död ved av särskild betydelse för taigans arter, t.ex. grov död ved, förrötade lågor, ved i flera nedbrytningsstadier, senvuxen eller brandpåverkad ved. Kvalitetskravet gäller inte lövsuccessioner, mängdkravet gäller alltid.</li>
 <li><strong>9050 Örtrik skog med gran:</strong> död ved som har varit död längre än ett år och som är av olika kvaliteter.</li>
 </ul>
 <p>Död ved går inte att fastställa vid skrivbordet, varken i laserdata, orto eller registren. Därför:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Läge</th>
@@ -702,10 +682,10 @@ tr:last-child td{border-bottom:0}
 <td><em>Till fält</em>, med kommentaren <em>typen trolig, död ved ej kontrollerad</em>. Prioritera ytan i fält.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas om mot 2026-kriterierna ställs till NV via KartlitsN2000. Tills svar finns behandlas alla 9010- och 9050-ytor enligt tabellen ovan.</p>
-<p><strong>Underlag för skogen — laserdata.</strong> Granskningslagret har laserfält för skogsytorna (grupp B, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.</p>
-<table>
+<p><strong>Underlag för skogen — laserdata.</strong> Granskningslagret har laserfält för skogsytorna (gruppen Skog, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.</p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält</th>
@@ -735,14 +715,14 @@ tr:last-child td{border-bottom:0}
 <td>Flaggad yta prövas mot orto och Skogsstyrelsens underlag. Bekräftas ingreppet efter karteringen: <em>icke fullgod</em>. Kan orsaken vara naturlig störning (storm, brand, insekter): <em>till fält</em>, eftersom det kan vara en del av typens dynamik. Tom flagga är inget belägg för att inget har hänt, se nedan.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><em>Avverkning och gallring.</em> Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är förslag. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. De övriga 57 kan vara naturliga störningar, naturvårdsåtgärder eller ingrepp som är för små för satellitdetekteringen, och ska kontrolleras i orto. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (<em>SKS Trädhöjd 3_1</em>, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.</p>
 <p><strong>Begränsningar:</strong>
 - <strong>Död ved</strong> syns inte tillförlitligt i laserdata. För 9010 och 9050 är död ved ett klassningskrav (vägledningarna februari 2026). Laserdata kan stödja sluten äldre skog, men utfallet blir alltid <em>till fält</em>, se undantaget ovan.
 - <strong>Trädslag.</strong> Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
 - <strong>Lövat eller olövat läge.</strong> Delar av länet skannades 2010 i lövat läge och allt 2020–2023 i olövat. I lövträd ger det skenbar sänkning och minskad grundyta. I lövdominerade typer (9020, 9080, 9110, 9160, 9162, 9180, 9190, 9750) där den äldsta skanningen var lövad ersätts därför flaggan med <em>Osäker (lövat/olövat)</em> (115 ytor). Pröva dem i orto.</p>
-<p><strong>R7C Myr, våtmark, sjö</strong></p>
-<table>
+<p><strong>R7C · Våtmark</strong></p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Utfall</th>
@@ -763,11 +743,11 @@ tr:last-child td{border-bottom:0}
 <td>VISS saknar klassning; rikkärr (7230) generellt.</td>
 </tr>
 </tbody>
-</table>
-<p><strong>Underlag för diken.</strong> Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (grupp B) och myrarna i grupp C (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): <code>diken_m_inom</code> (meter dike inom ytan) och <code>diken_m_50m</code> (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger <em>icke fullgod</em>. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som <em>i anslutning till ytan</em>.</p>
+</table></div>
+<p><strong>Underlag för diken.</strong> Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (gruppen Skog) och myrarna i gruppen Våtmark (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): <code>diken_m_inom</code> (meter dike inom ytan) och <code>diken_m_50m</code> (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger <em>icke fullgod</em>. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som <em>i anslutning till ytan</em>.</p>
 <p>Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.</p>
-<p><strong>R7D Stabila typer</strong></p>
-<table>
+<p><strong>R7D · Stabila</strong></p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Utfall</th>
@@ -788,10 +768,48 @@ tr:last-child td{border-bottom:0}
 <td>Sällan.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Hällmarkstorräng och basiska berghällar</strong> (beslut 2026-09-29, efter NV:s vägledningar): 6110 är enligt vägledningen "i de flesta fall beroende av ett extensivt bete" och bedöms enligt R7A, liksom den hävdade undertypen 8231. 8232 (<em>Ej hävdberoende typ</em>) bedöms enligt R7D. 8230 utan undertyp bedöms på <strong>krontäckning och igenväxning</strong> — under 30 % krontäckning och ingen tydlig igenväxning i orto ger fullgod — eftersom vägledningen beskriver typen som störningsberoende men naturligt gles på grund av tunt jordlager och torka, särskilt vid kusten. Ligger en 8230-yta i betesmark eller ett TUVA-objekt prövas den även enligt R7A. Arbetsplanens lista över hävdberoende typer (bilaga 3) påverkas inte — den styr prioriteringen, inte bedömningen.</p>
+<p><strong>R7-omprövning · ytor som redan har status</strong> (beslut 2026-10-06)</p>
+<p>Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 <em>Fullgod</em> eller 2 <em>Icke fullgod</em>. I länets NNK-uttag (2026-08-26) är det 838 ytor, de flesta från basinventeringen (BIDOS).</p>
+<p><em>Statusen är inte daterad i sig.</em> Den visar bedömningen när den gjordes. Hur gammal den är får läsas ur andra fält. De tre första står i popupen under <em>Naturtyp (NNK-data)</em>; sektionen <em>Bedömning vid skrivbordet (R7)</em> sammanfattar dem på raden <em>Statusens ålder</em>:</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Vad det säger om åldern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slutdatum senaste inventering</td>
+<td>Rätt fält för när typen och statusen senast bedömdes. Tomt för nästan alla ytor än så länge.</td>
+</tr>
+<tr>
+<td>Ursprung</td>
+<td><em>BIDOS</em> betyder att statusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal.</td>
+</tr>
+<tr>
+<td>Attribut senast ändrade (<code>last_edited_date</code>, i <em>Statusens ålder</em>)</td>
+<td>Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då.</td>
+</tr>
+<tr>
+<td>Karteringsstatus</td>
+<td><em>Hur</em> bedömningen gjordes (2 skrivbord, 3 besök, 4 inventering), inte <em>när</em>. <em>Granskad vid skrivbordet</em> betyder att typ och status senast sattes utan fältbesök.</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Regeln:</em></p>
+<ol>
+<li><strong>Den befintliga statusen är inget belägg för sig själv.</strong> Att vid skrivbordet bekräfta en status från 2009 utan nytt underlag är ett antagande, inte en bedömning.</li>
+<li><strong>Bekräfta</strong> (behåll statusen och föreslå nytt slutdatum) bara när underlag som är <em>nyare än statusen</em> uppfyller samma villkor som delregeln för gruppen kräver för det utfallet. En hävdyta med <em>Fullgod</em> bekräftas alltså bara med obruten hävd i skiften eller SkötselDOS, ett orto utan igenväxning och TUVA högst 10 år gammal (R7A). 9010 och 9050 kan inte bekräftas som <em>fullgod</em> vid skrivbordet (R7B).</li>
+<li><strong>Föreslå ändrad status</strong> bara när nyare underlag tydligt visar något annat, till exempel <em>Fullgod</em> → <em>Icke fullgod</em> när skiftena visar <em>Nej</em> och ortot visar igenväxning. För utpekade typer gäller FAQ 19 (R6): ändra bara vid uppenbart fel eller faktisk förändring. <em>Icke fullgod</em> → <em>Fullgod</em> kräver samma underlag som punkt 2.</li>
+<li><strong>Räcker inte underlaget:</strong> låt statusen stå, föreslå inget nytt slutdatum och skriv i <em>Kommentar – Tillstånd</em>: "Status från BIDOS/[år] ej omprövad — [vad som saknas]". Fyll i <em>Vad ska kontrolleras</em> och <em>Metod för kontroll</em>. Det är ett godtagbart utfall (FAQ 22, R4).</li>
+<li><strong>Kommentaren</strong> anger "R7-omprövning", delregeln och källor med år, t.ex. "R7-omprövning R7A: bekräftad fullgod — skiften Ja 2015–2025, orto 2023, TUVA 2019".</li>
+</ol>
+<p>Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.</p>
 <p><strong>Ytor med gammal fältdata:</strong> 277 ytor har Karteringsstatus 3 eller 4 men ändå <em>Ej bedömd status</em>. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.</p>
-<p><strong>Pilot innan regeln används skarpt:</strong> grupp A i batch B (ängs- och hagmark i inlandet), 100 ytor med <em>Ej bedömd status</em>. 30 av dem fältkontrolleras, slumpat men med fler ur <em>icke fullgod</em> och <em>till fält</em>. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.</p>
+<p><strong>Pilot innan regeln används skarpt:</strong> hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med <em>Ej bedömd status</em>. 30 av dem fältkontrolleras, slumpat men med fler ur <em>icke fullgod</em> och <em>till fält</em>. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.</p>
 <p><strong>Oklart i NV:s underlag:</strong>
 - Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
 - NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.</p>
@@ -834,7 +852,7 @@ tr:last-child td{border-bottom:0}
 <h2 id="8-omradesidentitet-lost-men-bara-for-den-publika-versionen">8. Områdesidentitet — löst, men bara för den publika versionen</h2>
 <p>Varken <code>natura-2000: docs/underlag/kartering.csv</code> eller <code>natura-2000: docs/underlag/naturtypskarta/NNK_YTA</code> innehåller något områdes-ID. Det är inget fel i din export — den publika NNK har helt enkelt inte fältet. Kopplingen görs i stället geometriskt.</p>
 <p><strong>Detta är gjort:</strong> <code>natura-2000: scripts/analysis/koppla_omraden.py</code> hämtar det rikstäckande SCI-lagret från Naturvårdsregistret, filtrerar till Södermanland (197 områden) och kopplar varje NNK-yta till det Natura 2000-område den har störst arealöverlapp med.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Resultat</th>
@@ -863,11 +881,11 @@ tr:last-child td{border-bottom:0}
 <td>82 — <code>andel_inom &lt; 0,95</code>; karteringen går ibland utanför gränsen, vilket produktbeskrivningen avsnitt 2.2 varnar för</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Validering:</strong> summan av den klippta arealen inom Natura 2000 blir 44 798 ha, mot 44 852 ha i Naturvårdsverkets statistikuttag per 2026-01-20. Avvikelsen är 0,1 % och beror på att gränserna hämtats vid olika tillfällen. Kopplingen håller.</p>
 <p>Utdata: <code>data/nnk/nnk_yta_med_sitecode.gpkg</code> och <code>.csv</code> med fälten <code>SITECODE</code>, <code>OMRADE</code>, <code>BEVPLAN</code> (direktlänk till bevarandeplanen), <code>area_ha</code>, <code>overlapp_ha</code>, <code>andel_inom</code> och <code>antal_omraden</code>.</p>
 <p><strong>Det som återstår:</strong></p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Behov</th>
@@ -892,7 +910,7 @@ tr:last-child td{border-bottom:0}
 <td>Finns i länsuttaget från 2026-08-26</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Länsuttaget ur Ajourhålla finns sedan 2026-08-26 och spårbarheten på polygonnivå finns nu i granskningslagret. Kvar av tabellen ovan är <code>NVRID</code> för ytorna utanför N2000 (naturreservatsspåret) och <code>habitat_period_lastdata_*</code>, som fylls i takt med förvaltarsamtalen.</p>
 <hr />
 <h2 id="9-innan-incheckning-i-nnk">9. Innan incheckning i NNK</h2>
@@ -927,7 +945,7 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2 id="10-vad-detta-ger-till-arets-leverans">10. Vad detta ger till årets leverans</h2>
 <p>FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt till fyra av dem:</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>FAQ-fråga</th>
@@ -952,7 +970,7 @@ tr:last-child td{border-bottom:0}
 <td>Skiljelinjen blir konkret när man vet vad som redan är känt</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <p><em>Metodik v1.3 · 2026-09-11 · hör ihop med <code>docs/arbetsplan.md</code> (arbetspaket H), <code>docs/webbgis-publicering.md</code>, <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> och <code>natura-2000: scripts/analysis/koppla_omraden.py</code></em></p>
 </div>

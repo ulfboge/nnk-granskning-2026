@@ -1,10 +1,10 @@
 # Runbook NNK/NRF 2026 — steg för steg
 
-## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
+*Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
 **Datum:** 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
 **Omfattning:** 65 uppgifter i 7 arbetspaket, 307 konkreta steg  
-**Hör ihop med:** `docs/arbetsplan.md` (varför) · `kontrollrum.html` (överblick och avbockning) · `docs/metodik.md` (förvaltardialogen)
+**Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
 
@@ -12,7 +12,7 @@
 
 Arbetsplanen säger *varför* och *när*. Det här dokumentet säger *hur*. Varje uppgift har ett id som matchar kontrollrummet och arbetsplanen, och stegen är skrivna för att gå att följa rakt av.
 
-Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer rollfördelningen i arbetsplanens avsnitt 6.1.
+Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller **[Båda]** följer rollfördelningen i arbetsplanens avsnitt 6.1. Där texten nämner *Johans dator* eller det privata natura-2000-repot gäller steget bara Johan — andra kan hoppa över det.
 
 ---
 
@@ -22,27 +22,27 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
-| [A1.1 · Beställ och verifiera systembehörigheter](#a11-bestall-och-verifiera-systembehorigheter) | v34–v35 | Handläggare | – | – |
-| [A1.2 · Verifiera att NNK-utcheckning fungerar mot ett testobjekt](#a12-verifiera-att-nnk-utcheckning-fungerar-mot-ett-testobjekt) | v35 | Handläggare | A1.1 | – |
-| [A1.3 · Åtkomst till samverkansytan för Livsmiljötyper](#a13-atkomst-till-samverkansytan-for-livsmiljotyper) | v34 | Handläggare | – | – |
+| [A1.1 · Beställ och verifiera systembehörigheter](#a11-bestall-och-verifiera-systembehorigheter) | v34–v35 | Johan | – | – |
+| [A1.2 · Verifiera att NNK-utcheckning fungerar mot ett testobjekt](#a12-verifiera-att-nnk-utcheckning-fungerar-mot-ett-testobjekt) | v35 | Johan | A1.1 | – |
+| [A1.3 · Åtkomst till samverkansytan för Livsmiljötyper](#a13-atkomst-till-samverkansytan-for-livsmiljotyper) | v34 | Johan | – | – |
 | [A2.1 · Läs handledningen och lathunden](#a21-las-handledningen-och-lathunden) | v34 | Båda | – | – |
-| [A2.2 · Gå igenom kodlistan](#a22-ga-igenom-kodlistan) | v35 | Handläggare | A1.3 | – |
-| [A2.3 · Installera KartLitS GIS-mall och testa den](#a23-installera-kartlits-gis-mall-och-testa-den) | v35 | Handläggare | A1.2 | – |
-| [A2.4 · Hämta fastställda vägledningar — kontrollera status](#a24-hamta-faststallda-vagledningar-kontrollera-status) | v36 | Handläggare | – | – |
-| [A2.5 · Begär datauttag för D-län](#a25-begar-datauttag-for-d-lan) | v35 | Handläggare | – | – |
-| [A2.6 · Kopiera in uttaget i mallen](#a26-kopiera-in-uttaget-i-mallen) | v37 | Handläggare | A2.3, A2.5 | – |
-| [A2.7 · Publicera granskningslagret i portalen](#a27-publicera-granskningslagret-i-portalen) | v37 | Handläggare | A2.6 | – |
-| [A2.8 · Skapa webbGIS från de publicerade lagren](#a28-skapa-webbgis-fran-de-publicerade-lagren) | v37 | Handläggare | A2.7 | – |
-| [A3.1 · Avstämning med chef](#a31-avstamning-med-chef) | v35 | Handläggare | – | – |
-| [A3.2 · Kartlägg förvaltaransvaret på Naturvårdsenheten](#a32-kartlagg-forvaltaransvaret-pa-naturvardsenheten) | v36 | Handläggare | – | – |
+| [A2.2 · Gå igenom kodlistan](#a22-ga-igenom-kodlistan) | v35 | Johan | A1.3 | – |
+| [A2.3 · Installera KartLitS GIS-mall och testa den](#a23-installera-kartlits-gis-mall-och-testa-den) | v35 | Johan | A1.2 | – |
+| [A2.4 · Hämta fastställda vägledningar — kontrollera status](#a24-hamta-faststallda-vagledningar-kontrollera-status) | v36 | Johan | – | – |
+| [A2.5 · Begär datauttag för D-län](#a25-begar-datauttag-for-d-lan) | v35 | Johan | – | – |
+| [A2.6 · Kopiera in uttaget i mallen](#a26-kopiera-in-uttaget-i-mallen) | v37 | Johan | A2.3, A2.5 | – |
+| [A2.7 · Publicera granskningslagret i portalen](#a27-publicera-granskningslagret-i-portalen) | v37 | Johan | A2.6 | – |
+| [A2.8 · Skapa webbGIS från de publicerade lagren](#a28-skapa-webbgis-fran-de-publicerade-lagren) | v37 | Johan | A2.7 | – |
+| [A3.1 · Avstämning med chef](#a31-avstamning-med-chef) | v35 | Johan | – | – |
+| [A3.2 · Kartlägg förvaltaransvaret på Naturvårdsenheten](#a32-kartlagg-forvaltaransvaret-pa-naturvardsenheten) | v36 | Johan | – | – |
 | [A3.3 · Rollfördelning med Karin](#a33-rollfordelning-med-karin) | v35 | Båda | – | – |
-| [A3.4 · Anmäl er till KartLitS arbetsgrupper](#a34-anmal-er-till-kartlits-arbetsgrupper) | v36 | Handläggare | A1.3 | – |
-| [A4.1 · Skapa arbetsstruktur för dokumentation](#a41-skapa-arbetsstruktur-for-dokumentation) | v36 | Handläggare | – | – |
-| [A4.2 · Etablera rutin för NNK-uttag](#a42-etablera-rutin-for-nnk-uttag) | v36 | Handläggare | A1.2 | – |
+| [A3.4 · Anmäl er till KartLitS arbetsgrupper](#a34-anmal-er-till-kartlits-arbetsgrupper) | v36 | Johan | A1.3 | – |
+| [A4.1 · Skapa arbetsstruktur för dokumentation](#a41-skapa-arbetsstruktur-for-dokumentation) | v36 | Johan | – | – |
+| [A4.2 · Etablera rutin för NNK-uttag](#a42-etablera-rutin-for-nnk-uttag) | v36 | Johan | A1.2 | – |
 
 ### A1.1 · Beställ och verifiera systembehörigheter
 
-**v34–v35** · **[Handläggare]**
+**v34–v35** · **[Johan]**
 
 1. Skicka en samlad beställning till IT/behörighetsansvarig. Lista exakt: ArcGIS Pro med NNK-tillägget, NNK Ajourhålla (läs OCH skriv — läsrättighet räcker inte), ArcGIS Enterprise-portalen, KartLitS WebbGIS, SkötselDOS, Artportalen (rapportörskonto), samverkansytan för Livsmiljötyper.
 2. Ange i beställningen att det gäller regeringsuppdraget NRF, ref. 2451-2026 — det brukar korta handläggningstiden.
@@ -51,7 +51,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A1.2 · Verifiera att NNK-utcheckning fungerar mot ett testobjekt
 
-**v35** · **[Handläggare]** · förutsätter A1.1
+**v35** · **[Johan]** · förutsätter A1.1
 
 1. Öppna ArcGIS Pro. Skapa ett nytt projekt: `NNK_D_2026`. Sätt kartans koordinatsystem till SWEREF 99 TM (EPSG:3006) — Map Properties → Coordinate Systems → sök 3006.
 2. Anslut till NNK Ajourhålla enligt manualen på VIC Natur (vicnatur.naturvardsverket.se/nnk). Insert → Connections → Database, eller den anslutningsfil IT tillhandahåller.
@@ -63,7 +63,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A1.3 · Åtkomst till samverkansytan för Livsmiljötyper
 
-**v34** · **[Handläggare]**
+**v34** · **[Johan]**
 
 1. Begär åtkomst till Naturvårdsverkets samverkansyta för Livsmiljötyper.
 2. Ladda hem allt under Dokument: manualer från basinventeringen och uppföljningen, handledningen för länsstyrelsernas granskning inklusive checklista, kodlistan.
@@ -81,7 +81,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.2 · Gå igenom kodlistan
 
-**v35** · **[Handläggare]** · förutsätter A1.3
+**v35** · **[Johan]** · förutsätter A1.3
 
 1. Öppna `natura-2000: docs/underlag/handledning/Kodlista_NNK_20260703.xlsx` — den ger kodstruktur och undergrupper, men saknar en egen kategorikolumn.
 2. Öppna i stället `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx`, fliken *KODLISTA_NNK*. Filtrera kolumn H *Kategori 2026* på Gräsmark, Skog och Våtmark — det är de kategorier D-läns arbete gäller. Marina och limniska koder kan du hoppa över i år.
@@ -91,7 +91,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.3 · Installera KartLitS GIS-mall och testa den
 
-**v35** · **[Handläggare]** · förutsätter A1.2
+**v35** · **[Johan]** · förutsätter A1.2
 
 1. Packa upp `natura-2000: docs/underlag/handledning/KartLits_NNK_GIS_mall_v_2.zip` till en lokal projektmapp.
 2. Mallen innehåller `KartLits_NNK_granskning.gdb` med tre tomma lager i SWEREF 99 TM: NNK_naturaobjekt_yta, _lin och _pkt. Plus tre .lyrx-filer med färdig symbologi.
@@ -101,7 +101,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.4 · Hämta fastställda vägledningar — kontrollera status
 
-**v36** · **[Handläggare]** · klar 2026-10-02
+**v36** · **[Johan]** · klar 2026-10-02
 
 **Läge 2026-10-02:** vägledningarna för alla 45 livsmiljötyper som finns i länets NNK är nedladdade till `natura-2000: docs/underlag/natura2000/naturtyper/`, plus gemensamma texter och tolkningsdokument i undermappen `gemensamt/`. Öppna dem via [Vägledningar per livsmiljötyp](vagledningar.html) (länkar direkt till NV:s och HaV:s PDF:er, med NNK-koder och datum per typ). Lokal översikt: `natura-2000: docs/underlag/natura2000/naturtyper/Status_vagledningar_A2.4.md`. Alla är fastställda, ingen är på remiss. Använd den senaste fastställda versionen för typen, oavsett ålder. Akvatiska typer (11xx, 31xx–32xx) kommer från Havs- och vattenmyndigheten, övriga från Naturvårdsverket.
 
@@ -113,7 +113,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.5 · Begär datauttag för D-län
 
-**v35** · **[Handläggare]** · brådskande — svarstid från NV okänd
+**v35** · **[Johan]** · brådskande — svarstid från NV okänd
 
 1. Mejla `Sandra.Wennberg@naturvardsverket.se` och begär ett uttag ur NNK-Ajourhålla för Södermanlands län (punkter, linjer, ytor), enligt `Manual NNK mall för granskning.pdf` steg 1.
 2. Du får instruktioner via mejl för att ladda ner en zipfil med geodatabasen för uttaget.
@@ -123,7 +123,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.6 · Kopiera in uttaget i mallen
 
-**v37** · **[Handläggare]** · förutsätter A2.3, A2.5
+**v37** · **[Johan]** · förutsätter A2.3, A2.5
 
 1. Öppna ArcGIS Pro-projektet med både mallen (A2.3) och datauttaget (A2.5) tillagda.
 2. Öppna verktyget **Append** (under Tools/Geoprocessing).
@@ -135,18 +135,18 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A2.7 · Publicera granskningslagret i portalen
 
-**v37** · **[Handläggare]** · förutsätter A2.6
+**v37** · **[Johan]** · förutsätter A2.6
 
 1. Ta bort de rena uttagsfilerna från projektet (de som bara användes som källa till Append) så att bara de ifyllda mallagren återstår.
 2. Byt namn på de lager som ska publiceras som hostade lager — använd länskoden som prefix, t.ex. `LstD NNK Granskning`.
 3. Ta ställning till om vissa koder ska sållas bort, eller om bara objekt som överlappar ett Natura 2000-område ska behållas, innan publicering.
-4. Klicka **Share → Web Layer** i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — jobbdatorns nätverksrestriktioner kan påverka vilken som går att nå från fältet).
+4. Klicka **Share → Web Layer** i ArcGIS Pro och publicera till Länsstyrelsens interna eller externa ArcGIS Enterprise-portal (avstäm vilken med IT/GIS-funktionen — nätverksrestriktionerna på Länsstyrelsens datorer kan påverka vilken som går att nå från fältet).
 5. **Detaljerad instruktion:** [Publicera WebbGIS](webbgis-publicering.html), del 2–4 (förberedelser i Pro, Share As Web Layer, efterarbete på item i portalen). Tjänstenamn: `LstD_NNK_Granskning` och `LstD_Skyddade_Omraden`.
 6. **Läge 2026-09-01:** publicerat i Länsstyrelsens interna ArcGIS Enterprise-portal. Metadataposten i Geodatakatalogen (informationsklassning, åtkomst- och användningsrestriktioner) stäms fortfarande av med GIS-avdelningen, ej klar per 2026-09-11.
 
 ### A2.8 · Skapa webbGIS från de publicerade lagren
 
-**v37** · **[Handläggare]** · förutsätter A2.7
+**v37** · **[Johan]** · förutsätter A2.7
 
 1. Följ Länsstyrelsernas interna vägledning *Generellt kartstöd* för hur man bygger ett webbGIS från publicerade lager (länken finns i manualen, på Länsstyrelsernas intranät).
 2. Lägg till `LstD NNK Granskning` och relevanta referenslager (t.ex. *NV Naturtypskartan NNK*, *NV Natura2000 områden*) i webbGIS-appen.
@@ -157,7 +157,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A3.1 · Avstämning med chef
 
-**v35** · **[Handläggare]**
+**v35** · **[Johan]**
 
 1. Boka 60 min med Ing-Marie, ordinarie EC naturskydd. Stefan Henriksson har slutat.
 2. Ta med: `kunskapslage.html` (öppna i webbläsare — nyckeltalen finns överst) och arbetsplanens avsnitt 0.
@@ -167,7 +167,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A3.2 · Kartlägg förvaltaransvaret på Naturvårdsenheten
 
-**v36** · **[Handläggare]**
+**v36** · **[Johan]**
 
 **Uppdaterat 2026-08-26:** en sammanställd lista fanns redan (länsstyrelsens förvaltarlista, uttag 2026-05-27) — kolumn I *Förvaltare* i blanketten är nu automatiskt ifylld för 186 av 197 sitecodes, se H1.1 och `natura-2000: data/forvaltare/README.md`.
 
@@ -188,7 +188,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A3.4 · Anmäl er till KartLitS arbetsgrupper
 
-**v36** · **[Handläggare]** · förutsätter A1.3
+**v36** · **[Johan]** · förutsätter A1.3
 
 1. Maila `kartlitsN2000@naturvardsverket.se`. Anmäl er till arbetsgrupperna för skog, gräsmark och våtmark.
 2. Passa på att i samma mail ställa frågorna i arbetsplanens avsnitt 10 — särskilt om storobjekten och om generaliseringar. Svaren styr hela hösten, så ju tidigare desto bättre.
@@ -197,9 +197,9 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A4.1 · Skapa arbetsstruktur för dokumentation
 
-**v36** · **[Handläggare]**
+**v36** · **[Johan]**
 
-1. Mapparna `natura-2000: docs/faltprotokoll/` och `natura-2000: data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från jobbdatorn. Ligger på G:-enheten, alltså utanför Git — committas aldrig.)
+1. Mapparna `natura-2000: docs/faltprotokoll/` och `natura-2000: data/uttag/` finns redan. Granskningsloggen förs i stället i `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\granskningslogg_mall.xlsx`, fliken *Objektgranskning* — en rad per objekt: sitecode, namn, datum, vem, vad som granskats, vad som ändrats, vad som återstår, osäkerheter. (Ersatte 2026-08-21 den tidigare docs/nnk/granskningslogg.md i natura-2000 — svår att nå och skriva i från Länsstyrelsens datorer. Ligger på G:-enheten, alltså utanför Git — committas aldrig.)
 2. Fältdokumentation: en fil per fältdag i `natura-2000: docs/faltprotokoll/`. Fältarbetet är flyttat till 2027 (beslut 2026-08-25) — mappen står färdig men väntas inte fyllas på under 2026.
 3. NNK-uttag: spara i `natura-2000: data/uttag/` med datum i filnamnet så före/efter-jämförelser går att göra. Hela mappen är gitignorad utom README.md — filerna committas inte, de är bara lokala arbetskopior.
 4. Under 2026 finns ingen daglig commit-rutin kopplad till granskningsarbetet — resultatet av skrivbordsgranskningen (C1.1) hamnar i KartLitS WebbGIS-mallen och i granskningsloggen på G:-enheten, inte i något repo. Committa som vanligt när du faktiskt ändrar filer i natura-2000 eller nnk-granskning-2026 (dokument, analysskript, kodurval m.m.).
@@ -208,7 +208,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### A4.2 · Etablera rutin för NNK-uttag
 
-**v36** · **[Handläggare]** · förutsätter A1.2
+**v36** · **[Johan]** · förutsätter A1.2
 
 1. Dokumentera exakt hur du gör uttaget, så att det går att upprepa identiskt i v45: vilket lager, vilka fält, vilket filter, vilket format.
 2. Uttaget ska innehålla minst: NOID, NATURTYP, NATURTYPKO, NATURTYPSS, KARTERINGS, FORANDRING, URSPRUNG, KOMMENTAR, NNK_KOMMEN, REDIGERARE, REDIGERATA, REDIGERATG, SKAPATDATU, MALNATUR1–3, samt de nya tillstånds- och dateringsfälten när de driftsatts.
@@ -224,25 +224,25 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
-| [C1.1 · Etablera granskningsrutinen](#c11-etablera-granskningsrutinen) | v35 | Handläggare | A2.1, A2.3 | – |
-| [C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs](#c21-batch-s-storobjekten-skargardsreservaten-och-nynas) | v41–v46 | Handläggare | C1.1, A3.4 | L-C |
+| [C1.1 · Etablera granskningsrutinen](#c11-etablera-granskningsrutinen) | v35 | Johan | A2.1, A2.3 | – |
+| [C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs](#c21-batch-s-storobjekten-skargardsreservaten-och-nynas) | v41–v46 | Johan | C1.1, A3.4 | L-C |
 | [C3.1 · Batch A — kust och skärgård](#c31-batch-a-kust-och-skargard) | v38–v42 | Båda | C1.1 | L-C |
 | [C4.1 · Batch B — ängs- och hagmark inland](#c41-batch-b-angs-och-hagmark-inland) | v35–v38 | Karin | C1.1 | L-C |
 | [C5.1 · Batch C — våtmark och vattendrag](#c51-batch-c-vatmark-och-vattendrag) | v42–v44 | Karin | C1.1 | L-C |
 | [C6.1 · Batch D — skog och ädellöv](#c61-batch-d-skog-och-adellov) | v43–v46 | Karin | C1.1 | L-C |
-| [C7.1 · Okarterade ytor och länssöverskridande objekt](#c71-okarterade-ytor-och-lanssoverskridande-objekt) | v44 | Handläggare | C1.1 | L-C |
+| [C7.1 · Okarterade ytor och länssöverskridande objekt](#c71-okarterade-ytor-och-lanssoverskridande-objekt) | v44 | Johan | C1.1 | L-C |
 
 ### C1.1 · Etablera granskningsrutinen
 
-**v35** · **[Handläggare]** · förutsätter A2.1, A2.3
+**v35** · **[Johan]** · förutsätter A2.1, A2.3
 
 **Död ved är ett krav för 9010 och 9050 (2026-10-02):** enligt NV:s vägledningar 2026-02-19 ska en förekomst uppfylla samtliga klassningskrav, bland annat död ved. Det går inte att fastställa vid skrivbordet, så 9010 (inkl. 9006, 9008, 9009), 9050 och 9830 kan bli *icke fullgod* eller *till fält*, aldrig *fullgod*. Se R7B i [metodiken](metodik.html).
 
 **Vägledningar:** senaste fastställda vägledning för varje livsmiljötyp i länet nås via [Vägledningar per livsmiljötyp](vagledningar.html), lokala kopior i `natura-2000: docs/underlag/natura2000/naturtyper/`. Bedöm alltid mot den, oavsett om den är från 2011–2012 eller 2026.
 
-**Nytt 2026-09-29 — stöd för steg (5):** fynd av typiska arter i Artportalen finns sammanställda per yta, se [typiska arter](typiska-arter.html) (avsnittet *Fynd i Artportalen per yta*). Fälten `typarter_antal`, `typarter` och `typarter_senaste_ar` i granskningslagret, och Excelfilen `natura-2000: data/outputs/typiska_arter_artportalen.xlsx`. Körs med `python natura-2000: scripts/analysis/artportalen_typiska_arter.py` på hemdatorn.
+**Nytt 2026-09-29 — stöd för steg (5):** fynd av typiska arter i Artportalen finns sammanställda per yta, se [typiska arter](typiska-arter.html) (avsnittet *Fynd i Artportalen per yta*). Fälten `typarter_antal`, `typarter` och `typarter_senaste_ar` i granskningslagret, och Excelfilen `natura-2000: data/outputs/typiska_arter_artportalen.xlsx`. Skriptet `python natura-2000: scripts/analysis/artportalen_typiska_arter.py` körs av Johan (projektledaren) på hans egen dator, där det privata natura-2000-repot finns — ingen annan behöver köra det.
 
-1. Skriv ned rutinen som en mall du kopierar per objekt i granskningsloggen (`.../NRF/granskningslogg_mall.xlsx`, fliken *Objektgranskning*).
+1. För en rad per objekt i granskningsloggen (`.../NRF/granskningslogg_mall.xlsx`, fliken *Objektgranskning*). Skriv eller välj SITECODE så fylls område, batch, prio, uppgift, förvaltare, utpekade typer och antal ytor i automatiskt (sedan 2026-10-06; mallen byggs av Johan med `python natura-2000: scripts/analysis/bygg_granskningslogg.py`). Rutinen steg för steg, med Floden som exempel, finns i [Bedömningsguiden](../bedomningsguide.html).
 2. Rutinen per objekt, åtta steg: (1) öppna objektet i KartLitS WebbGIS och i ArcGIS Pro mot NNK; (2) läs bevarandeplanen — vilka livsmiljötyper är utpekade, vilka är prioriterade bevarandevärden, vilka bevarandemål finns; (3) jämför bevarandeplanens typer mot vad NNK visar, notera differenser; (4) kontrollera mot aktuellt ortofoto och IR-ortofoto — syns uppenbara förändringar sedan 2012?; (5) kontrollera mot TUVA, VMI, VISS och Artportalen; (6) bedöm per yta: stämmer utbredningen — OK / justera / kontrolleras i fält / osäker; (7) notera i WebbGIS-mallen; (8) justera geometri i NNK endast där det påverkar arealen meningsfullt.
 3. Minsta karteringsenhet, från handledningen tabell 9: 0,25 ha generellt, 1 ha skog icke-natura och öppen myr, 0,5 ha skog natura, 2 ha ovan trädgränsen. Minsta karteringsbredd 10 m.
 4. Lägg större vikt vid gränsen mellan livsmiljötyp och icke-livsmiljötyp än vid gränser mellan olika livsmiljötyper — de senare är gradvisa och svåra att avgränsa exakt.
@@ -250,7 +250,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### C2.1 · Batch S — storobjekten Skärgårdsreservaten och Nynäs
 
-**v41–v46** · **[Handläggare]** · förutsätter C1.1, A3.4 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v41–v46** · **[Johan]** · förutsätter C1.1, A3.4 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 **Objekt**
 
@@ -376,7 +376,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### C7.1 · Okarterade ytor och länssöverskridande objekt
 
-**v44** · **[Handläggare]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
+**v44** · **[Johan]** · förutsätter C1.1 · bidrar till *Granskningslogg för 40 P1-objekt + lista över ytor som kräver fältkontroll 2027*
 
 **Objekt**
 
@@ -400,22 +400,22 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
-| [D1.1 · Bevaka driftsättningen av de nya NNK-attributen](#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen) | v39–v40 | Handläggare | – | – |
+| [D1.1 · Bevaka driftsättningen av de nya NNK-attributen](#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen) | v39–v40 | Johan | – | – |
 | [D1.2 · Gå igenom den nya attributlistan](#d12-ga-igenom-den-nya-attributlistan) | v40 | Båda | D1.1 | – |
 | [D1.3 · Delta i NV:s utbildning](#d13-delta-i-nvs-utbildning) | v40–v41 | Båda | D1.1 | – |
 | [D2.1 · Registrera tillstånd där kunskapen redan finns](#d21-registrera-tillstand-dar-kunskapen-redan-finns) | v41–v48 | Båda | D1.2 | L-D |
 | [D2.2 · Dokumentera grunden för varje bedömning](#d22-dokumentera-grunden-for-varje-bedomning) | v41–v48 | Båda | – | L-D |
 | [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
-| [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Handläggare | – | – |
-| [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Handläggare | – | – |
-| [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Handläggare | D4.1 | – |
-| [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Handläggare | D1.2 | L-D |
-| [D5.1 · Fältprotokoll för tillståndsbedömning](#d51-faltprotokoll-for-tillstandsbedomning) | v40–v42 | Handläggare | D1.2 | – |
-| [D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)](#d52-konsultuppdrag-for-faltbedomning-hosten-2026-villkorat) | v41–v43 | Handläggare | D5.1 | – |
+| [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Johan | – | – |
+| [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Johan | – | – |
+| [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Johan | D4.1 | – |
+| [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Johan | D1.2 | L-D |
+| [D5.1 · Fältprotokoll för tillståndsbedömning](#d51-faltprotokoll-for-tillstandsbedomning) | v40–v42 | Johan | D1.2 | – |
+| [D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)](#d52-konsultuppdrag-for-faltbedomning-hosten-2026-villkorat) | v41–v43 | Johan | D5.1 | – |
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
-**v39–v40** · **[Handläggare]**
+**v39–v40** · **[Johan]**
 
 1. FAQ fråga 30: nya attribut för tillståndsbedömning införs sommaren 2026, driftsättning planerad till slutet av september.
 2. Maila `kartlitsN2000@naturvardsverket.se` i v39 och be om bekräftat datum samt när utbildning ges.
@@ -472,19 +472,19 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)
 
-**v40–v41** · **[Handläggare]**
+**v40–v41** · **[Johan]**
 
 1. Hämta Jordbruksverkets årslager av jordbruksskiften (WFS `inspire:arslager_skifte`) för alla år från 2015 till senaste året, klippt på bbox runt länet. Spara som `natura-2000: data/skiften/jordbruksskiften_<år>.gpkg` — se `natura-2000: data/skiften/README.md` (BBOX i CQL kräver `'EPSG:3006'` som sista argument, annars 0 träffar).
 2. Lägg till det nya året i grödkodslistan `natura-2000: data/grodkoder/grodkoder_<år>.csv` (BETE = 52, 53, 55, 61, 89, 90, 95; VALL = 49, 50) och utöka `SKIFTEN` i `natura-2000: scripts/analysis/nnk_havd.py`.
-3. Bygg om `natura-2000: data/nnk/nnk_join.gpkg` med `python natura-2000: scripts/analysis/bygg_nnk_join.py` om ett nytt NNK-uttag finns, och kör sedan `python natura-2000: scripts/analysis/nnk_havd.py` på hemdatorn (knappt en minut).
-4. Resultat: `natura-2000: data/resultat/n2000_statusforslag.xlsx` (översikt och urval av pilotens 30 fältkontroller) och `natura-2000: data/analysis/havd_for_granskning.csv`. Kopiera CSV:n till `C:\Lst\ArcGISProData\Projects\NNK_NRF\Bearbetning\` på jobbdatorn.
-5. Publicera fälten: `jobbdator_BACKUP_granskning.py` → `jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py` → `jobbdator_bygg_nnk_lyrx_KORRIGERAD_V3.py` → Overwrite → `jobbdator_ATERSTALL_granskning.py`. Hoppa aldrig över backupen när granskningen har startat.
+3. Bygg om `natura-2000: data/nnk/nnk_join.gpkg` med `python natura-2000: scripts/analysis/bygg_nnk_join.py` om ett nytt NNK-uttag finns, och kör sedan `python natura-2000: scripts/analysis/nnk_havd.py` (knappt en minut). Görs av Johan på hans egen dator, där det privata natura-2000-repot finns.
+4. Resultat: `natura-2000: data/resultat/n2000_statusforslag.xlsx` (översikt och urval av pilotens 30 fältkontroller) och `natura-2000: data/analysis/havd_for_granskning.csv`. Johan kopierar CSV:n till sin projektmapp på Länsstyrelsens dator, `C:\Lst\ArcGISProData\Projects\NNK_NRF\Bearbetning\`.
+5. Johan publicerar fälten från sin arbetsdator: `jobbdator_BACKUP_granskning.py` → `jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py` → `jobbdator_bygg_nnk_lyrx_KORRIGERAD_V3.py` → Overwrite → `jobbdator_ATERSTALL_granskning.py`. Hoppa aldrig över backupen när granskningen har startat.
 6. Lägg in filtren *Hävd enligt skiften* och *Vall senaste året* i Konfiguratorn och popupavsnittet *Hävd enligt jordbruksskiften*, se [webbGIS-publicering](webbgis-publicering.html) (Del 6, steg 5) och [popup-uttryck](popup-arcade-uttryck.html) (avsnitt 8).
 7. Så används fältet i bedömningen: [metodik](metodik.html), R7A. Upprepa varje år när Jordbruksverket publicerat årets skiften.
 
 ### D4.1 · Notera avvikelser mot bevarandeplan och beslut
 
-**v41–v48** · **[Handläggare]**
+**v41–v48** · **[Johan]**
 
 1. FAQ fråga 24: när det du dokumenterar i NNK avviker från fastställd bevarandeplan eller reservatsbeslut ska länsstyrelsen göra en notering om avvikelsen.
 2. För en enkel lista i granskningsloggen: objekt, livsmiljötyp, vad bevarandeplanen säger, vad NNK nu visar, och varför.
@@ -493,7 +493,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### D4.2 · Lista objekt där beslut hindrar nödvändig skötsel
 
-**v48** · **[Handläggare]** · förutsätter D4.1
+**v48** · **[Johan]** · förutsätter D4.1
 
 1. FAQ fråga 24 sista stycket: kommer ni fram till att nuvarande beslut eller skötselplan hindrar nödvändig skötsel för att upprätthålla livsmiljötyp i gott tillstånd, ska en notering om revideringsbehov göras.
 2. Sammanställ dessa fall i ett eget avsnitt i granskningsloggen.
@@ -502,7 +502,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### D4.3 · Peka ut utvecklingsmark och ange målnaturtyper
 
-**v45–v50** · **[Handläggare]** · förutsätter D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
+**v45–v50** · **[Johan]** · förutsätter D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 1. Idag har bara 87 polygoner i hela länet en angiven målnaturtyp. FAQ fråga 23 säger att ytor med bevarandemål om utökad areal BÖR pekas ut som utvecklingsmark.
 2. Gå igenom bevarandeplanerna för P1-objekten: finns mål om att utöka arealen av någon livsmiljötyp? Finns mål om återskapande eller restaurering i reservatsbesluten?
@@ -513,7 +513,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### D5.1 · Fältprotokoll för tillståndsbedömning
 
-**v40–v42** · **[Handläggare]** · förutsätter D1.2
+**v40–v42** · **[Johan]** · förutsätter D1.2
 
 1. Utgå från utkastet `natura-2000: docs/nnk/parameterlista_tillstand_livsmiljotyper_utkast.xlsx` (54 parametrar i XLSForm-struktur). Flikarna *LST-målindikatorer* och *Luckor* visar hur uppföljningsplanernas 181 målindikatorer täcks.
 2. Stäm av mot NNK:s nya tillståndsattribut från D1.2. Den samlade bedömningen (G10) ska använda exakt NNK:s klasser och procentandelar.
@@ -525,7 +525,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)
 
-**v41–v43** · **[Handläggare]** · förutsätter D5.1
+**v41–v43** · **[Johan]** · förutsätter D5.1
 
 1. VILLKORAT: gäller om beslut fattas om konsult. Inte spikat per 2026-09-25, men troligt. Stäm av beslut och budget med chef först.
 2. Välj områden: i första hand P1-objekt där skrivbordsgranskningen gett *kontrolleras i fält* (granskningsloggen, C-batcherna), gärna hävdberoende typer enligt FAQ fråga 11.
@@ -546,9 +546,9 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 | [E1.1 · Nytt NNK-uttag för före/efter-jämförelse](#e11-nytt-nnk-uttag-for-foreefter-jamforelse) | v45 | Karin | A4.2 | L-E |
 | [E1.2 · Statistik per Natura 2000-område](#e12-statistik-per-natura-2000-omrade) | v46 | Karin | E1.1 | L-E |
 | [E1.3 · Statistik per livsmiljötyp för hela länet](#e13-statistik-per-livsmiljotyp-for-hela-lanet) | v46 | Karin | E1.1 | L-E |
-| [E2.1 · Kvantifiera kunskapsluckorna per objekt](#e21-kvantifiera-kunskapsluckorna-per-objekt) | v47 | Handläggare | E1.2 | L-E |
-| [E2.2 · Redovisa vilka livsmiljötyper per objekt som är osäkra](#e22-redovisa-vilka-livsmiljotyper-per-objekt-som-ar-osakra) | v47 | Handläggare | E2.1 | L-E |
-| [E2.3 · Kvalitetsbrister på systemnivå](#e23-kvalitetsbrister-pa-systemniva) | v47 | Handläggare | E1.1 | L-E |
+| [E2.1 · Kvantifiera kunskapsluckorna per objekt](#e21-kvantifiera-kunskapsluckorna-per-objekt) | v47 | Johan | E1.2 | L-E |
+| [E2.2 · Redovisa vilka livsmiljötyper per objekt som är osäkra](#e22-redovisa-vilka-livsmiljotyper-per-objekt-som-ar-osakra) | v47 | Johan | E2.1 | L-E |
+| [E2.3 · Kvalitetsbrister på systemnivå](#e23-kvalitetsbrister-pa-systemniva) | v47 | Johan | E1.1 | L-E |
 | [E3.1 · Fyll i KartLitS WebbGIS-mallen för granskade objekt](#e31-fyll-i-kartlits-webbgis-mallen-for-granskade-objekt) | v38–v48 | Karin | C1.1 | L-C |
 
 ### E1.1 · Nytt NNK-uttag för före/efter-jämförelse
@@ -580,7 +580,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### E2.1 · Kvantifiera kunskapsluckorna per objekt
 
-**v47** · **[Handläggare]** · förutsätter E1.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v47** · **[Johan]** · förutsätter E1.2 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Per objekt: areal i okänt tillstånd, areal osäker naturtyp, areal obestämd naturtyp, areal utvecklingsmark, areal okarterat.
 2. Detta är den exakta redovisning FAQ fråga 6 kräver av 2026.
@@ -588,7 +588,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### E2.2 · Redovisa vilka livsmiljötyper per objekt som är osäkra
 
-**v47** · **[Handläggare]** · förutsätter E2.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v47** · **[Johan]** · förutsätter E2.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Explicit krav i FAQ fråga 6: ni ska kunna säga vilka livsmiljötyper i vilket område som omfattas av osäkerhet.
 2. Producera en tabell: sitecode × livsmiljötyp × typ av osäkerhet (utbredning / tillstånd / båda) × areal.
@@ -596,7 +596,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### E2.3 · Kvalitetsbrister på systemnivå
 
-**v47** · **[Handläggare]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
+**v47** · **[Johan]** · förutsätter E1.1 · bidrar till *Kunskapslägesrapport D-län per 2026-12-31*
 
 1. Sammanställ: andel polygoner med BIDOS-ursprung, åldersfördelning på karteringen, saknade attribut, gränskvalitet, topologifel.
 2. Nollmätningen: 96 % BIDOS inom N2000, 81 % skapade 2012, endast 7,5 % någonsin fältbesökta.
@@ -622,16 +622,16 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
-| [F1.1 · Vilka insatser krävs och vem gör det](#f11-vilka-insatser-kravs-och-vem-gor-det) | v46–v49 | Handläggare | E2.1 | L-F1 |
-| [F1.2 · Volymuppskattning för 2027](#f12-volymuppskattning-for-2027) | v47–v48 | Handläggare | C4.1, E2.1 | L-F1 |
-| [F2.1 · Er prioritering för 2027](#f21-er-prioritering-for-2027) | v48–v49 | Handläggare | F1.2 | L-F1 |
-| [F2.2 · Antaganden och generaliseringar](#f22-antaganden-och-generaliseringar) | v48–v49 | Handläggare | H3.2 | L-F1 |
-| [F3.1 · Vad ni gör själva och vad ni behöver hjälp med](#f31-vad-ni-gor-sjalva-och-vad-ni-behover-hjalp-med) | v49 | Handläggare | F1.1 | L-F1 |
-| [F4.1 · Underlag till årsredovisningen 2026](#f41-underlag-till-arsredovisningen-2026) | v50–v52 | Handläggare | E2.1, F2.1 | L-F2 |
+| [F1.1 · Vilka insatser krävs och vem gör det](#f11-vilka-insatser-kravs-och-vem-gor-det) | v46–v49 | Johan | E2.1 | L-F1 |
+| [F1.2 · Volymuppskattning för 2027](#f12-volymuppskattning-for-2027) | v47–v48 | Johan | C4.1, E2.1 | L-F1 |
+| [F2.1 · Er prioritering för 2027](#f21-er-prioritering-for-2027) | v48–v49 | Johan | F1.2 | L-F1 |
+| [F2.2 · Antaganden och generaliseringar](#f22-antaganden-och-generaliseringar) | v48–v49 | Johan | H3.2 | L-F1 |
+| [F3.1 · Vad ni gör själva och vad ni behöver hjälp med](#f31-vad-ni-gor-sjalva-och-vad-ni-behover-hjalp-med) | v49 | Johan | F1.1 | L-F1 |
+| [F4.1 · Underlag till årsredovisningen 2026](#f41-underlag-till-arsredovisningen-2026) | v50–v52 | Johan | E2.1, F2.1 | L-F2 |
 
 ### F1.1 · Vilka insatser krävs och vem gör det
 
-**v46–v49** · **[Handläggare]** · förutsätter E2.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v46–v49** · **[Johan]** · förutsätter E2.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Dela upp insatsbehovet i fem kategorier: eget fältarbete, eget skrivbordsarbete, Metria, NV:s arbetsgrupper, konsult.
 2. Metria har enligt FAQ fråga 26 INTE uppdrag att göra om tidigare karteringar, kartera med högre detaljering utifrån länsspecifika underlag, eller fältkontrollera. Räkna inte med det.
@@ -640,7 +640,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### F1.2 · Volymuppskattning för 2027
 
-**v47–v48** · **[Handläggare]** · förutsätter C4.1, E2.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v47–v48** · **[Johan]** · förutsätter C4.1, E2.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Räkna antal objekt, hektar och fältdagar per livsmiljötypsgrupp.
 2. Kalibrera mot faktisk tidsåtgång i batch B — därför ligger den batchen först i planen. Ta tiden per objekt ur granskningsloggen.
@@ -649,7 +649,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### F2.1 · Er prioritering för 2027
 
-**v48–v49** · **[Handläggare]** · förutsätter F1.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v48–v49** · **[Johan]** · förutsätter F1.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Ange ordningsföljd med motivering per livsmiljötypsgrupp, enligt FAQ fråga 11: hävdberoende först, därefter liten utbredning, förekomster med risk för försämring, och förekomster där åtgärder gjorts eller planeras.
 2. Var konkret om vad ni behöver veta, inte bara var. "Vi behöver veta om hävden i 6270 upprätthålls" är mer användbart än "vi behöver besöka fler gräsmarker".
@@ -657,7 +657,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### F2.2 · Antaganden och generaliseringar
 
-**v48–v49** · **[Handläggare]** · förutsätter H3.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v48–v49** · **[Johan]** · förutsätter H3.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Detta är den fråga som ger störst avlastning om NV accepterar förslagen. Lägg mest tid här.
 2. Konkreta förslag att pröva: kan hävdstatus i TUVA användas som proxy för tillstånd i 6270 och 6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök, givet att den är svårpåverkad? Kan 9010 taiga i objekt utan avverkningsanmälan antas oförändrad? Kan betesmark med aktivt jordbruksstöd och pågående hävd antas vara i gott tillstånd?
@@ -667,7 +667,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### F3.1 · Vad ni gör själva och vad ni behöver hjälp med
 
-**v49** · **[Handläggare]** · förutsätter F1.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v49** · **[Johan]** · förutsätter F1.1 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Dra gränsen tydligt. Marina och limniska miljöer lämnas explicit.
 2. Ange vad som kräver resurstillskott för att klaras till 2027, och vad som klaras inom befintlig bemanning.
@@ -675,7 +675,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### F4.1 · Underlag till årsredovisningen 2026
 
-**v50–v52** · **[Handläggare]** · förutsätter E2.1, F2.1 · bidrar till *Underlag till årsredovisningen 2026*
+**v50–v52** · **[Johan]** · förutsätter E2.1, F2.1 · bidrar till *Underlag till årsredovisningen 2026*
 
 1. Regeringsuppdraget efterfrågar två tal: antal områden bedömda och antal områden med plan.
 2. Skriv kort — årsredovisningstext är sällan mer än ett stycke per uppdrag.
@@ -693,7 +693,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 | [G1.1 · Gå igenom flik 3 i NNK-statistiken](#g11-ga-igenom-flik-3-i-nnk-statistiken) | v42–v44 | Karin | – | L-G |
 | [G1.2 · Screening av hävdberoende och sällsynta typer i reservaten](#g12-screening-av-havdberoende-och-sallsynta-typer-i-reservaten) | v46 | Karin | G1.1 | L-G |
 | [G1.3 · Grov volymuppskattning för naturreservaten](#g13-grov-volymuppskattning-for-naturreservaten) | v48 | Karin | G1.2 | L-G |
-| [G2.1 · Ta med NR/NP i planen till Naturvårdsverket](#g21-ta-med-nrnp-i-planen-till-naturvardsverket) | v50 | Handläggare | G1.3, F1.2 | L-F1 |
+| [G2.1 · Ta med NR/NP i planen till Naturvårdsverket](#g21-ta-med-nrnp-i-planen-till-naturvardsverket) | v50 | Johan | G1.3, F1.2 | L-F1 |
 
 ### G1.1 · Gå igenom flik 3 i NNK-statistiken
 
@@ -726,7 +726,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### G2.1 · Ta med NR/NP i planen till Naturvårdsverket
 
-**v50** · **[Handläggare]** · förutsätter G1.3, F1.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
+**v50** · **[Johan]** · förutsätter G1.3, F1.2 · bidrar till *Plan för 2027 enligt FAQ fråga 9*
 
 1. Skriv ett eget avsnitt i planen om naturreservat och nationalpark.
 2. Poängtera deadline: NR/NP ska enligt FAQ fråga 6 vara klara 2027, inte 2028. Det är lätt att missa.
@@ -741,17 +741,17 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
 | [H1.1 · Kartlägg vem som förvaltar vilka objekt](#h11-kartlagg-vem-som-forvaltar-vilka-objekt) | v35–v36 | Karin | – | L-H1 |
-| [H1.2 · Förankra upplägget med Naturvårdsenhetens chef](#h12-forankra-upplagget-med-naturvardsenhetens-chef) | v36 | Handläggare | – | – |
-| [H2.1 · Gå igenom de 141 Åtgärdas-ytorna](#h21-ga-igenom-de-141-atgardas-ytorna) | v37 | Handläggare | – | – |
-| [H2.2 · Kontrollera KOMMENTAR i NNK Ajourhålla](#h22-kontrollera-kommentar-i-nnk-ajourhalla) | v37 | Handläggare | A1.2 | – |
+| [H1.2 · Förankra upplägget med Naturvårdsenhetens chef](#h12-forankra-upplagget-med-naturvardsenhetens-chef) | v36 | Johan | – | – |
+| [H2.1 · Gå igenom de 141 Åtgärdas-ytorna](#h21-ga-igenom-de-141-atgardas-ytorna) | v37 | Johan | – | – |
+| [H2.2 · Kontrollera KOMMENTAR i NNK Ajourhålla](#h22-kontrollera-kommentar-i-nnk-ajourhalla) | v37 | Johan | A1.2 | – |
 | [H2.3 · Kör områdeskopplingen mot NVR-lagret](#h23-kor-omradeskopplingen-mot-nvr-lagret) | v43 | Karin | – | – |
 | [H3.1 · Boka förvaltarsamtalen](#h31-boka-forvaltarsamtalen) | v37 | Karin | H1.1, H1.2 | – |
 | [H3.2 · Genomför förvaltarsamtalen](#h32-genomfor-forvaltarsamtalen) | v38–v44 | Båda | H3.1, H2.1 | L-H2 |
 | [H4.1 · Eftersök odokumenterade underlag](#h41-eftersok-odokumenterade-underlag) | v38–v46 | Karin | H3.2 | – |
 | [H4.2 · Registrera funna underlag i datakälleregistret](#h42-registrera-funna-underlag-i-datakalleregistret) | v38–v48 | Karin | H4.1 | – |
 | [H5.1 · För in förvaltarkunskapen i granskningslagret](#h51-for-in-forvaltarkunskapen-i-granskningslagret) | v38–v46 | Båda | H3.2 | L-H2 |
-| [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v41–v48 | Handläggare | H5.1, D1.2 | L-D |
-| [H5.3 · Skicka avstämning tillbaka till förvaltaren](#h53-skicka-avstamning-tillbaka-till-forvaltaren) | v38–v48 | Handläggare | H5.1 | – |
+| [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v41–v48 | Johan | H5.1, D1.2 | L-D |
+| [H5.3 · Skicka avstämning tillbaka till förvaltaren](#h53-skicka-avstamning-tillbaka-till-forvaltaren) | v38–v48 | Johan | H5.1 | – |
 
 ### H1.1 · Kartlägg vem som förvaltar vilka objekt
 
@@ -768,7 +768,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### H1.2 · Förankra upplägget med Naturvårdsenhetens chef
 
-**v36** · **[Handläggare]**
+**v36** · **[Johan]**
 
 1. Boka 30 min. Det är deras personals tid du ber om — förankra innan du kontaktar förvaltarna.
 2. Ta med: `docs/metodik.md` avsnitt 1 (citaten som visar att NV godkänner lokalkännedom) och Åtgärdas-fliken i blanketten.
@@ -778,7 +778,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### H2.1 · Gå igenom de 141 Åtgärdas-ytorna
 
-**v37** · **[Handläggare]**
+**v37** · **[Johan]**
 
 1. Öppna `blanketter/blankett_forvaltarkunskap_nnk.xlsx`, fliken Åtgärdas-ytor. 30 rader, per objekt och livsmiljötyp.
 2. Fördelning: Skärgårdsreservaten 91 ytor, Strandstuviken 25, Marvikarna 7, Vilsta 6, Rågö 5, Storhultet 4, Tovhulta stormosse 3. Samtliga inom Natura 2000.
@@ -788,7 +788,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### H2.2 · Kontrollera KOMMENTAR i NNK Ajourhålla
 
-**v37** · **[Handläggare]** · förutsätter A1.2
+**v37** · **[Johan]** · förutsätter A1.2
 
 1. Detta är en KÄLLKRITISK kontroll som måste göras innan slutsatser dras om kunskapsläget.
 2. Bakgrund: i den publika NNK är KOMMENTAR, NNK_KOMMEN och REDIGERARE tomma i samtliga 14 830 polygoner — men handledningen 1.3 säger att den publika versionen strippar kommentarer och användaruppgifter. Fälten kan alltså vara ifyllda i Ajourhålla.
@@ -871,7 +871,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### H5.2 · Registrera i NNK efter avstämning
 
-**v41–v48** · **[Handläggare]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
+**v41–v48** · **[Johan]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 1. Först efter att du bedömt att underlaget räcker. Granskningslagret är förslagsnivå; NNK är skarpt.
 2. Tillståndsfälten först efter driftsättningen i v40.
@@ -881,7 +881,7 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ### H5.3 · Skicka avstämning tillbaka till förvaltaren
 
-**v38–v48** · **[Handläggare]** · förutsätter H5.1
+**v38–v48** · **[Johan]** · förutsätter H5.1
 
 1. Skicka en kort sammanfattning av vad du fört in, per objekt.
 2. Förvaltaren ska känna igen sin egen uppgift. Gör de inte det har något gått fel i översättningen.
@@ -891,64 +891,17 @@ Uppgifter markerade **[Handläggare]**, **[Karin]** eller **[Båda]** följer ro
 
 ## Filterguide för webbGIS
 
-Vilka filter i LstD NNK Granskning som ger något för vilken grupp av livsmiljötyper (R7 i metodiken). Grundurvalet — *Natura 2000-typ*, *Marina objekt* och *Dölj icke-Natura-livsmiljötyper* — förutsätts påslaget. Filtren kombineras med OCH; för ELLER, slå på dem ett i taget. **på** = slå alltid på för gruppen · **●** huvudfilter, ger kandidater till fullgod/icke fullgod · **○** komplement, stöder bedömningen eller styr arbetsordningen · tom ruta = ger inget för gruppen · siffran efter symbolen = antal ytor inom N2000 i gruppen som filtret träffar (uttag 2026-08-26); ingen siffra = filtret säger inget om tillståndet, bara urval eller ordning.
+Filterguiden har en egen sida: [Filterguide för webbGIS](filterguide.html) — en flik per grupp av livsmiljötyper med de filter som ger något för just den gruppen, arbetsgång och hur träffen läses. Samma guide finns också längst ned i kontrollrummet.
 
-| Filter | Villkor | A Hävdberoende | B Skog | C Myr, våtmark, sjö | D Stabila (strand, klippa, skär) | Så läser du träffen |
-|---|---|---|---|---|---|---|
-| **Natura 2000-typ** | `n2000_typ` = SCI eller SCI+SPA | på | på | på | på | Aktivt vid start. Avgränsar till Natura 2000-områden av typen SCI eller SCI+SPA. |
-| **Marina objekt** | `naturtyp NOT IN (1000, 1110 … 1174)` | på | på | på | på | Aktivt vid start. Döljer de marina typerna. Strandängar (1630), skär (1620), alvar (1640) och driftvallar (1220) ligger kvar. |
-| **Dölj icke-Natura-livsmiljötyper** | `naturtyp NOT IN (1950, 2920 …)` | på | på | på | på | Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper. |
-| **Osäker/obestämd naturtyp** | `naturtyp IN (2300, 4810 … 9870)` |  |  |  |  | Eget spår, inte statusbedömning: typen måste bestämmas först (E2.1, P2-kriteriet). Använd utan gruppfiltren och utan *Dölj icke-Natura*. |
-| **Prio P1–P4** | `prio = 'P1'` osv. | ○ | ○ | ○ | ○ | Arbetsordning enligt arbetsplanen 5.2. Säger inget om tillståndet. |
-| **Batch S / A / B / C / D** | `batch = 'S'` osv. | ○ | ○ | ○ | ○ | Bara de 40 P1-objekten. Batch B ≈ grupp A i inlandet, C ≈ grupp C, D ≈ grupp B, A = kusten (1630 i grupp A, skär och stränder i grupp D), S = storobjekten (blandat). |
-| **Ej granskade / Granskning påbörjad** | `granskat = 2` / `3` | ○ | ○ | ○ | ○ | Arbetsläge. Kombinera med gruppens filter för att se vad som återstår. |
-| **Större än 5 ha** | `area_ha > 5` | ○ | ○ | ○ | ○ | C2.1: ytor som granskas en och en i storobjekten. |
-| **Sällsynt livsmiljötyp** | `sallsynt = 'Ja'` | ○ | ○ | ○ | ○ | Under 50 ha i länets N2000 (28 koder). Varje yta väger tungt för länets andel — ta dem tidigt. |
-| **Hävdberoende** | `havdberoende = 'Ja'` | på |  |  |  | Motsvarar grupp A. Slå alltid på för R7A, annars drar hävdfiltren med sig skog och myr. |
-| **Hävd enligt skiften: Ja** | `havd_skiften = 'Ja'` | ● 158 |  |  |  | Bete eller slåtter varje år sedan 2015 (eller sedan typen sattes) → kandidat *fullgod*. Kontrollera orto. |
-| **Hävd enligt skiften: Delvis** | `havd_skiften = 'Delvis'` | ● 607 |  |  | ○ 83 | Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS. |
-| **Hävd enligt skiften: Nej** | `havd_skiften = 'Nej'` | ● 369 |  |  |  | Träffar skiften men aldrig bete/slåtter → kandidat *icke fullgod* på hävdberoende ytor. På skog och myr betyder Nej oftast bara att ytan gränsar mot åker — använd inte där. |
-| **Hävd enligt skiften: Oklart** | `havd_skiften = 'Oklart'` | ○ 241 |  |  |  | Inga skiften alls. Bete utan stöd syns inte — gå vidare med SkötselDOS och TUVA. |
-| **Vall senaste året** | `havd_varning_vall = 'Ja'` | ○ 2 |  |  |  | Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter. |
-| **SkötselDOS: bete/slåtter** | `skdos_havd_typ IS NOT NULL` | ● 122 | ○ 77 | ○ 42 |  | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
-| **TUVA-träff** | `tuva_antal_objekt IS NOT NULL` | ● 980 | ○ 104 |  | ○ 132 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
-| **TUVA ohävdad/igenväxande** | `tuva_negativ = 'Ja'` | ● 133 | ○ 57 |  | ○ 27 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
-| **Laser: möjlig avverkning** | `laser_flagga = 'Möjlig avverkning'` |  | ● 37 |  |  | Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat *icke fullgod*. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för grupp B. |
-| **Laser: möjlig gallring** | `laser_flagga = 'Möjlig gallring'` |  | ○ 106 |  |  | Grundytan minskade, höjden oförändrad. Svagare signal — kontrollera i orto. |
-| **Diken inom ytan** | `diken_m_inom > 0` |  | ● 440 | ● 25 |  | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
-| **Typiska arter i Artportalen** | `typarter_antal IS NOT NULL` | ○ | ○ | ○ | ○ | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
-| **Uppföljning: dålig** | `uppf_antal_dalig > 0` | ● 12 | ○ 1 |  |  | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
+**Grupper och batcher är två olika indelningar.** *Batch* (S, A, B, C, D) är arbetsordningen per Natura 2000-område — vilket objekt du tar när. *Grupp* (Hävd, Skog, Våtmark, Stabila) avgör vilken bedömningsregel i metodiken (R7A–R7D) som gäller för en enskild yta. Ett och samma objekt innehåller därför ytor från flera grupper. Tabellen visar antal ytor med Natura-naturtyp i varje batch (uttag 2026-08-26):
 
-**Grupp A · Hävdberoende (R7A)** — 1630, 4030, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6430, 6510, 8231, 9070, 9071, 9072
-
-1. Slå på **Hävdberoende**.
-2. Lägg till ett skiftesfilter i taget: **Ja** → kandidater till fullgod, **Nej** → kandidater till icke fullgod, **Delvis**/**Oklart** → behöver mer underlag.
-3. För Delvis, Oklart och Nej: slå på **SkötselDOS: bete/slåtter** — bete utan stöd syns bara där.
-4. **TUVA-träff** visar vilka som har TUVA-underlag. **TUVA ohävdad/igenväxande** och **Uppföljning: dålig** ger kandidater till icke fullgod.
-5. 6430 längs vattendrag är ofta inte hävdberoende → *till fält*. Laserfälten finns inte för 9070.
-
-**Grupp B · Skog (R7B)** — 2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750
-
-1. **9010 och 9050** (inkl. 9006, 9008, 9009, 9830) blir aldrig *fullgod* vid skrivbordet — död ved är ett klassningskrav. Filtren ger bara kandidater till icke fullgod; övriga blir *till fält*.
-2. **Laser: möjlig avverkning** → kandidater till icke fullgod. Kontrollera orto och avverkningsinformationen.
-3. **Laser: möjlig gallring** → svagare signal, kontrollera orto.
-4. För sumpskog (9080), 9740 och 9750: **Diken inom ytan**.
-5. Ytor utan laserflagga och utan diken är kandidater till fullgod (utom 9010/9050) — kolla ändå avverkningar efter 2020.
-6. Skiftesfiltren säger inget här. **TUVA-träff** eller **SkötselDOS** på skog: pröva om typen egentligen är trädklädd betesmark (9070).
-
-**Grupp C · Myr, våtmark, sjö (R7C)** — 3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231
-
-1. Myrar (7110–7231): **Diken inom ytan** → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.
-2. Rikkärr (7230): **SkötselDOS: bete/slåtter** visar var hävd ingår i skötseln.
-3. Sjöar och vattendrag (3110–3260): lagret har inga filter som ger tillståndssignal — oftast *till fält* eller andra underlag.
-4. **Typiska arter i Artportalen** stöder att typen är rätt.
-
-**Grupp D · Stabila (strand, klippa, skär) (R7D)** — 1220, 1230, 1232, 1620, 1621, 1640, 8210, 8220, 8230, 8232
-
-1. Få filter ger tillståndssignal — gruppen är stabil och R7D bygger mest på att typen är rimlig.
-2. **Typiska arter i Artportalen** och **Större än 5 ha** för de ytor som granskas en och en.
-3. **TUVA-träff** eller **Hävd enligt skiften: Delvis** på strand eller häll: pröva om ytan egentligen är strandäng (1630) eller annan hävdberoende typ.
-4. Kusten granskas i **Batch A**.
+| Batch | Objekt | Uppgift | Hävd | Skog | Våtmark | Stabila | Marint (lämnas) |
+|---|---|---|---:|---:|---:|---:|---:|
+| S | Storobjekten | C2.1 | 567 | 799 | 23 | 924 | 364 |
+| A | Kust och skärgård | C3.1 | 311 | 370 | 36 | 395 | 177 |
+| B | Ängs- och hagmark inland | C4.1 | 147 | 55 | 18 | 16 | 1 |
+| C | Våtmark och vattendrag | C5.1 | 7 | 115 | 43 | 0 | 0 |
+| D | Skog och ädellöv | C6.1 | 33 | 90 | 4 | 0 | 4 |
 
 ---
 

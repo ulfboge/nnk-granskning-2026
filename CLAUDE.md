@@ -41,8 +41,10 @@ Projektöversikten för hela naturrestaureringsuppdraget finns i det tredje sysk
 | `index.html` | Kontrollpanel — ingång till allt |
 | `kontrollrum.html` | Gantt v34–v52, alla uppgifter med avbockning, leveranser, milstolpar. **Genereras** ur natura-2000 — redigera inte här |
 | `kunskapslage.html` | Kunskapsläge per Natura 2000-område |
+| `bedomningsguide.html` | Bedömningsguide — ett område (Floden, SE0220206) steg för steg med låsta steg, popupförklaring och granskningsloggens kolumner. **Handskriven** (inte genererad); exempeldata inbäddad i sidan. Kolumnnamnen ska matcha `natura-2000/scripts/analysis/bygg_granskningslogg.py` |
 | `docs/arbetsplan.md` (+ genererad `.html`) | Arbetsplan — kravnedbrytning, arbetspaket A–H |
 | `docs/runbook.md` (+ `.html`) | Runbook — steg för steg genom alla uppgifter. **Genereras** ur `natura-2000/scripts/analysis/uppgifter.py` — redigera inte här |
+| `docs/filterguide.md` (+ `.html`) | Filterguide för webbGIS, en flik per R7-grupp. **Genereras** ur `uppgifter.py` av `bygg_kontrollrum.py` — redigera inte här |
 | `docs/metodik.md` (+ `.html`) | Metodik förvaltarkunskap — arbetspaket H |
 | `docs/typiska-arter.md` (+ `.html`) | Typiska/karakteristiska arter per naturtyp |
 | `docs/vagledningar.md` (+ `.html`) | Senaste fastställda NV/HaV-vägledning per livsmiljötyp i länet (45 typer), länkar till myndigheternas PDF:er |
@@ -89,9 +91,11 @@ tillståndsattribut är driftsatta (enligt Naturvårdsverket: slutet av septembe
 4. **Håll sidorna fristående** — inga CDN:er, inga externa skript/typsnitt, inga inloggningar.
    Nya funktioner ska fungera offline/bakom brandvägg precis som befintliga sidor.
 5. **Kontrollera om filer redan finns** innan du skapar nya (undvik dubbletter av dokument/sidor).
-6. **Runbook och kontrollrum genereras** (sedan 2026-09-25) — `kontrollrum.html` och `docs/runbook.md`
+6. **Runbook, filterguide och kontrollrum genereras** (sedan 2026-09-25, filterguiden sedan 2026-10-06) — `kontrollrum.html`, `docs/runbook.md` och `docs/filterguide.md`
    skrivs av `natura-2000/scripts/analysis/bygg_kontrollrum.py` ur `uppgifter.py` och `kontrollrum_mall.html`.
-   Ändra där, kör skriptet och sedan `python bygg.py` här. Redigera aldrig dessa två filer direkt.
+   Ändra där, kör skriptet och sedan `python bygg.py` här. Redigera aldrig dessa filer direkt.
+   R7-grupperna heter Hävd, Skog, Våtmark och Stabila i all text (inte A–D, som krockar med batcherna S/A/B/C/D).
+   Texter som bara gäller Johan (hans dator, privata repot) ska säga det uttryckligen.
    Arbetsplanen (`docs/arbetsplan.md`) redigeras däremot här, men ändringar i uppgifter behöver oftast
    göras i båda. Se efter
    om en ändring här också kräver en motsvarande ändring där.

@@ -74,7 +74,7 @@ DOK_CSS = """
 h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
 h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
  padding-bottom:6px;border-bottom:1px solid var(--grid)}
-h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
 h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
 p{margin:0 0 14px;max-width:74ch}
 ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
@@ -88,6 +88,10 @@ pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
 pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
@@ -242,7 +246,14 @@ SIDMALL = """<!DOCTYPE html>
 """
 
 
-def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
+BRED_CSS = """
+.wrap{max-width:1080px}
+p,ul,ol{max-width:80ch}
+.tabpane > h3{border-top:1px solid var(--grid);padding-top:22px}
+"""
+
+
+def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True):
     """Konverterar en markdownfil till en fristaende HTML-sida."""
     text = pathlib.Path(md_sokvag).read_text(encoding="utf-8")
     md = markdown.Markdown(
@@ -250,12 +261,14 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
         extension_configs={"toc": {"permalink": False, "toc_depth": "2-3"}},
     )
     brod = md.convert(text)
+    # tabeller i ett eget omslag som scrollar i sidled pa smala skarmar
+    brod = re.sub(r"<table>(.*?)</table>", r'<div class="tabell"><table>\1</table></div>', brod, flags=re.S)
 
     forsta = re.search(r"<h1[^>]*>(.*?)</h1>", brod, re.S)
     titel = re.sub(r"<[^>]+>", "", forsta.group(1)).strip() if forsta else pathlib.Path(md_sokvag).stem
 
     toc = ""
-    if md.toc_tokens:
+    if toc and md.toc_tokens:
         toc = f'<nav class="toc"><div class="t">Innehåll</div>{md.toc}</nav>'
         # lagg innehallsforteckningen direkt efter rubriken
         if forsta:
@@ -263,11 +276,11 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
         else:
             brod = toc + brod
 
-    extra = DOK_CSS + KOPIERA_CSS
+    extra = DOK_CSS + KOPIERA_CSS + (BRED_CSS if bred else "")
     js = TEMA_JS + KOPIERA_JS
     if flikar:
         brod = flikifiera(brod)
-        extra = DOK_CSS + KOPIERA_CSS + TAB_CSS
+        extra = DOK_CSS + KOPIERA_CSS + TAB_CSS + (BRED_CSS if bred else "")
         js = TEMA_JS + KOPIERA_JS + TAB_JS
 
     sida = SIDMALL.format(
@@ -283,27 +296,29 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False):
     return titel, len(sida)
 
 
-# Namn -> flikar (True delar upp sidan i flikar per Del/Bilaga-avsnitt).
-# Bara webbgis-publicering ar flikad hittills (den langsta, mest
-# stegvisa manualen) - satt True pa fler vid behov.
+# Namn -> installningar for bygg_dok (flikar, bred, toc).
+# runbook och filterguide (2026-10-06): flikar per arbetspaket/grupp, bred
+# layout och ingen innehallsforteckning (flikraden och oversiktstabellerna
+# ersatter den).
 DOKUMENT = {
-    "arbetsplan": False,
-    "runbook": False,
-    "metodik": False,
-    "typiska-arter": False,
-    "vagledningar": False,
-    "webbgis-publicering": True,
-    "attributbeskrivning": False,
-    "popup-arcade-uttryck": False,
+    "arbetsplan": {},
+    "runbook": {"flikar": True, "bred": True, "toc": False},
+    "filterguide": {"flikar": True, "bred": True, "toc": False},
+    "metodik": {},
+    "typiska-arter": {},
+    "vagledningar": {},
+    "webbgis-publicering": {"flikar": True},
+    "attributbeskrivning": {},
+    "popup-arcade-uttryck": {},
 }
 
 if __name__ == "__main__":
     rot = pathlib.Path(__file__).parent
-    for namn, flikar in DOKUMENT.items():
+    for namn, inst in DOKUMENT.items():
         md_path = rot / "docs" / f"{namn}.md"
         if not md_path.exists():
             print(f"hoppar over {namn} - {md_path} saknas")
             continue
-        titel, n = bygg_dok(md_path, rot / "docs" / f"{namn}.html", flikar=flikar)
-        tagg = " [flikar]" if flikar else ""
+        titel, n = bygg_dok(md_path, rot / "docs" / f"{namn}.html", **inst)
+        tagg = " [flikar]" if inst.get("flikar") else ""
         print(f"docs/{namn}.html  <- {titel}  ({n:,} tecken){tagg}")

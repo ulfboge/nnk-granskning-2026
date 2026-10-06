@@ -524,7 +524,7 @@ Tio fält, alla skrivskyddade, heltal utom `fv_arter` och `fv_forsamring`, och b
 | `fv_forsamring` | text | *Ja* om `fv_ej_aterfunna`, `fv_minskande` eller `fv_anm_havd` är större än 0, annars *Nej*. Finns för att webbGIS-filtret *Floraväkteri: försämring* ska bli ett enda villkor. Tillagt 2026-10-02 |
 
 ### Laserdata och diken
-Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur `laser_for_granskning.csv` (`nnk_laser.py`). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (R7 grupp B, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Skog (laserdata)*.
+Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur `laser_for_granskning.csv` (`nnk_laser.py`). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (gruppen Skog i R7, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Skog (laserdata)*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filterguide för webbGIS — NNK 2026</title>
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ flex-wrap:wrap;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+
+h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
+ padding-bottom:6px;border-bottom:1px solid var(--grid)}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
+h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
+p{margin:0 0 14px;max-width:74ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
+li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--grid);margin:32px 0}
+blockquote{margin:0 0 14px;padding:2px 0 2px 16px;border-left:3px solid var(--p-D);color:var(--ink-2)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:13px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
+ padding:14px 16px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;border:0;padding:0;font-size:12.5px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
+ background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+.toc{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;
+ padding:16px 20px;margin:0 0 30px}
+.toc .t{font-size:12px;font-weight:620;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin-bottom:8px}
+.toc ul{margin:0;padding-left:18px;font-size:13.5px}
+.toc ul ul{padding-left:16px;font-size:13px}
+.toc li{margin:2px 0}
+
+.kodruta{position:relative}
+.kodruta pre{padding-right:78px}
+.kopiera{position:absolute;top:8px;right:8px;font:600 12px/1 system-ui,sans-serif;
+ padding:6px 10px;border-radius:7px;border:1px solid var(--ring);background:var(--plane);
+ color:var(--ink-2);cursor:pointer;opacity:.85}
+.kopiera:hover{opacity:1;color:var(--ink)}
+.kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+
+.tabbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px;padding-bottom:16px;
+ border-bottom:1px solid var(--grid)}
+.tabbtn{font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;
+ border:1px solid var(--ring);background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+.tabbtn:hover{color:var(--ink-1)}
+.tabbtn.active{background:var(--p-A);border-color:var(--p-A);color:#fff;font-weight:620}
+.tabpane.js-hidden{display:none}
+
+.wrap{max-width:1080px}
+p,ul,ol{max-width:80ch}
+.tabpane > h3{border-top:1px solid var(--grid);padding-top:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
+  <button id="themeBtn" type="button">Mörkt</button>
+</div>
+<h1 id="filterguide-for-webbgis">Filterguide för webbGIS</h1>
+<p><em>LstD NNK Granskning · Länsstyrelsen i Södermanlands län · NNK 2026</em></p>
+<p>Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till <em>fullgod</em>, <em>icke fullgod</em> eller <em>till fält</em> — en flik per grupp av livsmiljötyper. Välj fliken för den grupp ytan tillhör. Gruppen står i popupen under <em>Naturtyp (NNK-data)</em>, raden <em>Bedömningsgrupp (R7)</em>.</p>
+<p><strong>Grundurvalet ska alltid vara på:</strong> <em>Natura 2000-typ</em>, <em>Marina objekt</em> och <em>Dölj icke-Natura-livsmiljötyper</em>. Filtren kombineras med OCH. Vill du ha ELLER, slå på dem ett i taget.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Tecken</th>
+<th>Betyder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>på</strong></td>
+<td>Slå alltid på för gruppen</td>
+</tr>
+<tr>
+<td>● huvudfilter</td>
+<td>Ger kandidater till fullgod eller icke fullgod</td>
+</tr>
+<tr>
+<td>○ komplement</td>
+<td>Stöder bedömningen eller styr arbetsordningen</td>
+</tr>
+<tr>
+<td>siffra</td>
+<td>Antal ytor inom N2000 i gruppen som filtret träffar (uttag 2026-08-26)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Grupper och batcher är två olika indelningar.</strong> <em>Batch</em> (S, A, B, C, D) är arbetsordningen per Natura 2000-område — vilket objekt du tar när. <em>Grupp</em> (Hävd, Skog, Våtmark, Stabila) avgör vilken bedömningsregel i metodiken (R7A–R7D) som gäller för en enskild yta. Ett och samma objekt innehåller därför ytor från flera grupper. Tabellen visar antal ytor med Natura-naturtyp i varje batch (uttag 2026-08-26):</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Batch</th>
+<th>Objekt</th>
+<th>Uppgift</th>
+<th style="text-align: right;">Hävd</th>
+<th style="text-align: right;">Skog</th>
+<th style="text-align: right;">Våtmark</th>
+<th style="text-align: right;">Stabila</th>
+<th style="text-align: right;">Marint (lämnas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Storobjekten</td>
+<td>C2.1</td>
+<td style="text-align: right;">567</td>
+<td style="text-align: right;">799</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">924</td>
+<td style="text-align: right;">364</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Kust och skärgård</td>
+<td>C3.1</td>
+<td style="text-align: right;">311</td>
+<td style="text-align: right;">370</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">395</td>
+<td style="text-align: right;">177</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Ängs- och hagmark inland</td>
+<td>C4.1</td>
+<td style="text-align: right;">147</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Våtmark och vattendrag</td>
+<td>C5.1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Skog och ädellöv</td>
+<td>C6.1</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tabbar"><button type="button" class="tabbtn active" data-tabid="p0" data-target="havd">Hävd</button><button type="button" class="tabbtn" data-tabid="p1" data-target="skog">Skog</button><button type="button" class="tabbtn" data-tabid="p2" data-target="vatmark">Våtmark</button><button type="button" class="tabbtn" data-tabid="p3" data-target="stabila">Stabila</button><button type="button" class="tabbtn" data-tabid="p4" data-target="urval-och-arbetsordning">Urval och arbetsordning</button><button type="button" class="tabbtn" data-tabid="p5" data-target="alla-filter">Alla filter</button></div><div class="tabpane" data-tabid="p0"><h2 id="havd">Hävd</h2>
+<p><strong>Hävd</strong> — hävdberoende gräsmarker, strandängar och trädklädd betesmark. Bedöms enligt <strong>R7A</strong> i <a href="metodik.html">metodiken</a>. 1 375 ytor inom N2000.</p>
+<p><em>Typer:</em> 1630, 4030, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6430, 6510, 8231, 9070, 9071, 9072</p>
+<h3 id="arbetsgang">Arbetsgång</h3>
+<ol>
+<li>Slå på <strong>Hävdberoende</strong>.</li>
+<li>Lägg till ett skiftesfilter i taget: <strong>Ja</strong> → kandidater till fullgod, <strong>Nej</strong> → kandidater till icke fullgod, <strong>Delvis</strong>/<strong>Oklart</strong> → behöver mer underlag.</li>
+<li>För Delvis, Oklart och Nej: slå på <strong>SkötselDOS: bete/slåtter</strong> — bete utan stöd syns bara där.</li>
+<li><strong>TUVA-träff</strong> visar vilka som har TUVA-underlag. <strong>TUVA ohävdad/igenväxande</strong> och <strong>Uppföljning: dålig</strong> ger kandidater till icke fullgod.</li>
+<li>6430 längs vattendrag är ofta inte hävdberoende → <em>till fält</em>. Laserfälten finns inte för 9070.</li>
+</ol>
+<h3 id="filter-som-ger-nagot-for-gruppen">Filter som ger något för gruppen</h3>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Roll</th>
+<th style="text-align: right;">Ytor</th>
+<th>Så läser du träffen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hävdberoende</strong><br><code>havdberoende = 'Ja'</code></td>
+<td><strong>på</strong></td>
+<td style="text-align: right;"></td>
+<td>Motsvarar gruppen Hävd. Slå alltid på när du bedömer hävdtyper, annars drar hävdfiltren med sig skog och myr.</td>
+</tr>
+<tr>
+<td><strong>Hävd enligt skiften: Ja</strong><br><code>havd_skiften = 'Ja'</code></td>
+<td>●</td>
+<td style="text-align: right;">158</td>
+<td>Bete eller slåtter varje år sedan 2015 (eller sedan typen sattes) → kandidat <em>fullgod</em>. Kontrollera orto.</td>
+</tr>
+<tr>
+<td><strong>Hävd enligt skiften: Delvis</strong><br><code>havd_skiften = 'Delvis'</code></td>
+<td>●</td>
+<td style="text-align: right;">607</td>
+<td>Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS.</td>
+</tr>
+<tr>
+<td><strong>Hävd enligt skiften: Nej</strong><br><code>havd_skiften = 'Nej'</code></td>
+<td>●</td>
+<td style="text-align: right;">369</td>
+<td>Träffar skiften men aldrig bete/slåtter → kandidat <em>icke fullgod</em> på hävdberoende ytor. På skog och myr betyder Nej oftast bara att ytan gränsar mot åker — använd inte där.</td>
+</tr>
+<tr>
+<td><strong>Hävd enligt skiften: Oklart</strong><br><code>havd_skiften = 'Oklart'</code></td>
+<td>○</td>
+<td style="text-align: right;">241</td>
+<td>Inga skiften alls. Bete utan stöd syns inte — gå vidare med SkötselDOS och TUVA.</td>
+</tr>
+<tr>
+<td><strong>Vall senaste året</strong><br><code>havd_varning_vall = 'Ja'</code></td>
+<td>○</td>
+<td style="text-align: right;">2</td>
+<td>Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter.</td>
+</tr>
+<tr>
+<td><strong>SkötselDOS: bete/slåtter</strong><br><code>skdos_havd_typ IS NOT NULL</code></td>
+<td>●</td>
+<td style="text-align: right;">122</td>
+<td>Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230).</td>
+</tr>
+<tr>
+<td><strong>TUVA-träff</strong><br><code>tuva_antal_objekt IS NOT NULL</code></td>
+<td>●</td>
+<td style="text-align: right;">980</td>
+<td>Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer.</td>
+</tr>
+<tr>
+<td><strong>TUVA ohävdad/igenväxande</strong><br><code>tuva_negativ = 'Ja'</code></td>
+<td>●</td>
+<td style="text-align: right;">133</td>
+<td>Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat <em>icke fullgod</em>. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret.</td>
+</tr>
+<tr>
+<td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;"></td>
+<td>Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas.</td>
+</tr>
+<tr>
+<td><strong>Uppföljning: dålig</strong><br><code>uppf_antal_dalig &gt; 0</code></td>
+<td>●</td>
+<td style="text-align: right;">12</td>
+<td>Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat <em>icke fullgod</em>. Nästan bara hävdberoende ytor.</td>
+</tr>
+</tbody>
+</table></div>
+</div><div class="tabpane js-hidden" data-tabid="p1"><h2 id="skog">Skog</h2>
+<p><strong>Skog</strong> — barrskog, lövskog, ädellöv och sumpskog. Bedöms enligt <strong>R7B</strong> i <a href="metodik.html">metodiken</a>. 1 944 ytor inom N2000.</p>
+<p><em>Typer:</em> 2181, 9006, 9008, 9009, 9010, 9020, 9030, 9050, 9060, 9080, 9110, 9160, 9162, 9180, 9190, 9740, 9750</p>
+<h3 id="arbetsgang_1">Arbetsgång</h3>
+<ol>
+<li><strong>9010 och 9050</strong> (inkl. 9006, 9008, 9009, 9830) blir aldrig <em>fullgod</em> vid skrivbordet — död ved är ett klassningskrav. Filtren ger bara kandidater till icke fullgod; övriga blir <em>till fält</em>.</li>
+<li><strong>Laser: möjlig avverkning</strong> → kandidater till icke fullgod. Kontrollera orto och avverkningsinformationen.</li>
+<li><strong>Laser: möjlig gallring</strong> → svagare signal, kontrollera orto.</li>
+<li>För sumpskog (9080), 9740 och 9750: <strong>Diken inom ytan</strong>.</li>
+<li>Ytor utan laserflagga och utan diken är kandidater till fullgod (utom 9010/9050) — kolla ändå avverkningar efter 2020.</li>
+<li>Skiftesfiltren säger inget här. <strong>TUVA-träff</strong> eller <strong>SkötselDOS</strong> på skog: pröva om typen egentligen är trädklädd betesmark (9070).</li>
+</ol>
+<h3 id="filter-som-ger-nagot-for-gruppen_1">Filter som ger något för gruppen</h3>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Roll</th>
+<th style="text-align: right;">Ytor</th>
+<th>Så läser du träffen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SkötselDOS: bete/slåtter</strong><br><code>skdos_havd_typ IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">77</td>
+<td>Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230).</td>
+</tr>
+<tr>
+<td><strong>TUVA-träff</strong><br><code>tuva_antal_objekt IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">104</td>
+<td>Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer.</td>
+</tr>
+<tr>
+<td><strong>TUVA ohävdad/igenväxande</strong><br><code>tuva_negativ = 'Ja'</code></td>
+<td>○</td>
+<td style="text-align: right;">57</td>
+<td>Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat <em>icke fullgod</em>. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret.</td>
+</tr>
+<tr>
+<td><strong>Laser: möjlig avverkning</strong><br><code>laser_flagga = 'Möjlig avverkning'</code></td>
+<td>●</td>
+<td style="text-align: right;">37</td>
+<td>Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat <em>icke fullgod</em>. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för gruppen Skog.</td>
+</tr>
+<tr>
+<td><strong>Laser: möjlig gallring</strong><br><code>laser_flagga = 'Möjlig gallring'</code></td>
+<td>○</td>
+<td style="text-align: right;">106</td>
+<td>Grundytan minskade, höjden oförändrad. Svagare signal — kontrollera i orto.</td>
+</tr>
+<tr>
+<td><strong>Diken inom ytan</strong><br><code>diken_m_inom &gt; 0</code></td>
+<td>●</td>
+<td style="text-align: right;">440</td>
+<td>Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat <em>icke fullgod</em>. Kontrollera i terrängskuggningen och markfuktighetskartan.</td>
+</tr>
+<tr>
+<td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;"></td>
+<td>Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas.</td>
+</tr>
+<tr>
+<td><strong>Uppföljning: dålig</strong><br><code>uppf_antal_dalig &gt; 0</code></td>
+<td>○</td>
+<td style="text-align: right;">1</td>
+<td>Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat <em>icke fullgod</em>. Nästan bara hävdberoende ytor.</td>
+</tr>
+</tbody>
+</table></div>
+</div><div class="tabpane js-hidden" data-tabid="p2"><h2 id="vatmark">Våtmark</h2>
+<p><strong>Våtmark</strong> — myr, kärr, sjöar och vattendrag. Bedöms enligt <strong>R7C</strong> i <a href="metodik.html">metodiken</a>. 344 ytor inom N2000.</p>
+<p><em>Typer:</em> 3110, 3130, 3150, 3160, 3260, 7110, 7111, 7140, 7141, 7142, 7230, 7231</p>
+<h3 id="arbetsgang_2">Arbetsgång</h3>
+<ol>
+<li>Myrar (7110–7231): <strong>Diken inom ytan</strong> → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.</li>
+<li>Rikkärr (7230): <strong>SkötselDOS: bete/slåtter</strong> visar var hävd ingår i skötseln.</li>
+<li>Sjöar och vattendrag (3110–3260): lagret har inga filter som ger tillståndssignal — oftast <em>till fält</em> eller andra underlag.</li>
+<li><strong>Typiska arter i Artportalen</strong> stöder att typen är rätt.</li>
+</ol>
+<h3 id="filter-som-ger-nagot-for-gruppen_2">Filter som ger något för gruppen</h3>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Roll</th>
+<th style="text-align: right;">Ytor</th>
+<th>Så läser du träffen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SkötselDOS: bete/slåtter</strong><br><code>skdos_havd_typ IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">42</td>
+<td>Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230).</td>
+</tr>
+<tr>
+<td><strong>Diken inom ytan</strong><br><code>diken_m_inom &gt; 0</code></td>
+<td>●</td>
+<td style="text-align: right;">25</td>
+<td>Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat <em>icke fullgod</em>. Kontrollera i terrängskuggningen och markfuktighetskartan.</td>
+</tr>
+<tr>
+<td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;"></td>
+<td>Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas.</td>
+</tr>
+</tbody>
+</table></div>
+</div><div class="tabpane js-hidden" data-tabid="p3"><h2 id="stabila">Stabila</h2>
+<p><strong>Stabila</strong> — strand, klippa, skär och häll utan hävdberoende. Bedöms enligt <strong>R7D</strong> i <a href="metodik.html">metodiken</a>. 1 549 ytor inom N2000.</p>
+<p><em>Typer:</em> 1220, 1230, 1232, 1620, 1621, 1640, 8210, 8220, 8230, 8232</p>
+<h3 id="arbetsgang_3">Arbetsgång</h3>
+<ol>
+<li>Få filter ger tillståndssignal — typerna är stabila och regeln (R7D) bygger mest på att typen är rimlig och att ortot inte visar ingrepp.</li>
+<li><strong>Typiska arter i Artportalen</strong> och <strong>Större än 5 ha</strong> för de ytor som granskas en och en.</li>
+<li><strong>TUVA-träff</strong> eller <strong>Hävd enligt skiften: Delvis</strong> på strand eller häll: pröva om ytan egentligen är strandäng (1630) eller annan hävdberoende typ.</li>
+<li>Kusten granskas i <strong>Batch A</strong>.</li>
+</ol>
+<h3 id="filter-som-ger-nagot-for-gruppen_3">Filter som ger något för gruppen</h3>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Roll</th>
+<th style="text-align: right;">Ytor</th>
+<th>Så läser du träffen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hävd enligt skiften: Delvis</strong><br><code>havd_skiften = 'Delvis'</code></td>
+<td>○</td>
+<td style="text-align: right;">83</td>
+<td>Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS.</td>
+</tr>
+<tr>
+<td><strong>TUVA-träff</strong><br><code>tuva_antal_objekt IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">132</td>
+<td>Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer.</td>
+</tr>
+<tr>
+<td><strong>TUVA ohävdad/igenväxande</strong><br><code>tuva_negativ = 'Ja'</code></td>
+<td>○</td>
+<td style="text-align: right;">27</td>
+<td>Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat <em>icke fullgod</em>. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret.</td>
+</tr>
+<tr>
+<td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;"></td>
+<td>Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas.</td>
+</tr>
+</tbody>
+</table></div>
+</div><div class="tabpane js-hidden" data-tabid="p4"><h2 id="urval-och-arbetsordning">Urval och arbetsordning</h2>
+<p>Filter som inte säger något om tillståndet men styr vilka ytor du ser och i vilken ordning. Gäller alla grupper.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Villkor</th>
+<th>Så används det</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Natura 2000-typ</strong></td>
+<td><code>n2000_typ</code> = SCI eller SCI+SPA</td>
+<td>Aktivt vid start. Avgränsar till Natura 2000-områden av typen SCI eller SCI+SPA.</td>
+</tr>
+<tr>
+<td><strong>Marina objekt</strong></td>
+<td><code>naturtyp NOT IN (1000, 1110 … 1174)</code></td>
+<td>Aktivt vid start. Döljer de marina typerna. Strandängar (1630), skär (1620), alvar (1640) och driftvallar (1220) ligger kvar.</td>
+</tr>
+<tr>
+<td><strong>Dölj icke-Natura-livsmiljötyper</strong></td>
+<td><code>naturtyp NOT IN (1950, 2920 …)</code></td>
+<td>Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper.</td>
+</tr>
+<tr>
+<td><strong>Osäker/obestämd naturtyp</strong></td>
+<td><code>naturtyp IN (2300, 4810 … 9870)</code></td>
+<td>Eget spår, inte statusbedömning: typen måste bestämmas först (E2.1, P2-kriteriet). Använd utan gruppfiltren och utan <em>Dölj icke-Natura</em>.</td>
+</tr>
+<tr>
+<td><strong>Prio P1–P4</strong></td>
+<td><code>prio = 'P1'</code> osv.</td>
+<td>Arbetsordning enligt arbetsplanen 5.2. Säger inget om tillståndet.</td>
+</tr>
+<tr>
+<td><strong>Batch S / A / B / C / D</strong></td>
+<td><code>batch = 'S'</code> osv.</td>
+<td>Bara de 40 P1-objekten. Batcharna är arbetsordning per <em>objekt</em> och är inte samma sak som R7-grupperna, som gäller per <em>yta</em>. Batch B (ängs- och hagmark) består mest av hävdtyper, C mest av våtmark, D mest av skog, A är kusten (strandängar hör till Hävd, skär och stränder till Stabila) och S storobjekten (blandat).</td>
+</tr>
+<tr>
+<td><strong>Ej granskade / Granskning påbörjad</strong></td>
+<td><code>granskat = 2</code> / <code>3</code></td>
+<td>Arbetsläge. Kombinera med gruppens filter för att se vad som återstår.</td>
+</tr>
+<tr>
+<td><strong>Större än 5 ha</strong></td>
+<td><code>area_ha &gt; 5</code></td>
+<td>C2.1: ytor som granskas en och en i storobjekten.</td>
+</tr>
+<tr>
+<td><strong>Sällsynt livsmiljötyp</strong></td>
+<td><code>sallsynt = 'Ja'</code></td>
+<td>Under 50 ha i länets N2000 (28 koder). Varje yta väger tungt för länets andel — ta dem tidigt.</td>
+</tr>
+</tbody>
+</table></div>
+</div><div class="tabpane js-hidden" data-tabid="p5"><h2 id="alla-filter">Alla filter</h2>
+<p>Översikt: vilka filter som ger något för vilken grupp. Detaljerna står under respektive flik.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Filter</th>
+<th style="text-align: center;">Hävd</th>
+<th style="text-align: center;">Skog</th>
+<th style="text-align: center;">Våtmark</th>
+<th style="text-align: center;">Stabila</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Natura 2000-typ</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+</tr>
+<tr>
+<td>Marina objekt</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+</tr>
+<tr>
+<td>Dölj icke-Natura-livsmiljötyper</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">på</td>
+</tr>
+<tr>
+<td>Osäker/obestämd naturtyp</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Prio P1–P4</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Batch S / A / B / C / D</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Ej granskade / Granskning påbörjad</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Större än 5 ha</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Sällsynt livsmiljötyp</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Hävdberoende</td>
+<td style="text-align: center;">på</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Hävd enligt skiften: Ja</td>
+<td style="text-align: center;">● 158</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Hävd enligt skiften: Delvis</td>
+<td style="text-align: center;">● 607</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">○ 83</td>
+</tr>
+<tr>
+<td>Hävd enligt skiften: Nej</td>
+<td style="text-align: center;">● 369</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Hävd enligt skiften: Oklart</td>
+<td style="text-align: center;">○ 241</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Vall senaste året</td>
+<td style="text-align: center;">○ 2</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>SkötselDOS: bete/slåtter</td>
+<td style="text-align: center;">● 122</td>
+<td style="text-align: center;">○ 77</td>
+<td style="text-align: center;">○ 42</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>TUVA-träff</td>
+<td style="text-align: center;">● 980</td>
+<td style="text-align: center;">○ 104</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">○ 132</td>
+</tr>
+<tr>
+<td>TUVA ohävdad/igenväxande</td>
+<td style="text-align: center;">● 133</td>
+<td style="text-align: center;">○ 57</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">○ 27</td>
+</tr>
+<tr>
+<td>Laser: möjlig avverkning</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">● 37</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Laser: möjlig gallring</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">○ 106</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Diken inom ytan</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">● 440</td>
+<td style="text-align: center;">● 25</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Typiska arter i Artportalen</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+<td style="text-align: center;">○</td>
+</tr>
+<tr>
+<td>Uppföljning: dålig</td>
+<td style="text-align: center;">● 12</td>
+<td style="text-align: center;">○ 1</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Genererad ur <code>natura-2000: scripts/analysis/uppgifter.py</code> med <code>bygg_kontrollrum.py</code> — redigera där, inte i den här filen</em></p></div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('themeBtn');
+  if(!b)return;
+  var r=document.documentElement;
+  function mork(){
+    var t=r.getAttribute('data-theme');
+    if(t)return t==='dark';
+    return window.matchMedia('(prefers-color-scheme:dark)').matches;
+  }
+  function rita(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){
+    r.setAttribute('data-theme',mork()?'light':'dark');rita();
+  });
+  rita();
+})();
+
+(function(){
+  function reserv(t){var a=document.createElement('textarea');a.value=t;
+    a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+    a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(a);return ok;}
+  document.querySelectorAll('pre').forEach(function(pre){
+    var w=document.createElement('div');w.className='kodruta';
+    pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+    var b=document.createElement('button');b.type='button';b.className='kopiera';
+    b.textContent='Kopiera';b.title='Kopiera koden';w.appendChild(b);
+    b.addEventListener('click',function(){
+      var t=(pre.querySelector('code')||pre).innerText;
+      function klar(ok){b.textContent=ok?'Kopierat ✓':'Markera + Ctrl+C';
+        b.classList.toggle('ok',ok);
+        setTimeout(function(){b.textContent='Kopiera';b.classList.remove('ok');},1800);}
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(t).then(function(){klar(true);},function(){klar(reserv(t));});
+      }else{klar(reserv(t));}
+    });
+  });
+})();
+
+(function(){
+  var bar=document.querySelector('.tabbar');
+  if(!bar)return;
+  var btns=Array.prototype.slice.call(bar.querySelectorAll('.tabbtn'));
+  var panes=Array.prototype.slice.call(document.querySelectorAll('.tabpane'));
+  function activate(id){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.tabid===id);});
+    panes.forEach(function(p){p.classList.toggle('js-hidden',p.dataset.tabid!==id);});
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      activate(b.dataset.tabid);
+      history.replaceState(null,'','#'+b.dataset.target);
+    });
+  });
+  function franHash(){
+    var hash=location.hash.slice(1);
+    if(!hash)return false;
+    var el=document.getElementById(hash);
+    if(!el)return false;
+    var pane=el.closest('.tabpane');
+    if(!pane)return false;
+    activate(pane.dataset.tabid);
+    requestAnimationFrame(function(){el.scrollIntoView();});
+    return true;
+  }
+  window.addEventListener('hashchange',franHash);
+  if(!franHash() && btns.length)activate(btns[0].dataset.tabid);
+})();
+</script>
+</body>
+</html>

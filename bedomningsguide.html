@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bedömningsguide — NNK 2026</title>
+<!--
+  Bedömningsguide: ett Natura 2000-område steg för steg (Floden, SE0220206).
+  Handskriven sida, ingen generering. Fristående: inga externa skript eller typsnitt.
+  Exempelvärdena kommer ur NNK-uttaget 2026-08-26 och länets stödfält
+  (natura-2000: data/nnk/nnk_join.gpkg + data/analysis/*_for_granskning.csv).
+  Utfallen i exemplet är övningssvar enligt utkastet till R7, inga registrerade bedömningar.
+  Skapad 2026-10-06.
+-->
+<style>
+:root{
+  color-scheme:light;
+  --surface-1:#fcfcfb; --plane:#f9f9f7;
+  --ink-1:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+  --p-A:#2a78d6; --p-B:#eb6834; --p-C:#1baf7a; --p-D:#eda100;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.13);
+}
+@media(prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface-1:#1a1a19; --plane:#0d0d0d;
+  --ink-1:#fff; --ink-2:#c3c2b7; --ink-3:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+  --p-A:#3987e5; --p-B:#d95926; --p-C:#199e70; --p-D:#c98500;
+  --good:#0ca30c; --idag:#d03b3b; --skugga:rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink-1);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 90px}
+a{color:var(--p-A);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+ margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--grid)}
+.crumb{font-size:12.5px;color:var(--ink-3)}
+.crumb a{color:var(--ink-2)}
+button{font:inherit;font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--ring);
+ background:var(--surface-1);color:var(--ink-2);cursor:pointer}
+button:hover{color:var(--ink-1)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.prim{background:var(--p-A);border-color:var(--p-A);color:#fff;font-weight:620}
+h1{font-size:27px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
+.lede{color:var(--ink-2);max-width:78ch;margin:0 0 16px}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:12.5px;background:var(--plane);
+ border:1px solid var(--ring);border-radius:5px;padding:1px 5px}
+.card{background:var(--surface-1);border:1px solid var(--ring);border-radius:12px;padding:16px 18px}
+.intro{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin:0 0 22px}
+.intro h2{font-size:14px;margin:0 0 6px;font-weight:640}
+.intro p{margin:0 0 8px;font-size:14px;color:var(--ink-2)}
+.intro p:last-child{margin:0}
+.fakta{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;font-size:13.5px;margin:0}
+.fakta dt{color:var(--ink-3)}
+.fakta dd{margin:0}
+.lageknapp{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}
+.lageknapp button[aria-pressed="true"]{background:var(--ink-1);color:var(--surface-1);border-color:var(--ink-1)}
+.layout{display:grid;grid-template-columns:250px 1fr;gap:22px;align-items:start}
+.stepper{position:sticky;top:14px;list-style:none;margin:0;padding:0;counter-reset:s}
+.stepper li{margin:0 0 4px}
+.stepper button{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid transparent;
+ background:none;padding:7px 9px;border-radius:9px;font-size:13.5px;color:var(--ink-2);line-height:1.35}
+.stepper button:hover:not(:disabled){background:var(--surface-1);border-color:var(--ring)}
+.stepper .nr{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--axis);display:grid;
+ place-items:center;font-size:11.5px;font-weight:650;color:var(--ink-3);margin-top:-1px}
+.stepper .klar .nr{background:var(--good);border-color:var(--good);color:#fff}
+.stepper .aktiv{background:var(--surface-1);border-color:var(--p-A);color:var(--ink-1);font-weight:600}
+.stepper .aktiv .nr{border-color:var(--p-A);color:var(--p-A)}
+.stepper .klar.aktiv .nr{border-color:var(--good);color:#fff}
+td.motiv{min-width:300px}
+.stepper button:disabled{opacity:.5}
+.stepper .las{font-size:11px;color:var(--ink-3);display:block;font-weight:400}
+.prog{height:6px;background:var(--grid);border-radius:20px;overflow:hidden;margin:4px 0 14px}
+.prog i{display:block;height:100%;background:var(--good);transition:width .2s}
+.steg{min-width:0}
+.steg .ovr{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-weight:620;margin:0 0 2px}
+.steg h2{font-size:22px;margin:0 0 6px;font-weight:650;letter-spacing:-.005em}
+.steg .mal{color:var(--ink-2);margin:0 0 18px;max-width:78ch}
+.steg h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:650;margin:24px 0 8px}
+.steg p{max-width:78ch;margin:0 0 10px}
+ul.check{list-style:none;margin:0;padding:0}
+ul.check li{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--ring);
+ border-radius:10px;background:var(--surface-1);margin:0 0 6px}
+ul.check input{margin:4px 0 0;width:17px;height:17px;flex:none;accent-color:var(--good)}
+ul.check li.ok{border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+ul.check label{cursor:pointer}
+.tabell{overflow-x:auto;border:1px solid var(--ring);border-radius:10px;background:var(--surface-1);margin:0 0 12px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:620;font-size:12px;color:var(--ink-2);background:var(--plane)}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ex{border-left:3px solid var(--p-D);background:var(--surface-1);border-radius:0 10px 10px 0;padding:12px 16px;margin:0 0 12px}
+.ex .t{font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.05em;color:var(--p-D);margin:0 0 6px}
+.ex p:last-child{margin:0}
+.obs{border-left:3px solid var(--p-A);background:var(--surface-1);border-radius:0 10px 10px 0;padding:10px 16px;margin:0 0 12px;font-size:14px;color:var(--ink-2)}
+.tag{display:inline-block;font-size:11.5px;font-weight:620;padding:1px 8px;border-radius:20px;border:1px solid var(--ring);white-space:nowrap}
+.tag.fg{background:color-mix(in srgb,var(--good) 14%,transparent);border-color:color-mix(in srgb,var(--good) 40%,transparent)}
+.tag.ifg{background:color-mix(in srgb,var(--idag) 12%,transparent);border-color:color-mix(in srgb,var(--idag) 40%,transparent)}
+.tag.tf{background:color-mix(in srgb,var(--p-D) 16%,transparent);border-color:color-mix(in srgb,var(--p-D) 45%,transparent)}
+.tag.eo{background:var(--plane)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;padding-top:16px;border-top:1px solid var(--grid);align-items:center;flex-wrap:wrap}
+.nav .hint{font-size:12.5px;color:var(--ink-3)}
+.klart{text-align:center;padding:30px 20px}
+.klart h2{font-size:22px;margin:0 0 8px}
+@media(max-width:820px){
+  .intro{grid-template-columns:1fr}
+  .layout{grid-template-columns:1fr}
+  .stepper{position:static;display:flex;gap:4px;overflow-x:auto;padding-bottom:6px}
+  .stepper li{flex:none}
+  .stepper button{width:auto}
+  .stepper .txt{display:none}
+  .stepper .aktiv .txt{display:inline}
+}
+@media print{
+  .lageknapp,.stepper,.nav,#themeBtn{display:none!important}
+  .layout{display:block}
+  .steg-sida{display:block!important;break-inside:avoid-page;margin-bottom:30px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="crumb"><a href="index.html">← Kontrollpanel NNK 2026</a> · <a href="kontrollrum.html">Kontrollrum</a></div>
+  <div style="display:flex;gap:8px">
+    <button id="aterstall" type="button" title="Bocka ur alla steg och börja om">Börja om</button>
+    <button id="themeBtn" type="button">Mörkt</button>
+  </div>
+</div>
+
+<h1>Bedömningsguide — ett område steg för steg</h1>
+<p class="lede">Hela skrivbordsbedömningen av ett Natura 2000-område, med ett riktigt område som exempel. Varje steg säger vad du gör, vad raderna i popupen betyder för bedömningen och vad du skriver i granskningsloggen. Nästa steg låses upp när du bockat av det du står på.</p>
+
+<div class="intro">
+  <div class="card">
+    <h2>Innan du börjar</h2>
+    <p>Bedömningen följer regeln <a href="docs/metodik.html#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">R7 i metodiken</a>. R7 är ett <b>utkast</b> tills piloten i batch B är fältkontrollerad. Det du kommer fram till förs in som <b>förslag i granskningslagret</b>, inte i NNK.</p>
+    <p><b>Per yta</b> skriver du i granskningslagret i webbGIS. <b>Per område</b> skriver du en rad i granskningsloggen. Guiden visar när du gör vilket.</p>
+    <p>Utfallen i exemplet är övningssvar enligt reglerna, inga registrerade bedömningar.</p>
+  </div>
+  <div class="card">
+    <h2>Exemplet: Floden</h2>
+    <dl class="fakta">
+      <dt>Sitecode</dt><dd>SE0220206</dd>
+      <dt>Batch / prio</dt><dd>B (ängs- och hagmark inland) · P1 · uppgift C4.1</dd>
+      <dt>Ytor</dt><dd>12, varav 10 med Natura-naturtyp</dd>
+      <dt>Utpekade typer</dt><dd>3150, 6270, 6410, 6510</dd>
+      <dt>Varför Floden</dt><dd>Både ytor utan status och ytor med status från basinventeringen, och underlag som pekar åt olika håll.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="lageknapp" role="group" aria-label="Visningsläge">
+  <button type="button" data-lage="steg" aria-pressed="true">Steg för steg</button>
+  <button type="button" data-lage="alla" aria-pressed="false">Visa alla steg (läsläge, inga lås)</button>
+  <button type="button" data-lage="popup" aria-pressed="false">Popupen sektion för sektion</button>
+</div>
+
+<div class="layout" id="layout">
+  <div>
+    <div class="prog" aria-hidden="true"><i id="prog" style="width:0%"></i></div>
+    <ol class="stepper" id="stepper"></ol>
+  </div>
+  <main class="steg" id="innehall"></main>
+</div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   Exempeldata: Floden SE0220206, NNK-uttag 2026-08-26 + länets stödfält.
+   ändr = år då attributen senast ändrades i NNK (last_edited_date).
+------------------------------------------------------------------- */
+const YTOR = [
+ {nr:1, kod:"6410", namn:"Fuktängar", ha:8.4, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Hävden är inte obruten och TUVA är äldre än 15 år. Inget nyare underlag kan bekräfta statusen — den står kvar och ytan blir ett fältobjekt."},
+ {nr:2, kod:"6410", namn:"Fuktängar", ha:7.9, status:"Icke fullgod", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · svagt hävdad · gödsling tydlig 30 %", arter:2, grupp:"Hävd", vad:"ompröva",
+  utfall:"tf", motiv:"Hävd varje år sedan 2015 talar för att läget kan ha blivit bättre sedan statusen sattes, men TUVA är 24 år gammal och visade gödsling. Underlaget räcker inte för fullgod — till fält, och prioritera ytan eftersom statusen kan vara fel."},
+ {nr:3, kod:"6410", namn:"Fuktängar", ha:6.5, status:"Icke fullgod", andr:2011, skiften:"Nej", utan:"alla år", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"ifg", motiv:"Skiftena visar aldrig bete eller slåtter 2015–2025. Visar ortot igenväxning är icke fullgod bekräftad. Syns tecken på bete i ortot kan det vara bete utan stöd — då till fält."},
+ {nr:4, kod:"6410", namn:"Fuktängar", ha:4.3, status:"Icke fullgod", andr:2009, skiften:"Nej", utan:"alla år", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"ifg", motiv:"Som yta 3."},
+ {nr:5, kod:"6510", namn:"Slåtterängar i låglandet", ha:2.3, status:"Fullgod", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Obruten hävd sedan 2015 stöder statusen, men R7A kräver TUVA högst 10 år gammal och en BIDOS-typ med TUVA äldre än 15 år blir till fält. Statusen står kvar. Bra fältobjekt — sannolikt stämmer den."},
+ {nr:6, kod:"6510", namn:"Slåtterängar i låglandet", ha:0.4, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Som yta 1."},
+ {nr:7, kod:"6270", namn:"Silikatgräsmarker", ha:1.2, status:"Fullgod", andr:2011, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Som yta 1."},
+ {nr:8, kod:"6270", namn:"Silikatgräsmarker", ha:0.1, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Som yta 1. Ytan är mindre än minsta karteringsenhet (0,25 ha) — ändra inte geometrin."},
+ {nr:9, kod:"3150", namn:"Naturligt näringsrika sjöar", ha:11.1, status:"Ej bedömd", andr:2009, skiften:"(gäller inte)", utan:"", tuva:"–", arter:0, grupp:"Våtmark", vad:"bedöm",
+  utfall:"visst", motiv:"R7C: slå upp sjön i VISS. God eller hög ekologisk status och opåverkad hydromorfologi → fullgod. Måttlig eller sämre av skäl som är avgörande för typen → icke fullgod. Ingen klassning → till fält."},
+ {nr:10, kod:"3150", namn:"Naturligt näringsrika sjöar", ha:8.8, status:"Ej bedömd", andr:2009, skiften:"(gäller inte)", utan:"", tuva:"–", arter:2, grupp:"Våtmark", vad:"bedöm",
+  utfall:"visst", motiv:"Som yta 9. Två typiska arter i Artportalen stöder att typen är rätt."},
+ {nr:11, kod:"6910", namn:"Öppen kultiverad gräsmark", ha:4.7, status:"Övrigt, icke Natura", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · objektet anger 6410", arter:0, grupp:"–", vad:"ingår inte",
+  utfall:"no", motiv:"Ingår inte i R7. Men hävd varje år och ett TUVA-objekt med 6410 gör den värd en fråga till förvaltaren: kan ytan vara 6410 eller utvecklingsmark? Notera i loggen under Differenser."},
+ {nr:12, kod:"6910", namn:"Öppen kultiverad gräsmark", ha:0.4, status:"Övrigt, icke Natura", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · svagt hävdad", arter:0, grupp:"–", vad:"ingår inte",
+  utfall:"no", motiv:"Som yta 11."},
+];
+const UTF = {fg:['fg','Fullgod'], ifg:['ifg','Icke fullgod (om ortot visar igenväxning)'], tf:['tf','Till fält'],
+  eo:['eo','Ej omprövad — statusen står kvar'], visst:['tf','Avgörs i VISS'], no:['eo','Ingår inte']};
+const ha = x => x.toLocaleString('sv-SE',{minimumFractionDigits:1,maximumFractionDigits:1});
+const tag = k => `<span class="tag ${UTF[k][0]}">${UTF[k][1]}</span>`;
+
+function ytTabell(kol){
+  const K = {
+    nr:['#',y=>y.nr,'n'], typ:['Naturtyp',y=>`${y.kod} ${y.namn}`], ha:['Ha',y=>ha(y.ha),'n'],
+    status:['Naturtypsstatus',y=>y.status], andr:['Senast ändrad',y=>y.andr,'n'],
+    grupp:['Grupp',y=>y.grupp], vad:['Vad gäller',y=>y.vad],
+    skiften:['Hävd enl. skiften',y=>y.skiften], utan:['År utan hävd',y=>y.utan],
+    tuva:['TUVA',y=>y.tuva], arter:['Typiska arter',y=>y.arter||'–','n'],
+    utfall:['Övningsutfall',y=>tag(y.utfall)], motiv:['Varför',y=>y.motiv,'motiv']
+  };
+  return `<div class="tabell"><table><thead><tr>${kol.map(k=>`<th${K[k][2]==='n'?' style="text-align:right"':''}>${K[k][0]}</th>`).join('')}</tr></thead><tbody>`
+    + YTOR.map(y=>`<tr>${kol.map(k=>`<td${K[k][2]?` class="${K[k][2]}"`:''}>${K[k][1](y)}</td>`).join('')}</tr>`).join('')
+    + '</tbody></table></div>';
+}
+function tab(huvud, rader){
+  return `<div class="tabell"><table><thead><tr>${huvud.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>`
+    + rader.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('') + '</tbody></table></div>';
+}
+const ex = (html) => `<div class="ex"><div class="t">Floden</div>${html}</div>`;
+const obs = (html) => `<div class="obs">${html}</div>`;
+
+/* ------------------------------------------------------------------
+   Stegen
+------------------------------------------------------------------- */
+const STEG = [
+{ id:'forbered', titel:'Förbered arbetsytan',
+  mal:'Ha webbGIS, granskningsloggen och regeln öppna innan du börjar, så att du inte behöver leta mitt i bedömningen.',
+  gor:[
+    'Öppna webbGIS-appen <b>LstD NNK Granskning</b>.',
+    'Kontrollera att grundfiltren är på: <i>Natura 2000-typ</i>, <i>Marina objekt</i> och <i>Dölj icke-Natura-livsmiljötyper</i>.',
+    'Öppna granskningsloggen på G: (<code>…\\511_skydd_omr_arter\\NRF\\granskningslogg_mall.xlsx</code>) och gå till fliken <i>Objektgranskning</i>.',
+    'Öppna <a href="docs/metodik.html#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">regeln R7</a> och <a href="docs/filterguide.html">Filterguiden</a> i varsin flik.'
+  ],
+  mer: () => obs('<b>Två ställen att skriva på.</b> Granskningslagret i webbGIS tar emot förslaget för varje <i>yta</i> (steg 9). Granskningsloggen i Excel tar emot en sammanfattning per <i>område</i>: vad du gjorde, vilka underlag du använde och vad som återstår (steg 2, 4 och 10).'),
+  logg: null },
+
+{ id:'valj', titel:'Välj området och starta loggraden',
+  mal:'Hitta området i kartan och lägg upp raden i loggen. De grå kolumnerna fylls i när du skriver SITECODE.',
+  gor:[
+    'Skriv <b>SE0220206</b> eller <b>Floden</b> i <i>Sök i kartan</i> och zooma till området.',
+    'Ny rad i loggen: datum, ditt namn och SITECODE (skriv eller välj i listan).',
+    'Kontrollera att de grå kolumnerna fylldes i. Står det <i>okänd sitecode</i> är koden felstavad.',
+    'Sätt <i>Status</i> = Påbörjad.'
+  ],
+  popup: [
+    ['Identifiering och skydd','Område, Natura 2000-kod (SE-nummer)','Vilket område ytan ligger i. Klicka på en yta och kontrollera att du är i rätt område innan du börjar.'],
+    ['','Skyddskategori, Naturreservat-ID','Om området också är naturreservat. Då finns ofta skötselplan och SkötselDOS-uppgifter att använda i steg 7.']
+  ],
+  logg: [['Datum, Granskare, SITECODE','Du fyller i'],['Område, Batch, Prio, Uppgift, Förvaltare, Bevarandeplan fastställd, Utpekade typer, Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt'],['Status','Påbörjad']],
+  ex: () => ex('<p>Autofyllningen ger: Floden · batch B · P1 · C4.1 · utpekade 3150, 6270, 6410, 6510 · <b>10 ytor R7</b>, varav <b>2 Ej bedömd</b> och <b>8 med status</b>. Bevarandeplanens år saknas i underlaget — det tar du ur själva planen i nästa steg.</p>') },
+
+{ id:'bevplan', titel:'Läs bevarandeplanen',
+  mal:'Ta reda på vilka livsmiljötyper som är utpekade och vilka bevarandemål som gäller. Det avgör hur försiktig du ska vara med att föreslå ändringar.',
+  gor:[
+    'Öppna bevarandeplanen: lagret <i>NV Natura2000 områden</i>, raden <code>BEVPLAN</code> i attributtabellen.',
+    'Notera vilka livsmiljötyper som är utpekade och vilka som är prioriterade bevarandevärden.',
+    'Notera vilket år planen fastställdes. Det behövs i steg 6 för att avgöra om planen är nyare än karteringen.',
+    'Läs bevarandemålen för de hävdberoende typerna — de säger vad som räknas som gott tillstånd i just det här området.'
+  ],
+  mer: () => obs('<b>Utpekade typer har ett särskilt skydd</b> (R6, FAQ 19). De ska bara ändras om den tidigare bedömningen är uppenbart fel eller marken faktiskt har förändrats. Är du osäker på en utpekad typ blir svaret <i>till fält</i>, inte en ändring.'),
+  popup: [['Naturtyp (NNK-data)','Bevarandeplan, fastställd (år)','Året då planen fastställdes. Tomt om året inte finns i underlaget — läs det i planen.']],
+  logg: [['Bevarandeplan fastställd','Fylls i automatiskt när året finns. Saknas det: skriv året i <i>Underlag</i>'],['Utpekade typer','Fylls i automatiskt — kontrollera mot planen']],
+  ex: () => ex('<p>Planen (<a href="https://geodata.naturvardsverket.se/handlingar/rest/dokument/285791">NV:s dokument 285791</a>) pekar ut 3150, 6270, 6410 och 6510. Alla fyra är alltså skyddade enligt R6 — ändringar bara vid uppenbart fel eller faktisk förändring.</p>') },
+
+{ id:'jamfor', titel:'Jämför NNK med bevarandeplanen',
+  mal:'Se om typerna i NNK stämmer med det planen pekar ut, innan du bedömer status yta för yta.',
+  gor:[
+    'Klicka igenom ytorna i området och notera naturtypen för varje yta (popupen, raden <i>Naturtyp</i>).',
+    'Finns alla utpekade typer i NNK? Finns typer i NNK som planen inte nämner?',
+    'Stäng tillfälligt av <i>Dölj icke-Natura-livsmiljötyper</i> och titta på icke-Natura-ytorna inom området. Slå sedan på filtret igen.',
+    'Skriv skillnaderna i loggen.'
+  ],
+  popup: [
+    ['Naturtyp (NNK-data)','Naturtyp','Kod och namn för livsmiljötypen enligt NNK.'],
+    ['','Area (ha)','Ytans storlek. Under 0,25 ha (0,5 ha ädellövskog, 1 ha skog och myr) ändras inte geometrin.'],
+    ['','Målnaturtyp 1–3','Bara för utvecklingsmark: vilken typ ytan är på väg mot.']
+  ],
+  logg: [['Differenser NNK – bevarandeplan','Typer som saknas, typer som tillkommit, ytor som kanske är fel typ']],
+  ex: () => ex('<p>Alla fyra utpekade typer finns i NNK. Två ytor är <b>6910 Öppen kultiverad gräsmark</b> (4,7 och 0,4 ha) — inte Natura-naturtyp. Båda har hävd varje år sedan 2015, och TUVA-objektet de ligger i anger 6410. Det är inte en R7-fråga, men värt att fråga förvaltaren om: kan de vara 6410 eller utvecklingsmark?</p><p><i>Loggen, Differenser:</i> "Alla utpekade typer finns. 2 ytor 6910 (5,1 ha) med årlig hävd och TUVA 6410 — fråga förvaltaren om typ/utvecklingsmark."</p>') },
+
+{ id:'sortera', titel:'Sortera ytorna: bedöm, ompröva eller ingår inte',
+  mal:'Avgör för varje yta vilken regel som gäller. Det står i popupens sektion Bedömning vid skrivbordet (R7).',
+  gor:[
+    'Klicka på varje yta och läs <i>Bedömningsgrupp (R7)</i>, <i>Statusens ålder</i> och <i>Vad gäller</i>.',
+    'Ytor med <b>Ej bedömd status</b>: bedöm enligt gruppens delregel (R7A–R7D).',
+    'Ytor som redan är <b>Fullgod</b> eller <b>Icke fullgod</b>: ompröva (R7-omprövning). Statusen räknas inte som belägg.',
+    'Ytor som inte är Natura-naturtyp, eller är marina eller obestämda: ingår inte i R7.'
+  ],
+  mer: () => `<h3>Hur gammal är statusen?</h3>
+    <p>Naturtypsstatus är inte daterad i sig. Den speglar bedömningen när den gjordes, och det betyder inte att den gäller i dag. Om du vid skrivbordet "bekräftar" en status från 2009 utan nytt underlag är det ett antagande, inte en bedömning. Läs åldern ur de här raderna:</p>`
+    + tab(['Rad i popupen','Vad den säger'],[
+      ['Slutdatum senaste inventering','När typen och statusen senast bedömdes. Rätt fält, men tomt för nästan alla ytor än så länge.'],
+      ['Ursprung','<i>BIDOS</i> betyder att statusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal.'],
+      ['Statusens ålder (sektion R7)','Slutdatum om det finns, annars året då attributen senast ändrades i NNK. Använd det som "senast", inte som bevis för att någon bedömde ytan det året.'],
+      ['Karteringsstatus','<i>Hur</i> bedömningen gjordes, inte <i>när</i>. <i>Granskad vid skrivbordet</i> betyder att typ och status senast sattes utan fältbesök. <i>Besökt i fält</i> och <i>Inventerad i fält</i> betyder fältdata — men från BIDOS är även den ofta gammal.']
+    ])
+    + obs('<b>Grupp är inte batch.</b> Batch (S, A, B, C, D) är arbetsordningen per område. Gruppen (Hävd, Skog, Våtmark, Stabila) är regeln per yta. Floden ligger i batch B men har ytor i två grupper.'),
+  popup: [
+    ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp (R7)','Vilken delregel som gäller: Hävd (R7A), Skog (R7B), Våtmark (R7C) eller Stabila (R7D). Räknas fram ur naturtypskoden.'],
+    ['','Statusens ålder','Hur gammal den nuvarande statusen är, så gott det går att avgöra.'],
+    ['','Vad gäller','Bedöm, ompröva eller ingår inte.'],
+    ['Naturtyp (NNK-data)','Naturtypsstatus','Nuvarande status i NNK: Fullgod, Icke fullgod, Utvecklingsmark, Övrigt eller Ej bedömd.'],
+    ['','Karteringsstatus, Ursprung','Hur och varifrån — se tabellen ovan.']
+  ],
+  logg: [['Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt — stäm av mot vad du ser i kartan']],
+  ex: () => ex('<p>8 hävdytor med status från basinventeringen (ompröva), 2 sjöytor utan status (bedöm), 2 icke-Natura-ytor (ingår inte). Alla har ursprung BIDOS och karteringsstatus <i>Granskad vid skrivbordet</i>. Attributen ändrades senast 2009 eller 2011.</p>') + ytTabell(['nr','typ','ha','status','andr','grupp','vad']) },
+
+{ id:'typ', titel:'Pröva att typen är rimlig',
+  mal:'Förutsättningen för all R7-bedömning: typen ska stödjas av minst ett underlag som är nyare än karteringen och oberoende av den.',
+  gor:[
+    'Leta efter stöd för typen: bevarandeplan som anger typen, TUVA-objekt med samma typ, fältprotokoll eller fynd av typiska arter.',
+    'Kontrollera att stödet är <b>nyare än karteringen</b> (steg 5) och inte bygger på den.',
+    'Titta i ortofoto och IR-ortofoto. Ortot får inte motsäga typen (t.ex. åker, ung granplantering, bebyggelse). Notera ortofotots år.',
+    'Stöds inte typen: R7 gäller inte. Föreslå Karteringsstatus 5 <i>Åtgärdas</i> med en kommentar och räkna ytan som <i>Typ ifrågasatt</i> i loggen.'
+  ],
+  popup: [
+    ['Typiska arter (Artportalen)','Antal typiska arter med fynd, Arter, Senaste fynd (år)','Fynd sedan 2010 inom ytan. Stöder att typen är rätt. Inga fynd betyder inte att arterna saknas.'],
+    ['Hävd enligt jordbruksskiften och TUVA','TUVA, naturtyper i objektet','Typerna gäller hela TUVA-objektet, inte NNK-ytan. Samma typ räknas som stöd om inventeringen är nyare än karteringen.'],
+    ['','TUVA, inventeringsår','Avgör om TUVA kan räknas som nyare underlag.']
+  ],
+  logg: [['Ortofoto (år)','Året för det orto du bedömt mot'],['Typ ifrågasatt','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
+  ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Stödet hänger därför på <b>bevarandeplanen</b>: om den är fastställd efter 2011 och anger alla fyra typerna är förutsättningen uppfylld för samtliga Natura-ytor. Är den äldre behövs ortot och arterna yta för yta.</p>') },
+
+{ id:'underlag', titel:'Läs underlagen för tillståndet',
+  mal:'Samla det som säger något om hur ytan mår i dag. För hävdytor är det hävden, för skog ingrepp och struktur, för våtmark diken och vattenstatus.',
+  gor:[
+    'Läs <i>Underlag</i>-raderna i sektionen <i>Bedömning vid skrivbordet (R7)</i>: varje underlag har år och "nyare/inte nyare än statusen".',
+    'Hävdytor: läs sektionen <i>Hävd enligt jordbruksskiften och TUVA</i> — skiften, år utan bete/slåtter, TUVA-hävdstatus och påverkan, SkötselDOS och uppföljning.',
+    'Titta i ortot och IR-ortot efter igenväxning, plöjning, gödsling eller nya diken.',
+    'Använd <a href="docs/filterguide.html">Filterguiden</a> för gruppen om du vill se alla ytor med samma signal i länet.'
+  ],
+  mer: () => `<h3>Vad hävdvärdena betyder</h3>` + tab(['Värde','Betyder','I R7A'],[
+      ['Hävd enligt skiften: Ja','Bete eller slåtter varje år 2015–2025 (eller sedan typen sattes)','Uppfyller hävdvillkoret för fullgod. Kontrollera ändå orto och TUVA.'],
+      ['Delvis','Hävd vissa år. <i>År utan bete/slåtter</i> visar vilka','Ett luckår 2015 är troligen brist i skiftesdata. Tre år eller mer i rad utan hävd → icke fullgod. Enstaka luckor → inte obruten, alltså inte fullgod.'],
+      ['Nej','Ytan träffar skiften men aldrig bete eller slåtter','Tyder på upphörd hävd → pröva icke fullgod mot ortot.'],
+      ['Oklart','Ingen skiftesträff alls','Inget belägg åt något håll. Bete utan stöd syns inte här — kolla SkötselDOS och TUVA.'],
+      ['TUVA högst 10 år','Aktuell inventering','Krävs för fullgod tillsammans med obruten hävd och orto.'],
+      ['TUVA 11–15 år','Styrker typen','Räcker inte för fullgod.'],
+      ['TUVA äldre än 15 år','Räknas inte som aktuellt','BIDOS-typ med så gammal TUVA → till fält.'],
+      ['TUVA-påverkan: gödsling tydlig','Negativ notering','Pröva icke fullgod — om inventeringen är aktuell.']
+    ]),
+  popup: [
+    ['Bedömning vid skrivbordet (R7)','Hävd enligt skiften, TUVA, SkötselDOS, Uppföljning, Laserdata, Typiska arter','Varje underlag med år och om det är nyare än statusen. Bara nyare underlag kan bekräfta eller ändra en status.'],
+    ['Hävd enligt jordbruksskiften och TUVA','Obruten hävd sedan, År utan bete/slåtter','Visar om hävden varit obruten. Avgör fullgod mot icke fullgod.'],
+    ['','TUVA, hävdstatus · igenväxning · påverkan','Hur marken såg ut vid inventeringen. Negativa noteringar talar för icke fullgod — om inventeringen är aktuell.'],
+    ['','SkötselDOS, utförd hävd','Bete eller slåtter enligt reservatsförvaltningen. Fångar bete utan stöd som skiftena missar.'],
+    ['Skog (laserdata)','Laserflagga, Höjdförändring, Diken','För skogs- och myrytor (R7B, R7C). Möjlig avverkning eller diken → pröva icke fullgod.']
+  ],
+  logg: [['Underlag (källa + år)','Alla underlag du faktiskt använt, med år']],
+  ex: () => ex('<p>Alla hävdytor har TUVA från 2002 — för gammalt för att bekräfta något. Skiftena är det enda aktuella underlaget, och de pekar åt tre håll: <b>Ja</b> på två ytor, <b>Delvis</b> (luckor 2015, 2016 och 2024) på fyra, <b>Nej</b> på två. Ingen SkötselDOS eller uppföljning finns.</p>') + ytTabell(['nr','typ','ha','status','skiften','utan','tuva','arter']) },
+
+{ id:'regel', titel:'Tillämpa regeln yta för yta',
+  mal:'Kom fram till ett utfall för varje yta: fullgod, icke fullgod, till fält — eller, för ytor med status, att statusen står kvar oprövad.',
+  gor:[
+    '<b>Ej bedömd status:</b> gå igenom gruppens delregel (R7A–R7D) och välj det utfall vars villkor är uppfyllda.',
+    '<b>Har status:</b> bekräfta bara om nyare underlag uppfyller samma villkor som delregeln kräver. Föreslå ändring bara om nyare underlag tydligt visar annat.',
+    'Räcker inte underlaget: låt statusen stå och notera vad som saknas. Det är ett godtagbart utfall.',
+    '9010 och 9050 kan aldrig bli fullgod vid skrivbordet (död ved) — bara icke fullgod eller till fält.'
+  ],
+  mer: () => obs('<b>Till fält är ett fullgott utfall.</b> FAQ 11 och 22: där tillståndet inte är tydligt ska man inte gissa. Ett dokumenterat "vet inte, och det här behöver kontrolleras" är bättre än en bekräftelse utan grund.'),
+  popup: [['Bedömning vid skrivbordet (R7)','Vad gäller','Påminner om vilken regel som gäller och om undantaget för 9010/9050.']],
+  logg: [['Fullgod, Icke fullgod, Till fält, Ej omprövad','Räkna ytorna när du gått igenom alla (görs i steg 10)']],
+  ex: () => ex('<p>Ingen hävdyta kan bekräftas som fullgod, eftersom TUVA är för gammal. Två ytor kan bekräftas som icke fullgod om ortot visar igenväxning. En yta med status <i>Icke fullgod</i> har haft hävd varje år sedan 2015 — där kan statusen vara fel, så den prioriteras i fält. Sjöarna avgörs i VISS.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
+
+{ id:'lager', titel:'För in förslagen i granskningslagret',
+  mal:'Skriv förslaget för varje yta i webbGIS-formuläret. Det är här bedömningen sparas — inte i loggen.',
+  gor:[
+    'Öppna redigeringen för ytan i webbGIS.',
+    '<i>Tillstånd</i>: <b>Gott</b> vid fullgod, <b>Icke gott</b> vid icke fullgod, <b>Okänt</b> vid till fält. Lämna tomt när statusen står kvar oprövad.',
+    '<i>Kommentar – Tillstånd</i>: regel, utfall och källor med år, t.ex. <code>R7-omprövning R7A: ej omprövad — hävd ej obruten (luckor 2016, 2024), TUVA 2002</code>.',
+    'Vid till fält eller ej omprövad: fyll i <i>Vad ska kontrolleras</i> (t.ex. Hävd, Typiska arter) och <i>Metod för kontroll</i> (Fältbesök).',
+    '<i>Förändringsorsak, förslag</i>: 3 Komplettering när du föreslår en ändring (R2). <i>Granskat?</i> = Ja när ytan är klar.'
+  ],
+  popup: [
+    ['Granskning 2 — Tillstånd','Tillstånd, Kommentar','Ditt förslag. Fullgod → Gott, icke fullgod → Icke gott, till fält → Okänt.'],
+    ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod för kontroll','Vad som behöver kontrolleras 2027 och hur. Framåtsyftande.'],
+    ['Granskning 1 — Avvikelse','Behöver livsmiljötypen justeras?, Förändringsorsak, förslag','Bara om typen är fel (steg 6). Förändringsorsak nästan alltid 3.'],
+    ['Granskning 4 — Granskat','Granskat?','Ja när ytan är klar, Påbörjat om du kommer tillbaka.']
+  ],
+  logg: null,
+  ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd = Okänt · Kommentar: <code>R7-omprövning R7A: till fält — skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad — skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
+
+{ id:'logg', titel:'Sammanfatta i granskningsloggen',
+  mal:'Avsluta området med en sammanfattning i loggen, så att det går att se vad som är gjort, på vilken grund och vad som återstår.',
+  gor:[
+    'Räkna ytorna per utfall och skriv in dem: Fullgod, Icke fullgod, Till fält, Ej omprövad, Typ ifrågasatt.',
+    'Skriv alla underlag med år i <i>Underlag</i>.',
+    'Skriv det du är osäker på i <i>Osäkerheter</i> och det som är kvar i <i>Återstår</i>.',
+    'Sätt <i>Status</i> = Klar. Bocka av området i kontrollrummet när hela batchen är gjord.'
+  ],
+  logg: [['Fullgod … Typ ifrågasatt','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. VISS, fråga förvaltaren'],['Status','Klar']],
+  ex: () => ex('<p>Floden, en rad i loggen:</p>' + tab(['Kolumn','Värde'],[
+      ['Ortofoto (år)','(året för det orto du använt)'],
+      ['Fullgod / Icke fullgod / Till fält / Ej omprövad','0 / 2* / 1 / 5 — *om ortot visar igenväxning'],
+      ['Typ ifrågasatt','0'],
+      ['Underlag','Bevarandeplan (år), skiften 2015–2025, TUVA 2002, typiska arter (Artportalen), orto (år)'],
+      ['Osäkerheter','TUVA 24 år gammal på alla hävdytor. Yta 2 (6410) har haft hävd sedan 2015 trots status icke fullgod.'],
+      ['Återstår','Sjöarna (2 ytor 3150) mot VISS. Fråga förvaltaren om 6910-ytorna. Fältbesök hävdytorna 2027, yta 2 först.'],
+      ['Status','Påbörjad tills sjöarna är klara']
+    ])) }
+];
+
+/* ------------------------------------------------------------------
+   Popupen sektion för sektion (referensläge)
+------------------------------------------------------------------- */
+const POPUP = [
+ ['Identifiering och skydd','Område, skyddskategori, Natura 2000-kod, naturreservat','Var ytan ligger och vilket skydd som gäller.','2','SITECODE'],
+ ['Naturtyp (NNK-data)','Naturtyp, Naturtypsstatus, Area, Karteringsstatus, Start-/Slutdatum senaste inventering, Bevarandeplan (år), Målnaturtyp, Ursprung, Förändringsorsak','NV:s nuvarande uppgifter för ytan. Skrivskyddat — det är detta du granskar.','4, 5','Differenser, Bevarandeplan fastställd'],
+ ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp, Statusens ålder, Vad gäller, Underlag med år','Vilken regel som gäller, hur gammal statusen är och vilka underlag som är nyare än den.','5, 7, 8','Ytor R7, Underlag'],
+ ['Granskning 1 — Avvikelse och korrigeringsförslag','Förslag livsmiljötyp 1–3, Behöver livsmiljötypen/utbredningen justeras?, Förändringsorsak förslag, Kommentar','Ditt förslag om typen eller gränsen är fel.','6, 9','Typ ifrågasatt'],
+ ['Granskning 2 — Tillstånd','Tillstånd, procent gott/ej gott/osäkert, Kommentar','Ditt förslag till tillstånd — här hamnar R7-utfallet.','9','Fullgod, Icke fullgod, Till fält, Ej omprövad'],
+ ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod, kommentarer','Vad som behöver kontrolleras 2027 och hur.','9','Återstår'],
+ ['Granskning 4 — Granskat och kommentarer','Granskat?, Kommentar, NNK-kommentar, Fältinventerare, Egen beteckning','Om ytan är klar, och NV:s egna kommentarer.','9','Status'],
+ ['Typiska arter (Artportalen)','Antal, arter, senaste fynd','Stöd för att typen är rätt.','6','Underlag'],
+ ['Hävd enligt jordbruksskiften och TUVA','Skiften, obruten hävd sedan, år utan hävd, TUVA (år, hävd, igenväxning, påverkan, naturtyper), SkötselDOS, uppföljning','Huvudunderlaget för hävdytorna (R7A).','6, 7','Underlag'],
+ ['Skog (laserdata)','Höjd, volym, grundyta, diameter, höjdförändring, laserflagga, diken','Ingrepp och struktur i skog, diken i skog och myr (R7B, R7C).','7','Underlag'],
+ ['Floraväkteri (Artportalen)','Hotade arter, ej återfunna, minskande, anmärkning om hävd','Signaler om försämring, främst för hävdytor.','7','Osäkerheter, Underlag']
+];
+
+/* ------------------------------------------------------------------
+   Tillstånd (sparas i webbläsaren, bara för den som tittar)
+------------------------------------------------------------------- */
+const NYCKEL = 'nnk-bedomningsguide-v1';
+let ST = {bock:{}, aktiv:0, lage:'steg'};
+try { const s = JSON.parse(localStorage.getItem(NYCKEL)); if (s && s.bock) ST = Object.assign(ST, s); } catch(e) {}
+function spara(){ try { localStorage.setItem(NYCKEL, JSON.stringify(ST)); } catch(e) {} }
+
+const klart = i => STEG[i].gor.every((_,j) => ST.bock[STEG[i].id+':'+j]);
+const upplast = i => ST.lage === 'alla' || i === 0 || STEG.slice(0,i).every((_,k) => klart(k));
+
+function stegHtml(s, i){
+  let h = `<section class="steg-sida" data-i="${i}"><p class="ovr">Steg ${i+1} av ${STEG.length}</p><h2>${s.titel}</h2><p class="mal">${s.mal}</p>`;
+  h += `<h3>Gör så här</h3><ul class="check">` + s.gor.map((g,j) => {
+    const k = s.id+':'+j, on = !!ST.bock[k];
+    return `<li class="${on?'ok':''}"><input type="checkbox" id="c-${k}" data-k="${k}"${on?' checked':''}><label for="c-${k}">${g}</label></li>`;
+  }).join('') + `</ul>`;
+  if (s.mer) h += s.mer();
+  if (s.popup) h += `<h3>I popupen</h3>` + tab(['Sektion','Rad','Vad den betyder för bedömningen'], s.popup);
+  if (s.logg) h += `<h3>I granskningsloggen</h3>` + tab(['Kolumn','Vad du skriver'], s.logg);
+  if (s.ex) h += `<h3>Exempel</h3>` + s.ex();
+  if (ST.lage === 'steg') {
+    const sista = i === STEG.length - 1, ok = klart(i);
+    h += `<div class="nav"><button type="button" data-gaa="${i-1}"${i===0?' disabled':''}>← Föregående</button>
+      <span class="hint">${ok ? 'Klart — gå vidare.' : 'Bocka av alla punkter för att gå vidare.'}</span>
+      <button type="button" class="prim" data-gaa="${sista ? 'klar' : i+1}"${ok?'':' disabled'}>${sista ? 'Avsluta' : 'Nästa steg →'}</button></div>`;
+  }
+  return h + `</section>`;
+}
+
+function rita(){
+  document.querySelectorAll('[data-lage]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lage === ST.lage));
+  const antal = STEG.filter((_,i) => klart(i)).length;
+  document.getElementById('prog').style.width = (100*antal/STEG.length) + '%';
+  const lay = document.getElementById('layout');
+  const inn = document.getElementById('innehall');
+  const stp = document.getElementById('stepper');
+
+  if (ST.lage === 'popup') {
+    stp.innerHTML = '';
+    lay.style.gridTemplateColumns = '1fr';
+    inn.innerHTML = `<p class="ovr">Referens</p><h2>Popupen sektion för sektion</h2>
+      <p class="mal">Vad varje sektion i popupen innehåller, vad den betyder för bedömningen, i vilket steg du använder den och vilken kolumn i granskningsloggen den hör ihop med. Fältens exakta innebörd står i <a href="docs/attributbeskrivning.html">attributbeskrivningen</a>.</p>`
+      + tab(['Sektion','Rader','Betyder','Steg','Kolumn i loggen'], POPUP);
+    return;
+  }
+  lay.style.gridTemplateColumns = '';
+  stp.innerHTML = STEG.map((s,i) => {
+    const kl = klart(i) ? ' klar' : '', ak = (ST.lage==='steg' && i === ST.aktiv) ? ' aktiv' : '';
+    const las = !upplast(i);
+    return `<li><button type="button" class="${kl}${ak}" data-gaa="${i}"${las?' disabled':''}>
+      <span class="nr">${klart(i) ? '✓' : i+1}</span><span class="txt">${s.titel}${las?'<span class="las">Låst tills föregående steg är klart</span>':''}</span></button></li>`;
+  }).join('');
+
+  if (ST.lage === 'alla') {
+    inn.innerHTML = STEG.map(stegHtml).join('<hr style="border:0;border-top:1px solid var(--grid);margin:34px 0">');
+  } else if (ST.aktiv === 'klar') {
+    inn.innerHTML = `<div class="card klart"><h2>Området är genomgånget</h2>
+      <p class="mal" style="margin:0 auto 14px">Alla tio steg är avbockade. Nästa område följer samma ordning — bocka ur allt med <b>Börja om</b>, eller använd läsläget som checklista.</p>
+      <button type="button" data-gaa="0">Tillbaka till steg 1</button></div>`;
+  } else {
+    inn.innerHTML = stegHtml(STEG[ST.aktiv], ST.aktiv);
+  }
+}
+
+document.addEventListener('change', e => {
+  const k = e.target.dataset && e.target.dataset.k; if (!k) return;
+  ST.bock[k] = e.target.checked; spara();
+  const y = window.scrollY; rita(); window.scrollTo(0, y);
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-gaa]'); if (b && !b.disabled) {
+    const v = b.dataset.gaa;
+    if (ST.lage === 'alla') { const el = document.querySelector(`.steg-sida[data-i="${v}"]`); if (el) el.scrollIntoView({behavior:'smooth'}); return; }
+    ST.aktiv = v === 'klar' ? 'klar' : +v; spara(); rita();
+    history.replaceState(null, '', v === 'klar' ? '#klar' : '#steg-' + (+v + 1));
+    document.getElementById('layout').scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+  const l = e.target.closest('[data-lage]'); if (l) { ST.lage = l.dataset.lage; if (ST.aktiv === 'klar') ST.aktiv = 0; spara(); rita(); }
+});
+document.getElementById('aterstall').addEventListener('click', () => { ST.bock = {}; ST.aktiv = 0; ST.lage = 'steg'; spara(); rita(); });
+
+// #steg-N i adressen öppnar det steget om det är upplåst
+(function(){
+  const m = location.hash.match(/^#steg-(\d+)$/);
+  if (m) { const i = +m[1] - 1; if (i >= 0 && i < STEG.length && upplast(i)) ST.aktiv = i; }
+  if (typeof ST.aktiv === 'number' && !upplast(ST.aktiv)) ST.aktiv = 0;
+  rita();
+})();
+
+// tema
+(function(){
+  var b=document.getElementById('themeBtn'), r=document.documentElement;
+  function mork(){var t=r.getAttribute('data-theme'); if(t)return t==='dark'; return window.matchMedia('(prefers-color-scheme:dark)').matches;}
+  function ritaT(){b.textContent=mork()?'Ljust':'Mörkt';}
+  b.addEventListener('click',function(){r.setAttribute('data-theme',mork()?'light':'dark');ritaT();});
+  ritaT();
+})();
+</script>
+</body>
+</html>

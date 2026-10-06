@@ -47,7 +47,7 @@ button:hover{color:var(--ink-1)}
 h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
 h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
  padding-bottom:6px;border-bottom:1px solid var(--grid)}
-h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
 h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
 p{margin:0 0 14px;max-width:74ch}
 ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
@@ -61,6 +61,10 @@ pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
 pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
@@ -87,44 +91,7 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
-<ul>
-<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</a></li>
-<li><a href="#del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</a><ul>
-<li><a href="#grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</a></li>
-<li><a href="#grupp-2-tillstand">Grupp 2 · Tillstånd</a></li>
-<li><a href="#grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</a></li>
-<li><a href="#grupp-4-klart">Grupp 4 · Klart?</a></li>
-</ul>
-</li>
-<li><a href="#del-b-nvs-ursprungsfalt-skrivskyddade-kallfalt">Del B · NV:s ursprungsfält (skrivskyddade källfält)</a><ul>
-<li><a href="#naturtyp-livsmiljotyp-13-malnaturtyp-13">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</a></li>
-<li><a href="#naturtypsstatus">Naturtypsstatus</a></li>
-<li><a href="#karteringsstatus">Karteringsstatus</a></li>
-<li><a href="#komplex">Komplex</a></li>
-<li><a href="#forandringsorsak">Förändringsorsak</a></li>
-<li><a href="#ursprung">Ursprung</a></li>
-</ul>
-</li>
-<li><a href="#del-c-datering-och-lanets-stodfalt">Del C · Datering och länets stödfält</a><ul>
-<li><a href="#startdatum-slutdatum-senaste-inventering">Startdatum / Slutdatum senaste inventering</a></li>
-<li><a href="#bevarandeplan-faststalld-ar">Bevarandeplan, fastställd (år)</a></li>
-<li><a href="#prioklass-nnk-p1-p4">Prioklass NNK (P1-P4)</a></li>
-<li><a href="#batch-sabcd">Batch (S/A/B/C/D)</a></li>
-<li><a href="#havdberoende-livsmiljotyp">Hävdberoende livsmiljötyp</a></li>
-<li><a href="#sallsynt-livsmiljotyp-i-lanet">Sällsynt livsmiljötyp i länet</a></li>
-<li><a href="#typiska-arter-i-artportalen">Typiska arter i Artportalen</a></li>
-<li><a href="#tuva-angs-och-betesmarksinventeringen">TUVA — ängs- och betesmarksinventeringen</a></li>
-<li><a href="#skotseldos-utford-havd-och-uppfoljning">SkötselDOS — utförd hävd och uppföljning</a></li>
-<li><a href="#floravakteri-artportalen">Floraväkteri (Artportalen)</a></li>
-<li><a href="#laserdata-och-diken">Laserdata och diken</a></li>
-<li><a href="#areal-ha">Areal (ha)</a></li>
-<li><a href="#naturtyp-kod-klartext">Naturtyp (kod + klartext)</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
 <p><strong>Version:</strong> 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
@@ -135,7 +102,7 @@ tr:last-child td{border-bottom:0}
 <h3 id="grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</h3>
 <p><strong>Livsmiljötyp, behov av justering</strong><br />
 Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -164,10 +131,10 @@ tr:last-child td{border-bottom:0}
 <td>Obestämd – kan ej bedöma vilken livsmiljötyp</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Utbredning, behov av justering</strong><br />
 Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -192,7 +159,7 @@ tr:last-child td{border-bottom:0}
 <td>Behov av att dela upp ytan, flera livsmiljötyper</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Livsmiljötyp 1</strong><br />
 Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. Koderna är samma kodutrymme som NV:s naturtypskoder — se tabellen längre ned.</p>
 <p><strong>Livsmiljötyp 2</strong><br />
@@ -206,7 +173,7 @@ Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när 
 <h3 id="grupp-2-tillstand">Grupp 2 · Tillstånd</h3>
 <p><strong>Tillstånd, behov av justering</strong><br />
 Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -231,7 +198,7 @@ Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliv
 <td>Blandat – se andelar</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Gott tillstånd (%)</strong><br />
 Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.</p>
 <p><strong>Ej gott tillstånd (%)</strong><br />
@@ -243,7 +210,7 @@ Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället 
 <h3 id="grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</h3>
 <p><strong>Vad ska kontrolleras 1–3</strong><br />
 Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -276,12 +243,12 @@ Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hä
 <td>Annan negativ påverkan</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Kommentar – Vad ska kontrolleras</strong><br />
 Motivera varför just detta bör kontrolleras.</p>
 <p><strong>Metod för kontroll</strong><br />
 Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -306,13 +273,13 @@ Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventer
 <td>Annan metod</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Kommentar – Metod</strong><br />
 Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</p>
 <h3 id="grupp-4-klart">Grupp 4 · Klart?</h3>
 <p><strong>Granskat</strong><br />
 Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -333,14 +300,14 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Påbörjat</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2 id="del-b-nvs-ursprungsfalt-skrivskyddade-kallfalt">Del B · NV:s ursprungsfält (skrivskyddade källfält)</h2>
 <p>Lämna dessa orörda — det är bara mallens granskningsfält i Del A som ska ändras (lathunden: "Vad kan vi ändra på?").</p>
 <h3 id="naturtyp-livsmiljotyp-13-malnaturtyp-13">Naturtyp / Livsmiljötyp 1–3 / Malnaturtyp 1–3</h3>
 <p>NV:s egen kod för livsmiljötyp/naturtyp (Beskrivning_NNK_koder.pdf, NV PM NV-08177-15). Samma kodutrymme används i granskningsfälten Livsmiljötyp 1–3 när ni föreslår en annan typ.</p>
 <p><em>(247 koder — sök i webbläsaren med Ctrl+F, eller använd sökrutan på HTML-sidan.)</em></p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1337,10 +1304,10 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Icke-natura-skog, gles fjällbarrskog</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="naturtypsstatus">Naturtypsstatus</h3>
 <p>NV:s status för naturtypsbedömningen (Handledning NNK, tabell 6).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1369,10 +1336,10 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Ej bedömd status</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="karteringsstatus">Karteringsstatus</h3>
 <p>Hur senaste karteringen gjordes (Handledning NNK, tabell 7).</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1401,10 +1368,10 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Åtgärdas</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="komplex">Komplex</h3>
 <p>NV:s kod för sammansatta naturtyper (komplexkoder) — förekommer bara för dessa sex kombinationer.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1437,10 +1404,10 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Aapamyrar</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="forandringsorsak">Förändringsorsak</h3>
 <p>NV:s kod för varför en tidigare bedömning ändrats.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1461,10 +1428,10 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>Komplettering</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="ursprung">Ursprung</h3>
 <p>NV:s kod för varifrån uppgiften ursprungligen kommer.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1489,7 +1456,7 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 <td>BIDOS + NNK</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr />
 <h2 id="del-c-datering-och-lanets-stodfalt">Del C · Datering och länets stödfält</h2>
 <p>Visas i popupens avsnitt <em>Naturtyp (NNK-data)</em> eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (<code>jobbdator_koppla_nnk_skyddskategori.py</code> → <code>forbered_gdb_for_publicering.py</code>) varje gång lagret byggs om. Lämna dem orörda.</p>
@@ -1502,7 +1469,7 @@ Slutdatum är när naturtypen senast bedömdes, startdatum gången före. Vid en
 <h3 id="prioklass-nnk-p1-p4">Prioklass NNK (P1-P4)</h3>
 <p><code>prio</code> · text · skrivskyddat · filtrerbart i webbGIS<br />
 Objektets prioritetsklass för granskningen, enligt arbetsplanen avsnitt 5.2. Hämtas ur <code>nnk_prioklass.csv</code>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1532,11 +1499,11 @@ Objektets prioritetsklass för granskningen, enligt arbetsplanen avsnitt 5.2. H�
 <td>Ingen insats, medvetet nedprioriterat</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="batch-sabcd">Batch (S/A/B/C/D)</h3>
 <p><code>batch</code> · text · skrivskyddat · filtrerbart i webbGIS<br />
 Vilken granskningsbatch objektet tillhör enligt arbetsplanens bilaga 2. Bara de 40 P1-objekten har en batch, övriga är tomma. Hämtas ur kolumnen <code>batch</code> i <code>nnk_prioklass.csv</code>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Kod</th>
@@ -1571,7 +1538,7 @@ Vilken granskningsbatch objektet tillhör enligt arbetsplanens bilaga 2. Bara de
 <td>C6.1</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="havdberoende-livsmiljotyp">Hävdberoende livsmiljötyp</h3>
 <p><code>havdberoende</code> · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS<br />
 Ja om ytans naturtyp är hävdberoende enligt arbetsplanens bilaga 3: 1630, 1631, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6412, 6430, 6510, 6520, 8230, 8231, 8232, 9070, 9071, 9072.</p>
@@ -1583,7 +1550,7 @@ Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natu
 Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a href="typiska-arter.html">typiska arter</a>) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av <code>artportalen_typiska_arter.py</code> (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). <strong>0</strong> = ytan söktes men inga fynd. <strong>Tomt</strong> = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.</p>
 <h3 id="tuva-angs-och-betesmarksinventeringen">TUVA — ängs- och betesmarksinventeringen</h3>
 <p>Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur <code>tuva_for_granskning.csv</code> (<code>nnk_tuva.py</code>, TUVA-uttag 2026-08-21, senaste inventering per objekt). Ytan kopplas till det TUVA-objekt som täcker mest av den, med samma tröskel som för sitecode: minst 1 % av ytan eller 0,25 ha. Tomt = ingen träff. Används i R7A tillsammans med hävdfälten från skiftena, se <a href="metodik.html">metodiken</a> avsnitt 5. Visas i popupens avsnitt <em>Hävd enligt jordbruksskiften och TUVA</em>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält</th>
@@ -1643,10 +1610,10 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td><em>Ja</em> om TUVA har en negativ notering: dominerande hävdklass <em>Ingen hävd</em>, <em>Ohävdad (restaurerbar)</em> eller <em>Ej aktuell</em>, eller igenväxning <em>Tydlig</em>/<em>Igenväxt</em>. Annars <em>Nej</em>. Finns för att webbGIS-filtret <em>TUVA ohävdad/igenväxande</em> ska bli ett enda villkor. Tillagt 2026-10-02</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="skotseldos-utford-havd-och-uppfoljning">SkötselDOS — utförd hävd och uppföljning</h3>
 <p>Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur <code>skotseldos_for_granskning.csv</code> (<code>nnk_skotseldos.py</code>, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A, se <a href="metodik.html">metodiken</a> avsnitt 5. Visas i popupens avsnitt <em>Hävd enligt jordbruksskiften och TUVA</em>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält</th>
@@ -1691,10 +1658,10 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td>År för den senaste bedömda punkten (2015–2022)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="floravakteri-artportalen">Floraväkteri (Artportalen)</h3>
 <p>Tio fält, alla skrivskyddade, heltal utom <code>fv_arter</code> och <code>fv_forsamring</code>, och bara i ytlagret. Hämtas ur <code>floravakteri_for_granskning.csv</code> (<code>nnk_floravakteri.py</code>, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten <em>Floraväkteri Sverige</em> och <em>Arkiv Floraväktarlokaler</em>): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte — enligt Länsstyrelsens floraväktarsamordning gäller det bara guckusko, vars enda lokal ligger utanför N2000 och naturreservat. Kommentarerna (Artportalens fält <em>Kommentar</em>) är publika och ingår, vilket <code>fv_anm_havd</code> bygger på. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt <em>Floraväkteri (Artportalen)</em>.</p>
-<table>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält</th>
@@ -1754,10 +1721,10 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td><em>Ja</em> om <code>fv_ej_aterfunna</code>, <code>fv_minskande</code> eller <code>fv_anm_havd</code> är större än 0, annars <em>Nej</em>. Finns för att webbGIS-filtret <em>Floraväkteri: försämring</em> ska bli ett enda villkor. Tillagt 2026-10-02</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="laserdata-och-diken">Laserdata och diken</h3>
-<p>Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur <code>laser_for_granskning.csv</code> (<code>nnk_laser.py</code>). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (R7 grupp B, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se <a href="metodik.html">metodiken</a> avsnitt 5. Visas i popupens avsnitt <em>Skog (laserdata)</em>.</p>
-<table>
+<p>Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytlagret. Hämtas ur <code>laser_for_granskning.csv</code> (<code>nnk_laser.py</code>). Laserfälten kommer från Skogsstyrelsens Skogliga grunddata, 10 m-raster skattade ur laserskanning: första nationella skanningen (Södermanland 2010–2012) och Laserdata Skog (2020, på några ställen 2023). Bara pixlar som ligger helt inom ytan räknas. Laserfälten finns för skogstyperna (gruppen Skog i R7, inklusive 9740 och 9750), dikesfälten för skogstyperna och myrarna 7110–7231. Tomt = ytan ingår inte, eller är för liten (färre än tre hela pixlar). Används i R7B och R7C, se <a href="metodik.html">metodiken</a> avsnitt 5. Visas i popupens avsnitt <em>Skog (laserdata)</em>.</p>
+<div class="tabell"><table>
 <thead>
 <tr>
 <th>Fält</th>
@@ -1822,7 +1789,7 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td>Meter dike i en 50 m bred zon runt ytan (utanför ytan)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="areal-ha">Areal (ha)</h3>
 <p><code>area_ha</code> · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret<br />
 Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.</p>

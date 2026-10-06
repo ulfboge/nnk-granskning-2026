@@ -47,7 +47,7 @@ button:hover{color:var(--ink-1)}
 h1{font-size:26px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em;line-height:1.25}
 h2{font-size:19px;font-weight:620;margin:38px 0 10px;letter-spacing:-.005em;
  padding-bottom:6px;border-bottom:1px solid var(--grid)}
-h3{font-size:16px;font-weight:620;margin:26px 0 8px}
+h3{font-size:16px;font-weight:620;margin:30px 0 8px;padding-top:4px}
 h4,h5,h6{font-size:14.5px;font-weight:620;margin:20px 0 6px;color:var(--ink-2)}
 p{margin:0 0 14px;max-width:74ch}
 ul,ol{margin:0 0 14px;padding-left:22px;max-width:74ch}
@@ -61,6 +61,10 @@ pre{background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;
 pre code{background:none;border:0;padding:0;font-size:12.5px}
 table{border-collapse:collapse;width:100%;font-size:13.5px;margin:0 0 18px;
  background:var(--surface-1);border:1px solid var(--ring);border-radius:10px;overflow:hidden}
+.tabell{overflow-x:auto;margin:0 0 18px;background:var(--surface-1);border:1px solid var(--ring);border-radius:10px}
+.tabell table{margin:0;border:0;border-radius:0}
+td[style*="right"],th[style*="right"]{font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{white-space:normal;word-break:break-word}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--grid);vertical-align:top}
 th{font-weight:620;font-size:12.5px;color:var(--ink-2);background:var(--plane)}
 tr:last-child td{border-bottom:0}
@@ -87,26 +91,9 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="popup-uttryck-arcade-lstd-nnk-granskning">Popup-uttryck (Arcade) — LstD NNK Granskning</h1><nav class="toc"><div class="t">Innehåll</div><div class="toc">
-<ul>
-<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</a></li>
-<li><a href="#bakgrund">Bakgrund</a></li>
-<li><a href="#obs-2026-10-01-klistra-in-uttrycken-forst-efter-share-as-web-layer-overwrite-haskey-skyddar-bara-nar-uttrycket-kors-map-viewers-arcade-redigerare-kontrollerar-dessutom-att-alla-featurefalt-finns-i-lagret-och-saknas-falten-i-tjansten-gar-det-att-trycka-kor-men-inte-klar-samma-sak-om-falten-finns-men-ar-dolda-visible-av-i-pro-fore-publiceringen">&gt; OBS (2026-10-01): klistra in uttrycken först efter Share As Web Layer → Overwrite. HasKey skyddar bara när uttrycket körs. Map Viewers Arcade-redigerare kontrollerar dessutom att alla $feature.fält finns i lagret, och saknas fälten i tjänsten går det att trycka Kör men inte Klar. Samma sak om fälten finns men är dolda (Visible av i Pro före publiceringen).</a></li>
-<li><a href="#1-identifiering-och-skydd">1. Identifiering och skydd</a></li>
-<li><a href="#2-naturtyp-nnk-data">2. Naturtyp (NNK-data)</a></li>
-<li><a href="#3-granskning-1-avvikelse-och-korrigeringsforslag">3. Granskning 1 — Avvikelse och korrigeringsförslag</a></li>
-<li><a href="#4-granskning-2-tillstand">4. Granskning 2 — Tillstånd</a></li>
-<li><a href="#5-granskning-3-kontroll-och-metod">5. Granskning 3 — Kontroll och metod</a></li>
-<li><a href="#6-granskning-4-granskat-och-kommentarer">6. Granskning 4 — Granskat och kommentarer</a></li>
-<li><a href="#7-typiska-arter-artportalen">7. Typiska arter (Artportalen)</a></li>
-<li><a href="#8-havd-enligt-jordbruksskiften-och-tuva">8. Hävd enligt jordbruksskiften och TUVA</a></li>
-<li><a href="#9-skog-laserdata">9. Skog (laserdata)</a></li>
-<li><a href="#10-floravakteri-artportalen">10. Floraväkteri (Artportalen)</a></li>
-</ul>
-</div>
-</nav>
+<h1 id="popup-uttryck-arcade-lstd-nnk-granskning">Popup-uttryck (Arcade) — LstD NNK Granskning</h1>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
-<p><strong>Version:</strong> 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+<p><strong>Version:</strong> 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 2 steg 6, Del 5 steg 5)
 <strong>Status:</strong> Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som <code>bygg_nnk_lyrx.py</code> genererar.</p>
 <hr />
@@ -122,7 +109,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Grupp 1–3</strong> slår upp klartext direkt med <code>DomainName($feature, "fältnamn")</code> på kodfälten (<code>livsmiljötyp1–3</code>, <code>justering</code>, <code>utbredning</code>, <code>tillstand</code>, <code>kontroll1–3</code>, <code>metod</code>), inte via de förberäknade <code>_text</code>-fälten som <code>bygg_nnk_lyrx.py</code> annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade <code>_text</code>-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).</li>
 <li><strong>Startdatum/Slutdatum senaste inventering</strong> (<code>habitat_period_lastdata_start</code>/<code>_end</code>) tillagda i <em>Naturtyp (NNK-data)</em> 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. <strong>Kräver en publiceringsförberedelse som inte är gjord än:</strong> fältsynlighet för <code>habitat_period_*</code> måste slås PA i <code>NNK_naturaobjekt_yta</code>/<code>lin</code>/<code>pkt</code> (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.</li>
 <li>
-<p><strong>Bevarandeplan, fastställd (år)</strong> (<code>bevarandeplan_ar</code>) tillagt i <em>Naturtyp (NNK-data)</em> 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> (kräver att <code>data/analysis/bevarandeplan_platser.csv</code> kopieras till jobbdatorn, se README/kvarvarande_punkter_20260922.md) — <strong>hela pipelinen måste köras om</strong> (koppla_nnk_skyddskategori → forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.</p>
+<p><strong>Bevarandeplan, fastställd (år)</strong> (<code>bevarandeplan_ar</code>) tillagt i <em>Naturtyp (NNK-data)</em> 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> (kräver att <code>data/analysis/bevarandeplan_platser.csv</code> kopieras till Johans arbetsdator, se README/kvarvarande_punkter_20260922.md) — <strong>hela pipelinen måste köras om</strong> (koppla_nnk_skyddskategori → forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.</p>
 </li>
 <li>
 <p><strong>Typiska arter (Artportalen)</strong> — ny sektion 7, tillagd 2026-09-29. Visar fälten <code>typarter_antal</code>, <code>typarter</code> och <code>typarter_senaste_ar</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>typiska_arter_per_yta.csv</code> (framräknad av <code>natura-2000: scripts/analysis/artportalen_typiska_arter.py</code>). Uttrycket kontrollerar med <code>HasKey</code> att fälten finns, men klistra ändå in det först efter Overwrite (se OBS nedan).</p>
@@ -131,7 +118,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>SkötselDOS och uppföljning i sektion 8</strong> — tillagt 2026-10-01. Fälten <code>skdos_havd_senaste_ar</code>, <code>skdos_havd_antal_ar</code>, <code>skdos_havd_typ</code>, <code>uppf_punkter_bedomda</code>, <code>uppf_andel_bra</code>, <code>uppf_antal_dalig</code> och <code>uppf_senaste_ar</code> sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>skotseldos_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_skotseldos.py</code> ur Metrias SkötselDOS-uttag). Sektionen visas nu också för ytor med SkötselDOS-hävd eller uppföljningspunkter. Klistra in efter Overwrite (se OBS nedan).</li>
 <li><strong>TUVA i sektion 8</strong> — tillagt 2026-09-30. Fälten <code>tuva_objekt_id</code>, <code>tuva_andel_overlapp</code>, <code>tuva_antal_objekt</code>, <code>tuva_inv_ar</code>, <code>tuva_havdstatus</code>, <code>tuva_havdregim</code>, <code>tuva_igenvaxning</code>, <code>tuva_naturtyp</code> och <code>tuva_paverkan</code> sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>tuva_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_tuva.py</code>). Sektionen visas nu också för alla ytor med TUVA-träff, oavsett naturtyp och skiftesvärde. Inventeringsåret visas med ålder, och TUVA äldre än 15 år markeras. Klistra in efter Overwrite (se OBS nedan).</li>
 <li>
-<p><strong>Skog (laserdata)</strong> — ny sektion 9, tillagd 2026-09-30. Visar fälten <code>laser_hojd_medel</code>, <code>laser_volym_medel</code>, <code>laser_grundyta_medel</code>, <code>laser_diameter_medel</code>, <code>laser_skanning_ar</code>, <code>laser_hojdforandring_medel</code>, <code>laser_andel_sankt</code>, <code>laser_forandring_period</code>, <code>laser_flagga</code>, <code>diken_m_inom</code> och <code>diken_m_50m</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>laser_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_laser.py</code>). Visas för skogstyperna i R7 grupp B (inklusive 9740 och 9750) och, med bara dikesraderna och titeln <em>Diken (laserdata)</em>, för myrarna i grupp C (7110–7231). Skanningsår och förändringsperiod står i klartext. Klistra in efter Overwrite (se OBS nedan).</p>
+<p><strong>Skog (laserdata)</strong> — ny sektion 9, tillagd 2026-09-30. Visar fälten <code>laser_hojd_medel</code>, <code>laser_volym_medel</code>, <code>laser_grundyta_medel</code>, <code>laser_diameter_medel</code>, <code>laser_skanning_ar</code>, <code>laser_hojdforandring_medel</code>, <code>laser_andel_sankt</code>, <code>laser_forandring_period</code>, <code>laser_flagga</code>, <code>diken_m_inom</code> och <code>diken_m_50m</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>laser_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_laser.py</code>). Visas för skogstyperna i gruppen Skog (inklusive 9740 och 9750) och, med bara dikesraderna och titeln <em>Diken (laserdata)</em>, för myrarna i gruppen Våtmark (7110–7231). Skanningsår och förändringsperiod står i klartext. Klistra in efter Overwrite (se OBS nedan).</p>
 </li>
 <li>
 <p><strong>Floraväkteri (Artportalen)</strong> — ny sektion 10, tillagd 2026-10-01. Visar fälten <code>fv_antal_arter</code>, <code>fv_antal_rapporter</code>, <code>fv_senaste_ar</code>, <code>fv_hotade_arter</code>, <code>fv_bilaga2_arter</code>, <code>fv_ej_aterfunna</code>, <code>fv_minskande</code>, <code>fv_anm_havd</code> och <code>fv_arter</code>, som sätts av <code>jobbdator_koppla_nnk_skyddskategori.py</code> ur <code>floravakteri_for_granskning.csv</code> (framräknad av <code>natura-2000: scripts/analysis/nnk_floravakteri.py</code> ur SLU:s publika SOS-WFS, Artportalen-projekten Floraväkteri Sverige och Arkiv Floraväktarlokaler). Skyddsklassade fynd ingår inte. Visas bara för ytor med minst en floraväktarrapport. Klistra in efter Overwrite (se OBS nedan).</p>
@@ -362,6 +349,143 @@ return {
     fieldInfos: infos,
     attributes: attrs
 };
+</code></pre>
+<h2 id="2b-bedomning-vid-skrivbordet-r7">2b. Bedömning vid skrivbordet (R7)</h2>
+<p>Ny sektion 2026-10-06. Lägg den direkt efter <em>Naturtyp (NNK-data)</em>. Den samlar det du behöver för att avgöra om status kan sättas eller omprövas vid skrivbordet, så att du inte behöver gå till attributtabellen:</p>
+<ul>
+<li><strong>Bedömningsgrupp (R7)</strong> — vilken delregel i metodiken som gäller (Hävd, Skog, Våtmark, Stabila). Räknas fram ur naturtypskoden.</li>
+<li><strong>Statusens ålder</strong> — slutdatum senaste inventering om det finns, annars när attributen senast ändrades och om statusen kommer från basinventeringen (BIDOS).</li>
+<li><strong>Vad gäller</strong> — <em>bedöm</em> (Ej bedömd status), <em>ompröva</em> (status finns redan, se R7-omprövning i metodiken) eller <em>ingår inte</em>.</li>
+<li><strong>Underlag</strong> — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.</li>
+</ul>
+<p>Uttrycket läser fälten dynamiskt med <code>Expects($feature, "*")</code>, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. <strong><code>last_edited_date</code> är avstängt i lagret i dag</strong> (webbgis-publicering Del 2 steg 3). Slå på <em>Visible</em> för det vid nästa Overwrite, annars kan raden <em>Statusens ålder</em> bara visa BIDOS-ursprunget.</p>
+<pre><code class="language-js">// Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
+// Grupp, statusens ålder och vilka underlag som är nyare än statusen.
+// Fälten läses dynamiskt: saknas ett fält i tjänsten hoppas raden över.
+Expects($feature, &quot;*&quot;);
+
+function F(n) {
+    if (HasKey($feature, n)) { return $feature[n]; }
+    return null;
+}
+function Ar(v) {
+    if (IsEmpty(v)) { return null; }
+    if (TypeOf(v) == &quot;Date&quot;) { return Year(v); }
+    var n = Number(Left(Text(v), 4));
+    if (IsNan(n)) { return null; }
+    return n;
+}
+
+var kod = Text(F(&quot;naturtyp&quot;));
+var hav = [&quot;1630&quot;,&quot;4030&quot;,&quot;5130&quot;,&quot;5133&quot;,&quot;6110&quot;,&quot;6210&quot;,&quot;6230&quot;,&quot;6270&quot;,&quot;6280&quot;,&quot;6410&quot;,&quot;6430&quot;,&quot;6510&quot;,&quot;8231&quot;,&quot;9070&quot;,&quot;9071&quot;,&quot;9072&quot;];
+var sko = [&quot;2181&quot;,&quot;9006&quot;,&quot;9008&quot;,&quot;9009&quot;,&quot;9010&quot;,&quot;9020&quot;,&quot;9030&quot;,&quot;9050&quot;,&quot;9060&quot;,&quot;9080&quot;,&quot;9110&quot;,&quot;9160&quot;,&quot;9162&quot;,&quot;9180&quot;,&quot;9190&quot;,&quot;9740&quot;,&quot;9750&quot;];
+var vat = [&quot;3110&quot;,&quot;3130&quot;,&quot;3150&quot;,&quot;3160&quot;,&quot;3260&quot;,&quot;7110&quot;,&quot;7111&quot;,&quot;7140&quot;,&quot;7141&quot;,&quot;7142&quot;,&quot;7230&quot;,&quot;7231&quot;];
+var sta = [&quot;1220&quot;,&quot;1230&quot;,&quot;1232&quot;,&quot;1620&quot;,&quot;1621&quot;,&quot;1640&quot;,&quot;8210&quot;,&quot;8220&quot;,&quot;8230&quot;,&quot;8232&quot;];
+var dodved = [&quot;9006&quot;,&quot;9008&quot;,&quot;9009&quot;,&quot;9010&quot;,&quot;9050&quot;,&quot;9830&quot;];
+
+var grupp = When(
+    Includes(hav, kod), &quot;Hävd (R7A)&quot;,
+    Includes(sko, kod), &quot;Skog (R7B)&quot;,
+    Includes(vat, kod), &quot;Våtmark (R7C)&quot;,
+    Includes(sta, kod), &quot;Stabila (R7D)&quot;,
+    null);
+
+// Statusens ålder
+var status = DefaultValue(F(&quot;naturtypsstatus_text&quot;), &quot;&quot;);
+var urs = DefaultValue(F(&quot;ursprung_text&quot;), &quot;&quot;);
+var bidos = Find(&quot;BIDOS&quot;, urs) &gt; -1;
+var slut = Ar(F(&quot;habitat_period_lastdata_end&quot;));
+var red = Ar(F(&quot;last_edited_date&quot;));
+var statusAr = IIf(IsEmpty(slut), red, slut);
+
+var alder = &quot;Okänt år&quot;;
+if (!IsEmpty(slut)) {
+    alder = &quot;Bedömd &quot; + slut + &quot; (slutdatum senaste inventering)&quot;;
+} else if (!IsEmpty(red)) {
+    alder = &quot;Okänt år. Attributen senast ändrade &quot; + red + IIf(bidos, &quot;, ursprung BIDOS (basinventeringen)&quot;, &quot;&quot;);
+} else if (bidos) {
+    alder = &quot;Okänt år. Ursprung BIDOS (basinventeringen), ofta 15–20 år gammal&quot;;
+}
+
+// Vad gäller
+var ejBedomd = Find(&quot;Ej bedömd&quot;, status) &gt; -1;
+var harStatus = Find(&quot;ullgod&quot;, status) &gt; -1;   // Fullgod / Icke fullgod
+var vad = &quot;&quot;;
+if (IsEmpty(grupp)) {
+    vad = &quot;Ingår inte i R7 (marin, obestämd eller icke-Natura-naturtyp).&quot;;
+} else if (ejBedomd) {
+    vad = &quot;Ej bedömd status: bedöm enligt &quot; + grupp + &quot;.&quot;;
+} else if (harStatus) {
+    vad = &quot;Har status: ompröva (R7-omprövning). Statusen räknas inte som belägg — bara underlag nyare än &quot;
+        + IIf(IsEmpty(statusAr), &quot;statusen&quot;, Text(statusAr)) + &quot; kan bekräfta eller ändra den.&quot;;
+} else {
+    vad = &quot;R7 gäller inte för den här statusen.&quot;;
+}
+if (Includes(dodved, kod)) {
+    vad += &quot; 9010/9050 kan inte bli fullgod vid skrivbordet (död ved).&quot;;
+}
+
+function Jmf(y) {
+    if (IsEmpty(y) || IsEmpty(statusAr)) { return &quot;&quot;; }
+    if (y &gt; statusAr) { return &quot; · nyare än statusen&quot;; }
+    return &quot; · inte nyare än statusen&quot;;
+}
+
+var infos = [];
+var attrs = {};
+function Rad(id, etikett, varde) {
+    if (IsEmpty(varde) || varde == &quot;&quot;) { return; }
+    Push(infos, { fieldName: id, label: etikett });
+    attrs[id] = varde;
+}
+
+Rad(&quot;r7_grupp&quot;, &quot;Bedömningsgrupp (R7)&quot;, grupp);
+Rad(&quot;r7_alder&quot;, &quot;Statusens ålder&quot;, alder);
+Rad(&quot;r7_vad&quot;, &quot;Vad gäller&quot;, vad);
+
+// Underlag med år
+var nu = Year(Now());
+var sk = F(&quot;havd_skiften&quot;);
+if (!IsEmpty(sk)) {
+    var saknas = F(&quot;havd_ar_utan_bete&quot;);
+    Rad(&quot;r7_skiften&quot;, &quot;Hävd enligt skiften (2015–2025)&quot;,
+        sk + IIf(IsEmpty(saknas), &quot;&quot;, &quot; — år utan bete/slåtter: &quot; + saknas) + Jmf(2025));
+}
+var tAr = Ar(F(&quot;tuva_inv_ar&quot;));
+if (!IsEmpty(tAr)) {
+    var tAlder = nu - tAr;
+    var tNot = When(tAlder &gt; 15, &quot; · äldre än 15 år, räknas inte som aktuellt&quot;,
+                    tAlder &gt; 10, &quot; · 11–15 år, räcker inte för fullgod&quot;, &quot;&quot;);
+    Rad(&quot;r7_tuva&quot;, &quot;TUVA&quot;, tAr + &quot; · &quot; + DefaultValue(F(&quot;tuva_havdstatus&quot;), &quot;hävd ej angiven&quot;) + tNot + Jmf(tAr));
+}
+var sAr = Ar(F(&quot;skdos_havd_senaste_ar&quot;));
+var sTyp = F(&quot;skdos_havd_typ&quot;);
+if (!IsEmpty(sTyp)) {
+    Rad(&quot;r7_skdos&quot;, &quot;SkötselDOS&quot;, sTyp + IIf(IsEmpty(sAr), &quot; (år saknas)&quot;, &quot; senast &quot; + sAr) + Jmf(sAr));
+}
+var uAr = Ar(F(&quot;uppf_senaste_ar&quot;));
+if (!IsEmpty(uAr)) {
+    Rad(&quot;r7_uppf&quot;, &quot;Uppföljning&quot;, uAr + &quot; · &quot; + DefaultValue(F(&quot;uppf_antal_dalig&quot;), 0) + &quot; punkter Dålig&quot; + Jmf(uAr));
+}
+var lAr = Ar(F(&quot;laser_skanning_ar&quot;));
+if (!IsEmpty(lAr)) {
+    Rad(&quot;r7_laser&quot;, &quot;Laserdata&quot;, lAr + IIf(IsEmpty(F(&quot;laser_flagga&quot;)), &quot; · ingen flagga&quot;, &quot; · &quot; + F(&quot;laser_flagga&quot;)) + Jmf(lAr));
+}
+var dik = F(&quot;diken_m_inom&quot;);
+if (!IsEmpty(dik) &amp;&amp; dik &gt; 0 &amp;&amp; grupp != &quot;Hävd (R7A)&quot;) {
+    Rad(&quot;r7_diken&quot;, &quot;Diken inom ytan&quot;, Round(dik) + &quot; m&quot;);
+}
+var aAr = Ar(F(&quot;typarter_senaste_ar&quot;));
+if (!IsEmpty(aAr)) {
+    Rad(&quot;r7_arter&quot;, &quot;Typiska arter&quot;, F(&quot;typarter_antal&quot;) + &quot; arter, senast &quot; + aAr + Jmf(aAr));
+}
+
+if (Count(infos) == 0) {
+    return { type: &quot;fields&quot;, title: &quot;Bedömning vid skrivbordet (R7)&quot;,
+             fieldInfos: [{ fieldName: &quot;tom&quot;, label: &quot;Information&quot; }],
+             attributes: { tom: &quot;Ingen information.&quot; } };
+}
+return { type: &quot;fields&quot;, title: &quot;Bedömning vid skrivbordet (R7)&quot;, fieldInfos: infos, attributes: attrs };
 </code></pre>
 <h2 id="3-granskning-1-avvikelse-och-korrigeringsforslag">3. Granskning 1 — Avvikelse och korrigeringsförslag</h2>
 <p><strong>Utökad 2026-09-22:</strong> nytt block för <code>forandringsorsak_forslag</code> ("Förändringsorsak, förslag") — granskarens EGNA förslagskod, inte det skrivskyddade källfältet <code>forandringsorsak</code> som redan syns i gruppen <em>Naturtyp (NNK-data)</em>. Kräver att fältet finns i tjänsten (gdb-kedjan → republicering, se <code>webbgis-publicering.html</code> Del 5 steg 6) innan den här versionen kan klistras in. Placerat sist i "vad"-delen, direkt före kommentaren — gruppen läses nu "vad" (föreslagen typ/justering) följt av "varför" (förändringsorsak + fritextkommentar).</p>
@@ -877,7 +1001,7 @@ return svar(titel, rader);
 </code></pre>
 <hr />
 <h2 id="9-skog-laserdata">9. Skog (laserdata)</h2>
-<p>Nytt uttryck, placera det efter <em>Hävd enligt jordbruksskiften och TUVA</em>. Underlag för R7B och R7C i <code>metodik.md</code>. Visas för skogstyperna (R7 grupp B, inklusive 9740 skogbevuxen myr och 9750 svämlövskog). För myrarna 7110–7231 visas bara dikesraderna, med titeln <em>Diken (laserdata)</em>. Övriga typer får en kort rad om att sektionen inte gäller.</p>
+<p>Nytt uttryck, placera det efter <em>Hävd enligt jordbruksskiften och TUVA</em>. Underlag för R7B och R7C i <code>metodik.md</code>. Visas för skogstyperna (gruppen Skog, inklusive 9740 skogbevuxen myr och 9750 svämlövskog). För myrarna 7110–7231 visas bara dikesraderna, med titeln <em>Diken (laserdata)</em>. Övriga typer får en kort rad om att sektionen inte gäller.</p>
 <pre><code class="language-js">// Skog (laserdata)
 // Laser: Skogsstyrelsens Skogliga grunddata, omdrev 1 (2010-2012) och omdrev 2 (2020-2023),
 //   framräknat av nnk_laser.py. Bara 10 m-pixlar helt inom ytan. Värdena är modellskattningar.
