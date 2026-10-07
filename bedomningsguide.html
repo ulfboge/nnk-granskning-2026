@@ -290,7 +290,7 @@ const STEG = [
     ['Identifiering och skydd','Område, Natura 2000-kod (SE-nummer)','Vilket område ytan ligger i. Klicka på en yta och kontrollera att du är i rätt område innan du börjar.'],
     ['','Skyddskategori, Naturreservat-ID','Om området också är naturreservat. Då finns ofta skötselplan och SkötselDOS-uppgifter att använda i steg 7.']
   ],
-  logg: [['Datum, Granskare, SITECODE','Du fyller i. Granskare: välj i listan, eller skriv ett nytt namn — det läggs då till i listan (fliken Granskare).'],['Område, Batch, Prio, Uppgift, Förvaltare, Bevarandeplan fastställd, Utpekade typer, Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt'],['Status','Påbörjad']],
+  logg: [['Datum, Granskare, SITECODE','Du fyller i. Granskare: välj i listan, eller skriv ett nytt namn — det läggs då till i listan (fliken Granskare).'],['Område, Batch, Prio, Uppgift, Förvaltare, Bevarandeplan fastställd, Utpekade typer, Typer i NNK, Differenser enligt underlaget, Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt'],['Status','Påbörjad']],
   ex: () => ex('<p>Autofyllningen ger: Floden · batch B · P1 · C4.1 · utpekade 3150, 6270, 6410, 6510 · <b>10 ytor R7</b>, varav <b>2 Ej bedömd</b> och <b>8 med status</b>. Bevarandeplan fastställd <b>2019</b>.</p>') },
 
 { id:'bevplan', titel:'Läs bevarandeplanen',
@@ -308,20 +308,21 @@ const STEG = [
   ex: () => ex('<p>Planen (<a href="https://geodata.naturvardsverket.se/handlingar/rest/dokument/285791">NV:s dokument 285791</a>) är fastställd 2019-01-30 och pekar ut 3150, 6270, 6410 och 6510. Alla fyra är alltså skyddade enligt R6 — ändringar bara vid uppenbart fel eller faktisk förändring.</p><p>Men planen skriver också: <i>"Bedömningsunderlaget är bristfälligt vad gäller terrestra naturtyper. Inventeringar krävs för att avgöra om silikatgräsmarker uppfyller kraven för naturtypen, samt för bedömning av bevarandetillstånd för samtliga tre utpekade naturtyper."</i> Planen är alltså nyare än karteringen, men den stöder inte de tre landtyperna. Det får betydelse i steg 6.</p>') },
 
 { id:'jamfor', titel:'Jämför NNK med bevarandeplanen',
-  mal:'Se om typerna i NNK stämmer med det planen pekar ut, innan du bedömer status yta för yta.',
+  mal:'Se om typerna i NNK stämmer med det planen pekar ut, innan du bedömer status yta för yta. Själva jämförelsen är redan gjord — din uppgift är att se var skillnaderna ligger och om de är rimliga.',
   gor:[
-    'Klicka igenom ytorna i området och notera naturtypen för varje yta (popupen, raden <i>Naturtyp</i>).',
-    'Finns alla utpekade typer i NNK? Finns typer i NNK som planen inte nämner?',
+    'Läs loggens grå kolumner <i>Utpekade typer</i>, <i>Typer i NNK (antal ytor)</i> och <i>Differenser enligt underlaget</i>. De visar vad planen pekar ut, vad NNK har och var de skiljer sig.',
+    'Leta upp ytorna med de typer som skiljer sig i kartan (etiketter med typkod hjälper, se nedan) och se om skillnaden är rimlig: fel typ, ny typ, eller en typ som planen missat.',
     'Stäng tillfälligt av <i>Dölj icke-Natura-livsmiljötyper</i> och titta på icke-Natura-ytorna inom området. Slå sedan på filtret igen.',
-    'Skriv skillnaderna i loggen.'
+    'Skriv din bedömning av skillnaderna i loggen.'
   ],
+  mer: () => obs('<b>Etiketter i kartan.</b> Slå på etiketter med typkod och granskningsstatus (t.ex. <code>6410 ✓</code>) i granskningslagret, så ser du direkt vilka ytor du redan klickat igenom. Uttrycket finns i <a href="docs/webbgis-publicering.html">webbGIS-publiceringen</a>.'),
   popup: [
     ['Naturtyp (NNK-data)','Naturtyp','Kod och namn för livsmiljötypen enligt NNK.'],
     ['','Area (ha)','Ytans storlek. Under 0,25 ha (0,5 ha ädellövskog, 1 ha skog och myr) ändras inte geometrin.'],
     ['','Målnaturtyp 1–3','Bara för utvecklingsmark: vilken typ ytan är på väg mot.']
   ],
-  logg: [['Differenser NNK – bevarandeplan','Typer som saknas, typer som tillkommit, ytor som kanske är fel typ']],
-  ex: () => ex('<p>Alla fyra utpekade typer finns i NNK. Två ytor är <b>6910 Öppen kultiverad gräsmark</b> (4,7 och 0,4 ha) — inte Natura-naturtyp. Båda har hävd varje år sedan 2015, och TUVA-objektet de ligger i anger 6410. Det är inte en R7-fråga, men värt att fråga förvaltaren om: kan de vara 6410 eller utvecklingsmark?</p><p><i>Loggen, Differenser:</i> "Alla utpekade typer finns. 2 ytor 6910 (5,1 ha) med årlig hävd och TUVA 6410 — fråga förvaltaren om typ/utvecklingsmark."</p>') },
+  logg: [['Typer i NNK, Differenser enligt underlaget','Fylls i automatiskt — utgångspunkten'],['Differenser NNK – bevarandeplan','Din bedömning: vilka skillnader som är rimliga, vilka ytor som kanske är fel typ, vad du vill fråga förvaltaren']],
+  ex: () => ex('<p>Loggen visar <i>Typer i NNK</i>: 3150 ×2, 6270 ×2, 6410 ×4, 6510 ×2, 6910 ×2, och <i>Differenser enligt underlaget</i> är tom. Alla fyra utpekade typer finns alltså i NNK. Två ytor är <b>6910 Öppen kultiverad gräsmark</b> (4,7 och 0,4 ha) — inte Natura-naturtyp. Båda har hävd varje år sedan 2015, och TUVA-objektet de ligger i anger 6410. Det är inte en R7-fråga, men värt att fråga förvaltaren om: kan de vara 6410 eller utvecklingsmark?</p><p><i>Loggen, Differenser:</i> "Alla utpekade typer finns. 2 ytor 6910 (5,1 ha) med årlig hävd och TUVA 6410 — fråga förvaltaren om typ/utvecklingsmark."</p>') },
 
 { id:'sortera', titel:'Sortera ytorna: bedöm, ompröva eller ingår inte',
   mal:'Avgör för varje yta vilken regel som gäller. Det står i popupens sektion Bedömning vid skrivbordet (R7).',

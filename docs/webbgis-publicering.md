@@ -167,6 +167,23 @@ Konfiguratorn läser lager **bara via WebMaps** (GK-manualen s.14). WebMap:en ä
 > **Uppdatering 2026-09-22: "ärvs automatiskt" och "Gör INGEN ny fältlista" stämmer inte längre.** Alla sex sektioner (Identifiering och skydd · Naturtyp (NNK-data) · Granskning 1–4) är omdefinierade som handskrivna Arcade-popuputtryck direkt här i Map Viewer — se `docs/popup-arcade-uttryck.html` för den fullständiga, aktuella koden per sektion, och för kända avvikelser mot ursprungsdesignen (Granskning 4 saknar t.ex. `nnk_kommentar`/`faltinventerare`/`egen_bet`).
 >
 > **Ta ALDRIG bort och lägg till NNK-ytlagret på nytt i WebMap:en** som felsökning för en ogrupperad eller cachead popup (rådet i föregående stycke gäller inte längre). Det nollställer popupen till lagrets ursprungliga lyrx-popupInfo och raderar alla sex Arcade-uttrycken utan varning. Behöver popupen byggas om från grunden: kopiera in uttrycken från `docs/popup-arcade-uttryck.html` på nytt, sektion för sektion, i stället för att ta bort/lägga till lagret.
+### Steg 5b · Etiketter med typkod och granskningsstatus
+
+*Tillagt 2026-10-07.* Ger snabb överblick i områden med många ytor: vilken typ varje yta har och om den är granskad. *Layers* → NNK ytor → *Labels* → *Enable labels* → *Add label class* → *Label field*: välj *Expression* och klistra in:
+
+```
+// Typkod + granskningsstatus, t.ex. "6410 ✓" (granskat = Ja) eller "6410 …" (Påbörjat)
+var t = $feature.naturtyp_kod_text;
+var kod = IIf(IsEmpty(t), "", Split(t, " ")[0]);
+var g = IIf(IsEmpty($feature.granskat), "", DomainName($feature, "granskat"));
+return kod + When(g == "Ja", " ✓", g == "Påbörjat", " …", "");
+```
+
+- *Visible range*: från ungefär 1:20 000 och inzoomat, annars blir det för tätt i länsvy.
+- Vill du också se namnet när du zoomar in: lägg till en andra etikettklass med uttrycket `$feature.naturtyp_kod_text` och visningsintervall från 1:4 000 och inzoomat, och sätt den första klassen till 1:20 000–1:4 000.
+- Små ytor får ibland ingen etikett när det är trångt. Symbolen på `granskat` (punkt 4 ovan) visar status även där.
+- Etiketten följer med till appen i Konfiguratorn eftersom den ligger i WebMap:en. Spara WebMap:en efteråt.
+
 ### Steg 6 · Formulär (smart form)
 
 Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Forms → Configure*. Dra in fälten i denna ordning och gruppera (*Group*-element):

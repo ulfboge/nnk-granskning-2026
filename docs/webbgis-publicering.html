@@ -358,6 +358,20 @@ tr:last-child td{border-bottom:0}
 <p><strong>Uppdatering 2026-09-22: "ärvs automatiskt" och "Gör INGEN ny fältlista" stämmer inte längre.</strong> Alla sex sektioner (Identifiering och skydd · Naturtyp (NNK-data) · Granskning 1–4) är omdefinierade som handskrivna Arcade-popuputtryck direkt här i Map Viewer — se <code>docs/popup-arcade-uttryck.html</code> för den fullständiga, aktuella koden per sektion, och för kända avvikelser mot ursprungsdesignen (Granskning 4 saknar t.ex. <code>nnk_kommentar</code>/<code>faltinventerare</code>/<code>egen_bet</code>).</p>
 <p><strong>Ta ALDRIG bort och lägg till NNK-ytlagret på nytt i WebMap:en</strong> som felsökning för en ogrupperad eller cachead popup (rådet i föregående stycke gäller inte längre). Det nollställer popupen till lagrets ursprungliga lyrx-popupInfo och raderar alla sex Arcade-uttrycken utan varning. Behöver popupen byggas om från grunden: kopiera in uttrycken från <code>docs/popup-arcade-uttryck.html</code> på nytt, sektion för sektion, i stället för att ta bort/lägga till lagret.</p>
 </blockquote>
+<h3 id="steg-5b-etiketter-med-typkod-och-granskningsstatus">Steg 5b · Etiketter med typkod och granskningsstatus</h3>
+<p><em>Tillagt 2026-10-07.</em> Ger snabb överblick i områden med många ytor: vilken typ varje yta har och om den är granskad. <em>Layers</em> → NNK ytor → <em>Labels</em> → <em>Enable labels</em> → <em>Add label class</em> → <em>Label field</em>: välj <em>Expression</em> och klistra in:</p>
+<pre><code>// Typkod + granskningsstatus, t.ex. &quot;6410 ✓&quot; (granskat = Ja) eller &quot;6410 …&quot; (Påbörjat)
+var t = $feature.naturtyp_kod_text;
+var kod = IIf(IsEmpty(t), &quot;&quot;, Split(t, &quot; &quot;)[0]);
+var g = IIf(IsEmpty($feature.granskat), &quot;&quot;, DomainName($feature, &quot;granskat&quot;));
+return kod + When(g == &quot;Ja&quot;, &quot; ✓&quot;, g == &quot;Påbörjat&quot;, &quot; …&quot;, &quot;&quot;);
+</code></pre>
+<ul>
+<li><em>Visible range</em>: från ungefär 1:20 000 och inzoomat, annars blir det för tätt i länsvy.</li>
+<li>Vill du också se namnet när du zoomar in: lägg till en andra etikettklass med uttrycket <code>$feature.naturtyp_kod_text</code> och visningsintervall från 1:4 000 och inzoomat, och sätt den första klassen till 1:20 000–1:4 000.</li>
+<li>Små ytor får ibland ingen etikett när det är trångt. Symbolen på <code>granskat</code> (punkt 4 ovan) visar status även där.</li>
+<li>Etiketten följer med till appen i Konfiguratorn eftersom den ligger i WebMap:en. Spara WebMap:en efteråt.</li>
+</ul>
 <h3 id="steg-6-formular-smart-form">Steg 6 · Formulär (smart form)</h3>
 <p>Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → <em>Forms → Configure</em>. Dra in fälten i denna ordning och gruppera (<em>Group</em>-element):</p>
 <div class="tabell"><table>
