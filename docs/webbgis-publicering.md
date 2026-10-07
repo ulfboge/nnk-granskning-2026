@@ -180,7 +180,22 @@ return kod + When(g == "Ja", " ✓", g == "Påbörjat", " …", "");
 ```
 
 - *Visible range*: från ungefär 1:20 000 och inzoomat, annars blir det för tätt i länsvy.
-- Vill du också se namnet när du zoomar in: lägg till en andra etikettklass med uttrycket `$feature.naturtyp_kod_text` och visningsintervall från 1:4 000 och inzoomat, och sätt den första klassen till 1:20 000–1:4 000.
+- **Namnet under koden när du zoomar in** (testat 2026-10-07): byt uttrycket ovan mot det här, i *samma* etikettklass. Använd inte två klasser med olika visningsintervall — Map Viewer rundar intervallen till kartans zoomnivåer, så gränsen 1:4 000 slog igenom redan vid ungefär 1:5 000. Uttrycket läser skalan själv (`$view.scale`). Klassens synliga intervall: från 1:20 000 och **utan gräns inåt** (högra reglaget helt åt inzoomat håll).
+
+```
+var t = $feature.naturtyp_kod_text;
+if (IsEmpty(t)) { return ""; }
+var delar = Split(t, " - ");
+var kod = delar[0];
+var namn = IIf(Count(delar) > 1, delar[1], "");
+var g = IIf(IsEmpty($feature.granskat), "", DomainName($feature, "granskat"));
+var rad1 = kod + When(g == "Ja", " ✓", g == "Påbörjat", " …", "");
+
+// Namnet bara när du zoomat in mer än 1:4 000 (ändra 4000 för annan gräns)
+if ($view.scale > 4000 || namn == "") { return rad1; }
+return rad1 + TextFormatting.NewLine + namn;
+```
+
 - Små ytor får ibland ingen etikett när det är trångt. Symbolen på `granskat` (punkt 4 ovan) visar status även där.
 - Etiketten följer med till appen i Konfiguratorn eftersom den ligger i WebMap:en. Spara WebMap:en efteråt.
 
