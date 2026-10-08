@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -272,7 +272,7 @@ return {
 Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar det du behöver för att avgöra om status kan sättas eller omprövas vid skrivbordet, så att du inte behöver gå till attributtabellen:
 
 - **Bedömningsgrupp (R7)** — vilken delregel i metodiken som gäller (Hävd, Skog, Våtmark, Stabila). Räknas fram ur naturtypskoden.
-- **Statusens ålder** — slutdatum senaste inventering om det finns, annars när attributen senast ändrades och om statusen kommer från basinventeringen (BIDOS).
+- **Statusens ålder** — slutdatum senaste inventering om det finns, annars året då NNK-objektet senast redigerades och om statusen kommer från basinventeringen (BIDOS). Redigeringsåret är bara en övre gräns: ändringen kan ha gällt vilket attribut som helst, så statusen kan vara äldre.
 - **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*.
 - **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.
 
@@ -323,7 +323,7 @@ var alder = "Okänt år";
 if (!IsEmpty(slut)) {
     alder = "Bedömd " + slut + " (slutdatum senaste inventering)";
 } else if (!IsEmpty(red)) {
-    alder = "Okänt år. Attributen senast ändrade " + red + IIf(bidos, ", ursprung BIDOS (basinventeringen)", "");
+    alder = "Okänt år. NNK-objektet senast redigerat " + red + " (inte nödvändigtvis statusen)" + IIf(bidos, ", ursprung BIDOS (basinventeringen)", "");
 } else if (bidos) {
     alder = "Okänt år. Ursprung BIDOS (basinventeringen), ofta 15–20 år gammal";
 }
