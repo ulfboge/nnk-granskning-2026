@@ -364,7 +364,7 @@ const STEG = [
     ['Hävd enligt jordbruksskiften och TUVA','TUVA, naturtyper i objektet','Typerna gäller hela TUVA-objektet, inte NNK-ytan. Samma typ räknas som stöd om inventeringen är nyare än karteringen.'],
     ['','TUVA, inventeringsår','Avgör om TUVA kan räknas som nyare underlag.']
   ],
-  logg: [['Ortofoto (år)','Året för det orto du bedömt mot'],['Typ ifrågasatt','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
+  logg: [['Ortofoto (år)','Året för det orto du bedömt mot'],['Typ ifrågasatt (antal ytor)','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
   ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Bevarandeplanen är från <b>2019</b>, alltså nyare än karteringen, men den skriver själv att underlaget för de terrestra typerna är bristfälligt och att det behövs inventering för att avgöra om silikatgräsmarkerna är 6270. Den räknas därför inte som stöd för 6270, 6410 eller 6510. Stödet måste i stället komma från ortot och de typiska arterna, yta för yta. Ytor där inget stöder typen får Karteringsstatus 5 <i>Åtgärdas</i> och blir fältobjekt. Övningsutfallen i steg 7 visar hur ytorna bedöms <i>om</i> typen godtas.</p>') },
 
 { id:'underlag', titel:'Läs underlagen för tillståndet',
@@ -405,7 +405,7 @@ const STEG = [
   ],
   mer: () => obs('<b>Till fält är ett fullgott utfall.</b> FAQ 11 och 22: där tillståndet inte är tydligt ska man inte gissa. Ett dokumenterat "vet inte, och det här behöver kontrolleras" är bättre än en bekräftelse utan grund.'),
   popup: [['Bedömning vid skrivbordet (R7)','Vad gäller','Påminner om vilken regel som gäller och om undantaget för 9010/9050.']],
-  logg: [['Fullgod, Icke fullgod, Till fält, Ej omprövad','Räkna ytorna när du gått igenom alla (görs i steg 10)']],
+  logg: [['Fullgod, Icke fullgod, Till fält, Ej omprövad (antal ytor)','Räkna ytorna när du gått igenom alla (görs i steg 10)']],
   ex: () => ex('<p>Ingen hävdyta kan bekräftas som fullgod, eftersom TUVA är för gammal. Två ytor kan bekräftas som icke fullgod om ortot visar igenväxning. En yta med status <i>Icke fullgod</i> har haft hävd varje år sedan 2015 — där kan statusen vara fel, så den prioriteras i fält. Sjöarna avgörs i VISS.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
 
 { id:'lager', titel:'För in förslagen i granskningslagret',
@@ -429,16 +429,16 @@ const STEG = [
 { id:'logg', titel:'Sammanfatta i granskningsloggen',
   mal:'Avsluta området med en sammanfattning i loggen, så att det går att se vad som är gjort, på vilken grund och vad som återstår.',
   gor:[
-    'Räkna ytorna per utfall och skriv in dem: Fullgod, Icke fullgod, Till fält, Ej omprövad, Typ ifrågasatt.',
+    'Räkna ytorna per utfall och skriv antalet i kolumnerna Fullgod, Icke fullgod, Till fält, Ej omprövad och Typ ifrågasatt (alla "antal ytor"). Utfallet bestäms per yta i webbGIS; summan ska bli Ytor R7.',
     'Skriv alla underlag med år i <i>Underlag</i>.',
     'Skriv det du är osäker på i <i>Osäkerheter</i> och det som är kvar i <i>Återstår</i>.',
     'Sätt <i>Status</i> = Klar. Bocka av området i kontrollrummet när hela batchen är gjord.'
   ],
-  logg: [['Fullgod … Typ ifrågasatt','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. VISS, fråga förvaltaren'],['Status','Klar']],
+  logg: [['Fullgod … Typ ifrågasatt (antal ytor)','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. VISS, fråga förvaltaren'],['Status','Klar']],
   ex: () => ex('<p>Floden, en rad i loggen:</p>' + tab(['Kolumn','Värde'],[
       ['Ortofoto (år)','(året för det orto du använt)'],
-      ['Fullgod / Icke fullgod / Till fält / Ej omprövad','0 / 2* / 1 / 5 — *om ortot visar igenväxning'],
-      ['Typ ifrågasatt','0'],
+      ['Fullgod / Icke fullgod / Till fält / Ej omprövad (antal ytor)','0 / 2* / 1 / 5 — *om ortot visar igenväxning'],
+      ['Typ ifrågasatt (antal ytor)','0'],
       ['Underlag','Bevarandeplan 2019 (underlag för landtyperna bristfälligt enligt planen), skiften 2015–2025, TUVA 2002, typiska arter (Artportalen), orto (år)'],
       ['Osäkerheter','TUVA 24 år gammal på alla hävdytor. Yta 2 (6410) har haft hävd sedan 2015 trots status icke fullgod.'],
       ['Återstår','Sjöarna (2 ytor 3150) mot VISS. Fråga förvaltaren om 6910-ytorna. Fältbesök hävdytorna 2027, yta 2 först.'],
