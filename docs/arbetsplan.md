@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Version:** 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
+**Version:** 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
 **Datum:** 2026-09-11
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
@@ -264,6 +264,9 @@ Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävd
 | D2.2 | Dokumentera **grunden** för varje bedömning och **hur aktuell** den är (FAQ f.4) — utan detta är bedömningen inte spårbar | löpande | Båda |
 | D2.3 | Där tillståndet är oförändrat sedan tidigare bedömning: registrera det aktivt med grund och datum — "oförändrat" är också ett svar (FAQ f.9) | löpande | Båda |
 | D2.4 | Hävdanalys mot Jordbruksverkets jordbruksskiften 2015–2025 — hävd per yta som fält i granskningslagret, underlag för R7A (upprepas årligen) | v40–v41 | Johan |
+| D2.5 | VISS-koppling för sjöar och vattendrag — ekologisk status och styrande kvalitetsfaktor per yta som fält, underlag för R7C | v41–v42 | Johan |
+| D2.6 | Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd, naturvårdsavtal) per yta som fält, underlag för R7B | v41 | Johan |
+| D2.7 | Bedömningsförslag per yta enligt R7: utfall, säkerhet, villkor, förslag till formulärfälten och manuella kontroller, i popupen och i en intern Excel-fil med områdessök | v41–v42 | Johan |
 | D4.1 | Notera avvikelser mot fastställd bevarandeplan/reservatsbeslut (FAQ f.24) | löpande | Handläggare |
 | D4.2 | Lista objekt där nuvarande beslut/skötselplan **hindrar** nödvändig skötsel → revideringsbehov | v48 | Handläggare |
 | D4.3 | Utvecklingsmark: peka ut ytor där bevarandemål finns om utökad areal, ange upp till tre målnaturtyper (FAQ f.23). Idag har bara 87 polygoner i hela länet en angiven målnaturtyp | v45–v50 | Handläggare |

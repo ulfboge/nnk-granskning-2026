@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.3 · 2026-10-08** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7 anger när bevarandeplanen räknas som underlag för typ och tillstånd, och alla 197 planer har nu fastställelseår. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.4 · 2026-10-08** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* nytt avsnitt *Förslag per yta (R7-förslag)*; Skogsstyrelsens register som underlag i R7B; utfallsregel för VISS i R7C. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -304,6 +304,14 @@ Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas o
 
 *Avverkning och gallring.* Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är förslag. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. De övriga 57 kan vara naturliga störningar, naturvårdsåtgärder eller ingrepp som är för små för satellitdetekteringen, och ska kontrolleras i orto. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (*SKS Trädhöjd 3_1*, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.
 
+**Underlag för skogen — Skogsstyrelsens register (2026-10-08).** Granskningslagret har fält ur Skogsstyrelsens öppna register för alla ytor: utförd avverkning (`skr_utford_ar`, `skr_utford_typ`, `skr_utford_ha`), avverkningsanmälan (`skr_anmald_ar`, `skr_anmald_typ`, `skr_anmald_ha`) och biotopskydd eller naturvårdsavtal som täcker minst halva ytan (`skr_skydd`, `skr_skydd_ar`). En avverkning eller anmälan räknas om den täcker minst 0,1 ha eller 10 % av ytan, samma tröskel som kalibreringen av laserflaggan. 109 av länets 2 918 skogsytor har en utförd avverkning på ytan (de flesta 2021–2025), 14 har en aktuell anmälan och 21 har biotopskydd eller naturvårdsavtal.
+
+| Läge | Så används det i R7B |
+|---|---|
+| Utförd avverkning efter karteringen | *Icke fullgod*, om ortot bekräftar ingreppet. Flaggar laserdata samma yta är underlaget starkt. |
+| Avverkningsanmälan | Inget belägg för ingrepp — anmälan säger att avverkning *får* ske. Kontrollera i ortot och i lagret *SKS Avverkningsinformation* om den är utförd. |
+| Biotopskydd, naturvårdsavtal eller naturreservat | Fri utveckling säkerställd, ett av villkoren för *fullgod*. Saknas skydd: *till fält*. |
+
 **Begränsningar:**
 - **Död ved** syns inte tillförlitligt i laserdata. För 9010 och 9050 är död ved ett klassningskrav (vägledningarna februari 2026). Laserdata kan stödja sluten äldre skog, men utfallet blir alltid *till fält*, se undantaget ovan.
 - **Trädslag.** Laserdata skiljer inte gran från löv. Granplantering eller granföryngring i lövtyper (9020, 9160, 9180, 9190 m.fl.) bedöms med Nationella marktäckedata och satellitdata, inte laser.
@@ -318,6 +326,15 @@ Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas o
 | Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
 
 **Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. Statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
+
+*Fält i granskningslagret (D2.5, när VISS-kopplingen körts):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter statusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
+
+| VISS visar | Utfall |
+|---|---|
+| God eller hög ekologisk status, hydromorfologi god | *Fullgod*, om hydromorfologin inte är påverkad på annat sätt |
+| Måttlig eller sämre, och den styrande faktorn är avgörande för typen: näring för 3150 och 3160, försurning för 3110 och 3130, hydromorfologi för 3260 | *Icke fullgod* |
+| Låg tillförlitlighet, enbart expertbedömning eller enbart fisk, eller biologin inte klassad | Svagt underlag: *till fält*, eller utfallet ovan med låg säkerhet |
+| Ingen egen vattenförekomst | *Till fält*. Avrinningsområdets status skrivs som indicier i kommentaren |
 
 **Underlag för diken.** Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (gruppen Skog) och myrarna i gruppen Våtmark (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): `diken_m_inom` (meter dike inom ytan) och `diken_m_50m` (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger *icke fullgod*. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som *i anslutning till ytan*.
 
@@ -382,6 +399,23 @@ Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke f
 Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.
 
 **Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.
+
+#### Förslag per yta (R7-förslag)
+
+*Ny 2026-10-08.* Skriptet `bygg_r7_forslag.py` (i det interna natura-2000-repot) tillämpar delreglerna ovan på de underlag som finns per yta: skiften, TUVA, SkötselDOS och uppföljning, laserdata och diken, Skogsstyrelsens register, floraväkteri, typiska arter, bevarandeplanens år och typer, och VISS när den är kopplad. Det ger för varje yta som R7 gäller för:
+
+| Del | Innehåll |
+|---|---|
+| Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har status (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
+| Säkerhet | *Hög* (flera samstämmiga underlag), *Medel* (ett underlag, eller ett villkor som ska prövas), *Låg* (underlagen säger emot varandra eller är svaga). |
+| Villkor | Det skriptet inte kan pröva, oftast ortot: "om IR-ortot inte visar igenväxning, plöjning eller gödsling". |
+| Typen rimlig | *Ja*, *Villkorat* (bara bevarandeplanen stöder typen; villkor 2 i *Bevarandeplanen som underlag* är inte prövat) eller *Nej*. Vid *Nej* visas också vad tillståndet blir om typen bekräftas. |
+| Förslag till formuläret | Livsmiljötyp och utbredning, Tillstånd, Vad ska kontrolleras 1–3, Metod och Förändringsorsak med koder, och en färdig *Kommentar – Tillstånd* med delregel och källor med år. |
+| Kontrollera | Manuella kontroller med det lager i webbGIS där de görs, t.ex. "IR-orto senaste år: öppen hävdad mark utan igenväxning? [LM Ortofoton årsvis IR]". |
+
+Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raderna *Förslag (R7)*, *Motiv* och *Kontrollera*) och i en intern Excel-fil med områdessök, en summering per område och en flik per batch. Formulärfälten fylls fortfarande i av granskaren. Förslaget är inget belägg i sig — det är en sammanställning av beläggen. Skriptet tolkar inte ortofoto, läser inte bevarandeplanerna och bedömer inte död ved.
+
+**Första körningen (2026-10-08, utan VISS):** 6 902 ytor omfattas av R7, 6 086 att bedöma och 816 att ompröva. Av de 6 086 har 4 200 inget underlag nyare än karteringen som stöder typen (*Typ ej styrkt*), främst skog (9010), skär och klippor (1621) och hällmarker (8230), där varken TUVA, typiska arter eller en ny bevarandeplan finns. Förutsättningen *typen ska vara rimlig* styr alltså mer än delreglerna. Om ortot får räcka som stöd för typen i gruppen Stabila och för skog med laserdata är en fråga för piloten. Tills vidare gäller regeln som den står, och kolumnen *Om typen bekräftas* visar vad utfallet blir om typen godtas.
 
 #### Pilot innan regeln används skarpt
 
@@ -527,6 +561,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.4** (2026-10-08) — avsnitt 5, R7: nytt avsnitt *Förslag per yta (R7-förslag)*. R7B: Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd, naturvårdsavtal) som fält. R7C: VISS-fälten och utfallsregeln när VISS-kopplingen körts.
 - **2.3** (2026-10-08) — avsnitt 5, R7C: underlag för sjöar och vattendrag (VISS ekologisk status i webbGIS:et, avrinningsområdet som indicier för små sjöar).
 - **2.2** (2026-10-06) — avsnitt 5, R7: nytt avsnitt *Bevarandeplanen som underlag* (när planen stöder typen, åldersgränser för planens tillstånd som för TUVA). Fastställelseåret för alla 197 planer utläst ur PDF:erna (`bevarandeplan_platser.csv`, skriptet `hamta_bevarandeplan_datum.py` i natura-2000).
 - **2.1** (2026-10-06) — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel *R7-omprövning* för ytor som redan har status.

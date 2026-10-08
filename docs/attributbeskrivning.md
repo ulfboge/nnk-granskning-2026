@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -539,6 +539,48 @@ Elva fält, alla skrivskyddade, heltal utom de två textfälten, och bara i ytla
 | `laser_flagga` | text | *Möjlig avverkning* (minst 10 % av ytan eller 0,1 ha sänkt mer än 5 m), *Möjlig gallring* (grundytan minskat minst 3 m²/ha och 15 %, höjden inte sänkt), *Osäker (lövat/olövat)* (lövskogstyp där den äldsta skanningen var i lövat läge) eller tomt. Trösklarna är förslag |
 | `diken_m_inom` | heltal | Meter dike inom ytan enligt Skogsstyrelsens AI-karterade diken (NV:s vektorversion). Alla dikestyper, även vägdiken |
 | `diken_m_50m` | heltal | Meter dike i en 50 m bred zon runt ytan (utanför ytan) |
+
+### Skogsstyrelsens register
+Tio fält, alla skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur `skogsregister_for_granskning.csv` (`nnk_skogsregister.py`), som laddar ned Skogsstyrelsens öppna register för länet ur Geodataportalen. En avverkning eller anmälan räknas om den täcker minst 0,1 ha eller 10 % av ytan, skydd om det täcker minst 50 %. Tomt = ingen träff. Används i R7B, se [metodiken](metodik.html) avsnitt 5.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `skr_utford_ar` | heltal | År för den senaste utförda avverkningen på ytan (satellitdetekterad) |
+| `skr_utford_typ` | text | Avverkningstyp för den senaste, t.ex. *Föryngringsavverkning* |
+| `skr_utford_ha` | decimal | Utförd avverkning inom ytan, alla år (ha) |
+| `skr_utford_antal` | heltal | Antal utförda avverkningar som berör ytan |
+| `skr_anmald_ar` | heltal | Ärendeår för den senaste avverkningsanmälan |
+| `skr_anmald_typ` | text | Avverkningstyp och ärendestatus, t.ex. *Föryngringsavverkning (Anmält för avverkning)* |
+| `skr_anmald_ha` | decimal | Anmäld areal inom ytan (ha) |
+| `skr_anmald_antal` | heltal | Antal anmälningar som berör ytan |
+| `skr_skydd` | text | *Biotopskydd* och/eller *Naturvårdsavtal* som täcker minst halva ytan |
+| `skr_skydd_ar` | heltal | År för beslut eller avtal (det äldsta) |
+
+### VISS — ekologisk status för sjöar och vattendrag
+Tolv fält, skrivskyddade och bara i ytlagret, för ytor med 3110, 3130, 3150, 3160 och 3260. Fylls när `nnk_viss.py` körts (runbook D2.5); tills dess är de tomma. Sjöar kopplas till den vattenförekomst de överlappar mest, vattendrag på längst sträcka inom ytan. Används i R7C.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `viss_id`, `viss_namn` | text | Vattenförekomstens id (WA…) och namn |
+| `viss_ekostatus` | text | Ekologisk status: Hög, God, Måttlig, Otillfredsställande, Dålig |
+| `viss_risk` | text | Risk att inte nå god status |
+| `viss_styrande` | text | Den eller de kvalitetsfaktorer som sätter statusen, t.ex. *Totalfosfor: otillfredsställande* |
+| `viss_miljoproblem` | text | Miljöproblem enligt VISS, t.ex. övergödning, fysisk påverkan |
+| `viss_biologi_klassad` | text | *Ja*/*Nej*: om någon biologisk kvalitetsfaktor är klassad |
+| `viss_tillforlitlighet` | text | Tillförlitlighet för statusklassningen |
+| `viss_klassning_ar` | heltal | Klassningens år |
+| `viss_hydromorf` | text | Sämsta hydromorfologiska klass |
+| `viss_aro_status` | text | Avrinningsområdets status (indicier för sjöar som inte är egna vattenförekomster) |
+| `viss_stracka_m` | heltal | Vattendrag: sträcka inom ytan (m) |
+
+### R7-förslag
+Tre textfält, skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur `r7_forslag_for_granskning.csv` (`bygg_r7_forslag.py`). Tomt för ytor som R7 inte gäller för. Visas i popupens sektion *Bedömning vid skrivbordet (R7)*. Se [metodiken](metodik.html#forslag-per-yta-r7-forslag), *Förslag per yta*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `r7f_utfall` | text | Föreslaget utfall, säkerhet och villkor, t.ex. *Fullgod · säkerhet medel — om IR-ortot inte visar igenväxning, plöjning eller gödsling* |
+| `r7f_motiv` | text | Underlagen förslaget bygger på, med år, och eventuella motsägelser |
+| `r7f_kontrollera` | text | Manuella kontroller med lager i webbGIS inom hakparentes |
 
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  

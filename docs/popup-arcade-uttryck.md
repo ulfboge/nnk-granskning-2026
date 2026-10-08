@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -276,6 +276,8 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 - **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*.
 - **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.
 
+**Tillägg 2026-10-08:** sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: **Förslag (R7)** (utfall, säkerhet och villkor), **Motiv** (underlagen med år och eventuella motsägelser) och **Kontrollera** (manuella kontroller med lager inom hakparentes). Fälten kommer från `skogsregister_for_granskning.csv`, `viss_for_granskning.csv` och `r7_forslag_for_granskning.csv` och måste vara synliga i Pro före Overwrite (de står i `EXTRA_VISIBLE_FIELDS` i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.
+
 Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **Statusens ålder läses ur heltalsfältet `nnk_andrad_ar`**, som `forbered_gdb_for_publicering.py` (steg 1d) räknar fram ur NV:s `last_edited_date`. NV:s fält går inte att publicera: det är *Date, Time and Timezone Offset* och ger fel 00403 (konstaterat 2026-10-06). Låt `last_edited_date` vara avstängt och se till att `nnk_andrad_ar` är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.
 
 ```js
@@ -396,10 +398,31 @@ var dik = F("diken_m_inom");
 if (!IsEmpty(dik) && dik > 0 && grupp != "Hävd (R7A)") {
     Rad("r7_diken", "Diken inom ytan", Round(dik) + " m");
 }
+// Skogsstyrelsens register (2026-10-08)
+var avAr = Ar(F("skr_utford_ar"));
+if (!IsEmpty(avAr)) {
+    Rad("r7_sksavv", "SKS utförd avverkning", avAr + " · " + DefaultValue(F("skr_utford_typ"), "") + Jmf(avAr));
+}
+var anAr = Ar(F("skr_anmald_ar"));
+if (!IsEmpty(anAr)) {
+    Rad("r7_sksanm", "SKS avverkningsanmälan", anAr + " · " + DefaultValue(F("skr_anmald_typ"), "") + " (inte nödvändigtvis utförd)");
+}
+Rad("r7_skydd", "Biotopskydd/naturvårdsavtal", F("skr_skydd"));
+// VISS (D2.5, tomt tills kopplingen körts)
+var vs = F("viss_ekostatus");
+if (!IsEmpty(vs)) {
+    Rad("r7_viss", "VISS ekologisk status", vs + IIf(IsEmpty(F("viss_styrande")), "", " — styrs av " + F("viss_styrande"))
+        + IIf(IsEmpty(F("viss_hydromorf")), "", " · hydromorfologi " + F("viss_hydromorf")));
+}
 var aAr = Ar(F("typarter_senaste_ar"));
 if (!IsEmpty(aAr)) {
     Rad("r7_arter", "Typiska arter", F("typarter_antal") + " arter, senast " + aAr + Jmf(aAr));
 }
+
+// R7-förslaget (2026-10-08): utfall, motiv och kontroller ur bygg_r7_forslag.py
+Rad("r7_f_utfall", "Förslag (R7)", F("r7f_utfall"));
+Rad("r7_f_motiv", "Motiv", F("r7f_motiv"));
+Rad("r7_f_kontroll", "Kontrollera", F("r7f_kontrollera"));
 
 if (Count(infos) == 0) {
     return { type: "fields", title: "Bedömning vid skrivbordet (R7)",

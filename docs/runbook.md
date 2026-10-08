@@ -2,8 +2,8 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
-**Datum:** 2026-10-08 (D2.5 VISS-koppling för R7C tillagd; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 66 uppgifter i 7 arbetspaket, 312 konkreta steg  
+**Datum:** 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 68 uppgifter i 7 arbetspaket, 327 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -396,7 +396,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ## D. Tillståndsbedömning i NNK
 
-*v40–v50 · 13 uppgifter*
+*v40–v50 · 15 uppgifter*
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
@@ -408,6 +408,8 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 | [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
 | [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Johan | – | – |
 | [D2.5 · VISS-koppling för sjöar och vattendrag (underlag för R7C)](#d25-viss-koppling-for-sjoar-och-vattendrag-underlag-for-r7c) | v41–v42 | Johan | – | – |
+| [D2.6 · Skogsstyrelsens register: avverkning, anmälan och skydd (underlag för R7B)](#d26-skogsstyrelsens-register-avverkning-anmalan-och-skydd-underlag-for-r7b) | v41 | Johan | – | – |
+| [D2.7 · Bedömningsförslag per yta enligt R7 (Excel och popup)](#d27-bedomningsforslag-per-yta-enligt-r7-excel-och-popup) | v41–v42 | Johan | D2.4, D2.6 | – |
 | [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Johan | – | – |
 | [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Johan | D4.1 | – |
 | [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Johan | D1.2 | L-D |
@@ -487,11 +489,36 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 **v41–v42** · **[Johan]**
 
-1. Mål: att granskningslagrets popup visar VISS ekologisk status för ytor med sjö- och vattendragstyper (31xx, 3260), och vilken kvalitetsfaktor som sätter statusen, så att R7C kan bedömas utan att öppna VISS. Exempel Floden (WA99934431): måttlig, styrd av totalfosfor (otillfredsställande, övergödning), biologi ej klassad, hydromorfologi god → icke fullgod.
-2. Hämta VISS vattenförekomster för sjöar och vattendrag med ekologisk status 2022–2027 (geometri) och statusklassningen per kvalitetsfaktor (VISS export/nedladdning, Geodatakatalogen: *VM Statusklassning ekologisk status 2022–2027*), samt statusen per avrinningsområde. Spara under `natura-2000: data/viss/`. Görs av Johan på hans egen dator, där det privata natura-2000-repot finns; VISS gick inte att nå från molnmiljön 2026-10-08.
-3. Skriv `natura-2000: scripts/analysis/nnk_viss.py` på samma sätt som `nnk_tuva.py`: NNK-ytor med 31xx/3260 kopplas till den vattenförekomst de överlappar mest (samma tröskel, ≥ 1 % eller ≥ 0,25 ha). Fält: `viss_id`, `viss_namn`, `viss_ekostatus`, `viss_risk`, `viss_styrande` (faktorn/faktorerna som sätter statusen, t.ex. "Totalfosfor: otillfredsställande (övergödning)"), `viss_hydromorf` (sämsta hydromorfologiska klass) och `viss_aro_status` (avrinningsområdets status, indicier för sjöar som inte är egna vattenförekomster). Utdata `natura-2000: data/analysis/viss_for_granskning.csv` med nyckel `nv_globalid`, inga datumfält.
-4. Koppla in fälten i `jobbdator_koppla_nnk_skyddskategori.py` och kör kedjan BACKUP → koppla → forbered → ÅTERSTÄLL → lyrx V3 → Overwrite (se D2.4).
-5. Lägg till rader i popupsektion 2b *Bedömning vid skrivbordet (R7)* för R7C, se [popup-uttryck](popup-arcade-uttryck.html), och låt *Vad gäller* föreslå utfallet enligt R7C i [metodiken](metodik.html). Lagret *Vatten (VISS)* finns redan i webbGIS:ets lagerlista sedan 2026-10-08.
+1. Mål: att granskningslagrets popup visar VISS ekologisk status för ytor med sjö- och vattendragstyper (3110, 3130, 3150, 3160, 3260), och vilken kvalitetsfaktor som sätter statusen, så att R7C kan bedömas utan att öppna VISS. Exempel Floden (WA99934431): måttlig, styrd av totalfosfor (otillfredsställande, övergödning), biologi ej klassad, hydromorfologi god → icke fullgod.
+2. Hämta VISS vattenförekomster för sjöar (ytor) och vattendrag (linjer) med gällande ekologisk status (geometri), statusklassningen per kvalitetsfaktor med tillförlitlighet, miljöproblemen per vattenförekomst (övergödning, fysisk påverkan, försurning m.m.) och statusen per avrinningsområde (VARO). Källor: VISS export/nedladdning och Geodatakatalogen (*VM VISS Statusklassningar sjöar/vattendrag*, *… avrinningsområden VARO*, ATOM). Notera vilken förvaltningscykel klassningen tillhör. Spara under `natura-2000: data/viss/`. Görs av Johan på hans egen dator, där det privata natura-2000-repot finns; VISS gick inte att nå från molnmiljön 2026-10-08.
+3. Skriv `natura-2000: scripts/analysis/nnk_viss.py` på samma sätt som `nnk_tuva.py`. Sjöar (31xx): koppla till den vattenförekomst ytan överlappar mest (samma tröskel, ≥ 1 % eller ≥ 0,25 ha). Vattendrag (3260): VISS-vattendragen är linjer, så areaöverlapp fungerar inte. Koppla i stället den vattenförekomst som har längst sträcka inom ytan buffrad 25 m, och ange sträckan i meter.
+4. Fält: `viss_id`, `viss_namn`, `viss_ekostatus`, `viss_risk`, `viss_styrande` (faktorn/faktorerna som sätter statusen, t.ex. "Totalfosfor: otillfredsställande (övergödning)"), `viss_miljoproblem`, `viss_biologi_klassad` (Ja/Nej, så att en status som bara bygger på kemi syns), `viss_tillforlitlighet` (för statusklassningen), `viss_klassning_ar` (år eller cykel, så att åldersgränserna kan tillämpas som för TUVA), `viss_hydromorf` (sämsta hydromorfologiska klass) och `viss_aro_status` (avrinningsområdets status, indicier för sjöar som inte är egna vattenförekomster). Utdata `natura-2000: data/resultat/viss_for_granskning.csv` med nyckel `nv_globalid`, inga datumfält.
+5. Föreslaget utfall enligt R7C: god/hög och hydromorfologi god → kandidat till *fullgod*. Måttlig eller sämre där den styrande faktorn är avgörande för typen (näring för 3150/3160, försurning för 3110/3130, hydromorfologi för 3260) → *icke fullgod*. Låg tillförlitlighet, enbart expertbedömning, enbart fisk, eller ingen egen vattenförekomst → *till fält* (avrinningsområdets status skrivs då som indicier i kommentaren).
+6. Koppla in fälten i `jobbdator_koppla_nnk_skyddskategori.py` och kör kedjan BACKUP → koppla → forbered → ÅTERSTÄLL → lyrx V3 → Overwrite (se D2.4).
+7. Lägg till rader i popupsektion 2b *Bedömning vid skrivbordet (R7)* för R7C, se [popup-uttryck](popup-arcade-uttryck.html), och låt *Vad gäller* föreslå utfallet enligt R7C i [metodiken](metodik.html). Lagret *Vatten (VISS)* finns redan i webbGIS:ets lagerlista sedan 2026-10-08. Samma fält läses av R7-förslagsskriptet (se förslaget om automatiska bedömningsförslag 2026-10-08).
+
+### D2.6 · Skogsstyrelsens register: avverkning, anmälan och skydd (underlag för R7B)
+
+**v41** · **[Johan]**
+
+1. Mål: att R7B kan pröva *avverkning efter karteringen* och *fri utveckling säkerställd* för alla ytor, inte bara via laserdata (som slutar 2020/2023). Klart 2026-10-08.
+2. Kör `python natura-2000: scripts/analysis/nnk_skogsregister.py` (ca 6 minuter första gången). Skriptet hämtar Skogsstyrelsens utförda avverkningar, avverkningsanmälningar, biotopskydd och naturvårdsavtal för länet ur Geodataportalens öppna tjänster till `natura-2000: data/skogsstyrelsen/` (gitignorerad, ca 680 MB) och kopplar dem till NNK-ytorna. `--hamta` hämtar om allt; gör det inför varje ny granskningsomgång, eftersom anmälningarna ändras löpande.
+3. Tröskel: en avverkning eller anmälan räknas om den täcker minst 0,1 ha eller 10 % av ytan (som kalibreringen i `nnk_laser.py`); skydd om det täcker minst 50 %. Fält: `skr_utford_ar/typ/ha/antal`, `skr_anmald_ar/typ/ha/antal`, `skr_skydd`, `skr_skydd_ar`. Utdata `natura-2000: data/analysis/skogsregister_for_granskning.csv`.
+4. Resultat 2026-10-08: 109 av 2 918 skogsytor har utförd avverkning på ytan (de flesta 2021–2025), 14 en aktuell anmälan och 21 biotopskydd eller naturvårdsavtal.
+5. Fälten publiceras tillsammans med R7-förslaget, se D2.7.
+
+### D2.7 · Bedömningsförslag per yta enligt R7 (Excel och popup)
+
+**v41–v42** · **[Johan]** · förutsätter D2.4, D2.6
+
+1. Mål: att varje yta som R7 gäller för har ett förslag till utfall, säkerhet, motiv, förslag till formulärets fält och en lista över manuella kontroller med lager och år, så att granskningen kan göras yta för yta och summeras per område. Beslut 2026-10-08: alla grupper, både popup och Excel.
+2. Kör `python natura-2000: scripts/analysis/bygg_r7_forslag.py` på din egen dator efter underlagsskripten (hävd, TUVA, SkötselDOS, laser, floraväkteri, D2.6 och, när den finns, VISS i D2.5). Saknas ett underlag blir de ytor som behöver det *till fält* med en hänvisning i kontrollistan. Kör om skriptet när ett underlag uppdaterats.
+3. Utdata: `natura-2000: data/resultat/r7_forslag_AAAAMMDD.xlsx` (Läs mig, Områdessök, Per område, en flik per batch och Data) och `natura-2000: data/analysis/r7_forslag_for_granskning.csv` med tre popupfält: `r7f_utfall`, `r7f_motiv`, `r7f_kontrollera`. Excel-filen innehåller interna bedömningsdata och ska inte på den publika webbsidan.
+4. Områdessök: skriv SITECODE eller en del av namnet i den gula cellen. Fyra tabeller bredvid varandra: ytorna, underlaget, förslaget till formuläret och vad som ska kontrolleras. Fungerar i Excel och LibreOffice utan dynamiska matriser.
+5. Publicera fälten: kopiera `skogsregister_for_granskning.csv` och `r7_forslag_for_granskning.csv` till `C:\Lst\ArcGISProData\Projects\NNK_NRF\Bearbetning\` (eller bygg om jobbdatorpaketet med `bygg_jobbdator_paket.py`) och kör kedjan BACKUP → koppla → forbered → ÅTERSTÄLL → lyrx V3 → Overwrite (se D2.4).
+6. Lägg in de nya raderna i popupsektion 2b, se [popup-uttryck](popup-arcade-uttryck.html). Förslaget visas skrivskyddat; formulärfälten fyller granskaren i själv.
+7. Hur förslaget används: [metodik](metodik.html), avsnittet *Förslag per yta*, och [bedömningsguiden](../bedomningsguide.html), som går yta för yta och summerar per område.
+8. Pilot: förslagen för batch B prövas i samma fältkontroll av 30 ytor som R7-regeln. Notera i granskningsloggen när du ändrar ett förslag och varför; det är underlaget för att justera reglerna.
 
 ### D4.1 · Notera avvikelser mot bevarandeplan och beslut
 
@@ -980,4 +1007,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.4 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*
+*Runbook v1.5 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*

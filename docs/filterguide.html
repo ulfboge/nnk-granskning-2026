@@ -277,6 +277,30 @@ p,ul,ol{max-width:80ch}
 <td>Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat <em>icke fullgod</em>. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret.</td>
 </tr>
 <tr>
+<td><strong>SKS: utförd avverkning</strong><br><code>skr_utford_ar IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">34</td>
+<td>Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan (tillagt 2026-10-08). Efter karteringen → kandidat <em>icke fullgod</em>. Kontrollera året mot karteringen och ingreppet i orto. På hävdytor (9070) kan det vara röjning i betesmark.</td>
+</tr>
+<tr>
+<td><strong>Förslag: låg säkerhet</strong><br><code>r7f_utfall LIKE '%säkerhet låg%'</code></td>
+<td>●</td>
+<td style="text-align: right;">342</td>
+<td>Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där.</td>
+</tr>
+<tr>
+<td><strong>Förslag: typ ej styrkt</strong><br><code>r7f_utfall LIKE 'Typ ej styrkt%'</code></td>
+<td>○</td>
+<td style="text-align: right;">346</td>
+<td>Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas.</td>
+</tr>
+<tr>
+<td><strong>Förslag: fullgod eller icke fullgod</strong><br><code>r7f_utfall LIKE '%ullgod%'</code></td>
+<td>●</td>
+<td style="text-align: right;">508</td>
+<td>Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först.</td>
+</tr>
+<tr>
 <td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
 <td>○</td>
 <td style="text-align: right;"></td>
@@ -301,6 +325,7 @@ p,ul,ol{max-width:80ch}
 <li>För sumpskog (9080), 9740 och 9750: <strong>Diken inom ytan</strong>.</li>
 <li>Ytor utan laserflagga och utan diken är kandidater till fullgod (utom 9010/9050) — kolla ändå avverkningar efter 2020.</li>
 <li>Skiftesfiltren säger inget här. <strong>TUVA-träff</strong> eller <strong>SkötselDOS</strong> på skog: pröva om typen egentligen är trädklädd betesmark (9070).</li>
+<li><strong>SKS: utförd avverkning</strong> täcker tiden efter laserskanningen — avverkning efter karteringen → kandidat till icke fullgod.</li>
 </ol>
 <h3 id="filter-som-ger-nagot-for-gruppen_1">Filter som ger något för gruppen</h3>
 <div class="tabell"><table>
@@ -350,6 +375,36 @@ p,ul,ol{max-width:80ch}
 <td>Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat <em>icke fullgod</em>. Kontrollera i terrängskuggningen och markfuktighetskartan.</td>
 </tr>
 <tr>
+<td><strong>SKS: utförd avverkning</strong><br><code>skr_utford_ar IS NOT NULL</code></td>
+<td>●</td>
+<td style="text-align: right;">38</td>
+<td>Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan (tillagt 2026-10-08). Efter karteringen → kandidat <em>icke fullgod</em>. Kontrollera året mot karteringen och ingreppet i orto. På hävdytor (9070) kan det vara röjning i betesmark.</td>
+</tr>
+<tr>
+<td><strong>SKS: avverkningsanmälan</strong><br><code>skr_anmald_ar IS NOT NULL</code></td>
+<td>○</td>
+<td style="text-align: right;">3</td>
+<td>Aktuell anmälan på ytan. Säger att avverkning får ske, inte att den skett — kontrollera i <em>SKS Avverkningsinformation</em> och orto.</td>
+</tr>
+<tr>
+<td><strong>Förslag: låg säkerhet</strong><br><code>r7f_utfall LIKE '%säkerhet låg%'</code></td>
+<td>●</td>
+<td style="text-align: right;">154</td>
+<td>Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där.</td>
+</tr>
+<tr>
+<td><strong>Förslag: typ ej styrkt</strong><br><code>r7f_utfall LIKE 'Typ ej styrkt%'</code></td>
+<td>●</td>
+<td style="text-align: right;">981</td>
+<td>Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas.</td>
+</tr>
+<tr>
+<td><strong>Förslag: fullgod eller icke fullgod</strong><br><code>r7f_utfall LIKE '%ullgod%'</code></td>
+<td>●</td>
+<td style="text-align: right;">207</td>
+<td>Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först.</td>
+</tr>
+<tr>
 <td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
 <td>○</td>
 <td style="text-align: right;"></td>
@@ -370,7 +425,7 @@ p,ul,ol{max-width:80ch}
 <ol>
 <li>Myrar (7110–7231): <strong>Diken inom ytan</strong> → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.</li>
 <li>Rikkärr (7230): <strong>SkötselDOS: bete/slåtter</strong> visar var hävd ingår i skötseln.</li>
-<li>Sjöar och vattendrag (3110–3260): lagret har inga filter som ger tillståndssignal — oftast <em>till fält</em> eller andra underlag.</li>
+<li>Sjöar och vattendrag (3110–3260): VISS-fälten fylls när D2.5 är körd. Tills dess: slå upp statusen i gruppen <em>Vatten (VISS)</em>.</li>
 <li><strong>Typiska arter i Artportalen</strong> stöder att typen är rätt.</li>
 </ol>
 <h3 id="filter-som-ger-nagot-for-gruppen_2">Filter som ger något för gruppen</h3>
@@ -395,6 +450,24 @@ p,ul,ol{max-width:80ch}
 <td>●</td>
 <td style="text-align: right;">25</td>
 <td>Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat <em>icke fullgod</em>. Kontrollera i terrängskuggningen och markfuktighetskartan.</td>
+</tr>
+<tr>
+<td><strong>Förslag: låg säkerhet</strong><br><code>r7f_utfall LIKE '%säkerhet låg%'</code></td>
+<td>●</td>
+<td style="text-align: right;">154</td>
+<td>Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där.</td>
+</tr>
+<tr>
+<td><strong>Förslag: typ ej styrkt</strong><br><code>r7f_utfall LIKE 'Typ ej styrkt%'</code></td>
+<td>○</td>
+<td style="text-align: right;">122</td>
+<td>Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas.</td>
+</tr>
+<tr>
+<td><strong>Förslag: fullgod eller icke fullgod</strong><br><code>r7f_utfall LIKE '%ullgod%'</code></td>
+<td>●</td>
+<td style="text-align: right;">109</td>
+<td>Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först.</td>
 </tr>
 <tr>
 <td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
@@ -442,6 +515,24 @@ p,ul,ol{max-width:80ch}
 <td>○</td>
 <td style="text-align: right;">27</td>
 <td>Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat <em>icke fullgod</em>. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret.</td>
+</tr>
+<tr>
+<td><strong>Förslag: låg säkerhet</strong><br><code>r7f_utfall LIKE '%säkerhet låg%'</code></td>
+<td>○</td>
+<td style="text-align: right;">57</td>
+<td>Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där.</td>
+</tr>
+<tr>
+<td><strong>Förslag: typ ej styrkt</strong><br><code>r7f_utfall LIKE 'Typ ej styrkt%'</code></td>
+<td>●</td>
+<td style="text-align: right;">1309</td>
+<td>Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas.</td>
+</tr>
+<tr>
+<td><strong>Förslag: fullgod eller icke fullgod</strong><br><code>r7f_utfall LIKE '%ullgod%'</code></td>
+<td>●</td>
+<td style="text-align: right;">216</td>
+<td>Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först.</td>
 </tr>
 <tr>
 <td><strong>Typiska arter i Artportalen</strong><br><code>typarter_antal IS NOT NULL</code></td>
@@ -668,6 +759,41 @@ p,ul,ol{max-width:80ch}
 <td style="text-align: center;">● 440</td>
 <td style="text-align: center;">● 25</td>
 <td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>SKS: utförd avverkning</td>
+<td style="text-align: center;">○ 34</td>
+<td style="text-align: center;">● 38</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>SKS: avverkningsanmälan</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">○ 3</td>
+<td style="text-align: center;">–</td>
+<td style="text-align: center;">–</td>
+</tr>
+<tr>
+<td>Förslag: låg säkerhet</td>
+<td style="text-align: center;">● 342</td>
+<td style="text-align: center;">● 154</td>
+<td style="text-align: center;">● 154</td>
+<td style="text-align: center;">○ 57</td>
+</tr>
+<tr>
+<td>Förslag: typ ej styrkt</td>
+<td style="text-align: center;">○ 346</td>
+<td style="text-align: center;">● 981</td>
+<td style="text-align: center;">○ 122</td>
+<td style="text-align: center;">● 1309</td>
+</tr>
+<tr>
+<td>Förslag: fullgod eller icke fullgod</td>
+<td style="text-align: center;">● 508</td>
+<td style="text-align: center;">● 207</td>
+<td style="text-align: center;">● 109</td>
+<td style="text-align: center;">● 216</td>
 </tr>
 <tr>
 <td>Typiska arter i Artportalen</td>

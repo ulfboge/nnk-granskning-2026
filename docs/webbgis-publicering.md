@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
+**Version 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -399,6 +399,18 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "Laser: möjlig avverkning" | `laser_flagga = 'Möjlig avverkning'` | Höjden har sjunkit mer än 5 m mellan skanningarna (2010–2012 och 2020–2023) på minst 10 % av ytan eller minst 0,1 ha. Bara skogsytorna (gruppen Skog i R7), 70 ytor. Kandidater till *icke fullgod* i R7B — kontrollera i orto och i Skogsstyrelsens avverkningsinformation, orsaken kan också vara storm eller insekter. Fälten sätts ur `laser_for_granskning.csv` (`nnk_laser.py`). Tillagt 2026-09-30. |
 | "Laser: möjlig gallring" | `laser_flagga = 'Möjlig gallring'` | Grundytan har minskat minst 3 m²/ha och 15 % medan höjden inte sjunkit. 144 ytor. Svagare signal — kontrollera i orto. Lägg vid behov till ett eget filter för `laser_flagga = 'Osäker (lövat/olövat)'` (115 lövskogsytor där den äldsta skanningen var lövad). Tillagt 2026-09-30. |
 | "Diken inom ytan" | `diken_m_inom > 0` | Skogsstyrelsens AI-karterade diken inom ytan, för skogsytorna och myrarna (7110–7231). 749 ytor. Kandidater till *icke fullgod* i R7B (9080, 9740, 9750) och R7C — kontrollera i terrängskuggning. Diken i zonen 50 m runt ytan finns i `diken_m_50m` och i popupen. Tillagt 2026-09-30. |
+
+**Skogsstyrelsens register och R7-förslag** (tillagt 2026-10-08)
+
+| Filter | Villkor | Kommentar |
+| --- | --- | --- |
+| "SKS: utförd avverkning" | `skr_utford_ar IS NOT NULL` | Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan. 38 skogsytor inom N2000. Efter karteringen → kandidat *icke fullgod* (R7B). |
+| "SKS: avverkningsanmälan" | `skr_anmald_ar IS NOT NULL` | Aktuell anmälan. Säger inte att avverkningen skett. |
+| "Förslag: låg säkerhet" | `r7f_utfall LIKE '%säkerhet låg%'` | R7-förslag där underlagen säger emot varandra eller är svaga. |
+| "Förslag: typ ej styrkt" | `r7f_utfall LIKE 'Typ ej styrkt%'` | Inget underlag nyare än karteringen stöder typen. |
+| "Förslag: fullgod eller icke fullgod" | `r7f_utfall LIKE '%ullgod%'` | Förslag med ett utfall att pröva mot villkoret. |
+
+Fälten kommer från `skogsregister_for_granskning.csv` och `r7_forslag_for_granskning.csv` (runbook D2.6 och D2.7) och finns i tjänsten efter nästa Overwrite.
 
 **Arter och uppföljning**
 

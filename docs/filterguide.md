@@ -50,6 +50,10 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ● | 122 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **TUVA-träff**<br>`tuva_antal_objekt IS NOT NULL` | ● | 980 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
 | **TUVA ohävdad/igenväxande**<br>`tuva_negativ = 'Ja'` | ● | 133 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
+| **SKS: utförd avverkning**<br>`skr_utford_ar IS NOT NULL` | ○ | 34 | Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan (tillagt 2026-10-08). Efter karteringen → kandidat *icke fullgod*. Kontrollera året mot karteringen och ingreppet i orto. På hävdytor (9070) kan det vara röjning i betesmark. |
+| **Förslag: låg säkerhet**<br>`r7f_utfall LIKE '%säkerhet låg%'` | ● | 342 | Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där. |
+| **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ○ | 346 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
+| **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 508 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
 | **Uppföljning: dålig**<br>`uppf_antal_dalig > 0` | ● | 12 | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
 
@@ -67,6 +71,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 4. För sumpskog (9080), 9740 och 9750: **Diken inom ytan**.
 5. Ytor utan laserflagga och utan diken är kandidater till fullgod (utom 9010/9050) — kolla ändå avverkningar efter 2020.
 6. Skiftesfiltren säger inget här. **TUVA-träff** eller **SkötselDOS** på skog: pröva om typen egentligen är trädklädd betesmark (9070).
+7. **SKS: utförd avverkning** täcker tiden efter laserskanningen — avverkning efter karteringen → kandidat till icke fullgod.
 
 ### Filter som ger något för gruppen
 
@@ -78,6 +83,11 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Laser: möjlig avverkning**<br>`laser_flagga = 'Möjlig avverkning'` | ● | 37 | Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat *icke fullgod*. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för gruppen Skog. |
 | **Laser: möjlig gallring**<br>`laser_flagga = 'Möjlig gallring'` | ○ | 106 | Grundytan minskade, höjden oförändrad. Svagare signal — kontrollera i orto. |
 | **Diken inom ytan**<br>`diken_m_inom > 0` | ● | 440 | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
+| **SKS: utförd avverkning**<br>`skr_utford_ar IS NOT NULL` | ● | 38 | Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan (tillagt 2026-10-08). Efter karteringen → kandidat *icke fullgod*. Kontrollera året mot karteringen och ingreppet i orto. På hävdytor (9070) kan det vara röjning i betesmark. |
+| **SKS: avverkningsanmälan**<br>`skr_anmald_ar IS NOT NULL` | ○ | 3 | Aktuell anmälan på ytan. Säger att avverkning får ske, inte att den skett — kontrollera i *SKS Avverkningsinformation* och orto. |
+| **Förslag: låg säkerhet**<br>`r7f_utfall LIKE '%säkerhet låg%'` | ● | 154 | Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där. |
+| **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ● | 981 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
+| **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 207 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
 | **Uppföljning: dålig**<br>`uppf_antal_dalig > 0` | ○ | 1 | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
 
@@ -91,7 +101,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 
 1. Myrar (7110–7231): **Diken inom ytan** → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.
 2. Rikkärr (7230): **SkötselDOS: bete/slåtter** visar var hävd ingår i skötseln.
-3. Sjöar och vattendrag (3110–3260): lagret har inga filter som ger tillståndssignal — oftast *till fält* eller andra underlag.
+3. Sjöar och vattendrag (3110–3260): VISS-fälten fylls när D2.5 är körd. Tills dess: slå upp statusen i gruppen *Vatten (VISS)*.
 4. **Typiska arter i Artportalen** stöder att typen är rätt.
 
 ### Filter som ger något för gruppen
@@ -100,6 +110,9 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 |---|---|---:|---|
 | **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ○ | 42 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **Diken inom ytan**<br>`diken_m_inom > 0` | ● | 25 | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
+| **Förslag: låg säkerhet**<br>`r7f_utfall LIKE '%säkerhet låg%'` | ● | 154 | Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där. |
+| **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ○ | 122 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
+| **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 109 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
 
 ## Stabila
@@ -122,6 +135,9 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Hävd enligt skiften: Delvis**<br>`havd_skiften = 'Delvis'` | ○ | 83 | Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS. |
 | **TUVA-träff**<br>`tuva_antal_objekt IS NOT NULL` | ○ | 132 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
 | **TUVA ohävdad/igenväxande**<br>`tuva_negativ = 'Ja'` | ○ | 27 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
+| **Förslag: låg säkerhet**<br>`r7f_utfall LIKE '%säkerhet låg%'` | ○ | 57 | Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där. |
+| **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ● | 1309 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
+| **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 216 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
 
 ## Urval och arbetsordning
@@ -167,6 +183,11 @@ Filter som inte säger något om tillståndet men styr vilka ytor du ser och i v
 | Laser: möjlig avverkning | – | ● 37 | – | – |
 | Laser: möjlig gallring | – | ○ 106 | – | – |
 | Diken inom ytan | – | ● 440 | ● 25 | – |
+| SKS: utförd avverkning | ○ 34 | ● 38 | – | – |
+| SKS: avverkningsanmälan | – | ○ 3 | – | – |
+| Förslag: låg säkerhet | ● 342 | ● 154 | ● 154 | ○ 57 |
+| Förslag: typ ej styrkt | ○ 346 | ● 981 | ○ 122 | ● 1309 |
+| Förslag: fullgod eller icke fullgod | ● 508 | ● 207 | ● 109 | ● 216 |
 | Typiska arter i Artportalen | ○ | ○ | ○ | ○ |
 | Uppföljning: dålig | ● 12 | ○ 1 | – | – |
 

@@ -93,7 +93,7 @@ tr:last-child td{border-bottom:0}
 </div>
 <h1 id="popup-uttryck-arcade-lstd-nnk-granskning">Popup-uttryck (Arcade) — LstD NNK Granskning</h1>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
-<p><strong>Version:</strong> 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+<p><strong>Version:</strong> 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 2 steg 6, Del 5 steg 5)
 <strong>Status:</strong> Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som <code>bygg_nnk_lyrx.py</code> genererar.</p>
 <hr />
@@ -358,6 +358,7 @@ return {
 <li><strong>Vad gäller</strong> — <em>bedöm</em> (Ej bedömd status), <em>ompröva</em> (status finns redan, se R7-omprövning i metodiken) eller <em>ingår inte</em>.</li>
 <li><strong>Underlag</strong> — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.</li>
 </ul>
+<p><strong>Tillägg 2026-10-08:</strong> sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: <strong>Förslag (R7)</strong> (utfall, säkerhet och villkor), <strong>Motiv</strong> (underlagen med år och eventuella motsägelser) och <strong>Kontrollera</strong> (manuella kontroller med lager inom hakparentes). Fälten kommer från <code>skogsregister_for_granskning.csv</code>, <code>viss_for_granskning.csv</code> och <code>r7_forslag_for_granskning.csv</code> och måste vara synliga i Pro före Overwrite (de står i <code>EXTRA_VISIBLE_FIELDS</code> i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.</p>
 <p>Uttrycket läser fälten dynamiskt med <code>Expects($feature, "*")</code>, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. <strong>Statusens ålder läses ur heltalsfältet <code>nnk_andrad_ar</code></strong>, som <code>forbered_gdb_for_publicering.py</code> (steg 1d) räknar fram ur NV:s <code>last_edited_date</code>. NV:s fält går inte att publicera: det är <em>Date, Time and Timezone Offset</em> och ger fel 00403 (konstaterat 2026-10-06). Låt <code>last_edited_date</code> vara avstängt och se till att <code>nnk_andrad_ar</code> är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.</p>
 <pre><code class="language-js">// Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
 // Grupp, statusens ålder och vilka underlag som är nyare än statusen.
@@ -476,10 +477,31 @@ var dik = F(&quot;diken_m_inom&quot;);
 if (!IsEmpty(dik) &amp;&amp; dik &gt; 0 &amp;&amp; grupp != &quot;Hävd (R7A)&quot;) {
     Rad(&quot;r7_diken&quot;, &quot;Diken inom ytan&quot;, Round(dik) + &quot; m&quot;);
 }
+// Skogsstyrelsens register (2026-10-08)
+var avAr = Ar(F(&quot;skr_utford_ar&quot;));
+if (!IsEmpty(avAr)) {
+    Rad(&quot;r7_sksavv&quot;, &quot;SKS utförd avverkning&quot;, avAr + &quot; · &quot; + DefaultValue(F(&quot;skr_utford_typ&quot;), &quot;&quot;) + Jmf(avAr));
+}
+var anAr = Ar(F(&quot;skr_anmald_ar&quot;));
+if (!IsEmpty(anAr)) {
+    Rad(&quot;r7_sksanm&quot;, &quot;SKS avverkningsanmälan&quot;, anAr + &quot; · &quot; + DefaultValue(F(&quot;skr_anmald_typ&quot;), &quot;&quot;) + &quot; (inte nödvändigtvis utförd)&quot;);
+}
+Rad(&quot;r7_skydd&quot;, &quot;Biotopskydd/naturvårdsavtal&quot;, F(&quot;skr_skydd&quot;));
+// VISS (D2.5, tomt tills kopplingen körts)
+var vs = F(&quot;viss_ekostatus&quot;);
+if (!IsEmpty(vs)) {
+    Rad(&quot;r7_viss&quot;, &quot;VISS ekologisk status&quot;, vs + IIf(IsEmpty(F(&quot;viss_styrande&quot;)), &quot;&quot;, &quot; — styrs av &quot; + F(&quot;viss_styrande&quot;))
+        + IIf(IsEmpty(F(&quot;viss_hydromorf&quot;)), &quot;&quot;, &quot; · hydromorfologi &quot; + F(&quot;viss_hydromorf&quot;)));
+}
 var aAr = Ar(F(&quot;typarter_senaste_ar&quot;));
 if (!IsEmpty(aAr)) {
     Rad(&quot;r7_arter&quot;, &quot;Typiska arter&quot;, F(&quot;typarter_antal&quot;) + &quot; arter, senast &quot; + aAr + Jmf(aAr));
 }
+
+// R7-förslaget (2026-10-08): utfall, motiv och kontroller ur bygg_r7_forslag.py
+Rad(&quot;r7_f_utfall&quot;, &quot;Förslag (R7)&quot;, F(&quot;r7f_utfall&quot;));
+Rad(&quot;r7_f_motiv&quot;, &quot;Motiv&quot;, F(&quot;r7f_motiv&quot;));
+Rad(&quot;r7_f_kontroll&quot;, &quot;Kontrollera&quot;, F(&quot;r7f_kontrollera&quot;));
 
 if (Count(infos) == 0) {
     return { type: &quot;fields&quot;, title: &quot;Bedömning vid skrivbordet (R7)&quot;,

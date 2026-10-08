@@ -160,6 +160,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
     <h2>Innan du börjar</h2>
     <p>Bedömningen följer regeln <a href="docs/metodik.html#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">R7 i metodiken</a>. R7 är ett <b>utkast</b> tills piloten i batch B är fältkontrollerad. Det du kommer fram till förs in som <b>förslag i granskningslagret</b>, inte i NNK.</p>
     <p><b>Per yta</b> skriver du i granskningslagret i webbGIS. <b>Per område</b> skriver du en rad i granskningsloggen. Guiden visar när du gör vilket.</p>
+    <p><b>Ordningen:</b> först området en gång (steg 1–4), sedan yta för yta (steg 5–8, en yta i taget) och sist en summering för området (steg 9). För varje yta finns ett förslag enligt R7 i popupen och i förslagsfilen. Du bekräftar eller ändrar det.</p>
     <p>Utfallen i exemplet är övningssvar enligt reglerna, inga registrerade bedömningar.</p>
   </div>
   <div class="card">
@@ -273,15 +274,17 @@ const STEG = [
     'Öppna webbGIS-appen <b>LstD NNK Granskning</b>.',
     'Kontrollera att grundfiltren är på: <i>Natura 2000-typ</i>, <i>Marina objekt</i> och <i>Dölj icke-Natura-livsmiljötyper</i>.',
     'Öppna granskningsloggen på G: (<code>…\\511_skydd_omr_arter\\NRF\\granskningslogg_mall.xlsx</code>) och gå till fliken <i>Objektgranskning</i>.',
+    'Öppna förslagsfilen <code>r7_forslag_AAAAMMDD.xlsx</code> och fliken <i>Områdessök</i>. Den har ett förslag för varje yta enligt R7 (se <a href="docs/metodik.html#forslag-per-yta-r7-forslag">Förslag per yta</a>). Filen är internt arbetsmaterial och ligger inte på den här webbsidan.',
     'Öppna <a href="docs/metodik.html#r7-regelstyrd-skrivbordsbedomning-av-naturtypsstatus-utkast">regeln R7</a> och <a href="docs/filterguide.html">Filterguiden</a> i varsin flik.'
   ],
-  mer: () => obs('<b>Två ställen att skriva på.</b> Granskningslagret i webbGIS tar emot förslaget för varje <i>yta</i> (steg 9). Granskningsloggen i Excel tar emot en sammanfattning per <i>område</i>: vad du gjorde, vilka underlag du använde och vad som återstår (steg 2, 4 och 10).'),
+  mer: () => obs('<b>Två ställen att skriva på.</b> Granskningslagret i webbGIS tar emot förslaget för varje <i>yta</i> (steg 8). Granskningsloggen i Excel tar emot en sammanfattning per <i>område</i>: vad du gjorde, vilka underlag du använde och vad som återstår (steg 2, 4 och 9).'),
   logg: null },
 
-{ id:'valj', titel:'Välj området och starta loggraden',
-  mal:'Hitta området i kartan och lägg upp raden i loggen. De grå kolumnerna fylls i när du skriver SITECODE.',
+{ id:'valj', titel:'Välj området och läs områdeskortet',
+  mal:'Hitta området i kartan, få överblick i förslagsfilen och lägg upp raden i loggen. De grå kolumnerna i loggen fylls i när du skriver SITECODE.',
   gor:[
     'Skriv <b>{{SITE}}</b> eller <b>{{NAMN}}</b> i <i>Sök i kartan</i> och zooma till området.',
+    'Skriv samma SITECODE eller namn i den gula cellen i <i>Områdessök</i>. Raden under visar hur många ytor som fått vilket förslag, hur många som har låg säkerhet och om bevarandeplanen behöver läsas.',
     'Ny rad i loggen: datum, ditt namn{{GRANSKARE}} och SITECODE (skriv eller välj i listan).',
     'Kontrollera att de grå kolumnerna fylldes i. Står det <i>okänd sitecode</i> är koden felstavad.',
     'Sätt <i>Status</i> = Påbörjad.'
@@ -294,12 +297,13 @@ const STEG = [
   ex: () => ex('<p>Autofyllningen ger: Floden · batch B · P1 · C4.1 · utpekade 3150, 6270, 6410, 6510 · <b>10 ytor R7</b>, varav <b>2 Ej bedömd</b> och <b>8 med status</b>. Bevarandeplan fastställd <b>2019</b>.</p>') },
 
 { id:'bevplan', titel:'Läs bevarandeplanen',
-  mal:'Ta reda på vilka livsmiljötyper som är utpekade och vilka bevarandemål som gäller. Det avgör hur försiktig du ska vara med att föreslå ändringar.',
+  mal:'Görs en gång per område, innan ytorna. Ta reda på vilka livsmiljötyper som är utpekade och vilka bevarandemål som gäller. Det avgör hur försiktig du ska vara med att föreslå ändringar.',
   gor:[
     'Öppna bevarandeplanen: {{BEVPLAN}}',
     'Notera vilka livsmiljötyper som är utpekade och vilka som är prioriterade bevarandevärden.',
     'Notera årtalet (popupen och länken ovan). Det behövs i steg 6 för att avgöra om planen är nyare än karteringen.',
     'Läs vad planen säger om underlaget. Står det att bedömningsunderlaget är bristfälligt, eller att inventering krävs för att avgöra om en typ uppfyller kraven, räknas planen inte som stöd för den typen (<a href="docs/metodik.html#bevarandeplanen-som-underlag">Bevarandeplanen som underlag</a>).',
+    'Står det <i>Ja</i> under <i>Läs bevarandeplanen</i> i områdeskortet stöds någon typ bara av planen. Då avgör din läsning om typen godtas (steg 6).',
     'Läs bevarandemålen för de hävdberoende typerna — de säger vad som räknas som gott tillstånd i just det här området.'
   ],
   mer: () => obs('<b>Utpekade typer har ett särskilt skydd</b> (R6, FAQ 19). De ska bara ändras om den tidigare bedömningen är uppenbart fel eller marken faktiskt har förändrats. Är du osäker på en utpekad typ blir svaret <i>till fält</i>, inte en ändring.'),
@@ -324,13 +328,13 @@ const STEG = [
   logg: [['Typer i NNK, Differenser enligt underlaget','Fylls i automatiskt — utgångspunkten'],['Differenser NNK – bevarandeplan','Din bedömning: vilka skillnader som är rimliga, vilka ytor som kanske är fel typ, vad du vill fråga förvaltaren']],
   ex: () => ex('<p>Loggen visar <i>Typer i NNK</i>: 3150 ×2, 6270 ×2, 6410 ×4, 6510 ×2, 6910 ×2, och <i>Differenser enligt underlaget</i> är tom. Alla fyra utpekade typer finns alltså i NNK. Två ytor är <b>6910 Öppen kultiverad gräsmark</b> (4,7 och 0,4 ha) — inte Natura-naturtyp. Båda har hävd varje år sedan 2015, och TUVA-objektet de ligger i anger 6410. Det är inte en R7-fråga, men värt att fråga förvaltaren om: kan de vara 6410 eller utvecklingsmark?</p><p><i>Loggen, Differenser:</i> "Alla utpekade typer finns. 2 ytor 6910 (5,1 ha) med årlig hävd och TUVA 6410 — fråga förvaltaren om typ/utvecklingsmark."</p>') },
 
-{ id:'sortera', titel:'Sortera ytorna: bedöm, ompröva eller ingår inte',
-  mal:'Avgör för varje yta vilken regel som gäller. Det står i popupens sektion Bedömning vid skrivbordet (R7).',
+{ id:'sortera', titel:'Yta för yta: läs förslaget',
+  mal:'Från och med nu går du yta för yta: steg 5–8 för en yta, sedan nästa. Förslaget säger vilken regel som gäller, vilket utfall registren pekar mot och vad du måste kontrollera själv.',
   gor:[
-    'Klicka på varje yta och läs <i>Bedömningsgrupp (R7)</i>, <i>Statusens ålder</i> och <i>Vad gäller</i>.',
-    'Ytor med <b>Ej bedömd status</b>: bedöm enligt gruppens delregel (R7A–R7D).',
-    'Ytor som redan är <b>Fullgod</b> eller <b>Icke fullgod</b>: ompröva (R7-omprövning). Statusen räknas inte som belägg.',
-    'Ytor som inte är Natura-naturtyp, eller är marina eller obestämda: ingår inte i R7.'
+    'Klicka på ytan och läs sektionen <i>Bedömning vid skrivbordet (R7)</i>: <i>Bedömningsgrupp</i>, <i>Statusens ålder</i>, <i>Vad gäller</i> och de tre förslagsraderna <i>Förslag (R7)</i>, <i>Motiv</i> och <i>Kontrollera</i>. Samma sak, och förslaget till varje formulärfält, står i förslagsfilens tabell 3 och 4.',
+    'Ytor med <b>Ej bedömd status</b>: bedöm enligt gruppens delregel (R7A–R7D). Ytor som redan är <b>Fullgod</b> eller <b>Icke fullgod</b>: ompröva (R7-omprövning) — statusen räknas inte som belägg. Övriga ingår inte.',
+    'Läs <b>säkerheten</b>: Hög = flera samstämmiga underlag, Medel = ett underlag eller ett villkor, Låg = underlagen säger emot varandra. Låg ska alltid kontrolleras extra.',
+    'Förslaget tillämpar R7 på det som finns i registren. Det tolkar inte ortofoto och läser inte bevarandeplanen. Villkoret i förslaget (t.ex. <i>om IR-ortot inte visar igenväxning</i>) prövar du i steg 6 och 7.'
   ],
   mer: () => `<h3>Hur gammal är statusen?</h3>
     <p>Naturtypsstatus är inte daterad i sig. Den speglar bedömningen när den gjordes, och det betyder inte att den gäller i dag. Om du vid skrivbordet "bekräftar" en status från 2009 utan nytt underlag är det ett antagande, inte en bedömning. Läs åldern ur de här raderna:</p>`
@@ -342,6 +346,7 @@ const STEG = [
     ])
     + obs('<b>Grupp är inte batch.</b> Batch (S, A, B, C, D) är arbetsordningen per område. Gruppen (Hävd, Skog, Våtmark, Stabila) är regeln per yta. Floden ligger i batch B men har ytor i två grupper.'),
   popup: [
+    ['Bedömning vid skrivbordet (R7)','Förslag (R7), Motiv, Kontrollera','Förslaget till utfall med säkerhet och villkor, vilka underlag det bygger på och vad du ska kontrollera, med lager inom hakparentes. Byggs av bygg_r7_forslag.py.'],
     ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp (R7)','Vilken delregel som gäller: Hävd (R7A), Skog (R7B), Våtmark (R7C) eller Stabila (R7D). Räknas fram ur naturtypskoden.'],
     ['','Statusens ålder','Hur gammal den nuvarande statusen är, så gott det går att avgöra.'],
     ['','Vad gäller','Bedöm, ompröva eller ingår inte.'],
@@ -349,11 +354,12 @@ const STEG = [
     ['','Karteringsstatus, Ursprung','Hur och varifrån — se tabellen ovan.']
   ],
   logg: [['Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt — stäm av mot vad du ser i kartan']],
-  ex: () => ex('<p>8 hävdytor med status från basinventeringen (ompröva), 2 sjöytor utan status (bedöm), 2 icke-Natura-ytor (ingår inte). Alla har ursprung BIDOS och karteringsstatus <i>Granskad vid skrivbordet</i>. Attributen ändrades senast 2009 eller 2011.</p>') + ytTabell(['nr','typ','ha','status','andr','grupp','vad']) },
+  ex: () => ex('<p>Förslaget för Floden: de <b>2 sjöytorna</b> blir <i>till fält</i> tills VISS är kopplad (kontrollera i <i>Vatten (VISS)</i>), och de <b>8 hävdytorna</b> blir <i>ej omprövad</i> — TUVA från 2002 är för gammal för att bekräfta eller ändra statusen. Två av hävdytorna har låg säkerhet: skiftena säger <i>Nej</i>, vilket kan vara en kantträff mot åker. Förslagsfilen numrerar ytorna per naturtyp; exemplet här använder guidens egna nummer.</p><p>8 hävdytor med status från basinventeringen (ompröva), 2 sjöytor utan status (bedöm), 2 icke-Natura-ytor (ingår inte). Alla har ursprung BIDOS och karteringsstatus <i>Granskad vid skrivbordet</i>. Attributen ändrades senast 2009 eller 2011.</p>') + ytTabell(['nr','typ','ha','status','andr','grupp','vad']) },
 
-{ id:'typ', titel:'Pröva att typen är rimlig',
+{ id:'typ', titel:'Yta för yta: pröva att typen är rimlig',
   mal:'Förutsättningen för all R7-bedömning: typen ska stödjas av minst ett underlag som är nyare än karteringen och oberoende av den.',
   gor:[
+    'Förslaget anger <i>Typen rimlig</i>: <b>Ja</b> (stöd nyare än karteringen), <b>Villkorat</b> (bara bevarandeplanen stöder typen, och du har inte prövat om den bygger på eget underlag) eller <b>Nej</b>. Vid Nej blir förslaget <i>Typ ej styrkt</i>, och kolumnen <i>Om typen bekräftas</i> visar vad tillståndet blir om du godtar typen i ortot.',
     'Leta efter stöd för typen: bevarandeplan som anger typen, TUVA-objekt med samma typ, fältprotokoll eller fynd av typiska arter.',
     'Kontrollera att stödet är <b>nyare än karteringen</b> (steg 5) och inte bygger på den.',
     'Titta i ortofoto och IR-ortofoto. Ortot får inte motsäga typen (t.ex. åker, ung granplantering, bebyggelse). Notera ortofotots år.',
@@ -381,15 +387,20 @@ const STEG = [
   logg: [['Ortofoto (år)','Året för det orto du bedömt mot, gärna med datum ur bildsömmarna (t.ex. "IR 2023-05-08")'],['Typ ifrågasatt (antal ytor)','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
   ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Bevarandeplanen är från <b>2019</b>, alltså nyare än karteringen, men den skriver själv att underlaget för de terrestra typerna är bristfälligt och att det behövs inventering för att avgöra om silikatgräsmarkerna är 6270. Den räknas därför inte som stöd för 6270, 6410 eller 6510. Stödet måste i stället komma från ortot och de typiska arterna, yta för yta. Ytor där inget stöder typen får Karteringsstatus 5 <i>Åtgärdas</i> och blir fältobjekt. Övningsutfallen i steg 7 visar hur ytorna bedöms <i>om</i> typen godtas.</p>') },
 
-{ id:'underlag', titel:'Läs underlagen för tillståndet',
-  mal:'Samla det som säger något om hur ytan mår i dag. För hävdytor är det hävden, för skog ingrepp och struktur, för våtmark diken och vattenstatus.',
+{ id:'underlag', titel:'Yta för yta: kontrollera villkoret och välj utfall',
+  mal:'Pröva förslagets villkor mot underlagen och ortot, och bestäm utfallet: fullgod, icke fullgod, till fält — eller, för ytor med status, att statusen står kvar oprövad. Samla det som säger något om hur ytan mår i dag. För hävdytor är det hävden, för skog ingrepp och struktur, för våtmark diken och vattenstatus.',
   gor:[
     'Läs <i>Underlag</i>-raderna i sektionen <i>Bedömning vid skrivbordet (R7)</i>: varje underlag har år och "nyare/inte nyare än statusen".',
     'Hävdytor: läs sektionen <i>Hävd enligt jordbruksskiften och TUVA</i> — skiften, år utan bete/slåtter, TUVA-hävdstatus och påverkan, SkötselDOS och uppföljning.',
     'Titta i ortot och IR-ortot efter igenväxning, plöjning, gödsling eller nya diken.',
+    'Gör kontrollerna i förslagets lista <i>Kontrollera</i>, i de lager som står inom hakparentes.',
+    '<b>Ej bedömd status:</b> gå igenom gruppens delregel (R7A–R7D) och välj det utfall vars villkor är uppfyllda.',
+    '<b>Har status:</b> bekräfta bara om nyare underlag uppfyller samma villkor som delregeln kräver. Föreslå ändring bara om nyare underlag tydligt visar annat.',
+    'Räcker inte underlaget: låt statusen stå och notera vad som saknas. Det är ett godtagbart utfall.',
+    '9010 och 9050 kan aldrig bli fullgod vid skrivbordet (död ved) — bara icke fullgod eller till fält.',
     'Använd <a href="docs/filterguide.html">Filterguiden</a> för gruppen om du vill se alla ytor med samma signal i länet.'
   ],
-  mer: () => `<h3>Vad hävdvärdena betyder</h3>` + tab(['Värde','Betyder','I R7A'],[
+  mer: () => obs('<b>Till fält är ett fullgott utfall.</b> FAQ 11 och 22: där tillståndet inte är tydligt ska man inte gissa. Ett dokumenterat "vet inte, och det här behöver kontrolleras" är bättre än en bekräftelse utan grund.') + `<h3>Vad hävdvärdena betyder</h3>` + tab(['Värde','Betyder','I R7A'],[
       ['Hävd enligt skiften: Ja','Bete eller slåtter varje år 2015–2025 (eller sedan typen sattes)','Uppfyller hävdvillkoret för fullgod. Kontrollera ändå orto och TUVA.'],
       ['Delvis','Hävd vissa år. <i>År utan bete/slåtter</i> visar vilka','Ett luckår 2015 är troligen brist i skiftesdata. Tre år eller mer i rad utan hävd → icke fullgod. Enstaka luckor → inte obruten, alltså inte fullgod.'],
       ['Nej','Ytan träffar skiften men aldrig bete eller slåtter','Tyder på upphörd hävd → pröva icke fullgod mot ortot.'],
@@ -404,32 +415,22 @@ const STEG = [
     ['Hävd enligt jordbruksskiften och TUVA','Obruten hävd sedan, År utan bete/slåtter','Visar om hävden varit obruten. Avgör fullgod mot icke fullgod.'],
     ['','TUVA, hävdstatus · igenväxning · påverkan','Hur marken såg ut vid inventeringen. Negativa noteringar talar för icke fullgod — om inventeringen är aktuell.'],
     ['','SkötselDOS, utförd hävd','Bete eller slåtter enligt reservatsförvaltningen. Fångar bete utan stöd som skiftena missar.'],
-    ['Skog (laserdata)','Laserflagga, Höjdförändring, Diken','För skogs- och myrytor (R7B, R7C). Möjlig avverkning eller diken → pröva icke fullgod.']
+    ['Skog (laserdata)','Laserflagga, Höjdförändring, Diken','För skogs- och myrytor (R7B, R7C). Möjlig avverkning eller diken → pröva icke fullgod.'],
+    ['Skog (laserdata)','SKS utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal','Skogsstyrelsens register (sedan 2026-10-08). Utförd avverkning efter karteringen → icke fullgod om ortot bekräftar. Anmälan → kontrollera om den är utförd.']
   ],
-  logg: [['Underlag (källa + år)','Alla underlag du faktiskt använt, med år']],
-  ex: () => ex('<p>Alla hävdytor har TUVA från 2002 — för gammalt för att bekräfta något. Skiftena är det enda aktuella underlaget, och de pekar åt tre håll: <b>Ja</b> på två ytor, <b>Delvis</b> (luckor 2015, 2016 och 2024) på fyra, <b>Nej</b> på två. Ingen SkötselDOS eller uppföljning finns.</p>') + ytTabell(['nr','typ','ha','status','skiften','utan','tuva','arter']) },
+  logg: [['Underlag (källa + år)','Alla underlag du faktiskt använt, med år'],['Fullgod, Icke fullgod, Till fält, Ej omprövad (antal ytor)','Räknas när du gått igenom alla ytor (steg 9)']],
+  ex: () => ex('<p>Alla hävdytor har TUVA från 2002 — för gammalt för att bekräfta något. Skiftena är det enda aktuella underlaget, och de pekar åt tre håll: <b>Ja</b> på två ytor, <b>Delvis</b> (luckor 2015, 2016 och 2024) på fyra, <b>Nej</b> på två. Ingen SkötselDOS eller uppföljning finns.</p>') + ytTabell(['nr','typ','ha','status','skiften','utan','tuva','arter']) + ex('<p>Ingen hävdyta kan bekräftas som fullgod, eftersom TUVA är för gammal. Två ytor kan bekräftas som icke fullgod om ortot visar igenväxning. En yta med status <i>Icke fullgod</i> har haft hävd varje år sedan 2015 — där kan statusen vara fel, så den prioriteras i fält. Sjöarna avgörs i VISS.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
 
-{ id:'regel', titel:'Tillämpa regeln yta för yta',
-  mal:'Kom fram till ett utfall för varje yta: fullgod, icke fullgod, till fält — eller, för ytor med status, att statusen står kvar oprövad.',
-  gor:[
-    '<b>Ej bedömd status:</b> gå igenom gruppens delregel (R7A–R7D) och välj det utfall vars villkor är uppfyllda.',
-    '<b>Har status:</b> bekräfta bara om nyare underlag uppfyller samma villkor som delregeln kräver. Föreslå ändring bara om nyare underlag tydligt visar annat.',
-    'Räcker inte underlaget: låt statusen stå och notera vad som saknas. Det är ett godtagbart utfall.',
-    '9010 och 9050 kan aldrig bli fullgod vid skrivbordet (död ved) — bara icke fullgod eller till fält.'
-  ],
-  mer: () => obs('<b>Till fält är ett fullgott utfall.</b> FAQ 11 och 22: där tillståndet inte är tydligt ska man inte gissa. Ett dokumenterat "vet inte, och det här behöver kontrolleras" är bättre än en bekräftelse utan grund.'),
-  popup: [['Bedömning vid skrivbordet (R7)','Vad gäller','Påminner om vilken regel som gäller och om undantaget för 9010/9050.']],
-  logg: [['Fullgod, Icke fullgod, Till fält, Ej omprövad (antal ytor)','Räkna ytorna när du gått igenom alla (görs i steg 10)']],
-  ex: () => ex('<p>Ingen hävdyta kan bekräftas som fullgod, eftersom TUVA är för gammal. Två ytor kan bekräftas som icke fullgod om ortot visar igenväxning. En yta med status <i>Icke fullgod</i> har haft hävd varje år sedan 2015 — där kan statusen vara fel, så den prioriteras i fält. Sjöarna avgörs i VISS.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
-
-{ id:'lager', titel:'För in förslagen i granskningslagret',
+{ id:'lager', titel:'Yta för yta: för in i formuläret',
   mal:'Skriv förslaget för varje yta i webbGIS-formuläret. Det är här bedömningen sparas — inte i loggen.',
   gor:[
+    'Förslagsfilens tabell 3 har ett förslag till varje formulärfält. För in det som håller efter dina kontroller. Ändra det som inte gör det och skriv i kommentaren vad du såg, t.ex. <code>Förslag fullgod ändrat till till fält: IR-orto 2023 visar sly i norra delen</code>.',
     'Öppna redigeringen för ytan i webbGIS.',
     '<i>Tillstånd</i>: <b>Gott</b> vid fullgod, <b>Icke gott</b> vid icke fullgod, <b>Okänt</b> vid till fält. Lämna tomt när statusen står kvar oprövad.',
     '<i>Kommentar – Tillstånd</i>: regel, utfall och källor med år, t.ex. <code>R7-omprövning R7A: ej omprövad — hävd ej obruten (luckor 2016, 2024), TUVA 2002</code>.',
     'Vid till fält eller ej omprövad: fyll i <i>Vad ska kontrolleras</i> (t.ex. Hävd, Typiska arter) och <i>Metod för kontroll</i> (Fältbesök).',
-    '<i>Förändringsorsak, förslag</i>: 3 Komplettering när du föreslår en ändring (R2). <i>Granskat?</i> = Ja när ytan är klar.'
+    '<i>Förändringsorsak, förslag</i>: 3 Komplettering när du föreslår en ändring (R2). <i>Granskat?</i> = Ja när ytan är klar.',
+    'Gå till nästa yta och börja om från steg 5. När alla ytor är klara: steg 9.'
   ],
   popup: [
     ['Granskning 2 — Tillstånd','Tillstånd, Kommentar','Ditt förslag. Fullgod → Gott, icke fullgod → Icke gott, till fält → Okänt.'],
@@ -440,9 +441,10 @@ const STEG = [
   logg: null,
   ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd = Okänt · Kommentar: <code>R7-omprövning R7A: till fält — skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad — skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
 
-{ id:'logg', titel:'Sammanfatta i granskningsloggen',
+{ id:'logg', titel:'Summera området i granskningsloggen',
   mal:'Avsluta området med en sammanfattning i loggen, så att det går att se vad som är gjort, på vilken grund och vad som återstår.',
   gor:[
+    'Fliken <i>Per område</i> i förslagsfilen har antalet ytor per utfall enligt förslaget, med samma kolumner som loggen. Har du ändrat utfall i formuläret: räkna om.',
     'Räkna ytorna per utfall och skriv antalet i kolumnerna Fullgod, Icke fullgod, Till fält, Ej omprövad och Typ ifrågasatt (alla "antal ytor"). Utfallet bestäms per yta i webbGIS; summan ska bli Ytor R7.',
     'Skriv alla underlag med år i <i>Underlag</i>.',
     'Skriv det du är osäker på i <i>Osäkerheter</i> och det som är kvar i <i>Återstår</i>.',
@@ -466,14 +468,14 @@ const STEG = [
 const POPUP = [
  ['Identifiering och skydd','Område, skyddskategori, Natura 2000-kod, naturreservat','Var ytan ligger och vilket skydd som gäller.','2','SITECODE'],
  ['Naturtyp (NNK-data)','Naturtyp, Naturtypsstatus, Area, Karteringsstatus, Start-/Slutdatum senaste inventering, Bevarandeplan (år), Målnaturtyp, Ursprung, Förändringsorsak','NV:s nuvarande uppgifter för ytan. Skrivskyddat — det är detta du granskar.','4, 5','Differenser, Bevarandeplan fastställd'],
- ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp, Statusens ålder, Vad gäller, Underlag med år','Vilken regel som gäller, hur gammal statusen är och vilka underlag som är nyare än den.','5, 7, 8','Ytor R7, Underlag'],
- ['Granskning 1 — Avvikelse och korrigeringsförslag','Förslag livsmiljötyp 1–3, Behöver livsmiljötypen/utbredningen justeras?, Förändringsorsak förslag, Kommentar','Ditt förslag om typen eller gränsen är fel.','6, 9','Typ ifrågasatt'],
- ['Granskning 2 — Tillstånd','Tillstånd, procent gott/ej gott/osäkert, Kommentar','Ditt förslag till tillstånd — här hamnar R7-utfallet.','9','Fullgod, Icke fullgod, Till fält, Ej omprövad'],
- ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod, kommentarer','Vad som behöver kontrolleras 2027 och hur.','9','Återstår'],
- ['Granskning 4 — Granskat och kommentarer','Granskat?, Kommentar, NNK-kommentar, Fältinventerare, Egen beteckning','Om ytan är klar, och NV:s egna kommentarer.','9','Status'],
+ ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp, Statusens ålder, Vad gäller, Underlag med år','Vilken regel som gäller, hur gammal statusen är, vilka underlag som är nyare än den, och förslaget till utfall (R7-förslag).','5, 7','Ytor R7, Underlag'],
+ ['Granskning 1 — Avvikelse och korrigeringsförslag','Förslag livsmiljötyp 1–3, Behöver livsmiljötypen/utbredningen justeras?, Förändringsorsak förslag, Kommentar','Ditt förslag om typen eller gränsen är fel.','6, 8','Typ ifrågasatt'],
+ ['Granskning 2 — Tillstånd','Tillstånd, procent gott/ej gott/osäkert, Kommentar','Ditt förslag till tillstånd — här hamnar R7-utfallet.','8','Fullgod, Icke fullgod, Till fält, Ej omprövad'],
+ ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod, kommentarer','Vad som behöver kontrolleras 2027 och hur.','8','Återstår'],
+ ['Granskning 4 — Granskat och kommentarer','Granskat?, Kommentar, NNK-kommentar, Fältinventerare, Egen beteckning','Om ytan är klar, och NV:s egna kommentarer.','8','Status'],
  ['Typiska arter (Artportalen)','Antal, arter, senaste fynd','Stöd för att typen är rätt.','6','Underlag'],
  ['Hävd enligt jordbruksskiften och TUVA','Skiften, obruten hävd sedan, år utan hävd, TUVA (år, hävd, igenväxning, påverkan, naturtyper), SkötselDOS, uppföljning','Huvudunderlaget för hävdytorna (R7A).','6, 7','Underlag'],
- ['Skog (laserdata)','Höjd, volym, grundyta, diameter, höjdförändring, laserflagga, diken','Ingrepp och struktur i skog, diken i skog och myr (R7B, R7C).','7','Underlag'],
+ ['Skog (laserdata)','Höjd, volym, grundyta, diameter, höjdförändring, laserflagga, diken','Ingrepp och struktur i skog, diken i skog och myr (R7B, R7C), och Skogsstyrelsens register: avverkning, anmälan, biotopskydd och naturvårdsavtal.','7','Underlag'],
  ['Floraväkteri (Artportalen)','Hotade arter, ej återfunna, minskande, anmärkning om hävd','Signaler om försämring, främst för hävdytor.','7','Osäkerheter, Underlag']
 ];
 
