@@ -359,6 +359,20 @@ const STEG = [
     'Titta i ortofoto och IR-ortofoto. Ortot får inte motsäga typen (t.ex. åker, ung granplantering, bebyggelse). Notera ortofotots år.',
     'Stöds inte typen: R7 gäller inte. Föreslå Karteringsstatus 5 <i>Åtgärdas</i> med en kommentar och räkna ytan som <i>Typ ifrågasatt</i> i loggen.'
   ],
+  mer: () => `<h3>Så läser du IR-ortot</h3>
+    <p>IR-ortot visar nära infrarött som rött. Frisk, växande vegetation reflekterar mycket nära infrarött och blir därför röd. Vatten och blöt mark tar upp det och blir mörka. Färgen säger alltså mest om <i>hur mycket som växer</i> och <i>hur blött det är</i>, inte om vilken art det är.</p>`
+    + tab(['I bilden','Brukar vara','Vad det säger i bedömningen'],[
+      ['Klarröd, jämn','Gödslad vall, åker, kraftigt växande gräs','I en hävdyta (6510, 6270) en varningssignal: liknar ytan åkrarna intill är den troligen gödslad eller insådd.'],
+      ['Matt rosa till rödbrun, ojämn','Ogödslad naturbetesmark eller äng','Det man väntar sig i en hävdad gräsmark med fläckvis vegetation.'],
+      ['Mörk lila, brungrå','Blöt mark, starr, fuktig vegetation','Bra tecken för 6410 och våtmarker: ytan är blöt. Kan också vara skugga eller hög, tät vegetation.'],
+      ['Svart','Öppet vatten','Sjö, damm eller översvämning.'],
+      ['Ljust grå, vitaktig','Förra årets döda vass och gräs, torr förna','Runt en sjö: vassbälte. Stor andel vass i 3150 tyder på igenväxning. I en äng: ohävdad förna.'],
+      ['Ljust blågrå, cyan','Bar jord, grus, väg, tak','Plöjt, schaktat eller bebyggt. Motsäger en gräsmarkstyp.'],
+      ['Grå utan rött','Lövträd utan blad (vårbild)','Lövträd och buskar på väg in i öppen mark syns som grå fläckar eller kanter.'],
+      ['Mörkt rödbrun','Barrträd','Gran på väg in i en äng eller hagmark.'],
+      ['Parallella ljusa ränder','Täckdiken eller körspår','I åker normalt. I en NNK-gräsmark ett tecken på dränering och tidigare åkerbruk.']
+    ])
+    + obs('<b>Kolla bildens datum.</b> En vårbild (lövträden grå) visar gräset innan det har börjat växa ordentligt. Då syns gödslade vallar som klarröda medan naturlig gräsmark fortfarande är blekare. På en högsommarbild är allt grönt rött och skillnaden blir mindre. Jämför alltid med åkrarna intill. Är NNK-ytan lika röd som dem är det en signal att kontrollera, men inget bevis.'),
   popup: [
     ['Typiska arter (Artportalen)','Antal typiska arter med fynd, Arter, Senaste fynd (år)','Fynd sedan 2010 inom ytan. Stöder att typen är rätt. Inga fynd betyder inte att arterna saknas.'],
     ['Hävd enligt jordbruksskiften och TUVA','TUVA, naturtyper i objektet','Typerna gäller hela TUVA-objektet, inte NNK-ytan. Samma typ räknas som stöd om inventeringen är nyare än karteringen.'],
