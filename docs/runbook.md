@@ -2,8 +2,8 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
-**Datum:** 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 65 uppgifter i 7 arbetspaket, 307 konkreta steg  
+**Datum:** 2026-10-08 (D2.5 VISS-koppling för R7C tillagd; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 66 uppgifter i 7 arbetspaket, 312 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -396,7 +396,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ## D. Tillståndsbedömning i NNK
 
-*v40–v50 · 12 uppgifter*
+*v40–v50 · 13 uppgifter*
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
@@ -407,6 +407,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 | [D2.2 · Dokumentera grunden för varje bedömning](#d22-dokumentera-grunden-for-varje-bedomning) | v41–v48 | Båda | – | L-D |
 | [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
 | [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Johan | – | – |
+| [D2.5 · VISS-koppling för sjöar och vattendrag (underlag för R7C)](#d25-viss-koppling-for-sjoar-och-vattendrag-underlag-for-r7c) | v41–v42 | Johan | – | – |
 | [D4.1 · Notera avvikelser mot bevarandeplan och beslut](#d41-notera-avvikelser-mot-bevarandeplan-och-beslut) | v41–v48 | Johan | – | – |
 | [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Johan | D4.1 | – |
 | [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Johan | D1.2 | L-D |
@@ -481,6 +482,16 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 5. Johan publicerar fälten från sin arbetsdator: `jobbdator_BACKUP_granskning.py` → `jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py` → `jobbdator_ATERSTALL_granskning.py` (först torrkörning, sedan `--skarp`) → `jobbdator_bygg_nnk_lyrx_KORRIGERAD_V3.py` → Overwrite. Återställningen ska alltid köras före Overwrite, annars publiceras lagret utan granskarnas värden. Hoppa aldrig över backupen när granskningen har startat.
 6. Lägg in filtren *Hävd enligt skiften* och *Vall senaste året* i Konfiguratorn och popupavsnittet *Hävd enligt jordbruksskiften*, se [webbGIS-publicering](webbgis-publicering.html) (Del 6, steg 5) och [popup-uttryck](popup-arcade-uttryck.html) (avsnitt 8).
 7. Så används fältet i bedömningen: [metodik](metodik.html), R7A. Upprepa varje år när Jordbruksverket publicerat årets skiften.
+
+### D2.5 · VISS-koppling för sjöar och vattendrag (underlag för R7C)
+
+**v41–v42** · **[Johan]**
+
+1. Mål: att granskningslagrets popup visar VISS ekologisk status för ytor med sjö- och vattendragstyper (31xx, 3260), och vilken kvalitetsfaktor som sätter statusen, så att R7C kan bedömas utan att öppna VISS. Exempel Floden (WA99934431): måttlig, styrd av totalfosfor (otillfredsställande, övergödning), biologi ej klassad, hydromorfologi god → icke fullgod.
+2. Hämta VISS vattenförekomster för sjöar och vattendrag med ekologisk status 2022–2027 (geometri) och statusklassningen per kvalitetsfaktor (VISS export/nedladdning, Geodatakatalogen: *VM Statusklassning ekologisk status 2022–2027*), samt statusen per avrinningsområde. Spara under `natura-2000: data/viss/`. Görs av Johan på hans egen dator, där det privata natura-2000-repot finns; VISS gick inte att nå från molnmiljön 2026-10-08.
+3. Skriv `natura-2000: scripts/analysis/nnk_viss.py` på samma sätt som `nnk_tuva.py`: NNK-ytor med 31xx/3260 kopplas till den vattenförekomst de överlappar mest (samma tröskel, ≥ 1 % eller ≥ 0,25 ha). Fält: `viss_id`, `viss_namn`, `viss_ekostatus`, `viss_risk`, `viss_styrande` (faktorn/faktorerna som sätter statusen, t.ex. "Totalfosfor: otillfredsställande (övergödning)"), `viss_hydromorf` (sämsta hydromorfologiska klass) och `viss_aro_status` (avrinningsområdets status, indicier för sjöar som inte är egna vattenförekomster). Utdata `natura-2000: data/analysis/viss_for_granskning.csv` med nyckel `nv_globalid`, inga datumfält.
+4. Koppla in fälten i `jobbdator_koppla_nnk_skyddskategori.py` och kör kedjan BACKUP → koppla → forbered → ÅTERSTÄLL → lyrx V3 → Overwrite (se D2.4).
+5. Lägg till rader i popupsektion 2b *Bedömning vid skrivbordet (R7)* för R7C, se [popup-uttryck](popup-arcade-uttryck.html), och låt *Vad gäller* föreslå utfallet enligt R7C i [metodiken](metodik.html). Lagret *Vatten (VISS)* finns redan i webbGIS:ets lagerlista sedan 2026-10-08.
 
 ### D4.1 · Notera avvikelser mot bevarandeplan och beslut
 
