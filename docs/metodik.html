@@ -163,7 +163,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.2 · 2026-10-06</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<p><strong>Version 2.3 · 2026-10-08</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
 <em>Senaste ändring:</em> R7 anger när bevarandeplanen räknas som underlag för typ och tillstånd, och alla 197 planer har nu fastställelseår. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -812,6 +812,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 </tbody>
 </table></div>
+<p><strong>Underlag för sjöar och vattendrag (2026-10-08).</strong> Ekologisk status 2022–2027 finns i webbGIS:et i gruppen <em>Vatten (VISS)</em>: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då <em>till fält</em>. Statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för <em>fullgod</em> eller <em>icke fullgod</em>. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.</p>
 <p><strong>Underlag för diken.</strong> Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (gruppen Skog) och myrarna i gruppen Våtmark (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): <code>diken_m_inom</code> (meter dike inom ytan) och <code>diken_m_50m</code> (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger <em>icke fullgod</em>. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som <em>i anslutning till ytan</em>.</p>
 <p>Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.</p>
 <h4 id="r7d-stabila">R7D · Stabila</h4>
@@ -1090,6 +1091,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.3</strong> (2026-10-08) — avsnitt 5, R7C: underlag för sjöar och vattendrag (VISS ekologisk status i webbGIS:et, avrinningsområdet som indicier för små sjöar).</li>
 <li><strong>2.2</strong> (2026-10-06) — avsnitt 5, R7: nytt avsnitt <em>Bevarandeplanen som underlag</em> (när planen stöder typen, åldersgränser för planens tillstånd som för TUVA). Fastställelseåret för alla 197 planer utläst ur PDF:erna (<code>bevarandeplan_platser.csv</code>, skriptet <code>hamta_bevarandeplan_datum.py</code> i natura-2000).</li>
 <li><strong>2.1</strong> (2026-10-06) — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel <em>R7-omprövning</em> för ytor som redan har status.</li>
 <li><strong>2.0</strong> — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli <em>fullgod</em> vid skrivbordet.</li>

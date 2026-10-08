@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
+**Version 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -299,6 +299,7 @@ jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns 
 | **7. Historiska underlag** | LstD LM Ekonomiska kartan – 1950-tal (Raster) · LM Häradskartan Södermanlands län · LM Ekonomiska kartan |
 | **8. Jordarter och geologi** | SGU Jorddjup 2026 (Raster) · SGU Jordarter 1:25 000–1:100 000 – WMS (9 sublager) · SLU Torvkartan – WMS (3 sublager) · SGU Berggrund 1:50 000–1:250 000 – WMS (22 sublager) |
 | **9. Terräng och höjd** | LM Höjdmodell – WMS (Ursprung och kvalitet, Terränglutning, Terrängskuggning) · LM Höjddata Ekvidistanslinjer 1 meter (Raster) |
+| **10. Vatten (VISS)** (tillagd 2026-10-08) | VM Statusklassning ekologisk status 2022–2027: sjöar, vattendrag, avrinningsområden |
 
 SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i två grupper var) —
 relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
@@ -322,6 +323,19 @@ Kontrollerat mot Konfiguratorns lagerexport 2026-09-30 (`lst-webbgis-konfigurato
 3. *SLU Markfuktighetskarta (WMS) – WebMap* (item `897e58de0b104684bed4de60a1a58bd2`). Metodiken (R7C) hänvisar till den för att kontrollera att sumpskogar och myrar ligger blött. Gruppen har i dag bara DTW-versionen och NMD-indexet.
 
 Items som redan är egna WebMaps läggs till direkt i Konfiguratorn från sina WebMaps (del 6 steg 4), utan att gå via vår WebMap. Exportera en ny lagerlista-backup efteråt.
+
+#### Tillägg 2026-10-08 · VISS ekologisk status (underlag för R7C, sjöar och vattendrag)
+
+R7C bedömer sjöar (31xx) och vattendrag (3260) på ekologisk status i VISS. Statusklassningen fanns inte bland appens datakällor; det som fanns var bara *VM Åtgärder kategorier VISS* (åtgärder, inte status). Tillagt 2026-10-08:
+
+1. Konfiguratorn → Lagerlista → *Lägg till en item från portalen* → sök "statusklass", kategori *VM - Vattenmyndigheten (LST)* → **VM Statusklassning ekologisk status 2022 2027 – WebMap**.
+2. Ur *Tillgängliga lager* (karttjänsten med samma namn), ny grupp **Vatten (VISS)**, släckt vid start:
+   - *VM Statusklassning ekologisk status sjöar 2022-2027*
+   - *VM Statusklassning ekologisk status vattendrag 2022-2027*
+   - *VM Statusklassning ekologisk status avrinningsområden 2022-2027*
+3. Inte tillagda: *ekologisk potential* (gäller kraftigt modifierade vatten, inte Natura-sjöar), *kustvatten* (marina typer ingår inte i R7), *kemisk* och *kvantitativ status* (kemisk status är "ej god" nästan överallt på grund av kvicksilver och skiljer inte sjöarna åt; kvantitativ gäller grundvatten).
+
+Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Statusen för avrinningsområdet är då bara indicier, se R7C i metodiken. Exportera en ny lagerlista-backup efteråt.
 
 ### Steg 5 · Fliken Filter
 

@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.2 · 2026-10-06** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.3 · 2026-10-08** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7 anger när bevarandeplanen räknas som underlag för typ och tillstånd, och alla 197 planer har nu fastställelseår. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -317,6 +317,8 @@ Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas o
 | Icke fullgod | Diken som påverkar ytan, VISS-status måttlig eller sämre på grund av faktorer som är avgörande för typen, eller rikkärr där nödvändig hävd har upphört. |
 | Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
 
+**Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. Statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
+
 **Underlag för diken.** Markhöjdmodellen från laserskanningen (Lantmäteriets höjdmodell, 1 m) är det bästa underlaget för diken, eftersom diken syns i terrängskuggningen även under krontak, där de inte syns i orto. Granskningslagret har två dikesfält för skogsytorna (gruppen Skog) och myrarna i gruppen Våtmark (7110–7231), framräknade ur Skogsstyrelsens AI-karterade diken, som bygger på just höjdmodellen (Naturvårdsverkets bearbetade vektorversion, länsfil för Södermanland): `diken_m_inom` (meter dike inom ytan) och `diken_m_50m` (meter dike i en 50 m bred zon runt ytan). 749 av 3 208 ytor har dike inom ytan och ytterligare 868 har dike bara i zonen runt. Fälten räknar alla dikestyper, även vägdiken. Karteringen missar diken som är igenvuxna eller kulverterade och tar ibland med naturliga bäckar, så dikena kontrolleras i terrängskuggning (Lantmäteriets höjdmodell eller Skogsstyrelsens dikeskarta i kartan) innan de ger *icke fullgod*. Ett dike i zonen runt en myr kan dränera myrkanten och räknas som *i anslutning till ytan*.
 
 Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger blött används Markfuktighetskartan (SLU och Skogsstyrelsen). Ligger en stor del av ytan i klasserna frisk eller torr, och det finns diken, är det ett tecken på att ytan dränerats.
@@ -525,6 +527,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.3** (2026-10-08) — avsnitt 5, R7C: underlag för sjöar och vattendrag (VISS ekologisk status i webbGIS:et, avrinningsområdet som indicier för små sjöar).
 - **2.2** (2026-10-06) — avsnitt 5, R7: nytt avsnitt *Bevarandeplanen som underlag* (när planen stöder typen, åldersgränser för planens tillstånd som för TUVA). Fastställelseåret för alla 197 planer utläst ur PDF:erna (`bevarandeplan_platser.csv`, skriptet `hamta_bevarandeplan_datum.py` i natura-2000).
 - **2.1** (2026-10-06) — avsnitt 5, R7: grupperna heter Hävd, Skog, Våtmark och Stabila i stället för A–D (krockade med batcherna); ny delregel *R7-omprövning* för ytor som redan har status.
 - **2.0** — avsnitt 5, R7B: död ved är ett klassningskrav för 9010 och 9050 enligt NV:s vägledningar 2026-02-19, så de typerna kan inte bli *fullgod* vid skrivbordet.
