@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
+**Version 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -291,7 +291,7 @@ jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns 
 | Grupp | Lager |
 | --- | --- |
 | **1. Granskning** | NNK naturaobjekt pkt · NNK naturaobjekt lin · NNK naturaobjekt yta (redigerbara feature layers) · LstD Skyddade områden (N2000 och naturreservat) – Driftat |
-| **2. Ortofoton och flygbilder** | LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025) |
+| **2. Ortofoton och flygbilder** | LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025) · LM Ortofoton årsvis Bildsömmar (färg-IR) – WMS (tillagd 2026-10-08) |
 | **3. Skog och vegetation** | NV Naturtypskartan NNK (punkt/linje/yta) · NV Nationella Marktäckedata (NMD) – WMS (Låg fjällskog, Skoglig produktivitet, Basskikt) · SKS Trädhöjd 3_1 – WMS (6 sublager) · SKS Skogliga Grunddata 3.1 (Raster) – Grundyta_gron · SLU Skyddsvärda träd (Artportalen) · SKS Avverkningsinformation (Avverkningsanmälningar, Faktiskt avverkat) · SKS Naturskydd (Biotopskydd, Naturvårdsavtal, Vitryggsavtal) |
 | **4. Markfuktighet och hydrologi** | NV NMD Markfuktighetsindex (Raster) · SKS Markfuktighetskartan DTW 1_1 – WMS · NV Nationella Marktäckedata (NMD) – WMS (samma sublager som grupp 3) · SMHI SVAR2022 Vattenförekomster 2022–2027 (sjöar, vattendrag) · NV Våtmarksinventering – WMS (VMI_ytor, VMI_punkter) |
 | **5. Jordbruk och hävd** | SJV Ängs- och betesmarksinventeringen naturtyper + (Senaste) · SJV Jordbruksblock, ett lager per år 2003–2025 |
@@ -322,6 +322,8 @@ Kontrollerat mot Konfiguratorns lagerexport 2026-09-30 (`lst-webbgis-konfigurato
 2. *LM Höjdmodell Terrängskuggning* (item `042ce4b461914c7992f837957e50b89c`). Diken syns i terrängskuggningen även under krontak. Lägg den under dikena med 30–40 % genomskinlighet.
 3. *SLU Markfuktighetskarta (WMS) – WebMap* (item `897e58de0b104684bed4de60a1a58bd2`). Metodiken (R7C) hänvisar till den för att kontrollera att sumpskogar och myrar ligger blött. Gruppen har i dag bara DTW-versionen och NMD-indexet.
 
+*Status 2026-10-08:* NV Dikeskartering finns i appen (används vid bedömningen av Floden).
+
 Items som redan är egna WebMaps läggs till direkt i Konfiguratorn från sina WebMaps (del 6 steg 4), utan att gå via vår WebMap. Exportera en ny lagerlista-backup efteråt.
 
 #### Tillägg 2026-10-08 · VISS ekologisk status (underlag för R7C, sjöar och vattendrag)
@@ -336,6 +338,16 @@ R7C bedömer sjöar (31xx) och vattendrag (3260) på ekologisk status i VISS. St
 3. Inte tillagda: *ekologisk potential* (gäller kraftigt modifierade vatten, inte Natura-sjöar), *kustvatten* (marina typer ingår inte i R7), *kemisk* och *kvantitativ status* (kemisk status är "ej god" nästan överallt på grund av kvicksilver och skiljer inte sjöarna åt; kvantitativ gäller grundvatten).
 
 Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Statusen för avrinningsområdet är då bara indicier, se R7C i metodiken. Exportera en ny lagerlista-backup efteråt.
+
+#### Tillägg 2026-10-08 · Bildsömmar för ortofoto (fotodatum)
+
+Ortofotolagren visar bara året. Datumet behövs för att tolka IR-ortot: en vårbild (lövträden utan rött) visar gödslade vallar klarröda medan naturlig gräsmark ännu är blek, en sommarbild gör skillnaden mindre. Lantmäteriets bildsömmar (skarvlinjer) visar gränserna mellan flygbilderna i mosaiken och fotodatum för varje bild.
+
+1. Konfiguratorn → Lagerlista → *Lägg till en item från portalen* → sök "LM ortofoto ir" → **LM Ortofoton årsvis Bildsömmar (färg-IR) (WMS) – WebMap**.
+2. Lägg den i gruppen *Ortofoton och flygbilder*, under *LM Ortofoton årsvis IR*, släckt vid start.
+3. Användning: tänd samma år som det IR-orto du tittar på. Datumet står som text i kartan (tjänsten går inte att infoklicka) — zooma tills etiketterna syns. Ett orto kan vara sammansatt av bilder från olika dagar, så ytor i samma område kan ha olika fotodatum om en söm går mellan dem.
+
+Exportera en ny lagerlista-backup efteråt.
 
 ### Steg 5 · Fliken Filter
 

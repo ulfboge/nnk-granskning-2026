@@ -372,13 +372,13 @@ const STEG = [
       ['Mörkt rödbrun','Barrträd','Gran på väg in i en äng eller hagmark.'],
       ['Parallella ljusa ränder','Täckdiken eller körspår','I åker normalt. I en NNK-gräsmark ett tecken på dränering och tidigare åkerbruk.']
     ])
-    + obs('<b>Kolla bildens datum.</b> En vårbild (lövträden grå) visar gräset innan det har börjat växa ordentligt. Då syns gödslade vallar som klarröda medan naturlig gräsmark fortfarande är blekare. På en högsommarbild är allt grönt rött och skillnaden blir mindre. Jämför alltid med åkrarna intill. Är NNK-ytan lika röd som dem är det en signal att kontrollera, men inget bevis.'),
+    + obs('<b>Kolla bildens datum.</b> Lagren visar bara året. Tänd <i>LM Ortofoton årsvis Bildsömmar (färg-IR)</i> under <i>Ortofoton och flygbilder</i> för samma år: datumet står som text vid varje bild i mosaiken (zooma tills det syns). En vårbild (lövträden grå) visar gräset innan det har börjat växa ordentligt. Då syns gödslade vallar som klarröda medan naturlig gräsmark fortfarande är blekare. På en högsommarbild är allt grönt rött och skillnaden blir mindre. Jämför alltid med åkrarna intill. Är NNK-ytan lika röd som dem är det en signal att kontrollera, men inget bevis.'),
   popup: [
     ['Typiska arter (Artportalen)','Antal typiska arter med fynd, Arter, Senaste fynd (år)','Fynd sedan 2010 inom ytan. Stöder att typen är rätt. Inga fynd betyder inte att arterna saknas.'],
     ['Hävd enligt jordbruksskiften och TUVA','TUVA, naturtyper i objektet','Typerna gäller hela TUVA-objektet, inte NNK-ytan. Samma typ räknas som stöd om inventeringen är nyare än karteringen.'],
     ['','TUVA, inventeringsår','Avgör om TUVA kan räknas som nyare underlag.']
   ],
-  logg: [['Ortofoto (år)','Året för det orto du bedömt mot'],['Typ ifrågasatt (antal ytor)','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
+  logg: [['Ortofoto (år)','Året för det orto du bedömt mot, gärna med datum ur bildsömmarna (t.ex. "IR 2023-05-08")'],['Typ ifrågasatt (antal ytor)','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
   ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Bevarandeplanen är från <b>2019</b>, alltså nyare än karteringen, men den skriver själv att underlaget för de terrestra typerna är bristfälligt och att det behövs inventering för att avgöra om silikatgräsmarkerna är 6270. Den räknas därför inte som stöd för 6270, 6410 eller 6510. Stödet måste i stället komma från ortot och de typiska arterna, yta för yta. Ytor där inget stöder typen får Karteringsstatus 5 <i>Åtgärdas</i> och blir fältobjekt. Övningsutfallen i steg 7 visar hur ytorna bedöms <i>om</i> typen godtas.</p>') },
 
 { id:'underlag', titel:'Läs underlagen för tillståndet',
