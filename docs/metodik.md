@@ -427,7 +427,7 @@ Fältkontrollen görs i eget fältarbete 2027. Det blir inget konsultuppdrag hö
 
 #### Oklart i NV:s underlag
 - Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
-- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
+- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ fråga 32 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
 
 ---
 
@@ -533,7 +533,7 @@ Kräver minst en **Standard-licens** i ArcGIS Pro (Basic räcker för att skapa 
 - [ ] `KOMMENTAR` ifylld med grund och källa — inte tom, aldrig mer tom
 - [ ] Systematiska fel i grundkarteringen rapporterade till `NNK-kartering@metria.se`
 
-> **Tidsordning:** avvakta med att registrera *tillstånd* i NNK tills de nya attributen driftsatts (slutet av september 2026, FAQ fråga 30). Fram till dess samlar du in via blankett och granskningslager. Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
+> **Tidsordning:** avvakta med att registrera *tillstånd* i NNK tills de nya attributen driftsatts (15 oktober 2026, FAQ fråga 32). Fram till dess samlar du in via blankett och granskningslager. Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
 
 ---
 

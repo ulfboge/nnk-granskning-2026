@@ -400,10 +400,10 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
-| [D1.1 · Bevaka driftsättningen av de nya NNK-attributen](#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen) | v39–v40 | Johan | – | – |
-| [D1.2 · Gå igenom den nya attributlistan](#d12-ga-igenom-den-nya-attributlistan) | v40 | Båda | D1.1 | – |
-| [D1.3 · Delta i NV:s utbildning](#d13-delta-i-nvs-utbildning) | v40–v41 | Båda | D1.1 | – |
-| [D2.1 · Registrera tillstånd där kunskapen redan finns](#d21-registrera-tillstand-dar-kunskapen-redan-finns) | v41–v48 | Båda | D1.2 | L-D |
+| [D1.1 · Bevaka driftsättningen av de nya NNK-attributen](#d11-bevaka-driftsattningen-av-de-nya-nnk-attributen) | v39–v42 | Johan | – | – |
+| [D1.2 · Gå igenom den nya attributlistan](#d12-ga-igenom-den-nya-attributlistan) | v43 | Båda | D1.1 | – |
+| [D1.3 · Delta i NV:s utbildning](#d13-delta-i-nvs-utbildning) | v42–v43 | Båda | D1.1 | – |
+| [D2.1 · Registrera tillstånd där kunskapen redan finns](#d21-registrera-tillstand-dar-kunskapen-redan-finns) | v43–v48 | Båda | D1.2 | L-D |
 | [D2.2 · Dokumentera grunden för varje bedömning](#d22-dokumentera-grunden-for-varje-bedomning) | v41–v48 | Båda | – | L-D |
 | [D2.3 · Registrera aktivt även oförändrat tillstånd](#d23-registrera-aktivt-aven-oforandrat-tillstand) | v41–v48 | Båda | – | L-D |
 | [D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)](#d24-havdanalys-mot-jordbruksskiften-underlag-for-r7a-arligen) | v40–v41 | Johan | – | – |
@@ -418,16 +418,16 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
-**v39–v40** · **[Johan]**
+**v39–v42** · **[Johan]**
 
-1. FAQ fråga 30: nya attribut för tillståndsbedömning införs sommaren 2026, driftsättning planerad till slutet av september.
+1. FAQ fråga 32 (v1.3, 2026-10-08; fråga 30 i v1.2): nya attribut för tillståndsbedömning införs i oktober 2026. Driftsättning och NNK Forum 15 oktober. Checka in arbetsdatabaserna före, ingen ut-/incheckning den dagen.
 2. Maila `kartlitsN2000@naturvardsverket.se` i v39 och be om bekräftat datum samt när utbildning ges.
 3. Kontrollera i ArcGIS Pro när attributen dykt upp: checka ut testobjektet igen och titta efter fälten för tillstånd i procent.
 4. Blir det försenat: fyll v40–v43 med arbetspaket C i stället. Ingen tid går förlorad, bedömningarna dokumenteras i fältprotokoll och granskningslager under tiden.
 
 ### D1.2 · Gå igenom den nya attributlistan
 
-**v40** · **[Båda]** · förutsätter D1.1
+**v43** · **[Båda]** · förutsätter D1.1
 
 1. Läs igenom vad som ändrats. Två saker är viktiga: fältnamnen byter från *natura-naturtyp* till *livsmiljötyp*, och tillstånd anges nu som procentuell andel av ytan.
 2. Konsekvensen av procentandelen: du behöver INTE längre dela upp en yta för att ange olika tillstånd. Det sparar mycket geometriarbete.
@@ -436,15 +436,15 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ### D1.3 · Delta i NV:s utbildning
 
-**v40–v41** · **[Båda]** · förutsätter D1.1
+**v42–v43** · **[Båda]** · förutsätter D1.1
 
-1. Anmäl båda till utbildningen så snart datum finns.
+1. NNK Forum 15 oktober (v42) går igenom de nya attributen och hur driftsättningen påverkar arbetet. Anmäl båda.
 2. Ta med konkreta frågor från arbetet: storobjektsmetoden, generaliseringar, hur procentandelarna ska tolkas för mosaikartade ytor.
 3. Anteckna och lägg i `natura-2000: docs/nnk/`. Notera särskilt allt som avviker från handledningen från juli.
 
 ### D2.1 · Registrera tillstånd där kunskapen redan finns
 
-**v41–v48** · **[Båda]** · förutsätter D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
+**v43–v48** · **[Båda]** · förutsätter D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 **Död ved är ett krav för 9010 och 9050 (2026-10-02):** enligt NV:s vägledningar 2026-02-19 ska en förekomst uppfylla samtliga klassningskrav, bland annat död ved. Det går inte att fastställa vid skrivbordet, så 9010 (inkl. 9006, 9008, 9009), 9050 och 9830 kan bli *icke fullgod* eller *till fält*, aldrig *fullgod*. Se R7B i [metodiken](metodik.html).
 
@@ -788,7 +788,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 | [H4.1 · Eftersök odokumenterade underlag](#h41-eftersok-odokumenterade-underlag) | v38–v46 | Karin | H3.2 | – |
 | [H4.2 · Registrera funna underlag i datakälleregistret](#h42-registrera-funna-underlag-i-datakalleregistret) | v38–v48 | Karin | H4.1 | – |
 | [H5.1 · För in förvaltarkunskapen i granskningslagret](#h51-for-in-forvaltarkunskapen-i-granskningslagret) | v38–v46 | Båda | H3.2 | L-H2 |
-| [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v41–v48 | Johan | H5.1, D1.2 | L-D |
+| [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v43–v48 | Johan | H5.1, D1.2 | L-D |
 | [H5.3 · Skicka avstämning tillbaka till förvaltaren](#h53-skicka-avstamning-tillbaka-till-forvaltaren) | v38–v48 | Johan | H5.1 | – |
 
 ### H1.1 · Kartlägg vem som förvaltar vilka objekt
@@ -909,10 +909,10 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ### H5.2 · Registrera i NNK efter avstämning
 
-**v41–v48** · **[Johan]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
+**v43–v48** · **[Johan]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 1. Först efter att du bedömt att underlaget räcker. Granskningslagret är förslagsnivå; NNK är skarpt.
-2. Tillståndsfälten först efter driftsättningen i v40.
+2. Tillståndsfälten först efter driftsättningen 15 oktober (v42).
 3. Karteringsstatus: 2 Granskad vid skrivbordet för förvaltarkunskap och dokument. 3 Besökt i fält om förvaltaren faktiskt varit där nyligen. 4 Inventerad i fält endast vid standardiserad metodik.
 4. Förändringsorsak: 3 Komplettering i nästan alla fall — kunskapen fanns, den var bara inte registrerad.
 5. Kör toolboxen och checka in per objekt.

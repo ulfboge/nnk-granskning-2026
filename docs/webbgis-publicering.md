@@ -833,7 +833,7 @@ print("KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.")
 KartLits-mallens egen domän för fältet `tillstand` innehöll "1 Inget behov av justering · 2 Okänt
 (kan ej bedöma) · 3 Annat tillstånd" — en kopplingsbugg i själva NV-mallen (innehållet hörde
 snarare hemma vid `justering`/`utbredning`; matchade varken blanketten eller NV:s egen FAQ-text
-"gott, inte gott eller okänt tillstånd", FAQ fråga 30). `forbered_gdb_for_publicering.py` bygger
+"gott, inte gott eller okänt tillstånd", FAQ fråga 30 i v1.2, fråga 32 i v1.3). `forbered_gdb_for_publicering.py` bygger
 i stället domänen direkt (steg 2b) med blankettens egna fyra värden:
 
 | Domän (nytt namn) | Fält | Koder |

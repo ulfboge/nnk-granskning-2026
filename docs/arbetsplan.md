@@ -21,7 +21,7 @@ Två förhållanden gör att arbetet i D-län ser annorlunda ut än man först s
 Av 17 741 ha "osäker natura-/icke-natura" inom länets Natura 2000-områden ligger **16 912 ha (95 %) i marin miljö**. Kvar på land och i limniska miljöer finns bara ca **445 ha osäker** och **108 ha obestämd** naturtyp. Och FAQ fråga 16 och 29 säger uttryckligen att marina livsmiljötyper *inte* ska läggas in i NNK och att arbetsgruppen för akvatiska miljöer startar först hösten 2026. **Slutsats: lägg ingen tid på det marina i år. Den terrestra utbredningsfrågan är på ett par hundra hektar — den går att lösa.**
 
 **2. Tillståndsproblemet är nästan totalt — men får inte lösas ännu.**
-**8 587 av 9 980 polygoner (86 %) inom länets Natura 2000-områden har "Ej bedömd status".** Bara 482 polygoner är klassade som fullgod och 336 som icke fullgod livsmiljötyp. Samtidigt säger FAQ fråga 30 att NNK under sommaren 2026 får **nya attribut för tillståndsbedömning**, driftsatta i slutet av september, och att Naturvårdsverket **rekommenderar att man avvaktar** med tillståndsbedömning i NNK tills dess. FAQ fråga 10 upprepar det för terrestra livsmiljötyper: vänta på fastställda vägledningar.
+**8 587 av 9 980 polygoner (86 %) inom länets Natura 2000-områden har "Ej bedömd status".** Bara 482 polygoner är klassade som fullgod och 336 som icke fullgod livsmiljötyp. Samtidigt säger FAQ fråga 32 att NNK i oktober 2026 får **nya attribut för tillståndsbedömning**, driftsatta 15 oktober, och att Naturvårdsverket **rekommenderar att man avvaktar** med tillståndsbedömning i NNK tills dess. FAQ fråga 10 upprepar det för terrestra livsmiljötyper: vänta på fastställda vägledningar.
 
 **Det ger årets arbete en tydlig form:**
 
@@ -257,10 +257,10 @@ Ordningen är medvetet vald: batch B först eftersom de objekten är små, hävd
 
 | ID | Aktivitet | Klart | Ansvar |
 |---|---|---|---|
-| D1.1 | Bevaka driftsättning av nya NNK-attribut (planerad slutet av september) | v39–v40 | Handläggare |
-| D1.2 | Gå igenom nya attributlistan och den uppdaterade kodlistan; notera att tillstånd nu anges som **procentuell andel av ytan** — ytor behöver inte längre delas | v40 | Båda |
-| D1.3 | Genomför/delta i NV:s utbildning för de nya attributen | v40–v41 | Båda |
-| D2.1 | Registrera tillstånd för de ytor där kunskapen redan finns: 482 fullgoda + 336 icke fullgoda + de objekt som har aktuella skötselplaner och nyliga uppföljningar | v41–v48 | Båda |
+| D1.1 | Bevaka driftsättning av nya NNK-attribut (15 oktober) | v39–v42 | Handläggare |
+| D1.2 | Gå igenom nya attributlistan och den uppdaterade kodlistan; notera att tillstånd nu anges som **procentuell andel av ytan** — ytor behöver inte längre delas | v43 | Båda |
+| D1.3 | Genomför/delta i NV:s utbildning för de nya attributen (NNK Forum 15 okt) | v42–v43 | Båda |
+| D2.1 | Registrera tillstånd för de ytor där kunskapen redan finns: 482 fullgoda + 336 icke fullgoda + de objekt som har aktuella skötselplaner och nyliga uppföljningar | v43–v48 | Båda |
 | D2.2 | Dokumentera **grunden** för varje bedömning och **hur aktuell** den är (FAQ f.4) — utan detta är bedömningen inte spårbar | löpande | Båda |
 | D2.3 | Där tillståndet är oförändrat sedan tidigare bedömning: registrera det aktivt med grund och datum — "oförändrat" är också ett svar (FAQ f.9) | löpande | Båda |
 | D2.4 | Hävdanalys mot Jordbruksverkets jordbruksskiften 2015–2025 — hävd per yta som fält i granskningslagret, underlag för R7A (upprepas årligen) | v40–v41 | Johan |
@@ -350,7 +350,7 @@ Fullständig metodik finns i `docs/metodik.md`. Insamlingsinstrument: `blankette
 | H4.1 | ~~Eftersök odokumenterade underlag~~ — hittat och djupgranskat 2026-08-26: `natura-2000: docs/underlag/NRF_2026_underlag.zip`. Uppföljningsplaner (38 objekt) inkopplade i Blanketten + ny geo-fil; LIFE-projekten och limnisk kartläggning 2022 genomgångna (LIFE GW/Tynnelsö behöver egen NNK-statusklassning, flaggat för samordning). Ny lärdom: sök inte bara på sitecode/N2000-namn — naturreservat kan täcka ett N2000-område under ett annat namn, se `natura-2000: data/analysis/naturreservat_n2000_overlapp.csv` (121/195 reservat i länet). Kvar: Per Flodin-samtalet och att skanna papper som inte finns digitalt | v38–v46 | Kollega |
 | H4.2 | Registrera funna underlag — 39 % av filerna (3 697, 199 sitecodes) katalogiserade automatiskt i `natura-2000: data/analysis/nrf_2026_underlag_per_sitecode.csv`; en sammanfattningsrad i `data/sources_sodermanland.csv` pekar dit | löpande | Kollega |
 | H5.1 | För in i KartLitS granskningslager samma vecka som samtalet | löpande | Båda |
-| H5.2 | Registrera i NNK efter avstämning — tillståndsfälten först efter driftsättning v40 | v41–v48 | Handläggare |
+| H5.2 | Registrera i NNK efter avstämning — tillståndsfälten först efter driftsättning 15 okt (v42) | v43–v48 | Handläggare |
 | H5.3 | Skicka avstämning tillbaka till förvaltaren på det du fört in | löpande | Handläggare |
 
 **Prioritetsordning i samtalen:** Åtgärdas-ytorna → hävdberoende marker i batch B och A → sällsynta livsmiljötyper i batch C och D → utvecklingsmark.

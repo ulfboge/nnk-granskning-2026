@@ -79,7 +79,7 @@ CSS-ramverk eller typsnitt hämtas — allt är inline i den genererade HTML:en.
 ## 6. Status
 
 Arbetsmaterial under pågående uppdrag. Siffror och bedömningar är preliminära tills NNK:s nya
-tillståndsattribut är driftsatta (enligt Naturvårdsverket: slutet av september 2026).
+tillståndsattribut är driftsatta (enligt Naturvårdsverket: 15 oktober 2026, FAQ fråga 32).
 
 ## 7. Instruktioner för Claude
 
