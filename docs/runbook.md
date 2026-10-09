@@ -2,8 +2,8 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
-**Datum:** 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 68 uppgifter i 7 arbetspaket, 327 konkreta steg  
+**Datum:** 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 68 uppgifter i 7 arbetspaket, 324 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -414,7 +414,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 | [D4.2 · Lista objekt där beslut hindrar nödvändig skötsel](#d42-lista-objekt-dar-beslut-hindrar-nodvandig-skotsel) | v48 | Johan | D4.1 | – |
 | [D4.3 · Peka ut utvecklingsmark och ange målnaturtyper](#d43-peka-ut-utvecklingsmark-och-ange-malnaturtyper) | v45–v50 | Johan | D1.2 | L-D |
 | [D5.1 · Fältprotokoll för tillståndsbedömning](#d51-faltprotokoll-for-tillstandsbedomning) | v40–v42 | Johan | D1.2 | – |
-| [D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)](#d52-konsultuppdrag-for-faltbedomning-hosten-2026-villkorat) | v41–v43 | Johan | D5.1 | – |
+| [D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (utgår)](#d52-konsultuppdrag-for-faltbedomning-hosten-2026-utgar) | v41–v43 | Johan | D5.1 | – |
 
 ### D1.1 · Bevaka driftsättningen av de nya NNK-attributen
 
@@ -559,19 +559,18 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 4. Stäm av den orange kolumnen (indikation gott tillstånd) mot NV:s vägledningar, för 9010 och 9050 mot de reviderade versionerna från februari 2026.
 5. För 9010 och 9050: död ved ska finnas som obligatorisk fråga i protokollet, eftersom den avgör om ytan är typen (mängd död ved äldre än ett år, och för 9010 även kvalitet: grov ved, förrötade lågor, flera nedbrytningsstadier, senvuxen eller brandpåverkad ved). Se R7B i [metodiken](metodik.html).
 6. Bestäm leveransformat: fältdata i ett eget hostat lager eller en egen tabell, aldrig i granskningslagret (Overwrite raderar fältdatan). Koppla på NNK:s objekt-ID, inte GlobalID.
-7. Protokollet ska fungera både för ett eventuellt konsultuppdrag hösten 2026 (D5.2) och för eget fältarbete 2027. Survey123-appen byggs först när protokollet är fastställt.
+7. Protokollet används i eget fältarbete 2027 (inget konsultuppdrag 2026, se D5.2). Insamlingen görs i Field Maps med Smart Form mot ett eget lager, se `natura-2000: docs/nnk/faltformular_tillstand_smartform.md`.
 
-### D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (villkorat)
+### D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (utgår)
 
-**v41–v43** · **[Johan]** · förutsätter D5.1
+**v41–v43** · **[Johan]** · förutsätter D5.1 · utgår 2026-10-09
 
-1. VILLKORAT: gäller om beslut fattas om konsult. Inte spikat per 2026-09-25, men troligt. Stäm av beslut och budget med chef först.
-2. Välj områden: i första hand P1-objekt där skrivbordsgranskningen gett *kontrolleras i fält* (granskningsloggen, C-batcherna), gärna hävdberoende typer enligt FAQ fråga 11.
-3. Stäm av med inköp/upphandlare vilken upphandlingsform som gäller för beloppet innan förfrågan skickas.
-4. Förfrågningsunderlag: områden med karta, fältprotokollet från D5.1, leveransformat, tidsram och krav på dokumentation (foto, datum, inventerare).
-5. Säsong: från oktober går strukturer och påverkan att bedöma (död ved, graninslag, hydrologi, igenväxning, grässvål vid säsongens slut), men knappast typiska arter eller rödlistade kärlväxter. Skriv in det i beställningen så att förväntningarna blir rätt.
-6. Bestäm hur konsultens uppgifter förs in i NNK: vem registrerar, `faltinventerare` = konsultens namn, metod och datum i kommentarsfälten, avstämning innan registrering.
-7. Resultatet ska med i kunskapslägesrapporten (E2.1) och räknas av i volymuppskattningen för 2027 (F1.2).
+**Beslut 2026-10-09 (Johan):** ingen konsult för fältbedömning hösten 2026, det är för sent på året. All fältkontroll görs i eget fältarbete 2027.
+
+1. Inget att göra 2026. Uppgiften står kvar så att numreringen och tidigare hänvisningar stämmer.
+2. Ytor med utfallet *Till fält* i R7-förslagen (D2.7) och *kontrolleras i fält* i granskningsloggen samlas som underlag till fältplaneringen 2027 (F1.2).
+3. R7-pilotens 30 fältkontroller görs i eget fältarbete 2027. Till dess används R7 bara som förslag i granskningslagret.
+4. Om konsult blir aktuellt för säsongen 2027 tas det upp i F1.2 (volymuppskattning och insatsbehov).
 
 ---
 
@@ -973,7 +972,7 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 | Uppdateringar under minsta karteringsenhet görs inte | 0,25 ha generellt, 1 ha skog och våtmark, 0,5 ha ädellöv | FAQ f.12 |
 | Tidigare signifikansbedömningar görs inte om | Endast nytillkomna livsmiljötyper bedöms | FAQ f.15 |
 | Naturreservat utanför N2000 får screening, inte genomgång | Deadline är 2027 | FAQ f.6 |
-| Eget fältarbete flyttas till 2027 | Arbetspaket B genomförs inte 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Undantag: ett begränsat konsultuppdrag hösten 2026 är troligt men inte beslutat (D5.2) | Beslut Johan 2026-08-25, justerat 2026-09-25 |
+| Eget fältarbete flyttas till 2027 | Arbetspaket B genomförs inte 2026 — fokus är skrivbordsgranskning och förvaltarsamtal utifrån befintlig kunskap. Inget konsultuppdrag hösten 2026 heller (D5.2 utgår): för sent på året | Beslut Johan 2026-08-25, konsultfrågan avgjord 2026-10-09 |
 
 ---
 
@@ -1007,4 +1006,4 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 
 ---
 
-*Runbook v1.5 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*
+*Runbook v1.6 · genererad ur `natura-2000: scripts/analysis/uppgifter.py` med `bygg_kontrollrum.py` — redigera där, inte i den här filen*

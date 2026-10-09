@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.4 · 2026-10-08** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.5 · 2026-10-09** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* nytt avsnitt *Förslag per yta (R7-förslag)*; Skogsstyrelsens register som underlag i R7B; utfallsregel för VISS i R7C. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -421,6 +421,8 @@ Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raderna *
 
 Hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med *Ej bedömd status*. 30 av dem fältkontrolleras, slumpat men med fler ur *icke fullgod* och *till fält*. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.
 
+Fältkontrollen görs i eget fältarbete 2027. Det blir inget konsultuppdrag hösten 2026 (beslut 2026-10-09), så R7 förblir ett utkast och förslagen stannar i granskningslagret under 2026.
+
 #### Oklart i NV:s underlag
 - Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
 - NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ 30 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
@@ -561,6 +563,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.5** (2026-10-09) — avsnitt 5, R7-piloten: fältkontrollen görs 2027, inget konsultuppdrag hösten 2026.
 - **2.4** (2026-10-08) — avsnitt 5, R7: nytt avsnitt *Förslag per yta (R7-förslag)*. R7B: Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd, naturvårdsavtal) som fält. R7C: VISS-fälten och utfallsregeln när VISS-kopplingen körts.
 - **2.3** (2026-10-08) — avsnitt 5, R7C: underlag för sjöar och vattendrag (VISS ekologisk status i webbGIS:et, avrinningsområdet som indicier för små sjöar).
 - **2.2** (2026-10-06) — avsnitt 5, R7: nytt avsnitt *Bevarandeplanen som underlag* (när planen stöder typen, åldersgränser för planens tillstånd som för TUVA). Fastställelseåret för alla 197 planer utläst ur PDF:erna (`bevarandeplan_platser.csv`, skriptet `hamta_bevarandeplan_datum.py` i natura-2000).
