@@ -102,8 +102,10 @@ tillståndsattribut är driftsatta (enligt Naturvårdsverket: slutet av septembe
 7. **`blanketter/blankett_forvaltarkunskap_nnk.xlsx` är en referenskopia** — den senaste
    genererade versionen från `natura-2000`, inte den faktiska arbetskopian (se avsnitt 3). Länka
    eller beskriv den som referens, inte som "fyll i denna".
-8. **`git push` fungerar inte via device_bash** (autentiseringsfel) — gör commits klara lokalt och
-   låt Johan pusha själv, om inte annat är uppsatt.
+8. **`git pull` och `git push` via device_bash fungerar sedan 2026-10-09** på Johans hemdator.
+   Repona har en egen GitHub-token (bara natura-2000 och nnk-granskning-2026, Contents read/write)
+   i `.git/claude-credentials`, inkopplad i repots lokala git-config. Filen ligger i `.git` och pushas
+   aldrig. Token gäller till 2027-01-07. Slutar det fungera har den gått ut — be Johan om en ny.
 
 ---
 
