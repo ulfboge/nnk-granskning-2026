@@ -360,7 +360,7 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True, sidomeny=
         brod=brod,
         js=js,
     )
-    pathlib.Path(ut_sokvag).write_text(sida, encoding="utf-8")
+    pathlib.Path(ut_sokvag).write_text(sida, encoding="utf-8", newline="\n")  # LF även på Windows, som .gitattributes
     return titel, len(sida)
 
 
