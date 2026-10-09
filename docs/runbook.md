@@ -3,7 +3,7 @@
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
 **Datum:** 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 68 uppgifter i 7 arbetspaket, 324 konkreta steg  
+**Omfattning:** 68 uppgifter i 7 arbetspaket, 325 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -559,7 +559,8 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 4. Stäm av den orange kolumnen (indikation gott tillstånd) mot NV:s vägledningar, för 9010 och 9050 mot de reviderade versionerna från februari 2026.
 5. För 9010 och 9050: död ved ska finnas som obligatorisk fråga i protokollet, eftersom den avgör om ytan är typen (mängd död ved äldre än ett år, och för 9010 även kvalitet: grov ved, förrötade lågor, flera nedbrytningsstadier, senvuxen eller brandpåverkad ved). Se R7B i [metodiken](metodik.html).
 6. Bestäm leveransformat: fältdata i ett eget hostat lager eller en egen tabell, aldrig i granskningslagret (Overwrite raderar fältdatan). Koppla på NNK:s objekt-ID, inte GlobalID.
-7. Protokollet används i eget fältarbete 2027 (inget konsultuppdrag 2026, se D5.2). Insamlingen görs i Field Maps med Smart Form mot ett eget lager, se `natura-2000: docs/nnk/faltformular_tillstand_smartform.md`.
+7. NV:s fältmanual för de nya kriterierna testas i mitten av oktober och ska vara klar före årsskiftet (NV 2026-10-09). Låt död ved-frågorna för 9010 och 9050 vara utkast tills manualen finns och stäm av protokollet mot den.
+8. Protokollet används i eget fältarbete 2027 (inget konsultuppdrag 2026, se D5.2). Insamlingen görs i Field Maps med Smart Form mot ett eget lager, se `natura-2000: docs/nnk/faltformular_tillstand_smartform.md`.
 
 ### D5.2 · Konsultuppdrag för fältbedömning hösten 2026 (utgår)
 

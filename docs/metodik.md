@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.5 · 2026-10-09** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.6 · 2026-10-09** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* nytt avsnitt *Förslag per yta (R7-förslag)*; Skogsstyrelsens register som underlag i R7B; utfallsregel för VISS i R7C. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -291,7 +291,9 @@ Död ved går inte att fastställa vid skrivbordet, varken i laserdata, orto ell
 | Ingen synlig påverkan | *Till fält*, även om laserdata visar sluten äldre skog och typiska arter finns. |
 | Ingen synlig påverkan och indirekt stöd för död ved (vedlevande signal- eller rödlistade arter i Artportalen, fältbeskrivning, skötselplan) | *Till fält*, med kommentaren *typen trolig, död ved ej kontrollerad*. Prioritera ytan i fält. |
 
-Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas om mot 2026-kriterierna ställs till NV via KartlitsN2000. Tills svar finns behandlas alla 9010- och 9050-ytor enligt tabellen ovan.
+**Svar från NV (2026-10-09, preliminärt).** Frågan om befintliga NNK-ytor (karterade mot 2011 års kriterier) ska prövas om mot 2026-kriterierna ställdes via KartlitsN2000. NV svarar att de nya kriterierna inte bara gäller nya förekomster, men att NV lutar åt en generell riktlinje: det som redan är bedömt som 9010 behöver inte prövas mot de nya kriterierna, om man inte har uppenbar kännedom om något som gör att ytan avviker mycket. Ett samlat budskap ska ges på temawebbinariet i november. Hur en yta ska redovisas medan död ved inte är bekräftad, och om en yta som inte klarar död ved-kraven ska redovisas som minskad utbredning eller som inte gott tillstånd, har NV inte svarat på än. NV:s fältmanual testas i mitten av oktober och ska vara klar före årsskiftet, för användning 2027.
+
+Tills budskapet i november finns behandlas alla 9010- och 9050-ytor enligt tabellen ovan. Blir riktlinjen som NV lutar åt gäller död ved-kravet inte typen för befintliga ytor. Då behöver undantaget ovan och förutsättningen *typen ska vara rimlig* för 9010 omprövas.
 
 **Underlag för skogen — laserdata.** Granskningslagret har laserfält för skogsytorna (gruppen Skog, 2 918 ytor), framräknade ur Skogsstyrelsens Skogliga grunddata (10 m-raster). Länet är laserskannat två gånger: första nationella skanningen 2010–2012 och Laserdata Skog 2020 (på några ställen 2023). Nästa skanning av Södermanland görs 2026. Bara pixlar som ligger helt inom ytan räknas. 158 ytor är för små (färre än tre hela pixlar) och har tomma fält. Värdena är skattningar från en modell, inte mätningar i fält.
 
@@ -563,6 +565,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.6** (2026-10-09) — avsnitt 5, R7B: NV:s preliminära svar om 9010/9050 och 2026-kriterierna (befintliga ytor behöver troligen inte prövas om, budskap i november; fältmanual före årsskiftet).
 - **2.5** (2026-10-09) — avsnitt 5, R7-piloten: fältkontrollen görs 2027, inget konsultuppdrag hösten 2026.
 - **2.4** (2026-10-08) — avsnitt 5, R7: nytt avsnitt *Förslag per yta (R7-förslag)*. R7B: Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd, naturvårdsavtal) som fält. R7C: VISS-fälten och utfallsregeln när VISS-kopplingen körts.
 - **2.3** (2026-10-08) — avsnitt 5, R7C: underlag för sjöar och vattendrag (VISS ekologisk status i webbGIS:et, avrinningsområdet som indicier för små sjöar).
