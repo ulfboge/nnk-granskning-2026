@@ -421,7 +421,12 @@ if (!IsEmpty(aAr)) {
 
 // R7-förslaget (2026-10-08): utfall, motiv och kontroller ur bygg_r7_forslag.py
 Rad("r7_f_utfall", "Förslag (R7)", F("r7f_utfall"));
-Rad("r7_f_motiv", "Motiv", F("r7f_motiv"));
+var r7m = F("r7f_motiv");
+if (!IsEmpty(r7m)) {
+r7m = Replace(r7m, "skiften ", "Hävd enligt skiften: ");
+r7m = Upper(Left(r7m, 1)) + Right(r7m, Count(r7m) - 1);
+}
+Rad("r7_f_motiv", "Motiv", r7m);
 Rad("r7_f_kontroll", "Kontrollera", F("r7f_kontrollera"));
 
 if (Count(infos) == 0) {
