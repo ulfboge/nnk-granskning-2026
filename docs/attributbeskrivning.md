@@ -579,7 +579,7 @@ Tre textfält, skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas u
 | Fält | Typ | Innehåll |
 |---|---|---|
 | `r7f_utfall` | text | Föreslaget utfall, säkerhet och villkor, t.ex. *Fullgod · säkerhet medel — om IR-ortot inte visar igenväxning, plöjning eller gödsling* |
-| `r7f_motiv` | text | Underlagen förslaget bygger på, med år, och eventuella motsägelser |
+| `r7f_motiv` | text | Underlagen förslaget bygger på, med år. Därefter "Lucka:" för underlag som saknas eller är gammalt (t.ex. biologin ej klassad i VISS) och "Motsägelse:" där underlagen säger emot varandra |
 | `r7f_kontrollera` | text | Manuella kontroller med lager i webbGIS inom hakparentes |
 
 ### Areal (ha)
