@@ -423,7 +423,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tbody>
 </table></div>
 <p><code>forandringsorsak_forslag</code> är granskarens eget förslag och ligger i formulärgruppen <em>1. Avvikelse och korrigeringsförslag</em>. Det är skilt från det skrivskyddade källfältet <code>forandringsorsak</code>, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.</p>
-<p><strong>Skrivskyddade stödfält.</strong> Granskningslagret har också några fält som länets egen pipeline fyller i (<code>jobbdator_koppla_nnk_skyddskategori.py</code>). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:</p>
+<p><strong>Skrivskyddade stödfält.</strong> Granskningslagret har också några fält som länets egen pipeline fyller i (<code>02_koppla_nnk_skyddskategori.py</code>). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -1096,7 +1096,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td>Koppla <code>KOMMENTAR</code>, <code>NNK_KOMMEN</code>, <code>REDIGERARE</code> samt de nya daterings-/prioritetsfälten till sitecode-nivån</td>
-<td><strong>Löst (konstaterat 2026-10-02).</strong> Granskningslagret (<code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code>) bygger på länsuttaget ur NNK Ajourhålla 2026-08-26. <code>jobbdator_koppla_nnk_skyddskategori.py</code> ger varje polygon <code>n2000_sitecode</code> (minst 1 % av ytan eller 0,25 ha inom området), och <code>kommentar</code>, <code>nnk_kommentar</code>, <code>created_user</code>/<code>last_edited_user</code>/<code>last_edited_date</code> samt <code>habitat_priority_*</code> följer med per polygon. Gjordes i jobbdatorkedjan, inte genom att köra om <code>koppla_omraden.py</code></td>
+<td><strong>Löst (konstaterat 2026-10-02).</strong> Granskningslagret (<code>natura-2000: deliveries/nnk_granskning_sodermanland_20260901/</code>) bygger på länsuttaget ur NNK Ajourhålla 2026-08-26. <code>02_koppla_nnk_skyddskategori.py</code> ger varje polygon <code>n2000_sitecode</code> (minst 1 % av ytan eller 0,25 ha inom området), och <code>kommentar</code>, <code>nnk_kommentar</code>, <code>created_user</code>/<code>last_edited_user</code>/<code>last_edited_date</code> samt <code>habitat_priority_*</code> följer med per polygon. Gjordes i jobbdatorkedjan, inte genom att köra om <code>koppla_omraden.py</code></td>
 </tr>
 <tr>
 <td><code>habitat_period_lastdata_start</code> / <code>_end</code></td>

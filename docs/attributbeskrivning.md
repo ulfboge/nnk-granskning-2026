@@ -433,7 +433,7 @@ NV:s kod för varifrån uppgiften ursprungligen kommer.
 
 ## Del C · Datering och länets stödfält
 
-Visas i popupens avsnitt *Naturtyp (NNK-data)* eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (`jobbdator_koppla_nnk_skyddskategori.py` → `forbered_gdb_for_publicering.py`) varje gång lagret byggs om. Lämna dem orörda.
+Visas i popupens avsnitt *Naturtyp (NNK-data)* eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (`02_koppla_nnk_skyddskategori.py` → `04_forbered_gdb_for_publicering.py`) varje gång lagret byggs om. Lämna dem orörda.
 
 ### Startdatum / Slutdatum senaste inventering
 `habitat_period_lastdata_start` / `habitat_period_lastdata_end` · datum, visas som årtal i popupen  

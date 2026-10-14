@@ -1459,7 +1459,7 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 </table></div>
 <hr />
 <h2 id="del-c-datering-och-lanets-stodfalt">Del C · Datering och länets stödfält</h2>
-<p>Visas i popupens avsnitt <em>Naturtyp (NNK-data)</em> eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (<code>jobbdator_koppla_nnk_skyddskategori.py</code> → <code>forbered_gdb_for_publicering.py</code>) varje gång lagret byggs om. Lämna dem orörda.</p>
+<p>Visas i popupens avsnitt <em>Naturtyp (NNK-data)</em> eller som filtrerbara kolumner. Dateringsfälten kommer från NNK Ajourhålla. Övriga fält räknas fram av länets egen pipeline (<code>02_koppla_nnk_skyddskategori.py</code> → <code>04_forbered_gdb_for_publicering.py</code>) varje gång lagret byggs om. Lämna dem orörda.</p>
 <h3 id="startdatum-slutdatum-senaste-inventering">Startdatum / Slutdatum senaste inventering</h3>
 <p><code>habitat_period_lastdata_start</code> / <code>habitat_period_lastdata_end</code> · datum, visas som årtal i popupen<br />
 Slutdatum är när naturtypen senast bedömdes, startdatum gången före. Vid en faktisk förändring ska datumen avgränsa perioden då förändringen skedde (Handledningen, bilaga 1). Fälten är nya och tomma för nästan alla ytor. <strong>Uppdatera framför allt slutdatum när du granskar</strong> — det är det enda sättet att besvara FAQ fråga 4 om hur aktuell bedömningen är. Motsvarar blankettens <em>År för senaste bedömning</em>.</p>
