@@ -223,7 +223,7 @@ const YTOR = [
  {nr:4, kod:"6410", namn:"Fuktängar", ha:4.3, status:"Icke fullgod", andr:2009, skiften:"Nej", utan:"alla år", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
   utfall:"ifg", motiv:"Som yta 3."},
  {nr:5, kod:"6510", namn:"Slåtterängar i låglandet", ha:2.3, status:"Fullgod", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
-  utfall:"eo", motiv:"Obruten hävd sedan 2015 stöder statusen, men R7A kräver TUVA högst 10 år gammal och en BIDOS-typ med TUVA äldre än 15 år blir till fält. Statusen står kvar. Bra fältobjekt — sannolikt stämmer den."},
+  utfall:"eo", motiv:"Obruten hävd sedan 2015 stöder statusen, men R7A kräver TUVA från 2020 eller en aktuell uppföljning, och en BIDOS-typ med TUVA äldre än 15 år blir till fält. Statusen står kvar. Bra fältobjekt — sannolikt stämmer den."},
  {nr:6, kod:"6510", namn:"Slåtterängar i låglandet", ha:0.4, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
   utfall:"eo", motiv:"Som yta 1."},
  {nr:7, kod:"6270", namn:"Silikatgräsmarker", ha:1.2, status:"Fullgod", andr:2011, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
@@ -403,11 +403,11 @@ const STEG = [
   ],
   mer: () => obs('<b>Till fält är ett fullgott utfall.</b> FAQ 11 och 22: där tillståndet inte är tydligt ska man inte gissa. Ett dokumenterat "vet inte, och det här behöver kontrolleras" är bättre än en bekräftelse utan grund.') + `<h3>Vad hävdvärdena betyder</h3>` + tab(['Värde','Betyder','I R7A'],[
       ['Hävd enligt skiften: Ja','Bete eller slåtter varje år 2015–2025 (eller sedan typen sattes)','Uppfyller hävdvillkoret för fullgod. Kontrollera ändå orto och TUVA.'],
-      ['Delvis','Hävd vissa år. <i>År utan bete/slåtter</i> visar vilka','Ett luckår 2015 är troligen brist i skiftesdata. Tre år eller mer i rad utan hävd → icke fullgod. Enstaka luckor → inte obruten, alltså inte fullgod.'],
+      ['Delvis','Hävd vissa år. <i>År utan bete/slåtter</i> visar vilka','Ett luckår 2015 är troligen brist i skiftesdata. Tre år eller mer i rad utan hävd → icke fullgod, utom när hävden tagits upp igen och pågått minst tre år i följd (t.ex. efter restaurering) → till fält. Enstaka luckor → inte obruten, alltså inte fullgod.'],
       ['Nej','Ytan träffar skiften men aldrig bete eller slåtter','Tyder på upphörd hävd → pröva icke fullgod mot ortot.'],
       ['Oklart','Ingen skiftesträff alls','Inget belägg åt något håll. Bete utan stöd syns inte här — kolla SkötselDOS och TUVA.'],
-      ['TUVA högst 10 år','Aktuell inventering','Krävs för fullgod tillsammans med obruten hävd och orto.'],
-      ['TUVA 11–15 år','Styrker typen','Räcker inte för fullgod.'],
+      ['TUVA från 2020','Aktuell inventering','Krävs för fullgod tillsammans med obruten hävd och orto (eller en uppföljning högst 10 år med utmärkt hävd). Välhävdad TUVA räknas som hävd även utan skiften. Negativ notering, t.ex. tydlig igenväxning → till fält.'],
+      ['TUVA före 2020, högst 15 år','Styrker typen','Räcker inte för fullgod.'],
       ['TUVA äldre än 15 år','Räknas inte som aktuellt','BIDOS-typ med så gammal TUVA → till fält.'],
       ['TUVA-påverkan: gödsling tydlig','Negativ notering','Pröva icke fullgod — om inventeringen är aktuell.']
     ]),

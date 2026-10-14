@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.7 · 2026-10-09** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7B: laserflaggans trösklar låsta efter kalibrering; flaggan ensam räcker inte för *icke fullgod*. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.8 · 2026-10-14** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* R7 följer samma skrivbordsprinciper som KartLits-underlaget 2027: bevarandeplanens fastställelseår är inte året för underlaget, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -230,16 +230,16 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 | Utfall | Villkor |
 |---|---|
-| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS), TUVA högst 10 år gammal utan negativa noteringar, och orto/IR-orto utan igenväxning, plöjning eller gödsling. |
-| Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, eller ortot visar igenväxning. Typen behålls (R1). |
-| Till fält | Underlagen motsäger varandra; BIDOS-typ utan TUVA eller med TUVA äldre än 15 år; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
+| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS från 2020, eller välhävdad TUVA från 2020), ett aktuellt belägg för tillståndet (TUVA från 2020 utan negativa noteringar, eller en uppföljning högst 10 år gammal med alla punkter bra eller *utmärkt hävd*), och orto/IR-orto utan igenväxning, plöjning eller gödsling. |
+| Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, ortot visar igenväxning, eller en uppföljning högst 10 år gammal anger att *akuta åtgärder krävs*. Typen behålls (R1). |
+| Till fält | Underlagen motsäger varandra; hävd belagd men inget aktuellt belägg för tillståndet (TUVA före 2020, eller en uppföljning som anger att *åtgärder krävs*); hävd som har tagits upp igen efter ett uppehåll; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
 
 **Underlag för hävden — jordbruksskiften.** Granskningslagret har fältet *Hävd enligt jordbruksskiften* (`havd_skiften`), framräknat ur Jordbruksverkets årslager av jordbruksskiften 2015–2025 (grödkoder för bete och slåtter). Ett år räknas som hävdat när minst 50 % av ytan ligger på bete- eller slåtterskifte.
 
 | Värde | Betyder | Så används det i R7A |
 |---|---|---|
 | Ja | Hävd varje år från typens startår, eller från 2015 | Uppfyller hävdvillkoret för *fullgod*. Kontrollera ändå orto och TUVA. |
-| Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod*. |
+| Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod* — utom när hävden har tagits upp igen och pågått minst tre år i följd fram till senaste skiftesåret (t.ex. efter en restaurering). Då är hävden inte upphörd, men tillståndet efter uppehållet är okänt: *till fält*. |
 | Nej | Ytan träffar skiften men aldrig bete | Även en smal kantträff mot åker räcker, så värdet säger lite på skogs- och myrytor. På hävdberoende typer tyder det på upphörd hävd — pröva *icke fullgod* mot ortot. |
 | Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
 
@@ -249,16 +249,19 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 | Läge | Så används det i R7A |
 |---|---|
-| TUVA högst 10 år, välhävdad, utan negativa noteringar | Uppfyller TUVA-villkoret för *fullgod*. Hävden sedan inventeringen ska ändå synas i skiftena (*Ja*) eller i skötselavtal/SkötselDOS. |
-| TUVA 11–15 år | Styrker typen och att marken hävdades då, men räcker inte för *fullgod*. Tillståndet avgörs av skiftena och ortot. Ger de inget tydligt svar: *till fält*. |
+| TUVA från 2020, välhävdad, utan negativa noteringar | Uppfyller TUVA-villkoret för *fullgod*, och räknas som belägg för hävd även där skiftena saknas (bete utan stöd). Gränsen 2020 är densamma som i KartLits-underlaget. |
+| TUVA från 2020 med negativ notering | Hävden kan vara belagd, men tillståndet är inte det: *till fält*. Visar TUVA-objektet tydlig igenväxning på en del av objektet gäller det även när hävdstatusen är *Välhävdad* — procenten i hävdstatusen avser objektet, inte NNK-ytan. |
+| TUVA före 2020, högst 15 år | Styrker typen och att marken hävdades då, men räcker inte för *fullgod*. Tillståndet avgörs av skiftena och ortot. Ger de inget tydligt svar: *till fält*. |
 | TUVA äldre än 15 år | Räknas inte som aktuellt underlag. Finns inget annat underlag (skiften *Oklart*, inget skötselavtal eller SkötselDOS, ortot otydligt) blir utfallet ***till fält***. Gäller även när TUVA-objektet ser välhävdat ut. |
 | Negativ notering i TUVA | *Ingen hävd*, *Ohävdad (restaurerbar)*, *Ej aktuell*, igenväxning *Tydlig* eller *Igenväxt*, tydlig produktionshöjande påverkan (gödsling) eller tillskottsutfodring. Pröva *icke fullgod* mot skiftena och ortot. Visar skiftena *Ja* efter inventeringsåret kan hävden ha tagits upp igen: *till fält*. |
-| Skiften *Oklart* men TUVA-träff | 307 ytor. Bete utan stöd syns inte i skiftena men kan finnas i TUVA. TUVA högst 15 år kan ersätta skiftena som belägg för hävd vid inventeringen. Äldre än så: raden ovan. |
-| Skiften och TUVA säger emot varandra | T.ex. skiften *Ja* och TUVA *Ingen hävd*, eller skiften *Nej* och TUVA *Välhävdad*: *till fält*. |
+| Skiften *Oklart* men TUVA-träff | 307 ytor. Bete utan stöd syns inte i skiftena men kan finnas i TUVA. Välhävdad TUVA från 2020 räknas som belägg för hävd i dag; äldre TUVA visar bara hävden vid inventeringen. |
+| Skiften och TUVA säger emot varandra | T.ex. skiften *Ja* och TUVA *Ingen hävd*, eller skiften *Nej* (eller *Delvis* med tre år eller mer utan hävd) och TUVA från 2020 *Välhävdad*: *till fält*. |
 
 Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (`tuva_antal_objekt` > 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i `tuva_naturtyp` gäller hela TUVA-objektet, inte NNK-ytan. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken *Öppna i TUVA* i popupen).
 
 **Underlag för hävden — SkötselDOS.** Sedan 2026-10-01 har granskningslagret fält ur Metrias SkötselDOS-uttag. `skdos_havd_typ` och `skdos_havd_senaste_ar` visar utförd bete eller slåtter enligt reservatsförvaltningen (486 ytor, 159 hävdberoende). Det är det underlag som skiftena saknar för bete utan stöd. `uppf_*` sammanfattar uppföljningspunkterna för naturtyper (målindikatorer, 2015–2022) inom ytan (101 ytor).
+
+**Underlag för tillståndet — länsstyrelsens uppföljningar.** *Ny 2026-10-14.* Daterade uppföljningar som länsstyrelsen själv låtit göra, t.ex. ängs- och betesmarksuppföljningen 2018 (hävdstatus per lokal: *utmärkt hävd*, *åtgärder krävs*, *akuta åtgärder krävs*) och strandängsuppföljningen 2019 (andel provytor med typiska och negativa arter). De kopplas per område och naturtyp; uppföljningar utan naturtyp gäller områdets hävdtyper. Högst 10 år gamla: *akuta åtgärder krävs* ger *icke fullgod* (villkor: att ortot inte visar att bristerna åtgärdats sedan dess), *åtgärder krävs* hindrar *fullgod*, *utmärkt hävd* räknas som aktuellt belägg. Uppföljningar där bara GPS-punkter finns kvar (rikkärren 2008) används inte.
 
 | Läge | Så används det i R7A |
 |---|---|
@@ -358,22 +361,17 @@ Som kontroll av att sumpskogstyperna (9006, 9080, 9740, 9750) och myrarna ligger
 
 Popupen visar året för planens gällande version på raden *Bevarandeplan, fastställd (år)* (`bevarandeplan_ar`): fastställelsen, eller den senaste uppdateringen om planen uppdaterats. Året är utläst ur planerna själva och finns för alla 197 områden. 185 planer är från 2016 eller senare, 3 från 2014–2015 (två av dem är reservatens skötselplaner som också gäller som bevarandeplan) och 9 från 2005–2009.
 
-**Typen.** Planen räknas som stöd för att typen är rimlig (förutsättningen ovan) bara om båda villkoren är uppfyllda:
+**Fastställelseåret är inte året för underlaget** (ändrat 2026-10-14). Året är ett beslutsdatum — 90 av länets planer fastställdes samma dag, 2016-12-21 — och säger inte när typen eller tillståndet bedömdes. Nästan ingen plan anger vad tillståndsbedömningen bygger på, och de inventeringar planerna hänvisar till är i regel från 1990-talet och början av 2000-talet. Samma princip gäller i KartLits-underlaget till Naturvårdsverket 2027. För de planer som anger ett tillstånd finns den senaste inventering planen hänvisar till utläst (internt underlag), och det är det året R7 räknar med.
+
+**Typen.** Planen räknas som stöd för att typen är rimlig (förutsättningen ovan) bara om alla villkoren är uppfyllda:
 
 1. Den gällande versionen är fastställd **efter karteringen** av ytan. För BIDOS-ytor är karteringen i regel från 2009–2011.
 2. Planen bygger på **eget underlag** och upprepar inte bara basinventeringen eller regeringsbeslutet. Skriver planen att bedömningsunderlaget är bristfälligt, eller att inventering behövs för att avgöra om typen uppfyller kraven, räknas den inte som stöd för den typen.
+3. Det underlaget är **nyare än karteringen**. Är den senaste inventering planen hänvisar till äldre än karteringen stöder planen inte typen. Är inventeringsåret inte utläst blir stödet *Villkorat*: läs planen.
 
-Det andra villkoret går bara att pröva i själva dokumentet. Läs därför planens avsnitt om typen och om bevarandeåtgärder (steg 3 i bedömningsguiden).
+Villkor 2 och 3 går bara att pröva i själva dokumentet. Läs därför planens avsnitt om typen, om bevarandeåtgärder och referenslistan (steg 3 i bedömningsguiden).
 
-**Tillståndet.** Planens bevarandetillstånd per typ (*Gynnsamt*, *Ej gynnsamt*, *Okänt*; blankettens kolumn *Bevarandestatus*) är ett myndighetsomdöme från när planen skrevs. Planen säger sällan vad det bygger på, och ett bevarandemål är inte detsamma som gott tillstånd (NV:s preliminära vägledning 2026-09-02). Därför gäller samma åldersgränser som för TUVA:
-
-| Planens ålder (gällande version) | Så används tillståndet i R7 |
-|---|---|
-| Högst 10 år | Styrker utfallet men räcker aldrig ensamt för *fullgod*. *Ej gynnsamt*: pröva *icke fullgod* mot skiften, SkötselDOS och ortot, som en negativ notering i TUVA. |
-| 11–15 år | Styrker typen men inte tillståndet. |
-| Äldre än 15 år | Räknas inte som aktuellt underlag för tillståndet. |
-
-Gränsen räknas från granskningsåret. 2027 passerar de 90 planerna från 2016 gränsen till 11–15 år.
+**Tillståndet.** Planens bevarandetillstånd per typ (*Gynnsamt*, *Ej gynnsamt*, *Okänt*; blankettens kolumn *Bevarandestatus*) är ett myndighetsomdöme som inte går att datera. Ett bevarandemål är inte heller detsamma som gott tillstånd (NV:s preliminära vägledning 2026-09-02). R7 använder därför aldrig planens tillstånd som eget belägg: det står i motivet med den senaste inventering planen hänvisar till ("bevarandeplan (fastställd 2016, senaste inventering 2000): gynnsamt"), och det styrker utfallet bara där ett nyare skrivbordsunderlag — hävd i skiften, SkötselDOS, TUVA från 2020, avverkning — pekar åt samma håll. Säger planen *Ej gynnsamt* och övriga underlag *fullgod* är det en motsägelse, och säkerheten blir låg.
 
 #### R7-omprövning · ytor som redan har status
 
@@ -416,6 +414,8 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 | Kontrollera | Manuella kontroller med det lager i webbGIS där de görs, t.ex. "IR-orto senaste år: öppen hävdad mark utan igenväxning? [LM Ortofoton årsvis IR]". |
 
 Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raderna *Förslag (R7)*, *Motiv* och *Kontrollera*) och i en intern Excel-fil med områdessök, en summering per område och en flik per batch. Formulärfälten fylls fortfarande i av granskaren. Förslaget är inget belägg i sig — det är en sammanställning av beläggen. Skriptet tolkar inte ortofoto, läser inte bevarandeplanerna och bedömer inte död ved.
+
+**Ändrat 2026-10-14:** bevarandeplanen dateras med den senaste inventering den hänvisar till, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår (se R7A). I en provkörning ändrades förslaget för drygt 4 % av R7-ytorna, främst fler *Typ ej styrkt* där planen var det enda stödet för typen men bygger på inventeringar äldre än karteringen. I Excel-filens *Områdessök* står de fyra tabellerna under varandra.
 
 **Första körningen (2026-10-08, utan VISS):** 6 902 ytor omfattas av R7, 6 086 att bedöma och 816 att ompröva. Av de 6 086 har 4 200 inget underlag nyare än karteringen som stöder typen (*Typ ej styrkt*), främst skog (9010), skär och klippor (1621) och hällmarker (8230), där varken TUVA, typiska arter eller en ny bevarandeplan finns. Förutsättningen *typen ska vara rimlig* styr alltså mer än delreglerna. Om ortot får räcka som stöd för typen i gruppen Stabila och för skog med laserdata är en fråga för piloten. Tills vidare gäller regeln som den står, och kolumnen *Om typen bekräftas* visar vad utfallet blir om typen godtas.
 
@@ -565,6 +565,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
 - **2.6** (2026-10-09) — avsnitt 5, R7B: NV:s preliminära svar om 9010/9050 och 2026-kriterierna (befintliga ytor behöver troligen inte prövas om, budskap i november; fältmanual före årsskiftet).
 - **2.5** (2026-10-09) — avsnitt 5, R7-piloten: fältkontrollen görs 2027, inget konsultuppdrag hösten 2026.
