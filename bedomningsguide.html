@@ -347,6 +347,7 @@ const STEG = [
     + obs('<b>Grupp är inte batch.</b> Batch (S, A, B, C, D) är arbetsordningen per område. Gruppen (Hävd, Skog, Våtmark, Stabila) är regeln per yta. Floden ligger i batch B men har ytor i två grupper.'),
   popup: [
     ['Bedömning vid skrivbordet (R7)','Förslag (R7), Motiv, Kontrollera','Förslaget till utfall med säkerhet och villkor, vilka underlag det bygger på och vad du ska kontrollera, med lager inom hakparentes. Byggs av bygg_r7_forslag.py.'],
+    ['Bedömning vid skrivbordet (R7)','Lager för gruppen','Vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Gäller alla R7-ytor, även de som saknar rad <i>Kontrollera</i>.'],
     ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp (R7)','Vilken delregel som gäller: Hävd (R7A), Skog (R7B), Våtmark (R7C) eller Stabila (R7D). Räknas fram ur naturtypskoden.'],
     ['','Statusens ålder','Hur gammal den nuvarande statusen är, så gott det går att avgöra.'],
     ['','Vad gäller','Bedöm, ompröva eller ingår inte.'],
@@ -393,7 +394,7 @@ const STEG = [
     'Läs <i>Underlag</i>-raderna i sektionen <i>Bedömning vid skrivbordet (R7)</i>: varje underlag har år och "nyare/inte nyare än statusen".',
     'Hävdytor: läs sektionen <i>Hävd enligt jordbruksskiften och TUVA</i> — skiften, år utan bete/slåtter, TUVA-hävdstatus och påverkan, SkötselDOS och uppföljning.',
     'Titta i ortot och IR-ortot efter igenväxning, plöjning, gödsling eller nya diken.',
-    'Gör kontrollerna i förslagets lista <i>Kontrollera</i>, i de lager som står inom hakparentes.',
+    'Gör kontrollerna i förslagets lista <i>Kontrollera</i>, i de lager som står inom hakparentes. Raden <i>Lager för gruppen</i> visar vilka lager du tänder för gruppen i övrigt.',
     '<b>Ej bedömd status:</b> gå igenom gruppens delregel (R7A–R7D) och välj det utfall vars villkor är uppfyllda.',
     '<b>Har status:</b> bekräfta bara om nyare underlag uppfyller samma villkor som delregeln kräver. Föreslå ändring bara om nyare underlag tydligt visar annat.',
     'Räcker inte underlaget: låt statusen stå och notera vad som saknas. Det är ett godtagbart utfall.',
