@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -273,7 +273,7 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 - **Bedömningsgrupp (R7)** — vilken delregel i metodiken som gäller (Hävd, Skog, Våtmark, Stabila). Räknas fram ur naturtypskoden.
 - **Statusens ålder** — slutdatum senaste inventering om det finns, annars året då NNK-objektet senast redigerades och om statusen kommer från basinventeringen (BIDOS). Redigeringsåret är bara en övre gräns: ändringen kan ha gällt vilket attribut som helst, så statusen kan vara äldre.
-- **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*.
+- **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*. Sedan 2026-10-14 står *ingår inte* också för ytor som ligger utanför Natura 2000 och naturreservat (Skyddskategori *Ingen matchning*: mindre än 1 % av ytan och under 0,25 ha inom något område, ytan kan tangera gränsen). Raden läser `skyddskategori`, som redan finns i tjänsten, så den fungerar så fort uttrycket klistrats in.
 - **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.
 
 **Tillägg 2026-10-08:** sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: **Förslag (R7)** (utfall, säkerhet och villkor), **Motiv** (underlagen med år och eventuella motsägelser) och **Kontrollera** (manuella kontroller med lager inom hakparentes). Fälten kommer från `skogsregister_for_granskning.csv`, `viss_for_granskning.csv` och `r7_forslag_for_granskning.csv` och måste vara synliga i Pro före Overwrite (de står i `EXTRA_VISIBLE_FIELDS` i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.
@@ -314,6 +314,11 @@ var grupp = When(
     Includes(sta, kod), "Stabila (R7D)",
     null);
 
+// Utanför skyddade områden (2026-10-14): koppla-skriptet sätter "Ingen matchning" när
+// mindre än 1 % av ytan och under 0,25 ha ligger inom Natura 2000 eller naturreservat.
+var utanfor = DefaultValue(F("skyddskategori"), "") == "Ingen matchning"
+    || Find("utanför skyddat område", DefaultValue(F("r7f_utfall"), "")) > -1;
+
 // Statusens ålder
 var status = DefaultValue(F("naturtypsstatus_text"), "");
 var urs = DefaultValue(F("ursprung_text"), "");
@@ -338,6 +343,8 @@ var harStatus = Find("ullgod", status) > -1;   // Fullgod / Icke fullgod
 var vad = "";
 if (IsEmpty(grupp)) {
     vad = "Ingår inte i R7 (marin, obestämd eller icke-Natura-naturtyp).";
+} else if (utanfor) {
+    vad = "Ingår inte i R7: ytan ligger utanför Natura 2000 och naturreservat (tangerar högst gränsen).";
 } else if (ejBedomd) {
     vad = "Ej bedömd status: bedöm enligt " + grupp + ".";
 } else if (harStatus) {
@@ -346,7 +353,7 @@ if (IsEmpty(grupp)) {
 } else {
     vad = "R7 gäller inte för den här statusen.";
 }
-if (Includes(dodved, kod)) {
+if (Includes(dodved, kod) && !utanfor) {
     vad += " 9010/9050 kan inte bli fullgod vid skrivbordet (död ved).";
 }
 
@@ -476,7 +483,7 @@ if (grupp == "Hävd (R7A)") {
 // Tillägg efter ytans egna signaler
 if (!IsEmpty(grupp) && grupp != "Hävd (R7A)" && !IsEmpty(dik) && dik > 0) { LagTill("NV Dikeskartering"); }
 if (!IsEmpty(F("skr_utford_ar")) || !IsEmpty(F("skr_anmald_ar"))) { LagTill("SKS Avverkningsinformation"); }
-if (Count(lager) > 0) { Rad("r7_lager", "Lager för gruppen", Concatenate(lager, " · ")); }
+if (Count(lager) > 0 && !utanfor) { Rad("r7_lager", "Lager för gruppen", Concatenate(lager, " · ")); }
 
 if (Count(infos) == 0) {
     return { type: "fields", title: "Bedömning vid skrivbordet (R7)",
