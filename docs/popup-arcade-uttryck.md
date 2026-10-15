@@ -280,6 +280,8 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Tillägg 2026-10-14:** sist i sektionen står **Lager för gruppen**: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. Den kompletterar *Kontrollera*, som bara finns där förslaget har något specifikt att kontrollera (ungefär 6 600 av 15 800 ytor). Ytor utanför R7 får ingen lista.
 
+**Tillägg 2026-10-15:** för hävdytor anger *Lager för gruppen* vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet `havd_ar_utan_bete`) och statusens år (2003 om statusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. *Förslag (R7)* skriver numera *Ej omprövad – underlaget pekar mot …* utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när `r7_forslag_for_granskning.csv` har byggts om och lagret skrivits över.
+
 Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **Statusens ålder läses ur heltalsfältet `nnk_andrad_ar`**, som `04_forbered_gdb_for_publicering.py` (steg 1d) räknar fram ur NV:s `last_edited_date`. NV:s fält går inte att publicera: det är *Date, Time and Timezone Offset* och ger fel 00403 (konstaterat 2026-10-06). Låt `last_edited_date` vara avstängt och se till att `nnk_andrad_ar` är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.
 
 ```js
@@ -451,7 +453,23 @@ if (grupp == "Hävd (R7A)") {
     LagTill("LM Ortofoton årsvis IR och färg (senaste och äldsta år)");
     LagTill("LM Ortofoton årsvis Bildsömmar (fotodatum)");
     LagTill("SJV Ängs- och betesmarksinventeringen");
-    LagTill("SJV Jordbruksblock");
+    // Jordbruksblock (2026-10-15): årtalen per yta – senaste året, åren utan bete/slåtter i
+    // skiftena och statusens år. Lagret finns per år 2003–2025 i appen.
+    var blockAr = [];
+    var luck = Split(Replace(DefaultValue(F("havd_ar_utan_bete"), ""), " ", ""), ",");
+    for (var i in luck) {
+        var y = Number(luck[i]);
+        if (!IsNan(y) && y >= 2003 && y < 2025) { Push(blockAr, Text(y)); }
+    }
+    var bl = "SJV Jordbruksblock 2025 (senaste)";
+    if (Count(blockAr) > 0) { bl += ", " + Concatenate(blockAr, ", ") + " (luckåren)"; }
+    if (!IsEmpty(statusAr) && statusAr < 2025) {
+        var sb = Max(statusAr, 2003);
+        if (!Includes(blockAr, Text(sb))) {
+            bl += ", " + sb + IIf(statusAr < 2003, " (äldsta året; statusen är från " + statusAr + ")", " (statusens år)");
+        }
+    }
+    LagTill(bl);
     LagTill("Historiska underlag (Ekonomiska kartan, Häradskartan)");
 } else if (grupp == "Skog (R7B)") {
     LagTill("LM Ortofoton årsvis IR");

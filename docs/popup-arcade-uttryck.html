@@ -360,6 +360,7 @@ return {
 </ul>
 <p><strong>Tillägg 2026-10-08:</strong> sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: <strong>Förslag (R7)</strong> (utfall, säkerhet och villkor), <strong>Motiv</strong> (underlagen med år och eventuella motsägelser) och <strong>Kontrollera</strong> (manuella kontroller med lager inom hakparentes). Fälten kommer från <code>skogsregister_for_granskning.csv</code>, <code>viss_for_granskning.csv</code> och <code>r7_forslag_for_granskning.csv</code> och måste vara synliga i Pro före Overwrite (de står i <code>EXTRA_VISIBLE_FIELDS</code> i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.</p>
 <p><strong>Tillägg 2026-10-14:</strong> sist i sektionen står <strong>Lager för gruppen</strong>: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. Den kompletterar <em>Kontrollera</em>, som bara finns där förslaget har något specifikt att kontrollera (ungefär 6 600 av 15 800 ytor). Ytor utanför R7 får ingen lista.</p>
+<p><strong>Tillägg 2026-10-15:</strong> för hävdytor anger <em>Lager för gruppen</em> vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet <code>havd_ar_utan_bete</code>) och statusens år (2003 om statusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. <em>Förslag (R7)</em> skriver numera <em>Ej omprövad – underlaget pekar mot …</em> utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när <code>r7_forslag_for_granskning.csv</code> har byggts om och lagret skrivits över.</p>
 <p>Uttrycket läser fälten dynamiskt med <code>Expects($feature, "*")</code>, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. <strong>Statusens ålder läses ur heltalsfältet <code>nnk_andrad_ar</code></strong>, som <code>04_forbered_gdb_for_publicering.py</code> (steg 1d) räknar fram ur NV:s <code>last_edited_date</code>. NV:s fält går inte att publicera: det är <em>Date, Time and Timezone Offset</em> och ger fel 00403 (konstaterat 2026-10-06). Låt <code>last_edited_date</code> vara avstängt och se till att <code>nnk_andrad_ar</code> är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.</p>
 <pre><code class="language-js">// Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
 // Grupp, statusens ålder och vilka underlag som är nyare än statusen.
@@ -529,7 +530,23 @@ if (grupp == &quot;Hävd (R7A)&quot;) {
     LagTill(&quot;LM Ortofoton årsvis IR och färg (senaste och äldsta år)&quot;);
     LagTill(&quot;LM Ortofoton årsvis Bildsömmar (fotodatum)&quot;);
     LagTill(&quot;SJV Ängs- och betesmarksinventeringen&quot;);
-    LagTill(&quot;SJV Jordbruksblock&quot;);
+    // Jordbruksblock (2026-10-15): årtalen per yta – senaste året, åren utan bete/slåtter i
+    // skiftena och statusens år. Lagret finns per år 2003–2025 i appen.
+    var blockAr = [];
+    var luck = Split(Replace(DefaultValue(F(&quot;havd_ar_utan_bete&quot;), &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;,&quot;);
+    for (var i in luck) {
+        var y = Number(luck[i]);
+        if (!IsNan(y) &amp;&amp; y &gt;= 2003 &amp;&amp; y &lt; 2025) { Push(blockAr, Text(y)); }
+    }
+    var bl = &quot;SJV Jordbruksblock 2025 (senaste)&quot;;
+    if (Count(blockAr) &gt; 0) { bl += &quot;, &quot; + Concatenate(blockAr, &quot;, &quot;) + &quot; (luckåren)&quot;; }
+    if (!IsEmpty(statusAr) &amp;&amp; statusAr &lt; 2025) {
+        var sb = Max(statusAr, 2003);
+        if (!Includes(blockAr, Text(sb))) {
+            bl += &quot;, &quot; + sb + IIf(statusAr &lt; 2003, &quot; (äldsta året; statusen är från &quot; + statusAr + &quot;)&quot;, &quot; (statusens år)&quot;);
+        }
+    }
+    LagTill(bl);
     LagTill(&quot;Historiska underlag (Ekonomiska kartan, Häradskartan)&quot;);
 } else if (grupp == &quot;Skog (R7B)&quot;) {
     LagTill(&quot;LM Ortofoton årsvis IR&quot;);
