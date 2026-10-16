@@ -287,7 +287,7 @@ const STEG = [
   mal:'Hitta området i kartan, få överblick i förslagsfilen och lägg upp raden i loggen. De grå kolumnerna i loggen fylls i när du skriver SITECODE.',
   gor:[
     'Skriv <b>{{SITE}}</b> eller <b>{{NAMN}}</b> i <i>Sök i kartan</i> och zooma till området.',
-    'Skriv samma SITECODE eller namn i den gula cellen i <i>Områdessök</i>. Raden under visar hur många ytor som fått vilket förslag, hur många som har låg säkerhet och om bevarandeplanen behöver läsas.',
+    'Skriv samma SITECODE eller namn i den gula cellen i <i>Områdessök</i>. Raden under visar hur många ytor som fått vilket förslag, översikten under den ett förslag per yta med motiv, hur många som har låg säkerhet och om bevarandeplanen behöver läsas.',
     'Ny rad i loggen: datum, ditt namn{{GRANSKARE}} och SITECODE (skriv eller välj i listan).',
     'Kontrollera att de grå kolumnerna fylldes i. Står det <i>okänd sitecode</i> är koden felstavad.',
     'Sätt <i>Status</i> = Påbörjad.'
@@ -334,7 +334,7 @@ const STEG = [
 { id:'sortera', titel:'Yta för yta: läs förslaget',
   mal:'Från och med nu går du yta för yta: steg 5–8 för en yta, sedan nästa. Förslaget säger vilken regel som gäller, vilket utfall registren pekar mot och vad du måste kontrollera själv.',
   gor:[
-    'Klicka på ytan och läs sektionen <i>Bedömning vid skrivbordet (R7)</i>: <i>Bedömningsgrupp</i>, <i>Statusens ålder</i>, <i>Vad gäller</i> och de tre förslagsraderna <i>Förslag (R7)</i>, <i>Motiv</i> och <i>Kontrollera</i>. Samma sak, och förslaget till varje formulärfält, står i förslagsfilens tabell 3 och 4.',
+    'Klicka på ytan och läs sektionen <i>Bedömning vid skrivbordet (R7)</i>: <i>Bedömningsgrupp</i>, <i>Statusens ålder</i>, <i>Vad gäller</i> och de tre förslagsraderna <i>Förslag (R7)</i>, <i>Motiv</i> och <i>Kontrollera</i>. Samma sak, och förslaget till varje formulärfält, står i förslagsfilens flikar <i>3 Förslag till formuläret</i> och <i>4 Kontrollera</i>.',
     'Ytor med <b>Ej bedömd status</b>: bedöm enligt gruppens delregel (R7A–R7D). Ytor som redan är <b>Fullgod</b> eller <b>Icke fullgod</b>: ompröva (R7-omprövning) — statusen räknas inte som belägg. Övriga ingår inte.',
     'Läs <b>säkerheten</b>: Hög = flera samstämmiga underlag, Medel = ett underlag eller ett villkor, Låg = underlagen säger emot varandra. Låg ska alltid kontrolleras extra.',
     'Förslaget tillämpar R7 på det som finns i registren. Det tolkar inte ortofoto, och bevarandeplanens förbehåll om underlaget är hittade med textsökning – läs planen när Kontrollera ber om det. Villkoret i förslaget (t.ex. <i>om IR-ortot inte visar igenväxning</i>) prövar du i steg 6 och 7.'
@@ -429,7 +429,7 @@ const STEG = [
 { id:'lager', titel:'Yta för yta: för in i formuläret',
   mal:'Skriv förslaget för varje yta i webbGIS-formuläret. Det är här bedömningen sparas — inte i loggen.',
   gor:[
-    'Förslagsfilens tabell 3 har ett förslag till varje formulärfält. För in det som håller efter dina kontroller. Ändra det som inte gör det och skriv i kommentaren vad du såg, t.ex. <code>Förslag fullgod ändrat till till fält: IR-orto 2023 visar sly i norra delen</code>.',
+    'Förslagsfilens flik <i>3 Förslag till formuläret</i> har ett förslag till varje formulärfält. För in det som håller efter dina kontroller. Ändra det som inte gör det och skriv i kommentaren vad du såg, t.ex. <code>Förslag fullgod ändrat till till fält: IR-orto 2023 visar sly i norra delen</code>.',
     'Öppna redigeringen för ytan i webbGIS.',
     '<i>Tillstånd</i>: <b>Gott</b> vid fullgod, <b>Icke gott</b> vid icke fullgod, <b>Okänt</b> vid till fält. Lämna tomt när statusen står kvar oprövad.',
     '<i>Kommentar – Tillstånd</i>: regel, utfall och källor med år, t.ex. <code>R7-omprövning R7A: ej omprövad — hävd ej obruten (luckor 2016, 2024), TUVA 2002</code>.',
