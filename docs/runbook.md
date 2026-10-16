@@ -917,7 +917,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 **v43–v48** · **[Johan]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 1. Först efter att du bedömt att underlaget räcker. Granskningslagret är förslagsnivå; NNK är skarpt.
-2. Tillståndsfälten är driftsatta sedan 15 oktober (v42). Checka ut på nytt efter det datumet. Använd förslaget i R7-filens flik *5 Till NNK*: procent gott och inte gott, metod, klassning och en kommentar på högst 255 tecken (metodiken, *Till NNK:s tillståndsfält*).
+2. Tillståndsfälten är driftsatta sedan 15 oktober (v42). En lokalkopia eller arbetsdatabas som togs ut före det datumet saknar fälten – ta i så fall ut en ny. Använd förslaget i R7-filens flik *5 Till NNK*: procent gott och inte gott, metod, klassning och en kommentar på högst 255 tecken (metodiken, *Till NNK:s tillståndsfält*).
 3. Karteringsstatus: 2 Granskad vid skrivbordet för förvaltarkunskap och dokument. 3 Besökt i fält om förvaltaren faktiskt varit där nyligen. 4 Inventerad i fält endast vid standardiserad metodik.
 4. Förändringsorsak: 3 Komplettering i nästan alla fall — kunskapen fanns, den var bara inte registrerad.
 5. Kör toolboxen och checka in per objekt.

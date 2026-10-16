@@ -552,7 +552,7 @@ Kräver minst en **Standard-licens** i ArcGIS Pro (Basic räcker för att skapa 
 - [ ] Tillstånd: `condition_good` + `condition_notgood` högst 100, `condition_method` vald, `condition_date` satt och `condition_comment` högst 255 tecken (standardtexten "Automatsatt värde" ersatt)
 - [ ] Systematiska fel i grundkarteringen rapporterade till `NNK-kartering@metria.se`
 
-> **Tidsordning:** de nya tillståndsattributen är driftsatta sedan 15 oktober 2026. Checka ut på nytt efter det datumet, annars saknas fälten i arbetsdatabasen. Registrera *tillstånd* först när granskningen av området är klar (FAQ fråga 32). Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
+> **Tidsordning:** de nya tillståndsattributen är driftsatta sedan 15 oktober 2026. En lokalkopia eller arbetsdatabas som togs ut före det datumet saknar fälten – ta i så fall ut en ny. Det du hämtar från och med 15 oktober har dem. Registrera *tillstånd* först när granskningen av området är klar (FAQ fråga 32). Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
 
 ---
 
