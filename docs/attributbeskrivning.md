@@ -2,11 +2,11 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
-Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till.
+Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till. Del D är NNK:s nya tillståndsfält, som granskningen till sist förs över till.
 
 ---
 
@@ -589,3 +589,33 @@ Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.
 ### Naturtyp (kod + klartext)
 `naturtyp_kod_text` · text · skrivskyddat  
 NV:s naturtypskod och namn i samma fält, t.ex. "9010 - Taiga". Själva koden (`naturtyp`) finns som egen kolumn att filtrera på.
+
+---
+
+## Del D · NNK:s nya tillståndsfält (driftsatta 15 oktober 2026)
+
+Fälten finns i NNK Ajourhålla (`NNK_Naturaobjekt_yta`), inte i granskningslagret. Fältlistan och domänerna exporterades 2026-10-16. Granskningen sker i granskningslagret, och värdena förs över till NNK när området är klart (FAQ fråga 32). Hur förslaget översätts står i metodiken, avsnitt 5, *Till NNK:s tillståndsfält*.
+
+| Fält (alias) | Typ | Innehåll |
+|---|---|---|
+| `condition_good` (Gott tillstånd (%)) | heltal, standard 0 | Andel av ytan i gott tillstånd |
+| `condition_notgood` (Inte gott tillstånd (%)) | heltal, standard 0 | Andel av ytan i inte gott tillstånd |
+| `condition_unknown` (Okänt tillstånd (%)) | heltal, skrivskyddat, standard 100 | Resten: 100 − gott − inte gott |
+| `condition_method` (Metod tillstånd) | domän `dom_metodtillstand` | 1 Fullständig undersökning eller tillförlitlig beräkning · 2 Huvudsakligen extrapolering från en begränsad mängd data · 3 Expertutlåtande (mycket begränsade data) · 4 Otillräcklig kunskap |
+| `condition_date` (Datum för tillståndsbedömning) | datum | När bedömningen gjordes |
+| `condition_comment` (Kommentar om tillståndsbedömningen) | text, **max 255 tecken**, standard "Automatsatt värde" | Grund och källor med år, kortfattat. Längre text i `kommentar` |
+| `n2000a_t` (Livsmiljötypskod) | text (10) | Livsmiljötypens kod |
+| `naturtypstyp` (Klassning av naturtyp) | domän `dom_naturtypstyp` | 1 Livsmiljötyp · 2 Obestämd livsmiljötyp · 3 Osäker livsmiljötyp – annan naturtyp · 4 Annan naturtyp – övrig mark |
+
+Samtidigt fick `karteringsstatus` värdet 6 *Expertutlåtande*, och etiketterna för `naturtypsstatus` heter nu *Fullgod livsmiljötyp*, *Icke fullgod livsmiljötyp*, *Utvecklingsmark*, *Övrigt, inte livsmiljötyp* och *Ej bedömd status*. Koderna är desamma.
+
+**Från granskningslagret till NNK**
+
+| Granskningslagret: Tillstånd | `condition_good` / `condition_notgood` | `condition_method` |
+|---|---|---|
+| 1 Gott | 100 / 0 | 2 eller 3 vid skrivbordet, 1 bara efter fullständig inventering |
+| 2 Icke gott | 0 / 100 | som ovan |
+| 4 Blandat – se andelar | `procent_gott` / `procent_ej_gott` | som ovan |
+| 3 Okänt – kan ej bedöma | 0 / 0 (okänt 100) | 4 Otillräcklig kunskap |
+| (tomt, statusen står kvar) | registreras inte | – |
+

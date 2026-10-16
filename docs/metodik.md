@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.8 · 2026-10-14** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.9 · 2026-10-16** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7 följer samma skrivbordsprinciper som KartLits-underlaget 2027: bevarandeplanens fastställelseår är inte året för underlaget, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -111,13 +111,13 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 | "Det är rätt livsmiljötyp" | Stämmer livsmiljötyp | `justering` = *Inget behov av justering* | `NATURTYP` oförändrad |
 | "Det är egentligen 9070, inte 9010" | Föreslagen livsmiljötyp 1–3 | `justering` = *Ändring till annan livsmiljötyp*, `livsmiljötyp1–3` | `NATURTYP` |
 | "Det är inte livsmiljötyp än, men kan bli" | Föreslagen livsmiljötyp 1–3 + Utvecklingsmark = Ja | `justering` = *Ändring till utvecklingsmark*, `livsmiljötyp1–3` blir målnaturtyper | `NATURTYPSS` = 3, `MALNATUR1–3` |
-| "Den är i bra skick" | Tillstånd = Gott | `tillstand`, `procent_gott` | `NATURTYPSS` = 1 |
-| "Den är igenvuxen / behöver restaureras" | Tillstånd = Icke gott | `tillstand`, `procent_ej_gott` | `NATURTYPSS` = 2 |
-| "Halva ytan är fin, halva har vuxit igen" | Andel gott / ej gott / osäker (%) | `procent_gott`, `procent_ej_gott`, `procent_osaker` | Nya tillståndsfält, **driftsätts sept 2026** |
-| "Jag vet inte" | Tillstånd = Okänt | `tillstand` = *Okänt (kan ej bedöma)* | `NATURTYPSS` = 5 |
+| "Den är i bra skick" | Tillstånd = Gott | `tillstand`, `procent_gott` | `condition_good` = 100 (`NATURTYPSS` = 1) |
+| "Den är igenvuxen / behöver restaureras" | Tillstånd = Icke gott | `tillstand`, `procent_ej_gott` | `condition_notgood` = 100 (`NATURTYPSS` = 2) |
+| "Halva ytan är fin, halva har vuxit igen" | Andel gott / ej gott / osäker (%) | `procent_gott`, `procent_ej_gott`, `procent_osaker` | `condition_good`, `condition_notgood` (%). `condition_unknown` räknar NNK fram som resten. **Driftsatta 15 okt 2026** |
+| "Jag vet inte" | Tillstånd = Okänt | `tillstand` = *Okänt (kan ej bedöma)* | `condition_good` = `condition_notgood` = 0 (okänt 100 %), `condition_method` = 4 Otillräcklig kunskap |
 | "Gränsen stämmer inte" | Utbredning, behov av justering | `utbredning` | Geometri — **endast om ≥ minsta karteringsenhet** |
-| **På vilken grund** hen vet det | Grund för bedömning | `Kommentar_metod` + `metod` | `KOMMENTAR` |
-| **När** hen senast var där | År för senaste bedömning | `habitat_period_lastdata_end` | Slutdatum senaste inventering |
+| **På vilken grund** hen vet det | Grund för bedömning | `Kommentar_metod` + `metod` | `condition_method` (metod tillstånd) och `condition_comment` (max 255 tecken). Längre text i `KOMMENTAR` |
+| **När** hen senast var där | År för senaste bedömning | `habitat_period_lastdata_end` | Slutdatum senaste inventering. Datum för själva tillståndsbedömningen i `condition_date` |
 | **Vem** som bedömt | Bedömare | `faltinventerare` | `KOMMENTAR` (namn + roll) |
 | **Varför** uppgiften ändras — nästan alltid att kunskapen fanns men aldrig registrerats | — (sätts av dig, se R2 i blanketten) | `forandringsorsak_forslag` (Förändringsorsak, förslag) | `FÖRÄNDRINGSORSAK` |
 | "Det borde någon titta närmare på" | Vad ska kontrolleras | `kontroll1–3`, `kommentar_kontroll` | `KARTERINGS` = 5 + `KOMMENTAR` |
@@ -419,6 +419,24 @@ Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raderna *
 
 **Första körningen (2026-10-08, utan VISS):** 6 902 ytor omfattas av R7, 6 086 att bedöma och 816 att ompröva. Av de 6 086 har 4 200 inget underlag nyare än karteringen som stöder typen (*Typ ej styrkt*), främst skog (9010), skär och klippor (1621) och hällmarker (8230), där varken TUVA, typiska arter eller en ny bevarandeplan finns. Förutsättningen *typen ska vara rimlig* styr alltså mer än delreglerna. Om ortot får räcka som stöd för typen i gruppen Stabila och för skog med laserdata är en fråga för piloten. Tills vidare gäller regeln som den står, och kolumnen *Om typen bekräftas* visar vad utfallet blir om typen godtas.
 
+#### Till NNK:s tillståndsfält (förslag)
+
+*Ny 2026-10-16.* NNK:s nya tillståndsfält driftsattes 15 oktober 2026 (fältlista och domäner exporterade 16 oktober ur NNK_Ajourhalla_Visning). R7-förslaget översätter varje yta till de fälten. Det är ett **förslag** som förs in i NNK först när granskningen är klar och NV:s vägledning medger det (FAQ fråga 32). Det står i förslagsfilens flik *5 Till NNK* och i steg 8 i den interna bedömningsguiden.
+
+| NNK-fält | Typ | Förslaget |
+|---|---|---|
+| `condition_good` (Gott tillstånd, %) | heltal | 100 vid *fullgod*, annars 0 |
+| `condition_notgood` (Inte gott tillstånd, %) | heltal | 100 vid *icke fullgod*. Vid *blandat* den andel ingreppet berör (avverkning eller sänkt trädhöjd i laser). Annars 0 |
+| `condition_unknown` (Okänt tillstånd, %) | skrivskyddat | Räknas fram av NNK som 100 − gott − inte gott. *Till fält* och *typ ej styrkt* blir alltså 100 % okänt |
+| `condition_method` (Metod tillstånd) | domän | 2 *Huvudsakligen extrapolering från en begränsad mängd data* när säkerheten är hög, 3 *Expertutlåtande (mycket begränsade data)* vid medel eller låg säkerhet, 4 *Otillräcklig kunskap* vid *till fält* och *typ ej styrkt*. 1 *Fullständig undersökning* används inte vid skrivbordet |
+| `naturtypstyp` (Klassning av naturtyp) | domän | 1 *Livsmiljötyp*, eller 3 *Osäker livsmiljötyp – annan naturtyp* vid *typ ej styrkt* |
+| `condition_comment` | text, **max 255 tecken** | Delregel, år och utfall, sedan så många hela underlag med år som får plats. Hela motivet står kvar i granskningslagret och kan föras till `KOMMENTAR` |
+| `condition_date` | datum | Sätts vid registreringen |
+
+*Ej omprövad* lämnas tom. Statusen står kvar, och inget nytt tillstånd registreras.
+
+Två saker är inte avgjorda. NV har inte beskrivit hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten. Och valet mellan metod 2 och 3 för skrivbordsbedömningar bör stämmas av mot NV:s vägledning (webbinariet i november). Översättningen ändras på ett ställe (`nnk_falt()` i `bygg_r7_forslag.py`) om NV ger besked.
+
 #### Pilot innan regeln används skarpt
 
 Hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med *Ej bedömd status*. 30 av dem fältkontrolleras, slumpat men med fler ur *icke fullgod* och *till fält*. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.
@@ -427,7 +445,7 @@ Fältkontrollen görs i eget fältarbete 2027. Det blir inget konsultuppdrag hö
 
 #### Oklart i NV:s underlag
 - Naturtypsstatus 1 definieras nu som gynnsam bevarandestatus i området. I basinventeringen betydde den att större delen av ytan uppfyller kriterierna. NV skriver själva att skillnaden "kan diskuteras".
-- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt) kommer hösten 2026, och FAQ fråga 32 rekommenderar att vänta med tillståndsbedömning tills de finns. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är inte beskrivet. Därför förs R7-bedömningar in som förslag i granskningslagret och registreras i NNK först när attributen finns.
+- NNK:s nya tillståndsattribut (procent gott, inte gott och okänt, metod, datum och kommentar) driftsattes 15 oktober 2026. Hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten är fortfarande inte beskrivet. R7-bedömningarna stannar därför som förslag i granskningslagret, med en färdig översättning till NNK-fälten (*Till NNK:s tillståndsfält*), tills granskningen är klar.
 
 ---
 
@@ -531,9 +549,10 @@ Kräver minst en **Standard-licens** i ArcGIS Pro (Basic räcker för att skapa 
 - [ ] `KARTERINGS` uppdaterad — se R3
 - [ ] Slutdatum för senaste bedömning ifyllt — se avsnitt 6
 - [ ] `KOMMENTAR` ifylld med grund och källa — inte tom, aldrig mer tom
+- [ ] Tillstånd: `condition_good` + `condition_notgood` högst 100, `condition_method` vald, `condition_date` satt och `condition_comment` högst 255 tecken (standardtexten "Automatsatt värde" ersatt)
 - [ ] Systematiska fel i grundkarteringen rapporterade till `NNK-kartering@metria.se`
 
-> **Tidsordning:** avvakta med att registrera *tillstånd* i NNK tills de nya attributen driftsatts (15 oktober 2026, FAQ fråga 32). Fram till dess samlar du in via blankett och granskningslager. Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
+> **Tidsordning:** de nya tillståndsattributen är driftsatta sedan 15 oktober 2026. Checka ut på nytt efter det datumet, annars saknas fälten i arbetsdatabasen. Registrera *tillstånd* först när granskningen av området är klar (FAQ fråga 32). Utbredning, livsmiljötyp, karteringsstatus, förändringsorsak och kommentarer kan du registrera direkt.
 
 ---
 
@@ -565,6 +584,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.9** (2026-10-16) — NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
 - **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
 - **2.6** (2026-10-09) — avsnitt 5, R7B: NV:s preliminära svar om 9010/9050 och 2026-kriterierna (befintliga ytor behöver troligen inte prövas om, budskap i november; fältmanual före årsskiftet).

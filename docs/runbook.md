@@ -3,7 +3,7 @@
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
 **Datum:** 2026-10-13 (D2.5 kompletterad med MVM-mätdata via nnk_mvm.py; hävdanalysen räknar kantträffar under 10 % som Oklart). 2026-10-09 (D2.5 VISS-koppling klar: nnk_viss.py hämtar öppna VISS-exporter och Länsstyrelsens karttjänst, ingen API-nyckel). 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 68 uppgifter i 7 arbetspaket, 328 konkreta steg  
+**Omfattning:** 68 uppgifter i 7 arbetspaket, 330 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -424,15 +424,17 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 2. Maila `kartlitsN2000@naturvardsverket.se` i v39 och be om bekräftat datum samt när utbildning ges.
 3. Kontrollera i ArcGIS Pro när attributen dykt upp: checka ut testobjektet igen och titta efter fälten för tillstånd i procent.
 4. Blir det försenat: fyll v40–v43 med arbetspaket C i stället. Ingen tid går förlorad, bedömningarna dokumenteras i fältprotokoll och granskningslager under tiden.
+5. **Utfall 2026-10-16:** driftsatt 15 oktober. Fältlistan och domänerna exporterades ur NNK_Ajourhalla_Visning och ligger i `natura-2000/docs/underlag/handledning/` (`2026-10-16_NNK_Ajourhalla_yta_attribut.txt`, `..._REST_alla_lager.json`, `2026-10-16_NNK_domaner_yta.csv`).
 
 ### D1.2 · Gå igenom den nya attributlistan
 
 **v43** · **[Båda]** · förutsätter D1.1
 
-1. Läs igenom vad som ändrats. Två saker är viktiga: fältnamnen byter från *natura-naturtyp* till *livsmiljötyp*, och tillstånd anges nu som procentuell andel av ytan.
-2. Konsekvensen av procentandelen: du behöver INTE längre dela upp en yta för att ange olika tillstånd. Det sparar mycket geometriarbete.
-3. Namnbytet sker automatiskt — det du redan lagt in påverkas inte.
-4. Uppdatera granskningsrutinen med de nya fälten. Fältprotokollet hanteras i D5.1.
+1. Läs igenom vad som ändrats (attributbeskrivningen, Del D). Nya fält i ytlagret: `condition_good` och `condition_notgood` (%), `condition_unknown` (skrivskyddat, resten), `condition_method` (1 Fullständig undersökning · 2 Extrapolering från begränsade data · 3 Expertutlåtande · 4 Otillräcklig kunskap), `condition_date`, `condition_comment` (högst 255 tecken), `n2000a_t` (livsmiljötypskod) och `naturtypstyp` (1 Livsmiljötyp · 2 Obestämd · 3 Osäker – annan naturtyp · 4 Annan naturtyp – övrig mark).
+2. Fältet `naturtyp` heter fortfarande så. Det är domänens etiketter som bytt till *livsmiljötyp* (t.ex. *Fullgod livsmiljötyp*). Karteringsstatus har fått 6 *Expertutlåtande*.
+3. Konsekvensen av procentandelen: du behöver INTE längre dela upp en yta för att ange olika tillstånd. Det sparar mycket geometriarbete.
+4. Namnbytet sker automatiskt — det du redan lagt in påverkas inte.
+5. Uppdatera granskningsrutinen med de nya fälten. Fältprotokollet hanteras i D5.1.
 
 ### D1.3 · Delta i NV:s utbildning
 
@@ -915,7 +917,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 **v43–v48** · **[Johan]** · förutsätter H5.1, D1.2 · bidrar till *Tillstånd registrerat i NNK där kunskap finns; resten dokumenterat som okänt*
 
 1. Först efter att du bedömt att underlaget räcker. Granskningslagret är förslagsnivå; NNK är skarpt.
-2. Tillståndsfälten först efter driftsättningen 15 oktober (v42).
+2. Tillståndsfälten är driftsatta sedan 15 oktober (v42). Checka ut på nytt efter det datumet. Använd förslaget i R7-filens flik *5 Till NNK*: procent gott och inte gott, metod, klassning och en kommentar på högst 255 tecken (metodiken, *Till NNK:s tillståndsfält*).
 3. Karteringsstatus: 2 Granskad vid skrivbordet för förvaltarkunskap och dokument. 3 Besökt i fält om förvaltaren faktiskt varit där nyligen. 4 Inventerad i fält endast vid standardiserad metodik.
 4. Förändringsorsak: 3 Komplettering i nästan alla fall — kunskapen fanns, den var bara inte registrerad.
 5. Kör toolboxen och checka in per objekt.

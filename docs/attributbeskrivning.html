@@ -93,10 +93,10 @@ tr:last-child td{border-bottom:0}
 </div>
 <h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-nnk-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</h2>
-<p><strong>Version:</strong> 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
+<p><strong>Version:</strong> 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
 <strong>Källor:</strong> blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf</p>
-<p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till.</p>
+<p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till. Del D är NNK:s nya tillståndsfält, som granskningen till sist förs över till.</p>
 <hr />
 <h2 id="del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</h2>
 <h3 id="grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</h3>
@@ -1955,6 +1955,98 @@ Polygonens areal i hektar. Bra för att jämföra mot arealen i bevarandeplanen.
 <h3 id="naturtyp-kod-klartext">Naturtyp (kod + klartext)</h3>
 <p><code>naturtyp_kod_text</code> · text · skrivskyddat<br />
 NV:s naturtypskod och namn i samma fält, t.ex. "9010 - Taiga". Själva koden (<code>naturtyp</code>) finns som egen kolumn att filtrera på.</p>
+<hr />
+<h2 id="del-d-nnks-nya-tillstandsfalt-driftsatta-15-oktober-2026">Del D · NNK:s nya tillståndsfält (driftsatta 15 oktober 2026)</h2>
+<p>Fälten finns i NNK Ajourhålla (<code>NNK_Naturaobjekt_yta</code>), inte i granskningslagret. Fältlistan och domänerna exporterades 2026-10-16. Granskningen sker i granskningslagret, och värdena förs över till NNK när området är klart (FAQ fråga 32). Hur förslaget översätts står i metodiken, avsnitt 5, <em>Till NNK:s tillståndsfält</em>.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Fält (alias)</th>
+<th>Typ</th>
+<th>Innehåll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>condition_good</code> (Gott tillstånd (%))</td>
+<td>heltal, standard 0</td>
+<td>Andel av ytan i gott tillstånd</td>
+</tr>
+<tr>
+<td><code>condition_notgood</code> (Inte gott tillstånd (%))</td>
+<td>heltal, standard 0</td>
+<td>Andel av ytan i inte gott tillstånd</td>
+</tr>
+<tr>
+<td><code>condition_unknown</code> (Okänt tillstånd (%))</td>
+<td>heltal, skrivskyddat, standard 100</td>
+<td>Resten: 100 − gott − inte gott</td>
+</tr>
+<tr>
+<td><code>condition_method</code> (Metod tillstånd)</td>
+<td>domän <code>dom_metodtillstand</code></td>
+<td>1 Fullständig undersökning eller tillförlitlig beräkning · 2 Huvudsakligen extrapolering från en begränsad mängd data · 3 Expertutlåtande (mycket begränsade data) · 4 Otillräcklig kunskap</td>
+</tr>
+<tr>
+<td><code>condition_date</code> (Datum för tillståndsbedömning)</td>
+<td>datum</td>
+<td>När bedömningen gjordes</td>
+</tr>
+<tr>
+<td><code>condition_comment</code> (Kommentar om tillståndsbedömningen)</td>
+<td>text, <strong>max 255 tecken</strong>, standard "Automatsatt värde"</td>
+<td>Grund och källor med år, kortfattat. Längre text i <code>kommentar</code></td>
+</tr>
+<tr>
+<td><code>n2000a_t</code> (Livsmiljötypskod)</td>
+<td>text (10)</td>
+<td>Livsmiljötypens kod</td>
+</tr>
+<tr>
+<td><code>naturtypstyp</code> (Klassning av naturtyp)</td>
+<td>domän <code>dom_naturtypstyp</code></td>
+<td>1 Livsmiljötyp · 2 Obestämd livsmiljötyp · 3 Osäker livsmiljötyp – annan naturtyp · 4 Annan naturtyp – övrig mark</td>
+</tr>
+</tbody>
+</table></div>
+<p>Samtidigt fick <code>karteringsstatus</code> värdet 6 <em>Expertutlåtande</em>, och etiketterna för <code>naturtypsstatus</code> heter nu <em>Fullgod livsmiljötyp</em>, <em>Icke fullgod livsmiljötyp</em>, <em>Utvecklingsmark</em>, <em>Övrigt, inte livsmiljötyp</em> och <em>Ej bedömd status</em>. Koderna är desamma.</p>
+<p><strong>Från granskningslagret till NNK</strong></p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Granskningslagret: Tillstånd</th>
+<th><code>condition_good</code> / <code>condition_notgood</code></th>
+<th><code>condition_method</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Gott</td>
+<td>100 / 0</td>
+<td>2 eller 3 vid skrivbordet, 1 bara efter fullständig inventering</td>
+</tr>
+<tr>
+<td>2 Icke gott</td>
+<td>0 / 100</td>
+<td>som ovan</td>
+</tr>
+<tr>
+<td>4 Blandat – se andelar</td>
+<td><code>procent_gott</code> / <code>procent_ej_gott</code></td>
+<td>som ovan</td>
+</tr>
+<tr>
+<td>3 Okänt – kan ej bedöma</td>
+<td>0 / 0 (okänt 100)</td>
+<td>4 Otillräcklig kunskap</td>
+</tr>
+<tr>
+<td>(tomt, statusen står kvar)</td>
+<td>registreras inte</td>
+<td>–</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <script>
 (function(){

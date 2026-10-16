@@ -437,6 +437,7 @@ const STEG = [
     '<i>Förändringsorsak, förslag</i>: 3 Komplettering när du föreslår en ändring (R2). <i>Granskat?</i> = Ja när ytan är klar.',
     'Gå till nästa yta och börja om från steg 5. När alla ytor är klara: steg 9.'
   ],
+  mer: () => obs('<b>Senare till NNK.</b> NNK:s nya tillståndsfält är driftsatta sedan 15 oktober 2026: gott och inte gott tillstånd i procent (okänt räknas fram), metod, datum och en kommentar på <b>högst 255 tecken</b>. Granskningen görs här i granskningslagret och förs över till NNK när området är klart. Förslagsfilens flik <i>5 Till NNK</i> visar översättningen: Gott → 100 % gott, Icke gott → 100 % inte gott, Okänt → 100 % okänt med metod <i>4 Otillräcklig kunskap</i>. Ej omprövad registreras inte. Se <a href="docs/metodik.html#till-nnks-tillstandsfalt-forslag">metodiken</a> och <a href="docs/attributbeskrivning.html">attributbeskrivningen, Del D</a>.'),
   popup: [
     ['Granskning 2 — Tillstånd','Tillstånd, Kommentar','Ditt förslag. Fullgod → Gott, icke fullgod → Icke gott, till fält → Okänt.'],
     ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod för kontroll','Vad som behöver kontrolleras 2027 och hur. Framåtsyftande.'],
@@ -444,7 +445,7 @@ const STEG = [
     ['Granskning 4 — Granskat','Granskat?','Ja när ytan är klar, Påbörjat om du kommer tillbaka.']
   ],
   logg: null,
-  ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera i fält.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 10</b> (3150, 8,8 ha, Ej bedömd): Tillstånd = Okänt · Kommentar: <code>R7C: till fält. VISS Floden måttlig, styrd av näringsämnen 2011, låg tillförlitlighet, biologin ej klassad. MVM 2017 tot-P 899 µg/l (1 prov).</code> · Vad ska kontrolleras = Funktioner (hydrologi, störningar) · Metod = Fältbesök.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
+  ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera i fält.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 10</b> (3150, 8,8 ha, Ej bedömd): Tillstånd = Okänt · Kommentar: <code>R7C: till fält. VISS Floden måttlig, styrd av näringsämnen 2011, låg tillförlitlighet, biologin ej klassad. MVM 2017 tot-P 899 µg/l (1 prov).</code> · Vad ska kontrolleras = Funktioner (hydrologi, störningar) · Metod = Fältbesök. Till NNK senare: gott 0 %, inte gott 0 % (okänt 100 %), metod 4 Otillräcklig kunskap.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
 
 { id:'logg', titel:'Summera området i granskningsloggen',
   mal:'Avsluta området med en sammanfattning i loggen, så att det går att se vad som är gjort, på vilken grund och vad som återstår.',
