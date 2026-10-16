@@ -332,7 +332,7 @@ Tills budskapet i november finns behandlas alla 9010- och 9050-ytor enligt tabel
 
 **Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. Statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
 
-*Fält i granskningslagret (D2.5, när VISS-kopplingen körts):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter statusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
+*Fält i granskningslagret (D2.5, kopplade sedan 2026-10-09):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter statusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
 
 | VISS visar | Utfall |
 |---|---|

@@ -78,7 +78,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:12.5p
 .stepper .aktiv{background:var(--surface-1);border-color:var(--p-A);color:var(--ink-1);font-weight:600}
 .stepper .aktiv .nr{border-color:var(--p-A);color:var(--p-A)}
 .stepper .klar.aktiv .nr{border-color:var(--good);color:#fff}
-td.motiv{min-width:300px}
+td.motiv{min-width:240px}
+td .tag{white-space:normal}
 .stepper button:disabled{opacity:.5}
 .stepper .las{font-size:11px;color:var(--ink-3);display:block;font-weight:400}
 .prog{height:6px;background:var(--grid);border-radius:20px;overflow:hidden;margin:4px 0 14px}
@@ -110,6 +111,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .tag.ifg{background:color-mix(in srgb,var(--idag) 12%,transparent);border-color:color-mix(in srgb,var(--idag) 40%,transparent)}
 .tag.tf{background:color-mix(in srgb,var(--p-D) 16%,transparent);border-color:color-mix(in srgb,var(--p-D) 45%,transparent)}
 .tag.eo{background:var(--plane)}
+.tag.tes{background:color-mix(in srgb,var(--p-A) 14%,transparent);border-color:color-mix(in srgb,var(--p-A) 40%,transparent)}
 .nav{display:flex;justify-content:space-between;gap:10px;margin:26px 0 0;padding-top:16px;border-top:1px solid var(--grid);align-items:center;flex-wrap:wrap}
 .nav .hint{font-size:12.5px;color:var(--ink-3)}
 .klart{text-align:center;padding:30px 20px}
@@ -211,19 +213,20 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 <script>
 /* ------------------------------------------------------------------
    Exempeldata: Floden SE0220206, NNK-uttag 2026-08-26 + länets stödfält.
+   Utfallen följer bygg_r7_forslag.py 2026-10-16 (med VISS och MVM).
    ändr = år då attributen senast ändrades i NNK (last_edited_date).
 ------------------------------------------------------------------- */
 const YTOR = [
  {nr:1, kod:"6410", namn:"Fuktängar", ha:8.4, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
-  utfall:"eo", motiv:"Hävden är inte obruten och TUVA är äldre än 15 år. Inget nyare underlag kan bekräfta statusen — den står kvar och ytan blir ett fältobjekt."},
+  utfall:"eo", motiv:"Hävden har luckor 2016 och 2024 (2015 räknas inte), alltså inte obruten. TUVA är från 2002, äldre än 15 år. Underlaget pekar mot till fält men räcker inte för att ompröva: statusen står kvar och ytan blir ett fältobjekt."},
  {nr:2, kod:"6410", namn:"Fuktängar", ha:7.9, status:"Icke fullgod", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · svagt hävdad · gödsling tydlig 30 %", arter:2, grupp:"Hävd", vad:"ompröva",
-  utfall:"tf", motiv:"Hävd varje år sedan 2015 talar för att läget kan ha blivit bättre sedan statusen sattes, men TUVA är 24 år gammal och visade gödsling. Underlaget räcker inte för fullgod — till fält, och prioritera ytan eftersom statusen kan vara fel."},
- {nr:3, kod:"6410", namn:"Fuktängar", ha:6.5, status:"Icke fullgod", andr:2011, skiften:"Nej", utan:"alla år", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
-  utfall:"ifg", motiv:"Skiftena visar aldrig bete eller slåtter 2015–2025. Visar ortot igenväxning är icke fullgod bekräftad. Syns tecken på bete i ortot kan det vara bete utan stöd — då till fält."},
- {nr:4, kod:"6410", namn:"Fuktängar", ha:4.3, status:"Icke fullgod", andr:2009, skiften:"Nej", utan:"alla år", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
-  utfall:"ifg", motiv:"Som yta 3."},
+  utfall:"eo", motiv:"Hävd varje år sedan 2015 talar för att läget kan ha blivit bättre sedan statusen sattes, men TUVA är 24 år gammal och visade svag hävd och gödsling. Inget aktuellt TUVA eller uppföljning, så statusen kan inte omprövas. Underlaget pekar mot till fält. Prioritera ytan i fält, eftersom statusen kan vara fel."},
+ {nr:3, kod:"6410", namn:"Fuktängar", ha:6.5, status:"Icke fullgod", andr:2011, skiften:"Oklart", utan:"–", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Skiftena ger ingen säker träff (bara en liten kant av ett skifte), och TUVA är från 2002. Det finns alltså ingen belagd hävd åt något håll. Underlaget pekar mot till fält. Kontrollera i IR-ortot om marken ser betad ut, eftersom bete utan stöd inte syns i skiftena, och läs det andra TUVA-objektet som ytan överlappar."},
+ {nr:4, kod:"6410", namn:"Fuktängar", ha:4.3, status:"Icke fullgod", andr:2009, skiften:"Oklart", utan:"–", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
+  utfall:"eo", motiv:"Som yta 3."},
  {nr:5, kod:"6510", namn:"Slåtterängar i låglandet", ha:2.3, status:"Fullgod", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · välhävdad · gödsling tydlig 10 %", arter:0, grupp:"Hävd", vad:"ompröva",
-  utfall:"eo", motiv:"Obruten hävd sedan 2015 stöder statusen, men R7A kräver TUVA från 2020 eller en aktuell uppföljning, och en BIDOS-typ med TUVA äldre än 15 år blir till fält. Statusen står kvar. Bra fältobjekt — sannolikt stämmer den."},
+  utfall:"eo", motiv:"Obruten hävd sedan 2015 stöder statusen, men R7A kräver TUVA från 2020 eller en aktuell uppföljning. Underlaget pekar mot till fält, så statusen står kvar. Nära fullgod, så ett enkelt fältbesök räcker. Sannolikt stämmer statusen."},
  {nr:6, kod:"6510", namn:"Slåtterängar i låglandet", ha:0.4, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
   utfall:"eo", motiv:"Som yta 1."},
  {nr:7, kod:"6270", namn:"Silikatgräsmarker", ha:1.2, status:"Fullgod", andr:2011, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
@@ -231,16 +234,16 @@ const YTOR = [
  {nr:8, kod:"6270", namn:"Silikatgräsmarker", ha:0.1, status:"Fullgod", andr:2009, skiften:"Delvis", utan:"2015, 2016, 2024", tuva:"2002 · välhävdad", arter:0, grupp:"Hävd", vad:"ompröva",
   utfall:"eo", motiv:"Som yta 1. Ytan är mindre än minsta karteringsenhet (0,25 ha) — ändra inte geometrin."},
  {nr:9, kod:"3150", namn:"Naturligt näringsrika sjöar", ha:11.1, status:"Ej bedömd", andr:2009, skiften:"(gäller inte)", utan:"", tuva:"–", arter:0, grupp:"Våtmark", vad:"bedöm",
-  utfall:"visst", motiv:"R7C: slå upp sjön i VISS. God eller hög ekologisk status och opåverkad hydromorfologi → fullgod. Måttlig eller sämre av skäl som är avgörande för typen → icke fullgod. Ingen klassning → till fält."},
+  utfall:"tes", motiv:"Vassbältet runt sjön. Inga typiska arter, och bevarandeplanen kallar kunskapen om sjön bristfällig, så inget underlag nyare än karteringen stöder 3150. VISS gäller hela sjön: måttlig ekologisk status, styrd av näringsämnen från 2011 med låg tillförlitlighet, och biologin är inte klassad. Om typen bekräftas blir utfallet till fält. Pröva i IR-ortot om bältet hör till sjön (steg 6)."},
  {nr:10, kod:"3150", namn:"Naturligt näringsrika sjöar", ha:8.8, status:"Ej bedömd", andr:2009, skiften:"(gäller inte)", utan:"", tuva:"–", arter:2, grupp:"Våtmark", vad:"bedöm",
-  utfall:"visst", motiv:"Som yta 9. Två typiska arter i Artportalen stöder att typen är rätt."},
+  utfall:"tf", motiv:"Den inre, öppna delen av sjön. Två typiska arter (skrattmås och årta, fynd 2017–2026) stöder att typen är rätt. VISS räcker inte för fullgod eller icke fullgod, eftersom statusen bygger på näringsämnen från 2011 med låg tillförlitlighet. MVM 2017 har totalfosfor 899 µg/l, vilket är mycket högt men bara ett prov."},
  {nr:11, kod:"6910", namn:"Öppen kultiverad gräsmark", ha:4.7, status:"Övrigt, icke Natura", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · objektet anger 6410", arter:0, grupp:"–", vad:"ingår inte",
   utfall:"no", motiv:"Ingår inte i R7. Men hävd varje år och ett TUVA-objekt med 6410 gör den värd en fråga till förvaltaren: kan ytan vara 6410 eller utvecklingsmark? Notera i loggen under Differenser."},
  {nr:12, kod:"6910", namn:"Öppen kultiverad gräsmark", ha:0.4, status:"Övrigt, icke Natura", andr:2011, skiften:"Ja (sedan 2015)", utan:"–", tuva:"2002 · svagt hävdad", arter:0, grupp:"–", vad:"ingår inte",
   utfall:"no", motiv:"Som yta 11."},
 ];
-const UTF = {fg:['fg','Fullgod'], ifg:['ifg','Icke fullgod (om ortot visar igenväxning)'], tf:['tf','Till fält'],
-  eo:['eo','Ej omprövad — statusen står kvar'], visst:['tf','Avgörs i VISS'], no:['eo','Ingår inte']};
+const UTF = {fg:['fg','Fullgod'], ifg:['ifg','Icke fullgod'], tf:['tf','Till fält'], tes:['tes','Typ ej styrkt'],
+  eo:['eo','Ej omprövad'], no:['eo','Ingår inte']};
 const ha = x => x.toLocaleString('sv-SE',{minimumFractionDigits:1,maximumFractionDigits:1});
 const tag = k => `<span class="tag ${UTF[k][0]}">${UTF[k][1]}</span>`;
 
@@ -355,7 +358,7 @@ const STEG = [
     ['','Karteringsstatus, Ursprung','Hur och varifrån — se tabellen ovan.']
   ],
   logg: [['Ytor R7, varav Ej bedömd, varav med status','Fylls i automatiskt — stäm av mot vad du ser i kartan']],
-  ex: () => ex('<p>Förslaget för Floden: de <b>2 sjöytorna</b> blir <i>till fält</i> tills VISS är kopplad (kontrollera i <i>Vatten (VISS)</i>), och de <b>8 hävdytorna</b> blir <i>ej omprövad</i> — TUVA från 2002 är för gammal för att bekräfta eller ändra statusen. Två av hävdytorna har låg säkerhet: skiftena säger <i>Nej</i>, vilket kan vara en kantträff mot åker. Förslagsfilen numrerar ytorna per naturtyp; exemplet här använder guidens egna nummer.</p><p>8 hävdytor med status från basinventeringen (ompröva), 2 sjöytor utan status (bedöm), 2 icke-Natura-ytor (ingår inte). Alla har ursprung BIDOS och karteringsstatus <i>Granskad vid skrivbordet</i>. Attributen ändrades senast 2009 eller 2011.</p>') + ytTabell(['nr','typ','ha','status','andr','grupp','vad']) },
+  ex: () => ex('<p>Förslaget för Floden: de <b>8 hävdytorna</b> blir <i>ej omprövad</i>. TUVA från 2002 är för gammal för att bekräfta eller ändra statusen, och underlaget pekar mot <i>till fält</i> på alla åtta. På två av dem (yta 3 och 4) ger skiftena ingen säker träff, så där finns ingen belagd hävd alls. Av de <b>2 sjöytorna</b> blir den inre (yta 10) <i>till fält</i>: VISS är kopplad, men statusen bygger på näringsämnen från 2011 med låg tillförlitlighet. Vassbältet runt sjön (yta 9) blir <i>typ ej styrkt</i>, eftersom inget nyare underlag stöder 3150 där. Förslagsfilen numrerar ytorna per naturtyp; exemplet här använder guidens egna nummer.</p><p>8 hävdytor med status från basinventeringen (ompröva), 2 sjöytor utan status (bedöm), 2 icke-Natura-ytor (ingår inte). Alla har ursprung BIDOS och karteringsstatus <i>Granskad vid skrivbordet</i>. Attributen ändrades senast 2009 eller 2011.</p>') + ytTabell(['nr','typ','ha','status','andr','grupp','vad']) },
 
 { id:'typ', titel:'Yta för yta: pröva att typen är rimlig',
   mal:'Förutsättningen för all R7-bedömning: typen ska stödjas av minst ett underlag som är nyare än karteringen och oberoende av den.',
@@ -386,7 +389,7 @@ const STEG = [
     ['','TUVA, inventeringsår','Avgör om TUVA kan räknas som nyare underlag.']
   ],
   logg: [['Ortofoto (år)','Året för det orto du bedömt mot, gärna med datum ur bildsömmarna (t.ex. "IR 2023-05-08")'],['Typ ifrågasatt (antal ytor)','Antal ytor där typen inte stöds'],['Underlag','T.ex. "bevarandeplan 20xx, orto 2023"']],
-  ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Bevarandeplanen är från <b>2019</b>, alltså nyare än karteringen, men den skriver själv att underlaget för de terrestra typerna är bristfälligt och att det behövs inventering för att avgöra om silikatgräsmarkerna är 6270. Den räknas därför inte som stöd för 6270, 6410 eller 6510. Stödet måste i stället komma från ortot och de typiska arterna, yta för yta. Ytor där inget stöder typen får Karteringsstatus 5 <i>Åtgärdas</i> och blir fältobjekt. Övningsutfallen i steg 7 visar hur ytorna bedöms <i>om</i> typen godtas.</p>') },
+  ex: () => ex('<p>TUVA-inventeringen är från <b>2002</b> — äldre än karteringen (2009–2011). Den räknas inte som nyare stöd. Typiska arter finns bara på två ytor. Bevarandeplanen är från <b>2019</b>, alltså nyare än karteringen, men den skriver själv att underlaget för de terrestra typerna är bristfälligt och att det behövs inventering för att avgöra om silikatgräsmarkerna är 6270. Den räknas därför inte som stöd för 6270, 6410 eller 6510. Stödet måste i stället komma från ortot och de typiska arterna, yta för yta. Ytor där inget stöder typen får Karteringsstatus 5 <i>Åtgärdas</i> och blir fältobjekt. Övningsutfallen i steg 7 visar hur ytorna bedöms <i>om</i> typen godtas.</p><p>Sjön visar skillnaden. Den inre delen (yta 10) har typiska arter, så typen är styrkt. I vassbältet runt den (yta 9) finns inga fynd, och det blir <i>typ ej styrkt</i>. Jämför IR-ortot från försommaren med ett från våren. På försommaren är bältet rött av växande vass och starr, på våren ljust grått av förra årets döda vass. Öppet vatten syns som svart, och det finns inte i bältet på någon av bilderna. Om bältet hör till sjön avgörs av vattenståndet, inte av ortot ensamt. Enligt NV:s limniska FAQ är hela sjön en livsmiljötyp, och akvatiska ytor ska inte ritas om nu. Är du osäker: behåll typen, sätt Livsmiljötyp 4 Osäker och skriv vad du såg.</p>') },
 
 { id:'underlag', titel:'Yta för yta: kontrollera villkoret och välj utfall',
   mal:'Pröva förslagets villkor mot underlagen och ortot, och bestäm utfallet: fullgod, icke fullgod, till fält — eller, för ytor med status, att statusen står kvar oprövad. Samla det som säger något om hur ytan mår i dag. För hävdytor är det hävden, för skog ingrepp och struktur, för våtmark diken och vattenstatus.',
@@ -417,10 +420,11 @@ const STEG = [
     ['','TUVA, hävdstatus · igenväxning · påverkan','Hur marken såg ut vid inventeringen. Negativa noteringar talar för icke fullgod — om inventeringen är aktuell.'],
     ['','SkötselDOS, utförd hävd','Bete eller slåtter enligt reservatsförvaltningen. Fångar bete utan stöd som skiftena missar.'],
     ['Skog (laserdata)','Laserflagga, Höjdförändring, Diken','För skogs- och myrytor (R7B, R7C). Möjlig avverkning eller diken → pröva icke fullgod.'],
-    ['Skog (laserdata)','SKS utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal','Skogsstyrelsens register (sedan 2026-10-08). Utförd avverkning efter karteringen → icke fullgod om ortot bekräftar. Anmälan → kontrollera om den är utförd.']
+    ['Skog (laserdata)','SKS utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal','Skogsstyrelsens register (sedan 2026-10-08). Utförd avverkning efter karteringen → icke fullgod om ortot bekräftar. Anmälan → kontrollera om den är utförd.'],
+    ['Bedömning vid skrivbordet (R7)','VISS ekologisk status','Sjöar och vattendrag (R7C, sedan 2026-10-09): status, styrande kvalitetsfaktor och hydromorfologi för vattenförekomsten. Motivet visar också senaste mätdata ur MVM. Låg tillförlitlighet, gamla data eller oklassad biologi → till fält. Små sjöar som inte är egna vattenförekomster saknas; då finns bara avrinningsområdets status, och den är bara indicier.']
   ],
   logg: [['Underlag (källa + år)','Alla underlag du faktiskt använt, med år'],['Fullgod, Icke fullgod, Till fält, Ej omprövad (antal ytor)','Räknas när du gått igenom alla ytor (steg 9)']],
-  ex: () => ex('<p>Alla hävdytor har TUVA från 2002 — för gammalt för att bekräfta något. Skiftena är det enda aktuella underlaget, och de pekar åt tre håll: <b>Ja</b> på två ytor, <b>Delvis</b> (luckor 2015, 2016 och 2024) på fyra, <b>Nej</b> på två. Ingen SkötselDOS eller uppföljning finns.</p>') + ytTabell(['nr','typ','ha','status','skiften','utan','tuva','arter']) + ex('<p>Ingen hävdyta kan bekräftas som fullgod, eftersom TUVA är för gammal. Två ytor kan bekräftas som icke fullgod om ortot visar igenväxning. En yta med status <i>Icke fullgod</i> har haft hävd varje år sedan 2015 — där kan statusen vara fel, så den prioriteras i fält. Sjöarna avgörs i VISS.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
+  ex: () => ex('<p>Alla hävdytor har TUVA från 2002 — för gammalt för att bekräfta något. Skiftena är det enda aktuella underlaget, och de pekar åt tre håll: <b>Ja</b> på två ytor, <b>Delvis</b> (luckor 2015, 2016 och 2024) på fyra och <b>Oklart</b> (ingen säker träff) på två. Ingen SkötselDOS eller uppföljning finns.</p>') + ytTabell(['nr','typ','ha','status','skiften','utan','tuva','arter']) + ex('<p>Ingen hävdyta kan omprövas, eftersom TUVA är för gammal och inget annat aktuellt underlag finns. Alla åtta står kvar som <i>ej omprövad</i>, och underlaget pekar mot till fält. En yta med status <i>Icke fullgod</i> (yta 2) har haft hävd varje år sedan 2015. Där kan statusen vara fel, så den prioriteras i fält. Sjön har VISS, men statusen är från 2011 med låg tillförlitlighet och biologin är inte klassad. Den räcker därför inte, och den inre sjöytan blir till fält.</p>') + ytTabell(['nr','typ','ha','status','utfall','motiv']) },
 
 { id:'lager', titel:'Yta för yta: för in i formuläret',
   mal:'Skriv förslaget för varje yta i webbGIS-formuläret. Det är här bedömningen sparas — inte i loggen.',
@@ -440,7 +444,7 @@ const STEG = [
     ['Granskning 4 — Granskat','Granskat?','Ja när ytan är klar, Påbörjat om du kommer tillbaka.']
   ],
   logg: null,
-  ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd = Okänt · Kommentar: <code>R7-omprövning R7A: till fält — skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad — skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
+  ex: () => ex('<p><b>Yta 2</b> (6410, 7,9 ha, Icke fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025 talar mot icke fullgod, TUVA 2002 för gammal. Prioritera i fält.</code> · Vad ska kontrolleras = Hävd, Typiska arter · Metod = Fältbesök.</p><p><b>Yta 10</b> (3150, 8,8 ha, Ej bedömd): Tillstånd = Okänt · Kommentar: <code>R7C: till fält. VISS Floden måttlig, styrd av näringsämnen 2011, låg tillförlitlighet, biologin ej klassad. MVM 2017 tot-P 899 µg/l (1 prov).</code> · Vad ska kontrolleras = Funktioner (hydrologi, störningar) · Metod = Fältbesök.</p><p><b>Yta 5</b> (6510, 2,3 ha, Fullgod): Tillstånd lämnas tomt · Kommentar: <code>R7-omprövning R7A: ej omprövad, pekar mot till fält. Skiften Ja 2015–2025, men TUVA 2002 äldre än 15 år. Status trolig.</code></p>') },
 
 { id:'logg', titel:'Summera området i granskningsloggen',
   mal:'Avsluta området med en sammanfattning i loggen, så att det går att se vad som är gjort, på vilken grund och vad som återstår.',
@@ -451,15 +455,15 @@ const STEG = [
     'Skriv det du är osäker på i <i>Osäkerheter</i> och det som är kvar i <i>Återstår</i>.',
     'Sätt <i>Status</i> = Klar. Bocka av området i kontrollrummet när hela batchen är gjord.'
   ],
-  logg: [['Fullgod … Typ ifrågasatt (antal ytor)','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. VISS, fråga förvaltaren'],['Status','Klar']],
+  logg: [['Fullgod … Typ ifrågasatt (antal ytor)','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. fältbesök, fråga förvaltaren'],['Status','Klar']],
   ex: () => ex('<p>Floden, en rad i loggen:</p>' + tab(['Kolumn','Värde'],[
       ['Ortofoto (år)','(året för det orto du använt)'],
-      ['Fullgod / Icke fullgod / Till fält / Ej omprövad (antal ytor)','0 / 2* / 1 / 5 — *om ortot visar igenväxning'],
-      ['Typ ifrågasatt (antal ytor)','0'],
-      ['Underlag','Bevarandeplan 2019 (underlag för landtyperna bristfälligt enligt planen), skiften 2015–2025, TUVA 2002, typiska arter (Artportalen), orto (år)'],
-      ['Osäkerheter','TUVA 24 år gammal på alla hävdytor. Yta 2 (6410) har haft hävd sedan 2015 trots status icke fullgod.'],
-      ['Återstår','Sjöarna (2 ytor 3150) mot VISS. Fråga förvaltaren om 6910-ytorna. Fältbesök hävdytorna 2027, yta 2 först.'],
-      ['Status','Påbörjad tills sjöarna är klara']
+      ['Fullgod / Icke fullgod / Till fält / Ej omprövad (antal ytor)','0 / 0 / 1 / 8'],
+      ['Typ ifrågasatt (antal ytor)','1 (vassbältet, yta 9)'],
+      ['Underlag','Bevarandeplan 2019 (underlaget bristfälligt enligt planen), skiften 2015–2025, TUVA 2002, typiska arter (Artportalen), VISS 2022–2027 (data 2011), MVM 2017, orto (år)'],
+      ['Osäkerheter','TUVA 24 år gammal på alla hävdytor. Yta 2 (6410) har haft hävd sedan 2015 trots status icke fullgod. Sjöns VISS-status bygger på data från 2011 med låg tillförlitlighet. Oklart om vassbältet hör till 3150.'],
+      ['Återstår','Fråga förvaltaren om 6910-ytorna. Fältbesök 2027: hävdytorna (yta 2 först), sjön och vassbältets avgränsning.'],
+      ['Status','Klar']
     ])) }
 ];
 

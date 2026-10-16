@@ -101,7 +101,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 
 1. Myrar (7110–7231): **Diken inom ytan** → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.
 2. Rikkärr (7230): **SkötselDOS: bete/slåtter** visar var hävd ingår i skötseln.
-3. Sjöar och vattendrag (3110–3260): VISS-fälten fylls när D2.5 är körd. Tills dess: slå upp statusen i gruppen *Vatten (VISS)*.
+3. Sjöar och vattendrag (3110–3260): VISS-fälten är ifyllda sedan 2026-10-09 och R7-förslagets motiv har senaste mätdata ur MVM sedan 2026-10-13. Små sjöar som inte är egna vattenförekomster saknar egen status: slå upp avrinningsområdet i gruppen *Vatten (VISS)*, men använd det bara som indicier.
 4. **Typiska arter i Artportalen** stöder att typen är rätt.
 
 ### Filter som ger något för gruppen

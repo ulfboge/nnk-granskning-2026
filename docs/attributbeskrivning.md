@@ -557,7 +557,7 @@ Tio fält, alla skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas 
 | `skr_skydd_ar` | heltal | År för beslut eller avtal (det äldsta) |
 
 ### VISS — ekologisk status för sjöar och vattendrag
-Tolv fält, skrivskyddade och bara i ytlagret, för ytor med 3110, 3130, 3150, 3160 och 3260. Fylls när `nnk_viss.py` körts (runbook D2.5); tills dess är de tomma. Sjöar kopplas till den vattenförekomst de överlappar mest, vattendrag på längst sträcka inom ytan. Används i R7C.
+Tolv fält, skrivskyddade och bara i ytlagret, för ytor med 3110, 3130, 3150, 3160 och 3260. Ifyllda sedan 2026-10-09 av `nnk_viss.py` (runbook D2.5). Sjöar kopplas till den vattenförekomst de överlappar mest, vattendrag på längst sträcka inom ytan. Används i R7C.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
