@@ -41,7 +41,7 @@ Projektöversikten för hela naturrestaureringsuppdraget finns i det tredje sysk
 | `index.html` | Kontrollpanel — ingång till allt |
 | `kontrollrum.html` | Gantt v34–v52, alla uppgifter med avbockning, leveranser, milstolpar. **Genereras** ur natura-2000 — redigera inte här |
 | `kunskapslage.html` | Kunskapsläge per Natura 2000-område |
-| `bedomningsguide.html` | Bedömningsguide — ett område (Floden, SE0220206) steg för steg med låsta steg, popupförklaring och granskningsloggens kolumner. **Handskriven** (inte genererad); exempeldata inbäddad i sidan. Kolumnnamnen ska matcha `natura-2000/scripts/analysis/bygg_granskningslogg.py` |
+| `bedomningsguide.html` | Bedömningsguide — ett område (Floden, SE0220206) steg för steg med låsta steg, popupförklaring och granskningsloggens kolumner. **Handskriven** (inte genererad); exempeldata inbäddad i sidan. Kolumnnamnen ska matcha `natura-2000/scripts/analysis/bygg_granskningslogg.py`. Sidan är också mall för den interna versionen med alla områden (`natura-2000/scripts/analysis/bygg_guide_alla.py`), som byter ut några exakta rader (titel, h1, `NYCKEL`, raden `if (s.ex) h += …`, `const GRANSKARE`). Ändras de: uppdatera skriptet. |
 | `docs/arbetsplan.md` (+ genererad `.html`) | Arbetsplan — kravnedbrytning, arbetspaket A–H |
 | `docs/runbook.md` (+ `.html`) | Runbook — steg för steg genom alla uppgifter. **Genereras** ur `natura-2000/scripts/analysis/uppgifter.py` — redigera inte här |
 | `docs/filterguide.md` (+ `.html`) | Filterguide för webbGIS, en flik per R7-grupp. **Genereras** ur `uppgifter.py` av `bygg_kontrollrum.py` — redigera inte här |
