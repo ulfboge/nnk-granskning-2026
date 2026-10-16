@@ -3,7 +3,7 @@
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
 **Datum:** 2026-10-13 (D2.5 kompletterad med MVM-mätdata via nnk_mvm.py; hävdanalysen räknar kantträffar under 10 % som Oklart). 2026-10-09 (D2.5 VISS-koppling klar: nnk_viss.py hämtar öppna VISS-exporter och Länsstyrelsens karttjänst, ingen API-nyckel). 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 68 uppgifter i 7 arbetspaket, 330 konkreta steg  
+**Omfattning:** 68 uppgifter i 7 arbetspaket, 331 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -678,8 +678,9 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Dela upp insatsbehovet i fem kategorier: eget fältarbete, eget skrivbordsarbete, Metria, NV:s arbetsgrupper, konsult.
 2. Metria har enligt FAQ fråga 26 INTE uppdrag att göra om tidigare karteringar, kartera med högre detaljering utifrån länsspecifika underlag, eller fältkontrollera. Räkna inte med det.
-3. Marina och limniska miljöer läggs uttryckligen på HaV och de nationella karteringarna.
+3. Marina miljöer läggs på HaV och de nationella karteringarna. Limniska: enligt NV (2026-09-30) blir Metria inte klara 2027 och länen behöver själva kartlägga. Länets kontaktperson för limniska livsmiljötyper är Karin Johansson (samverkansytans lista 2026-10-16).
 4. Ta med de livsmiljötyper som saknar fastställd vägledning (från A2.4) som ett eget stycke — de är blockerade av NV, inte av er.
+5. **Utfall 2026-10-16:** första underlaget i KartLits-mallen (flik D med 618 rader, Handlingsplan och Övrigt) inlämnat till NV (Johan Niss och KartlitsN2000@naturvardsverket.se). Fil: `natura-2000/docs/underlag/kartlits_2027/Mall_2027_D_Sodermanland_20261016.xlsx`. Tillstånd (M) anges bara där nyare skrivbordsunderlag pekar åt samma håll som bevarandeplanen, övriga rader är *4. Osäkert*. Resursbehovet preciseras i slutet av november (F1.2). Nästa steg enligt NV:s tidplan: återkoppling 30 okt, webbinarium 4 nov, förankrat förslag 1 dec.
 
 ### F1.2 · Volymuppskattning för 2027
 
