@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -269,20 +269,20 @@ return {
 
 ## 2b. Bedömning vid skrivbordet (R7)
 
-Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar det du behöver för att avgöra om status kan sättas eller omprövas vid skrivbordet, så att du inte behöver gå till attributtabellen:
+Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar det du behöver för att avgöra om naturtypsstatus (tillståndet) kan sättas eller omprövas vid skrivbordet, så att du inte behöver gå till attributtabellen:
 
 - **Bedömningsgrupp (R7)** — vilken delregel i metodiken som gäller (Hävd, Skog, Våtmark, Stabila). Räknas fram ur naturtypskoden.
-- **Statusens ålder** — slutdatum senaste inventering om det finns, annars året då NNK-objektet senast redigerades och om statusen kommer från basinventeringen (BIDOS). Redigeringsåret är bara en övre gräns: ändringen kan ha gällt vilket attribut som helst, så statusen kan vara äldre.
-- **Vad gäller** — *bedöm* (Ej bedömd status), *ompröva* (status finns redan, se R7-omprövning i metodiken) eller *ingår inte*. Sedan 2026-10-14 står *ingår inte* också för ytor som ligger utanför Natura 2000 och naturreservat (Skyddskategori *Ingen matchning*: mindre än 1 % av ytan och under 0,25 ha inom något område, ytan kan tangera gränsen). Raden läser `skyddskategori`, som redan finns i tjänsten, så den fungerar så fort uttrycket klistrats in.
-- **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än statusen. Bara underlag nyare än statusen kan bekräfta eller ändra den.
+- **Naturtypsstatusens ålder** — slutdatum senaste inventering om det finns, annars året då NNK-objektet senast redigerades och om naturtypsstatusen kommer från basinventeringen (BIDOS). Redigeringsåret är bara en övre gräns: ändringen kan ha gällt vilket attribut som helst, så naturtypsstatusen kan vara äldre. *Naturtypsstatus* är NNK-fältet för tillstånd (Fullgod, Icke fullgod, Ej bedömd m.fl.), inte livsmiljötypen.
+- **Vad gäller** — *bedöm* (naturtypsstatus Ej bedömd), *ompröva* (naturtypsstatus Fullgod eller Icke fullgod finns redan, se R7-omprövning i metodiken) eller *ingår inte*. Sedan 2026-10-14 står *ingår inte* också för ytor som ligger utanför Natura 2000 och naturreservat (Skyddskategori *Ingen matchning*: mindre än 1 % av ytan och under 0,25 ha inom något område, ytan kan tangera gränsen). Raden läser `skyddskategori`, som redan finns i tjänsten, så den fungerar så fort uttrycket klistrats in.
+- **Underlag** — skiften, TUVA, SkötselDOS, uppföljning, laser och typiska arter med år, och om de är nyare eller äldre än naturtypsstatusen. Bara underlag nyare än naturtypsstatusen kan bekräfta eller ändra den.
 
 **Tillägg 2026-10-08:** sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: **Förslag (R7)** (utfall, säkerhet och villkor), **Motiv** (underlagen med år och eventuella motsägelser) och **Kontrollera** (manuella kontroller med lager inom hakparentes). Fälten kommer från `skogsregister_for_granskning.csv`, `viss_for_granskning.csv` och `r7_forslag_for_granskning.csv` och måste vara synliga i Pro före Overwrite (de står i `EXTRA_VISIBLE_FIELDS` i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.
 
 **Tillägg 2026-10-14:** sist i sektionen står **Lager för gruppen**: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. Den kompletterar *Kontrollera*, som bara finns där förslaget har något specifikt att kontrollera (ungefär 6 600 av 15 800 ytor). Ytor utanför R7 får ingen lista.
 
-**Tillägg 2026-10-15:** för hävdytor anger *Lager för gruppen* vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet `havd_ar_utan_bete`) och statusens år (2003 om statusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. *Förslag (R7)* skriver numera *Ej omprövad – underlaget pekar mot …* utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när `r7_forslag_for_granskning.csv` har byggts om och lagret skrivits över.
+**Tillägg 2026-10-15:** för hävdytor anger *Lager för gruppen* vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet `havd_ar_utan_bete`) och naturtypsstatusens år (2003 om naturtypsstatusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. *Förslag (R7)* skriver numera *Ej omprövad – underlaget pekar mot …* utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när `r7_forslag_for_granskning.csv` har byggts om och lagret skrivits över.
 
-Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **Statusens ålder läses ur heltalsfältet `nnk_andrad_ar`**, som `04_forbered_gdb_for_publicering.py` (steg 1d) räknar fram ur NV:s `last_edited_date`. NV:s fält går inte att publicera: det är *Date, Time and Timezone Offset* och ger fel 00403 (konstaterat 2026-10-06). Låt `last_edited_date` vara avstängt och se till att `nnk_andrad_ar` är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.
+Uttrycket läser fälten dynamiskt med `Expects($feature, "*")`, så det går att klistra in och spara även om något fält saknas i tjänsten — raden visas då bara inte. **Naturtypsstatusens ålder läses ur heltalsfältet `nnk_andrad_ar`**, som `04_forbered_gdb_for_publicering.py` (steg 1d) räknar fram ur NV:s `last_edited_date`. NV:s fält går inte att publicera: det är *Date, Time and Timezone Offset* och ger fel 00403 (konstaterat 2026-10-06). Låt `last_edited_date` vara avstängt och se till att `nnk_andrad_ar` är synligt före Overwrite. Tills fältet finns visar raden bara BIDOS-ursprunget.
 
 ```js
 // Bedömning vid skrivbordet (R7) — tillagd 2026-10-06
@@ -334,7 +334,7 @@ var alder = "Okänt år";
 if (!IsEmpty(slut)) {
     alder = "Bedömd " + slut + " (slutdatum senaste inventering)";
 } else if (!IsEmpty(red)) {
-    alder = "Okänt år. NNK-objektet senast redigerat " + red + " (inte nödvändigtvis statusen)" + IIf(bidos, ", ursprung BIDOS (basinventeringen)", "");
+    alder = "Okänt år. NNK-objektet senast redigerat " + red + " (inte nödvändigtvis naturtypsstatusen)" + IIf(bidos, ", ursprung BIDOS (basinventeringen)", "");
 } else if (bidos) {
     alder = "Okänt år. Ursprung BIDOS (basinventeringen), ofta 15–20 år gammal";
 }
@@ -348,12 +348,12 @@ if (IsEmpty(grupp)) {
 } else if (utanfor) {
     vad = "Ingår inte i R7: ytan ligger utanför Natura 2000 och naturreservat (tangerar högst gränsen).";
 } else if (ejBedomd) {
-    vad = "Ej bedömd status: bedöm enligt " + grupp + ".";
+    vad = "Naturtypsstatus Ej bedömd: bedöm enligt " + grupp + ".";
 } else if (harStatus) {
-    vad = "Har status: ompröva (R7-omprövning). Statusen räknas inte som belägg — bara underlag nyare än "
-        + IIf(IsEmpty(statusAr), "statusen", Text(statusAr)) + " kan bekräfta eller ändra den.";
+    vad = "Har naturtypsstatus (fullgod eller icke fullgod): ompröva (R7-omprövning). Naturtypsstatusen räknas inte som belägg — bara underlag nyare än "
+        + IIf(IsEmpty(statusAr), "naturtypsstatusen", Text(statusAr)) + " kan bekräfta eller ändra den.";
 } else {
-    vad = "R7 gäller inte för den här statusen.";
+    vad = "R7 gäller inte för den här naturtypsstatusen.";
 }
 if (Includes(dodved, kod) && !utanfor) {
     vad += " 9010/9050 kan inte bli fullgod vid skrivbordet (död ved).";
@@ -361,8 +361,8 @@ if (Includes(dodved, kod) && !utanfor) {
 
 function Jmf(y) {
     if (IsEmpty(y) || IsEmpty(statusAr)) { return ""; }
-    if (y > statusAr) { return " · nyare än statusen"; }
-    return " · inte nyare än statusen";
+    if (y > statusAr) { return " · nyare än naturtypsstatusen"; }
+    return " · inte nyare än naturtypsstatusen";
 }
 
 var infos = [];
@@ -374,7 +374,7 @@ function Rad(id, etikett, varde) {
 }
 
 Rad("r7_grupp", "Bedömningsgrupp (R7)", grupp);
-Rad("r7_alder", "Statusens ålder", alder);
+Rad("r7_alder", "Naturtypsstatusens ålder", alder);
 Rad("r7_vad", "Vad gäller", vad);
 
 // Underlag med år
@@ -466,7 +466,7 @@ if (grupp == "Hävd (R7A)") {
     if (!IsEmpty(statusAr) && statusAr < 2025) {
         var sb = Max(statusAr, 2003);
         if (!Includes(blockAr, Text(sb))) {
-            bl += ", " + sb + IIf(statusAr < 2003, " (äldsta året; statusen är från " + statusAr + ")", " (statusens år)");
+            bl += ", " + sb + IIf(statusAr < 2003, " (äldsta året; naturtypsstatusen är från " + statusAr + ")", " (naturtypsstatusens år)");
         }
     }
     LagTill(bl);

@@ -207,7 +207,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 > **Utkast 2026-09-29.** Regeln används inte skarpt förrän piloten nedan är genomförd och fältkontrollerad. Bedömningar enligt R7 förs in som **förslag i granskningslagret**, inte direkt i NNK.
 
-**Varför:** 6 847 av länets 7 673 delytor med Natura-naturtyp har *Ej bedömd status* (publika NNK-uttaget). De flesta kommer från BIDOS och har aldrig fått sin status satt. Handledningen säger att status ska uppdateras "om det är möjligt", och FAQ 13 godtar äldre underlag när risken för förändring är låg. Där underlaget räcker kan status alltså sättas vid skrivbordet.
+**Varför:** 6 847 av länets 7 673 delytor med Natura-naturtyp har *Ej bedömd status* (publika NNK-uttaget). De flesta kommer från BIDOS och har aldrig fått sin naturtypsstatus satt. Handledningen säger att naturtypsstatus ska uppdateras "om det är möjligt", och FAQ 13 godtar äldre underlag när risken för förändring är låg. Där underlaget räcker kan naturtypsstatus alltså sättas vid skrivbordet.
 
 **Gäller:** ytor med Natura-naturtyp och Naturtypsstatus 5. Gäller **inte** marina typer (1110–1170, FAQ 16/29) eller obestämda/osäkra koder — de behöver typbestämning först.
 
@@ -330,9 +330,9 @@ Tills budskapet i november finns behandlas alla 9010- och 9050-ytor enligt tabel
 | Icke fullgod | Diken som påverkar ytan, VISS-status måttlig eller sämre på grund av faktorer som är avgörande för typen, eller rikkärr där nödvändig hävd har upphört. |
 | Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
 
-**Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. Statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
+**Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. VISS-statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
 
-*Fält i granskningslagret (D2.5, kopplade sedan 2026-10-09):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter statusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
+*Fält i granskningslagret (D2.5, kopplade sedan 2026-10-09):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter naturtypsstatusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
 
 | VISS visar | Utfall |
 |---|---|
@@ -373,32 +373,34 @@ Villkor 2 och 3 går bara att pröva i själva dokumentet. Läs därför planens
 
 **Tillståndet.** Planens bevarandetillstånd per typ (*Gynnsamt*, *Ej gynnsamt*, *Okänt*; blankettens kolumn *Bevarandestatus*) är ett myndighetsomdöme som inte går att datera. Ett bevarandemål är inte heller detsamma som gott tillstånd (NV:s preliminära vägledning 2026-09-02). R7 använder därför aldrig planens tillstånd som eget belägg: det står i motivet med den senaste inventering planen hänvisar till ("bevarandeplan (fastställd 2016, senaste inventering 2000): gynnsamt"), och det styrker utfallet bara där ett nyare skrivbordsunderlag — hävd i skiften, SkötselDOS, TUVA från 2020, avverkning — pekar åt samma håll. Säger planen *Ej gynnsamt* och övriga underlag *fullgod* är det en motsägelse, och säkerheten blir låg.
 
-#### R7-omprövning · ytor som redan har status
+#### R7-omprövning · ytor som redan har naturtypsstatus
+
+*Naturtypsstatus* är NNK-fältet för tillstånd: 1 Fullgod, 2 Icke fullgod, 3 Utvecklingsmark, 4 Övrigt, 5 Ej bedömd. Det är inte livsmiljötypen, som står i fältet `naturtyp`. *Ej omprövad* betyder att naturtypsstatusen står kvar oprövad, och *underlaget pekar mot …* visar vad nyare underlag ensamt hade gett.
 
 *Beslut 2026-10-06.*
 
 Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke fullgod*. I länets NNK-uttag (2026-08-26) är det 838 ytor, de flesta från basinventeringen (BIDOS).
 
-*Statusen är inte daterad i sig.* Den visar bedömningen när den gjordes. Hur gammal den är får läsas ur andra fält. De tre första står i popupen under *Naturtyp (NNK-data)*; sektionen *Bedömning vid skrivbordet (R7)* sammanfattar dem på raden *Statusens ålder*:
+*Naturtypsstatusen är inte daterad i sig.* Den visar bedömningen när den gjordes. Hur gammal den är får läsas ur andra fält. De tre första står i popupen under *Naturtyp (NNK-data)*; sektionen *Bedömning vid skrivbordet (R7)* sammanfattar dem på raden *Naturtypsstatusens ålder*:
 
 | Fält | Vad det säger om åldern |
 |---|---|
-| Slutdatum senaste inventering | Rätt fält för när typen och statusen senast bedömdes. Tomt för nästan alla ytor än så länge. |
-| Ursprung | *BIDOS* betyder att statusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal. |
-| Attribut senast ändrade (`nnk_andrad_ar`, året ur NV:s `last_edited_date`, i *Statusens ålder*) | Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då. |
-| Karteringsstatus | *Hur* bedömningen gjordes (2 skrivbord, 3 besök, 4 inventering), inte *när*. *Granskad vid skrivbordet* betyder att typ och status senast sattes utan fältbesök. |
+| Slutdatum senaste inventering | Rätt fält för när typen och naturtypsstatusen senast bedömdes. Tomt för nästan alla ytor än så länge. |
+| Ursprung | *BIDOS* betyder att naturtypsstatusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal. |
+| Attribut senast ändrade (`nnk_andrad_ar`, året ur NV:s `last_edited_date`, i *Naturtypsstatusens ålder*) | Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då. |
+| Karteringsstatus | *Hur* bedömningen gjordes (2 skrivbord, 3 besök, 4 inventering), inte *när*. *Granskad vid skrivbordet* betyder att typ och naturtypsstatus senast sattes utan fältbesök. |
 
 *Regeln:*
 
-1. **Den befintliga statusen är inget belägg för sig själv.** Att vid skrivbordet bekräfta en status från 2009 utan nytt underlag är ett antagande, inte en bedömning.
-2. **Bekräfta** (behåll statusen och föreslå nytt slutdatum) bara när underlag som är *nyare än statusen* uppfyller samma villkor som delregeln för gruppen kräver för det utfallet. En hävdyta med *Fullgod* bekräftas alltså bara med obruten hävd i skiften eller SkötselDOS, ett orto utan igenväxning och TUVA högst 10 år gammal (R7A). 9010 och 9050 kan inte bekräftas som *fullgod* vid skrivbordet (R7B).
-3. **Föreslå ändrad status** bara när nyare underlag tydligt visar något annat, till exempel *Fullgod* → *Icke fullgod* när skiftena visar *Nej* och ortot visar igenväxning. För utpekade typer gäller FAQ 19 (R6): ändra bara vid uppenbart fel eller faktisk förändring. *Icke fullgod* → *Fullgod* kräver samma underlag som punkt 2.
-4. **Räcker inte underlaget:** låt statusen stå, föreslå inget nytt slutdatum och skriv i *Kommentar – Tillstånd*: "Status från BIDOS/[år] ej omprövad — [vad som saknas]". Fyll i *Vad ska kontrolleras* och *Metod för kontroll*. Det är ett godtagbart utfall (FAQ 22, R4).
+1. **Den befintliga naturtypsstatusen är inget belägg för sig själv.** Att vid skrivbordet bekräfta en naturtypsstatus från 2009 utan nytt underlag är ett antagande, inte en bedömning.
+2. **Bekräfta** (behåll naturtypsstatusen och föreslå nytt slutdatum) bara när underlag som är *nyare än naturtypsstatusen* uppfyller samma villkor som delregeln för gruppen kräver för det utfallet. En hävdyta med *Fullgod* bekräftas alltså bara med obruten hävd i skiften eller SkötselDOS, ett orto utan igenväxning och TUVA högst 10 år gammal (R7A). 9010 och 9050 kan inte bekräftas som *fullgod* vid skrivbordet (R7B).
+3. **Föreslå ändrad naturtypsstatus** bara när nyare underlag tydligt visar något annat, till exempel *Fullgod* → *Icke fullgod* när skiftena visar *Nej* och ortot visar igenväxning. För utpekade typer gäller FAQ 19 (R6): ändra bara vid uppenbart fel eller faktisk förändring. *Icke fullgod* → *Fullgod* kräver samma underlag som punkt 2.
+4. **Räcker inte underlaget:** låt naturtypsstatusen stå, föreslå inget nytt slutdatum och skriv i *Kommentar – Tillstånd*: "Naturtypsstatus från BIDOS/[år] ej omprövad (står kvar) — [vad som saknas]". Fyll i *Vad ska kontrolleras* och *Metod för kontroll*. Det är ett godtagbart utfall (FAQ 22, R4).
 5. **Kommentaren** anger "R7-omprövning", delregeln och källor med år, t.ex. "R7-omprövning R7A: bekräftad fullgod — skiften Ja 2015–2025, orto 2023, TUVA 2019".
 
 Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.
 
-**Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men statusen prövas enligt delreglerna ovan.
+**Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men naturtypsstatusen prövas enligt delreglerna ovan.
 
 #### Förslag per yta (R7-förslag)
 
@@ -406,7 +408,7 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 
 | Del | Innehåll |
 |---|---|
-| Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har status (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
+| Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har naturtypsstatus fullgod eller icke fullgod (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
 | Säkerhet | *Hög* (flera samstämmiga underlag), *Medel* (ett underlag, eller ett villkor som ska prövas), *Låg* (underlagen säger emot varandra eller är svaga). |
 | Villkor | Det skriptet inte kan pröva, oftast ortot: "om IR-ortot inte visar igenväxning, plöjning eller gödsling". |
 | Typen rimlig | *Ja*, *Villkorat* (bara bevarandeplanen stöder typen; villkor 2 i *Bevarandeplanen som underlag* är inte prövat) eller *Nej*. Vid *Nej* visas också vad tillståndet blir om typen bekräftas. |
@@ -584,7 +586,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
-- **2.9** (2026-10-16) — NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
+- **2.9** (2026-10-16) — "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
 - **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
 - **2.6** (2026-10-09) — avsnitt 5, R7B: NV:s preliminära svar om 9010/9050 och 2026-kriterierna (befintliga ytor behöver troligen inte prövas om, budskap i november; fältmanual före årsskiftet).
