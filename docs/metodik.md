@@ -211,7 +211,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 **Gäller:** ytor med Natura-naturtyp och Naturtypsstatus 5. Gäller **inte** marina typer (1110–1170, FAQ 16/29) eller obestämda/osäkra koder — de behöver typbestämning först.
 
-**Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området (se *Bevarandeplanen som underlag* nedan), fältprotokoll eller fynd av typiska arter. Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
+**Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området (se *Bevarandeplanen som underlag* nedan), fältprotokoll eller fynd av typiska arter. För sjötyperna (3110–3160) räknas typiska arter för hela sjön, alltså alla sjöytor som rör varandra inom området, eftersom hela sjön är en livsmiljötyp (NV:s limniska FAQ). Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
 
 **Registrering:** Karteringsstatus 2 (R3), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.
 
@@ -586,7 +586,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
-- **2.9** (2026-10-16) — "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
+- **2.9** (2026-10-16) — typiska arter räknas per sjö för 3110–3160. "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
 - **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
 - **2.6** (2026-10-09) — avsnitt 5, R7B: NV:s preliminära svar om 9010/9050 och 2026-kriterierna (befintliga ytor behöver troligen inte prövas om, budskap i november; fältmanual före årsskiftet).
