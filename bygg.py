@@ -376,7 +376,7 @@ DOKUMENT = {
     "typiska-arter": {},
     "vagledningar": {},
     "webbgis-publicering": {"flikar": True},
-    "attributbeskrivning": {},
+    "attributbeskrivning": {"sidomeny": True},
     "popup-arcade-uttryck": {},
 }
 
