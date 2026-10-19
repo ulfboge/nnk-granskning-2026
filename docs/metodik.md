@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.9 · 2026-10-16** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7 följer samma skrivbordsprinciper som KartLits-underlaget 2027: bevarandeplanens fastställelseår är inte året för underlaget, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.10 · 2026-10-19** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* kommentarsfälten i Ajourhålla-uttaget kontrollerade (avsnitt 2a och 2c), R7-förslagets förhållande till steg 3, hur *Nej* i skiftena och gödsling i IR-ortot ska läsas, och legenden för Grundyta i webbGIS:et. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -44,7 +44,7 @@ Följande går däremot att läsa direkt ur den publika versionen, eftersom dess
 | — varav karteringsstatus 1 Ej granskad | 2 592 | |
 | — varav karteringsstatus saknas | 432 | |
 
-**a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.** Någon har varit på plats — och tillståndet finns inte i NNK. Det är den snabbaste vinsten i hela uppdraget och kräver inget nytt fältarbete, bara att någon letar rätt på protokollet. Kontrollera `kommentar`-fältet för just dessa ytor i länsuttaget från Ajourhålla (hämtat 2026-08-26, se avsnitt 8) — där kan grunden redan stå.
+**a) 277 ytor har faktisk fältkunskap men saknar tillståndsbedömning.** Någon har varit på plats — och tillståndet finns inte i NNK. Kontrollerat 2026-10-19 i länsuttaget från Ajourhålla (2026-08-26, se avsnitt 8): grunden står inte där. 80 av de 277 ytorna har en kommentar, men det är basinventeringens korta fältanteckningar från 2007–2008 om typen ("alt 9820", "delv 9012?", "tall"). Ingen hänvisar till ett protokoll eller anger tillståndet, och `habitat_period_lastdata_end` är tom för alla 277. Ett tjugotal anteckningar nämner påverkan ("delv avv", "gallrad?", "igenväxande m björk", "fd bete?") och kan användas som signal vid granskningen, men inte som grund. 261 av ytorna har ursprung BIDOS. Fältbesöken är alltså basinventeringens egna, och protokollen är i så fall BIDOS-blanketterna. Vinsten här är mindre än det först såg ut: ytorna går in i R7-granskningen som alla andra (153 blir *typ ej styrkt*, 35 får ett utfall, 89 har koder som R7 inte gäller).
 
 **b) 141 ytor har karteringsstatus 5 "Åtgärdas".** Här skiljer sig de två källorna åt, och båda betydelserna är relevanta:
 
@@ -65,7 +65,7 @@ Datat pekar entydigt på den första: 139 av 141 har ursprung BIDOS, samtliga re
 
 Fördelningen är talande: nästan uteslutande hävdberoende marker — precis den kategori FAQ fråga 11 sätter högst. Och den ligger i objekt som redan är prioritet 1 i arbetsplanen. **Det gör listan till den bästa öppningsfrågan i ett förvaltarsamtal.**
 
-**c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.** Ni ska ange *vad som ligger till grund för bedömningen av utbredning*, *vad som ligger till grund för bedömningen av tillstånd*, och *hur aktuella dessa två bedömningar är*. Detta går nu att kontrollera direkt i länsuttaget från 2026-08-26 (se avsnitt 8) — det avgör om detta är en lucka eller bara var osynlig i den publika exporten. Oavsett svar gäller regeln framåt: ingen ytredigering bör lämna kommentarsfältet tomt.
+**c) FAQ fråga 4 kräver spårbarhet som den publika versionen inte kan visa.** Ni ska ange *vad som ligger till grund för bedömningen av utbredning*, *vad som ligger till grund för bedömningen av tillstånd*, och *hur aktuella dessa två bedömningar är*. Kontrollerat 2026-10-19 i länsuttaget från 2026-08-26: det är en verklig lucka, inte bara en effekt av den publika exporten. Av de 832 ytor som har naturtypsstatus fullgod eller icke fullgod har 365 en kommentar. Där statusen sattes 2018–2019 har nästan alla en kommentar (oftast "Restaurerad Life coast benefit 2013-2019"), men av de 472 som sattes 2008–2009 har bara 121 det. Uppgift om när underlaget togs fram (`habitat_period_lastdata_end`) saknas nästan helt. Grunden för de flesta äldre statusar går alltså inte att spåra i NNK. Regeln framåt: ingen ytredigering ska lämna kommentarsfältet tomt.
 
 ---
 
@@ -99,6 +99,8 @@ Förvaltarkunskap är i regel andrahandsinformation som du inte själv har verif
 - Om förvaltarens uppgift senare visar sig fel har du inte kontaminerat den nationella databasen.
 
 **När hoppa direkt till steg 3?** När uppgiften är dokumenterad och du kan hänvisa till källan — ett uppföljningsprotokoll, en ängs- och betesmarksinventering, en skötselplan med daterad statusbeskrivning. Då är det inte hearsay utan ett kunskapsunderlag, och karteringsstatus 2 gäller direkt.
+
+De skriftliga underlag som länsstyrelsen själv har (TUVA, SkötselDOS, länsstyrelsens uppföljningar, uppföljningsplanernas målindikatorer, bevarandeplanerna) är redan kopplade per yta och vägs ihop i R7-förslaget (avsnitt 5). För dem består steget alltså av att granska förslaget: kontrollera villkoret (oftast ortot) och att underlaget verkligen gäller ytan. R7 är fortfarande ett utkast, så även dessa förs in som förslag i granskningslagret tills piloten är klar. Att hoppa direkt till steg 3 gäller främst underlag som förvaltaren har och som inte finns i de registren, t.ex. ett eget uppföljningsprotokoll eller en daterad statusbeskrivning i en skötselplan.
 
 ---
 
@@ -230,7 +232,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 | Utfall | Villkor |
 |---|---|
-| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS från 2020, eller välhävdad TUVA från 2020), ett aktuellt belägg för tillståndet (TUVA från 2020 utan negativa noteringar, eller en uppföljning högst 10 år gammal med alla punkter bra eller *utmärkt hävd*), och orto/IR-orto utan igenväxning, plöjning eller gödsling. |
+| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS från 2020, eller välhävdad TUVA från 2020), ett aktuellt belägg för tillståndet (TUVA från 2020 utan negativa noteringar, eller en uppföljning högst 10 år gammal med alla punkter bra eller *utmärkt hävd*), och orto/IR-orto utan igenväxning, plöjning eller tecken på gödsling. |
 | Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, ortot visar igenväxning, eller en uppföljning högst 10 år gammal anger att *akuta åtgärder krävs*. Typen behålls (R1). |
 | Till fält | Underlagen motsäger varandra; hävd belagd men inget aktuellt belägg för tillståndet (TUVA före 2020, eller en uppföljning som anger att *åtgärder krävs*); hävd som har tagits upp igen efter ett uppehåll; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
 
@@ -240,8 +242,10 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 |---|---|---|
 | Ja | Hävd varje år från typens startår, eller från 2015 | Uppfyller hävdvillkoret för *fullgod*. Kontrollera ändå orto och TUVA. |
 | Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod* — utom när hävden har tagits upp igen och pågått minst tre år i följd fram till senaste skiftesåret (t.ex. efter en restaurering). Då är hävden inte upphörd, men tillståndet efter uppehållet är okänt: *till fält*. |
-| Nej | Ytan träffar skiften men aldrig bete | Även en smal kantträff mot åker räcker, så värdet säger lite på skogs- och myrytor. På hävdberoende typer tyder det på upphörd hävd — pröva *icke fullgod* mot ortot. |
+| Nej | Minst 10 % av ytan ligger på ett jordbruksskifte något år 2015–2025, men inget år ligger hälften av ytan på bete eller slåtter | Ytan ligger alltså delvis i jordbrukets stödsystem, men inte som betesmark eller äng – oftast åker eller vall. På skogs- och myrytor betyder det oftast bara att en kant av ytan ligger på åker, så värdet säger lite där. På hävdberoende typer tyder det på att hävden har upphört (eller att marken inte söks stöd för som betesmark): pröva *icke fullgod* mot ortot. Under 10 % räknas inte som träff, och ytan blir *Oklart* (ändrat 2026-10-13). |
 | Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
+
+**Gödsling syns inte direkt i ortot.** IR-ortot visar hur kraftigt vegetationen växer, inte varför. Gödslad eller insådd gräsmark blir jämnt klarröd, som åkrarna intill, medan ogödslad naturbetesmark är mattare rosa till rödbrun och fläckig (se *Så läser du IR-ortot* i bedömningsguiden). Det är en indikation, inget belägg: sen sommar, fuktig mark och kvävefixerare ger också kraftig rodnad. Bättre underlag för gödsling är TUVA:s påverkansnotering (*produktionshöjande påverkan*), grödkoden i skiftena (vall) och förvaltarens kunskap.
 
 *Vall senaste året* (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.
 
@@ -306,6 +310,8 @@ Tills budskapet i november finns behandlas alla 9010- och 9050-ytor enligt tabel
 | `laser_hojdforandring_medel` (dm) | Medelhöjden i senaste skanningen minus den äldsta, under `laser_forandring_period` (t.ex. 2010-2020). Negativt = sänkning | Normal tillväxt ger några dm till 1–2 m (median +0,7 m). Sänkning i medelvärdet tyder på ingrepp eller störning i en stor del av ytan. |
 | `laser_andel_sankt` (%) | Andel av ytan där höjden sjunkit mer än 5 m mellan skanningarna | Fångar avverkning och kraftig gallring, även ingrepp som inte krävt anmälan, och störningar som storm och granbarkborre. |
 | `laser_flagga` | *Möjlig avverkning*: minst 10 % av ytan eller minst 0,1 ha sänkt. *Möjlig gallring*: grundytan har minskat minst 3 m²/ha och 15 % medan medelhöjden inte sjunkit mer än 1 m. *Osäker (lövat/olövat)*: se begränsningar nedan | Flaggad yta prövas mot orto och Skogsstyrelsens underlag. Bekräftas ingreppet efter karteringen: *icke fullgod*. Kan orsaken vara naturlig störning (storm, brand, insekter): *till fält*, eftersom det kan vara en del av typens dynamik. Flaggan ensam räcker aldrig för *icke fullgod*, den pekar bara ut ytan för kontroll. Tom flagga är inget belägg för att inget har hänt, se nedan. |
+
+*Rastren i webbGIS:et.* *SKS Skogliga Grunddata 3.1 – Grundyta_gron* har ingen användbar legend; den visar bara rastrets tekniska värdeintervall (−2 147 483 648 till 2 147 483 647). Läs den så här: ljust gult är låg grundyta (gles eller ung skog, hygge), mörkgrönt är hög grundyta (tät, grov skog), och ofärgat är vatten, öppen mark eller ingen data. Grundyta (m²/ha) är summan av stammarnas tvärsnittsyta i brösthöjd, alltså inte trädhöjd. Hög grundyta betyder mycket virke per hektar och går ofta men inte alltid ihop med hög skog. Skalan är relativ och har inga klassgränser, så siffror per yta läser du i popupen (`laser_grundyta_medel`). Är du osäker på riktningen: klicka på ett hygge och en gammal skog och jämför värdena.
 
 *Avverkning och gallring.* Skogsstyrelsens avverkningsinformation (avverkningsanmälningar och utförda avverkningar, som tas fram ur satellitbilder varje år) är det snabbaste underlaget och täcker tiden efter 2020, som laserdata inte gör förrän nästa skanning. Laserdata kompletterar: den mäter höjd och täthet direkt och fångar ingrepp som inte kräver anmälan och gallringar som satellitdetekteringen missar. Trösklarna är låsta sedan 2026-10-09. Kalibrerat mot utförda avverkningar mellan skanningarna (23 ytor med avverkning på minst 0,1 ha eller 10 % av ytan) flaggas 13 av 23, och 13 av 70 flaggade ytor finns i Skogsstyrelsens register. Strängare trösklar prövades: med kravet minst 10 % *och* minst 0,1 ha sänkt flaggas 24 ytor, men bara 6 av de 23 avverkade fångas, och precisionen stiger bara till 25 %. Bättre precision går inte att få med trösklarna, eftersom facit är ofullständigt: registret bygger på satellitbilder och saknar mindre ingrepp, stormfällning, röjning och död skog, som alla syns som sänkt höjd i laserdata. De 57 flaggade ytorna utan träff i registret kan alltså vara verkliga förändringar, naturliga störningar eller naturvårdsåtgärder, och ska kontrolleras i orto. Därför ger laserflaggan ensam aldrig *icke fullgod*: R7-förslaget sätter då låg säkerhet med villkoret att ingreppet syns i ortot, och först en utförd avverkning i registret som laserdata också flaggar ger hög säkerhet. Gallringsflaggan går inte att kalibrera på samma sätt, eftersom gallringar inte finns i registret. Trädhöjdslagren i webbGIS (*SKS Trädhöjd 3_1*, röd och grön) är två färgskalor av samma höjd och inget förändringsskikt. De visar hur skogen ser ut men är inget belägg för ingrepp.
 
@@ -586,6 +592,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.10** (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: *Nej* i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et.
 - **2.9** (2026-10-16) — typiska arter räknas per sjö för 3110–3160. "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
 - **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
