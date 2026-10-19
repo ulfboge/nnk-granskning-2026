@@ -98,7 +98,7 @@ Förvaltarkunskap är i regel andrahandsinformation som du inte själv har verif
 - Enligt FAQ fråga 9.1 är det granskningslagret som blir underlaget till planen för 2027. Kunskap som stannar där är alltså inte bortkastad — den är levererad.
 - Om förvaltarens uppgift senare visar sig fel har du inte kontaminerat den nationella databasen.
 
-**När hoppa direkt till steg 3?** När uppgiften är dokumenterad och du kan hänvisa till källan — ett uppföljningsprotokoll, en ängs- och betesmarksinventering, en skötselplan med daterad statusbeskrivning. Då är det inte hearsay utan ett kunskapsunderlag, och karteringsstatus 2 gäller direkt.
+**När hoppa direkt till steg 3?** När uppgiften är dokumenterad och du kan hänvisa till källan — ett uppföljningsprotokoll, en ängs- och betesmarksinventering, en skötselplan med daterad statusbeskrivning. Då är det inte hearsay utan ett kunskapsunderlag, och karteringsstatus sätts direkt enligt R3: oftast 2, och 4 bara om ytan själv är inventerad med NV:s metod.
 
 De skriftliga underlag som länsstyrelsen själv har (TUVA, SkötselDOS, länsstyrelsens uppföljningar, uppföljningsplanernas målindikatorer, bevarandeplanerna) är redan kopplade per yta och vägs ihop i R7-förslaget (avsnitt 5). För dem består steget alltså av att granska förslaget: kontrollera villkoret (oftast ortot) och att underlaget verkligen gäller ytan. R7 är fortfarande ett utkast, så även dessa förs in som förslag i granskningslagret tills piloten är klar. Att hoppa direkt till steg 3 gäller främst underlag som förvaltaren har och som inte finns i de registren, t.ex. ett eget uppföljningsprotokoll eller en daterad statusbeskrivning i en skötselplan.
 
@@ -176,10 +176,12 @@ Nästan all förvaltarkunskap är **kod 3**. Slarvar du och sätter kod 2 rappor
 
 | Underlag | `KARTERINGS` |
 |---|---|
-| Förvaltarens minnesbild, skötselplan, bevarandeplan, äldre inventering | **2 – Granskad vid skrivbordet** |
+| Förvaltarens minnesbild, skötselplan, bevarandeplan, äldre inventering. Även aktuella inventeringar som inte gjorts på just ytan med NV:s metod, t.ex. TUVA (ängs- och betesmarksinventeringen) och länsstyrelsens egna uppföljningar på objektnivå | **2 – Granskad vid skrivbordet** |
 | Förvaltaren har faktiskt varit på ytan nyligen och kan bedöma naturtypen | **3 – Besökt i fält** |
-| Standardiserad inventering: uppföljning, ängs- och betesmarksinventering, basinventeringsmetodik | **4 – Inventerad i fält** |
+| Just den här ytan är inventerad i fält med NV:s metod för basinventering eller uppföljning (t.ex. uppföljning med NNK-ytan som provyta, konsultinventering enligt basinventeringsmanualen), och inventeringen är aktuell | **4 – Inventerad i fält** |
 | Du vet att något är fel men inte vad | **5 – Åtgärdas** + obligatorisk kommentar |
+
+Karteringsstatus beskriver hur noga *ytan* är granskad, inte hur bra underlaget är i sig (handledningen 5.3 och tabell 7: 2 = bedömd "baserat på kunskap från t ex andra inventeringar", 4 = "ytan har inventerats i fält med relevant metod inom basinventeringen, uppföljningen eller motsvarande"). TUVA har egen metod och beskriver hela TUVA-objektet, inte NNK-ytan, och ger därför 2. Beslut 2026-10-19.
 
 Handledningen är tydlig med att kod 2 förutsätter att *"underlaget som använts bedöms vara så aktuellt att uppgifterna fortfarande är giltiga"*. En förvaltares minnesbild från 2015 av en hävdberoende mark är sannolikt inte aktuell — då är svaret okänt tillstånd plus kod 5, inte en gissning.
 
@@ -215,7 +217,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 **Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området (se *Bevarandeplanen som underlag* nedan), fältprotokoll eller fynd av typiska arter. För sjötyperna (3110–3160) räknas typiska arter för hela sjön, alltså alla sjöytor som rör varandra inom området, eftersom hela sjön är en livsmiljötyp (NV:s limniska FAQ). Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
 
-**Registrering:** Karteringsstatus 2 (R3), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.
+**Registrering:** Karteringsstatus 2 (R3; även när TUVA eller en uppföljning avgör, eftersom bedömningen görs vid skrivbordet), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.
 
 **Utfall:** varje delregel ger *fullgod*, *icke fullgod* eller *till fält*. *Till fält* är ett fullgott utfall — FAQ 11 säger att man ska invänta NV:s och HaV:s metoder där tillståndet inte är tydligt (R4).
 
@@ -592,7 +594,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
-- **2.10** (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: *Nej* i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et.
+- **2.10** (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: *Nej* i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et. R3: karteringsstatus 4 bara när ytan själv är inventerad med NV:s metod; TUVA och övriga lånade inventeringar ger 2, i linje med avsnitt 3 och R7.
 - **2.9** (2026-10-16) — typiska arter räknas per sjö för 3110–3160. "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
 - **2.8** (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger *till fält*, nytt underlag *länsstyrelsens uppföljningar*.
 - **2.7** (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för *icke fullgod*.
