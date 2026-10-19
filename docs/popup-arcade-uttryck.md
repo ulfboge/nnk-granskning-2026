@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -470,11 +470,10 @@ if (grupp == "Hävd (R7A)") {
         }
     }
     LagTill(bl);
-    LagTill("Historiska underlag (Ekonomiska kartan, Häradskartan)");
+    LagTill("Historiska underlag (Ekonomiska kartan 1950-tal, Häradskartan)");
 } else if (grupp == "Skog (R7B)") {
     LagTill("LM Ortofoton årsvis IR");
-    LagTill("SKS Trädhöjd");
-    LagTill("SKS Skogliga grunddata (grundyta, volym, medeldiameter)");
+    LagTill("SKS Skogliga Grunddata 3.1 – Grundyta_gron");
     LagTill("SKS Avverkningsinformation");
     LagTill("SKS Naturskydd");
     LagTill("SLU Skyddsvärda träd");

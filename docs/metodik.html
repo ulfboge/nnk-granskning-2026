@@ -359,13 +359,13 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <tr>
 <td>"Den är i bra skick"</td>
 <td>Tillstånd = Gott</td>
-<td><code>tillstand</code>, <code>procent_gott</code></td>
+<td><code>tillstand</code> (procentfälten behövs inte)</td>
 <td><code>condition_good</code> = 100 (<code>NATURTYPSS</code> = 1)</td>
 </tr>
 <tr>
 <td>"Den är igenvuxen / behöver restaureras"</td>
 <td>Tillstånd = Icke gott</td>
-<td><code>tillstand</code>, <code>procent_ej_gott</code></td>
+<td><code>tillstand</code> (procentfälten behövs inte)</td>
 <td><code>condition_notgood</code> = 100 (<code>NATURTYPSS</code> = 2)</td>
 </tr>
 <tr>
@@ -389,8 +389,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <tr>
 <td><strong>På vilken grund</strong> hen vet det</td>
 <td>Grund för bedömning</td>
-<td><code>Kommentar_metod</code> + <code>metod</code></td>
-<td><code>condition_method</code> (metod tillstånd) och <code>condition_comment</code> (max 255 tecken). Längre text i <code>KOMMENTAR</code></td>
+<td><code>kommentar_tillstand</code></td>
+<td><code>condition_comment</code> (max 255 tecken), längre text i <code>KOMMENTAR</code>. <code>condition_method</code> sätts vid överföringen (se <em>Till NNK:s tillståndsfält</em>). <code>metod</code> och <code>Kommentar_metod</code> gäller kontrollen 2027 och förs inte dit</td>
 </tr>
 <tr>
 <td><strong>När</strong> hen senast var där</td>
@@ -1224,7 +1224,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
-<li><strong>2.10</strong> (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: <em>Nej</em> i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et. R3: karteringsstatus 4 bara när ytan själv är inventerad med NV:s metod; TUVA och övriga lånade inventeringar ger 2, i linje med avsnitt 3 och R7.</li>
+<li><strong>2.10</strong> (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: <em>Nej</em> i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et. R3: karteringsstatus 4 bara när ytan själv är inventerad med NV:s metod; TUVA och övriga lånade inventeringar ger 2, i linje med avsnitt 3 och R7. Avsnitt 4: fältmappningen för tillståndet rättad – procentfälten fylls bara i vid blandat, och <code>metod</code> gäller kontrollen 2027 och förs inte till <code>condition_method</code>.</li>
 <li><strong>2.9</strong> (2026-10-16) — typiska arter räknas per sjö för 3110–3160. "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av <em>ej omprövad</em>. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt <em>Till NNK:s tillståndsfält (förslag)</em> i 5, tidsordning och checklista i 9.</li>
 <li><strong>2.8</strong> (2026-10-14) — avsnitt 5, R7: samma skrivbordsprinciper som KartLits-underlaget 2027. Bevarandeplanens fastställelseår räknas inte som året för underlaget (nytt villkor 3 för typen; planens tillstånd aldrig eget belägg, åldersgränserna för planen borttagna). R7A: TUVA aktuellt från 2020, välhävdad TUVA från 2020 räknas som hävd, återupptagen hävd ger <em>till fält</em>, nytt underlag <em>länsstyrelsens uppföljningar</em>.</li>
 <li><strong>2.7</strong> (2026-10-09) — avsnitt 5, R7B: laserflaggans trösklar låsta efter jämförelse av varianter mot Skogsstyrelsens utförda avverkningar; laserflaggan ensam räcker inte för <em>icke fullgod</em>.</li>

@@ -1,6 +1,6 @@
 # Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning
 
-**Version 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
+**Version 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten** · Manual för uppgifterna **A2.7** (publicera granskningslagret i portalen) och **A2.8** (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.
 
 > **Målbild.** Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms *KartLitS*-webbGIS med lagret `LstAB NNK granskning` som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar *Redigera*, fyller i rullistorna *Livsmiljötyp/Utbredning/Tillstånd, behov av justering*, *Vad ska kontrolleras*, *Metod för kontroll*, *Granskat* och kommentarer, och sparar med *Uppdatera*. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.
 
@@ -206,7 +206,7 @@ Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Fo
 | Grupp | Fält (i ordning) | Gruppbeskrivning |
 | --- | --- | --- |
 | **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22, se not nedan) | Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Förändringsorsak, förslag · Kommentar – livsmiljötyp och utbredning | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
-| **2. Tillstånd** | Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt/Icke gott — gissa inte. |
+| **2. Tillstånd** | Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar (R7: *Ej omprövad*). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
 | **3. Vad ska kontrolleras och hur** | Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
 | **4. Klart?** | Granskat | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
 
@@ -224,7 +224,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre ba
 >
 > Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.
 
-**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning):
+**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. Klistra in de nya texterna i formuläret för alla tre lagren.
 
 | Fält | Beskrivning |
 | --- | --- |
@@ -235,14 +235,14 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre ba
 | Livsmiljötyp 3 | Tredjehandsförslag, om osäker mellan flera typer. |
 | Förändringsorsak, förslag | Fyll alltid i, även när ni bara bekräftar en "ej bedömd" status som redan korrekt (dvs. en komplettering, inte en ändring). Nästan alltid kod 3 Komplettering — kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken (R2-regeln). |
 | Kommentar – livsmiljötyp och utbredning | Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån. |
-| Tillstånd, behov av justering | Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. |
-| Gott tillstånd (%) | Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100. |
-| Ej gott tillstånd (%) | Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100. |
-| Osäker (%) | Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100. |
-| Kommentar – Tillstånd | Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa. |
+| Tillstånd, behov av justering | Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelarna. Lämna tomt om naturtypsstatusen ska stå kvar. |
+| Gott tillstånd (%) | Fyll bara i vid Blandat. Gott eller Icke gott blir 100 % vid överföringen till NNK. Summan av de tre procentfälten ska bli 100. |
+| Ej gott tillstånd (%) | Fyll bara i vid Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100. |
+| Osäker (%) | Fyll bara i vid Blandat. Motsvarar NNK:s Okänt tillstånd (%), som NNK räknar fram som resten. |
+| Kommentar – Tillstånd | Förs till NNK:s kommentar om tillståndsbedömningen, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa. |
 | Vad ska kontrolleras 1–3 | Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan. |
 | Kommentar – Vad ska kontrolleras | Motivera varför just detta bör kontrolleras. |
-| Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. |
+| Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd. |
 | Kommentar – Metod | Kompletterande info om vald metod, t.ex. varför fältinventering behövs. |
 | Granskat | Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt. |
 
@@ -279,31 +279,43 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
    - *Bakgrunder*: välj en ljus bakgrund (t.ex. LM Topografisk webbkarta nedtonad) som start.
    - *Kartans utgångsläge*: aktivera, zooma till Södermanland, Spara.
    - **Exportera lagerlistan** (knappen *Export* överst) → spara JSON-filen i `natura-2000: deliveries/nnk_granskning_sodermanland_20260901/` — backup om en WebMap försvinner ("Etikett kan inte hittas i WebMap", s.28).
-### Faktisk lagerstruktur (facit, TOC-export 2026-09-18)
+### Faktisk lagerstruktur (facit, TOC-export 2026-10-19)
 
 Ovanstående är principen för hur grupperna byggs (fem planerade grupper). Den färdiga appen fick
 fler och mer detaljerade grupper än så — nedan är den faktiska strukturen, hämtad direkt ur
-Konfiguratorns TOC-export (`toc_export_20260918_072736.csv`). Ingen "Fastighet och administrativt"-
-grupp byggdes; "Ortofoto och historiska kartor" delades i stället upp i en egen ortofoto-grupp och
-en historisk grupp, och flera nya ämnesgrupper (skog och vegetation, markfuktighet och hydrologi,
-jordarter och geologi, terräng och höjd) tillkom för underlag som inte fanns med i planen i del 5.
+Konfiguratorns TOC-export (`natura-2000: deliveries/nnk_granskning_sodermanland_20260901/toc_export_20261019_103241.csv`,
+206 rader). Ingen "Fastighet och administrativt"-grupp byggdes; "Ortofoto och historiska kartor"
+delades i stället upp i en egen ortofoto-grupp och en historisk grupp, och flera nya ämnesgrupper
+(skog och vegetation, markfuktighet och hydrologi, jordarter och geologi, terräng och höjd)
+tillkom för underlag som inte fanns med i planen i del 5. Tidigare exporter (2026-09-18,
+2026-10-08) ligger i samma mapp.
 
 | Grupp | Lager |
 | --- | --- |
-| **1. Granskning** | NNK naturaobjekt pkt · NNK naturaobjekt lin · NNK naturaobjekt yta (redigerbara feature layers) · LstD Skyddade områden (N2000 och naturreservat) – Driftat |
-| **2. Ortofoton och flygbilder** | LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025) · LM Ortofoton årsvis Bildsömmar (färg-IR) – WMS (tillagd 2026-10-08) |
-| **3. Skog och vegetation** | NV Naturtypskartan NNK (punkt/linje/yta) · NV Nationella Marktäckedata (NMD) – WMS (Låg fjällskog, Skoglig produktivitet, Basskikt) · SKS Trädhöjd 3_1 – WMS (6 sublager) · SKS Skogliga Grunddata 3.1 (Raster) – Grundyta_gron · SLU Skyddsvärda träd (Artportalen) · SKS Avverkningsinformation (Avverkningsanmälningar, Faktiskt avverkat) · SKS Naturskydd (Biotopskydd, Naturvårdsavtal, Vitryggsavtal) |
-| **4. Markfuktighet och hydrologi** | NV NMD Markfuktighetsindex (Raster) · SKS Markfuktighetskartan DTW 1_1 – WMS · NV Nationella Marktäckedata (NMD) – WMS (samma sublager som grupp 3) · SMHI SVAR2022 Vattenförekomster 2022–2027 (sjöar, vattendrag) · NV Våtmarksinventering – WMS (VMI_ytor, VMI_punkter) |
-| **5. Jordbruk och hävd** | SJV Ängs- och betesmarksinventeringen naturtyper + (Senaste) · SJV Jordbruksblock, ett lager per år 2003–2025 |
-| **6. Arter och naturvärden** | SLU Skyddsvärda träd (Artportalen, f.d. Trädportalen) |
-| **7. Historiska underlag** | LstD LM Ekonomiska kartan – 1950-tal (Raster) · LM Häradskartan Södermanlands län · LM Ekonomiska kartan |
-| **8. Jordarter och geologi** | SGU Jorddjup 2026 (Raster) · SGU Jordarter 1:25 000–1:100 000 – WMS (9 sublager) · SLU Torvkartan – WMS (3 sublager) · SGU Berggrund 1:50 000–1:250 000 – WMS (22 sublager) |
-| **9. Terräng och höjd** | LM Höjdmodell – WMS (Ursprung och kvalitet, Terränglutning, Terrängskuggning) · LM Höjddata Ekvidistanslinjer 1 meter (Raster) |
-| **10. Vatten (VISS)** (tillagd 2026-10-08) | VM Statusklassning ekologisk status 2022–2027: sjöar, vattendrag, avrinningsområden |
+| **1. Granskning** | NNK naturaobjekt pkt · NNK naturaobjekt lin · NNK naturaobjekt yta (redigerbara feature layers) · LstD Skyddade områden (N2000 och naturreservat) |
+| **2. Ortofoton och flygbilder** | LM Ortofoton årsvis IR – WMS (sublager 2006–2025) · LM Ortofoton årsvis färg – WMS (sublager 2006–2025) · LM Ortofoton årsvis Bildsömmar (färg-IR) – WMS (2010–2025) |
+| **3. Skog och vegetation** | NV Naturtypskartan NNK (punkt/linje/yta) · NV Nationella Marktäckedata (NMD) – WMS (Låg fjällskog, Skoglig produktivitet, Basskikt) · SKS Skogliga Grunddata 3.1 (Raster) – Grundyta_gron · SLU Skyddsvärda träd (Artportalen) · SKS Avverkningsinformation (Avverkningsanmälningar, Faktiskt avverkat) · SKS Naturskydd (Biotopskydd, Naturvårdsavtal, Vitryggsavtal) |
+| **4. Vatten (VISS)** | VM Statusklassning ekologisk status 2022–2027: avrinningsområden, vattendrag, sjöar |
+| **5. Markfuktighet och hydrologi** | NV NMD Markfuktighetsindex (Raster) · SKS Markfuktighetskartan DTW 1_1 – WMS · NV Nationella Marktäckedata (NMD) – WMS (samma sublager som grupp 3) · SMHI SVAR2022 Vattenförekomster 2022–2027 (sjöar, vattendrag) · NV Våtmarksinventering – WMS (VMI_ytor, VMI_punkter) · NV Dikeskartering (Södermanlands län) |
+| **6. Jordbruk och hävd** | SJV Jordbruksblock, ett lager per år 2003–2025 · SJV Ängs- och betesmarksinventeringen naturtyper (Senaste) · SJV Ängs- och betesmarksinventeringen (Senaste) · SJV Markklass historik (Markklasser 2014, 2019–2025) |
+| **7. Arter och naturvärden** | SLU Skyddsvärda träd (Artportalen, f.d. Trädportalen) |
+| **8. Historiska underlag** | LstD LM Ekonomiska kartan – 1950-tal (Raster) · LM Häradskartan Södermanlands län |
+| **9. Jordarter och geologi** | SGU Jorddjup 2026 (Raster) · SGU Jordarter 1:25 000–1:100 000 – WMS (9 sublager) · SLU Torvkartan – WMS (3 sublager) · SGU Berggrund 1:50 000–1:250 000 – WMS (22 sublager) |
+| **10. Terräng och höjd** | LM Höjdmodell – WMS (Ursprung och kvalitet, Terränglutning, Terrängskuggning) · LM Höjddata Ekvidistanslinjer 1 meter (Raster) |
 
 SLU Skyddsvärda träd och NV Nationella Marktäckedata (NMD) ligger dubbelt (i två grupper var) —
 relevanta både för skog/vegetation och för art- respektive fuktighetsperspektivet. Konfiguratorn
 tillåter att samma datakälla läggs till i flera grupper.
+
+**Ändrat sedan exporten 2026-10-08:**
+
+- *SKS Trädhöjd 3_1 – WMS* (6 sublager) är borttagen. Lagret visade inga data hos granskarna. Trädhöjd och höjdförändring finns i stället i popupen (`laser_hojd_medel`, `laser_hojdforandring_medel`, `laser_flagga`), och skogens täthet syns i *Grundyta_gron*.
+- *SJV_Jordbruksskiften_historisk* (skiften 2015–2024) är borttagen. Hävden enligt skiftena finns som fält i popupen (`havd_skiften`, `havd_ar_utan_bete`); för att se marken ett visst år används *SJV Jordbruksblock* för det året.
+- *LM Ekonomiska kartan* (rikstäckande) är borttagen. Länets egen *LstD LM Ekonomiska kartan – 1950-tal* finns kvar.
+- *Vatten (VISS)* ligger nu direkt efter *Skog och vegetation*.
+- Av tilläggen 2026-09-30 nedan är c1 (NV Dikeskartering) gjord. a (virkesvolym och medeldiameter), c2 (terrängskuggning i hydrologigruppen) och c3 (SLU Markfuktighetskarta) är inte gjorda. Terrängskuggningen finns under *Terräng och höjd*; volym och medeldiameter finns som siffror i popupen (`laser_volym_medel`, `laser_diameter_medel`).
+
+Popupens rad *Lager för gruppen* och R7-förslagets kontroller (`r7f_kontrollera`) pekar på lagren med namnen ovan. Tas ett lager bort eller byter namn måste `docs/popup-arcade-uttryck.md` (avsnittet *Lager för gruppen*) och konstanterna `L_*` i `natura-2000: scripts/analysis/bygg_r7_forslag.py` ändras också.
 
 #### Tillägg 2026-09-30 · Underlag för R7B och R7C (skog, diken)
 
@@ -315,7 +327,7 @@ Kontrollerat mot Konfiguratorns lagerexport 2026-09-30 (`lst-webbgis-konfigurato
 3. Konfiguratorn → Lagerlista → gruppen *Skog och vegetation* → lägg till de två lagren från vår WebMap, direkt under *Grundyta_gron*.
 4. Valfritt: Skogsstyrelsens WMS `VisaDatumlaserskanning_1_0` visar skanningsdatum per 2,5 km-ruta. Det är samma uppgift som `laser_skanning_ar` i popupen, men för hela kartbilden.
 
-**b) Trädhöjd 3_1 — röd/grön är färgskalor, inte förändring.** Enligt Skogsstyrelsens tekniska beskrivning (2024-02-09) visar `*_rod` trädhöjden i en grön-gul-röd skala och `*_gron` samma höjd i en gul-grön skala. *Laser* bygger på Lantmäteriets laserskanning, *Flygbild* på bildmatchning av flygbilder. Inget av lagren är ett förändringsskikt, och lagren kan därför inte användas direkt som belägg för *icke fullgod*. En avverkning syns bara om man jämför Laser och Flygbild (olika år) för hand. Använd `laser_flagga` (förändring mellan två laserskanningar) och *SKS Avverkningsinformation* för att hitta ingrepp, och trädhöjdslagren för att se hur skogen ser ut. Ett av färgparen räcker. Släck gärna `*_rod`-sublagren i Konfiguratorn så att listan blir kortare.
+**b) Trädhöjd 3_1 — röd/grön är färgskalor, inte förändring.** *(Lagret togs bort ur appen före 2026-10-19, se ovan.)* Enligt Skogsstyrelsens tekniska beskrivning (2024-02-09) visar `*_rod` trädhöjden i en grön-gul-röd skala och `*_gron` samma höjd i en gul-grön skala. *Laser* bygger på Lantmäteriets laserskanning, *Flygbild* på bildmatchning av flygbilder. Inget av lagren är ett förändringsskikt, och lagren kan därför inte användas direkt som belägg för *icke fullgod*. En avverkning syns bara om man jämför Laser och Flygbild (olika år) för hand. Använd `laser_flagga` (förändring mellan två laserskanningar) och *SKS Avverkningsinformation* för att hitta ingrepp, och trädhöjdslagren för att se hur skogen ser ut. Ett av färgparen räcker. Släck gärna `*_rod`-sublagren i Konfiguratorn så att listan blir kortare.
 
 **c) Markfuktighet och hydrologi — terrängskuggning och diken saknas.** Terrängskuggningen finns bara som sublager i *LM Höjdmodell – WMS* under *Terräng och höjd*, och AI-karterade diken finns inte i appen alls. Lägg till i gruppen *Markfuktighet och hydrologi*, i den här ordningen överst:
 1. *NV Dikeskartering – WebMap* (item `d929ace4ffe644d099cada3c3a2ab606`). Det är NV:s bearbetning av Skogsstyrelsens AI-karterade diken, samma data som fälten `diken_m_inom`/`diken_m_50m`.

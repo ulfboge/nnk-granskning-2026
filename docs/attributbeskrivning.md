@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -53,7 +53,7 @@ Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när 
 ### Grupp 2 · Tillstånd
 
 **Tillstånd, behov av justering**  
-Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %).
+Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %). Lämna tomt om naturtypsstatusen ska stå kvar (R7: *Ej omprövad*). Hur värdena förs över till NNK står i Del D.
 
 | Kod | Klartext |
 |---|---|
@@ -63,16 +63,16 @@ Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliv
 | 4 | Blandat – se andelar |
 
 **Gott tillstånd (%)**  
-Andel av ytan i gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+Fyll bara i vid 4 Blandat. Gott eller Icke gott blir 100 % vid överföringen till NNK (Del D). Summan av de tre procentfälten ska bli 100.
 
 **Ej gott tillstånd (%)**  
-Andel av ytan i icke gott tillstånd om blandat. Summan av de tre procentfälten ska bli 100.
+Fyll bara i vid 4 Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100.
 
 **Osäker (%)**  
-Andel av ytan där tillståndet är osäkert. Summan av de tre procentfälten ska bli 100.
+Fyll bara i vid 4 Blandat. Motsvarar NNK:s *Okänt tillstånd (%)*, som NNK räknar fram som resten (100 − gott − inte gott).
 
 **Kommentar – Tillstånd**  
-Grund för bedömningen. Vid osäkerhet: dokumentera vad ni inte vet i stället för att gissa.
+Förs till NNK:s `condition_comment`, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa.
 
 ### Grupp 3 · Vad ska kontrolleras och hur
 
@@ -92,7 +92,7 @@ Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hä
 Motivera varför just detta bör kontrolleras.
 
 **Metod för kontroll**  
-Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills.
+Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Fältet förs inte till NNK:s *Metod tillstånd*; den sätts vid överföringen (Del D).
 
 | Kod | Klartext |
 |---|---|
@@ -499,7 +499,7 @@ Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_gr
 
 | Fält | Typ | Innehåll |
 |---|---|---|
-| `skdos_havd_typ` | text | *Bete*, *Slåtter* eller *Bete och slåtter*: utförda åtgärder (löpande skötsel/drift, status Genomförd, Avslutad eller Påbörjad) som överlappar ytan med minst 1 % eller 0,25 ha. Åtgärder som ritats på hela reservatet (≥ 200 ha) och transporter, stängsel och liknande räknas inte. 486 ytor |
+| `skdos_havd_typ` | text | *Bete*, *Slåtter* eller *Bete och slåtter*: utförda åtgärder (löpande skötsel/drift, status Genomförd, Avslutad eller Påbörjad) som överlappar ytan med minst 1 % av ytan eller 0,25 ha. Tröskeln gäller varje åtgärd för sig, och en smal kantträff på en liten yta räcker, så kontrollera i ortot att åtgärden ligger på ytan. Åtgärder som ritats på hela reservatet (≥ 200 ha) och transporter, stängsel och liknande räknas inte. 486 ytor |
 | `skdos_havd_senaste_ar` | heltal | Senaste året med bete eller slåtter. SkötselDOS har inget datumfält, så året tas ur åtgärdens namn ("Bete Lindön 2017"). Tomt om inget år står i namnet (125 av ytorna) |
 | `skdos_havd_antal_ar` | heltal | Antal olika år med bete eller slåtter |
 | `uppf_punkter_bedomda` | heltal | Antal uppföljningspunkter (målindikatorer för naturtyper) inom ytan med bedömd måluppfyllelse. 101 ytor |
