@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.11 · 2026-10-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.12 · 2026-10-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* naturvårdsbränning räknas inte som ingrepp i R7B, SkötselDOS-hävden kräver 10 % täckning, och tomt *Livsmiljötyp, behov av justering* betyder ingen ändring när ytan är granskad. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -338,7 +338,17 @@ Tills budskapet i november finns behandlas alla 9010- och 9050-ytor enligt tabel
 |---|---|
 | Fullgod | Myr och kärr: inga diken, torvtäkt eller vägar i eller i anslutning till ytan (IR-orto, laser) och ingen igenväxning. Sjöar och vattendrag: ekologisk status god eller hög i VISS och opåverkad hydromorfologi. |
 | Icke fullgod | Diken som påverkar ytan, VISS-status måttlig eller sämre på grund av faktorer som är avgörande för typen, eller rikkärr där nödvändig hävd har upphört. |
-| Till fält | VISS saknar klassning; rikkärr (7230) generellt. |
+| Till fält | VISS saknar klassning; rikkärr (7230) generellt, om provytedata saknas eller ger en blandad bild. |
+
+**Underlag för rikkärr – RestoREDs florauppföljning 2022 (2026-10-20).** LIFE RestoRED följde upp floran i fyra rikkärr i juni 2022, före restaureringen: Bärstakärret, Lenellstorpskärret, Pilgöljan och Sjösakärren. Metoden var Naturvårdsverkets manual för uppföljning av myrar, med cirka 50 provytor per område och typiska och negativa indikatorarter registrerade per provyta. Provytorna är kopplade till NNK-ytorna, och R7C använder andelen provytor med typisk respektive negativ art när ytan har minst 10 provytor:
+
+| Provytorna visar | Utfall |
+|---|---|
+| Typisk art i högst 10 % och negativ art i minst 50 % | *Icke fullgod*, säkerhet medel. Finns också dike blir säkerheten medel i stället för låg |
+| Typisk art i minst 50 % och negativ art i högst 30 % | *Fullgod*, säkerhet medel, om IR-ortot inte visar igenväxning sedan 2022. Finns dike räknas provytorna som motargument |
+| Annat | *Till fält* |
+
+Datan beskriver läget före restaureringen. Villkoret är därför alltid att RestOREDs uppföljning efter restaureringen inte visar annat. Projektets milstolpe D2.1 kräver att den uppföljningen görs i minst ett område per län senast september 2026 och redovisas i NNK. Provytor som ligger i en NNK-yta av annan typ och har typiska rikkärrsarter ger kontrollen *pröva gränsen mot 7230*.
 
 **Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. VISS-statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
 
@@ -596,6 +606,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.12** (2026-10-20) — avsnitt 5, R7C: RestOREDs florauppföljning av rikkärr 2022 som underlag (provytor med typiska och negativa arter).
 - **2.11** (2026-10-20) — R7B: naturvårdsbränning och brandefterliknande åtgärder i SkötselDOS räknas inte som ingrepp. Avsnitt 4: tom *Livsmiljötyp, behov av justering* och Granskat = Ja betyder ingen ändring av typen. SkötselDOS-hävden kräver 10 % täckning (se R7A).
 - **2.10** (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: *Nej* i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et. R3: karteringsstatus 4 bara när ytan själv är inventerad med NV:s metod; TUVA och övriga lånade inventeringar ger 2, i linje med avsnitt 3 och R7. Avsnitt 4: fältmappningen för tillståndet rättad – procentfälten fylls bara i vid blandat, och `metod` gäller kontrollen 2027 och förs inte till `condition_method`.
 - **2.9** (2026-10-16) — typiska arter räknas per sjö för 3110–3160. "naturtypsstatus" i stället för "status" i R7-avsnittet, och förklaring av *ej omprövad*. NNK:s nya tillståndsfält är driftsatta: fältmappningen i avsnitt 4, nytt avsnitt *Till NNK:s tillståndsfält (förslag)* i 5, tidsordning och checklista i 9.
