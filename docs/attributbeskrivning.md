@@ -495,12 +495,13 @@ Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `tuva_negativ` | text | *Ja* om TUVA har en negativ notering: dominerande hävdklass *Ingen hävd*, *Ohävdad (restaurerbar)* eller *Ej aktuell*, eller igenväxning *Tydlig*/*Igenväxt*. Annars *Nej*. Finns för att webbGIS-filtret *TUVA ohävdad/igenväxande* ska bli ett enda villkor. Tillagt 2026-10-02 |
 
 ### SkötselDOS — utförd hävd och uppföljning
-Sju fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_granskning.csv` (`nnk_skotseldos.py`, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
+Åtta fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_granskning.csv` (`nnk_skotseldos.py`, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
-| `skdos_havd_typ` | text | *Bete*, *Slåtter* eller *Bete och slåtter*: utförda åtgärder (löpande skötsel/drift, status Genomförd, Avslutad eller Påbörjad) som överlappar ytan med minst 1 % av ytan eller 0,25 ha. Tröskeln gäller varje åtgärd för sig, och en smal kantträff på en liten yta räcker, så kontrollera i ortot att åtgärden ligger på ytan. Åtgärder som ritats på hela reservatet (≥ 200 ha) och transporter, stängsel och liknande räknas inte. 486 ytor |
-| `skdos_havd_senaste_ar` | heltal | Senaste året med bete eller slåtter. SkötselDOS har inget datumfält, så året tas ur åtgärdens namn ("Bete Lindön 2017"). Tomt om inget år står i namnet (125 av ytorna) |
+| `skdos_havd_typ` | text | *Bete*, *Slåtter* eller *Bete och slåtter*: utförda åtgärder (löpande skötsel/drift, status Genomförd, Avslutad eller Påbörjad) som tillsammans täcker minst 10 % av ytan, samma gräns som för jordbruksskiftena. Enskilda åtgärder med överlapp under 1 % av ytan och under 0,25 ha räknas inte in. Åtgärder som ritats på hela reservatet (≥ 200 ha) och transporter, stängsel och liknande räknas inte. 424 ytor. Före 2026-10-20 räckte en enda kantträff (486 ytor) |
+| `skdos_andel_overlapp` | heltal | Andel av ytan (%) som åtgärderna täcker, 10–100. Lågt värde = åtgärden ligger bara på en del av ytan, kontrollera i ortot. Tillagt 2026-10-20 |
+| `skdos_havd_senaste_ar` | heltal | Senaste året med bete eller slåtter. SkötselDOS har inget datumfält, så året tas ur åtgärdens namn ("Bete Lindön 2017"). Tomt om inget år står i namnet (109 av ytorna) |
 | `skdos_havd_antal_ar` | heltal | Antal olika år med bete eller slåtter |
 | `uppf_punkter_bedomda` | heltal | Antal uppföljningspunkter (målindikatorer för naturtyper) inom ytan med bedömd måluppfyllelse. 101 ytor |
 | `uppf_andel_bra` | heltal | Andel av punkterna (%) med måluppfyllelse *Bra* |

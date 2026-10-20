@@ -47,7 +47,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Hävd enligt skiften: Nej**<br>`havd_skiften = 'Nej'` | ● | 369 | Minst 10 % av ytan ligger på jordbruksskifte något år, men inget år på bete/slåtter → kandidat *icke fullgod* på hävdberoende ytor. På skog och myr betyder Nej oftast bara att en del av ytan ligger på åker — använd inte där. |
 | **Hävd enligt skiften: Oklart**<br>`havd_skiften = 'Oklart'` | ○ | 241 | Inga skiften alls. Bete utan stöd syns inte — gå vidare med SkötselDOS och TUVA. |
 | **Vall senaste året**<br>`havd_varning_vall = 'Ja'` | ○ | 2 | Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter. |
-| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ● | 122 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
+| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ● | 115 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Åtgärderna täcker minst 10 % av ytan (sedan 2026-10-20), hur mycket står i popupen. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **TUVA-träff**<br>`tuva_antal_objekt IS NOT NULL` | ● | 980 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
 | **TUVA ohävdad/igenväxande**<br>`tuva_negativ = 'Ja'` | ● | 133 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
 | **SKS: utförd avverkning**<br>`skr_utford_ar IS NOT NULL` | ○ | 34 | Skogsstyrelsens satellitdetekterade avverkningar på minst 0,1 ha eller 10 % av ytan (tillagt 2026-10-08). Efter karteringen → kandidat *icke fullgod*. Kontrollera året mot karteringen och ingreppet i orto. På hävdytor (9070) kan det vara röjning i betesmark. |
@@ -77,7 +77,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 
 | Filter | Roll | Ytor | Så läser du träffen |
 |---|---|---:|---|
-| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ○ | 77 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
+| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ○ | 63 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Åtgärderna täcker minst 10 % av ytan (sedan 2026-10-20), hur mycket står i popupen. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **TUVA-träff**<br>`tuva_antal_objekt IS NOT NULL` | ○ | 104 | Ytan överlappar ett TUVA-objekt — underlag för både typ och hävd. TUVA äldre än 15 år räcker inte. Träff på skog eller strand: pröva om typen stämmer. |
 | **TUVA ohävdad/igenväxande**<br>`tuva_negativ = 'Ja'` | ○ | 57 | Ingen hävd, ohävdad/restaurerbar eller tydlig igenväxning → kandidat *icke fullgod*. På skogsytor kan det betyda att en betesmark vuxit igen. Kontrollera inventeringsåret. |
 | **Laser: möjlig avverkning**<br>`laser_flagga = 'Möjlig avverkning'` | ● | 37 | Höjden sjönk mer än 5 m mellan skanningarna 2010–12 och 2020 → kandidat *icke fullgod*. Kontrollera orto och Skogsstyrelsens avverkningsinformation — kan vara storm eller granbarkborre. Laserfälten finns bara för gruppen Skog. |
@@ -108,7 +108,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 
 | Filter | Roll | Ytor | Så läser du träffen |
 |---|---|---:|---|
-| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ○ | 42 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
+| **SkötselDOS: bete/slåtter**<br>`skdos_havd_typ IS NOT NULL` | ○ | 33 | Utförd bete/slåtter i Länsstyrelsens skötselsystem — fångar bete som inte syns i skiftena. Åtgärderna täcker minst 10 % av ytan (sedan 2026-10-20), hur mycket står i popupen. Kontrollera att åtgärden ligger på ytan och inte bara i reservatet. På skog kan det tyda på skogsbete (pröva om 9070 är rätt typ), på myr på slåtter av rikkärr (7230). |
 | **Diken inom ytan**<br>`diken_m_inom > 0` | ● | 25 | Skogsstyrelsens AI-karterade diken. Väger tyngst för sumpskog (9080), 9740, 9750 och myrarna 7110–7231 → kandidat *icke fullgod*. Kontrollera i terrängskuggningen och markfuktighetskartan. |
 | **Förslag: låg säkerhet**<br>`r7f_utfall LIKE '%säkerhet låg%'` | ● | 154 | Ytor där underlagen säger emot varandra eller är svaga (tillagt 2026-10-08). Ta dem med störst omsorg — förslaget är minst pålitligt där. |
 | **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ○ | 122 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
@@ -177,7 +177,7 @@ Filter som inte säger något om tillståndet men styr vilka ytor du ser och i v
 | Hävd enligt skiften: Nej | ● 369 | – | – | – |
 | Hävd enligt skiften: Oklart | ○ 241 | – | – | – |
 | Vall senaste året | ○ 2 | – | – | – |
-| SkötselDOS: bete/slåtter | ● 122 | ○ 77 | ○ 42 | – |
+| SkötselDOS: bete/slåtter | ● 115 | ○ 63 | ○ 33 | – |
 | TUVA-träff | ● 980 | ○ 104 | – | ○ 132 |
 | TUVA ohävdad/igenväxande | ● 133 | ○ 57 | – | ○ 27 |
 | Laser: möjlig avverkning | – | ● 37 | – | – |
