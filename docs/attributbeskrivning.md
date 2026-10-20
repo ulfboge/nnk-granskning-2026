@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -510,6 +510,16 @@ Elva fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_g
 | `uppf_andel_bra` | heltal | Andel av punkterna (%) med måluppfyllelse *Bra* |
 | `uppf_antal_dalig` | heltal | Antal punkter med måluppfyllelse *Dålig*. 17 ytor har minst en |
 | `uppf_senaste_ar` | heltal | År för den senaste bedömda punkten (2015–2022) |
+
+### LIFE-projektens åtgärder
+Fyra fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `life_for_granskning.csv` (`life_atgarder_per_yta.py`). Underlaget är de LIFE-märkta åtgärderna i Metrias SkötselDOS-uttag 2026-10-01: CoastBenefit, RestoRED, LIFE Taiga och Life2Taiga. En åtgärd räknas när de tillsammans täcker minst 10 % av ytan. 899 ytor har värden. Tomt betyder ingen LIFE-åtgärd. **Fälten visar att ytan har restaurerats, inte vilket tillstånd den har.** Visas i popupens avsnitt *Bedömning vid skrivbordet*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `life_projekt` | text | Projekt, t.ex. *CoastBenefit* eller *CoastBenefit, RestoRED* |
+| `life_atgard` | text | Kort text per projekt: år och åtgärder, t.ex. "RestoRED 2022–2024: restaureringsslåtter, röjning och avverkning". Saknas året i SkötselDOS står projektperioden (CoastBenefit 2013–2019, LIFE Taiga 2015–2020, RestoRED 2021–2027, Life2Taiga 2022–2028). Högst 250 tecken |
+| `life_senaste_ar` | heltal | Senaste år för en åtgärd. Tomt om inget år står i åtgärdernas namn |
+| `life_andel_tackt` | heltal | Andel av ytan (%) som åtgärderna täcker |
 
 ### Floraväkteri (Artportalen)
 Tio fält, alla skrivskyddade, heltal utom `fv_arter` och `fv_forsamring`, och bara i ytlagret. Hämtas ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten *Floraväkteri Sverige* och *Arkiv Floraväktarlokaler*): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte — enligt Länsstyrelsens floraväktarsamordning gäller det bara guckusko, vars enda lokal ligger utanför N2000 och naturreservat. Kommentarerna (Artportalens fält *Kommentar*) är publika och ingår, vilket `fv_anm_havd` bygger på. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt *Floraväkteri (Artportalen)*.

@@ -148,6 +148,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <li><a href="#typiska-arter-i-artportalen">Typiska arter i Artportalen</a></li>
 <li><a href="#tuva-angs-och-betesmarksinventeringen">TUVA — ängs- och betesmarksinventeringen</a></li>
 <li><a href="#skotseldos-utford-havd-och-uppfoljning">SkötselDOS — utförd hävd och uppföljning</a></li>
+<li><a href="#life-projektens-atgarder">LIFE-projektens åtgärder</a></li>
 <li><a href="#floravakteri-artportalen">Floraväkteri (Artportalen)</a></li>
 <li><a href="#laserdata-och-diken">Laserdata och diken</a></li>
 <li><a href="#skogsstyrelsens-register">Skogsstyrelsens register</a></li>
@@ -162,7 +163,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
 <p><em>Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</em></p>
-<p><strong>Version:</strong> 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
+<p><strong>Version:</strong> 1.10 · 2026-10-20 (Del C: nytt avsnitt <em>LIFE-projektens åtgärder</em>, fyra fält <code>life_*</code>). 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
 <strong>Källor:</strong> blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf</p>
 <p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till. Del D är NNK:s nya tillståndsfält, som granskningen till sist förs över till.</p>
@@ -1745,6 +1746,39 @@ Hur många av ytans <strong>typiska arter</strong> (T-arter för naturtypen i <a
 <td><code>uppf_senaste_ar</code></td>
 <td>heltal</td>
 <td>År för den senaste bedömda punkten (2015–2022)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="life-projektens-atgarder">LIFE-projektens åtgärder</h3>
+<p>Fyra fält, alla skrivskyddade och bara i ytlagret. Hämtas ur <code>life_for_granskning.csv</code> (<code>life_atgarder_per_yta.py</code>). Underlaget är de LIFE-märkta åtgärderna i Metrias SkötselDOS-uttag 2026-10-01: CoastBenefit, RestoRED, LIFE Taiga och Life2Taiga. En åtgärd räknas när de tillsammans täcker minst 10 % av ytan. 899 ytor har värden. Tomt betyder ingen LIFE-åtgärd. <strong>Fälten visar att ytan har restaurerats, inte vilket tillstånd den har.</strong> Visas i popupens avsnitt <em>Bedömning vid skrivbordet</em>.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Typ</th>
+<th>Innehåll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>life_projekt</code></td>
+<td>text</td>
+<td>Projekt, t.ex. <em>CoastBenefit</em> eller <em>CoastBenefit, RestoRED</em></td>
+</tr>
+<tr>
+<td><code>life_atgard</code></td>
+<td>text</td>
+<td>Kort text per projekt: år och åtgärder, t.ex. "RestoRED 2022–2024: restaureringsslåtter, röjning och avverkning". Saknas året i SkötselDOS står projektperioden (CoastBenefit 2013–2019, LIFE Taiga 2015–2020, RestoRED 2021–2027, Life2Taiga 2022–2028). Högst 250 tecken</td>
+</tr>
+<tr>
+<td><code>life_senaste_ar</code></td>
+<td>heltal</td>
+<td>Senaste år för en åtgärd. Tomt om inget år står i åtgärdernas namn</td>
+</tr>
+<tr>
+<td><code>life_andel_tackt</code></td>
+<td>heltal</td>
+<td>Andel av ytan (%) som åtgärderna täcker</td>
 </tr>
 </tbody>
 </table></div>
