@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.12 · 2026-10-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.13 · 2026-10-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* naturvårdsbränning räknas inte som ingrepp i R7B, SkötselDOS-hävden kräver 10 % täckning, och tomt *Livsmiljötyp, behov av justering* betyder ingen ändring när ytan är granskad. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -234,7 +234,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 | Utfall | Villkor |
 |---|---|
-| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS från 2020, eller välhävdad TUVA från 2020), ett aktuellt belägg för tillståndet (TUVA från 2020 utan negativa noteringar, eller en uppföljning högst 10 år gammal med alla punkter bra eller *utmärkt hävd*), och orto/IR-orto utan igenväxning, plöjning eller tecken på gödsling. |
+| Fullgod | Obruten hävd dokumenterad från att typen sattes till i dag (stödregister/miljöersättning de senaste tre åren, skötselavtal, SkötselDOS från 2020, eller välhävdad TUVA från 2020), ett aktuellt belägg för tillståndet (TUVA från 2020 utan negativa noteringar, eller en uppföljning högst 10 år gammal med alla punkter bra eller *utmärkt hävd*; för trädklädd betesmark 9070 även en inventering av skyddsvärda träd högst 10 år gammal som visar grova träd och efterträdare), och orto/IR-orto utan igenväxning, plöjning eller tecken på gödsling. |
 | Icke fullgod | Hävden har upphört eller haft avbrott i tre år eller mer, ortot visar igenväxning, eller en uppföljning högst 10 år gammal anger att *akuta åtgärder krävs*. Typen behålls (R1). |
 | Till fält | Underlagen motsäger varandra; hävd belagd men inget aktuellt belägg för tillståndet (TUVA före 2020, eller en uppföljning som anger att *åtgärder krävs*); hävd som har tagits upp igen efter ett uppehåll; 6430 där hävdberoendet är osäkert (ofta inte hävdberoende längs vattendrag). |
 
@@ -606,6 +606,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.13** (2026-10-20) — avsnitt 5, R7A: en inventering av skyddsvärda träd (högst 10 år gammal, med grova träd och efterträdare) räknas som aktuellt belägg för tillståndet i trädklädd betesmark. Hävden måste ändå vara belagd. Gäller i dag LIFE RestOREDs inventering i Gripsholms hjorthage 2022.
 - **2.12** (2026-10-20) — avsnitt 5, R7C: RestOREDs florauppföljning av rikkärr 2022 som underlag (provytor med typiska och negativa arter).
 - **2.11** (2026-10-20) — R7B: naturvårdsbränning och brandefterliknande åtgärder i SkötselDOS räknas inte som ingrepp. Avsnitt 4: tom *Livsmiljötyp, behov av justering* och Granskat = Ja betyder ingen ändring av typen. SkötselDOS-hävden kräver 10 % täckning (se R7A).
 - **2.10** (2026-10-19) — avsnitt 2a och 2c: kommentarsfälten i länsuttaget från Ajourhålla kontrollerade; grunden står inte där för de 277 fältbesökta ytorna, och de flesta statusar från 2008–2009 saknar kommentar. Avsnitt 3: hur R7-förslaget förhåller sig till att hoppa direkt till steg 3. R7A: *Nej* i skiftena förklarat med 10 %-gränsen från 2026-10-13, och att gödsling bara syns indirekt i IR-ortot. R7B: hur Grundyta_gron ska läsas i webbGIS:et. R3: karteringsstatus 4 bara när ytan själv är inventerad med NV:s metod; TUVA och övriga lånade inventeringar ger 2, i linje med avsnitt 3 och R7. Avsnitt 4: fältmappningen för tillståndet rättad – procentfälten fylls bara i vid blandat, och `metod` gäller kontrollen 2027 och förs inte till `condition_method`.
