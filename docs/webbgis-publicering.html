@@ -428,7 +428,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <p><strong>Uppdatering 2026-09-22: nytt fält <code>forandringsorsak_forslag</code> ("Förändringsorsak, förslag") i grupp 1.</strong> Beslutat för att fånga R2-regeln (<code>metodik.html</code> avsnitt 5) redan vid skrivbordsgranskningen, i stället för att avgöra förändringsorsak-koden först när uppgiften väl förs in i NNK Ajourhålla. Separat, redigerbart fält — inte samma som det skrivskyddade käll­fältet <code>forandringsorsak</code> (NV:s nuvarande värde, syns i popupgruppen <em>Naturtyp (NNK-data)</em>). Kräver att hela gdb-kedjan körs om (<code>koppla_nnk_skyddskategori.py</code> → <code>bygg_nnk_lyrx.py</code> → <code>04_forbered_gdb_for_publicering.py</code> → Share/Overwrite Web Layer) innan fältet finns i tjänsten — se <code>docs/popup-arcade-uttryck.html</code> för den uppdaterade Granskning 1-popupen och smart-formulärets nya fältordning.</p>
 <p>Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.</p>
 </blockquote>
-<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. Klistra in de nya texterna i formuläret för alla tre lagren.</p>
+<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. <em>2026-10-20:</em> Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -439,7 +439,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <tbody>
 <tr>
 <td>Livsmiljötyp, behov av justering</td>
-<td>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).</td>
+<td>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer: tomt fält och Granskat = Ja räknas som 1 Inget behov av justering (beslut 2026-10-20).</td>
 </tr>
 <tr>
 <td>Utbredning, behov av justering</td>

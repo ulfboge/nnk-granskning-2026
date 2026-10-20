@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -15,7 +15,7 @@ Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:e
 ### Grupp 1 · Livsmiljötyp och utbredning
 
 **Livsmiljötyp, behov av justering**  
-Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället).
+Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer. Ett tomt fält räknas som *1 Inget behov av justering* när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.
 
 | Kod | Klartext |
 |---|---|
@@ -495,7 +495,7 @@ Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `tuva_negativ` | text | *Ja* om TUVA har en negativ notering: dominerande hävdklass *Ingen hävd*, *Ohävdad (restaurerbar)* eller *Ej aktuell*, eller igenväxning *Tydlig*/*Igenväxt*. Annars *Nej*. Finns för att webbGIS-filtret *TUVA ohävdad/igenväxande* ska bli ett enda villkor. Tillagt 2026-10-02 |
 
 ### SkötselDOS — utförd hävd och uppföljning
-Åtta fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_granskning.csv` (`nnk_skotseldos.py`, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
+Elva fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `skotseldos_for_granskning.csv` (`nnk_skotseldos.py`, Metrias SkötselDOS-uttag 2026-10-01). Tomt = ingen träff. Används i R7A och (bränningen) R7B, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*; bränningen i sektionen *Bedömning vid skrivbordet*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
@@ -503,6 +503,9 @@ Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `skdos_andel_overlapp` | heltal | Andel av ytan (%) som åtgärderna täcker, 10–100. Lågt värde = åtgärden ligger bara på en del av ytan, kontrollera i ortot. Tillagt 2026-10-20 |
 | `skdos_havd_senaste_ar` | heltal | Senaste året med bete eller slåtter. SkötselDOS har inget datumfält, så året tas ur åtgärdens namn ("Bete Lindön 2017"). Tomt om inget år står i namnet (109 av ytorna) |
 | `skdos_havd_antal_ar` | heltal | Antal olika år med bete eller slåtter |
+| `skdos_brand_typ` | text | *Naturvårdsbränning* och/eller *Brandefterliknande åtgärd*: utförda åtgärder i kategori Naturvårdsbränning eller med bränning/brandefterliknande i namnet (inte uppföljning, ris- eller slybränning) som tillsammans täcker minst 10 % av ytan. 115 ytor. Används i R7B: sänkt höjd i lasern räknas då inte som ingrepp. Tillagt 2026-10-20 |
+| `skdos_brand_ar` | heltal | Senaste året för bränningen, ur åtgärdens namn. Tomt om året inte står i namnet |
+| `skdos_brand_andel` | heltal | Andel av ytan (%) som bränningarna täcker |
 | `uppf_punkter_bedomda` | heltal | Antal uppföljningspunkter (målindikatorer för naturtyper) inom ytan med bedömd måluppfyllelse. 101 ytor |
 | `uppf_andel_bra` | heltal | Andel av punkterna (%) med måluppfyllelse *Bra* |
 | `uppf_antal_dalig` | heltal | Antal punkter med måluppfyllelse *Dålig*. 17 ytor har minst en |
@@ -619,4 +622,6 @@ Samtidigt fick `karteringsstatus` värdet 6 *Expertutlåtande*, och etiketterna 
 | 4 Blandat – se andelar | `procent_gott` / `procent_ej_gott` | som ovan |
 | 3 Okänt – kan ej bedöma | 0 / 0 (okänt 100) | 4 Otillräcklig kunskap |
 | (tomt, statusen står kvar) | registreras inte | – |
+
+Livsmiljötypen: *Livsmiljötyp, behov av justering* tomt och Granskat = Ja behandlas som *1 Inget behov av justering*, alltså ingen ändring av `naturtyp`.
 

@@ -224,11 +224,11 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna längre ba
 >
 > Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.
 
-**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. Klistra in de nya texterna i formuläret för alla tre lagren.
+**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. *2026-10-20:* Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.
 
 | Fält | Beskrivning |
 | --- | --- |
-| Livsmiljötyp, behov av justering | Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). |
+| Livsmiljötyp, behov av justering | Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer: tomt fält och Granskat = Ja räknas som 1 Inget behov av justering (beslut 2026-10-20). |
 | Utbredning, behov av justering | Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet. |
 | Livsmiljötyp 1 | Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. |
 | Livsmiljötyp 2 | Andrahandsförslag, om osäker mellan flera typer. |
