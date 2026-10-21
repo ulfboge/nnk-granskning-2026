@@ -283,7 +283,7 @@ const STEG = [
   mer: () => obs('<b>Två ställen att skriva på.</b> Granskningslagret i webbGIS tar emot förslaget för varje <i>yta</i> (steg 8). Granskningsloggen i Excel tar emot en sammanfattning per <i>område</i>: vad du gjorde, vilka underlag du använde och vad som återstår (steg 2, 4 och 9).'),
   logg: null },
 
-{ id:'valj', titel:'Välj området och läs områdeskortet',
+{ id:'valj', titel:'Välj området och läs översikten',
   mal:'Hitta området i kartan, få överblick i förslagsfilen och lägg upp raden i loggen. De grå kolumnerna i loggen fylls i när du skriver SITECODE.',
   gor:[
     'Skriv <b>{{SITE}}</b> eller <b>{{NAMN}}</b> i <i>Sök i kartan</i> och zooma till området.',
@@ -306,7 +306,7 @@ const STEG = [
     'Notera vilka livsmiljötyper som är utpekade och vilka som är prioriterade bevarandevärden.',
     'Notera årtalet (popupen och länken ovan). Det behövs i steg 6 för att avgöra om planen är nyare än karteringen.',
     'Läs vad planen säger om underlaget. Står det att bedömningsunderlaget är bristfälligt, eller att inventering krävs för att avgöra om en typ uppfyller kraven, räknas planen inte som stöd för den typen (<a href="docs/metodik.html#bevarandeplanen-som-underlag">Bevarandeplanen som underlag</a>).',
-    'Visar områdeskortet <i>Ja</i> vid <i>Läs bevarandeplanen</i>? Då stöds minst en typ bara av planen. Om planen godtas som stöd avgörs av din läsning ovan (se steg 6).',
+    'Står det <i>Ja</i> under <i>Läs bevarandeplanen</i> i fliken <i>Områdessök</i> i förslagsfilen (raden med antal ytor per förslag)? Då stöds minst en typ bara av planen. Om planen godtas som stöd avgörs av din läsning ovan (se steg 6).',
     'Läs bevarandemålen för de hävdberoende typerna — de säger vad som räknas som gott tillstånd i just det här området.'
   ],
   mer: () => obs('<b>Utpekade typer har ett särskilt skydd</b> (R6, FAQ 19). De ska bara ändras om den tidigare bedömningen är uppenbart fel eller marken faktiskt har förändrats. Är du osäker på en utpekad typ blir svaret <i>till fält</i>, inte en ändring.'),
