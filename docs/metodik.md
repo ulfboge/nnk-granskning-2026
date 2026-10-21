@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.13 · 2026-10-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* naturvårdsbränning räknas inte som ingrepp i R7B, SkötselDOS-hävden kräver 10 % täckning, och tomt *Livsmiljötyp, behov av justering* betyder ingen ändring när ytan är granskad. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.14 · 2026-10-21** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* R7-avsnittets siffror gäller nu körningen 2026-10-20 i stället för den första körningen utan VISS. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -437,9 +437,9 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 
 Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raderna *Förslag (R7)*, *Motiv* och *Kontrollera*) och i en intern Excel-fil med områdessök, en summering per område och en flik per batch. Formulärfälten fylls fortfarande i av granskaren. Förslaget är inget belägg i sig — det är en sammanställning av beläggen. Skriptet tolkar inte ortofoto och bedömer inte död ved. Bevarandeplanerna läses maskinellt: planens egna förbehåll om underlaget per naturtyp hittas med textsökning (OCR för inskannade sidor), och där planen gåtts igenom används den senaste inventering den hänvisar till. Båda är förslag som granskaren bekräftar – citatet ur planen står i Excel-filen.
 
-**Ändrat 2026-10-14:** bevarandeplanen dateras med den senaste inventering den hänvisar till, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår (se R7A). I en provkörning ändrades förslaget för drygt 4 % av R7-ytorna, främst fler *Typ ej styrkt* där planen var det enda stödet för typen men bygger på inventeringar äldre än karteringen. I Excel-filens *Områdessök* står de fyra tabellerna under varandra.
+**Ändrat 2026-10-14:** bevarandeplanen dateras med den senaste inventering den hänvisar till, TUVA räknas som aktuellt från 2020, länsstyrelsens uppföljningar och återupptagen hävd ingår (se R7A). I en provkörning ändrades förslaget för drygt 4 % av R7-ytorna, främst fler *Typ ej styrkt* där planen var det enda stödet för typen men bygger på inventeringar äldre än karteringen. Sedan 2026-10-16 ligger Excel-filens tabeller i egna flikar (*1 Ytorna* – *5 Till NNK*), och *Områdessök* har en översikt per yta.
 
-**Första körningen (2026-10-08, utan VISS):** 6 902 ytor omfattas av R7, 6 086 att bedöma och 816 att ompröva. Av de 6 086 har 4 200 inget underlag nyare än karteringen som stöder typen (*Typ ej styrkt*), främst skog (9010), skär och klippor (1621) och hällmarker (8230), där varken TUVA, typiska arter eller en ny bevarandeplan finns. Förutsättningen *typen ska vara rimlig* styr alltså mer än delreglerna. Om ortot får räcka som stöd för typen i gruppen Stabila och för skog med laserdata är en fråga för piloten. Tills vidare gäller regeln som den står, och kolumnen *Om typen bekräftas* visar vad utfallet blir om typen godtas.
+**Läget efter körningen 2026-10-20 (med VISS, MVM, LIFE och naturvårdsbränningar):** 6 902 ytor omfattas av R7. 274 av dem ligger utanför Natura 2000 och naturreservat (*Ingår inte*), 5 817 ska bedömas och 811 ska omprövas. Av de 5 817 har 4 390 inget underlag nyare än karteringen som stöder typen (*Typ ej styrkt*), främst skog (9010, 1 185 ytor), skär och klippor (1621, 1 137) och hällmarker (8230, 532), där varken TUVA, typiska arter eller en ny bevarandeplan finns. Förutsättningen *typen ska vara rimlig* styr alltså mer än delreglerna. Om ortot får räcka som stöd för typen i gruppen Stabila och för skog med laserdata är en fråga för piloten. Tills vidare gäller regeln som den står, och kolumnen *Om typen bekräftas* visar vad utfallet blir om typen godtas.
 
 #### Till NNK:s tillståndsfält (förslag)
 
@@ -606,6 +606,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.14** (2026-10-21) — avsnitt 5, R7: siffrorna från första körningen (2026-10-08, utan VISS) ersatta med läget efter körningen 2026-10-20. Texten om Excel-filens *Områdessök* rättad (tabellerna ligger i egna flikar sedan 2026-10-16).
 - **2.13** (2026-10-20) — avsnitt 5, R7A: en inventering av skyddsvärda träd (högst 10 år gammal, med grova träd och efterträdare) räknas som aktuellt belägg för tillståndet i trädklädd betesmark. Hävden måste ändå vara belagd. Gäller i dag LIFE RestOREDs inventering i Gripsholms hjorthage 2022.
 - **2.12** (2026-10-20) — avsnitt 5, R7C: RestOREDs florauppföljning av rikkärr 2022 som underlag (provytor med typiska och negativa arter).
 - **2.11** (2026-10-20) — R7B: naturvårdsbränning och brandefterliknande åtgärder i SkötselDOS räknas inte som ingrepp. Avsnitt 4: tom *Livsmiljötyp, behov av justering* och Granskat = Ja betyder ingen ändring av typen. SkötselDOS-hävden kräver 10 % täckning (se R7A).
