@@ -100,7 +100,7 @@ tr:last-child td{border-bottom:0}
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
 <h1 id="publicera-nnk-granskningslagret-som-webbgis-lstd-nnk-granskning">Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning</h1>
-<p><strong>Version 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
+<p><strong>Version 2.1 · 2026-10-22 (Del 8: ingen Overwrite på granskningstjänsten, underlaget synkas med <code>07_synka_underlag.py</code>) · 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRR, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -1091,9 +1091,14 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td>ta bort itemet, publicera om med rätt namn (gör det innan WebMap/app byggs)</td>
 </tr>
 <tr>
-<td>Nytt Ajourhålla-uttag (t.ex. efter NV:s nya attribut i slutet av sept. 2026)</td>
-<td>ny data, samma schema</td>
-<td>kör om pipeline + del 1, sedan <em>Overwrite Web Layer</em> — <strong>OBS: skriver över granskarnas ifyllda fält</strong>. Exportera först attributtabellen (Excel) och slå ihop, eller vänta med överskrivning tills granskningen är klar. Om schemat ändras: ny tjänst + ny version av WebMap.</td>
+<td>Nytt underlag eller nytt fält (hävd, TUVA, R7-förslag …)</td>
+<td>ändrad data i gdb:n</td>
+<td><strong>Ingen Overwrite på <code>LstD_NNK_Granskning</code></strong> (beslut 2026-10-22, efter att en Overwrite raderat granskarnas värden). Kör kedjan 02 → 03 → 04 → 06 och sedan <code>07_synka_underlag.py</code> (torrkörning, sedan <code>--skarp</code>; nya fält med <code>--nya-falt</code>). Skriptet skriver underlagsfälten in i tjänsten via <code>nv_globalid</code> och rör aldrig granskningsfälten. Se README i leveransmappen.</td>
+</tr>
+<tr>
+<td>Nytt Ajourhålla-uttag med nya/borttagna objekt</td>
+<td>ny geometri</td>
+<td><code>07_synka_underlag.py</code> listar objekt som saknas i tjänsten eller gdb:n i <code>.backups\synk_underlag_&lt;tid&gt;.csv</code>. Nya objekt läggs till med Append i Pro, borttagna hanteras för hand. Overwrite bara som sista utväg, och då med <code>01_backup</code> före och <code>05_aterstall</code> efter.</td>
 </tr>
 <tr>
 <td>Konfiguratorn nere</td>
@@ -1113,6 +1118,9 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 </tbody>
 </table></div>
 <p><strong>Hämta hem granskarnas redigeringar till lokal gdb/Pro</strong></p>
+<blockquote>
+<p>Sedan 2026-10-22 görs ingen Overwrite på granskningstjänsten, så det här behövs bara som säkerhetskopia (<code>01_backup_granskning.py</code> gör det automatiskt).</p>
+</blockquote>
 <p>WebMap:en och appen läser och skriver alltid direkt mot den driftade tjänsten — inte mot din lokala gdb. De två är separata datakopior från publiceringstillfället, och synkas <strong>inte</strong> automatiskt. Innan en ny Overwrite Web Layer (t.ex. vid nästa Ajourhålla-uttag, se raden ovan), hämta hem aktuellt läge så du inte skriver över granskarnas arbete:</p>
 <ol>
 <li>I ArcGIS Pro: <em>Insert → Connections → Server</em> (eller <em>Add Data</em> mot REST-tjänsten direkt) för att lägga till den driftade tjänsten som ett live-lager, skilt från ditt lokala gdb-lager.</li>
