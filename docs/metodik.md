@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.14 · 2026-10-21** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.15 · 2026-10-22** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7-avsnittets siffror gäller nu körningen 2026-10-20 i stället för den första körningen utan VISS. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -431,7 +431,7 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 | Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har naturtypsstatus fullgod eller icke fullgod (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
 | Säkerhet | *Hög* (flera samstämmiga underlag), *Medel* (ett underlag, eller ett villkor som ska prövas), *Låg* (underlagen säger emot varandra eller är svaga). |
 | Villkor | Det skriptet inte kan pröva, oftast ortot: "om IR-ortot inte visar igenväxning, plöjning eller gödsling". |
-| Typen rimlig | *Ja*, *Villkorat* (bara bevarandeplanen stöder typen; villkor 2 i *Bevarandeplanen som underlag* är inte prövat) eller *Nej*. Vid *Nej* visas också vad tillståndet blir om typen bekräftas. |
+| Typen styrkt av nyare underlag | *Ja*, *Villkorat* (bara bevarandeplanen stöder typen; villkor 2 i *Bevarandeplanen som underlag* är inte prövat) eller *Nej*. Vid *Nej* visas också vad tillståndet blir om typen bekräftas. *Nej* betyder inte att typen är fel: den behålls (*Livsmiljötyp, behov av justering* = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare *Typen rimlig* (bytt 2026-10-22). |
 | Förslag till formuläret | Livsmiljötyp och utbredning, Tillstånd, Vad ska kontrolleras 1–3, Metod och Förändringsorsak med koder, och en färdig *Kommentar – Tillstånd* med delregel och källor med år. |
 | Kontrollera | Manuella kontroller med det lager i webbGIS där de görs, t.ex. "IR-orto senaste år: öppen hävdad mark utan igenväxning? [LM Ortofoton årsvis IR]". |
 
@@ -606,6 +606,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.15** (2026-10-22) — avsnitt 5, R7-förslaget: kolumnen *Typen rimlig* heter *Typen styrkt av nyare underlag*, med förtydligandet att *Nej* inte betyder att typen är fel.
 - **2.14** (2026-10-21) — avsnitt 5, R7: siffrorna från första körningen (2026-10-08, utan VISS) ersatta med läget efter körningen 2026-10-20. Texten om Excel-filens *Områdessök* rättad (tabellerna ligger i egna flikar sedan 2026-10-16).
 - **2.13** (2026-10-20) — avsnitt 5, R7A: en inventering av skyddsvärda träd (högst 10 år gammal, med grova träd och efterträdare) räknas som aktuellt belägg för tillståndet i trädklädd betesmark. Hävden måste ändå vara belagd. Gäller i dag LIFE RestOREDs inventering i Gripsholms hjorthage 2022.
 - **2.12** (2026-10-20) — avsnitt 5, R7C: RestOREDs florauppföljning av rikkärr 2022 som underlag (provytor med typiska och negativa arter).
