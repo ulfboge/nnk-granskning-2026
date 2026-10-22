@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -767,6 +767,8 @@ return {
 
 ## 6. Granskning 4 — Granskat och kommentarer
 
+**Ändrat 2026-10-22:** raden för `kommentar` heter *Kommentar (NNK)*. Fältet är karterarens kommentar ur NV:s länsuttag (alias *Kommentar (NNK)* i gdb:n), ofta med förkortningar som "FI" eller "h-starr". Det ska inte redigeras i formuläret — egna kommentarer skrivs i *Kommentar – livsmiljötyp och utbredning* eller *Kommentar – Tillstånd*.
+
 **Åtgärdat 2026-09-22:** kopplar nu in samtliga fem fält (`granskat`, `kommentar`, `nnk_kommentar`, `faltinventerare`, `egen_bet`) — matchar gruppens ursprungliga fältlista i `bygg_nnk_lyrx.py`.
 
 ```js
@@ -785,11 +787,11 @@ if (!IsEmpty($feature.granskat)) {
     attrs["granskat_varde"] = DomainName($feature, "granskat");
 }
 
-// Kommentar
+// Karterarens kommentar ur NNK (NV:s fält kommentar, inte en granskarkommentar)
 if (!IsEmpty($feature.kommentar)) {
     Push(infos, {
         fieldName: "kommentar_varde",
-        label: "Kommentar"
+        label: "Kommentar (NNK)"
     });
     attrs["kommentar_varde"] = $feature.kommentar;
 }
