@@ -2,8 +2,8 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026*
 
-**Datum:** 2026-10-22 (ingen Overwrite på granskningstjänsten: underlaget synkas med 07_synka_underlag.py, D2.4, D2.5 och D2.7 uppdaterade). 2026-10-13 (D2.5 kompletterad med MVM-mätdata via nnk_mvm.py; hävdanalysen räknar kantträffar under 10 % som Oklart). 2026-10-09 (D2.5 VISS-koppling klar: nnk_viss.py hämtar öppna VISS-exporter och Länsstyrelsens karttjänst, ingen API-nyckel). 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
-**Omfattning:** 68 uppgifter i 7 arbetspaket, 331 konkreta steg  
+**Datum:** 2026-10-23 (H4.3 NILS och regional miljöövervakning, H4.4 utförda våtmarksåtgärder: två källor i projektplanens kunskapssammanställning som inte fanns i underlaget). 2026-10-22 (ingen Overwrite på granskningstjänsten: underlaget synkas med 07_synka_underlag.py, D2.4, D2.5 och D2.7 uppdaterade). 2026-10-13 (D2.5 kompletterad med MVM-mätdata via nnk_mvm.py; hävdanalysen räknar kantträffar under 10 % som Oklart). 2026-10-09 (D2.5 VISS-koppling klar: nnk_viss.py hämtar öppna VISS-exporter och Länsstyrelsens karttjänst, ingen API-nyckel). 2026-10-09 (D5.2 utgår: ingen konsult för fältbedömning hösten 2026, beslut Johan — för sent på året; all fältkontroll, även R7-pilotens, görs i eget fältarbete 2027). 2026-10-08 (D2.5 VISS-koppling för R7C tillagd och preciserad; D2.6 Skogsstyrelsens register och D2.7 bedömningsförslag per yta tillagda; körordningen ÅTERSTÄLL före Overwrite rättad i D2.4). 2026-09-29 (D2.4 hävdanalys mot jordbruksskiften tillagd; avsnitt C omgjort till tabeller: översiktstabell per arbetspaket, objekttabeller per batch, hanteringstabell i C2.1; C7.1 Tullgarn södra utredd). 2026-09-25 (en källa: runbook och kontrollrum genereras nu direkt ur uppgifter.py till båda repona; D5.1 fältprotokoll och D5.2 villkorat konsultuppdrag tillagda; A2.3 och H5.1: nya fält i granskningslagret). 2026-09-11: A2.5–A2.8 och H2.2 uppdaterade, länsuttaget ur Ajourhålla hämtat och granskningslagret publicerat  
+**Omfattning:** 70 uppgifter i 7 arbetspaket, 342 konkreta steg  
 **Hör ihop med:** [Arbetsplan](arbetsplan.html) (varför) · [Kontrollrum](../kontrollrum.html) (överblick och avbockning) · [Bedömningsguide](../bedomningsguide.html) (ett område steg för steg) · [Filterguide](filterguide.html) · [Metodik](metodik.html) (förvaltardialogen och R7)
 
 ---
@@ -780,7 +780,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 ## H. Förvaltardialog
 
-*v35–v48 · 12 uppgifter*
+*v35–v48 · 14 uppgifter*
 
 | Uppgift | Vecka | Ansvar | Förutsätter | Bidrar till |
 |---|---|---|---|---|
@@ -793,6 +793,8 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 | [H3.2 · Genomför förvaltarsamtalen](#h32-genomfor-forvaltarsamtalen) | v38–v44 | Båda | H3.1, H2.1 | L-H2 |
 | [H4.1 · Eftersök odokumenterade underlag](#h41-eftersok-odokumenterade-underlag) | v38–v46 | Karin | H3.2 | – |
 | [H4.2 · Registrera funna underlag i datakälleregistret](#h42-registrera-funna-underlag-i-datakalleregistret) | v38–v48 | Karin | H4.1 | – |
+| [H4.3 · NILS och regional miljöövervakning: finns provytor i länets Natura 2000-områden?](#h43-nils-och-regional-miljoovervakning-finns-provytor-i-lanets-natura-2000-omraden) | v44–v46 | Johan | – | – |
+| [H4.4 · Utförda våtmarksåtgärder i och nära Natura 2000-områden](#h44-utforda-vatmarksatgarder-i-och-nara-natura-2000-omraden) | v44–v47 | Johan | – | – |
 | [H5.1 · För in förvaltarkunskapen i granskningslagret](#h51-for-in-forvaltarkunskapen-i-granskningslagret) | v38–v46 | Båda | H3.2 | L-H2 |
 | [H5.2 · Registrera i NNK efter avstämning](#h52-registrera-i-nnk-efter-avstamning) | v43–v48 | Johan | H5.1, D1.2 | L-D |
 | [H5.3 · Skicka avstämning tillbaka till förvaltaren](#h53-skicka-avstamning-tillbaka-till-forvaltaren) | v38–v48 | Johan | H5.1 | – |
@@ -901,6 +903,27 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 1. Lägg in varje YTTERLIGARE funnet underlag (Per Flodin-samtalet, papper som skannas in) i `natura-2000: data/sources_sodermanland.csv` med samma kolumnstruktur som finns där.
 2. Ange: vad det är, vilket objekt eller vilka objekt det gäller, årtal, var det ligger, och om det är digitalt eller papper.
 3. Registret är i sig en leverans — det svarar på FAQ fråga 4 om vad bedömningarna vilar på.
+
+### H4.3 · NILS och regional miljöövervakning: finns provytor i länets Natura 2000-områden?
+
+**v44–v46** · **[Johan]**
+
+1. Mål: att veta om SLU:s NILS (Nationell inventering av landskapet i Sverige) eller länets regionala miljöövervakning har fält- eller flygbildsdata inom länets Natura 2000-områden som kan användas som underlag för tillståndet, och i så fall få ut dem. Kom från projektplanens kunskapssammanställning (*Implementering av NRF Sörml.docx*), där NILS, miljöövervakning och GI-analyser stod med frågetecken. Genomgång 2026-10-23: inget av dem finns i underlaget än.
+2. Förväntan: NILS är ett nationellt stickprov (631 rutor i landet med provytor i fält och flygbildstolkning). Det är byggt för statistik på nationell och regional nivå, inte för enskilda NNK-ytor, och sannolikt ligger bara ett fåtal rutor i länet. Värdet ligger i de ytor där en ruta råkar skära ett Natura 2000-område. Uppföljningen av Natura 2000-naturtyper i NILS (THUF/MOTH) redovisas per landsdel, inte per område.
+3. Fråga Per Flodin först om länet har använt NILS-data tidigare, och vilken regional miljöövervakning (gräsmarker, myrar, skog, kust) som har provytor i Natura 2000-områdena.
+4. Kontakta SLU:s NILS-grupp: be om en lista över rutor och provytor som skär länets SCI-områden (skicka `natura-2000: data/processed/sodermanland_n2000_joined.gpkg`, lagret `n2000_sites_sci_joined`) och om provytedata kan lämnas ut för dem, med år och vilka variabler som finns (vegetation, struktur, hävd, död ved).
+5. Finns det data: lägg in dem som punkter, koppla till NNK-ytorna med punkt i polygon och för in en rad i `natura-2000: data/sources_sodermanland.csv` (H4.2). Finns det inget, notera det i H4.2-registret så att frågan inte tas upp igen.
+6. GI-analyserna (grön infrastruktur, värdetrakter) gäller prioritering snarare än tillstånd. De tas upp i F2.1 om de behövs, inte här.
+
+### H4.4 · Utförda våtmarksåtgärder i och nära Natura 2000-områden
+
+**v44–v47** · **[Johan]**
+
+1. Mål: en lista med geometri över utförda våtmarksåtgärder (restaurering, igenläggning av diken, anlagda våtmarker) i eller nära länets Natura 2000-områden, med år och typ av åtgärd. Underlaget behövs för R7 på myrar och rikkärr (7110–7231): en igenlagd dikning efter karteringen ändrar bedömningen av diket, och en restaurering gör att äldre uppföljning visar läget före åtgärden (jfr rikkärren i RestOREDs uppföljning 2022). Kom från projektplanens kunskapssammanställning, där våtmarksåtgärder stod med frågetecken. Genomgång 2026-10-23: inte inlagt än; dikeskarteringen och våtmarksinventeringen (VMI) finns, men inte åtgärderna.
+2. Möjliga källor att gå igenom: Länsstyrelsens egna ärenden om våtmarksstöd (LONA, LOVA, våtmarkssatsningen) i diariet och hos den som samordnar våtmarker på Länsstyrelsen; LIFE-projektens åtgärder (redan i `natura-2000: data/analysis/life_atgarder_per_yta.csv`, kontrollera att våtmarksåtgärderna är med); SkötselDOS för åtgärder i reservaten; Skogsstyrelsens återvätningar. Fråga Per Flodin vem som har överblicken.
+3. Samla det som har geometri i ett lager (SWEREF 99 TM) med fälten åtgärd, år, finansiering och källa. Det som bara finns som text kopplas på sitecode.
+4. Koppla till NNK-ytorna (överlapp eller inom 50 m, samma avstånd som för diken i `nnk_laser.py`) och för in fälten i R7C via `bygg_r7_forslag.py`: ett dike på en yta med en utförd igenläggning efter dikets datering ska inte ge *icke fullgod* utan *till fält*.
+5. Registrera källorna i `natura-2000: data/sources_sodermanland.csv` (H4.2).
 
 ### H5.1 · För in förvaltarkunskapen i granskningslagret
 
