@@ -1922,6 +1922,9 @@ p,ul,ol{max-width:80ch}
 <p><strong>Översikter:</strong> <code>…\511_skydd_omr_arter\LONA\Våtmark\LONA-våtmarksprojekt utbetalningar 2018-2030.xlsx</code> och <code>…\Anslag\2025\Våtmarker</code> (prioriteringar för våtmarksåtgärder i skyddade områden och ÅGP 2025). Äldre: <code>Vatmarksstrategin\Kartlayouter Rapport</code> (anlagda våtmarker 1991–2006). Ingen egen LOVA-mapp; LOVA förekommer bara i Gulingen-materialet under lantbruk.</p>
 </li>
 <li>
+<p><strong>SkötselDOS har åtgärderna (2026-10-23):</strong> NV:s bidragsvillkor kräver att våtmarksåtgärderna läggs in i SkötselDOS, och de finns där märkta <em>VÅMÅ</em> med geometri och status. <code>python natura-2000: scripts/analysis/nnk_vatmarksatgarder.py</code> kopplar dem till NNK-ytorna: 225 ytor har en hydrologisk åtgärd, 204 utförd, mest i skog (9010, 9740, 9900) och fuktängar. Några ytor har ett R7-förslag som bygger på diken som redan är igenlagda, och i några skogsytor kan laserns sänkta höjd bero på återvätningen (detaljer internt i <code>natura-2000: data/analysis/README.md</code>). Resultat i <code>natura-2000: data/analysis/vatmarksatgarder_per_yta.csv</code>. Kvar: koppla in fälten i R7C och R7B i <code>bygg_r7_forslag.py</code> (förslag: utförd hydrologisk åtgärd + dike → <em>till fält</em> med kontrollen "dike igenlagt, pröva i ortot"), och år per åtgärd ur VÅMÅ-mapparna på G: (hämtade, <code>natura-2000: data/raw/g_drive_20261023/</code>).</p>
+</li>
+<li>
 <p><strong>LIFE:</strong> <code>natura-2000: data/analysis/life_atgarder_per_yta.csv</code> har inga hydrologiska åtgärder. På myrar och rikkärr finns bara röjning, slåtter, bränning och uppföljning.</p>
 </li>
 <li>
