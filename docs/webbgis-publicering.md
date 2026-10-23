@@ -283,7 +283,7 @@ Intern Konfigurator: `https://lst-webbgis-konfigurator.lansstyrelsen.se/` (logga
 
 Ovanstående är principen för hur grupperna byggs (fem planerade grupper). Den färdiga appen fick
 fler och mer detaljerade grupper än så — nedan är den faktiska strukturen, hämtad direkt ur
-Konfiguratorns TOC-export (`natura-2000: deliveries/nnk_granskning_sodermanland_20260901/toc_export_20261019_103241.csv`,
+Konfiguratorns TOC-export (`natura-2000: deliveries/nnk_granskning_sodermanland_20260901/webbgis_toc/toc_export_20261019_103241.csv`,
 206 rader). Ingen "Fastighet och administrativt"-grupp byggdes; "Ortofoto och historiska kartor"
 delades i stället upp i en egen ortofoto-grupp och en historisk grupp, och flera nya ämnesgrupper
 (skog och vegetation, markfuktighet och hydrologi, jordarter och geologi, terräng och höjd)
