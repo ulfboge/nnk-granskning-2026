@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.16 · 2026-10-23** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.17 · 2026-10-23** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7-avsnittets siffror gäller nu körningen 2026-10-20 i stället för den första körningen utan VISS. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -246,6 +246,8 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 | Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod* — utom när hävden har tagits upp igen och pågått minst tre år i följd fram till senaste skiftesåret (t.ex. efter en restaurering). Då är hävden inte upphörd, men tillståndet efter uppehållet är okänt: *till fält*. |
 | Nej | Minst 10 % av ytan ligger på ett jordbruksskifte något år 2015–2025, men inget år ligger hälften av ytan på bete eller slåtter | Ytan ligger alltså delvis i jordbrukets stödsystem, men inte som betesmark eller äng – oftast åker eller vall. På skogs- och myrytor betyder det oftast bara att en kant av ytan ligger på åker, så värdet säger lite där. På hävdberoende typer tyder det på att hävden har upphört (eller att marken inte söks stöd för som betesmark): pröva *icke fullgod* mot ortot. Under 10 % räknas inte som träff, och ytan blir *Oklart* (ändrat 2026-10-13). |
 | Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
+
+**Översvämningsår (ny 2026-10-23).** På strandängar och fuktängar (1630, 6410 m.fl.) hör återkommande översvämning till funktionen. Ett år då marken stod under vatten och inte kunde betas eller slås saknas ofta i skiftena, men är inte upphörd hävd. Ser du i ortot eller annat underlag att luckorna sammanfaller med översvämning kan du sätta tillståndet utifrån hävden övriga år, även om R7-förslaget blev *icke fullgod* eller *blandat*. Skriv det i *Kommentar – Tillstånd* med år och källa. Är du osäker: *till fält* med kontrollen Hävd eller Funktioner.
 
 **Gödsling syns inte direkt i ortot.** IR-ortot visar hur kraftigt vegetationen växer, inte varför. Gödslad eller insådd gräsmark blir jämnt klarröd, som åkrarna intill, medan ogödslad naturbetesmark är mattare rosa till rödbrun och fläckig (se *Så läser du IR-ortot* i bedömningsguiden). Det är en indikation, inget belägg: sen sommar, fuktig mark och kvävefixerare ger också kraftig rodnad. Bättre underlag för gödsling är TUVA:s påverkansnotering (*produktionshöjande påverkan*), grödkoden i skiftena (vall) och förvaltarens kunskap.
 
@@ -610,6 +612,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.17** (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i *Kommentar – Tillstånd*.
 - **2.16** (2026-10-23) — avsnitt 5, R7B och R7C: utförda våtmarksåtgärder (VÅMÅ) i SkötselDOS räknas inte som ingrepp; dike eller laserflagga som förklaras av åtgärden ger *till fält*, aldrig *fullgod*. Året tas ur SkötselDOS-namnet eller en genomgång av VÅMÅ-mapparna på G:. 68 ytor fick nya motiv eller kontroller, 5 ändrat utfall.
 - **2.15** (2026-10-22) — avsnitt 5, R7-förslaget: kolumnen *Typen rimlig* heter *Typen styrkt av nyare underlag*, med förtydligandet att *Nej* inte betyder att typen är fel.
 - **2.14** (2026-10-21) — avsnitt 5, R7: siffrorna från första körningen (2026-10-08, utan VISS) ersatta med läget efter körningen 2026-10-20. Texten om Excel-filens *Områdessök* rättad (tabellerna ligger i egna flikar sedan 2026-10-16).

@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -73,6 +73,8 @@ Fyll bara i vid 4 Blandat. Motsvarar NNK:s *Okänt tillstånd (%)*, som NNK räk
 
 **Kommentar – Tillstånd**  
 Förs till NNK:s `condition_comment`, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa.
+
+Hit hör också förklaringar till varför ett underlag ser sämre ut än tillståndet är, när du har sett orsaken. Exempel: en strandäng eller fuktäng har varit översvämmad vissa år, så skiftena saknar hävd just de åren – återkommande översvämning hör till typens funktion och är inte upphörd hävd. Skriv kort: *"R7A gott – luckor i skiften 2019–2020 = översvämning (orto 2020), hävd obruten i övrigt 2015–2025"*. Är orsaken osäker hör den i stället till *Vad ska kontrolleras* (3 Hävd eller 4 Funktioner) med en motivering. Gäller den typen eller utbredningen: *Kommentar – livsmiljötyp och utbredning*.
 
 ### Grupp 3 · Vad ska kontrolleras och hur
 
