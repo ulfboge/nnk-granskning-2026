@@ -496,7 +496,7 @@ Aktivera (✔) enligt tabellen nedan (≈ Stockholms app + attributtabell):
 
 | Symptom | Trolig orsak | Åtgärd |
 |---|---|---|
-| Formuläret i WebbGIS visar fritextfält, inga rullistor | domäner saknas i tjänsten | del 1; publicera om (Share → *Overwrite Web Layer* från samma projekt) |
+| Formuläret i WebbGIS visar fritextfält, inga rullistor | domäner saknas i tjänsten | del 1. **Gör inte Overwrite** på granskningstjänsten när granskningen har börjat – den raderar granskarnas värden (2026-10-22). Ta backup med `01_backup_granskning.py`, lägg till domänen på fältet i portalen (*Data → Fields*) eller stäm av med GIS-funktionen. |
 | Granskningsfält saknas i formuläret/popupen | fältet var dolt i Pro-lagret vid publicering | slå på *Visible* (del 2 steg 3), *Overwrite Web Layer* |
 | Popupen i Map Viewer syns som platt fältlista utan rubriker, inte sex sektioner | lagret tillagt i WebMap:en innan popup-uppdateringen — Portalen cachar precis som Pro | ta bort lagret ur WebMap:en, lägg till det på nytt från portalen (del 5 steg 5) |
 | "Du har inte behörighet att redigera" | visningsroll i portalen, eller redigering av på itemet/lagret | del 4 steg 4, del 6 steg 4; roll via GIS-funktionen |
