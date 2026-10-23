@@ -1925,7 +1925,7 @@ p,ul,ol{max-width:80ch}
 <p><strong>LIFE:</strong> <code>natura-2000: data/analysis/life_atgarder_per_yta.csv</code> har inga hydrologiska åtgärder. På myrar och rikkärr finns bara röjning, slåtter, bränning och uppföljning.</p>
 </li>
 <li>
-<p><strong>Nästa steg (jobbdatorn):</strong> kopiera mapparna med <code>powershell -ExecutionPolicy Bypass -File scripts\Kopiera_NRF_underlag.ps1 -Lista Foldrar_vatmark_att_kopiera.txt</code> (provkör först, <code>$DryRun</code>), lägg dem på G: eller i en zip och gå igenom dem hemma. Börja med LONA-översikten och mapparna med geometri.</p>
+<p><strong>Nästa steg (jobbdatorn):</strong> packa upp det nya jobbdatorpaketet i Bearbetning, öppna PowerShell i <code>Bearbetning\verktyg</code> och kör <code>powershell -ExecutionPolicy Bypass -File .\Kopiera_NRF_underlag.ps1 -Lista Foldrar_vatmark_att_kopiera.txt</code> (torrkörning), sedan samma med <code>-Skarp</code> sist. Kopiorna hamnar i <code>C:\Users\&lt;du&gt;\NRF_2026_underlag</code>. Lägg dem på G: eller i en zip och gå igenom dem hemma. Börja med LONA-översikten och mapparna med geometri.</p>
 </li>
 </ul>
 <ol>
