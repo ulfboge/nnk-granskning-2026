@@ -83,6 +83,35 @@ tr:last-child td{border-bottom:0}
  color:var(--ink-2);cursor:pointer;opacity:.85}
 .kopiera:hover{opacity:1;color:var(--ink)}
 .kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+
+.wrap{max-width:1240px}
+.dokgrid{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.sidotoc{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
+ font-size:13px;line-height:1.4;padding:4px 6px 20px 0;border-right:1px solid var(--grid)}
+.sidotoc .t{font-size:11.5px;font-weight:650;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin:0 0 8px}
+.sidotoc ul{list-style:none;margin:0;padding:0}
+.sidotoc ul ul{padding-left:12px;margin:2px 0 4px;border-left:1px solid var(--grid)}
+.sidotoc ul ul ul{font-size:12.5px}
+.sidotoc li{margin:0}
+.sidotoc a{display:block;padding:3px 8px;border-radius:6px;color:var(--ink-2)}
+.sidotoc a:hover{background:var(--surface-1);color:var(--ink-1);text-decoration:none}
+.sidotoc a.aktiv{background:color-mix(in srgb,var(--p-A) 12%,transparent);color:var(--ink-1);font-weight:600}
+.sidotoc summary{display:none}
+.sidotoc .toc{background:none;border:0;border-radius:0;padding:0;margin:0}
+.sidotoc .toc ul{padding-left:0;font-size:13px}
+.sidotoc .toc ul ul{padding-left:12px}
+.dokgrid article{min-width:0}
+article h2,article h3,article h4{scroll-margin-top:14px}
+h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-top:1px dashed var(--grid)}
+@media(max-width:960px){
+ .dokgrid{grid-template-columns:1fr;gap:0}
+ .sidotoc{position:static;max-height:none;border-right:0;border:1px solid var(--ring);border-radius:12px;
+  background:var(--surface-1);padding:10px 14px;margin:0 0 24px}
+ .sidotoc summary{display:block;cursor:pointer;font-weight:620;font-size:13.5px}
+ .sidotoc .t{display:none}
+}
+@media print{.sidotoc{display:none}.dokgrid{display:block}}
 </style>
 </head>
 <body>
@@ -91,7 +120,37 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="typiska-och-karakteristiska-arter-for-natura-2000-naturtyper">Typiska och karakteristiska arter för Natura 2000-naturtyper</h1>
+<div class="dokgrid"><nav class="sidotoc" aria-label="Innehåll"><details open><summary>Innehåll</summary><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#sa-anvands-listan">Så används listan</a></li>
+<li><a href="#naturtyper-i-denna-sammanstallning">Naturtyper i denna sammanställning</a></li>
+<li><a href="#9010-taiga">9010 Taiga</a></li>
+<li><a href="#8230-hallmarkstorrang">8230 Hällmarkstorräng</a></li>
+<li><a href="#9070-tradkladd-betesmark">9070 Trädklädd betesmark</a></li>
+<li><a href="#6270-silikatgrasmarker">6270 Silikatgräsmarker</a></li>
+<li><a href="#9740-91d0-skogbevuxen-myr">9740 / 91D0 Skogbevuxen myr</a></li>
+<li><a href="#9080-lovsumpskog">9080 Lövsumpskog</a></li>
+<li><a href="#7140-oppna-mossar-och-karr">7140 Öppna mossar och kärr</a></li>
+<li><a href="#6410-fuktangar">6410 Fuktängar</a></li>
+<li><a href="#3150-naturligt-naringsrika-sjoar">3150 Naturligt näringsrika sjöar</a></li>
+<li><a href="#9020-nordlig-adellovskog">9020 Nordlig ädellövskog</a></li>
+<li><a href="#9050-naringsrik-granskog">9050 Näringsrik granskog</a></li>
+<li><a href="#8220-silikatbranter">8220 Silikatbranter</a></li>
+<li><a href="#6510-slatterangar-i-laglandet">6510 Slåtterängar i låglandet</a></li>
+<li><a href="#3160-myrsjoar">3160 Myrsjöar</a></li>
+<li><a href="#9060-asbarrskog">9060 Åsbarrskog</a></li>
+<li><a href="#6210-kalkgrasmarker">6210 Kalkgräsmarker</a></li>
+<li><a href="#9750-91e0-svamlovskog">9750 / 91E0 Svämlövskog</a></li>
+<li><a href="#3110-naringsfattiga-slattsjoar">3110 Näringsfattiga slättsjöar</a></li>
+<li><a href="#9160-naringsrik-ekskog">9160 Näringsrik ekskog</a></li>
+<li><a href="#7230-rikkarr">7230 Rikkärr</a></li>
+<li><a href="#6230-stagg-grasmarker">6230 Stagg-gräsmarker</a></li>
+<li><a href="#7110-hogmossar-inkl-delyta-7111-oppna-mosseplan">7110 Högmossar (inkl. delyta 7111 Öppna mosseplan)</a></li>
+<li><a href="#fynd-i-artportalen-per-yta-2026-09-29">Fynd i Artportalen per yta (2026-09-29)</a></li>
+<li><a href="#nasta-steg-forslag">Nästa steg (förslag)</a></li>
+</ul>
+</div>
+</details></nav><article><h1 id="typiska-och-karakteristiska-arter-for-natura-2000-naturtyper">Typiska och karakteristiska arter för Natura 2000-naturtyper</h1>
 <p>Sammanställning till stöd för NNK-statusbedömning (gynnsam bevarandestatus, GYBS) och för fältet <strong>"Vad ska kontrollera → Typiska och karakteristiska arter"</strong> i <a href="metodik.html">metodiken</a>.</p>
 <p><strong>Källa:</strong> Naturvårdsverkets naturtypsvisa vägledningar, se <a href="https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/">Natura 2000 i Sverige</a> samt PDF-länk per naturtyp nedan.
 <strong>Sammanställd:</strong> 2026-08-21
@@ -457,7 +516,7 @@ tr:last-child td{border-bottom:0}
 <li><strong>Kontrollera artnamnen mot originalet</strong> (PDF-länkar ovan) eller Artfakta.se innan listorna används i en formell bedömning — se reservationen högst upp i dokumentet.</li>
 <li><strong>Komplettera med de återstående ~13 mindre vanliga naturtyperna</strong> om/när fältprogrammet 2027 pekar ut objekt med dessa (4030, 3130, 6280, 9180, 6430, 9110, 8210, 9030 m.fl.).</li>
 <li><strong>Följ upp 9050</strong>-vägledningen — ny version är under framtagande hos NV (ref. NV-09554-24).</li>
-</ol>
+</ol></article></div>
 </div>
 <script>
 (function(){
@@ -496,6 +555,33 @@ tr:last-child td{border-bottom:0}
       }else{klar(reserv(t));}
     });
   });
+})();
+
+(function(){
+  var toc=document.querySelector('.sidotoc'); if(!toc) return;
+  var d=toc.querySelector('details');
+  if(d && window.matchMedia('(max-width:960px)').matches) d.open=false; // hopfallen på mobil
+  var lankar={};
+  toc.querySelectorAll('a[href^="#"]').forEach(function(a){lankar[decodeURIComponent(a.getAttribute('href').slice(1))]=a;});
+  var rubriker=[].slice.call(document.querySelectorAll('article h2[id],article h3[id],article h4[id]'))
+    .filter(function(h){return lankar[h.id];});
+  if(!('IntersectionObserver' in window) || !rubriker.length) return;
+  var synlig={};
+  function markera(){
+    var forsta=null;
+    for(var i=0;i<rubriker.length;i++){ if(synlig[rubriker[i].id]){forsta=rubriker[i];break;} }
+    if(!forsta){ // ingen rubrik i bild: ta den senaste ovanfor
+      for(var j=rubriker.length-1;j>=0;j--){ if(rubriker[j].getBoundingClientRect().top<0){forsta=rubriker[j];break;} }
+    }
+    toc.querySelectorAll('a.aktiv').forEach(function(a){a.classList.remove('aktiv');});
+    if(forsta){ var a=lankar[forsta.id]; a.classList.add('aktiv');
+      var r=a.getBoundingClientRect(), tr=toc.getBoundingClientRect();
+      if(r.top<tr.top||r.bottom>tr.bottom) a.scrollIntoView({block:'nearest'}); }
+  }
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){synlig[x.target.id]=x.isIntersecting;});markera();},
+    {rootMargin:'0px 0px -70% 0px'});
+  rubriker.forEach(function(h){io.observe(h);});
+  window.addEventListener('scroll',function(){ if(!Object.keys(synlig).some(function(k){return synlig[k];})) markera(); },{passive:true});
 })();
 </script>
 </body>

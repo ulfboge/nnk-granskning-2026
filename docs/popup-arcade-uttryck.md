@@ -34,6 +34,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Floraväkteri (Artportalen)** — ny sektion 10, tillagd 2026-10-01. Visar fälten `fv_antal_arter`, `fv_antal_rapporter`, `fv_senaste_ar`, `fv_hotade_arter`, `fv_bilaga2_arter`, `fv_ej_aterfunna`, `fv_minskande`, `fv_anm_havd` och `fv_arter`, som sätts av `02_koppla_nnk_skyddskategori.py` ur `floravakteri_for_granskning.csv` (framräknad av `natura-2000: scripts/analysis/nnk_floravakteri.py` ur SLU:s publika SOS-WFS, Artportalen-projekten Floraväkteri Sverige och Arkiv Floraväktarlokaler). Skyddsklassade fynd ingår inte. Visas bara för ytor med minst en floraväktarrapport. Klistra in efter Overwrite (se OBS nedan).
 
 > **OBS (2026-10-01): klistra in uttrycken först efter Share As Web Layer → Overwrite.** `HasKey` skyddar bara när uttrycket körs. Map Viewers Arcade-redigerare kontrollerar dessutom att alla `$feature.fält` finns i lagret, och saknas fälten i tjänsten går det att trycka *Kör* men inte *Klar*. Samma sak om fälten finns men är dolda (Visible av i Pro före publiceringen).
+
 ---
 
 ## 1. Identifiering och skydd

@@ -332,6 +332,8 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True, sidomeny=
     titel = re.sub(r"<[^>]+>", "", forsta.group(1)).strip() if forsta else pathlib.Path(md_sokvag).stem
 
     toc = ""
+    # Underrubriken "Länsstyrelsen i Södermanlands län · ..." är en sidhuvudrad, inte ett avsnitt.
+    md.toc = re.sub(r'\s*<li><a href="#[^"]*">Länsstyrelsen i Södermanlands län[^<]*</a></li>', "", md.toc)
     if sidomeny and md.toc_tokens:
         meny = (f'<nav class="sidotoc" aria-label="Innehåll"><details open><summary>Innehåll</summary>'
                 f'<div class="t">Innehåll</div>{md.toc}</details></nav>')
@@ -373,11 +375,11 @@ DOKUMENT = {
     "runbook": {"flikar": True, "bred": True, "toc": False},
     "filterguide": {"flikar": True, "bred": True, "toc": False},
     "metodik": {"sidomeny": True},
-    "typiska-arter": {},
-    "vagledningar": {},
+    "typiska-arter": {"sidomeny": True},
+    "vagledningar": {"sidomeny": True},
     "webbgis-publicering": {"flikar": True},
     "attributbeskrivning": {"sidomeny": True},
-    "popup-arcade-uttryck": {},
+    "popup-arcade-uttryck": {"sidomeny": True},
 }
 
 if __name__ == "__main__":
