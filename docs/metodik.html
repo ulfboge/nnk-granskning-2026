@@ -166,8 +166,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.17 · 2026-10-23</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> R7-avsnittets siffror gäller nu körningen 2026-10-20 i stället för den första körningen utan VISS. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.18 · 2026-11-02</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> R5 säger vad du gör när en yta som redan är livsmiljötyp har en målnaturtyp. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -536,7 +536,14 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <h3 id="r5-utvecklingsmark-har-tva-formella-krav">R5. Utvecklingsmark har två formella krav</h3>
 <p>Lathunden: <em>"Används målnaturtyper så förutsätts att Naturtypsstatus är satt till 'Utvecklingsmark' och att </em><em>Naturtyp utgörs av en icke-natura-naturtyp</em><em>."</em></p>
 <p>Alltså: en yta kan inte samtidigt vara livsmiljötyp 6270 och utvecklingsmark mot 6270. Är den redan livsmiljötyp är den livsmiljötyp — i gott eller icke gott tillstånd. Upp till tre målnaturtyper får anges (<code>MALNATUR1–3</code>).</p>
-<p>I hela länet har idag bara 87 polygoner en angiven målnaturtyp. Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — det är en av de mest värdefulla sakerna att fråga om, och FAQ fråga 23 påpekar att ytor med påtaglig utvecklingspotential normalt är högre prioriterade för skydds- och skötselresurser.</p>
+<p>I hela länet har idag bara 87 polygoner en angiven målnaturtyp i den publika exporten (103 i länsuttaget från 2026-08-26). Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — det är en av de mest värdefulla sakerna att fråga om, och FAQ fråga 23 påpekar att ytor med påtaglig utvecklingspotential normalt är högre prioriterade för skydds- och skötselresurser.</p>
+<p><strong>Målnaturtyp på en yta som redan är livsmiljötyp.</strong> Handledningen (avsnitt 5.2) avråder från det, och vill att det i så fall finns en kommentar om varför. I länsuttaget gäller det 17 ytor med status fullgod eller icke fullgod. Popupen visar målnaturtypen, men R7-förslaget tar inte med fältet och väger inte in karterarens kommentar. Gör så här:</p>
+<ol>
+<li>Läs <em>Kommentar (NNK)</em> i popupen. Fältet kan förklara varför värdet sattes.</li>
+<li>Är målnaturtypen samma kod som ytan (14 av de 17): gör inget. Värdet tillför inget.</li>
+<li>Är det en annan kod (3 av de 17): behandla det som en öppen fråga om typen, inte som ett mål. Låt typen stå tills underlag visar något annat, skriv i <em>Kommentar - livsmiljötyp och utbredning</em> vilken målnaturtyp NNK anger, och ta frågan med i fältbesöket eller till förvaltaren.</li>
+<li>Visar sig ytan vara den andra typen: välj <em>Ändring till annan livsmiljötyp</em>. Är den ingen livsmiljötyp än, men kan bli det: följ de två kraven ovan. Står typen kvar bör målnaturtypen tas bort när ändringarna förs in i NNK.</li>
+</ol>
 <h3 id="r6-utpekade-livsmiljotyper-har-ett-sarskilt-skydd">R6. Utpekade livsmiljötyper har ett särskilt skydd</h3>
 <blockquote>
 <p>"Vi har ett särskilt ansvar för livsmiljötyper som legat till grund för utpekandet av ett Natura 2000-område och som tidigare har rapporterats för området. Det samma gäller prioriterade bevarandevärden som är en del av syfte och skäl för ett beslut om naturreservat. Livsmiljötyper som utgör prioriterade bevarandevärden bör karteras mer noggrant och <strong>enbart ändras om tidigare bedömningar är uppenbart fel eller det faktisk skett en förändring</strong>."
@@ -1253,6 +1260,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.18</strong> (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.</li>
 <li><strong>2.17</strong> (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i <em>Kommentar – Tillstånd</em>.</li>
 <li><strong>2.16</strong> (2026-10-23) — avsnitt 5, R7B och R7C: utförda våtmarksåtgärder (VÅMÅ) i SkötselDOS räknas inte som ingrepp; dike eller laserflagga som förklaras av åtgärden ger <em>till fält</em>, aldrig <em>fullgod</em>. Året tas ur SkötselDOS-namnet eller en genomgång av VÅMÅ-mapparna på G:. 68 ytor fick nya motiv eller kontroller, 5 ändrat utfall.</li>
 <li><strong>2.15</strong> (2026-10-22) — avsnitt 5, R7-förslaget: kolumnen <em>Typen rimlig</em> heter <em>Typen styrkt av nyare underlag</em>, med förtydligandet att <em>Nej</em> inte betyder att typen är fel.</li>

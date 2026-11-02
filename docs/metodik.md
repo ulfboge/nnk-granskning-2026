@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.17 · 2026-10-23** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7-avsnittets siffror gäller nu körningen 2026-10-20 i stället för den första körningen utan VISS. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.18 · 2026-11-02** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* R5 säger vad du gör när en yta som redan är livsmiljötyp har en målnaturtyp. [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -198,7 +198,14 @@ Lathunden: *"Används målnaturtyper så förutsätts att Naturtypsstatus är sa
 
 Alltså: en yta kan inte samtidigt vara livsmiljötyp 6270 och utvecklingsmark mot 6270. Är den redan livsmiljötyp är den livsmiljötyp — i gott eller icke gott tillstånd. Upp till tre målnaturtyper får anges (`MALNATUR1–3`).
 
-I hela länet har idag bara 87 polygoner en angiven målnaturtyp. Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — det är en av de mest värdefulla sakerna att fråga om, och FAQ fråga 23 påpekar att ytor med påtaglig utvecklingspotential normalt är högre prioriterade för skydds- och skötselresurser.
+I hela länet har idag bara 87 polygoner en angiven målnaturtyp i den publika exporten (103 i länsuttaget från 2026-08-26). Förvaltarna vet i regel mycket väl vilka ytor som är på väg åt rätt håll — det är en av de mest värdefulla sakerna att fråga om, och FAQ fråga 23 påpekar att ytor med påtaglig utvecklingspotential normalt är högre prioriterade för skydds- och skötselresurser.
+
+**Målnaturtyp på en yta som redan är livsmiljötyp.** Handledningen (avsnitt 5.2) avråder från det, och vill att det i så fall finns en kommentar om varför. I länsuttaget gäller det 17 ytor med status fullgod eller icke fullgod. Popupen visar målnaturtypen, men R7-förslaget tar inte med fältet och väger inte in karterarens kommentar. Gör så här:
+
+1. Läs *Kommentar (NNK)* i popupen. Fältet kan förklara varför värdet sattes.
+2. Är målnaturtypen samma kod som ytan (14 av de 17): gör inget. Värdet tillför inget.
+3. Är det en annan kod (3 av de 17): behandla det som en öppen fråga om typen, inte som ett mål. Låt typen stå tills underlag visar något annat, skriv i *Kommentar - livsmiljötyp och utbredning* vilken målnaturtyp NNK anger, och ta frågan med i fältbesöket eller till förvaltaren.
+4. Visar sig ytan vara den andra typen: välj *Ändring till annan livsmiljötyp*. Är den ingen livsmiljötyp än, men kan bli det: följ de två kraven ovan. Står typen kvar bör målnaturtypen tas bort när ändringarna förs in i NNK.
 
 ### R6. Utpekade livsmiljötyper har ett särskilt skydd
 
@@ -612,6 +619,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.18** (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.
 - **2.17** (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i *Kommentar – Tillstånd*.
 - **2.16** (2026-10-23) — avsnitt 5, R7B och R7C: utförda våtmarksåtgärder (VÅMÅ) i SkötselDOS räknas inte som ingrepp; dike eller laserflagga som förklaras av åtgärden ger *till fält*, aldrig *fullgod*. Året tas ur SkötselDOS-namnet eller en genomgång av VÅMÅ-mapparna på G:. 68 ytor fick nya motiv eller kontroller, 5 ändrat utfall.
 - **2.15** (2026-10-22) — avsnitt 5, R7-förslaget: kolumnen *Typen rimlig* heter *Typen styrkt av nyare underlag*, med förtydligandet att *Nej* inte betyder att typen är fel.
