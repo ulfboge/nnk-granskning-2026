@@ -257,8 +257,9 @@ p,ul,ol{max-width:80ch}
 # Markerar avsnittet man last i (IntersectionObserver). Under 960 px blir den en
 # hopfallbar ruta overst. Utan JS fungerar den som vanlig lankslista.
 SIDOMENY_CSS = """
-.wrap{max-width:1240px}
-.dokgrid{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.wrap{max-width:1440px}
+.dokgrid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
+.dokgrid .tabell{font-size:13.5px}
 .sidotoc{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
  font-size:13px;line-height:1.4;padding:4px 6px 20px 0;border-right:1px solid var(--grid)}
 .sidotoc .t{font-size:11.5px;font-weight:650;color:var(--ink-3);text-transform:uppercase;
