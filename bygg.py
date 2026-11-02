@@ -369,7 +369,7 @@ def bygg_dok(md_sokvag, ut_sokvag, flikar=False, bred=False, toc=True, sidomeny=
 # layout och ingen innehallsforteckning (flikraden och oversiktstabellerna
 # ersatter den).
 DOKUMENT = {
-    "arbetsplan": {},
+    "arbetsplan": {"sidomeny": True},  # 2026-11-02: sidomeny för navigering
     "runbook": {"flikar": True, "bred": True, "toc": False},
     "filterguide": {"flikar": True, "bred": True, "toc": False},
     "metodik": {"sidomeny": True},

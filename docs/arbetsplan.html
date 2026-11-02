@@ -83,6 +83,35 @@ tr:last-child td{border-bottom:0}
  color:var(--ink-2);cursor:pointer;opacity:.85}
 .kopiera:hover{opacity:1;color:var(--ink)}
 .kopiera.ok{color:var(--p-D);border-color:var(--p-D)}
+
+.wrap{max-width:1240px}
+.dokgrid{display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px;align-items:start}
+.sidotoc{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
+ font-size:13px;line-height:1.4;padding:4px 6px 20px 0;border-right:1px solid var(--grid)}
+.sidotoc .t{font-size:11.5px;font-weight:650;color:var(--ink-3);text-transform:uppercase;
+ letter-spacing:.06em;margin:0 0 8px}
+.sidotoc ul{list-style:none;margin:0;padding:0}
+.sidotoc ul ul{padding-left:12px;margin:2px 0 4px;border-left:1px solid var(--grid)}
+.sidotoc ul ul ul{font-size:12.5px}
+.sidotoc li{margin:0}
+.sidotoc a{display:block;padding:3px 8px;border-radius:6px;color:var(--ink-2)}
+.sidotoc a:hover{background:var(--surface-1);color:var(--ink-1);text-decoration:none}
+.sidotoc a.aktiv{background:color-mix(in srgb,var(--p-A) 12%,transparent);color:var(--ink-1);font-weight:600}
+.sidotoc summary{display:none}
+.sidotoc .toc{background:none;border:0;border-radius:0;padding:0;margin:0}
+.sidotoc .toc ul{padding-left:0;font-size:13px}
+.sidotoc .toc ul ul{padding-left:12px}
+.dokgrid article{min-width:0}
+article h2,article h3,article h4{scroll-margin-top:14px}
+h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-top:1px dashed var(--grid)}
+@media(max-width:960px){
+ .dokgrid{grid-template-columns:1fr;gap:0}
+ .sidotoc{position:static;max-height:none;border-right:0;border:1px solid var(--ring);border-radius:12px;
+  background:var(--surface-1);padding:10px 14px;margin:0 0 24px}
+ .sidotoc summary{display:block;cursor:pointer;font-weight:620;font-size:13.5px}
+ .sidotoc .t{display:none}
+}
+@media print{.sidotoc{display:none}.dokgrid{display:block}}
 </style>
 </head>
 <body>
@@ -91,7 +120,65 @@ tr:last-child td{border-bottom:0}
   <div class="crumb"><a href="../index.html">← Kontrollpanel NNK 2026</a></div>
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
-<h1 id="arbetsplan-nnk-2026-statusbedomning-av-livsmiljotyper-inom-natura-2000">Arbetsplan NNK 2026 — statusbedömning av livsmiljötyper inom Natura 2000</h1>
+<div class="dokgrid"><nav class="sidotoc" aria-label="Innehåll"><details open><summary>Innehåll</summary><div class="t">Innehåll</div><div class="toc">
+<ul>
+<li><a href="#lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</a></li>
+<li><a href="#0-sammanfattning-vad-det-har-aret-faktiskt-handlar-om">0. Sammanfattning — vad det här året faktiskt handlar om</a></li>
+<li><a href="#1-kravnedbrytning-vad-som-ska-vara-klart-nar">1. Kravnedbrytning — vad som ska vara klart när</a><ul>
+<li><a href="#11-klart-2026-inom-natura-2000">1.1 Klart 2026, inom Natura 2000</a></li>
+<li><a href="#12-klart-2027">1.2 Klart 2027</a></li>
+<li><a href="#13-klart-2028">1.3 Klart 2028</a></li>
+</ul>
+</li>
+<li><a href="#2-kunskapslaget-i-d-lan-nollmatning-per-2026-01-20">2. Kunskapsläget i D-län — nollmätning per 2026-01-20</a><ul>
+<li><a href="#21-natura-2000-scisac-197-omraden">2.1 Natura 2000 (SCI/SAC), 197 områden</a></li>
+<li><a href="#22-terrestra-livsmiljotyper-det-som-faktiskt-ska-bedomas">2.2 Terrestra livsmiljötyper — det som faktiskt ska bedömas</a></li>
+<li><a href="#23-naturtypsstatus-polygoner-inom-n2000">2.3 Naturtypsstatus — polygoner inom N2000</a></li>
+<li><a href="#24-karteringsstatus-och-ursprung-kvalitetsrisken">2.4 Karteringsstatus och ursprung — kvalitetsrisken</a></li>
+<li><a href="#25-sallsynta-livsmiljotyper-i-lanet-50-ha-inom-n2000">2.5 Sällsynta livsmiljötyper i länet (&lt; 50 ha inom N2000)</a></li>
+</ul>
+</li>
+<li><a href="#3-hierarkisk-arbetsstruktur-wbs">3. Hierarkisk arbetsstruktur (WBS)</a></li>
+<li><a href="#4-arbetspaket-i-detalj">4. Arbetspaket i detalj</a><ul>
+<li><a href="#a-etablering-och-forutsattningar-v34v36">A. Etablering och förutsättningar · v34–v36</a></li>
+<li><a href="#c-skrivbordsgranskning-av-utbredning-v35v46">C. Skrivbordsgranskning av utbredning · v35–v46</a><ul>
+<li><a href="#c1-granskningsrutin-per-objekt">C1 Granskningsrutin per objekt</a></li>
+<li><a href="#c2c6-batchar">C2–C6 Batchar</a></li>
+<li><a href="#c7-okarterade-ytor-och-lanssoverskridande-objekt">C7 Okarterade ytor och länssöverskridande objekt</a></li>
+</ul>
+</li>
+<li><a href="#d-tillstandsbedomning-i-nnk-v40v50">D. Tillståndsbedömning i NNK · v40–v50</a></li>
+<li><a href="#e-sammanstallning-av-kunskapslaget-v45v50">E. Sammanställning av kunskapsläget · v45–v50</a></li>
+<li><a href="#f-plan-for-2027-v46v52-arets-huvudleverans">F. Plan för 2027 · v46–v52 — årets huvudleverans</a></li>
+<li><a href="#g-parallellspar-naturreservat-och-nationalpark-v42v52">G. Parallellspår naturreservat och nationalpark · v42–v52</a></li>
+<li><a href="#h-forvaltardialog-naturvardsenhetens-kunskap-v35v48">H. Förvaltardialog — Naturvårdsenhetens kunskap · v35–v48</a></li>
+</ul>
+</li>
+<li><a href="#5-prioritering">5. Prioritering</a><ul>
+<li><a href="#51-prioriteringsgrunder-faq-fraga-11">5.1 Prioriteringsgrunder (FAQ fråga 11)</a></li>
+<li><a href="#52-prioritetsklasser">5.2 Prioritetsklasser</a></li>
+<li><a href="#53-sarskild-hantering-av-storobjekten">5.3 Särskild hantering av storobjekten</a></li>
+</ul>
+</li>
+<li><a href="#6-roller-och-tidsbudget">6. Roller och tidsbudget</a><ul>
+<li><a href="#61-fordelning">6.1 Fördelning</a></li>
+<li><a href="#62-grov-tidsbudget-v34v52-ca-19-veckor">6.2 Grov tidsbudget v34–v52 (ca 19 veckor)</a></li>
+</ul>
+</li>
+<li><a href="#7-tidplan-v34v52-2026">7. Tidplan v34–v52 2026</a><ul>
+<li><a href="#milstolpar">Milstolpar</a></li>
+</ul>
+</li>
+<li><a href="#8-avgransningar-vad-som-medvetet-inte-gors-2026">8. Avgränsningar — vad som medvetet inte görs 2026</a></li>
+<li><a href="#9-risker">9. Risker</a></li>
+<li><a href="#10-fragor-att-ta-upp-med-naturvardsverket-kartlits">10. Frågor att ta upp med Naturvårdsverket / KartLitS</a></li>
+<li><a href="#11-uppfoljning">11. Uppföljning</a></li>
+<li><a href="#bilaga-1-p1-objekt-40-st-rangordnade">Bilaga 1 — P1-objekt (40 st), rangordnade</a></li>
+<li><a href="#bilaga-2-batchindelning">Bilaga 2 — Batchindelning</a></li>
+<li><a href="#bilaga-3-reproducerbarhet-och-precision">Bilaga 3 — Reproducerbarhet och precision</a></li>
+</ul>
+</div>
+</details></nav><article><h1 id="arbetsplan-nnk-2026-statusbedomning-av-livsmiljotyper-inom-natura-2000">Arbetsplan NNK 2026 — statusbedömning av livsmiljötyper inom Natura 2000</h1>
 <h2 id="lansstyrelsen-i-sodermanlands-lan-naturskyddsenheten-ref-2451-2026">Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026</h2>
 <p><strong>Version:</strong> 1.11 — 2026-10-23: H4.3 (NILS och regional miljöövervakning) och H4.4 (utförda våtmarksåtgärder) tillagda — två källor i projektplanens kunskapssammanställning som inte fanns i underlaget. Version 1.10 — 2026-10-09: D5.2 utgår, ingen konsult för fältbedömning hösten 2026 (för sent på året); all fältkontroll, även R7-pilotens, görs 2027. Version 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och <code>LstD NNK Granskning</code> publicerat sedan 2026-09-01
 <strong>Datum:</strong> 2026-09-11
@@ -2001,7 +2088,7 @@ förvaltarsamtalen) är alltså inte längre blockerat av detta.</p>
 </ul>
 <hr />
 <p><em>Underlag: NNK-statistik per Natura 2000-område, D-län, uttag 2026-01-20 (Naturvårdsverket) samt NNK-kartering D-län, 14 830 polygoner. Samtliga arealer avser karterad areal inom Natura 2000 (SCI/SAC).</em></p>
-<p><em>Arbetsplan v1.5 · 2026-08-25 — fältarbete (arbetspaket B) flyttat till 2027, frigjord tid omfördelad till C/D/H (avsnitt 0, 6.2, 7, 8); Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 58 uppgifter med 266 steg i runbooken och kontrollrummet</em></p>
+<p><em>Arbetsplan v1.5 · 2026-08-25 — fältarbete (arbetspaket B) flyttat till 2027, frigjord tid omfördelad till C/D/H (avsnitt 0, 6.2, 7, 8); Ing-Marie EC naturskydd; Per Flodin; länssöverskridande objekt via rapporterande län; 58 uppgifter med 266 steg i runbooken och kontrollrummet</em></p></article></div>
 </div>
 <script>
 (function(){
@@ -2040,6 +2127,33 @@ förvaltarsamtalen) är alltså inte längre blockerat av detta.</p>
       }else{klar(reserv(t));}
     });
   });
+})();
+
+(function(){
+  var toc=document.querySelector('.sidotoc'); if(!toc) return;
+  var d=toc.querySelector('details');
+  if(d && window.matchMedia('(max-width:960px)').matches) d.open=false; // hopfallen på mobil
+  var lankar={};
+  toc.querySelectorAll('a[href^="#"]').forEach(function(a){lankar[decodeURIComponent(a.getAttribute('href').slice(1))]=a;});
+  var rubriker=[].slice.call(document.querySelectorAll('article h2[id],article h3[id],article h4[id]'))
+    .filter(function(h){return lankar[h.id];});
+  if(!('IntersectionObserver' in window) || !rubriker.length) return;
+  var synlig={};
+  function markera(){
+    var forsta=null;
+    for(var i=0;i<rubriker.length;i++){ if(synlig[rubriker[i].id]){forsta=rubriker[i];break;} }
+    if(!forsta){ // ingen rubrik i bild: ta den senaste ovanfor
+      for(var j=rubriker.length-1;j>=0;j--){ if(rubriker[j].getBoundingClientRect().top<0){forsta=rubriker[j];break;} }
+    }
+    toc.querySelectorAll('a.aktiv').forEach(function(a){a.classList.remove('aktiv');});
+    if(forsta){ var a=lankar[forsta.id]; a.classList.add('aktiv');
+      var r=a.getBoundingClientRect(), tr=toc.getBoundingClientRect();
+      if(r.top<tr.top||r.bottom>tr.bottom) a.scrollIntoView({block:'nearest'}); }
+  }
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){synlig[x.target.id]=x.isIntersecting;});markera();},
+    {rootMargin:'0px 0px -70% 0px'});
+  rubriker.forEach(function(h){io.observe(h);});
+  window.addEventListener('scroll',function(){ if(!Object.keys(synlig).some(function(k){return synlig[k];})) markera(); },{passive:true});
 })();
 </script>
 </body>
