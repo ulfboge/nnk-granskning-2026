@@ -1,8 +1,8 @@
 # Vägledningar per livsmiljötyp
 
-Senaste fastställda vägledning för varje Natura 2000-livsmiljötyp som finns i Södermanlands NNK (45 typer). **Bedöm alltid mot den här versionen, oavsett om den är från 2011–2012 eller 2026.** Remissversioner används inte (FAQ fråga 10).
+Senaste fastställda vägledning för varje Natura 2000-livsmiljötyp som finns i Södermanlands NNK (45 typer), samt 3210, som inte finns i NNK-utdraget men ingår i planeringsunderlaget. **Bedöm alltid mot den här versionen, oavsett om den är från 2011–2012 eller 2026.** Remissversioner används inte (FAQ fråga 10).
 
-**Kontrollerad:** 2026-10-02. Alla 45 är fastställda, ingen är på remiss. NV och HaV reviderar löpande, så kontrollera källsidan inför en bedömning: terrestra typer på [Naturvårdsverkets Natura 2000-sida](https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/), akvatiska (11xx, 31xx–32xx) på [Havs- och vattenmyndighetens sida](https://www.havochvatten.se/arter-och-livsmiljoer/vagledningar-om-akvatiska-livsmiljotyper.html).
+**Kontrollerad:** 2026-10-02 (3210 tillagd 2026-11-02). Alla 46 är fastställda, ingen är på remiss. NV och HaV reviderar löpande, så kontrollera källsidan inför en bedömning: terrestra typer på [Naturvårdsverkets Natura 2000-sida](https://www.naturvardsverket.se/vagledning-och-stod/skyddad-natur/natura-2000-i-sverige/), akvatiska (11xx, 31xx–32xx) på [Havs- och vattenmyndighetens sida](https://www.havochvatten.se/arter-och-livsmiljoer/vagledningar-om-akvatiska-livsmiljotyper.html).
 
 **Lokala kopior:** `natura-2000: docs/underlag/natura2000/naturtyper/` (översikt i `Status_vagledningar_A2.4.md`). Länkarna nedan går direkt till myndigheternas PDF:er.
 
@@ -37,6 +37,7 @@ Senaste fastställda vägledning för varje Natura 2000-livsmiljötyp som finns 
 | 3130 | 3130 | [Ävjestrandsjöar](https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7106/1789710707839/3130-avjestrandsjoar.pdf) | **2026-03-27** | HaV |
 | 3150 | 3150 | [Naturligt näringsrika sjöar](https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7108/1789710707859/3150-naturligt-naringsrika-sjoar.pdf) | **2026-03-27** | HaV |
 | 3160 | 3160 | [Myrsjöar](https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc7109/1789710707869/3160-myrsjoar.pdf) | **2026-03-27** | HaV |
+| 3210 | – | [Naturliga större vattendrag](https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc710a/1789710707880/3210-naturliga-storre-vattendrag.pdf) | **2026-03-27** | HaV |
 | 3260 | 3260 | [Mindre vattendrag](https://www.havochvatten.se/download/18.2bebe2371a0b0a95efc710c/1789710707913/3260-mindre-vattendrag.pdf) | **2026-03-27** | HaV |
 
 ## Hedar och buskmarker

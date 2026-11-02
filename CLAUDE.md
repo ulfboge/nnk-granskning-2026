@@ -47,7 +47,7 @@ Projektöversikten för hela naturrestaureringsuppdraget finns i det tredje sysk
 | `docs/filterguide.md` (+ `.html`) | Filterguide för webbGIS, en flik per R7-grupp. **Genereras** ur `uppgifter.py` av `bygg_kontrollrum.py` — redigera inte här |
 | `docs/metodik.md` (+ `.html`) | Metodik förvaltarkunskap — arbetspaket H |
 | `docs/typiska-arter.md` (+ `.html`) | Typiska/karakteristiska arter per naturtyp |
-| `docs/vagledningar.md` (+ `.html`) | Senaste fastställda NV/HaV-vägledning per livsmiljötyp i länet (45 typer), länkar till myndigheternas PDF:er |
+| `docs/vagledningar.md` (+ `.html`) | Senaste fastställda NV/HaV-vägledning per livsmiljötyp i länet (45 typer i NNK + 3210), länkar till myndigheternas PDF:er |
 | `blanketter/blankett_forvaltarkunskap_nnk.xlsx` | Excelmall för insamling av förvaltarkunskap — genereras av `natura-2000/scripts/analysis/bygg_blankett.py`, kopieras hit som referensversion. **Den fil förvaltarna faktiskt fyller i ligger på G:-enheten** (`G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\NRF\blankett_forvaltarkunskap_nnk.xlsx`) — GitHub-kopian är alltså aldrig arbetskopian. |
 | `bygg.py` | Genererar om `docs/*.html` från `docs/*.md` (körs efter varje ändring i Markdown-källorna) |
 | `nnk_status.json` | Sparat avbockningsläge för kontrollrummet |
