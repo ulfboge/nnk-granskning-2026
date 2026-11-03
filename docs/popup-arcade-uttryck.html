@@ -175,7 +175,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </blockquote>
 <hr />
 <h2 id="1-identifiering-och-skydd">1. Identifiering och skydd</h2>
-<p><strong>Ändrat 2026-11-03:</strong> visar Natura 2000-området och naturreservatet var för sig, och en rad <em>Både Natura 2000 och naturreservat</em> när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna <em>Naturreservat, beslutat (år)</em> och <em>Förvaltare (naturreservat)</em> läser fälten <code>naturreservat_beslut_ar</code> och <code>naturreservat_forvaltare</code>. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser.</p>
+<p><strong>Ändrat 2026-11-03:</strong> visar Natura 2000-området och naturreservatet var för sig, och en rad <em>Både Natura 2000 och naturreservat</em> när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna <em>Naturreservat, beslutat (år)</em> och <em>Förvaltare (naturreservat)</em> läser fälten <code>naturreservat_beslut_ar</code> och <code>naturreservat_forvaltare</code>. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser. <code>n2000_namn</code> och <code>naturreservat_namn</code> gick inte att lägga till i den publicerade vyn (namnkrock, 2026-11-03), så uttrycket tar N2000-namnet ur <code>omrade_namn</code>. För ytor i både N2000 och reservat visas reservatet med NVR-ID utan namn.</p>
 <pre><code class="language-js">// Identifiering och skydd
 // Fälten läses dynamiskt: saknas ett fält i tjänsten hoppas raden över.
 Expects($feature, &quot;*&quot;);
@@ -195,8 +195,11 @@ function Rad(id, etikett, varde) {
 
 var sc = F(&quot;n2000_sitecode&quot;);
 var nvrid = F(&quot;naturreservat_nvrid&quot;);
-var n2000Namn = F(&quot;n2000_namn&quot;);
+// n2000_namn/naturreservat_namn finns inte i den publicerade vyn (namnkrock vid 07-synken
+// 2026-11-03). omrade_namn är N2000-namnet när ytan ligger i Natura 2000, annars reservatets.
+var n2000Namn = DefaultValue(F(&quot;n2000_namn&quot;), IIf(IsEmpty(sc), null, F(&quot;omrade_namn&quot;)));
 var nrNamn = F(&quot;naturreservat_namn&quot;);
+if (IsEmpty(nrNamn) &amp;&amp; IsEmpty(sc) &amp;&amp; !IsEmpty(nvrid)) { nrNamn = F(&quot;omrade_namn&quot;); }
 
 Rad(&quot;omrade_varde&quot;, &quot;Område&quot;, F(&quot;omrade_namn&quot;));
 Rad(&quot;skyddskategori_varde&quot;, &quot;Skyddskategori&quot;, F(&quot;skyddskategori&quot;));
@@ -212,7 +215,7 @@ if (!IsEmpty(sc)) {
 // Naturreservat
 if (!IsEmpty(nvrid) || !IsEmpty(nrNamn)) {
     Rad(&quot;nr_varde&quot;, &quot;Naturreservat&quot;,
-        DefaultValue(nrNamn, &quot;Namn saknas&quot;) + IIf(IsEmpty(nvrid), &quot;&quot;, &quot; · NVR-ID &quot; + nvrid));
+        IIf(IsEmpty(nrNamn), &quot;&quot;, nrNamn + &quot; · &quot;) + IIf(IsEmpty(nvrid), &quot;&quot;, &quot;NVR-ID &quot; + nvrid));
     var nrAr = F(&quot;naturreservat_beslut_ar&quot;);
     if (!IsEmpty(nrAr)) { Rad(&quot;nr_ar_varde&quot;, &quot;Naturreservat, beslutat (år)&quot;, Text(nrAr)); }
     Rad(&quot;nr_forv_varde&quot;, &quot;Förvaltare (naturreservat)&quot;, F(&quot;naturreservat_forvaltare&quot;));

@@ -39,7 +39,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 
 ## 1. Identifiering och skydd
 
-**Ändrat 2026-11-03:** visar Natura 2000-området och naturreservatet var för sig, och en rad *Både Natura 2000 och naturreservat* när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna *Naturreservat, beslutat (år)* och *Förvaltare (naturreservat)* läser fälten `naturreservat_beslut_ar` och `naturreservat_forvaltare`. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser.
+**Ändrat 2026-11-03:** visar Natura 2000-området och naturreservatet var för sig, och en rad *Både Natura 2000 och naturreservat* när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna *Naturreservat, beslutat (år)* och *Förvaltare (naturreservat)* läser fälten `naturreservat_beslut_ar` och `naturreservat_forvaltare`. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser. `n2000_namn` och `naturreservat_namn` gick inte att lägga till i den publicerade vyn (namnkrock, 2026-11-03), så uttrycket tar N2000-namnet ur `omrade_namn`. För ytor i både N2000 och reservat visas reservatet med NVR-ID utan namn.
 
 ```js
 // Identifiering och skydd
@@ -61,8 +61,11 @@ function Rad(id, etikett, varde) {
 
 var sc = F("n2000_sitecode");
 var nvrid = F("naturreservat_nvrid");
-var n2000Namn = F("n2000_namn");
+// n2000_namn/naturreservat_namn finns inte i den publicerade vyn (namnkrock vid 07-synken
+// 2026-11-03). omrade_namn är N2000-namnet när ytan ligger i Natura 2000, annars reservatets.
+var n2000Namn = DefaultValue(F("n2000_namn"), IIf(IsEmpty(sc), null, F("omrade_namn")));
 var nrNamn = F("naturreservat_namn");
+if (IsEmpty(nrNamn) && IsEmpty(sc) && !IsEmpty(nvrid)) { nrNamn = F("omrade_namn"); }
 
 Rad("omrade_varde", "Område", F("omrade_namn"));
 Rad("skyddskategori_varde", "Skyddskategori", F("skyddskategori"));
@@ -78,7 +81,7 @@ if (!IsEmpty(sc)) {
 // Naturreservat
 if (!IsEmpty(nvrid) || !IsEmpty(nrNamn)) {
     Rad("nr_varde", "Naturreservat",
-        DefaultValue(nrNamn, "Namn saknas") + IIf(IsEmpty(nvrid), "", " · NVR-ID " + nvrid));
+        IIf(IsEmpty(nrNamn), "", nrNamn + " · ") + IIf(IsEmpty(nvrid), "", "NVR-ID " + nvrid));
     var nrAr = F("naturreservat_beslut_ar");
     if (!IsEmpty(nrAr)) { Rad("nr_ar_varde", "Naturreservat, beslutat (år)", Text(nrAr)); }
     Rad("nr_forv_varde", "Förvaltare (naturreservat)", F("naturreservat_forvaltare"));
