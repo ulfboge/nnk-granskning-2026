@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.14 · 2026-11-03 (Grupp 3: kod 7 *Livsmiljötyp* i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK version 1.1 (2026-11-02)
 
@@ -79,7 +79,7 @@ Hit hör också förklaringar till varför ett underlag ser sämre ut än tillst
 ### Grupp 3 · Vad ska kontrolleras och hur
 
 **Vad ska kontrolleras 1–3**  
-Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.
+Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi, annan negativ påverkan eller livsmiljötypen själv.
 
 | Kod | Klartext |
 |---|---|
@@ -89,6 +89,7 @@ Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hä
 | 4 | Funktioner (hydrologi, störningar) |
 | 5 | Morfologi (jordart, formationer) |
 | 6 | Annan negativ påverkan |
+| 7 | Livsmiljötyp (typ eller utbredning) – egen kod sedan 2026-11-03, finns inte i KartLits-mallen. Använd när det är osäkert om ytan är rätt livsmiljötyp eller har rätt gräns, och skriv vad i *Kommentar – Vad ska kontrolleras*. |
 
 **Kommentar – Vad ska kontrolleras**  
 Motivera varför just detta bör kontrolleras.
