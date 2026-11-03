@@ -334,7 +334,7 @@ const STEG = [
 { id:'sortera', titel:'Yta för yta: läs förslaget',
   mal:'Från och med nu går du yta för yta: steg 5–8 för en yta, sedan nästa. Förslaget säger vilken regel som gäller, vilket utfall registren pekar mot och vad du måste kontrollera själv.',
   gor:[
-    'Klicka på ytan och läs sektionen <i>Bedömning vid skrivbordet (R7)</i>: <i>Bedömningsgrupp</i>, <i>Naturtypsstatusens ålder</i>, <i>Vad gäller</i> och de tre förslagsraderna <i>Förslag (R7)</i>, <i>Motiv</i> och <i>Kontrollera</i>. Samma sak, och förslaget till varje formulärfält, står i förslagsfilens flikar <i>3 Förslag till formuläret</i> och <i>4 Kontrollera</i>.',
+    'Klicka på ytan och läs sektionen <i>Bedömning vid skrivbordet (R7)</i>: <i>Bedömningsgrupp</i>, <i>Naturtypsstatusens ålder</i>, <i>Vad gäller</i>, underlagen med år och <i>Förslag (R7)</i>. Motiv och kontroller visas inte i popupen (sedan 2026-11-03), så att du gör bedömningen själv. De finns i förslagsfilens flikar <i>3 Förslag till formuläret</i> och <i>4 Kontrollera</i>.',
     'Ytor med <b>Ej bedömd status</b>: bedöm enligt gruppens delregel (R7A–R7D). Ytor som redan är <b>Fullgod</b> eller <b>Icke fullgod</b>: ompröva (R7-omprövning) — naturtypsstatusen räknas inte som belägg. Övriga ingår inte.',
     'Läs <b>säkerheten</b>: Hög = flera samstämmiga underlag, Medel = ett underlag eller ett villkor, Låg = underlagen säger emot varandra. Låg ska alltid kontrolleras extra.',
     'Förslaget tillämpar R7 på det som finns i registren. Det tolkar inte ortofoto, och bevarandeplanens förbehåll om underlaget är hittade med textsökning – läs planen när Kontrollera ber om det. Villkoret i förslaget (t.ex. <i>om IR-ortot inte visar igenväxning</i>) prövar du i steg 6 och 7.'
@@ -349,7 +349,7 @@ const STEG = [
     ])
     + obs('<b>Grupp är inte batch.</b> Batch (S, A, B, C, D) är arbetsordningen per område. Gruppen (Hävd, Skog, Våtmark, Stabila) är regeln per yta. Floden ligger i batch B men har ytor i två grupper.'),
   popup: [
-    ['Bedömning vid skrivbordet (R7)','Förslag (R7), Motiv, Kontrollera','Förslaget till utfall med säkerhet och villkor, vilka underlag det bygger på och vad du ska kontrollera, med lager inom hakparentes. Byggs av bygg_r7_forslag.py.'],
+    ['Bedömning vid skrivbordet (R7)','Förslag (R7)','Förslaget till utfall med villkor. Byggs av bygg_r7_forslag.py. Motiv och kontroller står i förslagsfilen, inte i popupen (sedan 2026-11-03).'],
     ['Bedömning vid skrivbordet (R7)','Lager för gruppen','Vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Gäller alla R7-ytor, även de som saknar rad <i>Kontrollera</i>.'],
     ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp (R7)','Vilken delregel som gäller: Hävd (R7A), Skog (R7B), Våtmark (R7C) eller Stabila (R7D). Räknas fram ur naturtypskoden.'],
     ['','Naturtypsstatusens ålder','Hur gammal den nuvarande naturtypsstatusen är, så gott det går att avgöra.'],
@@ -477,13 +477,12 @@ const POPUP = [
  ['Naturtyp (NNK-data)','Naturtyp, Naturtypsstatus, Area, Karteringsstatus, Start-/Slutdatum senaste inventering, Bevarandeplan (år), Målnaturtyp, Ursprung, Förändringsorsak','NV:s nuvarande uppgifter för ytan. Skrivskyddat — det är detta du granskar.','4, 5','Differenser, Bevarandeplan fastställd'],
  ['Bedömning vid skrivbordet (R7)','Bedömningsgrupp, Naturtypsstatusens ålder, Vad gäller, Underlag med år','Vilken regel som gäller, hur gammal naturtypsstatusen är, vilka underlag som är nyare än den, och förslaget till utfall (R7-förslag).','5, 7','Ytor R7, Underlag'],
  ['Granskning 1 — Avvikelse och korrigeringsförslag','Förslag livsmiljötyp 1–3, Behöver livsmiljötypen/utbredningen justeras?, Förändringsorsak förslag, Kommentar','Ditt förslag om typen eller gränsen är fel.','6, 8','Typ ifrågasatt'],
- ['Granskning 2 — Tillstånd','Tillstånd, procent gott/ej gott/osäkert, Kommentar','Ditt förslag till tillstånd — här hamnar R7-utfallet.','8','Fullgod, Icke fullgod, Till fält, Ej omprövad'],
+ ['Granskning 2 — Tillstånd','Tillstånd, procent gott/ej gott/osäkert, Kommentar, Fält eller skrivbord','Ditt förslag till tillstånd — här hamnar R7-utfallet.','8','Fullgod, Icke fullgod, Till fält, Ej omprövad'],
  ['Granskning 3 — Kontroll och metod','Vad ska kontrolleras 1–3, Metod, kommentarer','Vad som behöver kontrolleras 2027 och hur.','8','Återstår'],
  ['Granskning 4 — Granskat och kommentarer','Granskat?, Kommentar, NNK-kommentar, Fältinventerare, Egen beteckning','Om ytan är klar, och NV:s egna kommentarer.','8','Status'],
  ['Typiska arter (Artportalen)','Antal, arter, senaste fynd','Stöd för att typen är rätt.','6','Underlag'],
- ['Hävd enligt jordbruksskiften och TUVA','Skiften, obruten hävd sedan, år utan hävd, TUVA (år, hävd, igenväxning, påverkan, naturtyper), SkötselDOS, uppföljning','Huvudunderlaget för hävdytorna (R7A).','6, 7','Underlag'],
- ['Skog (laserdata)','Höjd, volym, grundyta, diameter, höjdförändring, laserflagga, diken','Ingrepp och struktur i skog, diken i skog och myr (R7B, R7C), och Skogsstyrelsens register: avverkning, anmälan, biotopskydd och naturvårdsavtal.','7','Underlag'],
- ['Floraväkteri (Artportalen)','Hotade arter, ej återfunna, minskande, anmärkning om hävd','Signaler om försämring, främst för hävdytor.','7','Osäkerheter, Underlag']
+ ['Hävd enligt jordbruksskiften och TUVA','Skiften, obruten hävd sedan, år utan hävd, TUVA (objekt, inventeringsår, länk), SkötselDOS, uppföljning','Huvudunderlaget för hävdytorna (R7A).','6, 7','Underlag'],
+ ['Skog (laserdata)','Höjd, volym, grundyta, diameter, höjdförändring, laserflagga, diken','Ingrepp och struktur i skog, diken i skog och myr (R7B, R7C), och Skogsstyrelsens register: avverkning, anmälan, biotopskydd och naturvårdsavtal.','7','Underlag']
 ];
 
 /* ------------------------------------------------------------------

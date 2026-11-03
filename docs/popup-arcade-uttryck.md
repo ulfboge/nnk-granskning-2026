@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -39,58 +39,56 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 
 ## 1. Identifiering och skydd
 
+**Ändrat 2026-11-03:** visar Natura 2000-området och naturreservatet var för sig, och en rad *Både Natura 2000 och naturreservat* när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna *Naturreservat, beslutat (år)* och *Förvaltare (naturreservat)* läser fälten `naturreservat_beslut_ar` och `naturreservat_forvaltare`. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser.
+
 ```js
 // Identifiering och skydd
-// Grundläggande identifiering visas alltid.
-// Skydds-ID visas endast när värde finns.
+// Fälten läses dynamiskt: saknas ett fält i tjänsten hoppas raden över.
+Expects($feature, "*");
+
+function F(n) {
+    if (HasKey($feature, n)) { return $feature[n]; }
+    return null;
+}
 
 var infos = [];
 var attrs = {};
-
-// --- Alltid synliga ---
-
-Push(infos, {
-    fieldName: "omrade_varde",
-    label: "Område"
-});
-attrs["omrade_varde"] = $feature.omrade_namn;
-
-Push(infos, {
-    fieldName: "skyddskategori_varde",
-    label: "Skyddskategori"
-});
-attrs["skyddskategori_varde"] = $feature.skyddskategori;
-
-Push(infos, {
-    fieldName: "lan_varde",
-    label: "Län (skyddat område)"
-});
-attrs["lan_varde"] = $feature.lan;
-
-// --- Visas endast när värde finns ---
-
-if (!IsEmpty($feature.n2000_sitecode)) {
-    Push(infos, {
-        fieldName: "n2000_sitecode_varde",
-        label: "Natura 2000-kod (SE-nummer)"
-    });
-    attrs["n2000_sitecode_varde"] = $feature.n2000_sitecode;
+function Rad(id, etikett, varde) {
+    if (IsEmpty(varde) || varde == "") { return; }
+    Push(infos, { fieldName: id, label: etikett });
+    attrs[id] = varde;
 }
 
-if (!IsEmpty($feature.n2000_typ)) {
-    Push(infos, {
-        fieldName: "n2000_typ_varde",
-        label: "Natura 2000-typ (SCI/SPA)"
-    });
-    attrs["n2000_typ_varde"] = $feature.n2000_typ;
+var sc = F("n2000_sitecode");
+var nvrid = F("naturreservat_nvrid");
+var n2000Namn = F("n2000_namn");
+var nrNamn = F("naturreservat_namn");
+
+Rad("omrade_varde", "Område", F("omrade_namn"));
+Rad("skyddskategori_varde", "Skyddskategori", F("skyddskategori"));
+Rad("lan_varde", "Län (skyddat område)", F("lan"));
+
+// Natura 2000
+if (!IsEmpty(sc)) {
+    Rad("n2000_varde", "Natura 2000",
+        IIf(IsEmpty(n2000Namn), "", n2000Namn + " · ") + sc
+        + IIf(IsEmpty(F("n2000_typ")), "", " (" + F("n2000_typ") + ")"));
 }
 
-if (!IsEmpty($feature.naturreservat_nvrid)) {
-    Push(infos, {
-        fieldName: "nvrid_varde",
-        label: "Naturreservat-ID (NVRID)"
-    });
-    attrs["nvrid_varde"] = $feature.naturreservat_nvrid;
+// Naturreservat
+if (!IsEmpty(nvrid) || !IsEmpty(nrNamn)) {
+    Rad("nr_varde", "Naturreservat",
+        DefaultValue(nrNamn, "Namn saknas") + IIf(IsEmpty(nvrid), "", " · NVR-ID " + nvrid));
+    var nrAr = F("naturreservat_beslut_ar");
+    if (!IsEmpty(nrAr)) { Rad("nr_ar_varde", "Naturreservat, beslutat (år)", Text(nrAr)); }
+    Rad("nr_forv_varde", "Förvaltare (naturreservat)", F("naturreservat_forvaltare"));
+}
+
+// Både och: reservatets skötselplan kan ha underlag om tillståndet
+if (!IsEmpty(sc) && !IsEmpty(nvrid)) {
+    Rad("bada_varde", "Både Natura 2000 och naturreservat",
+        "Reservatets beslut och skötselplan finns i Skyddad natur (sök på NVR-ID " + nvrid
+        + "). Fråga områdesskyddshandläggaren för reservatet.");
 }
 
 return {
@@ -279,7 +277,9 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Tillägg 2026-10-08:** sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: **Förslag (R7)** (utfall, säkerhet och villkor), **Motiv** (underlagen med år och eventuella motsägelser) och **Kontrollera** (manuella kontroller med lager inom hakparentes). Fälten kommer från `skogsregister_for_granskning.csv`, `viss_for_granskning.csv` och `r7_forslag_for_granskning.csv` och måste vara synliga i Pro före Overwrite (de står i `EXTRA_VISIBLE_FIELDS` i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.
 
-**Tillägg 2026-10-14:** sist i sektionen står **Lager för gruppen**: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. Den kompletterar *Kontrollera*, som bara finns där förslaget har något specifikt att kontrollera (ungefär 6 600 av 15 800 ytor). Ytor utanför R7 får ingen lista.
+**Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
+
+**Tillägg 2026-10-14:** sist i sektionen står **Lager för gruppen**: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. (Den kompletterade tidigare raden *Kontrollera*, som togs bort ur popupen 2026-11-03.) Ytor utanför R7 får ingen lista.
 
 **Tillägg 2026-10-15:** för hävdytor anger *Lager för gruppen* vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet `havd_ar_utan_bete`) och naturtypsstatusens år (2003 om naturtypsstatusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. *Förslag (R7)* skriver numera *Ej omprövad – underlaget pekar mot …* utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när `r7_forslag_for_granskning.csv` har byggts om och lagret skrivits över.
 
@@ -411,14 +411,14 @@ var brTyp = F("skdos_brand_typ");
 if (!IsEmpty(brTyp)) {
     var brAr = Ar(F("skdos_brand_ar"));
     Rad("r7_brand", "Naturvårdsbränning", brTyp + IIf(IsEmpty(brAr), " (år saknas)", " " + brAr)
-        + IIf(IsEmpty(F("skdos_brand_andel")), "", " · " + Text(F("skdos_brand_andel")) + " % av ytan") + Jmf(brAr));
+        + IIf(IsEmpty(F("skdos_brand_andel")), "", " · " + Text(F("skdos_brand_andel")) + " % av NNK-ytan") + Jmf(brAr));
 }
 // LIFE-projektens åtgärder (2026-10-20): visar att ytan restaurerats, inte tillståndet
 var lifeTxt = F("life_atgard");
 if (!IsEmpty(lifeTxt)) {
     var lifeAr = Ar(F("life_senaste_ar"));
     Rad("r7_life", "LIFE-åtgärd (ej tillståndsbedömning)", lifeTxt
-        + IIf(IsEmpty(F("life_andel_tackt")), "", " · " + Text(F("life_andel_tackt")) + " % av ytan")
+        + IIf(IsEmpty(F("life_andel_tackt")), "", " · " + Text(F("life_andel_tackt")) + " % av NNK-ytan")
         + IIf(IsEmpty(lifeAr), "", Jmf(lifeAr)));
 }
 var dik = F("diken_m_inom");
@@ -446,15 +446,10 @@ if (!IsEmpty(aAr)) {
     Rad("r7_arter", "Typiska arter", F("typarter_antal") + " arter, senast " + aAr + Jmf(aAr));
 }
 
-// R7-förslaget (2026-10-08): utfall, motiv och kontroller ur bygg_r7_forslag.py
+// R7-förslaget (2026-10-08): utfallet ur bygg_r7_forslag.py.
+// Motiv och Kontrollera visas inte sedan 2026-11-03 (granskaren gör bedömningen själv
+// utifrån underlagen ovan). Fälten r7f_motiv/r7f_kontrollera finns kvar i lagret och i R7-filen.
 Rad("r7_f_utfall", "Förslag (R7)", F("r7f_utfall"));
-var r7m = F("r7f_motiv");
-if (!IsEmpty(r7m)) {
-r7m = Replace(r7m, "skiften ", "Hävd enligt skiften: ");
-r7m = Upper(Left(r7m, 1)) + Right(r7m, Count(r7m) - 1);
-}
-Rad("r7_f_motiv", "Motiv", r7m);
-Rad("r7_f_kontroll", "Kontrollera", F("r7f_kontrollera"));
 
 // Lager för gruppen (2026-10-14): grundlista per R7-grupp. Namnen står som i appens
 // lagerlista (webbgis-publicering, "Faktisk lagerstruktur"). Kompletterar Kontrollera,
@@ -618,6 +613,8 @@ return {
 
 ## 4. Granskning 2 — Tillstånd
 
+**Ändrat 2026-11-03:** ny rad *Fält eller skrivbord* under kommentaren. Den tolkas ur blankettens *Grund för bedömning* (t.ex. "Skötselplan eller bevarandeplan (år 2016)" → skrivbord). Kommentarer utan någon av blankettens grunder får ingen rad.
+
 ```js
 // Granskning 2 – Tillstånd
 // Visar endast fält som innehåller ett värde.
@@ -663,6 +660,26 @@ if (!IsEmpty($feature.kommentar_tillstand)) {
         label: "Kommentar"
     });
     attrs["kommentar_varde"] = $feature.kommentar_tillstand;
+
+    // Fält eller skrivbord (2026-11-03): tolkas ur blankettens "Grund för bedömning",
+    // som står först i kommentaren när tillståndet kommer från förvaltarkunskap.
+    var k = $feature.kommentar_tillstand;
+    var grund = When(
+        Find("Eget fältbesök", k) > -1, "Fält: eget fältbesök.",
+        Find("Standardiserad inventering", k) > -1, "Fält: standardiserad inventering (uppföljning eller ängs- och betesmarksinventering).",
+        Find("Skötselplan eller bevarandeplan", k) > -1, "Skrivbord: överfört från skötsel- eller bevarandeplanen, inte fältbesök. Planens egen bedömning kan bygga på äldre fältdata – se planen.",
+        Find("Konsultrapport", k) > -1, "Skrivbord: konsultrapport eller PM. Rapporten kan bygga på fältbesök – se rapporten.",
+        Find("Betesstöd", k) > -1, "Skrivbord: betesstöd eller jordbruksblock.",
+        Find("lokalkännedom", k) > -1, "Lokalkännedom, inte dokumenterat fältbesök.",
+        Find("Ingen grund", k) > -1, "Ingen grund – osäker.",
+        "");
+    if (grund != "") {
+        Push(infos, {
+            fieldName: "grund_varde",
+            label: "Fält eller skrivbord"
+        });
+        attrs["grund_varde"] = grund;
+    }
 }
 
 if (Count(infos) == 0) {
@@ -904,7 +921,7 @@ return svar(rader);
 
 ## 8. Hävd enligt jordbruksskiften och TUVA
 
-Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A i `metodik.md`. Titeln i popupen är fortfarande *Hävd enligt jordbruksskiften* när ytan saknar TUVA-träff. Uppdaterat 2026-09-30 med TUVA-raderna och 2026-10-01 med SkötselDOS och uppföljning (titeln får då tillägget *, SkötselDOS*).
+Nytt uttryck, placera det efter *Typiska arter (Artportalen)*. Underlag för R7A i `metodik.md`. Titeln i popupen är fortfarande *Hävd enligt jordbruksskiften* när ytan saknar TUVA-träff. Uppdaterat 2026-09-30 med TUVA-raderna och 2026-10-01 med SkötselDOS och uppföljning (titeln får då tillägget *, SkötselDOS*). **Ändrat 2026-11-03:** TUVA visar bara objekt, inventeringsår och länk. Naturtyperna i objektet (med areal), andel överlapp, hävdstatus, hävdregim, igenväxning och påverkan gäller hela TUVA-objektet och var vilseledande. SkötselDOS-andelen heter nu "% av NNK-ytan".
 
 ```js
 // Hävd enligt jordbruksskiften och TUVA
@@ -992,17 +1009,11 @@ if (!IsEmpty(v)) {
 }
 
 // ---- TUVA ----
-// Alla tuva_-fält publiceras tillsammans, så de finns om tuva_objekt_id finns
+// Sedan 2026-11-03 bara objekt, inventeringsår och länk. Övriga TUVA-fält (hävdstatus,
+// naturtyper, påverkan m.m.) gäller hela TUVA-objektet, inte NNK-ytan, och var
+// vilseledande i popupen. Fälten finns kvar i lagret och används av R7.
 if (tuva) {
-    var obj = $feature.tuva_objekt_id;
-    if (!IsEmpty($feature.tuva_andel_overlapp)) {
-        obj += " (täcker " + Text($feature.tuva_andel_overlapp) + " % av ytan)";
-    }
-    if (!IsEmpty($feature.tuva_antal_objekt) && $feature.tuva_antal_objekt > 1) {
-        obj += ", ytan överlappar " + Text($feature.tuva_antal_objekt) + " TUVA-objekt, här visas det största";
-    }
-    Push(rader, ["TUVA-objekt", obj]);
-
+    Push(rader, ["TUVA-objekt", $feature.tuva_objekt_id]);
     var ar = $feature.tuva_inv_ar;
     if (!IsEmpty(ar)) {
         var alder = Year(Now()) - ar;
@@ -1012,21 +1023,6 @@ if (tuva) {
         }
         Push(rader, ["TUVA, inventeringsår", arText]);
     }
-    if (!IsEmpty($feature.tuva_havdstatus)) {
-        Push(rader, ["TUVA, hävdstatus", $feature.tuva_havdstatus]);
-    }
-    if (!IsEmpty($feature.tuva_havdregim)) {
-        Push(rader, ["TUVA, markslag/hävdregim", $feature.tuva_havdregim]);
-    }
-    if (!IsEmpty($feature.tuva_igenvaxning) && $feature.tuva_igenvaxning != "Ej angiven") {
-        Push(rader, ["TUVA, igenväxning", $feature.tuva_igenvaxning]);
-    }
-    if (!IsEmpty($feature.tuva_naturtyp)) {
-        Push(rader, ["TUVA, naturtyper i objektet", $feature.tuva_naturtyp]);
-    }
-    if (!IsEmpty($feature.tuva_paverkan) && $feature.tuva_paverkan != "Ingen angiven") {
-        Push(rader, ["TUVA, påverkan", $feature.tuva_paverkan]);
-    }
     Push(rader, ["Öppna i TUVA", "https://etjanst.sjv.se/tuvaut/?f=&id=" + $feature.tuva_objekt_id]);
 }
 
@@ -1034,7 +1030,7 @@ if (tuva) {
 if (skdos) {
     var sk = $feature.skdos_havd_typ;
     if (HasKey($feature, "skdos_andel_overlapp") && !IsEmpty($feature.skdos_andel_overlapp)) {
-        sk += " (täcker " + Text($feature.skdos_andel_overlapp) + " % av ytan)";
+        sk += " (täcker " + Text($feature.skdos_andel_overlapp) + " % av NNK-ytan)";
     }
     if (!IsEmpty($feature.skdos_havd_senaste_ar)) {
         sk += ", senast " + Text($feature.skdos_havd_senaste_ar);
@@ -1158,56 +1154,6 @@ return svar(titel, rader);
 ```
 
 
-## 10. Floraväkteri (Artportalen)
+## 10. Floraväkteri (Artportalen) — borttagen 2026-11-03
 
-Nytt uttryck, placera det efter *Skog (laserdata)*. Underlag för tillståndsbedömningen (typiska och hotade arter) och en kontroll av hävden i R7A. Visas bara för ytor med minst en floraväktarrapport, övriga ytor får en kort rad.
-
-```js
-// Floraväkteri (Artportalen)
-// Floraväktarnas rapporter (projekten Floraväkteri Sverige och Arkiv Floraväktarlokaler) ur
-//   SLU:s publika SOS-WFS, kopplat av nnk_floravakteri.py: punkt inom ytan, noggrannhet <= 100 m.
-//   Skyddsklassade fynd finns inte i den publika tjänsten och saknas alltså här.
-
-function svar(titel, rader) {
-    var infos = [];
-    var attrs = {};
-    for (var i in rader) {
-        var namn = "rad_" + Text(i);
-        Push(infos, { fieldName: namn, label: rader[i][0] });
-        attrs[namn] = rader[i][1];
-    }
-    return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
-}
-
-var titel = "Floraväkteri (Artportalen)";
-if (!HasKey($feature, "fv_antal_arter")) {
-    return svar(titel, [["Information", "Underlaget är inte inläst i lagret än."]]);
-}
-if (IsEmpty($feature.fv_antal_arter)) {
-    return svar(titel, [["Information", "Inga floraväktarrapporter i ytan."]]);
-}
-
-var rader = [];
-var ar = $feature.fv_senaste_ar;
-var alder = Year(Now()) - ar;
-Push(rader, ["Arter", $feature.fv_arter]);
-Push(rader, ["Antal", Text($feature.fv_antal_arter) + " arter, " + Text($feature.fv_antal_rapporter) + " rapporter"]);
-Push(rader, ["Senaste rapport", Text(ar) + IIf(alder > 10, " (äldre än 10 år)", "")]);
-if ($feature.fv_hotade_arter > 0) {
-    Push(rader, ["Hotade arter (CR/EN/VU)", Text($feature.fv_hotade_arter)]);
-}
-if ($feature.fv_bilaga2_arter > 0) {
-    Push(rader, ["Arter i habitatdirektivets bilaga 2", Text($feature.fv_bilaga2_arter)]);
-}
-if ($feature.fv_ej_aterfunna > 0) {
-    Push(rader, ["Ej återfunna", Text($feature.fv_ej_aterfunna) + " arter, senaste rapporten säger ej återfunnen"]);
-}
-if ($feature.fv_minskande > 0) {
-    Push(rader, ["Minskande", Text($feature.fv_minskande) + " arter, senaste antal under hälften av första"]);
-}
-if ($feature.fv_anm_havd > 0) {
-    Push(rader, ["Anmärkning om hävd", Text($feature.fv_anm_havd) + " rapporter nämner igenväxning eller upphört bete. Läs kommentaren i Artportalen."]);
-}
-Push(rader, ["Att tänka på", "Skyddsklassade arter ingår inte. Rapporterna gäller arternas växtplatser, inte hela ytan."]);
-return svar(titel, rader);
-```
+Sektionen är borttagen ur popupen efter genomgången med Karin: rapporterna läses bättre direkt i Artportalen, och de flesta ytor visade bara "Inga floraväktarrapporter i ytan". **Ta bort Arcade-elementet *Floraväkteri (Artportalen)* i Map Viewer** (*Configure pop-ups* → elementet → *Delete*). Fälten `fv_*` och filtren *Floraväkteri: …* i appen ligger kvar. Uttrycket finns i git-historiken (version 1.16) om sektionen ska tillbaka.
