@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK 20260703.pdf
 
@@ -468,6 +468,10 @@ Vilken granskningsbatch objektet tillhör enligt arbetsplanens bilaga 2. Bara de
 | C | Våtmark och vattendrag | C5.1 |
 | D | Skog och ädellöv | C6.1 |
 
+### Naturreservatets beslutsår och förvaltare
+`naturreservat_beslut_ar` · heltal · `naturreservat_forvaltare` · text · skrivskyddade · tillagda 2026-11-03  
+Året då reservatet ursprungligen beslutades (`URSPR_BESLUTSDATUM`) och förvaltaren, ur Naturvårdsregistret, för det reservat som täcker mest av ytan. Tomt = ytan ligger inte i något naturreservat. Visas i popupens *Identifiering och skydd*. Ligger ytan både i Natura 2000 och i ett reservat kan reservatets skötselplan i Skyddad natur innehålla underlag om tillståndet.
+
 ### Hävdberoende livsmiljötyp
 `havdberoende` · text Ja/Nej · skrivskyddat · filtrerbart i webbGIS  
 Ja om ytans naturtyp är hävdberoende enligt arbetsplanens bilaga 3: 1630, 1631, 5130, 5133, 6110, 6210, 6230, 6270, 6280, 6410, 6412, 6430, 6510, 6520, 8230, 8231, 8232, 9070, 9071, 9072.
@@ -478,7 +482,10 @@ Ja om ytans naturtyp har mindre än 50 ha total karterad areal inom länets Natu
 
 ### Typiska arter i Artportalen
 `typarter_antal` · heltal · `typarter` · text · `typarter_senaste_ar` · heltal · skrivskyddade · filtrerbara i webbGIS  
-Hur många av ytans **typiska arter** (T-arter för naturtypen i [typiska arter](typiska-arter.html)) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet. Räknas fram av `artportalen_typiska_arter.py` (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). **0** = ytan söktes men inga fynd. **Tomt** = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.
+Hur många av ytans **typiska arter** (T-arter för naturtypen i [typiska arter](typiska-arter.html)) som har fynd i Artportalen inom ytan, vilka de är och året för det senaste fyndet av en typisk art. Räknas fram av `artportalen_typiska_arter.py` (standard: fynd från 2010, koordinatnoggrannhet ≤ 100 m, P1-objekten). **0** = ytan söktes men inga fynd. **Tomt** = ytan söktes inte, eller naturtypen saknar artlista. Fynd talar för gott tillstånd, men inga fynd betyder oftast bara att ingen har letat. Skyddsklassade fynd ingår inte.
+
+`typarter_5ar` · text · `typarter_5ar_antal` · heltal · `karaktarsarter_5ar` · text · `karaktarsarter_5ar_antal` · heltal · skrivskyddade · tillagda 2026-11-03  
+Typiska (T) respektive **karakteristiska arter** (K, arter som kännetecknar naturtypen enligt vägledningen) med fynd de senaste fem åren (2022–2026), som "Art år" med senaste fyndår per art, nyast först. Långa listor slutar med "m.fl.". En art som står både som T och K räknas som typisk.
 
 ### TUVA — ängs- och betesmarksinventeringen
 Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskning.csv` (`nnk_tuva.py`, TUVA-uttag 2026-08-21, senaste inventering per objekt). Ytan kopplas till det TUVA-objekt som täcker mest av den, med samma tröskel som för sitecode: minst 1 % av ytan eller 0,25 ha. Tomt = ingen träff. Används i R7A tillsammans med hävdfälten från skiftena, se [metodiken](metodik.html) avsnitt 5. Visas i popupens avsnitt *Hävd enligt jordbruksskiften och TUVA*.
@@ -489,7 +496,7 @@ Tio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `tuva_for_granskni
 | `tuva_andel_overlapp` | heltal | Hur stor del av NNK-ytan (%) som täcks av TUVA-objektet |
 | `tuva_antal_objekt` | heltal | Antal TUVA-objekt som överlappar ytan över tröskeln. Fler än 1: kontrollera de andra i TUVA |
 | `tuva_inv_ar` | heltal | År för senaste inventeringen. Äldre än 15 år räknas inte som aktuellt underlag (R7A) |
-| `tuva_havdstatus` | text | Dominerande hävdklass med andel: *Välhävdad*, *Svagt hävdad* eller *Ingen hävd* (lika andelar ger den sämre). *Ohävdad (restaurerbar)* = markslag Restaurerbar, *Ej aktuell* = objektet är inte längre ängs- eller betesmark |
+| `tuva_havdstatus` | text | Dominerande hävdklass i hela TUVA-objektet (gäller inte specifikt ytan eller livsmiljötypen; andelen i procent är borttagen 2026-11-03): *Välhävdad*, *Svagt hävdad* eller *Ingen hävd* (lika andelar ger den sämre). *Ohävdad (restaurerbar)* = markslag Restaurerbar, *Ej aktuell* = objektet är inte längre ängs- eller betesmark |
 | `tuva_havdregim` | text | Markslag: *Bete*, *Slåtter (äng)*, *Restaurerbar* eller *Ej aktuell*, med hävdform om den är angiven (möjlig äng, skogsbete, fäbodbete) |
 | `tuva_igenvaxning` | text | *Igenväxt (ej aktuell)*, *Restaurerbar*, eller igenväxningens andel av busk- och trädskiktet: *Tydlig* (≥ 30 %), *Viss* (1–29 %), *Ingen*. *Ej angiven* för de flesta objekt från 2000-talets första inventering, som saknar fältet |
 | `tuva_naturtyp` | text | Natura-naturtyper i hela TUVA-objektet med areal, störst först, t.ex. "6270 (3,98 ha), 6410 (0,15 ha)" |

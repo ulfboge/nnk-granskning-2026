@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.17 · 2026-11-03 (efter genomgång med Karin: raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 7 och raden *Typiska arter* i 2b visar fynd 2022–2026 med år per art, och karakteristiska arter på egen rad; raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -447,7 +447,14 @@ if (!IsEmpty(vs)) {
         + IIf(IsEmpty(F("viss_hydromorf")), "", " · hydromorfologi " + F("viss_hydromorf")));
 }
 var aAr = Ar(F("typarter_senaste_ar"));
-if (!IsEmpty(aAr)) {
+var t5 = F("typarter_5ar_antal");    // 2026-11-03: fynd de senaste fem åren (2022–2026)
+if (!IsEmpty(t5)) {
+    if (t5 > 0) {
+        Rad("r7_arter", "Typiska arter (2022–2026)", Text(t5) + " arter, senast " + aAr + Jmf(aAr));
+    } else if (!IsEmpty(aAr)) {
+        Rad("r7_arter", "Typiska arter (2022–2026)", "Inga fynd. Senaste fynd " + aAr + Jmf(aAr));
+    }
+} else if (!IsEmpty(aAr)) {
     Rad("r7_arter", "Typiska arter", F("typarter_antal") + " arter, senast " + aAr + Jmf(aAr));
 }
 
@@ -873,15 +880,25 @@ return {
 
 Nytt uttryck (Map Viewer → NNK-ytlagret → *Configure pop-ups* → *Add content* → *Arcade*). Placera det direkt efter *Naturtyp (NNK-data)*. Texten om tidsperiod och noggrannhet gäller skriptets standardinställningar (fynd från 2010, koordinatnoggrannhet ≤ 100 m) — ändra den om skriptet körs med andra värden.
 
+**Ändrat 2026-11-03 (genomgång med Karin):** först står fynden de senaste fem åren (2022–2026) med senaste fyndår per art, för typiska arter och för karakteristiska arter var för sig. Typiska arter är NV:s typiska arter för naturtypen. Karakteristiska arter är arter som kännetecknar naturtypen enligt vägledningen (`typiska-arter.md`, T och K). Listan sedan 2010 står kvar under. *Senaste fynd (år)* gäller nu bara de typiska arterna. Fälten `typarter_5ar`, `typarter_5ar_antal`, `karaktarsarter_5ar` och `karaktarsarter_5ar_antal` kommer in med 07-synken (`--nya-falt`). Tills dess visas bara listan sedan 2010.
+
 ```js
 // Typiska arter (Artportalen)
-// Fynd av naturtypens typiska arter inom ytan, enligt artportalen_typiska_arter.py.
+// Fynd av naturtypens typiska (T) och karakteristiska (K) arter inom ytan, enligt
+// artportalen_typiska_arter.py.
 // typarter_antal: tomt = ytan söktes inte eller naturtypen saknar artlista,
-//                 0 = söktes men inga fynd, > 0 = antal olika typiska arter med fynd.
+//                 0 = söktes men inga fynd, > 0 = antal olika typiska arter med fynd sedan 2010.
+// *_5ar (2026-11-03): arter med fynd 2022–2026, "Art år" med senaste fyndår, nyast först.
+Expects($feature, "*");
 
 var titel = "Typiska arter (Artportalen)";
+var period = "2022–2026";
 var underlag = "Fynd från 2010, koordinatnoggrannhet ≤ 100 m. Skyddsklassade fynd ingår inte.";
 
+function F(n) {
+    if (HasKey($feature, n)) { return $feature[n]; }
+    return null;
+}
 // rader = lista med [etikett, värde] - en lista (inte en dictionary) så att ordningen håller
 function svar(rader) {
     var infos = [];
@@ -894,31 +911,42 @@ function svar(rader) {
     return { type: "fields", title: titel, fieldInfos: infos, attributes: attrs };
 }
 
-// Fälten finns inte förrän tjänsten republicerats med de nya fälten
+// Fälten finns inte förrän tjänsten fått de nya fälten
 if (!HasKey($feature, "typarter_antal")) {
     return svar([["Information", "Underlaget är inte inläst i lagret än."]]);
 }
 
-var antal = $feature.typarter_antal;
+var antal = F("typarter_antal");
+var t5n = F("typarter_5ar_antal");
+var k5n = F("karaktarsarter_5ar_antal");
 
-if (IsEmpty(antal)) {
+if (IsEmpty(antal) && IsEmpty(k5n)) {
     return svar([["Information", "Ingen artlista för ytans naturtyp, eller ytan ingick inte i sökningen."]]);
 }
 
-if (antal == 0) {
-    return svar([
-        ["Typiska arter", "Inga fynd"],
-        ["Att tänka på", "Inga fynd betyder oftast att ingen har letat — inte att arterna saknas."],
-        ["Underlag", underlag]
-    ]);
+var rader = [];
+
+// Senaste fem åren
+if (!IsEmpty(t5n)) {
+    Push(rader, ["Typiska arter " + period,
+        IIf(t5n > 0, Text(t5n) + ": " + F("typarter_5ar"), "Inga fynd")]);
+}
+if (!IsEmpty(k5n)) {
+    Push(rader, ["Karakteristiska arter " + period,
+        IIf(k5n > 0, Text(k5n) + ": " + F("karaktarsarter_5ar"), "Inga fynd")]);
 }
 
-var rader = [["Antal typiska arter med fynd", Text(antal)]];
-if (HasKey($feature, "typarter") && !IsEmpty($feature.typarter)) {
-    Push(rader, ["Arter", $feature.typarter]);
+// Sedan 2010
+if (!IsEmpty(antal) && antal > 0) {
+    Push(rader, ["Typiska arter sedan 2010", Text(antal) + IIf(IsEmpty(F("typarter")), "", ": " + F("typarter"))]);
+    if (!IsEmpty(F("typarter_senaste_ar"))) {
+        Push(rader, ["Senaste fynd, typiska arter (år)", Text(F("typarter_senaste_ar"))]);
+    }
+} else if (!IsEmpty(antal) && antal == 0) {
+    Push(rader, ["Typiska arter sedan 2010", "Inga fynd"]);
 }
-if (HasKey($feature, "typarter_senaste_ar") && !IsEmpty($feature.typarter_senaste_ar)) {
-    Push(rader, ["Senaste fynd (år)", Text($feature.typarter_senaste_ar)]);
+if (DefaultValue(antal, 0) == 0 && DefaultValue(k5n, 0) == 0) {
+    Push(rader, ["Att tänka på", "Inga fynd betyder oftast att ingen har letat — inte att arterna saknas."]);
 }
 Push(rader, ["Underlag", underlag]);
 return svar(rader);
