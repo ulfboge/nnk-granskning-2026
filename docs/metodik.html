@@ -166,8 +166,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.18 · 2026-11-02</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> R5 säger vad du gör när en yta som redan är livsmiljötyp har en målnaturtyp. <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.19 · 2026-11-03</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> <code>condition_date</code> ska vara underlagets datum, inte registreringsdagen (Handledning NNK 1.1). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -1073,12 +1073,12 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <tr>
 <td><code>condition_date</code></td>
 <td>datum</td>
-<td>Sätts vid registreringen</td>
+<td>Datum för underlaget bedömningen bygger på, inte registreringsdagen (Handledning NNK 1.1, bilaga 1). Bygger förslaget på bevarandeplanen anges planens datum, på TUVA eller inventering dess år. År och helst månad ska stämma; dagen får sättas till den 1:a. Vid en ny bedömning anges dagens datum</td>
 </tr>
 </tbody>
 </table></div>
 <p><em>Ej omprövad</em> lämnas tom. Statusen står kvar, och inget nytt tillstånd registreras.</p>
-<p>Två saker är inte avgjorda. NV har inte beskrivit hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten. Och valet mellan metod 2 och 3 för skrivbordsbedömningar bör stämmas av mot NV:s vägledning (webbinariet i november). Översättningen ändras på ett ställe (<code>nnk_falt()</code> i <code>bygg_r7_forslag.py</code>) om NV ger besked.</p>
+<p>Två saker är inte avgjorda. NV har inte beskrivit hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten, inte heller i handledningen version 1.1. Och valet mellan metod 2 och 3 för skrivbordsbedömningar bör stämmas av mot NV:s vägledning (webbinariet i november). Handledningen 1.1 räknar <em>expertbedömning vid skrivbordet med stöd av relevanta underlag</em> som 2 <em>Begränsad undersökning</em> och förvaltarens kännedom eller mycket begränsade data som 3, vilket stämmer med regeln ovan. Handledningen säger också att tillstånd bara anges för livsmiljötyper. Om <em>typ ej styrkt</em> (klassning 3) ska ha metod 4 eller lämnas tom är därför en fråga till NV. Översättningen ändras på ett ställe (<code>nnk_falt()</code> i <code>bygg_r7_forslag.py</code>) om NV ger besked.</p>
 <h4 id="pilot-innan-regeln-anvands-skarpt">Pilot innan regeln används skarpt</h4>
 <p>Hävdtyperna (R7A) i batch B (ängs- och hagmark i inlandet), 100 ytor med <em>Ej bedömd status</em>. 30 av dem fältkontrolleras, slumpat men med fler ur <em>icke fullgod</em> och <em>till fält</em>. Regeln godkänns om minst 27 av 30 stämmer på fullgod/icke fullgod och ingen yta visar sig ha fel typ. Annars justeras regeln innan den används på andra grupper.</p>
 <p>Fältkontrollen görs i eget fältarbete 2027. Det blir inget konsultuppdrag hösten 2026 (beslut 2026-10-09), så R7 förblir ett utkast och förslagen stannar i granskningslagret under 2026.</p>
@@ -1251,7 +1251,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <p><strong>Hör ihop med:</strong> <a href="arbetsplan.html">arbetsplanen</a> (arbetspaket H), <a href="webbgis-publicering.html">webbGIS-publicering</a>, <a href="../bedomningsguide.html">bedömningsguiden</a>, <code>blanketter/blankett_forvaltarkunskap_nnk.xlsx</code> och <code>natura-2000: scripts/analysis/koppla_omraden.py</code>.</p>
 <h3 id="bygger-pa">Bygger på</h3>
 <ul>
-<li>Handledning för NNK (NV, 2026-07-03, NV-26-002862)</li>
+<li>Handledning för NNK (NV, version 1.1 2026-11-02, NV-26-002862; version 1.0 2026-07-03)</li>
 <li>Lathund granskning WebbGIS-KartLitS (2026-07-10)</li>
 <li>FAQ om uppdraget v1.1 (2026-07-03)</li>
 <li>NNK publik produktbeskrivning</li>
@@ -1260,6 +1260,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.19</strong> (2026-11-03) — avsnitt 5, <em>Till NNK:s tillståndsfält</em>: <code>condition_date</code> är underlagets datum enligt Handledning NNK 1.1, inte registreringsdagen. Handledningens beskrivning av metod 2 och 3 och att tillstånd bara anges för livsmiljötyper inlagt bland de öppna frågorna.</li>
 <li><strong>2.18</strong> (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.</li>
 <li><strong>2.17</strong> (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i <em>Kommentar – Tillstånd</em>.</li>
 <li><strong>2.16</strong> (2026-10-23) — avsnitt 5, R7B och R7C: utförda våtmarksåtgärder (VÅMÅ) i SkötselDOS räknas inte som ingrepp; dike eller laserflagga som förklaras av åtgärden ger <em>till fält</em>, aldrig <em>fullgod</em>. Året tas ur SkötselDOS-namnet eller en genomgång av VÅMÅ-mapparna på G:. 68 ytor fick nya motiv eller kontroller, 5 ändrat utfall.</li>

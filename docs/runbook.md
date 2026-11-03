@@ -74,7 +74,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 **v34** · **[Båda]**
 
-1. Läs `natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf`, 26 sidor. Prioritera avsnitt 2.3 (checklistan), 3.2 (minsta karteringsenhet), 5 (attributen) och bilaga 1 (fältlistan).
+1. Läs `natura-2000: docs/underlag/handledning/2026-11-02_Handledning_NNK_v1_1.pdf` (version 1.1), 29 sidor. Prioritera avsnitt 2.3 (checklistan), 3.2 (minsta karteringsenhet), 5 (attributen) och bilaga 1 (fältlistan).
 2. Läs `natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf`, 9 sidor. Avsnittet *Vad kan vi ändra på?* är det viktigaste i hela uppdraget.
 3. Läs `docs/metodik.md` avsnitt 5 — de sex beslutsreglerna.
 4. Skriv ut checklistan på sidan 9 i handledningen och ha den framme vid varje granskning.

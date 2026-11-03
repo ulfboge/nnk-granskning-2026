@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.18 · 2026-11-02** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R5 säger vad du gör när en yta som redan är livsmiljötyp har en målnaturtyp. [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.19 · 2026-11-03** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* `condition_date` ska vara underlagets datum, inte registreringsdagen (Handledning NNK 1.1). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -466,11 +466,11 @@ Förslaget visas i popupen (sektion *Bedömning vid skrivbordet (R7)*, raden *F�
 | `condition_method` (Metod tillstånd) | domän | 2 *Huvudsakligen extrapolering från en begränsad mängd data* när säkerheten är hög, 3 *Expertutlåtande (mycket begränsade data)* vid medel eller låg säkerhet, 4 *Otillräcklig kunskap* vid *till fält* och *typ ej styrkt*. 1 *Fullständig undersökning* används inte vid skrivbordet |
 | `naturtypstyp` (Klassning av naturtyp) | domän | 1 *Livsmiljötyp*, eller 3 *Osäker livsmiljötyp – annan naturtyp* vid *typ ej styrkt* |
 | `condition_comment` | text, **max 255 tecken** | Delregel, år och utfall, sedan så många hela underlag med år som får plats. Hela motivet står kvar i granskningslagret och kan föras till `KOMMENTAR` |
-| `condition_date` | datum | Sätts vid registreringen |
+| `condition_date` | datum | Datum för underlaget bedömningen bygger på, inte registreringsdagen (Handledning NNK 1.1, bilaga 1). Bygger förslaget på bevarandeplanen anges planens datum, på TUVA eller inventering dess år. År och helst månad ska stämma; dagen får sättas till den 1:a. Vid en ny bedömning anges dagens datum |
 
 *Ej omprövad* lämnas tom. Statusen står kvar, och inget nytt tillstånd registreras.
 
-Två saker är inte avgjorda. NV har inte beskrivit hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten. Och valet mellan metod 2 och 3 för skrivbordsbedömningar bör stämmas av mot NV:s vägledning (webbinariet i november). Översättningen ändras på ett ställe (`nnk_falt()` i `bygg_r7_forslag.py`) om NV ger besked.
+Två saker är inte avgjorda. NV har inte beskrivit hur naturtypsstatus 1 och 2 ska förhålla sig till procentfälten, inte heller i handledningen version 1.1. Och valet mellan metod 2 och 3 för skrivbordsbedömningar bör stämmas av mot NV:s vägledning (webbinariet i november). Handledningen 1.1 räknar *expertbedömning vid skrivbordet med stöd av relevanta underlag* som 2 *Begränsad undersökning* och förvaltarens kännedom eller mycket begränsade data som 3, vilket stämmer med regeln ovan. Handledningen säger också att tillstånd bara anges för livsmiljötyper. Om *typ ej styrkt* (klassning 3) ska ha metod 4 eller lämnas tom är därför en fråga till NV. Översättningen ändras på ett ställe (`nnk_falt()` i `bygg_r7_forslag.py`) om NV ger besked.
 
 #### Pilot innan regeln används skarpt
 
@@ -610,7 +610,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Bygger på
 
-- Handledning för NNK (NV, 2026-07-03, NV-26-002862)
+- Handledning för NNK (NV, version 1.1 2026-11-02, NV-26-002862; version 1.0 2026-07-03)
 - Lathund granskning WebbGIS-KartLitS (2026-07-10)
 - FAQ om uppdraget v1.1 (2026-07-03)
 - NNK publik produktbeskrivning
@@ -619,6 +619,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.19** (2026-11-03) — avsnitt 5, *Till NNK:s tillståndsfält*: `condition_date` är underlagets datum enligt Handledning NNK 1.1, inte registreringsdagen. Handledningens beskrivning av metod 2 och 3 och att tillstånd bara anges för livsmiljötyper inlagt bland de öppna frågorna.
 - **2.18** (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.
 - **2.17** (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i *Kommentar – Tillstånd*.
 - **2.16** (2026-10-23) — avsnitt 5, R7B och R7C: utförda våtmarksåtgärder (VÅMÅ) i SkötselDOS räknas inte som ingrepp; dike eller laserflagga som förklaras av åtgärden ger *till fält*, aldrig *fullgod*. Året tas ur SkötselDOS-namnet eller en genomgång av VÅMÅ-mapparna på G:. 68 ytor fick nya motiv eller kontroller, 5 ändrat utfall.

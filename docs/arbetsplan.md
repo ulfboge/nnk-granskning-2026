@@ -2,11 +2,11 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Version:** 1.11 — 2026-10-23: H4.3 (NILS och regional miljöövervakning) och H4.4 (utförda våtmarksåtgärder) tillagda — två källor i projektplanens kunskapssammanställning som inte fanns i underlaget. Version 1.10 — 2026-10-09: D5.2 utgår, ingen konsult för fältbedömning hösten 2026 (för sent på året); all fältkontroll, även R7-pilotens, görs 2027. Version 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
+**Version:** 1.12 — 2026-11-03: hänvisningarna pekar på Handledning NNK version 1.1 (2026-11-02). Version 1.11 — 2026-10-23: H4.3 (NILS och regional miljöövervakning) och H4.4 (utförda våtmarksåtgärder) tillagda — två källor i projektplanens kunskapssammanställning som inte fanns i underlaget. Version 1.10 — 2026-10-09: D5.2 utgår, ingen konsult för fältbedömning hösten 2026 (för sent på året); all fältkontroll, även R7-pilotens, görs 2027. Version 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
 **Datum:** 2026-09-11
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
-**Underlag:** `natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf` (2026-07-03) · `natura-2000: docs/underlag/handledning/Handledning NNK 20260703.pdf` · `natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` · `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` · `natura-2000: docs/underlag/kartering.csv`
+**Underlag:** `natura-2000: docs/underlag/FAQ - om uppdraget och hur det genomförs_version 1_1.pdf` (2026-07-03) · `natura-2000: docs/underlag/handledning/2026-11-02_Handledning_NNK_v1_1.pdf` (version 1.1, ersätter 1.0 från 2026-07-03) · `natura-2000: docs/underlag/handledning/Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` · `natura-2000: docs/underlag/D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` · `natura-2000: docs/underlag/kartering.csv`
 **Syskondokument:** `docs/runbook.md` (steg för steg, genereras ur `natura-2000: scripts/analysis/uppgifter.py`) · `kontrollrum.html` (Gantt och avbockning) · `docs/metodik.md` (arbetspaket H) · `blanketter/blankett_forvaltarkunskap_nnk.xlsx` · `kunskapslage.html` · `natura-2000: scripts/analysis/koppla_omraden.py`
 
 ---
@@ -181,7 +181,7 @@ NNK/NRF 2026 — Södermanland
 | A1.1 | Beställ och verifiera behörighet: ArcGIS Pro, NNK in-/utcheckning, ArcGIS Enterprise, SkötselDOS, Artportalen, KartLitS WebbGIS | v35 | Handläggare |
 | A1.2 | Verifiera att NNK-utcheckning fungerar mot ett testobjekt; titta först på inspelningen på VIC Natur | v35 | Handläggare |
 | A1.3 | Åtkomst till samverkansytan för Livsmiljötyper (dokument, manualer, kodlista) | v34 | Handläggare |
-| A2.1 | Läs `Handledning NNK 20260703.pdf` och `Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` | v34 | Båda |
+| A2.1 | Läs `2026-11-02_Handledning_NNK_v1_1.pdf` (version 1.1) och `Lathud_granskning_WebbGIS_KartLitS_20260714.pdf` | v34 | Båda |
 | A2.2 | Gå igenom kodstrukturen i `Kodlista_NNK_20260703.xlsx`, filtrera sedan `D_NNK_statistik_per_N2000_NP_NR_per_260120.xlsx` (flik KODLISTA_NNK, kolumn *Kategori 2026*) på Gräsmark, Skog, Våtmark | v35 | Handläggare |
 | A2.3 | Installera `KartLits_NNK_GIS_mall_v_2` och testa mot ett objekt | v35 | Handläggare |
 | A2.4 | Hämta fastställda vägledningar för livsmiljötyper — **kontrollera vilka som är fastställda vs. remiss** (FAQ f.10) | v36 | Handläggare |
