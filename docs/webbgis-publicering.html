@@ -856,6 +856,11 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 </thead>
 <tbody>
 <tr>
+<td>"Skötselplan nyare än statusen"</td>
+<td><code>nr_plan_nyare = 'Ja'</code></td>
+<td>Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan.</td>
+</tr>
+<tr>
 <td>"Typiska arter i Artportalen"</td>
 <td><code>typarter_antal IS NOT NULL</code></td>
 <td>Ytor med fynd av minst en typisk art för naturtypen (sedan 2010, noggrannhet ≤ 100 m). Stöder att typen är rimlig. Inga fynd betyder inte att arten saknas. Om <code>typarter_antal</code> är Big Integer i lagret (publiceringen 2026-09-29) går det inte att filtrera på — använd då <code>typarter IS NOT NULL</code>.</td>

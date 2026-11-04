@@ -428,6 +428,7 @@ Fälten kommer från `skogsregister_for_granskning.csv` och `r7_forslag_for_gran
 
 | Filter | Villkor | Kommentar |
 | --- | --- | --- |
+| "Skötselplan nyare än statusen" | `nr_plan_nyare = 'Ja'` | Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan. |
 | "Typiska arter i Artportalen" | `typarter_antal IS NOT NULL` | Ytor med fynd av minst en typisk art för naturtypen (sedan 2010, noggrannhet ≤ 100 m). Stöder att typen är rimlig. Inga fynd betyder inte att arten saknas. Om `typarter_antal` är Big Integer i lagret (publiceringen 2026-09-29) går det inte att filtrera på — använd då `typarter IS NOT NULL`. |
 | "Uppföljning: dålig" | `uppf_antal_dalig > 0` | Minst en uppföljningspunkt med måluppfyllelse *Dålig* (2015–2022). 17 ytor. Kandidater till *icke fullgod*, nästan bara hävdberoende ytor. Vill du se alla med uppföljning: `uppf_punkter_bedomda > 0` (101 ytor). Tillagt 2026-10-01. |
 | "Floraväkteri: rapporterade arter" | `fv_antal_arter IS NOT NULL` | Ytan har minst en rapport från Floraväktarna (rödlistade arter och arter i habitatdirektivet, Artportalen). Bara ytlagret. 368 ytor, ca 290 inom N2000. Skyddsklassade fynd ingår inte. Enligt Länsstyrelsens floraväktarsamordning (2026-10-02) är guckusko den enda kärlväxten i länets floraväkteri med skyddade fynd, och dess enda lokal ligger utanför N2000 och naturreservat — så inget relevant saknas för granskningen. Fälten sätts ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`). Tillagt 2026-10-01. |

@@ -455,9 +455,10 @@ const STEG = [
     'Räkna ytorna per utfall och skriv antalet i kolumnerna Fullgod, Icke fullgod, Till fält, Ej omprövad och Typ ifrågasatt (alla "antal ytor"). Utfallet bestäms per yta i webbGIS; summan ska bli Ytor R7.',
     'Skriv alla underlag med år i <i>Underlag</i>.',
     'Skriv det du är osäker på i <i>Osäkerheter</i> och det som är kvar i <i>Återstår</i>.',
+'Uppskatta hur många dagar som behövs på kontoret och i fält för att ta reda på det som är okänt, i <i>Resurs kontor</i> och <i>Resurs fält</i>.',
     'Sätt <i>Status</i> = Klar. Bocka av området i kontrollrummet när hela batchen är gjord.'
   ],
-  logg: [['Fullgod … Typ ifrågasatt (antal ytor)','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. fältbesök, fråga förvaltaren'],['Status','Klar']],
+  logg: [['Fullgod … Typ ifrågasatt (antal ytor)','Antal ytor per utfall'],['Underlag','Källor med år'],['Osäkerheter','Det du inte kunde avgöra och varför'],['Återstår','Nästa steg, t.ex. fältbesök, fråga förvaltaren'],['Resurs kontor / Resurs fält (dagar)','Uppskattad tid för det som är okänt, till planen för 2027'],['Status','Klar']],
   ex: () => ex('<p>Floden, en rad i loggen:</p>' + tab(['Kolumn','Värde'],[
       ['Ortofoto (år)','(året för det orto du använt)'],
       ['Fullgod / Icke fullgod / Till fält / Ej omprövad (antal ytor)','0 / 0 / 2 / 8'],
