@@ -192,7 +192,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Maila `kartlitsN2000@naturvardsverket.se`. Anmäl er till arbetsgrupperna för skog, gräsmark och våtmark.
 2. Passa på att i samma mail ställa frågorna i arbetsplanens avsnitt 10 — särskilt om storobjekten och om generaliseringar. Svaren styr hela hösten, så ju tidigare desto bättre.
-3. Notera att arbetsgrupperna för akvatiska miljöer och fjäll startar hösten 2026 — de är inte relevanta för D-län i år.
+3. Notera att arbetsgrupperna för akvatiska miljöer och fjäll startar hösten 2026. Fjällgruppen är inte relevant för D-län, men länet har limniska och marina livsmiljötyper (kontaktperson för limniskt: Karin Johansson).
 4. Spara svaren i `natura-2000: docs/nnk/` — de är underlag till planen för 2027.
 
 ### A4.1 · Skapa arbetsstruktur för dokumentation
@@ -344,7 +344,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Kör granskningsrutinen C1.1 per objekt i tabellen. Totalt 378 ha terrester, varav 128 ha sällsynta typer.
 2. Sällsynta typer här: 7110 högmossar (47 ha i länet), 7230 rikkärr (34 ha), 7231 rikkärr undertyp (4 ha), 3260 vattendrag (44 ha), 9750 svämskog (2,7 ha).
-3. Limniska ytor: ange livsmiljötyp i befintliga ytor och linjer där förekomsten är känd, men justera INTE ytterkanter eller vattendragsgeometri. FAQ fråga 16.
+3. Limniska ytor: ange livsmiljötyp i befintliga ytor och linjer där förekomsten är känd, men justera INTE ytterkanter eller vattendragsgeometri. FAQ fråga 16. Tillstånd för akvatiska ytor: vänta på HaV/NV:s riktlinjer för skrivbordsbedömning, som kommer senare i höst (FAQ akvatiska 1.1 fråga 20, HaV:s besked 2026-11-02).
 4. VMI är sidounderlaget för våtmarkerna, VISS för vattendragen.
 5. Fjällmossen norra har 109 fältkontrollerade polygoner — återanvänd.
 
@@ -678,7 +678,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Dela upp insatsbehovet i fem kategorier: eget fältarbete, eget skrivbordsarbete, Metria, NV:s arbetsgrupper, konsult.
 2. Metria har enligt FAQ fråga 26 INTE uppdrag att göra om tidigare karteringar, kartera med högre detaljering utifrån länsspecifika underlag, eller fältkontrollera. Räkna inte med det.
-3. Marina miljöer läggs på HaV och de nationella karteringarna. Limniska: enligt NV (2026-09-30) blir Metria inte klara 2027 och länen behöver själva kartlägga. Länets kontaktperson för limniska livsmiljötyper är Karin Johansson (samverkansytans lista 2026-10-16).
+3. Marina miljöer läggs på HaV och de nationella karteringarna. Limniska: enligt HaV/NV (besked 2026-11-02, FAQ akvatiska 1.1 2026-11-03) kommer nationellt underlag tidigast 2028 och för alla akvatiska typer 2030. Det ersätter NV:s besked 2026-09-30 att länen själva behöver kartlägga. Länen dokumenterar nuläget (vilka förekomster som saknar polygon och var tillståndet är okänt) och anger livsmiljötyp i befintliga polygoner, men gör inga nya eller ändrade polygoner och uppdaterar inte avgränsningen enligt bankfullbredd. Tillstånd: HaV/NV ger riktlinjer för skrivbordsbedömning senare i höst, fält bara som stickprov. Länets kontaktperson för limniska livsmiljötyper är Karin Johansson (samverkansytans lista 2026-10-16).
 4. Ta med de livsmiljötyper som saknar fastställd vägledning (från A2.4) som ett eget stycke — de är blockerade av NV, inte av er.
 5. **Utfall 2026-10-16:** första underlaget i KartLits-mallen (flik D med 618 rader, Handlingsplan och Övrigt) inlämnat till NV (Johan Niss och KartlitsN2000@naturvardsverket.se). Fil: `natura-2000/docs/underlag/kartlits_2027/Mall_2027_D_Sodermanland_20261016.xlsx`. Tillstånd (M) anges bara där nyare skrivbordsunderlag pekar åt samma håll som bevarandeplanen, övriga rader är *4. Osäkert*. Resursbehovet preciseras i slutet av november (F1.2). Nästa steg enligt NV:s tidplan: återkoppling 30 okt, webbinarium 4 nov, förankrat förslag 1 dec.
 

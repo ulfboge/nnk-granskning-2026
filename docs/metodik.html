@@ -166,8 +166,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.19 · 2026-11-03</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> <code>condition_date</code> ska vara underlagets datum, inte registreringsdagen (Handledning NNK 1.1). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.20 · 2026-11-04</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> akvatiska livsmiljötyper enligt HaV:s besked och FAQ akvatiska 1.1 (avsnitt 5, R7C). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -884,6 +884,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </table></div>
 <p>Datan beskriver läget före restaureringen. Villkoret är därför alltid att RestOREDs uppföljning efter restaureringen inte visar annat. Projektets milstolpe D2.1 kräver att den uppföljningen görs i minst ett område per län senast september 2026 och redovisas i NNK. Provytor som ligger i en NNK-yta av annan typ och har typiska rikkärrsarter ger kontrollen <em>pröva gränsen mot 7230</em>.</p>
 <p><strong>Underlag för sjöar och vattendrag (2026-10-08).</strong> Ekologisk status 2022–2027 finns i webbGIS:et i gruppen <em>Vatten (VISS)</em>: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då <em>till fält</em>. VISS-statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för <em>fullgod</em> eller <em>icke fullgod</em>. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.</p>
+<p><strong>Akvatiska livsmiljötyper, besked från HaV och NV (2026-11-04).</strong> HaV:s besked 2026-11-02 och FAQ om akvatiska livsmiljötyper 1.1 (2026-11-03): gör inga nya eller ändrade polygoner, och uppdatera inte vattendragens avgränsning enligt bankfullbredd. Nationellt underlag för limniska typer kommer tidigast 2028. Ange livsmiljötyp i befintliga polygoner och dokumentera vilka förekomster som saknar polygon och var tillståndet är okänt. Vänta med tillståndet: HaV och NV ger riktlinjer för skrivbordsbedömning senare i höst, och fältbesök bedöms inte möjliga inom uppdraget utom som stickprov. Tills dess är R7:s förslag för sjöar och vattendrag preliminära, och <em>till fält</em> betyder där okänt, inte ett planerat fältbesök.</p>
 <p><em>Fält i granskningslagret (D2.5, kopplade sedan 2026-10-09):</em> <code>viss_id</code>, <code>viss_ekostatus</code>, <code>viss_styrande</code> (den kvalitetsfaktor som sätter naturtypsstatusen), <code>viss_miljoproblem</code>, <code>viss_biologi_klassad</code>, <code>viss_tillforlitlighet</code>, <code>viss_klassning_ar</code>, <code>viss_hydromorf</code> och <code>viss_aro_status</code>. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.</p>
 <div class="tabell"><table>
 <thead>
@@ -1260,6 +1261,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.20</strong> (2026-11-04) — avsnitt 5, R7C: akvatiska livsmiljötyper enligt HaV:s besked 2026-11-02 och FAQ akvatiska 1.1.</li>
 <li><strong>2.19</strong> (2026-11-03) — avsnitt 5, <em>Till NNK:s tillståndsfält</em>: <code>condition_date</code> är underlagets datum enligt Handledning NNK 1.1, inte registreringsdagen. Handledningens beskrivning av metod 2 och 3 och att tillstånd bara anges för livsmiljötyper inlagt bland de öppna frågorna.</li>
 <li><strong>2.18</strong> (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.</li>
 <li><strong>2.17</strong> (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i <em>Kommentar – Tillstånd</em>.</li>

@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.19 · 2026-11-03** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* `condition_date` ska vara underlagets datum, inte registreringsdagen (Handledning NNK 1.1). [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.20 · 2026-11-04** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* akvatiska livsmiljötyper enligt HaV:s besked och FAQ akvatiska 1.1 (avsnitt 5, R7C). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -365,6 +365,8 @@ Datan beskriver läget före restaureringen. Villkoret är därför alltid att R
 
 **Underlag för sjöar och vattendrag (2026-10-08).** Ekologisk status 2022–2027 finns i webbGIS:et i gruppen *Vatten (VISS)*: sjöar, vattendrag och avrinningsområden. Små sjöar är oftast inte egna vattenförekomster och saknas då i sjölagret. Utfallet blir då *till fält*. VISS-statusen för avrinningsområdet får bara användas som indicier: måttlig eller sämre status med näringspåverkan i området skrivs i kommentaren ("till fält, sannolikt påverkad"), men räcker aldrig ensam för *fullgod* eller *icke fullgod*. Kemisk status används inte, eftersom den är "ej god" nästan överallt på grund av kvicksilver.
 
+**Akvatiska livsmiljötyper, besked från HaV och NV (2026-11-04).** HaV:s besked 2026-11-02 och FAQ om akvatiska livsmiljötyper 1.1 (2026-11-03): gör inga nya eller ändrade polygoner, och uppdatera inte vattendragens avgränsning enligt bankfullbredd. Nationellt underlag för limniska typer kommer tidigast 2028. Ange livsmiljötyp i befintliga polygoner och dokumentera vilka förekomster som saknar polygon och var tillståndet är okänt. Vänta med tillståndet: HaV och NV ger riktlinjer för skrivbordsbedömning senare i höst, och fältbesök bedöms inte möjliga inom uppdraget utom som stickprov. Tills dess är R7:s förslag för sjöar och vattendrag preliminära, och *till fält* betyder där okänt, inte ett planerat fältbesök.
+
 *Fält i granskningslagret (D2.5, kopplade sedan 2026-10-09):* `viss_id`, `viss_ekostatus`, `viss_styrande` (den kvalitetsfaktor som sätter naturtypsstatusen), `viss_miljoproblem`, `viss_biologi_klassad`, `viss_tillforlitlighet`, `viss_klassning_ar`, `viss_hydromorf` och `viss_aro_status`. Sjöar kopplas till den vattenförekomst de överlappar mest; vattendrag (3260) är linjer i VISS och kopplas på längst sträcka inom ytan.
 
 | VISS visar | Utfall |
@@ -619,6 +621,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.20** (2026-11-04) — avsnitt 5, R7C: akvatiska livsmiljötyper enligt HaV:s besked 2026-11-02 och FAQ akvatiska 1.1.
 - **2.19** (2026-11-03) — avsnitt 5, *Till NNK:s tillståndsfält*: `condition_date` är underlagets datum enligt Handledning NNK 1.1, inte registreringsdagen. Handledningens beskrivning av metod 2 och 3 och att tillstånd bara anges för livsmiljötyper inlagt bland de öppna frågorna.
 - **2.18** (2026-11-02) — avsnitt R5: arbetsgång för målnaturtyp på ytor som redan är livsmiljötyp; antalet ytor med målnaturtyp även enligt länsuttaget.
 - **2.17** (2026-10-23) — avsnitt 5, R7A: luckor i skiftena som beror på översvämning är inte upphörd hävd; förklaringen skrivs i *Kommentar – Tillstånd*.

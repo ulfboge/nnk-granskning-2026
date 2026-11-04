@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · ref. 2451-2026
 
-**Version:** 1.12 — 2026-11-03: hänvisningarna pekar på Handledning NNK version 1.1 (2026-11-02). Version 1.11 — 2026-10-23: H4.3 (NILS och regional miljöövervakning) och H4.4 (utförda våtmarksåtgärder) tillagda — två källor i projektplanens kunskapssammanställning som inte fanns i underlaget. Version 1.10 — 2026-10-09: D5.2 utgår, ingen konsult för fältbedömning hösten 2026 (för sent på året); all fältkontroll, även R7-pilotens, görs 2027. Version 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
+**Version:** 1.13 — 2026-11-04: limniska miljöer enligt HaV:s besked 2026-11-02 och FAQ akvatiska 1.1. Version 1.12 — 2026-11-03: hänvisningarna pekar på Handledning NNK version 1.1 (2026-11-02). Version 1.11 — 2026-10-23: H4.3 (NILS och regional miljöövervakning) och H4.4 (utförda våtmarksåtgärder) tillagda — två källor i projektplanens kunskapssammanställning som inte fanns i underlaget. Version 1.10 — 2026-10-09: D5.2 utgår, ingen konsult för fältbedömning hösten 2026 (för sent på året); all fältkontroll, även R7-pilotens, görs 2027. Version 1.9 — 2026-10-08: D2.5 (VISS), D2.6 (Skogsstyrelsens register) och D2.7 (bedömningsförslag per yta) tillagda. Version 1.8 — 2026-09-29: D2.4 (hävdanalys mot jordbruksskiften, underlag för R7A) tillagd. Version 1.7 — 2026-09-25: D5.1 (fältprotokoll) och D5.2 (villkorat konsultuppdrag hösten 2026) tillagda, avgränsningen om fältarbete justerad. 1.6: A2.5–A2.8 och riskraden om granskningslagret uppdaterade: länsuttaget hämtat och `LstD NNK Granskning` publicerat sedan 2026-09-01
 **Datum:** 2026-09-11
 **Omfattning:** Natura 2000 (SCI/SAC) i D-län som huvudspår, naturreservat och nationalpark som parallellt screeningspår
 **Bemanning:** 1 handläggare heltid + 1 kollega ca 50 %
@@ -484,7 +484,7 @@ Att kunna motivera bortval är lika viktigt som att prioritera. Samtliga punkter
 | Avgränsning | Stöd |
 |---|---|
 | **Marina livsmiljötyper läggs inte in i NNK.** 16 912 ha osäker marin areal lämnas orörd; nationella marina karteringar är underlaget | f.16 |
-| **Limniska ytterkanter justeras inte.** Livsmiljötyp anges i befintliga ytor/linjer där förekomsten är känd; strandlinjer och vattendragsgeometri lämnas | f.16 |
+| **Limniska ytterkanter justeras inte.** Livsmiljötyp anges i befintliga ytor/linjer där förekomsten är känd; strandlinjer och vattendragsgeometri lämnas. Tillstånd bedöms inte förrän HaV/NV:s riktlinjer för skrivbordsbedömning finns | f.16, FAQ akvatiska 1.1 f.1, f.18, f.20 |
 | **Båvens okarterade 4 845 ha** åtgärdas inte i år | f.16, f.29 |
 | **Grottor, branter, sandstäpp, inlandssandmarker** — nationella karteringsunderlag räcker | f.16 |
 | **Obetydliga (icke signifikanta) livsmiljötyper inom N2000** — endast areal redovisas, ingen tillståndsbedömning | f.15 |
@@ -519,7 +519,7 @@ Skickas till `kartlitsN2000@naturvardsverket.se` (FAQ f.10). Ju tidigare desto b
 1. **Storobjekt:** Skärgårdsreservaten (SE0220129) har 2 915 polygoner totalt, men merparten av *arealen* är marin och lämnas enligt FAQ f.16 (~390 marina polygoner). Kvar på land finns ca 2 500 polygoner (ca 1 800 ha), varav bara ett trettiotal är ≥ 5 ha — resten är små hällmarks-, skogs- och skärytor (`9010`, `8230`, `1621`). Nynäs (SE0220126) är analogt: nästan ingen marin areal, men ca 1 350 terrestra polygoner. Vi avser att bedöma stora, hävdberoende, sällsynta och Åtgärdas-ytor individuellt, och sätta gemensam bedömning på grupper av små ytor med samma kod och samma bedömningsgrund (dokumenterad som generalisering). Är det en acceptabel metod för 2026? Har andra län samma typ av skärgårdsobjekt, och hur har de löst det?
 2. **Generaliseringar:** Kan hävdstatus i TUVA användas som proxy för tillstånd i 6270/6510? Kan 8230 hällmarkstorräng antas oförändrad utan fältbesök?
 3. **BIDOS-ursprung:** 96 % av länets polygoner kommer från basinventeringen med vägledningar före 2011. Vilken ambitionsnivå förväntas för systematisk korrigering — och vad ligger inom Metrias uppdrag?
-4. **Båven:** 4 845 ha okarterat i ett limniskt objekt. Bekräfta att detta ska lämnas till den nationella limniska karteringen.
+4. **Båven:** 4 845 ha okarterat i ett limniskt objekt. Bekräfta att detta ska lämnas till den nationella limniska karteringen. *Besvarat 2026-11-03:* ja, HaV avråder från att ändra avgränsningen nu, och nationellt underlag kommer tidigast 2028 (FAQ akvatiska 1.1, fråga 18).
 5. **Tullgarn södra:** 299 ha okarterat — ligger utanför länsgränsen (se C7.1). Kvar att avgöra: land eller vatten, och vem som bedömer delen — D-län som rapporterande län eller Stockholms län?
 6. **Tidpunkt:** Bekräfta driftsättningsdatum för de nya tillståndsattributen, och när utbildning ges.
 7. **Formatet för planen:** FAQ f.7 säger att formatet återkommer "så snart vi kan". Efterfråga det tidigt så att E-arbetet kan struktureras rätt från början.
