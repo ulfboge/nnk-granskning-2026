@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 7 anger artperioden i *Underlag*, sektion 8 säger att andelen bete/slåtter kommer från jordbruksskiftena och gäller NNK-ytan; sektion 7 och raden *Typiska arter* i 2b visar fynd 2022–2026 med år per art, och karakteristiska arter på egen rad; raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.18 · 2026-11-04 (sektion 1: reservatets namn också när ytan ligger i båda, länkar till skötselplan och senaste beslut, syften; sektion 2b: raden *Skötselplan (reservatet)* jämförd med naturtypsstatusen). 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 7 anger artperioden i *Underlag*, sektion 8 säger att andelen bete/slåtter kommer från jordbruksskiftena och gäller NNK-ytan; sektion 7 och raden *Typiska arter* i 2b visar fynd 2022–2026 med år per art, och karakteristiska arter på egen rad; raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -39,6 +39,8 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 
 ## 1. Identifiering och skydd
 
+**Ändrat 2026-11-04:** reservatets namn visas också för ytor i både Natura 2000 och reservat (`nr_namn`, fältet heter så för att undvika namnkrocken). Nya rader: *Skötselplan (år)* och *Senaste beslut* med direktlänk till PDF:en hos Naturvårdsverket, och *Syften (naturreservat)*. Raderna hoppas över tills fälten finns i tjänsten.
+
 **Ändrat 2026-11-03:** visar Natura 2000-området och naturreservatet var för sig, och en rad *Både Natura 2000 och naturreservat* när ytan ligger i båda. Då kan reservatets skötselplan finnas i Skyddad natur, och områdesskyddshandläggaren är rätt person att fråga. Raderna *Naturreservat, beslutat (år)* och *Förvaltare (naturreservat)* läser fälten `naturreservat_beslut_ar` och `naturreservat_forvaltare`. De finns inte i tjänsten än (kräver ändring i 02-skriptet och synk, se fragor.md 2026-11-03), och tills dess hoppas raderna över. Handläggare finns inte i något register vi läser. `n2000_namn` och `naturreservat_namn` gick inte att lägga till i den publicerade vyn (namnkrock, 2026-11-03), så uttrycket tar N2000-namnet ur `omrade_namn`. För ytor i både N2000 och reservat visas reservatet med NVR-ID utan namn.
 
 ```js
@@ -64,7 +66,7 @@ var nvrid = F("naturreservat_nvrid");
 // n2000_namn/naturreservat_namn finns inte i den publicerade vyn (namnkrock vid 07-synken
 // 2026-11-03). omrade_namn är N2000-namnet när ytan ligger i Natura 2000, annars reservatets.
 var n2000Namn = DefaultValue(F("n2000_namn"), IIf(IsEmpty(sc), null, F("omrade_namn")));
-var nrNamn = F("naturreservat_namn");
+var nrNamn = DefaultValue(F("naturreservat_namn"), F("nr_namn"));
 if (IsEmpty(nrNamn) && IsEmpty(sc) && !IsEmpty(nvrid)) { nrNamn = F("omrade_namn"); }
 
 Rad("omrade_varde", "Område", F("omrade_namn"));
@@ -85,13 +87,18 @@ if (!IsEmpty(nvrid) || !IsEmpty(nrNamn)) {
     var nrAr = F("naturreservat_beslut_ar");
     if (!IsEmpty(nrAr)) { Rad("nr_ar_varde", "Naturreservat, beslutat (år)", Text(nrAr)); }
     Rad("nr_forv_varde", "Förvaltare (naturreservat)", F("naturreservat_forvaltare"));
+    var plAr = F("nr_skotselplan_ar");
+    Rad("nr_plan_varde", "Skötselplan" + IIf(IsEmpty(plAr), "", " (" + Text(plAr) + ")"), F("nr_skotselplan_url"));
+    Rad("nr_beslut_varde", "Senaste beslut", F("nr_beslut_url"));
+    Rad("nr_syften_varde", "Syften (naturreservat)", F("nr_syften"));
 }
 
 // Både och: reservatets skötselplan kan ha underlag om tillståndet
 if (!IsEmpty(sc) && !IsEmpty(nvrid)) {
+    var badaText = "Reservatets beslut och skötselplan finns i Skyddad natur (sök på NVR-ID " + nvrid + "). ";
+    if (!IsEmpty(F("nr_skotselplan_url"))) { badaText = "Reservatets skötselplan kan ha underlag om tillståndet, se länken ovan. "; }
     Rad("bada_varde", "Både Natura 2000 och naturreservat",
-        "Reservatets beslut och skötselplan finns i Skyddad natur (sök på NVR-ID " + nvrid
-        + "). Fråga områdesskyddshandläggaren för reservatet.");
+        badaText + "Fråga områdesskyddshandläggaren för reservatet.");
 }
 
 return {
@@ -282,6 +289,8 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
 
+**Tillägg 2026-11-04:** raden *Skötselplan (reservatet)* visar planens år och om den är nyare än naturtypsstatusen. Planen gäller reservatet, inte ytan, och innehåller ingen tillståndsbedömning. Den är en signal om att läsa planen och påverkar inte R7-förslaget. Samma jämförelse finns som fältet `nr_plan_nyare` för filter.
+
 **Tillägg 2026-10-14:** sist i sektionen står **Lager för gruppen**: vilka lager i appen som brukar behövas för ytans grupp, med namnen som i lagerlistan. Raden räknas fram i uttrycket ur naturtypskoden och några fält som redan finns (diken, TUVA-år, Skogsstyrelsens register), så den kräver ingen ny Overwrite, bara att uttrycket klistras in på nytt. (Den kompletterade tidigare raden *Kontrollera*, som togs bort ur popupen 2026-11-03.) Ytor utanför R7 får ingen lista.
 
 **Tillägg 2026-10-15:** för hävdytor anger *Lager för gruppen* vilka år av SJV Jordbruksblock som är värda att titta på: 2025 (senaste), åren utan bete eller slåtter enligt skiftena (fältet `havd_ar_utan_bete`) och naturtypsstatusens år (2003 om naturtypsstatusen är äldre, eftersom lagret börjar då). Blocket visar att marken kan få stöd, inte att den betas – hävden står i skiftena. *Förslag (R7)* skriver numera *Ej omprövad – underlaget pekar mot …* utan säkerhet; säkerheten hörde till det underliggande utfallet och var missvisande. Klistra in uttrycket på nytt; förslagsraden ändras först när `r7_forslag_for_granskning.csv` har byggts om och lagret skrivits över.
@@ -409,6 +418,11 @@ if (!IsEmpty(sTyp)) {
 var uAr = Ar(F("uppf_senaste_ar"));
 if (!IsEmpty(uAr)) {
     Rad("r7_uppf", "Uppföljning", uAr + " · " + DefaultValue(F("uppf_antal_dalig"), 0) + " punkter Dålig" + Jmf(uAr));
+}
+// Reservatets skötselplan (2026-11-04): gäller reservatet, inte ytan
+var plAr = Ar(F("nr_skotselplan_ar"));
+if (!IsEmpty(plAr)) {
+    Rad("r7_skplan", "Skötselplan (reservatet)", plAr + " · gäller reservatet, inte specifikt den här ytan" + Jmf(plAr));
 }
 var lAr = Ar(F("laser_skanning_ar"));
 if (!IsEmpty(lAr)) {
