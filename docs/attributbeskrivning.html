@@ -151,6 +151,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <li><a href="#tuva-angs-och-betesmarksinventeringen">TUVA — ängs- och betesmarksinventeringen</a></li>
 <li><a href="#skotseldos-utford-havd-och-uppfoljning">SkötselDOS — utförd hävd och uppföljning</a></li>
 <li><a href="#life-projektens-atgarder">LIFE-projektens åtgärder</a></li>
+<li><a href="#agp-atgardsprogrammen-for-hotade-arter">ÅGP — åtgärdsprogrammen för hotade arter</a></li>
 <li><a href="#floravakteri-artportalen">Floraväkteri (Artportalen)</a></li>
 <li><a href="#laserdata-och-diken">Laserdata och diken</a></li>
 <li><a href="#skogsstyrelsens-register">Skogsstyrelsens register</a></li>
@@ -1793,6 +1794,64 @@ Typiska (T) respektive <strong>karakteristiska arter</strong> (K, arter som kän
 <td><code>life_andel_tackt</code></td>
 <td>heltal</td>
 <td>Andel av ytan (%) som åtgärderna täcker</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="agp-atgardsprogrammen-for-hotade-arter">ÅGP — åtgärdsprogrammen för hotade arter</h3>
+<p>Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur <code>agp_for_granskning.csv</code> (<code>nnk_agp.py</code>, tillagda 2026-11-11). Underlaget är ÅGP-mappen på G: (<code>5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\ÅGP</code>). Tomt betyder att inget ÅGP-underlag träffar ytan, inte att arterna eller träden saknas. <strong>Fälten är sammanhang och påverkar inte R7-förslaget.</strong> Visas i popupens avsnitt <em>Bedömning vid skrivbordet</em>.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Fält</th>
+<th>Typ</th>
+<th>Innehåll</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agp_trad_antal</code></td>
+<td>heltal</td>
+<td>Särskilt skyddsvärda träd i ytan. Länsstyrelsens inventering 2022–2025 (uttag 2026-02-19) och Rikard Sandbergs inventering 2016. Träd inom 3 m från varandra räknas en gång. 81 ytor</td>
+</tr>
+<tr>
+<td><code>agp_trad_grova</code></td>
+<td>heltal</td>
+<td>Varav jätteträd, stamomkrets minst 314 cm (diameter minst 1 m)</td>
+</tr>
+<tr>
+<td><code>agp_trad_hal</code></td>
+<td>heltal</td>
+<td>Varav med synliga hål. Bara Länsstyrelsens inventering har hålstadium</td>
+</tr>
+<tr>
+<td><code>agp_trad_doda</code></td>
+<td>heltal</td>
+<td>Varav döda, stående eller liggande. Bara Länsstyrelsens inventering</td>
+</tr>
+<tr>
+<td><code>agp_trad_ar</code></td>
+<td>heltal</td>
+<td>Senaste inventeringsår för träden i ytan</td>
+</tr>
+<tr>
+<td><code>agp_trad_arter</code></td>
+<td>text</td>
+<td>Trädslag med antal, t.ex. "skogsek 12, skogslind 2". Högst 250 tecken</td>
+</tr>
+<tr>
+<td><code>agp_rikkarr</code></td>
+<td>text</td>
+<td>Rikkärrslokaler i eller intill ytan med inventeringsår: lokalpunkterna 2008–2011 (50 m marginal), avgränsade rikkärr 2008 och VMI-objekt 2011 (klass 1 = högst värde). 80 ytor</td>
+</tr>
+<tr>
+<td><code>agp_artlokaler</code></td>
+<td>text</td>
+<td>ÅGP-arternas lokaler i ytan: fjälltaggsvampar (inventering 2013). Mosippans lokaler (2009) ligger alla utanför NNK-ytorna. 43 ytor</td>
+</tr>
+<tr>
+<td><code>agp_dok</code></td>
+<td>text</td>
+<td>ÅGP-dokument för ytans Natura 2000-område per program, t.ex. "rikkärr 9" eller "Trumgräshoppa 10, Svartfläckig blåvinge 4". Bara dokument där områdets namn står i mapp- eller filnamnet. Gäller hela området, inte ytan</td>
 </tr>
 </tbody>
 </table></div>

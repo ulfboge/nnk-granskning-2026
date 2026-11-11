@@ -533,6 +533,21 @@ Fyra fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `life_for_granskn
 | `life_senaste_ar` | heltal | Senaste år för en åtgärd. Tomt om inget år står i åtgärdernas namn |
 | `life_andel_tackt` | heltal | Andel av ytan (%) som åtgärderna täcker |
 
+### ÅGP — åtgärdsprogrammen för hotade arter
+Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `agp_for_granskning.csv` (`nnk_agp.py`, tillagda 2026-11-11). Underlaget är ÅGP-mappen på G: (`5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\ÅGP`). Tomt betyder att inget ÅGP-underlag träffar ytan, inte att arterna eller träden saknas. **Fälten är sammanhang och påverkar inte R7-förslaget.** Visas i popupens avsnitt *Bedömning vid skrivbordet*.
+
+| Fält | Typ | Innehåll |
+|---|---|---|
+| `agp_trad_antal` | heltal | Särskilt skyddsvärda träd i ytan. Länsstyrelsens inventering 2022–2025 (uttag 2026-02-19) och Rikard Sandbergs inventering 2016. Träd inom 3 m från varandra räknas en gång. 81 ytor |
+| `agp_trad_grova` | heltal | Varav jätteträd, stamomkrets minst 314 cm (diameter minst 1 m) |
+| `agp_trad_hal` | heltal | Varav med synliga hål. Bara Länsstyrelsens inventering har hålstadium |
+| `agp_trad_doda` | heltal | Varav döda, stående eller liggande. Bara Länsstyrelsens inventering |
+| `agp_trad_ar` | heltal | Senaste inventeringsår för träden i ytan |
+| `agp_trad_arter` | text | Trädslag med antal, t.ex. "skogsek 12, skogslind 2". Högst 250 tecken |
+| `agp_rikkarr` | text | Rikkärrslokaler i eller intill ytan med inventeringsår: lokalpunkterna 2008–2011 (50 m marginal), avgränsade rikkärr 2008 och VMI-objekt 2011 (klass 1 = högst värde). 80 ytor |
+| `agp_artlokaler` | text | ÅGP-arternas lokaler i ytan: fjälltaggsvampar (inventering 2013). Mosippans lokaler (2009) ligger alla utanför NNK-ytorna. 43 ytor |
+| `agp_dok` | text | ÅGP-dokument för ytans Natura 2000-område per program, t.ex. "rikkärr 9" eller "Trumgräshoppa 10, Svartfläckig blåvinge 4". Bara dokument där områdets namn står i mapp- eller filnamnet. Gäller hela området, inte ytan |
+
 ### Floraväkteri (Artportalen)
 Tio fält, alla skrivskyddade, heltal utom `fv_arter` och `fv_forsamring`, och bara i ytlagret. Hämtas ur `floravakteri_for_granskning.csv` (`nnk_floravakteri.py`, hämtat 2026-10-01 ur SLU:s publika SOS-tjänst). Underlaget är Floraväktarnas rapporter i Artportalen (projekten *Floraväkteri Sverige* och *Arkiv Floraväktarlokaler*): återkommande besök på lokaler för rödlistade arter och arter i habitatdirektivet. En rapport räknas till ytan om punkten ligger inom den och koordinatnoggrannheten är högst 100 m. Skyddsklassade fynd ingår inte — enligt Länsstyrelsens floraväktarsamordning gäller det bara guckusko, vars enda lokal ligger utanför N2000 och naturreservat. Kommentarerna (Artportalens fält *Kommentar*) är publika och ingår, vilket `fv_anm_havd` bygger på. Tomt = ingen rapport. 290 ytor inom Natura 2000 har minst en rapport. Visas i popupens avsnitt *Floraväkteri (Artportalen)*.
 
