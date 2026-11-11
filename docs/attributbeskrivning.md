@@ -538,7 +538,7 @@ Nio fält, alla skrivskyddade och bara i ytlagret. Hämtas ur `agp_for_gransknin
 
 | Fält | Typ | Innehåll |
 |---|---|---|
-| `agp_trad_antal` | heltal | Särskilt skyddsvärda träd i ytan. Länsstyrelsens inventering 2022–2025 (uttag 2026-02-19) och Rikard Sandbergs inventering 2016. Träd inom 3 m från varandra räknas en gång. 81 ytor |
+| `agp_trad_antal` | heltal | Särskilt skyddsvärda träd i ytan. Länsstyrelsens inventering 2022–2025 (uttag 2026-02-19) och inventeringen 2016 (Rikard, initialer RSE). Träd inom 3 m från varandra räknas en gång. 81 ytor |
 | `agp_trad_grova` | heltal | Varav jätteträd, stamomkrets minst 314 cm (diameter minst 1 m) |
 | `agp_trad_hal` | heltal | Varav med synliga hål. Bara Länsstyrelsens inventering har hålstadium |
 | `agp_trad_doda` | heltal | Varav döda, stående eller liggande. Bara Länsstyrelsens inventering |

@@ -292,7 +292,7 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 **Tillägg 2026-11-04 (skötselområde):** ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.
 
 **Tillägg 2026-11-11 (ÅGP):** fyra rader ur ÅGP-mappen på G: (`nnk_agp.py`, `agp_for_granskning.csv`):
-- *Särskilt skyddsvärda träd (ÅGP)* – antal träd i ytan, varav jätteträd (stamomkrets minst 314 cm), med hål och döda, trädslag och senaste inventeringsår. Länsstyrelsens inventering 2022–2025 och Rikard Sandbergs 2016.
+- *Särskilt skyddsvärda träd (ÅGP)* – antal träd i ytan, varav jätteträd (stamomkrets minst 314 cm), med hål och döda, trädslag och senaste inventeringsår. Länsstyrelsens inventering 2022–2025 och inventeringen 2016 (RSE).
 - *Rikkärrsinventering (ÅGP)* – rikkärrslokaler 2008–2011 i eller intill ytan (lokalpunkterna har 50 m marginal).
 - *ÅGP-arter i ytan* – fjälltaggsvamparnas lokaler 2013 (mosippans lokaler ligger alla utanför NNK-ytorna).
 - *ÅGP-dokument för området (G:)* – hur många dokument per åtgärdsprogram som finns för ytans Natura 2000-område, bara där områdets namn står i mapp- eller filnamnet. Dokumenten ligger under `G:\5_Naturvard_miljoskydd\51_skydd_omr_arter_mm\511_skydd_omr_arter\ÅGP`.
