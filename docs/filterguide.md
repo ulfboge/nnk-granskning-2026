@@ -152,7 +152,7 @@ Filter som inte säger något om tillståndet men styr vilka ytor du ser och i v
 |---|---|---|
 | **Natura 2000-typ** | `n2000_typ` = SCI eller SCI+SPA | Aktivt vid start. Avgränsar till Natura 2000-områden av typen SCI eller SCI+SPA. |
 | **Marina objekt** | `naturtyp NOT IN (1000, 1110 … 1174)` | Aktivt vid start. Döljer de marina typerna. Strandängar (1630), skär (1620), alvar (1640) och driftvallar (1220) ligger kvar. |
-| **Dölj icke-Natura-livsmiljötyper** | `naturtyp NOT IN (1950, 2920 …)` | Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper. |
+| **Dölj icke-Natura-livsmiljötyper** | `naturtyp NOT IN (0, 1950 … 9940)` | Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper. Döljer icke-Natura och gruppkoder utan livsmiljötyp (t.ex. 3100, 6000, 9000); osäkra/obestämda har eget filter. Hela listan i webbGIS-manualen, Del 6 steg 5. |
 | **Osäker/obestämd naturtyp** | `naturtyp IN (2300, 4810 … 9870)` | Eget spår, inte statusbedömning: typen måste bestämmas först (E2.1, P2-kriteriet). Använd utan gruppfiltren och utan *Dölj icke-Natura*. |
 | **Prio P1–P4** | `prio = 'P1'` osv. | Arbetsordning enligt arbetsplanen 5.2. Säger inget om tillståndet. |
 | **Batch S / A / B / C / D** | `batch = 'S'` osv. | Bara de 40 P1-objekten. Batcharna är arbetsordning per *objekt* och är inte samma sak som R7-grupperna, som gäller per *yta*. Batch B (ängs- och hagmark) består mest av hävdtyper, C mest av våtmark, D mest av skog, A är kusten (strandängar hör till Hävd, skär och stränder till Stabila) och S storobjekten (blandat). |

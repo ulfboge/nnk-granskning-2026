@@ -589,8 +589,8 @@ p,ul,ol{max-width:80ch}
 </tr>
 <tr>
 <td><strong>Dölj icke-Natura-livsmiljötyper</strong></td>
-<td><code>naturtyp NOT IN (1950, 2920 …)</code></td>
-<td>Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper.</td>
+<td><code>naturtyp NOT IN (0, 1950 … 9940)</code></td>
+<td>Slå på vid statusgranskning — R7 gäller bara Natura-naturtyper. Döljer icke-Natura och gruppkoder utan livsmiljötyp (t.ex. 3100, 6000, 9000); osäkra/obestämda har eget filter. Hela listan i webbGIS-manualen, Del 6 steg 5.</td>
 </tr>
 <tr>
 <td><strong>Osäker/obestämd naturtyp</strong></td>
