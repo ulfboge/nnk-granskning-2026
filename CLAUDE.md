@@ -8,7 +8,7 @@
 
 **nnk-granskning-2026** är det **publika** arbetsdokument- och kontrollpanel-repot för
 statusbedömningen av livsmiljötyper inom Natura 2000 i Södermanlands län (NNK — naturens
-nuvarande kondition/tillstånd), del av naturrestaureringsuppdraget (NRR, ref. 2451-2026) vid
+nuvarande kondition/tillstånd), del av naturrestaureringsuppdraget (NRF, ref. 2451-2026) vid
 Länsstyrelsen i Södermanlands län, Naturskyddsenheten.
 
 Repot publiceras som **GitHub Pages**: https://ulfboge.github.io/nnk-granskning-2026
@@ -73,7 +73,7 @@ CSS-ramverk eller typsnitt hämtas — allt är inline i den genererade HTML:en.
 | Repo (lokal mapp) | Synlighet | Roll |
 |---|---|---|
 | `natura-2000` | Privat | Pipeline, rådata, NV-underlag, Origo/ArcGIS, NNK-analys |
-| `Länsstyrelsen` (lansstyrelsen-nrr) | Publikt | Projektöversikt för hela NRR-uppdraget |
+| `Länsstyrelsen` (lansstyrelsen-nrr) | Publikt | Projektöversikt för hela NRF-uppdraget |
 | `nnk-granskning-2026` (detta repo) | Publikt | Arbetsdokument + kontrollpanel för NNK-granskningen |
 
 ## 6. Status
