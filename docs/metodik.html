@@ -166,8 +166,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.21 · 2026-11-05</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> sjöar och vattendrag får utfallet <em>avvaktar riktlinjer</em> (avsnitt 5, R7C). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.22 · 2026-11-13</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> R7A: vilka TUVA-uppgifter som syns i popupen, och ÅGP-raderna som sammanhang (avsnitt 5). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -647,6 +647,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <p><strong>Gödsling syns inte direkt i ortot.</strong> IR-ortot visar hur kraftigt vegetationen växer, inte varför. Gödslad eller insådd gräsmark blir jämnt klarröd, som åkrarna intill, medan ogödslad naturbetesmark är mattare rosa till rödbrun och fläckig (se <em>Så läser du IR-ortot</em> i bedömningsguiden). Det är en indikation, inget belägg: sen sommar, fuktig mark och kvävefixerare ger också kraftig rodnad. Bättre underlag för gödsling är TUVA:s påverkansnotering (<em>produktionshöjande påverkan</em>), grödkoden i skiftena (vall) och förvaltarens kunskap.</p>
 <p><em>Vall senaste året</em> (grödkod 49, 50) är åkermark och en varningssignal, till exempel för 6270 och 6410, inte belägg för hävd. Skiftesdata ersätter inte skötselavtal och SkötselDOS, men täcker alla ytor och alla år på samma sätt.</p>
 <p><strong>Underlag för hävden — TUVA.</strong> Granskningslagret har också TUVA-fält (<code>tuva_objekt_id</code>, <code>tuva_inv_ar</code>, <code>tuva_havdstatus</code>, <code>tuva_havdregim</code>, <code>tuva_igenvaxning</code>, <code>tuva_naturtyp</code>, <code>tuva_paverkan</code>). De kommer från Jordbruksverkets ängs- och betesmarksinventering, senaste inventering per objekt (uttag 2026-08-21), och kopplas till den NNK-yta som objektet överlappar mest, med samma tröskel som för sitecode (minst 1 % av ytan eller 0,25 ha). 2 425 av länets 15 837 ytor har träff, och 1 964 av dem inventerades före 2011. TUVA beskriver marken som den var vid inventeringen, skiftena visar om den hävdats år för år 2015–2025. Använd dem tillsammans:</p>
+<p><em>Vad som syns i popupen (sedan 2026-11-03):</em> sektion 8 visar bara TUVA-objekt, inventeringsår och länken <em>Öppna i TUVA</em>, och raden <em>TUVA</em> i sektion 2b visar år och hävdstatus utan procent. Hävdregim, igenväxning, påverkan och naturtyper finns kvar i lagret och används av R7-förslaget, men visas inte, eftersom de gäller hela TUVA-objektet och inte NNK-ytan. Behöver du dem för tabellen nedan, läs dem i TUVA:s objektrapport via länken.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -673,7 +674,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td>Negativ notering i TUVA</td>
-<td><em>Ingen hävd</em>, <em>Ohävdad (restaurerbar)</em>, <em>Ej aktuell</em>, igenväxning <em>Tydlig</em> eller <em>Igenväxt</em>, tydlig produktionshöjande påverkan (gödsling) eller tillskottsutfodring. Pröva <em>icke fullgod</em> mot skiftena och ortot. Visar skiftena <em>Ja</em> efter inventeringsåret kan hävden ha tagits upp igen: <em>till fält</em>.</td>
+<td><em>Ingen hävd</em>, <em>Ohävdad (restaurerbar)</em>, <em>Ej aktuell</em>, igenväxning <em>Tydlig</em> eller <em>Igenväxt</em>, tydlig produktionshöjande påverkan (gödsling) eller tillskottsutfodring. Igenväxning och påverkan läser du i objektrapporten (<em>Öppna i TUVA</em>), inte i popupen. Pröva <em>icke fullgod</em> mot skiftena och ortot. Visar skiftena <em>Ja</em> efter inventeringsåret kan hävden ha tagits upp igen: <em>till fält</em>.</td>
 </tr>
 <tr>
 <td>Skiften <em>Oklart</em> men TUVA-träff</td>
@@ -685,7 +686,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 </tbody>
 </table></div>
-<p>Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (<code>tuva_antal_objekt</code> &gt; 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i <code>tuva_naturtyp</code> gäller hela TUVA-objektet, inte NNK-ytan. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken <em>Öppna i TUVA</em> i popupen).</p>
+<p>Fältet visar det TUVA-objekt som täcker mest av ytan. Överlappar ytan flera objekt (<code>tuva_antal_objekt</code> &gt; 1, 169 ytor) ska de andra också kontrolleras i TUVA. Naturtyperna i <code>tuva_naturtyp</code> gäller hela TUVA-objektet, inte NNK-ytan, och visas inte i popupen. Samma typ där räknas som ett av beläggen för att typen är rimlig (förutsättningen ovan), men säger inget om var i objektet den ligger. TUVA har inga strukturerade uppgifter om skötselbehov, bara fritext i objektrapporten (länken <em>Öppna i TUVA</em> i popupen).</p>
+<p><strong>Sammanhang — åtgärdsprogrammen för hotade arter (ÅGP).</strong> <em>Ny 2026-11-11.</em> Sektion 2b har fyra rader ur ÅGP-materialet på G: (<code>agp_*</code>): särskilt skyddsvärda träd, rikkärrsinventeringen 2008–2011, ÅGP-arter i ytan och antal ÅGP-dokument för området. De påverkar inte R7-förslaget. Använd dem som stöd för att typen är rimlig (t.ex. grova träd och efterträdare i 9070) och när du väljer vad som ska kontrolleras i fält. De ersätter inte belägget för hävd.</p>
 <p><strong>Underlag för hävden — SkötselDOS.</strong> Sedan 2026-10-01 har granskningslagret fält ur Metrias SkötselDOS-uttag. <code>skdos_havd_typ</code> och <code>skdos_havd_senaste_ar</code> visar utförd bete eller slåtter enligt reservatsförvaltningen (424 ytor, 150 hävdberoende; åtgärderna ska sedan 2026-10-20 täcka minst 10 % av ytan, andelen i <code>skdos_andel_overlapp</code>). Det är det underlag som skiftena saknar för bete utan stöd. <code>uppf_*</code> sammanfattar uppföljningspunkterna för naturtyper (målindikatorer, 2015–2022) inom ytan (101 ytor).</p>
 <p><strong>Underlag för tillståndet — länsstyrelsens uppföljningar.</strong> <em>Ny 2026-10-14.</em> Daterade uppföljningar som länsstyrelsen själv låtit göra, t.ex. ängs- och betesmarksuppföljningen 2018 (hävdstatus per lokal: <em>utmärkt hävd</em>, <em>åtgärder krävs</em>, <em>akuta åtgärder krävs</em>) och strandängsuppföljningen 2019 (andel provytor med typiska och negativa arter). De kopplas per område och naturtyp; uppföljningar utan naturtyp gäller områdets hävdtyper. Högst 10 år gamla: <em>akuta åtgärder krävs</em> ger <em>icke fullgod</em> (villkor: att ortot inte visar att bristerna åtgärdats sedan dess), <em>åtgärder krävs</em> hindrar <em>fullgod</em>, <em>utmärkt hävd</em> räknas som aktuellt belägg. Uppföljningar där bara GPS-punkter finns kvar (rikkärren 2008) används inte.</p>
 <div class="tabell"><table>
@@ -1265,6 +1267,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.22</strong> (2026-11-13) — avsnitt 5, R7A: vilka TUVA-uppgifter som syns i popupen sedan 2026-11-03 (igenväxning, påverkan och naturtyper läses i objektrapporten), och ÅGP-raderna i sektion 2b som sammanhang utan påverkan på R7-förslaget.</li>
 <li><strong>2.21</strong> (2026-11-05) — avsnitt 5, R7C: sjöar och vattendrag får <em>avvaktar riktlinjer</em>, inget tillstånd bedöms.</li>
 <li><strong>2.20</strong> (2026-11-04) — avsnitt 5, R7C: akvatiska livsmiljötyper enligt HaV:s besked 2026-11-02 och FAQ akvatiska 1.1.</li>
 <li><strong>2.19</strong> (2026-11-03) — avsnitt 5, <em>Till NNK:s tillståndsfält</em>: <code>condition_date</code> är underlagets datum enligt Handledning NNK 1.1, inte registreringsdagen. Handledningens beskrivning av metod 2 och 3 och att tillstånd bara anges för livsmiljötyper inlagt bland de öppna frågorna.</li>
