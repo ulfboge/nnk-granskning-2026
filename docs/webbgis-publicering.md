@@ -245,6 +245,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 | Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd. |
 | Kommentar - Metod | Kompletterande info om vald metod, t.ex. varför fältinventering behövs. |
 | Granskat? | Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt. |
+| Kommentar (grupp 4) | Skrivskyddat: NV:s egen kommentar till ytan i NNK, visas som stöd. Ingen beskrivning behövs, men ange gärna "Skrivskyddad – NV:s kommentar i NNK." |
 
 Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
 
