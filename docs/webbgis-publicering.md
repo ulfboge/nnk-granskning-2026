@@ -242,7 +242,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 | Kommentar (grupp 2) | Förs över till NNK, högst 255 tecken. Skriv vad bedömningen bygger på, med år, t.ex. "Bete varje år 2015–2025 enligt skiften, IR-orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa. |
 | Vad ska kontrolleras 1–3 | Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan. |
 | Kommentar - kontrollbehov | Motivera varför just detta bör kontrolleras. |
-| Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd. |
+| Metod för kontroll | Vilken metod som bör användas 2027. Fältbesök när det räcker att titta (hävd, igenväxning, påverkan, typ, gräns). Fältinventering när arter eller strukturer måste räknas eller mätas enligt NV:s metod för basinventering/uppföljning. Inte NNK:s Metod tillstånd. |
 | Kommentar - Metod | Kompletterande info om vald metod, t.ex. varför fältinventering behövs. |
 | Granskat? | Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt. |
 | NNK-kommentar | Skrivskyddad – NV:s kommentar i NNK. |
