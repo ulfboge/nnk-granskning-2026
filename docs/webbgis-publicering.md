@@ -208,7 +208,7 @@ Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Fo
 | **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan) | Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
 | **2. Tillstånd** | Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar. Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
 | **3. Kontroll och metod** | Vad ska kontrolleras 1–3 · Kommentar - kontrollbehov · Metod för kontroll · Kommentar - Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
-| **4. Granskning** | Förändringsorsak, förslag · Granskat? · Kommentar | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
+| **4. Granskning** | Förändringsorsak, förslag · Granskat? · NNK-kommentar | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
 
 Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klistras in ordagrant som oformaterad text, Ctrl+Shift+V; elementet tar högst 1000 tecken och den här är 623; förkortad 2026-11-16):
 
@@ -245,7 +245,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 | Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd. |
 | Kommentar - Metod | Kompletterande info om vald metod, t.ex. varför fältinventering behövs. |
 | Granskat? | Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt. |
-| Kommentar (grupp 4) | Skrivskyddat: NV:s egen kommentar till ytan i NNK, visas som stöd. Ingen beskrivning behövs, men ange gärna "Skrivskyddad – NV:s kommentar i NNK." |
+| NNK-kommentar | Skrivskyddad – NV:s kommentar i NNK. |
 
 Lämna NV:s ursprungsfält (naturtyp, naturtypsstatus, kommentar …) UTANFÖR formuläret eller som *read-only* — det är bara mallens granskningsfält som ska ändras (lathunden: "Vad kan vi ändra på?"). Villkorlig synlighet är möjlig (Arcade-uttryck, t.ex. procentfälten bara när `tillstand == 3`) men inte nödvändig i första versionen.
 

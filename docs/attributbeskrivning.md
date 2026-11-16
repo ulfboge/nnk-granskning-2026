@@ -118,7 +118,7 @@ Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = stan
 | 2 | Nej |
 | 3 | Påbörjat |
 
-**Kommentar** *(skrivskyddad)*  
+**NNK-kommentar** *(skrivskyddad)*  
 NV:s egen kommentar till ytan i NNK, samma som källfältet i Del B. Visas i grupp 4 som stöd och kan inte ändras. Granskarens egna kommentarer skrivs i grupp 1 och 2.
 
 ---
