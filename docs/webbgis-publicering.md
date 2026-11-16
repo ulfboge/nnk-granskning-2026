@@ -206,7 +206,7 @@ Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Fo
 | Grupp | Fält (i ordning) | Gruppbeskrivning |
 | --- | --- | --- |
 | **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan) | Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark. |
-| **2. Tillstånd** | Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar (R7: *Ej omprövad*). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
+| **2. Tillstånd** | Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar. Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
 | **3. Kontroll och metod** | Vad ska kontrolleras 1–3 · Kommentar - kontrollbehov · Metod för kontroll · Kommentar - Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
 | **4. Granskning** | Förändringsorsak, förslag · Granskat? · Kommentar | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
 
@@ -224,7 +224,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 >
 > *(Gällde 2026-09-22–2026-11-16.)* Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.
 
-**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Rutan Beskrivning tar **högst 255 tecken** (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. *2026-10-20:* Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.
+**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Formulärtexterna hänvisar inte till metodikens regelnummer (R2, R7 …), eftersom förvaltare och andra granskare inte behöver känna till dem (2026-11-16). Rutan Beskrivning tar **högst 255 tecken** (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. *2026-10-20:* Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.
 
 | Fält | Beskrivning |
 | --- | --- |
@@ -239,7 +239,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 | Gott tillstånd (%) | Fyll bara i vid Blandat. Gott eller Icke gott blir 100 % vid överföringen till NNK. Summan av de tre procentfälten ska bli 100. |
 | Ej gott tillstånd (%) | Fyll bara i vid Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100. |
 | Osäkert tillstånd (%) | Fyll bara i vid Blandat. Motsvarar NNK:s Okänt tillstånd (%), som NNK räknar fram som resten. |
-| Kommentar (grupp 2) | Förs till NNK:s kommentar om tillståndsbedömningen, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa. |
+| Kommentar (grupp 2) | Förs över till NNK, högst 255 tecken. Skriv vad bedömningen bygger på, med år, t.ex. "Bete varje år 2015–2025 enligt skiften, IR-orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa. |
 | Vad ska kontrolleras 1–3 | Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan. |
 | Kommentar - kontrollbehov | Motivera varför just detta bör kontrolleras. |
 | Metod för kontroll | Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd. |
