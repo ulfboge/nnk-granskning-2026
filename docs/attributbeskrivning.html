@@ -126,8 +126,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <li><a href="#del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</a><ul>
 <li><a href="#grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</a></li>
 <li><a href="#grupp-2-tillstand">Grupp 2 · Tillstånd</a></li>
-<li><a href="#grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</a></li>
-<li><a href="#grupp-4-klart">Grupp 4 · Klart?</a></li>
+<li><a href="#grupp-3-kontroll-och-metod">Grupp 3 · Kontroll och metod</a></li>
+<li><a href="#grupp-4-granskning">Grupp 4 · Granskning</a></li>
 </ul>
 </li>
 <li><a href="#del-b-nvs-ursprungsfalt-skrivskyddade-kallfalt">Del B · NV:s ursprungsfält (skrivskyddade källfält)</a><ul>
@@ -166,7 +166,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
 <p><em>Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</em></p>
-<p><strong>Version:</strong> 1.19 · 2026-11-16 (Grupp 1: formulärets fältnamn, t.ex. <em>Behöver livsmiljötypen justeras?</em> och <em>Förslag livsmiljötyp 1</em>). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 <em>Livsmiljötyp</em> i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för <code>condition_date</code> enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, <code>*_5ar</code>; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: <em>Kommentar – Tillstånd</em> används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt <em>LIFE-projektens åtgärder</em>, fyra fält <code>life_*</code>). 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
+<p><strong>Version:</strong> 1.19 · 2026-11-16 (Del A: formulärets fält- och gruppnamn i alla fyra grupper, t.ex. <em>Behöver livsmiljötypen justeras?</em>, <em>Kommentar - kontrollbehov</em>, grupp 4 <em>Granskning</em>). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 <em>Livsmiljötyp</em> i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för <code>condition_date</code> enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, <code>*_5ar</code>; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: <em>Kommentar – Tillstånd</em> används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt <em>LIFE-projektens åtgärder</em>, fyra fält <code>life_*</code>). 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
 <strong>Källor:</strong> blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK version 1.1 (2026-11-02)</p>
 <p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till. Del D är NNK:s nya tillståndsfält, som granskningen till sist förs över till.</p>
@@ -242,7 +242,7 @@ Tredjehandsförslag, om osäker mellan flera typer.</p>
 <p><strong>Kommentar</strong><br />
 Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</p>
 <h3 id="grupp-2-tillstand">Grupp 2 · Tillstånd</h3>
-<p><strong>Tillstånd, behov av justering</strong><br />
+<p><strong>Tillstånd</strong><br />
 Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelar i procentfälten (ska bli 100 %). Lämna tomt om naturtypsstatusen ska stå kvar (R7: <em>Ej omprövad</em>). Hur värdena förs över till NNK står i Del D.</p>
 <div class="tabell"><table>
 <thead>
@@ -274,12 +274,12 @@ Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliv
 Fyll bara i vid 4 Blandat. Gott eller Icke gott blir 100 % vid överföringen till NNK (Del D). Summan av de tre procentfälten ska bli 100.</p>
 <p><strong>Ej gott tillstånd (%)</strong><br />
 Fyll bara i vid 4 Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100.</p>
-<p><strong>Osäker (%)</strong><br />
+<p><strong>Osäkert tillstånd (%)</strong><br />
 Fyll bara i vid 4 Blandat. Motsvarar NNK:s <em>Okänt tillstånd (%)</em>, som NNK räknar fram som resten (100 − gott − inte gott).</p>
-<p><strong>Kommentar – Tillstånd</strong><br />
+<p><strong>Kommentar</strong> <em>(grupp 2, fältet kommentar_tillstand)</em><br />
 Förs till NNK:s <code>condition_comment</code>, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa.</p>
 <p>Hit hör också förklaringar till varför ett underlag ser sämre ut än tillståndet är, när du har sett orsaken. Exempel: en strandäng eller fuktäng har varit översvämmad vissa år, så skiftena saknar hävd just de åren – återkommande översvämning hör till typens funktion och är inte upphörd hävd. Skriv kort: <em>"R7A gott – luckor i skiften 2019–2020 = översvämning (orto 2020), hävd obruten i övrigt 2015–2025"</em>. Är orsaken osäker hör den i stället till <em>Vad ska kontrolleras</em> (3 Hävd eller 4 Funktioner) med en motivering. Gäller den typen eller utbredningen: <em>Kommentar – livsmiljötyp och utbredning</em>.</p>
-<h3 id="grupp-3-vad-ska-kontrolleras-och-hur">Grupp 3 · Vad ska kontrolleras och hur</h3>
+<h3 id="grupp-3-kontroll-och-metod">Grupp 3 · Kontroll och metod</h3>
 <p><strong>Vad ska kontrolleras 1–3</strong><br />
 Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi, annan negativ påverkan eller livsmiljötypen själv.</p>
 <div class="tabell"><table>
@@ -320,7 +320,7 @@ Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hä
 </tr>
 </tbody>
 </table></div>
-<p><strong>Kommentar – Vad ska kontrolleras</strong><br />
+<p><strong>Kommentar - kontrollbehov</strong><br />
 Motivera varför just detta bör kontrolleras.</p>
 <p><strong>Metod för kontroll</strong><br />
 Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Fältet förs inte till NNK:s <em>Metod tillstånd</em>; den sätts vid överföringen (Del D).</p>
@@ -350,12 +350,12 @@ Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventer
 </tr>
 </tbody>
 </table></div>
-<p><strong>Kommentar – Metod</strong><br />
+<p><strong>Kommentar - Metod</strong><br />
 Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</p>
-<h3 id="grupp-4-klart">Grupp 4 · Klart?</h3>
+<h3 id="grupp-4-granskning">Grupp 4 · Granskning</h3>
 <p><strong>Förändringsorsak, förslag</strong> <em>(tillagd 2026-09-22, flyttad från grupp 1 till grupp 4 2026-11-16)</em><br />
 Granskarens eget förslag till varför bedömningen ändras. Gäller hela ytan och fylls i sist, när grupp 1 och 2 är klara: kod 1 Rättning av felaktig kartering när livsmiljötypen eller gränsen var fel (grupp 1), annars utifrån tillståndet i grupp 2. Fylls i när granskningen ger ett tillstånd (Gott, Icke gott eller Blandat), även när en befintlig naturtypsstatus bekräftas med nyare underlag. Lämnas tomt när tillståndet blir Okänt eller naturtypsstatusen står kvar, eftersom inget då kompletteras. Skild från det skrivskyddade käll­fältet Förändringsorsak i Del B, som visar NV:s NUVARANDE registrerade värde. Samma tre koder, samma domän (NV_NNK_Förändringsorsak) — se Del B nedan för kodlistan. Nästan alltid kod 3 Komplettering (R2-regeln, se <code>metodik.html</code> avsnitt 5): kunskapen fanns, den var bara inte registrerad. Kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken.</p>
-<p><strong>Granskat</strong><br />
+<p><strong>Granskat?</strong><br />
 Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</p>
 <div class="tabell"><table>
 <thead>

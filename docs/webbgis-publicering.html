@@ -100,7 +100,7 @@ tr:last-child td{border-bottom:0}
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
 <h1 id="publicera-nnk-granskningslagret-som-webbgis-lstd-nnk-granskning">Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning</h1>
-<p><strong>Version 2.4 · 2026-11-16 (Del 5: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4; Info-texten i grupp 1 förkortad till under 1000 tecken; grupp 1 med formulärets fältnamn och ordning: justering, utbredning, förslag 1–3, kommentar) · 2.3 · 2026-11-11 (Del 6 steg 5: filtret Dölj icke-Natura med hela kodlistan, gruppkoderna tillagda) · 2.2 · 2026-11-04 (Del 5: när Förändringsorsak, förslag fylls i) · 2.1 · 2026-10-22 (Del 8: ingen Overwrite på granskningstjänsten, underlaget synkas med <code>07_synka_underlag.py</code>) · 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRF, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
+<p><strong>Version 2.4 · 2026-11-16 (Del 5: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4; Info-texten i grupp 1 förkortad till under 1000 tecken; alla grupper med formulärets fältnamn och ordning; beskrivningar under 255 tecken) · 2.3 · 2026-11-11 (Del 6 steg 5: filtret Dölj icke-Natura med hela kodlistan, gruppkoderna tillagda) · 2.2 · 2026-11-04 (Del 5: när Förändringsorsak, förslag fylls i) · 2.1 · 2026-10-22 (Del 8: ingen Overwrite på granskningstjänsten, underlaget synkas med <code>07_synka_underlag.py</code>) · 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRF, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -404,17 +404,17 @@ return rad1 + TextFormatting.NewLine + namn;
 </tr>
 <tr>
 <td><strong>2. Tillstånd</strong></td>
-<td>Tillstånd, behov av justering · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäker (%) · Kommentar – Tillstånd</td>
+<td>Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar</td>
 <td>Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar (R7: <em>Ej omprövad</em>). Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte.</td>
 </tr>
 <tr>
-<td><strong>3. Vad ska kontrolleras och hur</strong></td>
-<td>Vad ska kontrolleras 1–3 · Kommentar – Vad ska kontrolleras · Metod för kontroll · Kommentar – Metod</td>
+<td><strong>3. Kontroll och metod</strong></td>
+<td>Vad ska kontrolleras 1–3 · Kommentar - kontrollbehov · Metod för kontroll · Kommentar - Metod</td>
 <td>Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd.</td>
 </tr>
 <tr>
-<td><strong>4. Klart?</strong></td>
-<td>Förändringsorsak, förslag · Granskat</td>
+<td><strong>4. Granskning</strong></td>
+<td>Förändringsorsak, förslag · Granskat? · Kommentar</td>
 <td>Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt.</td>
 </tr>
 </tbody>
@@ -428,7 +428,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <p><strong>Uppdatering 2026-09-22: nytt fält <code>forandringsorsak_forslag</code> ("Förändringsorsak, förslag") i grupp 1.</strong> Beslutat för att fånga R2-regeln (<code>metodik.html</code> avsnitt 5) redan vid skrivbordsgranskningen, i stället för att avgöra förändringsorsak-koden först när uppgiften väl förs in i NNK Ajourhålla. Separat, redigerbart fält — inte samma som det skrivskyddade käll­fältet <code>forandringsorsak</code> (NV:s nuvarande värde, syns i popupgruppen <em>Naturtyp (NNK-data)</em>). Kräver att hela gdb-kedjan körs om (<code>koppla_nnk_skyddskategori.py</code> → <code>bygg_nnk_lyrx.py</code> → <code>04_forbered_gdb_for_publicering.py</code> → Share/Overwrite Web Layer) innan fältet finns i tjänsten — se <code>docs/popup-arcade-uttryck.html</code> för den uppdaterade Granskning 1-popupen och smart-formulärets nya fältordning.</p>
 <p><em>(Gällde 2026-09-22–2026-11-16.)</em> Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.</p>
 </blockquote>
-<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. <em>2026-10-20:</em> Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.</p>
+<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Rutan Beskrivning tar <strong>högst 255 tecken</strong> (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. <em>2026-10-20:</em> Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -439,7 +439,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <tbody>
 <tr>
 <td>Behöver livsmiljötypen justeras?</td>
-<td>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer: tomt fält och Granskat = Ja räknas som 1 Inget behov av justering (beslut 2026-10-20).</td>
+<td>Ändra bara vid fel klassificering eller faktisk förändring – inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott). Lämna tomt om typen stämmer: tomt och Granskat = Ja räknas som 1 Inget behov av justering.</td>
 </tr>
 <tr>
 <td>Behöver utbredningen justeras?</td>
@@ -459,14 +459,14 @@ return rad1 + TextFormatting.NewLine + namn;
 </tr>
 <tr>
 <td>Förändringsorsak, förslag</td>
-<td>Gäller hela ytan – fyll i sist, när grupp 1 och 2 är klara. 1 Rättning av felaktig kartering om livsmiljötypen eller gränsen var fel. Annars: fyll i när granskningen ger ett tillstånd (Gott, Icke gott eller Blandat), även när en befintlig naturtypsstatus bekräftas med nyare underlag. Lämna tomt när tillståndet blir Okänt eller naturtypsstatusen står kvar. Nästan alltid kod 3 Komplettering — kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken (R2-regeln).</td>
+<td>Gäller hela ytan, fyll i sist. 1 Rättning om typen eller gränsen var fel. Annars 3 Komplettering när du angett Gott, Icke gott eller Blandat (vanligast). 2 bara vid en verklig, daterad förändring på marken. Tomt vid Okänt.</td>
 </tr>
 <tr>
 <td>Kommentar (grupp 1)</td>
 <td>Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</td>
 </tr>
 <tr>
-<td>Tillstånd, behov av justering</td>
+<td>Tillstånd</td>
 <td>Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelarna. Lämna tomt om naturtypsstatusen ska stå kvar.</td>
 </tr>
 <tr>
@@ -478,11 +478,11 @@ return rad1 + TextFormatting.NewLine + namn;
 <td>Fyll bara i vid Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100.</td>
 </tr>
 <tr>
-<td>Osäker (%)</td>
+<td>Osäkert tillstånd (%)</td>
 <td>Fyll bara i vid Blandat. Motsvarar NNK:s Okänt tillstånd (%), som NNK räknar fram som resten.</td>
 </tr>
 <tr>
-<td>Kommentar – Tillstånd</td>
+<td>Kommentar (grupp 2)</td>
 <td>Förs till NNK:s kommentar om tillståndsbedömningen, högst 255 tecken. Skriv delregel, utfall och underlag med år, t.ex. "R7A fullgod – skiften Ja 2015–2025, orto 2023, TUVA 2021". Vid osäkerhet: skriv vad som saknas i stället för att gissa.</td>
 </tr>
 <tr>
@@ -490,7 +490,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <td>Vad som bör kontrolleras/inventeras inför 2027: typiska arter, strukturer, hävd, funktioner, morfologi eller annan negativ påverkan.</td>
 </tr>
 <tr>
-<td>Kommentar – Vad ska kontrolleras</td>
+<td>Kommentar - kontrollbehov</td>
 <td>Motivera varför just detta bör kontrolleras.</td>
 </tr>
 <tr>
@@ -498,11 +498,11 @@ return rad1 + TextFormatting.NewLine + namn;
 <td>Framåtsyftande — vilken metod BÖR användas 2027 (fältbesök, fältinventering, skrivbord, annan), inte hur du gjort hittills. Är inte NNK:s Metod tillstånd.</td>
 </tr>
 <tr>
-<td>Kommentar – Metod</td>
+<td>Kommentar - Metod</td>
 <td>Kompletterande info om vald metod, t.ex. varför fältinventering behövs.</td>
 </tr>
 <tr>
-<td>Granskat</td>
+<td>Granskat?</td>
 <td>Ja = färdiggranskad, fälten ovan ifyllda. Påbörjat = delresultat. Nej = standardläge för ogranskade objekt.</td>
 </tr>
 </tbody>
