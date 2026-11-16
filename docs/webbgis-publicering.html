@@ -100,7 +100,7 @@ tr:last-child td{border-bottom:0}
   <button id="themeBtn" type="button">Mörkt</button>
 </div>
 <h1 id="publicera-nnk-granskningslagret-som-webbgis-lstd-nnk-granskning">Publicera NNK-granskningslagret som WebbGIS — LstD NNK Granskning</h1>
-<p><strong>Version 2.4 · 2026-11-16 (Del 5: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4; Info-texten i grupp 1 förkortad till under 1000 tecken) · 2.3 · 2026-11-11 (Del 6 steg 5: filtret Dölj icke-Natura med hela kodlistan, gruppkoderna tillagda) · 2.2 · 2026-11-04 (Del 5: när Förändringsorsak, förslag fylls i) · 2.1 · 2026-10-22 (Del 8: ingen Overwrite på granskningstjänsten, underlaget synkas med <code>07_synka_underlag.py</code>) · 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRF, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
+<p><strong>Version 2.4 · 2026-11-16 (Del 5: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4; Info-texten i grupp 1 förkortad till under 1000 tecken; grupp 1 med formulärets fältnamn och ordning: justering, utbredning, förslag 1–3, kommentar) · 2.3 · 2026-11-11 (Del 6 steg 5: filtret Dölj icke-Natura med hela kodlistan, gruppkoderna tillagda) · 2.2 · 2026-11-04 (Del 5: när Förändringsorsak, förslag fylls i) · 2.1 · 2026-10-22 (Del 8: ingen Overwrite på granskningstjänsten, underlaget synkas med <code>07_synka_underlag.py</code>) · 2.0 · 2026-10-19 (Del 6: facit uppdaterat efter TOC-exporten 2026-10-19 – trädhöjd, historiska skiften och LM Ekonomiska kartan borttagna; formulärets fältbeskrivningar uppdaterade) · 1.9 · 2026-10-08 (Del 6 steg 5: filter för Skogsstyrelsens register och R7-förslaget) · 1.8 · 2026-10-08 (Del 6 steg 4: bildsömmar för IR-ortot, så att fotodatum syns) · 1.7 · 2026-10-08 (Del 6 steg 4: ny grupp Vatten (VISS) med ekologisk status för R7C) · 1.6 · 2026-10-02 (Del 6 steg 5: filterlistan synkad med appen; TUVA och Floraväkteri utan ELLER) · 1.5 · 2026-10-01 (Del 6 steg 5: filter för Floraväkteriet) · 1.4 · 2026-10-01 (Del 6 steg 5: filter för SkötselDOS och uppföljning) · 1.3 · 2026-09-30 (Del 6: tillägg för virkesvolym/medeldiameter, terrängskuggning och diken; trädhöjdslagren förklarade) · 1.2 · 2026-09-30 (Del 6 steg 5: filter för laserdata och diken) · 1.1 · 2026-09-18 · Handläggare NRF, Naturskyddsenheten</strong> · Manual för uppgifterna <strong>A2.7</strong> (publicera granskningslagret i portalen) och <strong>A2.8</strong> (skapa webbGIS). Skriven för att kunna följas på Länsstyrelsens dator utan annat stöd än detta dokument.</p>
 <blockquote>
 <p><strong>Målbild.</strong> Ett internt WebbGIS i GK Standardmall — motsvarigheten till Stockholms <em>KartLitS</em>-webbGIS med lagret <code>LstAB NNK granskning</code> som NV:s lathund (2026-07-10) använder som exempel — där granskaren infoklickar på en NNK-polygon, klickar <em>Redigera</em>, fyller i rullistorna <em>Livsmiljötyp/Utbredning/Tillstånd, behov av justering</em>, <em>Vad ska kontrolleras</em>, <em>Metod för kontroll</em>, <em>Granskat</em> och kommentarer, och sparar med <em>Uppdatera</em>. Runt omkring: NV:s naturtypskarta, Natura 2000-gränser med länk till bevarandeplan, ängs- och betesmarksinventeringen (TUVA), ortofoto (färg/IR, årsvis), ekonomiska kartan och jordbruksblock.</p>
 </blockquote>
@@ -399,7 +399,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <tbody>
 <tr>
 <td><strong>1. Avvikelse och korrigeringsförslag</strong> (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan)</td>
-<td>Livsmiljötyp, behov av justering · Utbredning, behov av justering · Livsmiljötyp 1–3 · Kommentar – livsmiljötyp och utbredning</td>
+<td>Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar</td>
 <td>Fyll i bara vid fel klassificering — förslag på rätt typ (max 3, prioritetsordning). OBS: igenväxning pga utebliven skötsel ändrar INTE livsmiljötypen (sätt i stället Tillstånd = Icke gott). Inte samma sak som utvecklingsmark.</td>
 </tr>
 <tr>
@@ -438,23 +438,23 @@ return rad1 + TextFormatting.NewLine + namn;
 </thead>
 <tbody>
 <tr>
-<td>Livsmiljötyp, behov av justering</td>
+<td>Behöver livsmiljötypen justeras?</td>
 <td>Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer: tomt fält och Granskat = Ja räknas som 1 Inget behov av justering (beslut 2026-10-20).</td>
 </tr>
 <tr>
-<td>Utbredning, behov av justering</td>
+<td>Behöver utbredningen justeras?</td>
 <td>Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.</td>
 </tr>
 <tr>
-<td>Livsmiljötyp 1</td>
+<td>Förslag livsmiljötyp 1</td>
 <td>Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering.</td>
 </tr>
 <tr>
-<td>Livsmiljötyp 2</td>
+<td>Förslag livsmiljötyp 2</td>
 <td>Andrahandsförslag, om osäker mellan flera typer.</td>
 </tr>
 <tr>
-<td>Livsmiljötyp 3</td>
+<td>Förslag livsmiljötyp 3</td>
 <td>Tredjehandsförslag, om osäker mellan flera typer.</td>
 </tr>
 <tr>
@@ -462,7 +462,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <td>Gäller hela ytan – fyll i sist, när grupp 1 och 2 är klara. 1 Rättning av felaktig kartering om livsmiljötypen eller gränsen var fel. Annars: fyll i när granskningen ger ett tillstånd (Gott, Icke gott eller Blandat), även när en befintlig naturtypsstatus bekräftas med nyare underlag. Lämna tomt när tillståndet blir Okänt eller naturtypsstatusen står kvar. Nästan alltid kod 3 Komplettering — kod 2 Faktisk förändring bara vid en verklig, daterad förändring på marken (R2-regeln).</td>
 </tr>
 <tr>
-<td>Kommentar – livsmiljötyp och utbredning</td>
+<td>Kommentar (grupp 1)</td>
 <td>Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.</td>
 </tr>
 <tr>

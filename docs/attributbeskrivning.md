@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 *Livsmiljötyp* i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.19 · 2026-11-16 (Grupp 1: formulärets fältnamn, t.ex. *Behöver livsmiljötypen justeras?* och *Förslag livsmiljötyp 1*). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 *Livsmiljötyp* i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK version 1.1 (2026-11-02)
 
@@ -14,7 +14,7 @@ Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:e
 
 ### Grupp 1 · Livsmiljötyp och utbredning
 
-**Livsmiljötyp, behov av justering**  
+**Behöver livsmiljötypen justeras?** *(i NNK: Livsmiljötyp, behov av justering)*  
 Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer. Ett tomt fält räknas som *1 Inget behov av justering* när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.
 
 | Kod | Klartext |
@@ -25,7 +25,7 @@ Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:e
 | 4 | Osäker – kan ej bedöma om livsmiljötyp eller inte |
 | 5 | Obestämd – kan ej bedöma vilken livsmiljötyp |
 
-**Utbredning, behov av justering**  
+**Behöver utbredningen justeras?** *(i NNK: Utbredning, behov av justering)*  
 Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet.
 
 | Kod | Klartext |
@@ -35,16 +35,16 @@ Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:e
 | 3 | Yttergränser, ändrad utbredning |
 | 4 | Behov av att dela upp ytan, flera livsmiljötyper |
 
-**Livsmiljötyp 1**  
+**Förslag livsmiljötyp 1**  
 Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. Koderna är samma kodutrymme som NV:s naturtypskoder — se tabellen längre ned.
 
-**Livsmiljötyp 2**  
+**Förslag livsmiljötyp 2**  
 Andrahandsförslag, om osäker mellan flera typer.
 
-**Livsmiljötyp 3**  
+**Förslag livsmiljötyp 3**  
 Tredjehandsförslag, om osäker mellan flera typer.
 
-**Kommentar – livsmiljötyp och utbredning**  
+**Kommentar**  
 Grund för bedömningen (skötselplan, bevarandeplan, fältbesök …) och när kunskapen är ifrån.
 
 ### Grupp 2 · Tillstånd
