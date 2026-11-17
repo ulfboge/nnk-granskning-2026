@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.22 · 2026-11-13** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.23 · 2026-11-17** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7A: vilka TUVA-uppgifter som syns i popupen, och ÅGP-raderna som sammanhang (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -125,7 +125,7 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 | "Det borde någon titta närmare på" | Vad ska kontrolleras | `kontroll1–3`, `kommentar_kontroll` | `KARTERINGS` = 5 + `KOMMENTAR` |
 | Fri kommentar | Kommentar | `kommentar_tillstand` / `kommentar_livsmil_utbred` | `KOMMENTAR` |
 
-`forandringsorsak_forslag` är granskarens eget förslag och ligger i formulärgruppen *1. Avvikelse och korrigeringsförslag*. Det är skilt från det skrivskyddade källfältet `forandringsorsak`, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.
+`forandringsorsak_forslag` är granskarens eget förslag och ligger i formulärgruppen *4. Granskning* (flyttad från grupp 1 2026-11-16). Det fylls i sist: 1 Rättning om typen eller gränsen rättats i grupp 1 (även om tillståndet är Okänt), annars utifrån tillståndet i grupp 2, och tomt vid Okänt när inget rättats. Det är skilt från det skrivskyddade källfältet `forandringsorsak`, som visar NV:s nuvarande registrerade värde. Samma tre koder: 1 Rättning, 2 Faktisk förändring, 3 Komplettering. Välj 3 Komplettering i nästan alla fall; 2 bara vid en verklig, daterad förändring på marken.
 
 **Skrivskyddade stödfält.** Granskningslagret har också några fält som länets egen pipeline fyller i (`02_koppla_nnk_skyddskategori.py`). Du ändrar dem aldrig, men de är bra att ha framför sig i samtalet:
 
