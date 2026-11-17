@@ -254,9 +254,14 @@ if (!IsEmpty($feature.bevarandeplan_ar)) {
     // 2026-11-17: bevarandeplan_ar gäller hela siten. bevarandeplan_lmt (Ja/Nej,
     // satt av 02_koppla) säger om planen tar upp ytans livsmiljötyp. HasKey-skydd
     // så att uttrycket fungerar innan fältet har lagts till i tjänsten.
+    // Hakparenteser i stället för $feature.falt: editorn godtar inte fält som
+    // saknas i kartans lagerschema, inte ens bakom HasKey.
     var bpText = Text($feature.bevarandeplan_ar);
-    if (HasKey($feature, "bevarandeplan_lmt") && $feature.bevarandeplan_lmt == "Nej") {
-        var bpKod = IIf(IsEmpty($feature.naturtyp), "livsmiljötypen", Left(Trim(Text($feature.naturtyp)), 4));
+    if (HasKey($feature, "bevarandeplan_lmt") && $feature["bevarandeplan_lmt"] == "Nej") {
+        var bpKod = "livsmiljötypen";
+        if (!IsEmpty($feature.naturtyp_kod_text)) {
+            bpKod = Left(Trim($feature.naturtyp_kod_text), 4);
+        }
         bpText += " (" + bpKod + " ingår inte i planen)";
     }
     attrs["bevarandeplan_ar_varde"] = bpText;
