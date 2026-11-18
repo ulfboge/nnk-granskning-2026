@@ -945,7 +945,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Samma vecka som samtalet. Följ stegen i E3.1 för WebbGIS-redigeringen.
 2. Sätt `faltinventerare` = förvaltarens namn, inte ditt.
-3. Sätt `habitat_period_lastdata_end` = det årtal förvaltaren angav.
+3. Sätt `habitat_period_lastdata_start` = det årtal förvaltaren angav (ÅÅÅÅ-01-01 om bara året är känt) och `habitat_period_lastdata_end` = datum för din bedömning (Handledningen bilaga 1: slut = senaste bedömningen, start = gången före).
 4. Sätt `forandringsorsak_forslag` (Förändringsorsak, förslag) = 3 Komplettering i nästan alla fall. 2 Faktisk förändring bara vid en verklig, daterad förändring. Samma val förs sedan in i NNK i H5.2 steg 4.
 5. Skriv `Kommentar_metod` i klartext: *"Uppgift från NN, förvaltare, samtal 2026-09-24. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."*
 6. Fältmappningen finns i blankettens flik *Fältmappning* — den visar vilken blankettkolumn som hamnar i vilket fält.

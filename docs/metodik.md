@@ -119,7 +119,7 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 | "Jag vet inte" | Tillstånd = Okänt | `tillstand` = *Okänt (kan ej bedöma)* | `condition_good` = `condition_notgood` = 0 (okänt 100 %), `condition_method` = 4 Otillräcklig kunskap |
 | "Gränsen stämmer inte" | Utbredning, behov av justering | `utbredning` | Geometri — **endast om ≥ minsta karteringsenhet** |
 | **På vilken grund** hen vet det | Grund för bedömning | `kommentar_tillstand` | `condition_comment` (max 255 tecken), längre text i `KOMMENTAR`. `condition_method` sätts vid överföringen (se *Till NNK:s tillståndsfält*). `metod` och `Kommentar_metod` gäller kontrollen 2027 och förs inte dit |
-| **När** hen senast var där | År för senaste bedömning | `habitat_period_lastdata_end` | Slutdatum senaste inventering. Datum för själva tillståndsbedömningen i `condition_date` |
+| **När** hen senast var där | År för föregående bedömning | `habitat_period_lastdata_start` | Startdatum senaste inventering (ÅÅÅÅ-01-01 om bara året är känt). Slutdatum (`habitat_period_lastdata_end`) = datum för din bedömning, se avsnitt 6. Datum för själva tillståndsbedömningen i `condition_date` |
 | **Vem** som bedömt | Bedömare | `faltinventerare` | `KOMMENTAR` (namn + roll) |
 | **Varför** uppgiften ändras — nästan alltid att kunskapen fanns men aldrig registrerats | — (sätts av dig, se R2 i blanketten) | `forandringsorsak_forslag` (Förändringsorsak, förslag) | `FÖRÄNDRINGSORSAK` |
 | "Det borde någon titta närmare på" | Vad ska kontrolleras | `kontroll1–3`, `kommentar_kontroll` | `KARTERINGS` = 5 + `KOMMENTAR` |
@@ -498,6 +498,13 @@ Två nya fält i NNK, *Startdatum/Slutdatum senaste inventering av naturtypen*, 
 > "Slut representerar senast det gjordes en bedömning och start gången före det. Har det skett en faktisk förändring ska datumen representera den tidsperiod inom vilken förändringen skedde. Eftersom det är nya fält är dessa tomma idag, **uppdatera framför allt slutdatum när ni granskar**."
 > — Handledningen, bilaga 1
 
+**I praktiken (rättat 2026-11-18):**
+
+- **Slutdatum** = datum för din bedömning av typ och utbredning, normalt den dag du granskar ytan. Vid en faktisk förändring: slutet på perioden då den skedde.
+- **Startdatum** = föregående bedömning, till exempel förvaltarens senaste besök, TUVA, en uppföljning eller basinventeringen. Popupens *Senaste kända inventering (förslag)* är ett förslag till detta fält.
+- **Bara året känt:** datumfälten tar inte bara år. Använd ÅÅÅÅ-01-01 för startdatum och ÅÅÅÅ-12-31 för ett slutdatum, så att perioden täcker hela året, och skriv "bara året känt" i kommentaren. Det är länets egen konvention, inte NV:s.
+- **Skrivbordsgranskning** syns i NNK genom karteringsstatus 2 *Granskad vid skrivbordet* (R3), som sätts vid överföringen. Formuläret har inget eget fält för det. Börja kommentaren med delregeln, t.ex. "R7A:", så att grunden syns även i NNK.
+
 Det här är den enda mekanism som gör FAQ fråga 4:s krav på *"hur aktuella dessa två bedömningar är"* besvarbart. Fråga alltid förvaltaren om årtal, även när svaret blir "någon gång runt 2018". Ett osäkert årtal är oändligt mycket bättre än inget.
 
 ---
@@ -524,7 +531,7 @@ Det här är den enda mekanism som gör FAQ fråga 4:s krav på *"hur aktuella d
 
 1. För in i granskningslagret samma vecka — minnesbilder av andras minnesbilder blir snabbt oanvändbara
 2. Sätt `faltinventerare` = förvaltarens namn, inte ditt
-3. Sätt `habitat_period_lastdata_end` = året förvaltaren angav
+3. Sätt `habitat_period_lastdata_start` = året förvaltaren angav (ÅÅÅÅ-01-01 om bara året är känt) och `habitat_period_lastdata_end` = datum för din bedömning (avsnitt 6)
 4. Sätt `forandringsorsak_forslag` = 3 Komplettering, om inte naturen faktiskt har förändrats
 5. Skriv `Kommentar_metod` i klartext: *"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."*
 6. Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift

@@ -372,8 +372,9 @@ if (!IsEmpty($feature.habitat_period_lastdata_end)) {
 
 // Senaste kända inventering - FÖRSLAG (tillagt 2026-11-18). Kopplat ur länets
 // uppföljningar, LIFE-provytor och TUVA (bygg_inventering_for_granskning.py).
-// Visas bara när NNK:s Slutdatum är tomt. Granskaren för själv in året i
-// formulärets Slutdatum senaste inventering om det stämmer - fältet förs över till NNK.
+// Visas bara när NNK:s Slutdatum är tomt. Förslaget gäller formulärets STARTDATUM
+// (föregående bedömning, ÅÅÅÅ-01-01 om bara året är känt). Slutdatum = datum för
+// granskarens egen bedömning (Handledningen bilaga 1). Rättat 2026-11-18.
 if (IsEmpty($feature.habitat_period_lastdata_end) &amp;&amp; !IsEmpty($feature.inv_ar)) {
     Push(infos, {
         fieldName: &quot;inv_forslag_varde&quot;,

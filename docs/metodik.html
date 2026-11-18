@@ -395,9 +395,9 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td><strong>När</strong> hen senast var där</td>
-<td>År för senaste bedömning</td>
-<td><code>habitat_period_lastdata_end</code></td>
-<td>Slutdatum senaste inventering. Datum för själva tillståndsbedömningen i <code>condition_date</code></td>
+<td>År för föregående bedömning</td>
+<td><code>habitat_period_lastdata_start</code></td>
+<td>Startdatum senaste inventering (ÅÅÅÅ-01-01 om bara året är känt). Slutdatum (<code>habitat_period_lastdata_end</code>) = datum för din bedömning, se avsnitt 6. Datum för själva tillståndsbedömningen i <code>condition_date</code></td>
 </tr>
 <tr>
 <td><strong>Vem</strong> som bedömt</td>
@@ -1101,6 +1101,13 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <p>"Slut representerar senast det gjordes en bedömning och start gången före det. Har det skett en faktisk förändring ska datumen representera den tidsperiod inom vilken förändringen skedde. Eftersom det är nya fält är dessa tomma idag, <strong>uppdatera framför allt slutdatum när ni granskar</strong>."
 — Handledningen, bilaga 1</p>
 </blockquote>
+<p><strong>I praktiken (rättat 2026-11-18):</strong></p>
+<ul>
+<li><strong>Slutdatum</strong> = datum för din bedömning av typ och utbredning, normalt den dag du granskar ytan. Vid en faktisk förändring: slutet på perioden då den skedde.</li>
+<li><strong>Startdatum</strong> = föregående bedömning, till exempel förvaltarens senaste besök, TUVA, en uppföljning eller basinventeringen. Popupens <em>Senaste kända inventering (förslag)</em> är ett förslag till detta fält.</li>
+<li><strong>Bara året känt:</strong> datumfälten tar inte bara år. Använd ÅÅÅÅ-01-01 för startdatum och ÅÅÅÅ-12-31 för ett slutdatum, så att perioden täcker hela året, och skriv "bara året känt" i kommentaren. Det är länets egen konvention, inte NV:s.</li>
+<li><strong>Skrivbordsgranskning</strong> syns i NNK genom karteringsstatus 2 <em>Granskad vid skrivbordet</em> (R3), som sätts vid överföringen. Formuläret har inget eget fält för det. Börja kommentaren med delregeln, t.ex. "R7A:", så att grunden syns även i NNK.</li>
+</ul>
 <p>Det här är den enda mekanism som gör FAQ fråga 4:s krav på <em>"hur aktuella dessa två bedömningar är"</em> besvarbart. Fråga alltid förvaltaren om årtal, även när svaret blir "någon gång runt 2018". Ett osäkert årtal är oändligt mycket bättre än inget.</p>
 <hr />
 <h2 id="7-sa-lagger-du-upp-samtalet">7. Så lägger du upp samtalet</h2>
@@ -1124,7 +1131,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <ol>
 <li>För in i granskningslagret samma vecka — minnesbilder av andras minnesbilder blir snabbt oanvändbara</li>
 <li>Sätt <code>faltinventerare</code> = förvaltarens namn, inte ditt</li>
-<li>Sätt <code>habitat_period_lastdata_end</code> = året förvaltaren angav</li>
+<li>Sätt <code>habitat_period_lastdata_start</code> = året förvaltaren angav (ÅÅÅÅ-01-01 om bara året är känt) och <code>habitat_period_lastdata_end</code> = datum för din bedömning (avsnitt 6)</li>
 <li>Sätt <code>forandringsorsak_forslag</code> = 3 Komplettering, om inte naturen faktiskt har förändrats</li>
 <li>Skriv <code>Kommentar_metod</code> i klartext: <em>"Uppgift från NN, förvaltare, samtal 2026-09-xx. Bygger på hens fältbesök hösten 2024 samt skötselplan 2019."</em></li>
 <li>Skicka tillbaka en avstämning på det du fört in — förvaltaren ska känna igen sin egen uppgift</li>
