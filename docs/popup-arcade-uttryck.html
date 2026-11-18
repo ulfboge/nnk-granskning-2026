@@ -370,6 +370,27 @@ if (!IsEmpty($feature.habitat_period_lastdata_end)) {
     );
 }
 
+// Senaste kända inventering - FÖRSLAG (tillagt 2026-11-18). Kopplat ur länets
+// uppföljningar, LIFE-provytor och TUVA (bygg_inventering_for_granskning.py).
+// Visas bara när NNK:s Slutdatum är tomt. Granskaren för själv in året i
+// formulärets Slutdatum senaste inventering om det stämmer - fältet förs över till NNK.
+if (IsEmpty($feature.habitat_period_lastdata_end) &amp;&amp; !IsEmpty($feature.inv_ar)) {
+    Push(infos, {
+        fieldName: &quot;inv_forslag_varde&quot;,
+        label: &quot;Senaste kända inventering (förslag)&quot;
+    });
+    attrs[&quot;inv_forslag_varde&quot;] = Text($feature.inv_ar) + &quot; – &quot; + $feature.inv_kalla;
+}
+// Alla kända inventeringar, bara när det finns fler än en (eller bara delområdesrader)
+if (IsEmpty($feature.habitat_period_lastdata_end) &amp;&amp; !IsEmpty($feature.inv_alla) &amp;&amp;
+    (Find(&quot;;&quot;, $feature.inv_alla) &gt; -1 || IsEmpty($feature.inv_ar))) {
+    Push(infos, {
+        fieldName: &quot;inv_alla_varde&quot;,
+        label: &quot;Kända inventeringar&quot;
+    });
+    attrs[&quot;inv_alla_varde&quot;] = $feature.inv_alla;
+}
+
 // Bevarandeplanens fastställelseår - vilket år den senaste bevarandeplanen
 // för N2000-siten fastställdes (bara sitecoder med en bevarandeplan har ett
 // värde här). Tillagt 2026-09-22 på Johans önskemål (&quot;så att det är klart
