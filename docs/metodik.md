@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.23 · 2026-11-17** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7A: vilka TUVA-uppgifter som syns i popupen, och ÅGP-raderna som sammanhang (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.24 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* R7: bevarandeplanen stöder typen bara när planen själv anger vad den bygger på; *Villkorat* utgår (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -406,8 +406,10 @@ Popupen visar året för planens gällande version på raden *Bevarandeplan, fas
 **Typen.** Planen räknas som stöd för att typen är rimlig (förutsättningen ovan) bara om alla villkoren är uppfyllda:
 
 1. Den gällande versionen är fastställd **efter karteringen** av ytan. För BIDOS-ytor är karteringen i regel från 2009–2011.
-2. Planen bygger på **eget underlag** och upprepar inte bara basinventeringen eller regeringsbeslutet. Skriver planen att bedömningsunderlaget är bristfälligt, eller att inventering behövs för att avgöra om typen uppfyller kraven, räknas den inte som stöd för den typen.
-3. Det underlaget är **nyare än karteringen**. Är den senaste inventering planen hänvisar till äldre än karteringen stöder planen inte typen. Är inventeringsåret inte utläst blir stödet *Villkorat*: läs planen.
+2. Planen anger **själv vad bedömningen bygger på**, och det är ett eget underlag, inte bara basinventeringen eller regeringsbeslutet. Skriver planen att bedömningsunderlaget är bristfälligt, eller att inventering behövs för att avgöra om typen uppfyller kraven, räknas den inte som stöd för den typen.
+3. Det underlaget är **nyare än karteringen**. Är den senaste inventering planen hänvisar till äldre än karteringen stöder planen inte typen.
+
+**Anger planen inte vad den bygger på stöder den inte typen** (ändrat 2026-11-20). Nästan inga av länets planer anger det. Typbeskrivningen kommer då sannolikt från basinventeringen, alltså samma källa som BIDOS-ytorna i NNK, och är inget oberoende stöd. Av de 121 typerna med tillstånd i planerna pekar bara Himlingeåsen (besök 2018 och TUVA), Hålvetten-Näsnaren och Stortrön (vattenförvaltningens klassning 2013) ut sitt underlag. Tidigare blev en plan utan utläst inventeringsår *Villkorat*, och R7 räknade typen som styrkt tills planen var läst. Det gällde 678 ytor. Nu blir de *Typ ej styrkt*, och den som läser planen och hittar ett eget, nyare underlag kan ändå godta typen.
 
 Villkor 2 och 3 går bara att pröva i själva dokumentet. Läs därför planens avsnitt om typen, om bevarandeåtgärder och referenslistan (steg 3 i bedömningsguiden).
 
@@ -451,7 +453,7 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 | Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har naturtypsstatus fullgod eller icke fullgod (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
 | Säkerhet | *Hög* (flera samstämmiga underlag), *Medel* (ett underlag, eller ett villkor som ska prövas), *Låg* (underlagen säger emot varandra eller är svaga). |
 | Villkor | Det skriptet inte kan pröva, oftast ortot: "om IR-ortot inte visar igenväxning, plöjning eller gödsling". |
-| Typen styrkt av nyare underlag | *Ja*, *Villkorat* (bara bevarandeplanen stöder typen; villkor 2 i *Bevarandeplanen som underlag* är inte prövat) eller *Nej*. Vid *Nej* visas också vad tillståndet blir om typen bekräftas. *Nej* betyder inte att typen är fel: den behålls (*Livsmiljötyp, behov av justering* = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare *Typen rimlig* (bytt 2026-10-22). |
+| Typen styrkt av nyare underlag | *Ja* eller *Nej* (*Villkorat* utgick 2026-11-20, se *Bevarandeplanen som underlag*). Vid *Nej* visas också vad tillståndet blir om typen bekräftas. *Nej* betyder inte att typen är fel: den behålls (*Livsmiljötyp, behov av justering* = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare *Typen rimlig* (bytt 2026-10-22). |
 | Förslag till formuläret | Livsmiljötyp och utbredning, Tillstånd, Vad ska kontrolleras 1–3, Metod och Förändringsorsak med koder, och en färdig *Kommentar – Tillstånd* med delregel och källor med år. |
 | Kontrollera | Manuella kontroller med det lager i webbGIS där de görs, t.ex. "IR-orto senaste år: öppen hävdad mark utan igenväxning? [LM Ortofoton årsvis IR]". |
 
@@ -633,6 +635,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.24** (2026-11-20) — avsnitt 5, *Bevarandeplanen som underlag*: planen stöder typen bara när den själv anger vad bedömningen bygger på och underlaget är nyare än karteringen. *Villkorat* utgår; 678 ytor går till *Typ ej styrkt*, 365 ytor får ett annat R7-utfall.
 - **2.22** (2026-11-13) — avsnitt 5, R7A: vilka TUVA-uppgifter som syns i popupen sedan 2026-11-03 (igenväxning, påverkan och naturtyper läses i objektrapporten), och ÅGP-raderna i sektion 2b som sammanhang utan påverkan på R7-förslaget.
 - **2.21** (2026-11-05) — avsnitt 5, R7C: sjöar och vattendrag får *avvaktar riktlinjer*, inget tillstånd bedöms.
 - **2.20** (2026-11-04) — avsnitt 5, R7C: akvatiska livsmiljötyper enligt HaV:s besked 2026-11-02 och FAQ akvatiska 1.1.
