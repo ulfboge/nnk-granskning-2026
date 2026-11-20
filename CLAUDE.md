@@ -106,6 +106,11 @@ tillståndsattribut är driftsatta (enligt Naturvårdsverket: 15 oktober 2026, F
    Repona har en egen GitHub-token (bara natura-2000 och nnk-granskning-2026, Contents read/write)
    i `.git/claude-credentials`, inkopplad i repots lokala git-config. Filen ligger i `.git` och pushas
    aldrig. Token gäller till 2027-01-07. Slutar det fungera har den gått ut — be Johan om en ny.
+   Git lämnar `.lock`-filer under `.git` när borttagning inte är godkänd i mappen. Be om borttagningsrätt
+   (`device_request_delete_permission`) innan första commit i sessionen och kontrollera efteråt att inga
+   låsfiler ligger kvar (se natura-2000/CLAUDE.md, *Git via device_bash*).
+9. **Ändringar i popup-uttryck och formulärbeskrivningar** når inte webbGIS av sig själva. Säg alltid vilken
+   sektion Johan ska klistra in i Map Viewer. Data till granskningslagret går via jobbdatorpaketet i natura-2000.
 
 ---
 
