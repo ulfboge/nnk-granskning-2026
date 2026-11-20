@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.26 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.27 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7: typiska arter styrker typen bara tillsammans med ett annat underlag; bevarandeplanen bara när den själv anger vad den bygger på (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -222,7 +222,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 
 **Gäller:** ytor med Natura-naturtyp och Naturtypsstatus 5. Gäller **inte** marina typer (1110–1170, FAQ 16/29) eller obestämda/osäkra koder — de behöver typbestämning först.
 
-**Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området och själv anger sitt underlag (se *Bevarandeplanen som underlag* nedan) eller fältprotokoll. **Fynd av typiska arter räknas bara tillsammans med något av dessa** (ändrat 2026-11-20). Fynden i Artportalen är slumpvisa och ingen systematisk inventering, koordinaterna kan vara osäkra, och många T- och K-arter finns i flera livsmiljötyper. Ensamma står de i förslaget som indikation ("bara indikation, inget annat underlag"). Ändringen flyttade 352 ytor till *Typ ej styrkt*. För sjötyperna (3110–3160) räknas typiska arter för hela sjön, alltså alla sjöytor som rör varandra inom området, eftersom hela sjön är en livsmiljötyp (NV:s limniska FAQ). Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
+**Förutsättning för alla grupper — typen ska vara rimlig.** Minst ett underlag som är nyare än karteringen och oberoende av den ska stödja typen: TUVA-objekt med samma typ, bevarandeplan som anger typen i området och själv anger sitt underlag (se *Bevarandeplanen som underlag* nedan) eller fältprotokoll. **Fynd av typiska arter räknas bara tillsammans med något av dessa** (ändrat 2026-11-20). Fynden i Artportalen är slumpvisa och ingen systematisk inventering, koordinaterna kan vara osäkra, och många T- och K-arter finns i flera livsmiljötyper. Ensamma står de i förslaget som indikation ("bara indikation, inget annat underlag"). Ändringen flyttade 352 ytor till *Typ ej styrkt*. **Gammalt fältstöd** (2026-11-20): ligger ytan till minst 90 % i ett TUVA-objekt med samma typ, men TUVA är äldre än karteringen (ÄoB 2002–2004), byggde basinventeringen typen på TUVA. Det är karteringens eget fältunderlag och ingen ny bekräftelse, men mer än en ren flygbildstolkning. Ytan får då *Till fält*: typen behålls som livsmiljötyp (klassning 1), tillståndet är okänt, och gammalt underlag ger aldrig fullgod, inte heller när ortot ser bra ut. Gäller 408 ytor som tidigare var *Typ ej styrkt*. För sjötyperna (3110–3160) räknas typiska arter för hela sjön, alltså alla sjöytor som rör varandra inom området, eftersom hela sjön är en livsmiljötyp (NV:s limniska FAQ). Ortofoto får inte motsäga den. BIDOS-ytor prövas mot gällande vägledning (för 9010 och 9050 versionen från februari 2026). Stöds inte typen gäller inte R7 — ytan får Karteringsstatus 5 (*Åtgärdas*) och en kommentar.
 
 **Registrering:** Karteringsstatus 2 (R3; även när TUVA eller en uppföljning avgör, eftersom bedömningen görs vid skrivbordet), Förändringsorsak 3 (R2). Kommentaren anger delregel (t.ex. "R7A") och källor med år.
 
@@ -635,6 +635,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.27** (2026-11-20) — avsnitt 5, förutsättningen för R7: *Gammalt fältstöd* — TUVA med samma typ, äldre än karteringen, minst 90 % överlapp ger *Till fält* med klassning 1 i stället för *Typ ej styrkt* (408 ytor).
 - **2.26** (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.
 - **2.25** (2026-11-20) — avsnitt 5, förutsättningen för R7: typiska arter styrker typen bara tillsammans med TUVA, fältprotokoll eller en plan med eget underlag. 352 ytor går till *Typ ej styrkt* (Fullgod 102 → 52, Till fält 347 → 64).
 - **2.24** (2026-11-20) — avsnitt 5, *Bevarandeplanen som underlag*: planen stöder typen bara när den själv anger vad bedömningen bygger på och underlaget är nyare än karteringen. *Villkorat* utgår; 678 ytor går till *Typ ej styrkt*, 365 ytor får ett annat R7-utfall.
