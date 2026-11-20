@@ -55,7 +55,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ○ | 346 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
 | **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 508 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Skötselplan nyare än statusen**<br>`nr_plan_nyare = 'Ja'` | ○ | 275 | Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan, och innehåller ingen tillståndsbedömning: läs planen och pröva om den säger något om typen eller skötseln på just den här ytan. |
-| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
+| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Indikation för typen: räcker bara tillsammans med TUVA, fältprotokoll eller en bevarandeplan med eget underlag. Inga fynd betyder inte att arten saknas. |
 | **Uppföljning: dålig**<br>`uppf_antal_dalig > 0` | ● | 12 | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
 
 ## Skog
@@ -90,7 +90,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ● | 981 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
 | **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 207 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Skötselplan nyare än statusen**<br>`nr_plan_nyare = 'Ja'` | ● | 522 | Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan, och innehåller ingen tillståndsbedömning: läs planen och pröva om den säger något om typen eller skötseln på just den här ytan. |
-| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
+| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Indikation för typen: räcker bara tillsammans med TUVA, fältprotokoll eller en bevarandeplan med eget underlag. Inga fynd betyder inte att arten saknas. |
 | **Uppföljning: dålig**<br>`uppf_antal_dalig > 0` | ○ | 1 | Uppföljningspunkt med måluppfyllelse Dålig (2015–2022) → kandidat *icke fullgod*. Nästan bara hävdberoende ytor. |
 
 ## Våtmark
@@ -104,7 +104,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 1. Myrar (7110–7231): **Diken inom ytan** → kandidater till icke fullgod. Kontrollera terrängskuggning och markfuktighetskarta.
 2. Rikkärr (7230): **SkötselDOS: bete/slåtter** visar var hävd ingår i skötseln.
 3. Sjöar och vattendrag (3110–3260): VISS-fälten är ifyllda sedan 2026-10-09 och R7-förslagets motiv har senaste mätdata ur MVM sedan 2026-10-13. Små sjöar som inte är egna vattenförekomster saknar egen status: slå upp avrinningsområdet i gruppen *Vatten (VISS)*, men använd det bara som indicier.
-4. **Typiska arter i Artportalen** stöder att typen är rätt.
+4. **Typiska arter i Artportalen** är en indikation för typen, men räcker inte ensamt.
 
 ### Filter som ger något för gruppen
 
@@ -116,7 +116,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ○ | 122 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
 | **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 109 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Skötselplan nyare än statusen**<br>`nr_plan_nyare = 'Ja'` | ○ | 130 | Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan, och innehåller ingen tillståndsbedömning: läs planen och pröva om den säger något om typen eller skötseln på just den här ytan. |
-| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
+| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Indikation för typen: räcker bara tillsammans med TUVA, fältprotokoll eller en bevarandeplan med eget underlag. Inga fynd betyder inte att arten saknas. |
 
 ## Stabila
 
@@ -142,7 +142,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Förslag: typ ej styrkt**<br>`r7f_utfall LIKE 'Typ ej styrkt%'` | ● | 1309 | Inget underlag nyare än karteringen stöder typen. Pröva typen i IR-ortot; stöds den inte: Karteringsstatus 5 Åtgärdas. Motivet visar vad tillståndet blir om typen godtas. |
 | **Förslag: fullgod eller icke fullgod**<br>`r7f_utfall LIKE '%ullgod%'` | ● | 216 | Ytor där förslaget har ett utfall att pröva mot villkoret (oftast ortot). Snabbast att gå igenom först. |
 | **Skötselplan nyare än statusen**<br>`nr_plan_nyare = 'Ja'` | ○ | 59 | Reservatets skötselplan är från ett senare år än naturtypsstatusen (tillagt 2026-11-04). Planen gäller reservatet, inte ytan, och innehåller ingen tillståndsbedömning: läs planen och pröva om den säger något om typen eller skötseln på just den här ytan. |
-| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Stöder att typen är rimlig — förutsättningen för alla R7-grupper. Inga fynd betyder inte att arten saknas. |
+| **Typiska arter i Artportalen**<br>`typarter_antal IS NOT NULL` | ○ |  | Fynd sedan 2010, noggrannhet ≤ 100 m. Indikation för typen: räcker bara tillsammans med TUVA, fältprotokoll eller en bevarandeplan med eget underlag. Inga fynd betyder inte att arten saknas. |
 
 ## Urval och arbetsordning
 
