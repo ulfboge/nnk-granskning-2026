@@ -503,7 +503,7 @@ Två nya fält i NNK, *Startdatum/Slutdatum senaste inventering av naturtypen*, 
 **I praktiken (rättat 2026-11-18):**
 
 - **Slutdatum** = datum för din bedömning av typ och utbredning, normalt den dag du granskar ytan. Vid en faktisk förändring: slutet på perioden då den skedde.
-- **Startdatum** = föregående bedömning, till exempel förvaltarens senaste besök, TUVA, en uppföljning eller basinventeringen. Popupens *Senaste kända inventering (förslag)* är ett förslag till detta fält.
+- **Startdatum** = föregående bedömning, till exempel förvaltarens senaste besök, TUVA, en uppföljning eller basinventeringen. Popupens *Senaste kända inventering (förslag till Startdatum)* är ett förslag till detta fält.
 - **Bara året känt:** datumfälten tar inte bara år. Använd ÅÅÅÅ-01-01 för startdatum och ÅÅÅÅ-12-31 för ett slutdatum, så att perioden täcker hela året, och skriv "bara året känt" i kommentaren. Det är länets egen konvention, inte NV:s.
 - **Skrivbordsgranskning** syns i NNK genom karteringsstatus 2 *Granskad vid skrivbordet* (R3), som sätts vid överföringen. Formuläret har inget eget fält för det. Börja kommentaren med delregeln, t.ex. "R7A:", så att grunden syns även i NNK.
 
