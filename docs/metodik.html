@@ -166,7 +166,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.25 · 2026-11-20</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<p><strong>Version 2.26 · 2026-11-20</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
 <em>Senaste ändring:</em> R7: typiska arter styrker typen bara tillsammans med ett annat underlag; bevarandeplanen bara när den själv anger vad den bygger på (avsnitt 5). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
@@ -976,7 +976,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td>Ursprung</td>
-<td><em>BIDOS</em> betyder att naturtypsstatusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal.</td>
+<td><em>BIDOS</em> betyder att naturtypsstatusen sattes i basinventeringen, i länet i regel karterad 2007–2011. Året 2012 i NNK är flytten till NNK, inte en inventering.</td>
 </tr>
 <tr>
 <td>Attribut senast ändrade (<code>nnk_andrad_ar</code>, året ur NV:s <code>last_edited_date</code>, i <em>Naturtypsstatusens ålder</em>)</td>
@@ -997,7 +997,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <li><strong>Kommentaren</strong> anger "R7-omprövning", delregeln och källor med år, t.ex. "R7-omprövning R7A: bekräftad fullgod — skiften Ja 2015–2025, orto 2023, TUVA 2019".</li>
 </ol>
 <p>Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.</p>
-<p><strong>Ytor med gammal fältdata:</strong> 277 ytor har Karteringsstatus 3 eller 4 men ändå <em>Ej bedömd status</em>. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men naturtypsstatusen prövas enligt delreglerna ovan.</p>
+<p><strong>Ytor med gammal fältdata:</strong> 277 ytor har Karteringsstatus 3 eller 4 men ändå <em>Ej bedömd status</em>. 261 av dem kommer från BIDOS, så fältdatan är i regel från 2007–2011 och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men naturtypsstatusen prövas enligt delreglerna ovan.</p>
 <h4 id="forslag-per-yta-r7-forslag">Förslag per yta (R7-förslag)</h4>
 <p><em>Ny 2026-10-08.</em> Skriptet <code>bygg_r7_forslag.py</code> (i det interna natura-2000-repot) tillämpar delreglerna ovan på de underlag som finns per yta: skiften, TUVA, SkötselDOS och uppföljning, laserdata och diken, Skogsstyrelsens register, floraväkteri, typiska arter, bevarandeplanens år och typer, och VISS när den är kopplad. Det ger för varje yta som R7 gäller för:</p>
 <div class="tabell"><table>
@@ -1275,6 +1275,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.26</strong> (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.</li>
 <li><strong>2.25</strong> (2026-11-20) — avsnitt 5, förutsättningen för R7: typiska arter styrker typen bara tillsammans med TUVA, fältprotokoll eller en plan med eget underlag. 352 ytor går till <em>Typ ej styrkt</em> (Fullgod 102 → 52, Till fält 347 → 64).</li>
 <li><strong>2.24</strong> (2026-11-20) — avsnitt 5, <em>Bevarandeplanen som underlag</em>: planen stöder typen bara när den själv anger vad bedömningen bygger på och underlaget är nyare än karteringen. <em>Villkorat</em> utgår; 678 ytor går till <em>Typ ej styrkt</em>, 365 ytor får ett annat R7-utfall.</li>
 <li><strong>2.22</strong> (2026-11-13) — avsnitt 5, R7A: vilka TUVA-uppgifter som syns i popupen sedan 2026-11-03 (igenväxning, påverkan och naturtyper läses i objektrapporten), och ÅGP-raderna i sektion 2b som sammanhang utan påverkan på R7-förslaget.</li>

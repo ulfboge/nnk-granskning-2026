@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.25 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.26 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7: typiska arter styrker typen bara tillsammans med ett annat underlag; bevarandeplanen bara när den själv anger vad den bygger på (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -428,7 +428,7 @@ Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke f
 | Fält | Vad det säger om åldern |
 |---|---|
 | Slutdatum senaste inventering | Rätt fält för när typen och naturtypsstatusen senast bedömdes. Tomt för nästan alla ytor än så länge. |
-| Ursprung | *BIDOS* betyder att naturtypsstatusen sattes i basinventeringen. Fältdatan är då ofta 15–20 år gammal. |
+| Ursprung | *BIDOS* betyder att naturtypsstatusen sattes i basinventeringen, i länet i regel karterad 2007–2011. Året 2012 i NNK är flytten till NNK, inte en inventering. |
 | Attribut senast ändrade (`nnk_andrad_ar`, året ur NV:s `last_edited_date`, i *Naturtypsstatusens ålder*) | Senaste gången något attribut på ytan ändrades i NNK. Ger ett ungefärligt år när slutdatum saknas, men kan vara ett tekniskt datum från en inläsning. Använd det som "senast", inte som bevis för att någon bedömde ytan då. |
 | Karteringsstatus | *Hur* bedömningen gjordes (2 skrivbord, 3 besök, 4 inventering), inte *när*. *Granskad vid skrivbordet* betyder att typ och naturtypsstatus senast sattes utan fältbesök. |
 
@@ -442,7 +442,7 @@ Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke f
 
 Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-bedömningar, och omfattas av samma pilot.
 
-**Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är ofta 15–20 år gammal och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men naturtypsstatusen prövas enligt delreglerna ovan.
+**Ytor med gammal fältdata:** 277 ytor har Karteringsstatus 3 eller 4 men ändå *Ej bedömd status*. 261 av dem kommer från BIDOS, så fältdatan är i regel från 2007–2011 och räcker inte ensam som aktuellt underlag (R3). Den styrker att typen var rätt, men naturtypsstatusen prövas enligt delreglerna ovan.
 
 #### Förslag per yta (R7-förslag)
 
@@ -635,6 +635,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.26** (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.
 - **2.25** (2026-11-20) — avsnitt 5, förutsättningen för R7: typiska arter styrker typen bara tillsammans med TUVA, fältprotokoll eller en plan med eget underlag. 352 ytor går till *Typ ej styrkt* (Fullgod 102 → 52, Till fält 347 → 64).
 - **2.24** (2026-11-20) — avsnitt 5, *Bevarandeplanen som underlag*: planen stöder typen bara när den själv anger vad bedömningen bygger på och underlaget är nyare än karteringen. *Villkorat* utgår; 678 ytor går till *Typ ej styrkt*, 365 ytor får ett annat R7-utfall.
 - **2.22** (2026-11-13) — avsnitt 5, R7A: vilka TUVA-uppgifter som syns i popupen sedan 2026-11-03 (igenväxning, påverkan och naturtyper läses i objektrapporten), och ÅGP-raderna i sektion 2b som sammanhang utan påverkan på R7-förslaget.
