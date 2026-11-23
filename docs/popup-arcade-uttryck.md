@@ -2,7 +2,7 @@
 
 ## Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026
 
-**Version:** 1.25 · 2026-11-20 (Naturtyp (NNK-data): rubriken *Senaste kända inventering (förslag till Startdatum)* säger vad förslaget gäller). 1.24 · 2026-11-20 (Ursprung och 2b: BIDOS visas med länets karteringsperiod, i länet i regel karterad 2007–2011, i stället för "ofta 15–20 år gammal"; ytans eget år står kvar i 2b). 1.23 · 2026-11-17 (Naturtyp (NNK-data): raden *Bevarandeplan, fastställd (år)* säger när planen inte tar upp ytans livsmiljötyp, t.ex. "2016 (6510 ingår inte i planen)", ur det nya fältet `bevarandeplan_lmt`). 1.22 · 2026-11-13 (sektion 1: ny rad *Syftet omfattar naturtypen*, som jämför reservatets syften med ytans naturtyp). 1.21 · 2026-11-11 (sektion 2b: fyra rader ur åtgärdsprogrammen för hotade arter, ÅGP – särskilt skyddsvärda träd, rikkärrsinventeringen, ÅGP-arter i ytan och ÅGP-dokument för området). 1.20 · 2026-11-04 (sektion 2b: tydligare rubrik på raden Skötselområde). 1.19 · 2026-11-04 (sektion 2b: skötselområde med planens mål och åtgärder). 1.18 · 2026-11-04 (sektion 1: reservatets namn också när ytan ligger i båda, länkar till skötselplan och senaste beslut, syften; sektion 2b: raden *Skötselplan (reservatet)* jämförd med naturtypsstatusen). 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 7 anger artperioden i *Underlag*, sektion 8 säger att andelen bete/slåtter kommer från jordbruksskiftena och gäller NNK-ytan; sektion 7 och raden *Typiska arter* i 2b visar fynd 2022–2026 med år per art, och karakteristiska arter på egen rad; raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
+**Version:** 1.26 · 2026-11-23 (Granskning 1 och 4 i samma struktur som formuläret: *Förändringsorsak, förslag* flyttad till sektion 6, fältordningen i sektion 3 som i formuläret, titeln *Granskning 4: Granskning*). 1.25 · 2026-11-20 (Naturtyp (NNK-data): rubriken *Senaste kända inventering (förslag till Startdatum)* säger vad förslaget gäller). 1.24 · 2026-11-20 (Ursprung och 2b: BIDOS visas med länets karteringsperiod, i länet i regel karterad 2007–2011, i stället för "ofta 15–20 år gammal"; ytans eget år står kvar i 2b). 1.23 · 2026-11-17 (Naturtyp (NNK-data): raden *Bevarandeplan, fastställd (år)* säger när planen inte tar upp ytans livsmiljötyp, t.ex. "2016 (6510 ingår inte i planen)", ur det nya fältet `bevarandeplan_lmt`). 1.22 · 2026-11-13 (sektion 1: ny rad *Syftet omfattar naturtypen*, som jämför reservatets syften med ytans naturtyp). 1.21 · 2026-11-11 (sektion 2b: fyra rader ur åtgärdsprogrammen för hotade arter, ÅGP – särskilt skyddsvärda träd, rikkärrsinventeringen, ÅGP-arter i ytan och ÅGP-dokument för området). 1.20 · 2026-11-04 (sektion 2b: tydligare rubrik på raden Skötselområde). 1.19 · 2026-11-04 (sektion 2b: skötselområde med planens mål och åtgärder). 1.18 · 2026-11-04 (sektion 1: reservatets namn också när ytan ligger i båda, länkar till skötselplan och senaste beslut, syften; sektion 2b: raden *Skötselplan (reservatet)* jämförd med naturtypsstatusen). 1.17 · 2026-11-03 (efter genomgång med Karin: sektion 7 anger artperioden i *Underlag*, sektion 8 säger att andelen bete/slåtter kommer från jordbruksskiftena och gäller NNK-ytan; sektion 7 och raden *Typiska arter* i 2b visar fynd 2022–2026 med år per art, och karakteristiska arter på egen rad; raden *TUVA* i sektion 2b visar hävdstatus utan procent och med "(gäller hela TUVA-objektet, inte specifikt den här livsmiljötypen)"; sektion 1 visar Natura 2000 och naturreservat var för sig, med reservatets beslutsår och förvaltare när fälten finns; sektion 2b utan raderna *Motiv* och *Kontrollera*; sektion 4 visar om tillståndet bygger på fältbesök eller skrivbord; sektion 8 visar för TUVA bara objekt, inventeringsår och länk; sektion 10 Floraväkteri borttagen ur popupen; "av ytan" heter "av NNK-ytan"). 1.16 · 2026-10-22 (sektion 6: raden för NV:s fält `kommentar` heter nu *Kommentar (NNK)*, så att karterarens text inte tas för en granskarkommentar). 1.15 · 2026-10-20 (sektion 2b: ny rad *LIFE-åtgärd (ej tillståndsbedömning)* ur `life_atgard`/`life_senaste_ar`/`life_andel_tackt`, med HasKey-skydd via F()). 1.14 · 2026-10-20 (sektion 2b: ny rad *Naturvårdsbränning* ur `skdos_brand_typ`/`_ar`/`_andel`, med HasKey-skydd via F()). 1.13 · 2026-10-20 (sektion 8: SkötselDOS-raden visar hur stor del av ytan åtgärderna täcker, `skdos_andel_overlapp`, med HasKey-skydd). 1.12 · 2026-10-19 (sektion 2b, Lager för gruppen: *SKS Trädhöjd* borttagen ur appen och ur listan; skogslagret heter *SKS Skogliga Grunddata 3.1 – Grundyta_gron*, eftersom volym och medeldiameter inte finns som lager; Ekonomiska kartan = 1950-tal). 1.11 · 2026-10-16 (sektion 2b: "naturtypsstatus" i stället för "status" i raderna Vad gäller, Naturtypsstatusens ålder och Underlag; förslagsraden säger "Ej omprövad – naturtypsstatusen står kvar (underlaget pekar mot …)"; sedan 2026-10-15 årtal för SJV Jordbruksblock). 1.10 · 2026-10-14 (sektion 2b: ytor utanför Natura 2000 och naturreservat visar *Ingår inte* och ingen lagerlista). 1.9 · 2026-10-14 (sektion 2b: ny rad *Lager för gruppen*). 1.8 · 2026-10-08 (sektion 2b: Skogsstyrelsens register, VISS och R7-förslaget). 1.7 · 2026-10-08 (sektion 2b: tydligare text för statusens ålder när inventeringsdatum saknas). 1.6 · 2026-10-06 (ny sektion 2b Bedömning vid skrivbordet: R7-grupp, statusens ålder och underlag nyare än statusen). 1.5 · 2026-10-01 (sektion 8 utökad med SkötselDOS och uppföljning). 1.4 · 2026-09-30 (ny sektion 9 Skog (laserdata) med diken). 1.3 · 2026-09-30 (sektion 8 utökad med TUVA). 1.2 · 2026-09-29 (sektion 7 Typiska arter och sektion 8 Hävd enligt jordbruksskiften tillagda)
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 2 steg 6, Del 5 steg 5)
 **Status:** Detta är den faktiska, levande popup-konfigurationen i Map Viewer/Konfiguratorn — inte det som `bygg_nnk_lyrx.py` genererar.
 
@@ -702,7 +702,9 @@ return { type: "fields", title: "Bedömning vid skrivbordet (R7)", fieldInfos: i
 
 ## 3. Granskning 1 — Avvikelse och korrigeringsförslag
 
-**Utökad 2026-09-22:** nytt block för `forandringsorsak_forslag` ("Förändringsorsak, förslag") — granskarens EGNA förslagskod, inte det skrivskyddade källfältet `forandringsorsak` som redan syns i gruppen *Naturtyp (NNK-data)*. Kräver att fältet finns i tjänsten (gdb-kedjan → republicering, se `webbgis-publicering.html` Del 5 steg 6) innan den här versionen kan klistras in. Placerat sist i "vad"-delen, direkt före kommentaren — gruppen läses nu "vad" (föreslagen typ/justering) följt av "varför" (förändringsorsak + fritextkommentar).
+**Ändrat 2026-11-23:** samma ordning som formulärets grupp 1 (justering och utbredning först, sedan förslagen). Blocket för `forandringsorsak_forslag` har flyttats till sektion 6, eftersom fältet ligger i formulärets grupp 4 sedan 2026-11-16.
+
+*(Gällde 2026-09-22–2026-11-23:)* **Utökad 2026-09-22:** nytt block för `forandringsorsak_forslag` ("Förändringsorsak, förslag") — granskarens EGNA förslagskod, inte det skrivskyddade källfältet `forandringsorsak` som redan syns i gruppen *Naturtyp (NNK-data)*. Kräver att fältet finns i tjänsten (gdb-kedjan → republicering, se `webbgis-publicering.html` Del 5 steg 6) innan den här versionen kan klistras in. Placerat sist i "vad"-delen, direkt före kommentaren — gruppen läses nu "vad" (föreslagen typ/justering) följt av "varför" (förändringsorsak + fritextkommentar).
 
 ```js
 // Granskning 1 – Avvikelse och korrigeringsförslag
@@ -710,6 +712,22 @@ return { type: "fields", title: "Bedömning vid skrivbordet (R7)", fieldInfos: i
 
 var infos = [];
 var attrs = {};
+
+if (!IsEmpty($feature.justering)) {
+    Push(infos, {
+        fieldName: "justering_varde",
+        label: "Behöver livsmiljötypen justeras?"
+    });
+    attrs["justering_varde"] = DomainName($feature, "justering");
+}
+
+if (!IsEmpty($feature.utbredning)) {
+    Push(infos, {
+        fieldName: "utbredning_varde",
+        label: "Behöver utbredningen justeras?"
+    });
+    attrs["utbredning_varde"] = DomainName($feature, "utbredning");
+}
 
 if (!IsEmpty($feature.livsmiljötyp1)) {
     Push(infos, {
@@ -733,31 +751,6 @@ if (!IsEmpty($feature.livsmiljötyp3)) {
         label: "Förslag livsmiljötyp 3"
     });
     attrs["livsmiljo3_varde"] = DomainName($feature, "livsmiljötyp3");
-}
-
-if (!IsEmpty($feature.justering)) {
-    Push(infos, {
-        fieldName: "justering_varde",
-        label: "Behöver livsmiljötypen justeras?"
-    });
-    attrs["justering_varde"] = DomainName($feature, "justering");
-}
-
-if (!IsEmpty($feature.utbredning)) {
-    Push(infos, {
-        fieldName: "utbredning_varde",
-        label: "Behöver utbredningen justeras?"
-    });
-    attrs["utbredning_varde"] = DomainName($feature, "utbredning");
-}
-
-// Förändringsorsak, förslag (nytt 2026-09-22)
-if (!IsEmpty($feature.forandringsorsak_forslag)) {
-    Push(infos, {
-        fieldName: "forandringsorsak_forslag_varde",
-        label: "Förändringsorsak, förslag"
-    });
-    attrs["forandringsorsak_forslag_varde"] = DomainName($feature, "forandringsorsak_forslag");
 }
 
 if (!IsEmpty($feature.kommentar_livsmil_utbred)) {
@@ -964,6 +957,8 @@ return {
 
 ## 6. Granskning 4 — Granskat och kommentarer
 
+**Ändrat 2026-11-23:** *Förändringsorsak, förslag* visas nu först i den här sektionen, direkt före *Granskat?*, som i formulärets grupp 4. Titeln heter *Granskning 4: Granskning*, som formulärgruppen.
+
 **Ändrat 2026-10-22:** raden för `kommentar` heter *Kommentar (NNK)*. Fältet är karterarens kommentar ur NV:s länsuttag (alias *Kommentar (NNK)* i gdb:n), ofta med förkortningar som "FI" eller "h-starr". Det ska inte redigeras i formuläret — egna kommentarer skrivs i *Kommentar – livsmiljötyp och utbredning* eller *Kommentar – Tillstånd*.
 
 **Åtgärdat 2026-09-22:** kopplar nu in samtliga fem fält (`granskat`, `kommentar`, `nnk_kommentar`, `faltinventerare`, `egen_bet`) — matchar gruppens ursprungliga fältlista i `bygg_nnk_lyrx.py`.
@@ -974,6 +969,15 @@ return {
 
 var infos = [];
 var attrs = {};
+
+// Förändringsorsak, förslag (flyttad hit från Granskning 1 2026-11-23, som i formulärets grupp 4)
+if (!IsEmpty($feature.forandringsorsak_forslag)) {
+    Push(infos, {
+        fieldName: "forandringsorsak_forslag_varde",
+        label: "Förändringsorsak, förslag"
+    });
+    attrs["forandringsorsak_forslag_varde"] = DomainName($feature, "forandringsorsak_forslag");
+}
 
 // Granskat?
 if (!IsEmpty($feature.granskat)) {
@@ -1024,7 +1028,7 @@ if (!IsEmpty($feature.egen_bet)) {
 if (Count(infos) == 0) {
     return {
         type: "fields",
-        title: "Granskning 4: Granskat och kommentarer",
+        title: "Granskning 4: Granskning",
         fieldInfos: [{
             fieldName: "tom_info",
             label: "Information"
@@ -1037,7 +1041,7 @@ if (Count(infos) == 0) {
 
 return {
     type: "fields",
-    title: "Granskning 4: Granskat och kommentarer",
+    title: "Granskning 4: Granskning",
     fieldInfos: infos,
     attributes: attrs
 };
