@@ -724,6 +724,24 @@ Rad(&quot;r7_agp_rik&quot;, &quot;Rikkärrsinventering (ÅGP)&quot;, F(&quot;agp
 Rad(&quot;r7_agp_lok&quot;, &quot;ÅGP-arter i ytan&quot;, F(&quot;agp_artlokaler&quot;));
 Rad(&quot;r7_agp_dok&quot;, &quot;ÅGP-dokument för området (G:)&quot;, F(&quot;agp_dok&quot;));
 
+// Äldre inventeringar (2026-11-23, nnk_aldre_inventeringar.py): alla äldre än BIDOS,
+// sammanhang för typningen, säger inget om dagens tillstånd.
+Rad(&quot;r7_lmtk&quot;, &quot;Möjlig missad livsmiljötyp&quot;, F(&quot;lmt_kandidat_motiv&quot;));
+var nbT = F(&quot;nb_biotop&quot;);
+if (!IsEmpty(nbT)) {
+    Rad(&quot;r7_nb&quot;, &quot;Nyckelbiotop (SKS)&quot;, nbT + IIf(IsEmpty(F(&quot;nb_ar&quot;)), &quot;&quot;, &quot; · inventerad &quot; + Ar(F(&quot;nb_ar&quot;))));
+}
+var nvoT = F(&quot;nvo_biotop&quot;);
+if (!IsEmpty(nvoT)) {
+    Rad(&quot;r7_nvo&quot;, &quot;Objekt med naturvärden (SKS)&quot;, nvoT + IIf(IsEmpty(F(&quot;nvo_ar&quot;)), &quot;&quot;, &quot; · inventerad &quot; + Ar(F(&quot;nvo_ar&quot;))));
+}
+var spT = F(&quot;sump_typ&quot;);
+if (!IsEmpty(spT)) {
+    Rad(&quot;r7_sump&quot;, &quot;Sumpskog (SKS)&quot;, spT + IIf(IsEmpty(F(&quot;sump_klass&quot;)), &quot;&quot;, &quot; · &quot; + F(&quot;sump_klass&quot;))
+        + IIf(IsEmpty(F(&quot;sump_ar&quot;)), &quot;&quot;, &quot; · inventerad &quot; + Ar(F(&quot;sump_ar&quot;))));
+}
+Rad(&quot;r7_vmi&quot;, &quot;Våtmarksinventeringen (VMI)&quot;, F(&quot;vmi_klass&quot;));
+
 // R7-förslaget (2026-10-08): utfallet ur bygg_r7_forslag.py.
 // Motiv och Kontrollera visas inte sedan 2026-11-03 (granskaren gör bedömningen själv
 // utifrån underlagen ovan). Fälten r7f_motiv/r7f_kontrollera finns kvar i lagret och i R7-filen.

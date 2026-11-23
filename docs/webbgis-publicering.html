@@ -400,7 +400,7 @@ return rad1 + TextFormatting.NewLine + namn;
 <tr>
 <td><strong>1. Avvikelse och korrigeringsförslag</strong> (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan)</td>
 <td>Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar</td>
-<td>Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker). Stämmer typen, lämna fälten tomma. <em>(Gruppens beskrivning sedan 2026-11-20, 164 tecken. Igenväxning och utvecklingsmark står i fältet Behöver livsmiljötypen justeras?)</em></td>
+<td>Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker). Stämmer typen: lämna förslagsfälten tomma men skriv i Kommentar vad som stöder den. <em>(Gruppens beskrivning sedan 2026-11-23, 211 tecken; tidigare "Stämmer typen, lämna fälten tomma", som krockade med Kommentar. Igenväxning och utvecklingsmark står i fältet Behöver livsmiljötypen justeras?)</em></td>
 </tr>
 <tr>
 <td><strong>2. Tillstånd</strong></td>
@@ -464,7 +464,7 @@ return rad1 + TextFormatting.NewLine + namn;
 </tr>
 <tr>
 <td>Kommentar (grupp 1)</td>
-<td>Vad stöder typen och gränsen? Ange underlag och år för själva inventeringen (inte året planen fastställdes) och om det är nyare än karteringen. Ex: TUVA 2021, typiska arter 2024; bevarandeplan 2016, inventering 1999. Gränsen ej prövad.</td>
+<td>Skriv även när typen stämmer. Vad stöder typen och gränsen? Ange underlag och år för själva inventeringen (inte året planen fastställdes) och om det är nyare än karteringen. Ex: TUVA 2021, typiska arter 2024; bevarandeplan 2016, inventering 1999. Gränsen ej prövad.</td>
 </tr>
 <tr>
 <td>Tillstånd</td>
@@ -841,6 +841,11 @@ tillåter att samma datakälla läggs till i flera grupper.</p>
 <td>"Förslag: typ ej styrkt"</td>
 <td><code>r7f_utfall LIKE 'Typ ej styrkt%'</code></td>
 <td>Inget underlag nyare än karteringen stöder typen.</td>
+</tr>
+<tr>
+<td>"Möjlig missad LMT"</td>
+<td><code>lmt_kandidat = 'Ja'</code></td>
+<td>Icke-natura- eller osäker skogskod (98xx/99xx) med nyckelbiotop eller sumpskog enligt Skogsstyrelsen (<code>nnk_aldre_inventeringar.py</code>). 711 ytor, 3 289 ha, flest 9900, 9810 och 9925. Underlagen är från 1990-talet, äldre än BIDOS: pröva i IR-orto och laser, ändra typ bara med mer kunskap än karteringen. Motivet står i popupen. Tillagt 2026-11-23.</td>
 </tr>
 <tr>
 <td>"Förslag: fullgod eller icke fullgod"</td>

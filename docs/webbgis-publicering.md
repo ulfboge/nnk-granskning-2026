@@ -205,7 +205,7 @@ Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Fo
 
 | Grupp | Fält (i ordning) | Gruppbeskrivning |
 | --- | --- | --- |
-| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan) | Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker). Stämmer typen, lämna fälten tomma. *(Gruppens beskrivning sedan 2026-11-20, 164 tecken. Igenväxning och utvecklingsmark står i fältet Behöver livsmiljötypen justeras?)* |
+| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan) | Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker). Stämmer typen: lämna förslagsfälten tomma men skriv i Kommentar vad som stöder den. *(Gruppens beskrivning sedan 2026-11-23, 211 tecken; tidigare "Stämmer typen, lämna fälten tomma", som krockade med Kommentar. Igenväxning och utvecklingsmark står i fältet Behöver livsmiljötypen justeras?)* |
 | **2. Tillstånd** | Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar. Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
 | **3. Kontroll och metod** | Vad ska kontrolleras 1–3 · Kommentar - kontrollbehov · Metod för kontroll · Kommentar - Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
 | **4. Granskning** | Förändringsorsak, förslag · Granskat? · NNK-kommentar | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
@@ -236,7 +236,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 | Förslag livsmiljötyp 2 | Andrahandsförslag, om osäker mellan flera typer. |
 | Förslag livsmiljötyp 3 | Tredjehandsförslag, om osäker mellan flera typer. |
 | Förändringsorsak, förslag | Gäller hela ytan, fyll i sist. 1 Rättning om typen eller gränsen var fel, även vid Okänt. 3 Komplettering vid Gott, Icke gott eller Blandat (vanligast). 2 bara vid en verklig, daterad förändring på marken. Tomt om tillståndet är Okänt och inget rättats. |
-| Kommentar (grupp 1) | Vad stöder typen och gränsen? Ange underlag och år för själva inventeringen (inte året planen fastställdes) och om det är nyare än karteringen. Ex: TUVA 2021, typiska arter 2024; bevarandeplan 2016, inventering 1999. Gränsen ej prövad. |
+| Kommentar (grupp 1) | Skriv även när typen stämmer. Vad stöder typen och gränsen? Ange underlag och år för själva inventeringen (inte året planen fastställdes) och om det är nyare än karteringen. Ex: TUVA 2021, typiska arter 2024; bevarandeplan 2016, inventering 1999. Gränsen ej prövad. |
 | Tillstånd | Gott = bra skick. Icke gott = igenvuxen/behöver restaurering, även vid utebliven skötsel. Okänt = kan inte bedömas — ange skälet i kommentaren. Blandat = ange andelarna. Lämna tomt om naturtypsstatusen ska stå kvar. |
 | Gott tillstånd (%) | Fyll bara i vid Blandat. Gott eller Icke gott blir 100 % vid överföringen till NNK. Summan av de tre procentfälten ska bli 100. |
 | Ej gott tillstånd (%) | Fyll bara i vid Blandat. Andel av ytan i icke gott tillstånd. Summan av de tre procentfälten ska bli 100. |
@@ -423,6 +423,7 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "SKS: avverkningsanmälan" | `skr_anmald_ar IS NOT NULL` | Aktuell anmälan. Säger inte att avverkningen skett. |
 | "Förslag: låg säkerhet" | `r7f_utfall LIKE '%säkerhet låg%'` | R7-förslag där underlagen säger emot varandra eller är svaga. |
 | "Förslag: typ ej styrkt" | `r7f_utfall LIKE 'Typ ej styrkt%'` | Inget underlag nyare än karteringen stöder typen. |
+| "Möjlig missad LMT" | `lmt_kandidat = 'Ja'` | Icke-natura- eller osäker skogskod (98xx/99xx) med nyckelbiotop eller sumpskog enligt Skogsstyrelsen (`nnk_aldre_inventeringar.py`). 711 ytor, 3 289 ha, flest 9900, 9810 och 9925. Underlagen är från 1990-talet, äldre än BIDOS: pröva i IR-orto och laser, ändra typ bara med mer kunskap än karteringen. Motivet står i popupen. Tillagt 2026-11-23. |
 | "Förslag: fullgod eller icke fullgod" | `r7f_utfall LIKE '%ullgod%'` | Förslag med ett utfall att pröva mot villkoret. |
 
 Fälten kommer från `skogsregister_for_granskning.csv` och `r7_forslag_for_granskning.csv` (runbook D2.6 och D2.7) och finns i tjänsten efter nästa Overwrite.
