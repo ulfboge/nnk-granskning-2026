@@ -423,7 +423,7 @@ Ger granskaren snabbknappar; ersätter urvalet vi INTE gjorde i del 2 steg 11. *
 | "SKS: avverkningsanmälan" | `skr_anmald_ar IS NOT NULL` | Aktuell anmälan. Säger inte att avverkningen skett. |
 | "Förslag: låg säkerhet" | `r7f_utfall LIKE '%säkerhet låg%'` | R7-förslag där underlagen säger emot varandra eller är svaga. |
 | "Förslag: typ ej styrkt" | `r7f_utfall LIKE 'Typ ej styrkt%'` | Inget underlag nyare än karteringen stöder typen. |
-| "Möjlig missad LMT" | `lmt_kandidat = 'Ja'` | Icke-natura- eller osäker skogskod (98xx/99xx) med nyckelbiotop eller sumpskog enligt Skogsstyrelsen (`nnk_aldre_inventeringar.py`). 711 ytor, 3 289 ha, flest 9900, 9810 och 9925. Underlagen är från 1990-talet, äldre än BIDOS: pröva i IR-orto och laser, ändra typ bara med mer kunskap än karteringen. Motivet står i popupen. Tillagt 2026-11-23. |
+| "Möjlig missad LMT" | `lmt_kandidat = 'Ja'` | Icke-natura- eller osäker skogskod (98xx/99xx) med nyckelbiotop eller sumpskog enligt Skogsstyrelsen, eller med naturvärdesklass Högt/Mycket högt i våtmarksinventeringen (VMI, tillagt 2026-11-24) (`nnk_aldre_inventeringar.py`). 907 ytor, 3 752 ha, flest 9900, 9810 och 9925. Underlagen är från 1990-talet, äldre än BIDOS: pröva i IR-orto och laser, ändra typ bara med mer kunskap än karteringen. Motivet står i popupen. Tillagt 2026-11-23. |
 | "Förslag: fullgod eller icke fullgod" | `r7f_utfall LIKE '%ullgod%'` | Förslag med ett utfall att pröva mot villkoret. |
 
 Fälten kommer från `skogsregister_for_granskning.csv` och `r7_forslag_for_granskning.csv` (runbook D2.6 och D2.7) och finns i tjänsten efter nästa Overwrite.
