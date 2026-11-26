@@ -166,8 +166,8 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="fran-forvaltarkunskap-till-nnk">Från förvaltarkunskap till NNK</h1>
 <p><em>Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper</em></p>
-<p><strong>Version 2.27 · 2026-11-20</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
-<em>Senaste ändring:</em> R7: typiska arter styrker typen bara tillsammans med ett annat underlag; bevarandeplanen bara när den själv anger vad den bygger på (avsnitt 5). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
+<p><strong>Version 2.28 · 2026-11-26</strong> · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län<br />
+<em>Senaste ändring:</em> nytt formulärfält <em>Livsmiljötypen styrkt?</em>; justeringen av livsmiljötypen räknas fram ur det (avsnitt 4 och 5). <a href="#om-dokumentet">Versionshistorik och källor</a> längst ned.</p>
 <hr />
 <h2 id="1-varfor-detta-ar-ratt-spar-och-att-det-ar-sanktionerat">1. Varför detta är rätt spår — och att det är sanktionerat</h2>
 <p>Naturvårdsverket säger uttryckligen att lokalkännedom är en godkänd kunskapskälla. Det är värt att ha citaten redo när du tar upp det internt:</p>
@@ -342,13 +342,19 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 <tr>
 <td>"Det är rätt livsmiljötyp"</td>
 <td>Stämmer livsmiljötyp</td>
-<td><code>justering</code> = <em>Inget behov av justering</em>, eller tomt när <code>granskat</code> = Ja (beslut 2026-10-20)</td>
+<td><code>lmt_styrkt</code> = 1, 2 eller 3 (vad som stöder typen, se nedan), som ger <code>justering</code> = <em>Inget behov av justering</em>. Ytor granskade före 2026-11-26: <code>justering</code> = 1, eller tomt när <code>granskat</code> = Ja (beslut 2026-10-20)</td>
 <td><code>NATURTYP</code> oförändrad</td>
+</tr>
+<tr>
+<td>"Jag vet inte om det är livsmiljötypen"</td>
+<td>–</td>
+<td><code>lmt_styrkt</code> = 4 <em>Nej, ej styrkt</em>, som ger <code>justering</code> = <em>Osäker</em></td>
+<td><code>KARTERINGSSTATUS</code> = 5 Åtgärdas</td>
 </tr>
 <tr>
 <td>"Det är egentligen 9070, inte 9010"</td>
 <td>Föreslagen livsmiljötyp 1–3</td>
-<td><code>justering</code> = <em>Ändring till annan livsmiljötyp</em>, <code>livsmiljötyp1–3</code></td>
+<td><code>lmt_styrkt</code> = 5 <em>Nej, annan livsmiljötyp</em>, som ger <code>justering</code> = <em>Ändring till annan livsmiljötyp</em>; <code>livsmiljötyp1–3</code></td>
 <td><code>NATURTYP</code></td>
 </tr>
 <tr>
@@ -1022,7 +1028,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </tr>
 <tr>
 <td>Typen styrkt av nyare underlag</td>
-<td><em>Ja</em> eller <em>Nej</em> (<em>Villkorat</em> utgick 2026-11-20, se <em>Bevarandeplanen som underlag</em>). Vid <em>Nej</em> visas också vad tillståndet blir om typen bekräftas. <em>Nej</em> betyder inte att typen är fel: den behålls (<em>Livsmiljötyp, behov av justering</em> = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare <em>Typen rimlig</em> (bytt 2026-10-22).</td>
+<td><em>Ja</em> eller <em>Nej</em> (<em>Villkorat</em> utgick 2026-11-20, se <em>Bevarandeplanen som underlag</em>). Vid <em>Nej</em> visas också vad tillståndet blir om typen bekräftas. <em>Nej</em> betyder inte att typen är fel: den behålls (<em>Livsmiljötyp, behov av justering</em> = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare <em>Typen rimlig</em> (bytt 2026-10-22). Sedan 2026-11-26 står förslaget till formulärfältet <em>Livsmiljötypen styrkt?</em> i popupen (<code>r7f_typ</code>): <em>1</em> när nyare underlag stöder typen, <em>3</em> vid gammalt fältstöd, <em>4</em> vid <em>Typ ej styrkt</em>, annars <em>2</em> (egen prövning: typen behålls enligt FAQ 22, eller en försämring ändrar inte typen). Granskaren väljer själv; fältet förifylls inte.</td>
 </tr>
 <tr>
 <td>Förslag till formuläret</td>
@@ -1275,6 +1281,7 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </ul>
 <h3 id="versionshistorik">Versionshistorik</h3>
 <ul>
+<li><strong>2.28</strong> (2026-11-26) — avsnitt 4 och 5: nytt formulärfält <em>Livsmiljötypen styrkt?</em> (<code>lmt_styrkt</code>, länets eget). Granskaren svarar uttryckligen om typen är styrkt och hur; <em>Livsmiljötyp, behov av justering</em> räknas fram ur svaret. R7:s förslag i popupen (<code>r7f_typ</code>).</li>
 <li><strong>2.27</strong> (2026-11-20) — avsnitt 5, förutsättningen för R7: <em>Gammalt fältstöd</em> — TUVA med samma typ, äldre än karteringen, minst 90 % överlapp ger <em>Till fält</em> med klassning 1 i stället för <em>Typ ej styrkt</em> (408 ytor).</li>
 <li><strong>2.26</strong> (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.</li>
 <li><strong>2.25</strong> (2026-11-20) — avsnitt 5, förutsättningen för R7: typiska arter styrker typen bara tillsammans med TUVA, fältprotokoll eller en plan med eget underlag. 352 ytor går till <em>Typ ej styrkt</em> (Fullgod 102 → 52, Till fält 347 → 64).</li>

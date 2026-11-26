@@ -167,15 +167,59 @@ h4{font-size:15px;color:var(--ink-1);margin:26px 0 8px;padding-top:12px;border-t
 </div>
 </details></nav><article><h1 id="attributbeskrivning-kodlista-lstd-nnk-granskning">Attributbeskrivning / kodlista — LstD NNK Granskning</h1>
 <p><em>Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026</em></p>
-<p><strong>Version:</strong> 1.25 · 2026-11-20 (Kommentar i grupp 1: typiska arter styrker inte typen ensamma, nytt exempel). 1.24 · 2026-11-20 (Kommentar i grupp 1: plan utan angivet inventeringsår). 1.23 · 2026-11-20 (Kommentar i grupp 1: typ och gräns, underlagets år i stället för planens, exempel). 1.22 · 2026-11-17 (nytt fält Livsmiljötypen ingår i bevarandeplanen, <code>bevarandeplan_lmt</code>). 1.21 · 2026-11-17 (Förändringsorsak, förslag: 1 Rättning gäller även vid Okänt). 1.20 · 2026-11-16 (Grupp 3: när fältbesök och när fältinventering). 1.19 · 2026-11-16 (Del A: formulärets fält- och gruppnamn i alla fyra grupper, t.ex. <em>Behöver livsmiljötypen justeras?</em>, <em>Kommentar - kontrollbehov</em>, grupp 4 <em>Granskning</em>). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 <em>Livsmiljötyp</em> i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för <code>condition_date</code> enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, <code>*_5ar</code>; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: <em>Kommentar – Tillstånd</em> används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt <em>LIFE-projektens åtgärder</em>, fyra fält <code>life_*</code>). 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
+<p><strong>Version:</strong> 1.26 · 2026-11-26 (Del A: nytt fält <em>Livsmiljötypen styrkt?</em>, <code>lmt_styrkt</code>; <em>Behöver livsmiljötypen justeras?</em> räknas fram ur det; Del C: <code>r7f_typ</code>; Del D: överföringen). 1.25 · 2026-11-20 (Kommentar i grupp 1: typiska arter styrker inte typen ensamma, nytt exempel). 1.24 · 2026-11-20 (Kommentar i grupp 1: plan utan angivet inventeringsår). 1.23 · 2026-11-20 (Kommentar i grupp 1: typ och gräns, underlagets år i stället för planens, exempel). 1.22 · 2026-11-17 (nytt fält Livsmiljötypen ingår i bevarandeplanen, <code>bevarandeplan_lmt</code>). 1.21 · 2026-11-17 (Förändringsorsak, förslag: 1 Rättning gäller även vid Okänt). 1.20 · 2026-11-16 (Grupp 3: när fältbesök och när fältinventering). 1.19 · 2026-11-16 (Del A: formulärets fält- och gruppnamn i alla fyra grupper, t.ex. <em>Behöver livsmiljötypen justeras?</em>, <em>Kommentar - kontrollbehov</em>, grupp 4 <em>Granskning</em>). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 <em>Livsmiljötyp</em> i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för <code>condition_date</code> enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, <code>*_5ar</code>; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: <em>Kommentar – Tillstånd</em> används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt <em>LIFE-projektens åtgärder</em>, fyra fält <code>life_*</code>). 1.9 · 2026-10-20 (Del A och D: tomt <em>Livsmiljötyp, behov av justering</em> räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, <code>skdos_brand_*</code>). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten <code>tuva_negativ</code> och <code>fv_forsamring</code> för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)<br />
 <strong>Hör ihop med:</strong> <code>docs/webbgis-publicering.html</code> (Del 6, knappen "Kodlista/attributbeskrivning")<br />
 <strong>Källor:</strong> blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK version 1.1 (2026-11-02)</p>
 <p>Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:et. Del A är fälten du själv fyller i. Del B är NV:s egna, skrivskyddade källfält som visas i popupen. Del C är dateringsfälten och de stödfält som länets egen pipeline lägger till. Del D är NNK:s nya tillståndsfält, som granskningen till sist förs över till.</p>
 <hr />
 <h2 id="del-a-granskningsfalten-det-du-fyller-i">Del A · Granskningsfälten (det du fyller i)</h2>
 <h3 id="grupp-1-livsmiljotyp-och-utbredning">Grupp 1 · Livsmiljötyp och utbredning</h3>
+<p><strong>Livsmiljötypen styrkt?</strong> <em>(länets eget fält <code>lmt_styrkt</code>, sedan 2026-11-26; förs inte över till NNK eller KartLits)</em><br />
+Svara först i gruppen. Säger uttryckligen om typen håller och vad som stöder den. Förifylls inte; R7:s förslag står i popupen (<em>Livsmiljötypen styrkt? (förslag)</em>). Skriv i <em>Kommentar</em> vilket underlag och vilket år.</p>
+<div class="tabell"><table>
+<thead>
+<tr>
+<th>Kod</th>
+<th>Klartext</th>
+<th>Betyder</th>
+<th>Justering blir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ja, nyare underlag</td>
+<td>TUVA, fältprotokoll, inventering eller bevarandeplan som anger sitt underlag, nyare än karteringen</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ja, egen prövning</td>
+<td>Typen håller i IR-ortot och annat du kontrollerat, men inget nyare fältunderlag finns</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Delvis, bara karteringens eget underlag</td>
+<td>Äldre TUVA med samma typ (gammalt fältstöd). Ytan behålls som livsmiljötyp, tillståndet är okänt</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Nej, ej styrkt</td>
+<td>Osäkert om ytan är livsmiljötyp</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Nej, annan livsmiljötyp</td>
+<td>Ange typen i <em>Förslag livsmiljötyp 1</em></td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
 <p><strong>Behöver livsmiljötypen justeras?</strong> <em>(i NNK: Livsmiljötyp, behov av justering)</em><br />
-Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer. Ett tomt fält räknas som <em>1 Inget behov av justering</em> när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.</p>
+Sedan 2026-11-26 räknas fältet fram i formuläret ur <em>Livsmiljötypen styrkt?</em> (tabellen ovan) och är skrivskyddat där. Är <em>Livsmiljötypen styrkt?</em> tomt står värdet kvar, så ytor granskade tidigare ändras inte. Igenväxning pga utebliven skötsel ändrar inte typen (sätt Tillstånd = Icke gott). Ett tomt fält räknas som <em>1 Inget behov av justering</em> när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -2124,7 +2168,7 @@ Typiska (T) respektive <strong>karakteristiska arter</strong> (K, arter som kän
 </tbody>
 </table></div>
 <h3 id="r7-forslag">R7-förslag</h3>
-<p>Tre textfält, skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur <code>r7_forslag_for_granskning.csv</code> (<code>bygg_r7_forslag.py</code>). Tomt för ytor som R7 inte gäller för. Visas i popupens sektion <em>Bedömning vid skrivbordet (R7)</em>. Se <a href="metodik.html#forslag-per-yta-r7-forslag">metodiken</a>, <em>Förslag per yta</em>.</p>
+<p>Fyra textfält (<code>r7f_typ</code> sedan 2026-11-26), skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur <code>r7_forslag_for_granskning.csv</code> (<code>bygg_r7_forslag.py</code>). Tomt för ytor som R7 inte gäller för. Visas i popupens sektion <em>Bedömning vid skrivbordet (R7)</em>. Se <a href="metodik.html#forslag-per-yta-r7-forslag">metodiken</a>, <em>Förslag per yta</em>.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -2148,6 +2192,11 @@ Typiska (T) respektive <strong>karakteristiska arter</strong> (K, arter som kän
 <td><code>r7f_kontrollera</code></td>
 <td>text</td>
 <td>Manuella kontroller med lager i webbGIS inom hakparentes</td>
+</tr>
+<tr>
+<td><code>r7f_typ</code></td>
+<td>text</td>
+<td>Förslag till <em>Livsmiljötypen styrkt?</em>: valets nummer och underlaget, t.ex. <em>1 Ja, nyare underlag: TUVA 2023 anger 1630</em>. Tomt utanför R7</td>
 </tr>
 </tbody>
 </table></div>
@@ -2249,7 +2298,7 @@ NV:s naturtypskod och namn i samma fält, t.ex. "9010 - Taiga". Själva koden (<
 </tr>
 </tbody>
 </table></div>
-<p>Livsmiljötypen: <em>Livsmiljötyp, behov av justering</em> tomt och Granskat = Ja behandlas som <em>1 Inget behov av justering</em>, alltså ingen ändring av <code>naturtyp</code>.</p></article></div>
+<p>Livsmiljötypen: <em>Livsmiljötyp, behov av justering</em> tomt och Granskat = Ja behandlas som <em>1 Inget behov av justering</em>, alltså ingen ändring av <code>naturtyp</code>. <em>Livsmiljötypen styrkt?</em> (<code>lmt_styrkt</code>) förs inte över; det som når NNK är justeringen som räknas fram ur det (4 Osäker ger karteringsstatus 5 Åtgärdas).</p></article></div>
 </div>
 <script>
 (function(){

@@ -2,7 +2,7 @@
 
 *Länsstyrelsen i Södermanlands län · Naturskyddsenheten · NNK 2026*
 
-**Version:** 1.25 · 2026-11-20 (Kommentar i grupp 1: typiska arter styrker inte typen ensamma, nytt exempel). 1.24 · 2026-11-20 (Kommentar i grupp 1: plan utan angivet inventeringsår). 1.23 · 2026-11-20 (Kommentar i grupp 1: typ och gräns, underlagets år i stället för planens, exempel). 1.22 · 2026-11-17 (nytt fält Livsmiljötypen ingår i bevarandeplanen, `bevarandeplan_lmt`). 1.21 · 2026-11-17 (Förändringsorsak, förslag: 1 Rättning gäller även vid Okänt). 1.20 · 2026-11-16 (Grupp 3: när fältbesök och när fältinventering). 1.19 · 2026-11-16 (Del A: formulärets fält- och gruppnamn i alla fyra grupper, t.ex. *Behöver livsmiljötypen justeras?*, *Kommentar - kontrollbehov*, grupp 4 *Granskning*). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 *Livsmiljötyp* i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
+**Version:** 1.26 · 2026-11-26 (Del A: nytt fält *Livsmiljötypen styrkt?*, `lmt_styrkt`; *Behöver livsmiljötypen justeras?* räknas fram ur det; Del C: `r7f_typ`; Del D: överföringen). 1.25 · 2026-11-20 (Kommentar i grupp 1: typiska arter styrker inte typen ensamma, nytt exempel). 1.24 · 2026-11-20 (Kommentar i grupp 1: plan utan angivet inventeringsår). 1.23 · 2026-11-20 (Kommentar i grupp 1: typ och gräns, underlagets år i stället för planens, exempel). 1.22 · 2026-11-17 (nytt fält Livsmiljötypen ingår i bevarandeplanen, `bevarandeplan_lmt`). 1.21 · 2026-11-17 (Förändringsorsak, förslag: 1 Rättning gäller även vid Okänt). 1.20 · 2026-11-16 (Grupp 3: när fältbesök och när fältinventering). 1.19 · 2026-11-16 (Del A: formulärets fält- och gruppnamn i alla fyra grupper, t.ex. *Behöver livsmiljötypen justeras?*, *Kommentar - kontrollbehov*, grupp 4 *Granskning*). 1.18 · 2026-11-16 (Del A: Förändringsorsak, förslag flyttad från grupp 1 till grupp 4, eftersom den gäller hela ytan och sätts när grupp 1 och 2 är klara). 1.17 · 2026-11-04 (Del A: Förändringsorsak, förslag lämnas tomt när tillståndet blir Okänt). 1.16 · 2026-11-04 (Del om skydd: skötselområde per yta). 1.15 · 2026-11-04 (Del om skydd: reservatets namn, länkar, skötselplan och syften). 1.14 · 2026-11-03 (Grupp 3: kod 7 *Livsmiljötyp* i Vad ska kontrolleras, på Karins önskemål). 1.13 · 2026-11-03 (Del D: datumregeln för `condition_date` enligt Handledning NNK 1.1). 1.12 · 2026-11-03 (Del C: typiska och karakteristiska arter de senaste fem åren, `*_5ar`; naturreservatets beslutsår och förvaltare; TUVA-hävdstatus utan andel). 1.11 · 2026-10-23 (Grupp 2: *Kommentar – Tillstånd* används även för förklaringar till avvikande underlag, t.ex. översvämningsår). 1.10 · 2026-10-20 (Del C: nytt avsnitt *LIFE-projektens åtgärder*, fyra fält `life_*`). 1.9 · 2026-10-20 (Del A och D: tomt *Livsmiljötyp, behov av justering* räknas som 1 när ytan är granskad; Del C: naturvårdsbränning i SkötselDOS, `skdos_brand_*`). 1.8 · 2026-10-19 (Del A: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll uppdaterade efter NNK:s nya tillståndsfält; Del C: SkötselDOS-tröskeln gäller varje åtgärd för sig). 1.7 · 2026-10-16 (ny Del D: NNK:s nya tillståndsfält och hur granskningsfälten översätts). 1.6 · 2026-10-08 (Skogsstyrelsens register, VISS och R7-förslaget i Del C). 1.5 · 2026-10-02 (samlingsfälten `tuva_negativ` och `fv_forsamring` för webbGIS-filtren). 1.4 · 2026-10-01 (SkötselDOS- och uppföljningsfälten i Del C). 1.3 · 2026-09-30 (laser- och dikesfälten i Del C). 1.2 · 2026-09-30 (TUVA-fälten i Del C). 1.1 · 2026-09-25 (ny Del C: datering och länets stödfält)  
 **Hör ihop med:** `docs/webbgis-publicering.html` (Del 6, knappen "Kodlista/attributbeskrivning")  
 **Källor:** blankett_forvaltarkunskap_nnk.xlsx (Kodlistor-fliken), KartLits-mallens ArcGIS-domäner, Beskrivning_NNK_koder.pdf (NV PM NV-08177-15), Handledning NNK version 1.1 (2026-11-02)
 
@@ -14,8 +14,19 @@ Slå upp vad ett granskningsfält eller en kod betyder utan att lämna webbGIS:e
 
 ### Grupp 1 · Livsmiljötyp och utbredning
 
+**Livsmiljötypen styrkt?** *(länets eget fält `lmt_styrkt`, sedan 2026-11-26; förs inte över till NNK eller KartLits)*  
+Svara först i gruppen. Säger uttryckligen om typen håller och vad som stöder den. Förifylls inte; R7:s förslag står i popupen (*Livsmiljötypen styrkt? (förslag)*). Skriv i *Kommentar* vilket underlag och vilket år.
+
+| Kod | Klartext | Betyder | Justering blir |
+|---|---|---|---|
+| 1 | Ja, nyare underlag | TUVA, fältprotokoll, inventering eller bevarandeplan som anger sitt underlag, nyare än karteringen | 1 |
+| 2 | Ja, egen prövning | Typen håller i IR-ortot och annat du kontrollerat, men inget nyare fältunderlag finns | 1 |
+| 3 | Delvis, bara karteringens eget underlag | Äldre TUVA med samma typ (gammalt fältstöd). Ytan behålls som livsmiljötyp, tillståndet är okänt | 1 |
+| 4 | Nej, ej styrkt | Osäkert om ytan är livsmiljötyp | 4 |
+| 5 | Nej, annan livsmiljötyp | Ange typen i *Förslag livsmiljötyp 1* | 2 |
+
 **Behöver livsmiljötypen justeras?** *(i NNK: Livsmiljötyp, behov av justering)*  
-Ändra bara vid fel klassificering eller faktisk förändring — inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott i stället). Lämna tomt om typen stämmer. Ett tomt fält räknas som *1 Inget behov av justering* när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.
+Sedan 2026-11-26 räknas fältet fram i formuläret ur *Livsmiljötypen styrkt?* (tabellen ovan) och är skrivskyddat där. Är *Livsmiljötypen styrkt?* tomt står värdet kvar, så ytor granskade tidigare ändras inte. Igenväxning pga utebliven skötsel ändrar inte typen (sätt Tillstånd = Icke gott). Ett tomt fält räknas som *1 Inget behov av justering* när Granskat = Ja (beslut 2026-10-20). Fältet har inget förvalt värde, så att en granskad yta går att skilja från en ogranskad.
 
 | Kod | Klartext |
 |---|---|
@@ -622,13 +633,14 @@ Tolv fält, skrivskyddade och bara i ytlagret, för ytor med 3110, 3130, 3150, 3
 | `viss_stracka_m` | heltal | Vattendrag: sträcka inom ytan (m) |
 
 ### R7-förslag
-Tre textfält, skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur `r7_forslag_for_granskning.csv` (`bygg_r7_forslag.py`). Tomt för ytor som R7 inte gäller för. Visas i popupens sektion *Bedömning vid skrivbordet (R7)*. Se [metodiken](metodik.html#forslag-per-yta-r7-forslag), *Förslag per yta*.
+Fyra textfält (`r7f_typ` sedan 2026-11-26), skrivskyddade och bara i ytlagret, tillagda 2026-10-08. Hämtas ur `r7_forslag_for_granskning.csv` (`bygg_r7_forslag.py`). Tomt för ytor som R7 inte gäller för. Visas i popupens sektion *Bedömning vid skrivbordet (R7)*. Se [metodiken](metodik.html#forslag-per-yta-r7-forslag), *Förslag per yta*.
 
 | Fält | Typ | Innehåll |
 |---|---|---|
 | `r7f_utfall` | text | Föreslaget utfall, säkerhet och villkor, t.ex. *Fullgod · säkerhet medel — om IR-ortot inte visar igenväxning, plöjning eller gödsling* |
 | `r7f_motiv` | text | Underlagen förslaget bygger på, med år. Därefter "Lucka:" för underlag som saknas eller är gammalt (t.ex. biologin ej klassad i VISS) och "Motsägelse:" där underlagen säger emot varandra |
 | `r7f_kontrollera` | text | Manuella kontroller med lager i webbGIS inom hakparentes |
+| `r7f_typ` | text | Förslag till *Livsmiljötypen styrkt?*: valets nummer och underlaget, t.ex. *1 Ja, nyare underlag: TUVA 2023 anger 1630*. Tomt utanför R7 |
 
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  
@@ -667,5 +679,5 @@ Samtidigt fick `karteringsstatus` värdet 6 *Expertutlåtande*, och etiketterna 
 | 3 Okänt – kan ej bedöma | 0 / 0 (okänt 100) | 4 Otillräcklig kunskap |
 | (tomt, statusen står kvar) | registreras inte | – |
 
-Livsmiljötypen: *Livsmiljötyp, behov av justering* tomt och Granskat = Ja behandlas som *1 Inget behov av justering*, alltså ingen ändring av `naturtyp`.
+Livsmiljötypen: *Livsmiljötyp, behov av justering* tomt och Granskat = Ja behandlas som *1 Inget behov av justering*, alltså ingen ändring av `naturtyp`. *Livsmiljötypen styrkt?* (`lmt_styrkt`) förs inte över; det som når NNK är justeringen som räknas fram ur det (4 Osäker ger karteringsstatus 5 Åtgärdas).
 

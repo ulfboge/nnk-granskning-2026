@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.27 · 2026-11-20** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* R7: typiska arter styrker typen bara tillsammans med ett annat underlag; bevarandeplanen bara när den själv anger vad den bygger på (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.28 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* nytt formulärfält *Livsmiljötypen styrkt?*; justeringen av livsmiljötypen räknas fram ur det (avsnitt 4 och 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -110,8 +110,9 @@ Kolumnnamnen i blanketten (`blankett_forvaltarkunskap_nnk.xlsx`) är valda så a
 
 | Vad förvaltaren berättar | Blankettkolumn | Granskningslager (WebbGIS) | NNK Ajourhålla |
 |---|---|---|---|
-| "Det är rätt livsmiljötyp" | Stämmer livsmiljötyp | `justering` = *Inget behov av justering*, eller tomt när `granskat` = Ja (beslut 2026-10-20) | `NATURTYP` oförändrad |
-| "Det är egentligen 9070, inte 9010" | Föreslagen livsmiljötyp 1–3 | `justering` = *Ändring till annan livsmiljötyp*, `livsmiljötyp1–3` | `NATURTYP` |
+| "Det är rätt livsmiljötyp" | Stämmer livsmiljötyp | `lmt_styrkt` = 1, 2 eller 3 (vad som stöder typen, se nedan), som ger `justering` = *Inget behov av justering*. Ytor granskade före 2026-11-26: `justering` = 1, eller tomt när `granskat` = Ja (beslut 2026-10-20) | `NATURTYP` oförändrad |
+| "Jag vet inte om det är livsmiljötypen" | – | `lmt_styrkt` = 4 *Nej, ej styrkt*, som ger `justering` = *Osäker* | `KARTERINGSSTATUS` = 5 Åtgärdas |
+| "Det är egentligen 9070, inte 9010" | Föreslagen livsmiljötyp 1–3 | `lmt_styrkt` = 5 *Nej, annan livsmiljötyp*, som ger `justering` = *Ändring till annan livsmiljötyp*; `livsmiljötyp1–3` | `NATURTYP` |
 | "Det är inte livsmiljötyp än, men kan bli" | Föreslagen livsmiljötyp 1–3 + Utvecklingsmark = Ja | `justering` = *Ändring till utvecklingsmark*, `livsmiljötyp1–3` blir målnaturtyper | `NATURTYPSS` = 3, `MALNATUR1–3` |
 | "Den är i bra skick" | Tillstånd = Gott | `tillstand` (procentfälten behövs inte) | `condition_good` = 100 (`NATURTYPSS` = 1) |
 | "Den är igenvuxen / behöver restaureras" | Tillstånd = Icke gott | `tillstand` (procentfälten behövs inte) | `condition_notgood` = 100 (`NATURTYPSS` = 2) |
@@ -453,7 +454,7 @@ Omprövningen förs in som förslag i granskningslagret, precis som övriga R7-b
 | Utfall | *Fullgod*, *Icke fullgod*, *Till fält* eller *Typ ej styrkt* för ytor med *Ej bedömd status*. *Bekräfta …*, *Ändra till …* eller *Ej omprövad* för ytor som redan har naturtypsstatus fullgod eller icke fullgod (R7-omprövning). Ändring av en utpekad typ markeras med FAQ 19. |
 | Säkerhet | *Hög* (flera samstämmiga underlag), *Medel* (ett underlag, eller ett villkor som ska prövas), *Låg* (underlagen säger emot varandra eller är svaga). |
 | Villkor | Det skriptet inte kan pröva, oftast ortot: "om IR-ortot inte visar igenväxning, plöjning eller gödsling". |
-| Typen styrkt av nyare underlag | *Ja* eller *Nej* (*Villkorat* utgick 2026-11-20, se *Bevarandeplanen som underlag*). Vid *Nej* visas också vad tillståndet blir om typen bekräftas. *Nej* betyder inte att typen är fel: den behålls (*Livsmiljötyp, behov av justering* = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare *Typen rimlig* (bytt 2026-10-22). |
+| Typen styrkt av nyare underlag | *Ja* eller *Nej* (*Villkorat* utgick 2026-11-20, se *Bevarandeplanen som underlag*). Vid *Nej* visas också vad tillståndet blir om typen bekräftas. *Nej* betyder inte att typen är fel: den behålls (*Livsmiljötyp, behov av justering* = 1) om inget talar emot den (FAQ 22). Kolumnen hette tidigare *Typen rimlig* (bytt 2026-10-22). Sedan 2026-11-26 står förslaget till formulärfältet *Livsmiljötypen styrkt?* i popupen (`r7f_typ`): *1* när nyare underlag stöder typen, *3* vid gammalt fältstöd, *4* vid *Typ ej styrkt*, annars *2* (egen prövning: typen behålls enligt FAQ 22, eller en försämring ändrar inte typen). Granskaren väljer själv; fältet förifylls inte. |
 | Förslag till formuläret | Livsmiljötyp och utbredning, Tillstånd, Vad ska kontrolleras 1–3, Metod och Förändringsorsak med koder, och en färdig *Kommentar – Tillstånd* med delregel och källor med år. |
 | Kontrollera | Manuella kontroller med det lager i webbGIS där de görs, t.ex. "IR-orto senaste år: öppen hävdad mark utan igenväxning? [LM Ortofoton årsvis IR]". |
 
@@ -635,6 +636,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.28** (2026-11-26) — avsnitt 4 och 5: nytt formulärfält *Livsmiljötypen styrkt?* (`lmt_styrkt`, länets eget). Granskaren svarar uttryckligen om typen är styrkt och hur; *Livsmiljötyp, behov av justering* räknas fram ur svaret. R7:s förslag i popupen (`r7f_typ`).
 - **2.27** (2026-11-20) — avsnitt 5, förutsättningen för R7: *Gammalt fältstöd* — TUVA med samma typ, äldre än karteringen, minst 90 % överlapp ger *Till fält* med klassning 1 i stället för *Typ ej styrkt* (408 ytor).
 - **2.26** (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.
 - **2.25** (2026-11-20) — avsnitt 5, förutsättningen för R7: typiska arter styrker typen bara tillsammans med TUVA, fältprotokoll eller en plan med eget underlag. 352 ytor går till *Typ ej styrkt* (Fullgod 102 → 52, Till fält 347 → 64).

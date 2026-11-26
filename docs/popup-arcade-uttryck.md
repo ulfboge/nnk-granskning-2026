@@ -383,6 +383,8 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
 
+**Tillägg 2026-11-26 (Livsmiljötypen styrkt?):** direkt under *Förslag (R7)* står R7:s förslag till det nya formulärfältet *Livsmiljötypen styrkt?*, med valets nummer och underlaget, t.ex. *1 Ja, nyare underlag: TUVA 2019 anger 6270*. Fältet `r7f_typ` kommer från `r7_forslag_for_granskning.csv` och läggs in i tjänsten med `07_synka_underlag.py --skarp --nya-falt r7f_typ`. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.
+
 **Tillägg 2026-11-04 (skötselområde):** ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.
 
 **Tillägg 2026-11-11 (ÅGP):** fyra rader ur ÅGP-mappen på G: (`nnk_agp.py`, `agp_for_granskning.csv`):
@@ -629,6 +631,9 @@ Rad("r7_vmi", "Våtmarksinventeringen (VMI)", F("vmi_klass"));
 // Motiv och Kontrollera visas inte sedan 2026-11-03 (granskaren gör bedömningen själv
 // utifrån underlagen ovan). Fälten r7f_motiv/r7f_kontrollera finns kvar i lagret och i R7-filen.
 Rad("r7_f_utfall", "Förslag (R7)", F("r7f_utfall"));
+// Förslag till formulärfältet Livsmiljötypen styrkt? (2026-11-26, r7f_typ). Numret är valet i
+// formuläret; granskaren väljer själv, fältet förifylls inte.
+Rad("r7_f_typ", "Livsmiljötypen styrkt? (förslag)", F("r7f_typ"));
 
 // Lager för gruppen (2026-10-14): grundlista per R7-grupp. Namnen står som i appens
 // lagerlista (webbgis-publicering, "Faktisk lagerstruktur"). Kompletterar Kontrollera,
@@ -702,6 +707,8 @@ return { type: "fields", title: "Bedömning vid skrivbordet (R7)", fieldInfos: i
 
 ## 3. Granskning 1 — Avvikelse och korrigeringsförslag
 
+**Ändrat 2026-11-26:** nytt fält först, *Livsmiljötypen styrkt?* (`lmt_styrkt`), samma ordning som i formuläret. Kräver att fältet finns i tjänsten (`11_lagg_till_lmt_styrkt.py`); innan dess visas raden bara inte.
+
 **Ändrat 2026-11-23:** samma ordning som formulärets grupp 1 (justering och utbredning först, sedan förslagen). Blocket för `forandringsorsak_forslag` har flyttats till sektion 6, eftersom fältet ligger i formulärets grupp 4 sedan 2026-11-16.
 
 *(Gällde 2026-09-22–2026-11-23:)* **Utökad 2026-09-22:** nytt block för `forandringsorsak_forslag` ("Förändringsorsak, förslag") — granskarens EGNA förslagskod, inte det skrivskyddade källfältet `forandringsorsak` som redan syns i gruppen *Naturtyp (NNK-data)*. Kräver att fältet finns i tjänsten (gdb-kedjan → republicering, se `webbgis-publicering.html` Del 5 steg 6) innan den här versionen kan klistras in. Placerat sist i "vad"-delen, direkt före kommentaren — gruppen läses nu "vad" (föreslagen typ/justering) följt av "varför" (förändringsorsak + fritextkommentar).
@@ -712,6 +719,14 @@ return { type: "fields", title: "Bedömning vid skrivbordet (R7)", fieldInfos: i
 
 var infos = [];
 var attrs = {};
+
+if (!IsEmpty($feature.lmt_styrkt)) {
+    Push(infos, {
+        fieldName: "lmt_styrkt_varde",
+        label: "Livsmiljötypen styrkt?"
+    });
+    attrs["lmt_styrkt_varde"] = DomainName($feature, "lmt_styrkt");
+}
 
 if (!IsEmpty($feature.justering)) {
     Push(infos, {

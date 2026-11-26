@@ -205,7 +205,7 @@ Det som gör att formuläret ser ut som Stockholms: markera NNK-ytlagret → *Fo
 
 | Grupp | Fält (i ordning) | Gruppbeskrivning |
 | --- | --- | --- |
-| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22 och 2026-11-16, se noterna nedan) | Behöver livsmiljötypen justeras? · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker). Stämmer typen: lämna förslagsfälten tomma men skriv i Kommentar vad som stöder den. *(Gruppens beskrivning sedan 2026-11-23, 211 tecken; tidigare "Stämmer typen, lämna fälten tomma", som krockade med Kommentar. Igenväxning och utvecklingsmark står i fältet Behöver livsmiljötypen justeras?)* |
+| **1. Avvikelse och korrigeringsförslag** (bytte namn 2026-09-03, se README.md i leveransmappen; fältordning ändrad 2026-09-22, 2026-11-16 och 2026-11-26, se noterna nedan) | Livsmiljötypen styrkt? · Behöver livsmiljötypen justeras? (beräknad) · Behöver utbredningen justeras? · Förslag livsmiljötyp 1–3 · Kommentar | Svara först på om livsmiljötypen är styrkt; justeringen fylls då i av sig själv. Fyll bara i utbredning och förslagen om gränsen eller typen är fel. Skriv i Kommentar vad som stöder typen och gränsen. *(Gruppens beskrivning sedan 2026-11-26, 200 tecken. 2026-11-23–2026-11-26: "Fyll bara i om livsmiljötypen eller gränsen är fel, eller om du är osäker på om ytan alls är livsmiljötypen (välj då 4 Osäker) …")* |
 | **2. Tillstånd** | Tillstånd · Gott tillstånd (%) · Ej gott tillstånd (%) · Osäkert tillstånd (%) · Kommentar | Bedöm gott/icke gott/okänt tillstånd (struktur, funktion, typiska arter). Lämna tomt om naturtypsstatusen ska stå kvar. Blandat inom ytan: ange andel gott/ej gott/osäker i procent (summa 100). Osäker? Välj Okänt och skriv vad som saknas — gissa inte. |
 | **3. Kontroll och metod** | Vad ska kontrolleras 1–3 · Kommentar - kontrollbehov · Metod för kontroll · Kommentar - Metod | Framåtsyftande: vad bör kontrolleras/inventeras inför 2027, och med vilken metod. Beskriv INTE hur du kom fram till dagens bedömning här — det hör hemma som kommentar under Avvikelse/Tillstånd. |
 | **4. Granskning** | Förändringsorsak, förslag · Granskat? · NNK-kommentar | Sätt Ja när ytan är färdiggranskad och fälten ovan är ifyllda. Påbörjat = delresultat, inte klart än. Nej är standardläget för ogranskade objekt. |
@@ -218,6 +218,36 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 >
 > Utpekade livsmiljötyper har särskilt skydd. Kolla bevarandeplanen (fältet BEVPLAN i N2000-lagret) och ändra bara vid uppenbart fel eller faktisk förändring (FAQ 19).
 
+> **Uppdatering 2026-11-26: nytt fält *Livsmiljötypen styrkt?* (`lmt_styrkt`) först i grupp 1, och *Behöver livsmiljötypen justeras?* räknas fram ur det.** Tidigare frågade formuläret bara vad som skulle ändras. Om typen höll syntes bara indirekt (tomt eller *1 Inget behov* betydde godtagen typ, *4 Osäker* att den inte var styrkt), och vad granskaren stödde sig på fanns bara i fritext. Fältet är länets eget och förs inte över till NNK eller KartLits; det som levereras är fortfarande Justering och karteringsstatus. Det förifylls inte (samma skäl som för Justering 2026-10-20). R7:s förslag står i popupen, sektion 2b, raden *Livsmiljötypen styrkt? (förslag)*.
+>
+> | Kod | Val | Justering blir |
+> | --- | --- | --- |
+> | 1 | Ja, nyare underlag (TUVA, fältprotokoll, inventering eller bevarandeplan som anger sitt underlag, nyare än karteringen) | 1 Inget behov av justering |
+> | 2 | Ja, egen prövning (IR-ortot och annat du kontrollerat, inget nyare fältunderlag) | 1 Inget behov av justering |
+> | 3 | Delvis, bara karteringens eget underlag (äldre TUVA med samma typ). Ytan behålls som livsmiljötyp, tillståndet är okänt | 1 Inget behov av justering |
+> | 4 | Nej, ej styrkt | 4 Osäker (och karteringsstatus 5 Åtgärdas vid överföringen) |
+> | 5 | Nej, annan livsmiljötyp (ange typen i Förslag livsmiljötyp 1) | 2 Ändring till annan livsmiljötyp |
+>
+> **Så gör du (Johan, jobbdatorn och Map Viewer):**
+> 1. Kör `11_lagg_till_lmt_styrkt.py` i arcgispro-py3-prompten, först utan argument, sedan `--skarp`. Det lägger till fältet med domänen `LstD_NNK_lmt_styrkt` i alla tre lagren. Ingen Overwrite, inga befintliga värden rörs.
+> 2. Kör `07_synka_underlag.py --skarp --nya-falt r7f_typ` så att förslaget kommer in i popupen (efter 02–04 med det nya jobbdatorpaketet).
+> 3. Map Viewer → WebMap:en → ytlagret → *Forms*: dra in *Livsmiljötypen styrkt?* överst i grupp 1 (under Info-elementet), klistra in beskrivningen från tabellen nedan och kryssa i *Redigerbar*.
+> 4. Klicka på *Behöver livsmiljötypen justeras?* → *Logik* → *Beräknat uttryck* → nytt uttryck, namn `justering_ur_lmt_styrkt`, och klistra in uttrycket nedan. Byt beskrivning till texten i tabellen.
+> 5. Uppdatera gruppbeskrivningen för grupp 1 och klistra in popupens sektion 2b och 3 på nytt (`popup-arcade-uttryck.html`). Spara webbkartan. Gör samma sak för linje- och punktlagret.
+>
+> ```js
+> // Behöver livsmiljötypen justeras? – räknas fram ur Livsmiljötypen styrkt? (2026-11-26)
+> // Tomt styrkt-fält: värdet står kvar (redan granskade ytor ändras inte).
+> // 3 Utvecklingsmark och 5 Obestämd som redan satts står kvar vid 4/5.
+> var s = $feature.lmt_styrkt;
+> var j = $feature.justering;
+> if (IsEmpty(s)) { return j; }
+> if (s >= 4 && Includes([3, 5], j)) { return j; }
+> return Decode(s, 1, 1, 2, 1, 3, 1, 4, 4, 5, 2, j);
+> ```
+>
+> Ett beräknat fält blir skrivskyddat i formuläret. *3 Ändring till utvecklingsmark* och *5 Obestämd* kan därför inte väljas för hand för nya ytor; behövs de, lägg till två val i `lmt_styrkt` eller ta bort uttrycket för den ytan och skriv i kommentaren.
+
 > **Uppdatering 2026-11-20: ny beskrivning för Kommentar i grupp 1.** Den gamla texten ("Grund för bedömningen … och när kunskapen är ifrån") nämnde inte gränsen och skilde inte på året bevarandeplanen fastställdes och året för underlaget. Den nya texten följer mönstret i kommentarförslagen i bedömningsförslaget per yta och har ett exempel. Klistra in den i formuläret i Map Viewer för alla tre lagren; ingen Overwrite behövs.
 
 > **Uppdatering 2026-11-16: Förändringsorsak, förslag flyttad till grupp 4, direkt ovanför Granskat.** Fältet gäller hela ytan, både typ/gräns (1 Rättning) och tillstånd (3 Komplettering, 2 Faktisk förändring), och manualen säger att det fylls i när ett tillstånd anges i grupp 2. I grupp 1 kom det före tillståndet, och den som lämnade grupp 1 tom när typen stämde missade det. Flytten görs i formuläret i Map Viewer (dra fältet från grupp 1 till grupp 4 och klistra in beskrivningen nedan); fältet, domänen och tjänsten är oförändrade, så ingen Overwrite behövs.
@@ -226,11 +256,12 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 >
 > *(Gällde 2026-09-22–2026-11-16.)* Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.
 
-**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Formulärtexterna hänvisar inte till metodikens regelnummer (R2, R7 …), eftersom förvaltare och andra granskare inte behöver känna till dem (2026-11-16). Rutan Beskrivning tar **högst 255 tecken** (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. *2026-10-20:* Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). Klistra in de nya texterna i formuläret för alla tre lagren.
+**Beskrivning per fält** — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Formulärtexterna hänvisar inte till metodikens regelnummer (R2, R7 …), eftersom förvaltare och andra granskare inte behöver känna till dem (2026-11-16). Rutan Beskrivning tar **högst 255 tecken** (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). *Uppdaterat 2026-10-19* efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. *2026-10-20:* Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). *2026-11-26:* nytt fält Livsmiljötypen styrkt? och ny text för Behöver livsmiljötypen justeras? (räknas fram). Klistra in de nya texterna i formuläret för alla tre lagren.
 
 | Fält | Beskrivning |
 | --- | --- |
-| Behöver livsmiljötypen justeras? | Ändra bara vid fel klassificering eller faktisk förändring – inte vid igenväxning pga utebliven skötsel (sätt då Tillstånd = Icke gott). Lämna tomt om typen stämmer: tomt och Granskat = Ja räknas som 1 Inget behov av justering. |
+| Livsmiljötypen styrkt? | 1 underlag nyare än karteringen (TUVA, fältprotokoll, plan med eget underlag). 2 din prövning i IR-ortot m.m. 3 bara karteringens eget underlag (äldre TUVA). 4 ej styrkt. 5 annan typ. Förslaget står i popupen. |
+| Behöver livsmiljötypen justeras? | Räknas fram ur Livsmiljötypen styrkt?: 1–3 ger Inget behov av justering, 4 ger Osäker, 5 ger Ändring till annan livsmiljötyp. Igenväxning pga utebliven skötsel ändrar inte typen – sätt Tillstånd = Icke gott. |
 | Behöver utbredningen justeras? | Ändra bara om gränsen är fel och avvikelsen är minst lika stor som minsta karteringsenhet. |
 | Förslag livsmiljötyp 1 | Förstahandsförslag på rätt livsmiljötyp, vid fel klassificering. |
 | Förslag livsmiljötyp 2 | Andrahandsförslag, om osäker mellan flera typer. |
@@ -842,6 +873,7 @@ print("KLART. Ladda om lagren i ArcGIS Pro innan Share As Web Layer.")
 |---|---|---|
 | `LstD_NNK_granskad` | granskat | 1 Ja · 2 Nej · 3 Påbörjat |
 | `LstD_NNK_justering` | justering | 1 Inget behov av justering · 2 Ändring till annan livsmiljötyp · 3 Ändring till utvecklingsmark · 4 Osäker – kan ej bedöma om livsmiljö eller inte · 5 Obestämd – kan ej bedöma vilken livsmiljö |
+| `LstD_NNK_lmt_styrkt` | lmt_styrkt | 1 Ja, nyare underlag · 2 Ja, egen prövning · 3 Delvis, bara karteringens eget underlag · 4 Nej, ej styrkt · 5 Nej, annan livsmiljötyp *(länets egen, 2026-11-26; skapas av 04_forbered steg 2d och i tjänsten av 11_lagg_till_lmt_styrkt.py, inte ur KartLits-mallen)* |
 | `LstD_NNK_utbredning` | utbredning | 1 Inget behov av justering · 2 Yttergränser, kvalitetsförbättring · 3 Yttergränser, ändrad utbredning · 4 Behov av att dela upp ytan, flera LMT |
 | `LstD_NNK_kontroll` | kontroll1–3 | 1 Typiska och karakteristiska arter · 2 Strukturer · 3 Hävd · 4 Funktioner (hydrologi, störningar) · 5 Morfologi (jordart, formationer) · 6 Annan negativ påverkan |
 | `LstD_NNK_metod` | metod | 1 Fältbesök · 2 Fältinventering (standardiserad metodik) · 3 Skrivbord / granska mot andra underlag · 4 Annan metod |
