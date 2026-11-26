@@ -225,7 +225,7 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 > | 1 | Ja, nyare underlag (TUVA, fältprotokoll, inventering eller bevarandeplan som anger sitt underlag, nyare än karteringen) | 1 Inget behov av justering |
 > | 2 | Ja, egen prövning (IR-ortot och annat du kontrollerat, inget nyare fältunderlag) | 1 Inget behov av justering |
 > | 3 | Delvis, bara karteringens eget underlag (äldre TUVA med samma typ). Ytan behålls som livsmiljötyp, tillståndet är okänt | 1 Inget behov av justering |
-> | 4 | Nej, ej styrkt | 4 Osäker (och karteringsstatus 5 Åtgärdas vid överföringen) |
+> | 4 | Nej, ej styrkt – något talar emot typen (saknas bara nyare underlag: välj 2, FAQ 22) | 4 Osäker (och karteringsstatus 5 Åtgärdas vid överföringen) |
 > | 5 | Nej, annan livsmiljötyp (ange typen i Förslag livsmiljötyp 1) | 2 Ändring till annan livsmiljötyp |
 >
 > **Så gör du (Johan, jobbdatorn och Map Viewer):**

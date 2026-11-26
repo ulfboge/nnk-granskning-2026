@@ -22,7 +22,7 @@ Svara först i gruppen. Säger uttryckligen om typen håller och vad som stöder
 | 1 | Ja, nyare underlag | TUVA, fältprotokoll, inventering eller bevarandeplan som anger sitt underlag, nyare än karteringen | 1 |
 | 2 | Ja, egen prövning | Typen håller i IR-ortot och annat du kontrollerat, men inget nyare fältunderlag finns | 1 |
 | 3 | Delvis, bara karteringens eget underlag | Äldre TUVA med samma typ (gammalt fältstöd). Ytan behålls som livsmiljötyp, tillståndet är okänt | 1 |
-| 4 | Nej, ej styrkt | Osäkert om ytan är livsmiljötyp | 4 |
+| 4 | Nej, ej styrkt | Något talar emot typen (t.ex. gran i IR-ortot, åker i blocken). Saknas bara nyare underlag behålls typen (FAQ 22): välj 2 | 4 |
 | 5 | Nej, annan livsmiljötyp | Ange typen i *Förslag livsmiljötyp 1* | 2 |
 
 **Behöver livsmiljötypen justeras?** *(i NNK: Livsmiljötyp, behov av justering)*  
