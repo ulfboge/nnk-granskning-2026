@@ -653,7 +653,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 1. Öppna KartLitS WebbGIS, logga in med Automatisk inloggning.
 2. Zooma till objektet. Se till att lagret *LstD NNK Granskning* är aktivt. Tänd även *NV Naturtypskartan NNK* så färger och mönster syns.
 3. Klicka Redigera → välj lager *LstD NNK Granskning* → pilen under Redigera geoobjekt → infoklicka på polygonen.
-4. Fyll i: Livsmiljötyp behov av justering, Utbredning behov av justering, Livsmiljötyp 1–3, Kommentar livsmiljötyp och utbredning, Tillstånd behov av justering, procentandelarna, Kommentar tillstånd, Vad ska kontrolleras 1–3, Metod för kontroll, och sist Granskat = Ja eller Påbörjat.
+4. Fyll i: Livsmiljötypen styrkt? (Livsmiljötyp behov av justering räknas fram ur det sedan 2026-11-26), Utbredning behov av justering, Livsmiljötyp 1–3, Kommentar livsmiljötyp och utbredning, Tillstånd behov av justering, procentandelarna, Kommentar tillstånd, Vad ska kontrolleras 1–3, Metod för kontroll, och sist Granskat = Ja eller Påbörjat.
 5. Spara med *Uppdatera* längst ner. Klicka ALDRIG *Ta bort* — det raderar hela geoobjektet. Vill du avbryta: bakåtpilen vid Redigera geoobjekt → Ignorera redigeringar.
 6. Enligt FAQ fråga 9.1 är det detta lager som blir underlaget till planen för 2027.
 
