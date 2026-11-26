@@ -233,7 +233,8 @@ Lägg dessutom till ett **Info-element** överst i grupp 1, med denna text (klis
 > 2. Kör `07_synka_underlag.py --skarp --nya-falt r7f_typ` så att förslaget kommer in i popupen (efter 02–04 med det nya jobbdatorpaketet).
 > 3. Map Viewer → WebMap:en → ytlagret → *Forms*: dra in *Livsmiljötypen styrkt?* överst i grupp 1 (under Info-elementet), klistra in beskrivningen från tabellen nedan och kryssa i *Redigerbar*.
 > 4. Klicka på *Behöver livsmiljötypen justeras?* → *Logik* → *Beräknat uttryck* → nytt uttryck, namn `justering_ur_lmt_styrkt`, och klistra in uttrycket nedan. Byt beskrivning till texten i tabellen.
-> 5. Uppdatera gruppbeskrivningen för grupp 1 och klistra in popupens sektion 2b och 3 på nytt (`popup-arcade-uttryck.html`). Spara webbkartan. Gör samma sak för linje- och punktlagret.
+> 5. Uppdatera gruppbeskrivningen för grupp 1 och klistra in popupens sektion 2b och 3 på nytt (`popup-arcade-uttryck.html`). Spara webbkartan och stäng Map Viewer.
+> 6. Linje- och punktlagret: kör `12_kopiera_formular_till_lin_pkt.py` (natura-2000, jobbdatorn), först utan argument och sedan `--skarp --popup`. Det kopierar ytlagrets formulär och popupens Granskning 1–4 dit (linje och punkt låg långt efter). Identifiering och skydd, Naturtyp och R7-sektionen kopieras inte: de använder fält som bara finns på ytan eller är tomma på linjer och punkter (770 linjer, varav 4 livsmiljötyp; 3 punkter).
 >
 > ```js
 > // Behöver livsmiljötypen justeras? – räknas fram ur Livsmiljötypen styrkt? (2026-11-26)

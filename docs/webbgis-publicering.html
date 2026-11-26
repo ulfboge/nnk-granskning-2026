@@ -466,7 +466,8 @@ return rad1 + TextFormatting.NewLine + namn;
 2. Kör <code>07_synka_underlag.py --skarp --nya-falt r7f_typ</code> så att förslaget kommer in i popupen (efter 02–04 med det nya jobbdatorpaketet).
 3. Map Viewer → WebMap:en → ytlagret → <em>Forms</em>: dra in <em>Livsmiljötypen styrkt?</em> överst i grupp 1 (under Info-elementet), klistra in beskrivningen från tabellen nedan och kryssa i <em>Redigerbar</em>.
 4. Klicka på <em>Behöver livsmiljötypen justeras?</em> → <em>Logik</em> → <em>Beräknat uttryck</em> → nytt uttryck, namn <code>justering_ur_lmt_styrkt</code>, och klistra in uttrycket nedan. Byt beskrivning till texten i tabellen.
-5. Uppdatera gruppbeskrivningen för grupp 1 och klistra in popupens sektion 2b och 3 på nytt (<code>popup-arcade-uttryck.html</code>). Spara webbkartan. Gör samma sak för linje- och punktlagret.</p>
+5. Uppdatera gruppbeskrivningen för grupp 1 och klistra in popupens sektion 2b och 3 på nytt (<code>popup-arcade-uttryck.html</code>). Spara webbkartan och stäng Map Viewer.
+6. Linje- och punktlagret: kör <code>12_kopiera_formular_till_lin_pkt.py</code> (natura-2000, jobbdatorn), först utan argument och sedan <code>--skarp --popup</code>. Det kopierar ytlagrets formulär och popupens Granskning 1–4 dit (linje och punkt låg långt efter). Identifiering och skydd, Naturtyp och R7-sektionen kopieras inte: de använder fält som bara finns på ytan eller är tomma på linjer och punkter (770 linjer, varav 4 livsmiljötyp; 3 punkter).</p>
 <p><code>js
 // Behöver livsmiljötypen justeras? – räknas fram ur Livsmiljötypen styrkt? (2026-11-26)
 // Tomt styrkt-fält: värdet står kvar (redan granskade ytor ändras inte).
