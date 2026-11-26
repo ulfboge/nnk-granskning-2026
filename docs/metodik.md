@@ -2,8 +2,8 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.28 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
-*Senaste ändring:* nytt formulärfält *Livsmiljötypen styrkt?*; justeringen av livsmiljötypen räknas fram ur det (avsnitt 4 och 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
+**Version 2.29 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+*Senaste ändring:* R7-omprövning: skog och stabila bekräftas inte som fullgod vid skrivbordet utan styrkt typ (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
 
@@ -437,6 +437,7 @@ Gäller ytor med Natura-naturtyp och Naturtypsstatus 1 *Fullgod* eller 2 *Icke f
 
 1. **Den befintliga naturtypsstatusen är inget belägg för sig själv.** Att vid skrivbordet bekräfta en naturtypsstatus från 2009 utan nytt underlag är ett antagande, inte en bedömning.
 2. **Bekräfta** (behåll naturtypsstatusen och föreslå nytt slutdatum) bara när underlag som är *nyare än naturtypsstatusen* uppfyller samma villkor som delregeln för gruppen kräver för det utfallet. En hävdyta med *Fullgod* bekräftas alltså bara med obruten hävd i skiften eller SkötselDOS, ett orto utan igenväxning och TUVA högst 10 år gammal (R7A). 9010 och 9050 kan inte bekräftas som *fullgod* vid skrivbordet (R7B).
+   **Skog och stabila (beslut 2026-11-26):** *Fullgod* bekräftas eller föreslås inte vid skrivbordet när typen inte är styrkt av nyare underlag. Laser och IR-orto visar att inget negativt har hänt, men inte strukturer, död ved, gamla träd eller typiska arter, som är det som gör en skogs- eller stabil livsmiljötyp fullgod. Ytan får *Ej omprövad* (naturtypsstatusen står kvar) med *Vad ska kontrolleras* 2 Strukturer och 1 Typiska arter och metod 2 Fältinventering. Exempel: Lindön 9020, Fullgod från BIDOS 2009 (granskad vid skrivbordet), med laser 2020 och en bevarandeplan som bygger på muntliga uppgifter. Gäller 94 ytor (tidigare 76 *Bekräfta fullgod* och 18 *Ändra till fullgod*). Hävd och våtmark berörs inte: där finns årliga belägg som skiften och SkötselDOS.
 3. **Föreslå ändrad naturtypsstatus** bara när nyare underlag tydligt visar något annat, till exempel *Fullgod* → *Icke fullgod* när skiftena visar *Nej* och ortot visar igenväxning. För utpekade typer gäller FAQ 19 (R6): ändra bara vid uppenbart fel eller faktisk förändring. *Icke fullgod* → *Fullgod* kräver samma underlag som punkt 2.
 4. **Räcker inte underlaget:** låt naturtypsstatusen stå, föreslå inget nytt slutdatum och skriv i *Kommentar – Tillstånd*: "Naturtypsstatus från BIDOS/[år] ej omprövad (står kvar) — [vad som saknas]". Fyll i *Vad ska kontrolleras* och *Metod för kontroll*. Det är ett godtagbart utfall (FAQ 22, R4).
 5. **Kommentaren** anger "R7-omprövning", delregeln och källor med år, t.ex. "R7-omprövning R7A: bekräftad fullgod — skiften Ja 2015–2025, orto 2023, TUVA 2019".
@@ -636,6 +637,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.29** (2026-11-26) — avsnitt 5, R7-omprövning: *Fullgod* bekräftas eller föreslås inte vid skrivbordet för skog och stabila när typen inte är styrkt. 94 ytor går till *Ej omprövad* med fältinventering av strukturer och typiska arter.
 - **2.28** (2026-11-26) — avsnitt 4 och 5: nytt formulärfält *Livsmiljötypen styrkt?* (`lmt_styrkt`, länets eget). Granskaren svarar uttryckligen om typen är styrkt och hur; *Livsmiljötyp, behov av justering* räknas fram ur svaret. R7:s förslag i popupen (`r7f_typ`).
 - **2.27** (2026-11-20) — avsnitt 5, förutsättningen för R7: *Gammalt fältstöd* — TUVA med samma typ, äldre än karteringen, minst 90 % överlapp ger *Till fält* med klassning 1 i stället för *Typ ej styrkt* (408 ytor).
 - **2.26** (2026-11-20) — BIDOS: "ofta 15–20 år gammal" ersatt med länets karteringsperiod 2007–2011; 2012 är flytten till NNK.
