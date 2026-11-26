@@ -383,6 +383,8 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
 
+**Tillägg 2026-11-26 (Del av ytan):** *Hävd enligt skiften* kan nu vara *Del av ytan*: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det *Nej*. Raden i sektion 2b visar värdet som det är; sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 8 på nytt.
+
 **Tillägg 2026-11-26 (Livsmiljötypen styrkt?):** direkt under *Förslag (R7)* står R7:s förslag till det nya formulärfältet *Livsmiljötypen styrkt?*, med valets namn som i formulärets lista och underlaget, t.ex. *Ja, nyare underlag: TUVA 2019 anger 6270*. Fältet `r7f_typ` kommer från `r7_forslag_for_granskning.csv` och läggs in i tjänsten med `07_synka_underlag.py --skarp --nya-falt r7f_typ`. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.
 
 **Tillägg 2026-11-04 (skötselområde):** ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.
@@ -1204,7 +1206,8 @@ if (!IsEmpty(v)) {
     var forklaring = Decode(v,
         "Ja", "Bete eller slåtter varje år från typens startår eller första dataåret.",
         "Delvis", "Hävd vissa år, men inte obrutet.",
-        "Nej", "Ytan träffar skiften men aldrig bete eller slåtter.",
+        "Del av ytan", "Bete eller slåtter varje år, men på mindre än halva ytan (" + DefaultValue($feature.havd_andel_bete_senaste, "?") + " % senaste året). Vanligt i trädrika betesmarker. Jämför med SkötselDOS.",
+        "Nej", "Ytan träffar skiften men aldrig bete eller slåtter på mer än en mindre del av ytan.",
         "Oklart", "Ingen skiftesträff. Bete utan stöd syns inte i skiftesdata.",
         "");
     Push(rader, ["Hävd enligt skiften", v + IIf(period == "", "", " (" + period + ")")]);

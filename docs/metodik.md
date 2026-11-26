@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.29 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.30 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* R7-omprövning: skog och stabila bekräftas inte som fullgod vid skrivbordet utan styrkt typ (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -252,6 +252,7 @@ Kontrollera därför alltid bevarandeplanen innan du ändrar en utpekad typ. Lä
 |---|---|---|
 | Ja | Hävd varje år från typens startår, eller från 2015 | Uppfyller hävdvillkoret för *fullgod*. Kontrollera ändå orto och TUVA. |
 | Delvis | Hävd vissa år men inte obrutet. Fältet *År utan bete/slåtter* visar vilka år som saknas | Ett enstaka luckår 2015 är troligen en brist i skiftesdata (färre skiften det året), inte ett uppehåll. Tre år eller mer utan hävd ger *icke fullgod* — utom när hävden har tagits upp igen och pågått minst tre år i följd fram till senaste skiftesåret (t.ex. efter en restaurering). Då är hävden inte upphörd, men tillståndet efter uppehållet är okänt: *till fält*. |
+| Del av ytan (ny 2026-11-26) | Bete eller slåtter (nästan) varje år, men på 25–50 % av ytan | Ytan betas, men bara en del ligger på stödberättigat bete. Vanligt i 9070 och andra trädrika betesmarker, där trädrika partier räknas bort, och där Länsstyrelsen betar på egna avtal. Varken *Ja* eller *Nej* i R7A: jämför med SkötselDOS, TUVA och orto. Tidigare *Nej*, vilket gav *icke fullgod* på falsk grund (67 ytor, t.ex. Lindön 9070 med bete på 42 % i skiftena och 100 % i SkötselDOS). |
 | Nej | Minst 10 % av ytan ligger på ett jordbruksskifte något år 2015–2025, men inget år ligger hälften av ytan på bete eller slåtter | Ytan ligger alltså delvis i jordbrukets stödsystem, men inte som betesmark eller äng – oftast åker eller vall. På skogs- och myrytor betyder det oftast bara att en kant av ytan ligger på åker, så värdet säger lite där. På hävdberoende typer tyder det på att hävden har upphört (eller att marken inte söks stöd för som betesmark): pröva *icke fullgod* mot ortot. Under 10 % räknas inte som träff, och ytan blir *Oklart* (ändrat 2026-10-13). |
 | Oklart | Ingen skiftesträff alls | Bete utan stöd syns inte i skiftesdata. Inget belägg åt något håll — *till fält* om inget annat underlag finns. |
 
@@ -637,6 +638,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.30** (2026-11-26) — avsnitt 5, R7A: nytt värde *Del av ytan* i hävd enligt skiften (bete varje år på 25–50 % av ytan, tidigare *Nej*). 67 ytor, 20 nya R7-utfall, främst *Icke fullgod* som blir *Typ ej styrkt* eller *Till fält*.
 - **2.29** (2026-11-26) — avsnitt 5, R7-omprövning: *Fullgod* bekräftas eller föreslås inte vid skrivbordet för skog och stabila när typen inte är styrkt. 94 ytor går till *Ej omprövad* med fältbesök för strukturer och typiska arter (först fältinventering, ändrat samma dag).
 - **2.28** (2026-11-26) — avsnitt 4 och 5: nytt formulärfält *Livsmiljötypen styrkt?* (`lmt_styrkt`, länets eget). Granskaren svarar uttryckligen om typen är styrkt och hur; *Livsmiljötyp, behov av justering* räknas fram ur svaret. R7:s förslag i popupen (`r7f_typ`).
 - **2.27** (2026-11-20) — avsnitt 5, förutsättningen för R7: *Gammalt fältstöd* — TUVA med samma typ, äldre än karteringen, minst 90 % överlapp ger *Till fält* med klassning 1 i stället för *Typ ej styrkt* (408 ytor).

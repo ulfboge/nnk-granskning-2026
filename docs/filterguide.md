@@ -44,6 +44,7 @@ Vilka filter i webbGIS-appen som hjälper dig att hitta kandidater till *fullgod
 | **Hävdberoende**<br>`havdberoende = 'Ja'` | **på** |  | Motsvarar gruppen Hävd. Slå alltid på när du bedömer hävdtyper, annars drar hävdfiltren med sig skog och myr. |
 | **Hävd enligt skiften: Ja**<br>`havd_skiften = 'Ja'` | ● | 158 | Bete eller slåtter varje år sedan 2015 (eller sedan typen sattes) → kandidat *fullgod*. Kontrollera orto. |
 | **Hävd enligt skiften: Delvis**<br>`havd_skiften = 'Delvis'` | ● | 607 | Hävd vissa år. Se popupen för saknade år — saknas bara 2015 är det troligen brist i skiftesdata. Behöver oftast TUVA eller SkötselDOS. |
+| **Hävd enligt skiften: Del av ytan**<br>`havd_skiften = 'Del av ytan'` | ● | 24 | Bete eller slåtter varje år men på 25–50 % av ytan (ny 2026-11-26, tidigare Nej). Vanligt i 9070 och trädrika betesmarker. Jämför med SkötselDOS. |
 | **Hävd enligt skiften: Nej**<br>`havd_skiften = 'Nej'` | ● | 369 | Minst 10 % av ytan ligger på jordbruksskifte något år, men inget år på bete/slåtter → kandidat *icke fullgod* på hävdberoende ytor. På skog och myr betyder Nej oftast bara att en del av ytan ligger på åker — använd inte där. |
 | **Hävd enligt skiften: Oklart**<br>`havd_skiften = 'Oklart'` | ○ | 241 | Inga skiften alls. Bete utan stöd syns inte — gå vidare med SkötselDOS och TUVA. |
 | **Vall senaste året**<br>`havd_varning_vall = 'Ja'` | ○ | 2 | Varning för 6270, 6410 och 6510. Bara 2 hävdberoende ytor inom N2000 — kontrollera dem, men det är inget urvalsfilter. |
@@ -178,6 +179,7 @@ Filter som inte säger något om tillståndet men styr vilka ytor du ser och i v
 | Hävdberoende | på | – | – | – |
 | Hävd enligt skiften: Ja | ● 158 | – | – | – |
 | Hävd enligt skiften: Delvis | ● 607 | – | – | ○ 83 |
+| Hävd enligt skiften: Del av ytan | ● 24 | – | – | – |
 | Hävd enligt skiften: Nej | ● 369 | – | – | – |
 | Hävd enligt skiften: Oklart | ○ 241 | – | – | – |
 | Vall senaste året | ○ 2 | – | – | – |

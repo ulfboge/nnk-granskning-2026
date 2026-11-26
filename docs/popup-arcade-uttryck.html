@@ -508,6 +508,7 @@ return {
 </ul>
 <p><strong>Tillägg 2026-10-08:</strong> sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: <strong>Förslag (R7)</strong> (utfall, säkerhet och villkor), <strong>Motiv</strong> (underlagen med år och eventuella motsägelser) och <strong>Kontrollera</strong> (manuella kontroller med lager inom hakparentes). Fälten kommer från <code>skogsregister_for_granskning.csv</code>, <code>viss_for_granskning.csv</code> och <code>r7_forslag_for_granskning.csv</code> och måste vara synliga i Pro före Overwrite (de står i <code>EXTRA_VISIBLE_FIELDS</code> i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.</p>
 <p><strong>Ändrat 2026-11-03:</strong> raderna <em>Motiv</em> och <em>Kontrollera</em> är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. <em>Förslag (R7)</em> och <em>Lager för gruppen</em> står kvar. Motiv och kontroller finns kvar i fälten <code>r7f_motiv</code>/<code>r7f_kontrollera</code> och i R7-filen.</p>
+<p><strong>Tillägg 2026-11-26 (Del av ytan):</strong> <em>Hävd enligt skiften</em> kan nu vara <em>Del av ytan</em>: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det <em>Nej</em>. Raden i sektion 2b visar värdet som det är; sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 8 på nytt.</p>
 <p><strong>Tillägg 2026-11-26 (Livsmiljötypen styrkt?):</strong> direkt under <em>Förslag (R7)</em> står R7:s förslag till det nya formulärfältet <em>Livsmiljötypen styrkt?</em>, med valets namn som i formulärets lista och underlaget, t.ex. <em>Ja, nyare underlag: TUVA 2019 anger 6270</em>. Fältet <code>r7f_typ</code> kommer från <code>r7_forslag_for_granskning.csv</code> och läggs in i tjänsten med <code>07_synka_underlag.py --skarp --nya-falt r7f_typ</code>. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.</p>
 <p><strong>Tillägg 2026-11-04 (skötselområde):</strong> ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.</p>
 <p><strong>Tillägg 2026-11-11 (ÅGP):</strong> fyra rader ur ÅGP-mappen på G: (<code>nnk_agp.py</code>, <code>agp_for_granskning.csv</code>):
@@ -1292,7 +1293,8 @@ if (!IsEmpty(v)) {
     var forklaring = Decode(v,
         &quot;Ja&quot;, &quot;Bete eller slåtter varje år från typens startår eller första dataåret.&quot;,
         &quot;Delvis&quot;, &quot;Hävd vissa år, men inte obrutet.&quot;,
-        &quot;Nej&quot;, &quot;Ytan träffar skiften men aldrig bete eller slåtter.&quot;,
+        &quot;Del av ytan&quot;, &quot;Bete eller slåtter varje år, men på mindre än halva ytan (&quot; + DefaultValue($feature.havd_andel_bete_senaste, &quot;?&quot;) + &quot; % senaste året). Vanligt i trädrika betesmarker. Jämför med SkötselDOS.&quot;,
+        &quot;Nej&quot;, &quot;Ytan träffar skiften men aldrig bete eller slåtter på mer än en mindre del av ytan.&quot;,
         &quot;Oklart&quot;, &quot;Ingen skiftesträff. Bete utan stöd syns inte i skiftesdata.&quot;,
         &quot;&quot;);
     Push(rader, [&quot;Hävd enligt skiften&quot;, v + IIf(period == &quot;&quot;, &quot;&quot;, &quot; (&quot; + period + &quot;)&quot;)]);
