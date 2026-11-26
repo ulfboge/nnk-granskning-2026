@@ -640,7 +640,7 @@ Fyra textfält (`r7f_typ` sedan 2026-11-26), skrivskyddade och bara i ytlagret, 
 | `r7f_utfall` | text | Föreslaget utfall, säkerhet och villkor, t.ex. *Fullgod · säkerhet medel — om IR-ortot inte visar igenväxning, plöjning eller gödsling* |
 | `r7f_motiv` | text | Underlagen förslaget bygger på, med år. Därefter "Lucka:" för underlag som saknas eller är gammalt (t.ex. biologin ej klassad i VISS) och "Motsägelse:" där underlagen säger emot varandra |
 | `r7f_kontrollera` | text | Manuella kontroller med lager i webbGIS inom hakparentes |
-| `r7f_typ` | text | Förslag till *Livsmiljötypen styrkt?*: valets nummer och underlaget, t.ex. *1 Ja, nyare underlag: TUVA 2023 anger 1630*. Tomt utanför R7 |
+| `r7f_typ` | text | Förslag till *Livsmiljötypen styrkt?*: valets namn som i formulärets lista och underlaget, t.ex. *Ja, nyare underlag: TUVA 2023 anger 1630*. Tomt utanför R7 |
 
 ### Areal (ha)
 `area_ha` · decimaltal, 2 decimaler · skrivskyddat · bara ytlagret  

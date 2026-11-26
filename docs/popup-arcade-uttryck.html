@@ -508,7 +508,7 @@ return {
 </ul>
 <p><strong>Tillägg 2026-10-08:</strong> sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: <strong>Förslag (R7)</strong> (utfall, säkerhet och villkor), <strong>Motiv</strong> (underlagen med år och eventuella motsägelser) och <strong>Kontrollera</strong> (manuella kontroller med lager inom hakparentes). Fälten kommer från <code>skogsregister_for_granskning.csv</code>, <code>viss_for_granskning.csv</code> och <code>r7_forslag_for_granskning.csv</code> och måste vara synliga i Pro före Overwrite (de står i <code>EXTRA_VISIBLE_FIELDS</code> i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.</p>
 <p><strong>Ändrat 2026-11-03:</strong> raderna <em>Motiv</em> och <em>Kontrollera</em> är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. <em>Förslag (R7)</em> och <em>Lager för gruppen</em> står kvar. Motiv och kontroller finns kvar i fälten <code>r7f_motiv</code>/<code>r7f_kontrollera</code> och i R7-filen.</p>
-<p><strong>Tillägg 2026-11-26 (Livsmiljötypen styrkt?):</strong> direkt under <em>Förslag (R7)</em> står R7:s förslag till det nya formulärfältet <em>Livsmiljötypen styrkt?</em>, med valets nummer och underlaget, t.ex. <em>1 Ja, nyare underlag: TUVA 2019 anger 6270</em>. Fältet <code>r7f_typ</code> kommer från <code>r7_forslag_for_granskning.csv</code> och läggs in i tjänsten med <code>07_synka_underlag.py --skarp --nya-falt r7f_typ</code>. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.</p>
+<p><strong>Tillägg 2026-11-26 (Livsmiljötypen styrkt?):</strong> direkt under <em>Förslag (R7)</em> står R7:s förslag till det nya formulärfältet <em>Livsmiljötypen styrkt?</em>, med valets namn som i formulärets lista och underlaget, t.ex. <em>Ja, nyare underlag: TUVA 2019 anger 6270</em>. Fältet <code>r7f_typ</code> kommer från <code>r7_forslag_for_granskning.csv</code> och läggs in i tjänsten med <code>07_synka_underlag.py --skarp --nya-falt r7f_typ</code>. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.</p>
 <p><strong>Tillägg 2026-11-04 (skötselområde):</strong> ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.</p>
 <p><strong>Tillägg 2026-11-11 (ÅGP):</strong> fyra rader ur ÅGP-mappen på G: (<code>nnk_agp.py</code>, <code>agp_for_granskning.csv</code>):
 - <em>Särskilt skyddsvärda träd (ÅGP)</em> – antal träd i ytan, varav jätteträd (stamomkrets minst 314 cm), med hål och döda, trädslag och senaste inventeringsår. Länsstyrelsens inventering 2022–2025 och inventeringen 2016 (RSE).
@@ -747,8 +747,8 @@ Rad(&quot;r7_vmi&quot;, &quot;Våtmarksinventeringen (VMI)&quot;, F(&quot;vmi_kl
 // Motiv och Kontrollera visas inte sedan 2026-11-03 (granskaren gör bedömningen själv
 // utifrån underlagen ovan). Fälten r7f_motiv/r7f_kontrollera finns kvar i lagret och i R7-filen.
 Rad(&quot;r7_f_utfall&quot;, &quot;Förslag (R7)&quot;, F(&quot;r7f_utfall&quot;));
-// Förslag till formulärfältet Livsmiljötypen styrkt? (2026-11-26, r7f_typ). Numret är valet i
-// formuläret; granskaren väljer själv, fältet förifylls inte.
+// Förslag till formulärfältet Livsmiljötypen styrkt? (2026-11-26, r7f_typ). Börjar med valets namn
+// som i formulärets lista; granskaren väljer själv, fältet förifylls inte.
 Rad(&quot;r7_f_typ&quot;, &quot;Livsmiljötypen styrkt? (förslag)&quot;, F(&quot;r7f_typ&quot;));
 
 // Lager för gruppen (2026-10-14): grundlista per R7-grupp. Namnen står som i appens

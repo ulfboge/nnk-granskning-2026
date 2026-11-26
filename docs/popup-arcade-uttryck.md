@@ -383,7 +383,7 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
 
-**Tillägg 2026-11-26 (Livsmiljötypen styrkt?):** direkt under *Förslag (R7)* står R7:s förslag till det nya formulärfältet *Livsmiljötypen styrkt?*, med valets nummer och underlaget, t.ex. *1 Ja, nyare underlag: TUVA 2019 anger 6270*. Fältet `r7f_typ` kommer från `r7_forslag_for_granskning.csv` och läggs in i tjänsten med `07_synka_underlag.py --skarp --nya-falt r7f_typ`. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.
+**Tillägg 2026-11-26 (Livsmiljötypen styrkt?):** direkt under *Förslag (R7)* står R7:s förslag till det nya formulärfältet *Livsmiljötypen styrkt?*, med valets namn som i formulärets lista och underlaget, t.ex. *Ja, nyare underlag: TUVA 2019 anger 6270*. Fältet `r7f_typ` kommer från `r7_forslag_for_granskning.csv` och läggs in i tjänsten med `07_synka_underlag.py --skarp --nya-falt r7f_typ`. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.
 
 **Tillägg 2026-11-04 (skötselområde):** ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.
 
@@ -631,8 +631,8 @@ Rad("r7_vmi", "Våtmarksinventeringen (VMI)", F("vmi_klass"));
 // Motiv och Kontrollera visas inte sedan 2026-11-03 (granskaren gör bedömningen själv
 // utifrån underlagen ovan). Fälten r7f_motiv/r7f_kontrollera finns kvar i lagret och i R7-filen.
 Rad("r7_f_utfall", "Förslag (R7)", F("r7f_utfall"));
-// Förslag till formulärfältet Livsmiljötypen styrkt? (2026-11-26, r7f_typ). Numret är valet i
-// formuläret; granskaren väljer själv, fältet förifylls inte.
+// Förslag till formulärfältet Livsmiljötypen styrkt? (2026-11-26, r7f_typ). Börjar med valets namn
+// som i formulärets lista; granskaren väljer själv, fältet förifylls inte.
 Rad("r7_f_typ", "Livsmiljötypen styrkt? (förslag)", F("r7f_typ"));
 
 // Lager för gruppen (2026-10-14): grundlista per R7-grupp. Namnen står som i appens
