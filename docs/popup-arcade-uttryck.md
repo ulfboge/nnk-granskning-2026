@@ -383,7 +383,7 @@ Ny sektion 2026-10-06. Lägg den direkt efter *Naturtyp (NNK-data)*. Den samlar 
 
 **Ändrat 2026-11-03:** raderna *Motiv* och *Kontrollera* är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. *Förslag (R7)* och *Lager för gruppen* står kvar. Motiv och kontroller finns kvar i fälten `r7f_motiv`/`r7f_kontrollera` och i R7-filen.
 
-**Tillägg 2026-11-26 (Del av ytan):** *Hävd enligt skiften* kan nu vara *Del av ytan*: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det *Nej*. Raden i sektion 2b visar värdet som det är; sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 8 på nytt.
+**Tillägg 2026-11-26 (Del av ytan):** *Hävd enligt skiften* kan nu vara *Del av ytan*: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det *Nej*. Raden *Hävd enligt skiften* i sektion 2b har fått en kort förklaring efter värdet, t.ex. *Del av ytan: bete varje år, men i skiftena bara på ca 42 % av ytan · nyare än naturtypsstatusen*, och *Nej* och *Oklart* visas bara för hävdberoende ytor. Sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 2b och 8 på nytt.
 
 **Tillägg 2026-11-26 (Livsmiljötypen styrkt?):** direkt under *Förslag (R7)* står R7:s förslag till det nya formulärfältet *Livsmiljötypen styrkt?*, med valets namn som i formulärets lista och underlaget, t.ex. *Ja, nyare underlag: TUVA 2019 anger 6270*. Fältet `r7f_typ` kommer från `r7_forslag_for_granskning.csv` och läggs in i tjänsten med `07_synka_underlag.py --skarp --nya-falt r7f_typ`. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.
 
@@ -500,11 +500,22 @@ Rad("r7_vad", "Vad gäller", vad);
 
 // Underlag med år
 var nu = Year(Now());
+// Hävd enligt skiften (ändrat 2026-11-26): värdet med en kort förklaring, så att "Nej" inte
+// läses som att ytan saknar bete. Nej och Oklart visas bara för hävdberoende ytor.
 var sk = F("havd_skiften");
-if (!IsEmpty(sk)) {
+var hb = HasKey($feature, "havdberoende") && $feature.havdberoende == "Ja";
+if (!IsEmpty(sk) && (hb || (sk != "Nej" && sk != "Oklart"))) {
     var saknas = F("havd_ar_utan_bete");
+    var andelBete = F("havd_andel_bete_senaste");
+    var skTxt = Decode(sk,
+        "Ja", "bete eller slåtter varje år",
+        "Delvis", "bete eller slåtter vissa år" + IIf(IsEmpty(saknas), "", ", saknas " + saknas),
+        "Del av ytan", "bete varje år, men i skiftena bara på ca " + DefaultValue(andelBete, "?") + " % av ytan",
+        "Nej", "inget år bete eller slåtter på mer än en mindre del av ytan" + IIf(IsEmpty(andelBete) || andelBete == 0, "", " (" + andelBete + " % senaste året)"),
+        "Oklart", "inga skiften; bete utan stöd syns inte",
+        "");
     Rad("r7_skiften", "Hävd enligt skiften (2015–2025)",
-        sk + IIf(IsEmpty(saknas), "", " — år utan bete/slåtter: " + saknas) + Jmf(2025));
+        sk + IIf(skTxt == "", "", ": " + skTxt) + Jmf(2025));
 }
 var tAr = Ar(F("tuva_inv_ar"));
 if (!IsEmpty(tAr)) {

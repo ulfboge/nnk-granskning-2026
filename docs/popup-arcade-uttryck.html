@@ -508,7 +508,7 @@ return {
 </ul>
 <p><strong>Tillägg 2026-10-08:</strong> sektionen visar också Skogsstyrelsens register (utförd avverkning, avverkningsanmälan, biotopskydd/naturvårdsavtal), VISS-status när den är kopplad, och sist R7-förslaget i tre rader: <strong>Förslag (R7)</strong> (utfall, säkerhet och villkor), <strong>Motiv</strong> (underlagen med år och eventuella motsägelser) och <strong>Kontrollera</strong> (manuella kontroller med lager inom hakparentes). Fälten kommer från <code>skogsregister_for_granskning.csv</code>, <code>viss_for_granskning.csv</code> och <code>r7_forslag_for_granskning.csv</code> och måste vara synliga i Pro före Overwrite (de står i <code>EXTRA_VISIBLE_FIELDS</code> i lyrx-skriptet). Klistra in hela uttrycket nedan igen i Map Viewer; det ersätter det gamla. Förslaget är skrivskyddat — formulärfälten fylls i av granskaren.</p>
 <p><strong>Ändrat 2026-11-03:</strong> raderna <em>Motiv</em> och <em>Kontrollera</em> är borttagna efter genomgången med Karin, så att granskaren gör bedömningen själv utifrån underlagen. <em>Förslag (R7)</em> och <em>Lager för gruppen</em> står kvar. Motiv och kontroller finns kvar i fälten <code>r7f_motiv</code>/<code>r7f_kontrollera</code> och i R7-filen.</p>
-<p><strong>Tillägg 2026-11-26 (Del av ytan):</strong> <em>Hävd enligt skiften</em> kan nu vara <em>Del av ytan</em>: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det <em>Nej</em>. Raden i sektion 2b visar värdet som det är; sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 8 på nytt.</p>
+<p><strong>Tillägg 2026-11-26 (Del av ytan):</strong> <em>Hävd enligt skiften</em> kan nu vara <em>Del av ytan</em>: bete eller slåtter (nästan) varje år, men på 25–50 % av ytan. Tidigare stod det <em>Nej</em>. Raden <em>Hävd enligt skiften</em> i sektion 2b har fått en kort förklaring efter värdet, t.ex. <em>Del av ytan: bete varje år, men i skiftena bara på ca 42 % av ytan · nyare än naturtypsstatusen</em>, och <em>Nej</em> och <em>Oklart</em> visas bara för hävdberoende ytor. Sektion 8 (Hävd) har en förklaring för det nya värdet. Klistra in sektion 2b och 8 på nytt.</p>
 <p><strong>Tillägg 2026-11-26 (Livsmiljötypen styrkt?):</strong> direkt under <em>Förslag (R7)</em> står R7:s förslag till det nya formulärfältet <em>Livsmiljötypen styrkt?</em>, med valets namn som i formulärets lista och underlaget, t.ex. <em>Ja, nyare underlag: TUVA 2019 anger 6270</em>. Fältet <code>r7f_typ</code> kommer från <code>r7_forslag_for_granskning.csv</code> och läggs in i tjänsten med <code>07_synka_underlag.py --skarp --nya-falt r7f_typ</code>. Klistra in hela uttrycket nedan igen; raden är tom tills fältet finns.</p>
 <p><strong>Tillägg 2026-11-04 (skötselområde):</strong> ytor som täcks minst till hälften av ett skötselområde visar område, planens år, täckning, mål och åtgärder. Området är ofta grövre än NNK-ytan, så texten säger vad planen vill med området, inte med ytans naturtyp. Den är sammanhang och påverkar inte R7-förslaget.</p>
 <p><strong>Tillägg 2026-11-11 (ÅGP):</strong> fyra rader ur ÅGP-mappen på G: (<code>nnk_agp.py</code>, <code>agp_for_granskning.csv</code>):
@@ -615,11 +615,22 @@ Rad(&quot;r7_vad&quot;, &quot;Vad gäller&quot;, vad);
 
 // Underlag med år
 var nu = Year(Now());
+// Hävd enligt skiften (ändrat 2026-11-26): värdet med en kort förklaring, så att &quot;Nej&quot; inte
+// läses som att ytan saknar bete. Nej och Oklart visas bara för hävdberoende ytor.
 var sk = F(&quot;havd_skiften&quot;);
-if (!IsEmpty(sk)) {
+var hb = HasKey($feature, &quot;havdberoende&quot;) &amp;&amp; $feature.havdberoende == &quot;Ja&quot;;
+if (!IsEmpty(sk) &amp;&amp; (hb || (sk != &quot;Nej&quot; &amp;&amp; sk != &quot;Oklart&quot;))) {
     var saknas = F(&quot;havd_ar_utan_bete&quot;);
+    var andelBete = F(&quot;havd_andel_bete_senaste&quot;);
+    var skTxt = Decode(sk,
+        &quot;Ja&quot;, &quot;bete eller slåtter varje år&quot;,
+        &quot;Delvis&quot;, &quot;bete eller slåtter vissa år&quot; + IIf(IsEmpty(saknas), &quot;&quot;, &quot;, saknas &quot; + saknas),
+        &quot;Del av ytan&quot;, &quot;bete varje år, men i skiftena bara på ca &quot; + DefaultValue(andelBete, &quot;?&quot;) + &quot; % av ytan&quot;,
+        &quot;Nej&quot;, &quot;inget år bete eller slåtter på mer än en mindre del av ytan&quot; + IIf(IsEmpty(andelBete) || andelBete == 0, &quot;&quot;, &quot; (&quot; + andelBete + &quot; % senaste året)&quot;),
+        &quot;Oklart&quot;, &quot;inga skiften; bete utan stöd syns inte&quot;,
+        &quot;&quot;);
     Rad(&quot;r7_skiften&quot;, &quot;Hävd enligt skiften (2015–2025)&quot;,
-        sk + IIf(IsEmpty(saknas), &quot;&quot;, &quot; — år utan bete/slåtter: &quot; + saknas) + Jmf(2025));
+        sk + IIf(skTxt == &quot;&quot;, &quot;&quot;, &quot;: &quot; + skTxt) + Jmf(2025));
 }
 var tAr = Ar(F(&quot;tuva_inv_ar&quot;));
 if (!IsEmpty(tAr)) {
