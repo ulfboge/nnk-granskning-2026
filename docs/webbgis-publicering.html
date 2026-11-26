@@ -482,7 +482,7 @@ return Decode(s, 1, 1, 2, 1, 3, 1, 4, 4, 5, 2, j);</code></p>
 <p><strong>Uppdatering 2026-09-22: nytt fält <code>forandringsorsak_forslag</code> ("Förändringsorsak, förslag") i grupp 1.</strong> Beslutat för att fånga R2-regeln (<code>metodik.html</code> avsnitt 5) redan vid skrivbordsgranskningen, i stället för att avgöra förändringsorsak-koden först när uppgiften väl förs in i NNK Ajourhålla. Separat, redigerbart fält — inte samma som det skrivskyddade käll­fältet <code>forandringsorsak</code> (NV:s nuvarande värde, syns i popupgruppen <em>Naturtyp (NNK-data)</em>). Kräver att hela gdb-kedjan körs om (<code>koppla_nnk_skyddskategori.py</code> → <code>bygg_nnk_lyrx.py</code> → <code>04_forbered_gdb_for_publicering.py</code> → Share/Overwrite Web Layer) innan fältet finns i tjänsten — se <code>docs/popup-arcade-uttryck.html</code> för den uppdaterade Granskning 1-popupen och smart-formulärets nya fältordning.</p>
 <p><em>(Gällde 2026-09-22–2026-11-16.)</em> Placerad sist i "vad"-delen (efter Livsmiljötyp 1–3, före kommentaren) — gruppen läses nu som "vad" (justering/utbredning/föreslagen typ) följt av "varför" (förändringsorsak-koden + fritextkommentaren), i stället för att kommentaren stod sist utan koppling till en strukturerad orsakskod.</p>
 </blockquote>
-<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Formulärtexterna hänvisar inte till metodikens regelnummer (R2, R7 …), eftersom förvaltare och andra granskare inte behöver känna till dem (2026-11-16). Rutan Beskrivning tar <strong>högst 255 tecken</strong> (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. <em>2026-10-20:</em> Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). <em>2026-11-26:</em> nytt fält Livsmiljötypen styrkt? och ny text för Behöver livsmiljötypen justeras? (räknas fram). Klistra in de nya texterna i formuläret för alla tre lagren.</p>
+<p><strong>Beskrivning per fält</strong> — sätt enligt lathundens text (klicka på fältet i formuläret → Beskrivning). Formulärtexterna hänvisar inte till metodikens regelnummer (R2, R7 …), eftersom förvaltare och andra granskare inte behöver känna till dem (2026-11-16). Rutan Beskrivning tar <strong>högst 255 tecken</strong> (längre text klipps); alla texter nedan håller sig under det. Fältnamnen är formulärets visningsnamn (avstämda mot formuläret 2026-11-16). <em>Uppdaterat 2026-10-19</em> efter att NNK:s tillståndsfält driftsattes: Tillstånd, procentfälten, Kommentar – Tillstånd och Metod för kontroll. <em>2026-10-20:</em> Livsmiljötyp, behov av justering (tomt räknas som 1 när ytan är granskad). <em>2026-11-26:</em> nytt fält Livsmiljötypen styrkt? och ny text för Behöver livsmiljötypen justeras? (räknas fram). Texterna hänvisar till valens namn, inte koderna, eftersom rullistan bara visar namnen (ändrat samma dag). Klistra in de nya texterna i formuläret för alla tre lagren.</p>
 <div class="tabell"><table>
 <thead>
 <tr>
@@ -493,11 +493,11 @@ return Decode(s, 1, 1, 2, 1, 3, 1, 4, 4, 5, 2, j);</code></p>
 <tbody>
 <tr>
 <td>Livsmiljötypen styrkt?</td>
-<td>1 underlag nyare än karteringen (TUVA, fältprotokoll, plan med eget underlag). 2 din prövning i IR-ortot m.m. 3 bara karteringens eget underlag (äldre TUVA). 4 ej styrkt. 5 annan typ. Förslaget står i popupen.</td>
+<td>Nyare underlag: TUVA, fältprotokoll eller plan med eget underlag, nyare än karteringen. Egen prövning: IR-ortot m.m. stöder typen. Bara karteringens eget underlag: äldre TUVA med samma typ. Förslaget står i popupen.</td>
 </tr>
 <tr>
 <td>Behöver livsmiljötypen justeras?</td>
-<td>Räknas fram ur Livsmiljötypen styrkt?: 1–3 ger Inget behov av justering, 4 ger Osäker, 5 ger Ändring till annan livsmiljötyp. Igenväxning pga utebliven skötsel ändrar inte typen – sätt Tillstånd = Icke gott.</td>
+<td>Räknas fram ur Livsmiljötypen styrkt?: Ja och Delvis ger Inget behov av justering, Nej, ej styrkt ger Osäker, Nej, annan livsmiljötyp ger Ändring till annan livsmiljötyp. Igenväxning ändrar inte typen.</td>
 </tr>
 <tr>
 <td>Behöver utbredningen justeras?</td>
