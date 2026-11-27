@@ -23,6 +23,7 @@ Samtliga sex popup-sektioner har (per 2026-09-22) ersatts med handskrivna **Arca
 - **Fältnamnet för metod-kommentaren** skrivs `kommentar_metod` (gemener) i Arcade-uttrycket för Granskning 3, medan övrig dokumentation (`webbgis-publicering.md`, `metodik.md`) genomgående skriver `Kommentar_metod` (stort K). Arcades fältuppslagning är skiftlägesokänslig så det är sannolikt ofarligt, men värt att göra konsekvent i dokumentationen.
 - **Grupp 1–3** slår upp klartext direkt med `DomainName($feature, "fältnamn")` på kodfälten (`livsmiljötyp1–3`, `justering`, `utbredning`, `tillstand`, `kontroll1–3`, `metod`), inte via de förberäknade `_text`-fälten som `bygg_nnk_lyrx.py` annars bygger. Fungerar likvärdigt, men det betyder att de förberäknade `_text`-fälten för just dessa fält inte används av popupen (de kan fortfarande vara användbara i attributtabellen/exporter).
 - **Startdatum/Slutdatum senaste inventering** (`habitat_period_lastdata_start`/`_end`) tillagda i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — årtalet för naturtypsbedömningen saknades helt i popupen innan dess. **Kräver en publiceringsförberedelse som inte är gjord än:** fältsynlighet för `habitat_period_*` måste slås PA i `NNK_naturaobjekt_yta`/`lin`/`pkt` (Del 2 steg 3 nedan säger idag att de ska hållas AVSTÄNGDA) och läget republiceras (Share As Web Layer → Overwrite) innan fälten dyker upp i tjänsten — annars visar Arcade-uttrycket ingenting för dessa två rader, även om koden är på plats. Se även punkt 6 i kvarvarande_punkter_20260922.md.
+- **Etiketter ändrade 2026-11-27:** NV:s fältnamn "senaste inventering" fick det att se ut som att en inventering gjorts det året, fast slutdatum enligt Handledningen bilaga 1 är datum för senaste *bedömning* (granskaren sätter det vid skrivbordsgranskning). Popupen visar nu "Senast bedömd (slutdatum i NNK, ej nödvändigtvis inventering)" och "Föregående bedömning (startdatum i NNK)"; sektion 2b skriver "Senast bedömd ÅÅÅÅ enligt slutdatum i NNK (kan vara en skrivbordsgranskning…)". Fältaliasen i tjänsten och formuläret är oförändrade (NV:s namn).
 - **Bevarandeplan, fastställd (år)** (`bevarandeplan_ar`) tillagt i *Naturtyp (NNK-data)* 2026-09-22, på Johans önskemål — visar vilket år den senaste bevarandeplanen för N2000-siten fastställdes (tomt för siter utan bevarandeplan). Fältet är nytt och sätts av `02_koppla_nnk_skyddskategori.py` (kräver att `data/analysis/bevarandeplan_platser.csv` kopieras till Johans arbetsdator, se README/kvarvarande_punkter_20260922.md) — **hela pipelinen måste köras om** (koppla_nnk_skyddskategori → 04_forbered_gdb_for_publicering → bygg_nnk_lyrx → republicera) innan fältet finns i tjänsten.
 
 - **Typiska arter (Artportalen)** — ny sektion 7, tillagd 2026-09-29. Visar fälten `typarter_antal`, `typarter` och `typarter_senaste_ar`, som sätts av `02_koppla_nnk_skyddskategori.py` ur `typiska_arter_per_yta.csv` (framräknad av `natura-2000: scripts/analysis/artportalen_typiska_arter.py`). Uttrycket kontrollerar med `HasKey` att fälten finns, men klistra ändå in det först efter Overwrite (se OBS nedan).
@@ -219,7 +220,7 @@ if (!IsEmpty($feature.karteringsstatus_text)) {
 if (!IsEmpty($feature.habitat_period_lastdata_start)) {
     Push(infos, {
         fieldName: "habitat_period_lastdata_start_varde",
-        label: "Startdatum senaste inventering"
+        label: "Föregående bedömning (startdatum i NNK)"
     });
     attrs["habitat_period_lastdata_start_varde"] = IIf(
         TypeOf($feature.habitat_period_lastdata_start) == "Date",
@@ -232,7 +233,7 @@ if (!IsEmpty($feature.habitat_period_lastdata_start)) {
 if (!IsEmpty($feature.habitat_period_lastdata_end)) {
     Push(infos, {
         fieldName: "habitat_period_lastdata_end_varde",
-        label: "Slutdatum senaste inventering"
+        label: "Senast bedömd (slutdatum i NNK, ej nödvändigtvis inventering)"
     });
     attrs["habitat_period_lastdata_end_varde"] = IIf(
         TypeOf($feature.habitat_period_lastdata_end) == "Date",
@@ -453,7 +454,7 @@ var statusAr = IIf(IsEmpty(slut), red, slut);
 
 var alder = "Okänt år";
 if (!IsEmpty(slut)) {
-    alder = "Bedömd " + slut + " (slutdatum senaste inventering)";
+    alder = "Senast bedömd " + slut + " enligt slutdatum i NNK (kan vara en skrivbordsgranskning, inte nödvändigtvis en inventering)";
 } else if (!IsEmpty(red)) {
     alder = "Okänt år. NNK-objektet senast redigerat " + red + " (inte nödvändigtvis naturtypsstatusen)" + IIf(bidos, ", ursprung BIDOS (basinventeringen; i länet i regel karterad 2007–2011)", "");
 } else if (bidos) {

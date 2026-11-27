@@ -2,7 +2,7 @@
 
 *Metodik för att fånga in och registrera Naturvårdsenhetens kunskap om livsmiljötyper*
 
-**Version 2.31 · 2026-11-26** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
+**Version 2.32 · 2026-11-27** · Gäller Natura 2000-områden och statliga naturreservat i Södermanlands län  
 *Senaste ändring:* *Typ ej styrkt* behåller typen enligt FAQ 22 (klassning 1, justering 1, tillstånd okänt) i stället för Osäker (avsnitt 5). [Versionshistorik och källor](#om-dokumentet) längst ned.
 
 ---
@@ -506,6 +506,7 @@ Två nya fält i NNK, *Startdatum/Slutdatum senaste inventering av naturtypen*, 
 **I praktiken (rättat 2026-11-18):**
 
 - **Slutdatum** = datum för din bedömning av typ och utbredning, normalt den dag du granskar ytan. Vid en faktisk förändring: slutet på perioden då den skedde.
+- **Inget nytt slutdatum när naturtypsstatusen inte omprövas (2026-11-27).** Räcker underlaget inte för att bekräfta eller ändra naturtypsstatusen enligt delregeln för gruppen (avsnitt 5, R7-omprövning punkt 2–4), låter du slutdatum vara som det är, även om du har tittat på ortot, skiftena eller SkötselDOS och rekommenderar fältbesök. Skriv i stället "Naturtypsstatus från BIDOS/[år] ej omprövad (står kvar) — [vad som saknas]" i *Kommentar – Tillstånd*. Annars ser en status från basinventeringen ut att vara bedömd i år, i popupen och i NNK. Exempel: en hävdyta med *Fullgod* där IR-orto över tid och bete i SkötselDOS talar för fortsatt hävd men TUVA från 2020 eller senare saknas: ej omprövad, fältbesök, inget nytt slutdatum.
 - **Startdatum** = föregående bedömning, till exempel förvaltarens senaste besök, TUVA, en uppföljning eller basinventeringen. Popupens *Senaste kända inventering (förslag till Startdatum)* är ett förslag till detta fält.
 - **Bara året känt:** datumfälten tar inte bara år. Använd ÅÅÅÅ-01-01 för startdatum och ÅÅÅÅ-12-31 för ett slutdatum, så att perioden täcker hela året, och skriv "bara året känt" i kommentaren. Det är länets egen konvention, inte NV:s.
 - **Skrivbordsgranskning** syns i NNK genom karteringsstatus 2 *Granskad vid skrivbordet* (R3), som sätts vid överföringen. Formuläret har inget eget fält för det. Börja kommentaren med delregeln, t.ex. "R7A:", så att grunden syns även i NNK.
@@ -638,6 +639,7 @@ FAQ fråga 9 vill ha svar på fem frågor, och förvaltardialogen bidrar direkt 
 
 ### Versionshistorik
 
+- **2.32** (2026-11-27) — avsnitt 6: inget nytt slutdatum när naturtypsstatusen inte omprövas (R7-omprövning punkt 4). Förtydligar att "slutdatum = datum för din bedömning" bara gäller när bedömningen faktiskt prövar typen och statusen.
 - **2.31** (2026-11-26) — avsnitt 5: *Typ ej styrkt* behåller typen (FAQ 22). Förslaget blir Ja, egen prövning, justering 1, klassning 1 och tillstånd okänt i stället för 4 Osäker och klassning 3 (4 675 ytor). *Nej, ej styrkt* bara när något talar emot typen.
 - **2.30** (2026-11-26) — avsnitt 5, R7A: nytt värde *Del av ytan* i hävd enligt skiften (bete varje år på 25–50 % av ytan, tidigare *Nej*). 67 ytor, 20 nya R7-utfall, främst *Icke fullgod* som blir *Typ ej styrkt* eller *Till fält*.
 - **2.29** (2026-11-26) — avsnitt 5, R7-omprövning: *Fullgod* bekräftas eller föreslås inte vid skrivbordet för skog och stabila när typen inte är styrkt. 94 ytor går till *Ej omprövad* med fältbesök för strukturer och typiska arter (först fältinventering, ändrat samma dag).

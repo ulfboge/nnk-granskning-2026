@@ -464,7 +464,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Varje redigerad yta ska ha KOMMENTAR ifylld. Formatet: vad bedömningen bygger på, vem som gjort den, och när.
 2. Exempel: *"Tillstånd bedömt utifrån uppföljning 2023-06 (protokoll i SkötselDOS) samt uppgift från NN, förvaltare, 2026-09-24. Hävd pågår men otillräcklig i södra delen."*
-3. Fyll även Slutdatum senaste inventering (`habitat_period_lastdata_end`) — det är enda sättet att besvara FAQ fråga 4:s krav på aktualitet.
+3. Fyll även Slutdatum senaste inventering (`habitat_period_lastdata_end`) — det är enda sättet att besvara FAQ fråga 4:s krav på aktualitet. Undantag: blir naturtypsstatusen *ej omprövad* (underlaget räcker inte, R7-omprövning punkt 4) sätts inget nytt slutdatum, se metodiken avsnitt 6.
 4. Utan detta är bedömningen inte spårbar, och kan inte redovisas i kunskapslägesrapporten.
 
 ### D2.3 · Registrera aktivt även oförändrat tillstånd
@@ -473,7 +473,7 @@ Uppgifter markerade **[Johan]** (projektledare/handläggare), **[Karin]** eller 
 
 1. Är tillståndet oförändrat sedan tidigare bedömning — registrera det ändå, med grund och datum. FAQ fråga 9: "oförändrat" är också ett svar.
 2. Skillnaden mellan *ej bedömd* och *bedömd som oförändrad* är hela poängen med årets uppdrag.
-3. Sätt karteringsstatus 2 om grunden är befintlig kunskap, och uppdatera slutdatum till dagens datum.
+3. Sätt karteringsstatus 2 om grunden är befintlig kunskap, och uppdatera slutdatum till dagens datum. Det gäller bara när grunden räcker för att bekräfta statusen enligt delregeln (R7-omprövning punkt 2). Räcker den inte är statusen *ej omprövad*, och slutdatum lämnas orört.
 
 ### D2.4 · Hävdanalys mot jordbruksskiften (underlag för R7A, årligen)
 
@@ -996,7 +996,7 @@ Gäller varje gång ett område checkas in. Från handledningen avsnitt 2.3 och 
 - [ ] Topologifel, prioritering enligt handledningen 3.3: undvik nya fel, prioritera överlapp, åtgärda hål större än 0,25 ha och remsor bredare än 10 m, strunta i mindre.
 - [ ] FORANDRING satt på allt du ändrat — 3 Komplettering, 1 Rättning, eller 2 Faktisk förändring.
 - [ ] KARTERINGS uppdaterad så att den speglar underlaget, inte din ansträngning.
-- [ ] Slutdatum senaste inventering ifyllt.
+- [ ] Slutdatum senaste inventering ifyllt (inte när naturtypsstatusen är ej omprövad).
 - [ ] KOMMENTAR ifylld med grund och källa.
 - [ ] Systematiska fel i grundkarteringen anmälda till NNK-kartering@metria.se.
 
